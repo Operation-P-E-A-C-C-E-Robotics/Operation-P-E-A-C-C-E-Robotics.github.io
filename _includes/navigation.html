@@ -1,4 +1,5 @@
-<nav>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+    <a class="navbar-brand"><img src="assets/images/CCRALogo.png" style="width:45px;"></a>
     {% for item in site.data.navigation %}
       <a href="{{ item.link }}" {% if page.url == item.link %}style="color: red;"{% endif %}>
         {{ item.name }}
