@@ -1,9 +1,17 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
     <a class="navbar-brand"><img src="../assets/images/PeacceLogoTieDyeWhiteText.svg" style="width:45px;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <h class="text-lg-center  navbar-brand" style="padding-right: 10px;">The Central Connecticut Robotics Alliance</h>
+        <ul class="navbar-nav">
     {% for item in site.data.navigation %}
+    <li class="nav-item text-lg-center ">
         <a class="nav-item text-lg-center nav-link" href="{{ item.link }}" {% if page.url == item.link %}style="color: red;"{% endif %}>
         {{ item.name }}
       </a>
-
+    </li>
     {% endfor %}
+    </ul>
   </nav>
