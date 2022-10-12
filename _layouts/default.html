@@ -4,7 +4,7 @@
     <BASE href="/index.html">
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title }}</title>
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/icon" href="assets/images/favicon.ico"/>
@@ -22,7 +22,9 @@
       <link href="assets/fonts/BankGothicWebFontConvert/stylesheet.css" rel="stylsheet">
 </head> 
   <body class="bg-dark">
-    {% include navigation.html %}
-    {{ content }}
+    <div class="container-fluid">
+      {% include navigation.html %}
+      {{ content }}
+    </div>
   </body>
 </html>
