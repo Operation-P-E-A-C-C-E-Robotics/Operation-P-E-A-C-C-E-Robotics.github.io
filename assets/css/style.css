@@ -8,6 +8,33 @@ body {
 
 }
 
+
+/* Scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+    width: 30px;
+	overflow: overlay;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #00000000;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+	border-radius: 30px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+
+
 /* Sponsor Box */
 
 .logo-area{
