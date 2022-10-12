@@ -11,7 +11,8 @@ body {
 @font-face {
     font-family: 'bankgothicbold';
     src: url('/assets/fonts/BankGothicWebFontConvert/bankgothic_bold_2-webfont.woff2') format('woff2'),
-         url('/assets/fonts/BankGothicWebFontConvert/bankgothic_bold_2-webfont.woff') format('woff');
+         url('/assets/fonts/BankGothicWebFontConvert/bankgothic_bold_2-webfont.woff') format('woff'),
+		 url('/assets/fonts/BankGothic_Bold_2.ttf');
     font-weight: normal;
     font-style: normal;
 
