@@ -1,17 +1,24 @@
 <nav class="navbar navbar-expand-sm bg-light navbar-light sticky-top justify-content-end">
-    <div class="navbar-brand"><a><img src="../assets/images/PeacceLogoTieDyeWhiteText.svg" style="width:45px; height:45px; background-color:white" class="rounded-circle"></a></div>
+    
+    <div class="navbar-brand">
+      <a><img src="../assets/images/PeacceLogoTieDyeWhiteText.svg" style="width:45px; height:45px;"></a>
+    </div>
+    
+    <h class="text-lg-center  navbar-brand" style="padding-right: 10px; font-family: 'BankGothic';">Operation P.E.A.C.C.E Robotics</h>
+    
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <h class="text-lg-center  navbar-brand" style="padding-right: 10px; font-family: 'BankGothic';">Operation P.E.A.C.C.E Robotics</h>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav nav">
-    {% for item in site.data.navigation %}
-    <li class="nav-item text-lg-center ">
-        <a class="nav-item text-lg-center nav-link" href="{{ item.link }}" {% if page.url == item.link %}style="color: black;"{% endif %}>
-        {{ item.name }}
-      </a>
-    </li>
-    {% endfor %}
-    </ul>
-  </nav>
+        {% for item in site.data.navigation %}
+          <li class="nav-item text-lg-center ">
+            <a class="nav-item text-lg-center nav-link" href="{{ item.link }}" {% if page.url == item.link %}style="color: black;"{% endif %}>
+            {{ item.name }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+    </div>
+</nav>
