@@ -77,15 +77,16 @@ Your browser does not support HTML Video playback.
 
 <h1 class="bg-dark text-center text-light" style="margin-bottom: 0%;">Thank you to our generous sponsors</h1>
 <div class="logo-area bg-dark ">
+  {% for item in site.data.sponsors %}
+    <flex class="sponsorlogo logo-item"> 
+        <div style="width: 300px; height: 225px;"><img class="sponsorlogo" id="logo" src="{{item.image}}" style="padding-top:{{item.imgpad}};"></div>
+        <p><b>{{item.sponsortier}}</b> <br> {{item.name}} </p>
+    </flex>
+  {% endfor %}
 
-  <flex class="sponsorlogo logo-item"> 
-      <div style="width: 300px; height: 225px;"><img class="sponsorlogo" id="logo" src="assets/images/AGR.png" style="padding-top:20%;"></div>
-      <p><b>PRINCIPLE SPONSOR</b> <br> The Arthur G Russel Company </p>
-  </flex>
-
-  <flex class="sponsorlogo logo-item"> 
+  <!-- <flex class="sponsorlogo logo-item"> 
     <div style="width: 300px; height: 225px;"><img class="sponsorlogo" id="logo" src="assets/images/4h-logo.svg" style="padding-top:20%; height: 200px;"></div>
     <p><b>PRINCIPLE SPONSOR</b> <br> Hartford Country 4H </p>
-</flex>
+</flex> -->
 
 </div>
