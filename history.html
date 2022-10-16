@@ -148,26 +148,13 @@ body {
 
 <h1 class="text-center">Our Team's History</h1>
 
-<div class="container-fluid">
-    
-    <div class="timeline">
-
-        {% for item in site.data.history %}
-        <div class="container left">
-            <div class="bg-dark text-light content">
-                <h1 class="text-right pr-5">{{item.header}}</h1>
-                <br>
-                <h4 class="pr-5">{{item.content}}</h4></div>
-            </div>
-        </div>
-        <div class="container right">
-            <div class="bg-dark text-light content">
-                <img class="rounded img-fluid" src="{{item.image}}" style="width:300px"></img>
-            </div>
-        </div>
-        
-        <br>
-        {% endfor %}
+<div class="timeline">
+    {% for item in site.data.history %}
+    <div class="container right">
+      <div class="content">
+        <h2>{{item.header</h2>
+        <p>{{ite.content}}</p>
+      </div>
     </div>
-
-</div> 
+    {% endfor %}
+</div>
