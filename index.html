@@ -80,7 +80,7 @@ Your browser does not support HTML Video playback.
   {% for item in site.data.sponsors %}
     <flex class="sponsorlogo logo-item"> 
         <div style="width: 300px; height: 225px;"><img class="sponsorlogo" id="logo" src="{{item.image}}" style="padding-top:{{item.imgpad}}; height:{{item.imgheight}}"></div>
-        <p><b>{{item.sponsortier | uppercase}} SPONSOR</b> <br> {{item.name}} </p>
+        <p><b>{{item.sponsortier | upcase}} SPONSOR</b> <br> {{item.name}} </p>
     </flex>
   {% endfor %}
 
