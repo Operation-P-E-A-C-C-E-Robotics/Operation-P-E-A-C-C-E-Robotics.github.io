@@ -8,11 +8,6 @@ title: Team History
       box-sizing: border-box;
     }
     
-    body {
-      background-color: #474e5d;
-      font-family: Helvetica, sans-serif;
-    }
-    
     /* The actual timeline (the vertical ruler) */
     .timeline {
       position: relative;
@@ -147,10 +142,11 @@ title: Team History
 
 <div class="timeline">
 {% for item in site.data.history %}
-    <div class="container right ml-0">
+    <div class="container {{item.postion}} ml-0">
       <div class="content text-dark">
         <h2>{{item.header}}</h2>
         <h4>{{item.content}}</h4>
+        <img src="{{item.image}}" class="rounded img-fluid">
       </div>
     </div>
 {% endfor %}
