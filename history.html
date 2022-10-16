@@ -16,7 +16,7 @@ title: Team History
     {% for item in site.data.history %}
     <div class="row bg-dark text-light" style="padding-left: 5%;">
         <div class="col"><h1 style="font-family: 'BankGothicBold', sans-serif;">{{item.header}}</h1><br><h4>{{item.content}}</h4></div>
-        {% if item in item.image%}
+        {% if item.image%}
         <div class="col-md"><img class="rounded img-fluid" src="{{item.image}}" style="width:500px"></img></div>
         {% endif %}
         </div>
