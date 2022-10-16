@@ -28,27 +28,30 @@ Your browser does not support HTML Video playback.
     </div>
 </div> -->
 
-
 <div class="container-fluid">
-  <div class="row bg-dark text-light" style="padding-left: 5%;">
-      <div class="col"><h1 style="font-family: 'BankGothicBold', sans-serif;">Who are We?</h1><br><h4>Operation P.E.A.C.C.E. Robotics was founded in 2010 by four friends who were interested in FIRST Robotics at the high school level. Each founder came from a different High School, and as none of their schools offered an FRC program, they decided to approach Litchfield County 4-H to create their own, independent, FRC team.</h4></div>
-      <div class="col-md"><img class="rounded img-fluid mx-auto d-block" src="/assets/images/WorldsPitPic.jpg" style="width:500px"></img></div>
+    <!-- {% for item in site.data.home %}
+    <div class="row bg-dark text-light" style="padding-left: 5%;">
+      <div class="col"><h1 style="font-family: 'BankGothicBold', sans-serif;">{item.header}</h1><br><h4>{item.content}</h4></div>
+      <div class="col-md"><img class="rounded img-fluid mx-auto d-block" src="{item.image}" style="width:500px"></img></div>
     </div>
+    <br>
+    {% endfor %} -->
 
-  <br>
-
-  <div class="row bg-dark text-light" style="padding-left: 5%;">
-    <div class="col">  
-      <div style="display:flex"> <h1 style="font-family: 'BankGothicBold', sans-serif;">What is FIRST?</h1>
-        <img src="/assets/images/FIRSTicon_RGB_withTM.png" style="height:50px; padding-left: 10px;"> 
-        <br>
+  
+    {% for item in site.data.home %}
+    <div class="row bg-dark text-light" style="padding-left: 5%;">
+      <div class="col">  
+        <div style="display:flex"> <h1 style="font-family: 'BankGothicBold', sans-serif;">{item.header}</h1>
+          <img src="{item.glyph}" style="height:50px; padding-left: 10px;"> 
+          <br>
+        </div>
+        <h4>{item.content}</h4>
       </div>
-      <h4>FIRST is an organization created to inspire kids to get involved in robotics STEM. There are several different programs in FIRST, each catering to a different age group: FIRST Lego League Jr. (K-grade 4), FIRST Lego League (4-8), FIRST Tech Challenge (7-12), and FIRST Robotics Competition (9-12). Our team is part of the FIRST Robotics Competition (or FRC).</h4>
-    </div>
-    <div class="col-md"><img class="rounded img-fluid" src="/assets/images/FIRSTField.png" style="width:500px"></div>
-  </div> 
-<br>
-
+      <div class="col-md"><img class="rounded img-fluid mx-auto d-block" src="{item.image}" style="width:500px"></div>
+    </div> 
+    <br>
+    {% endfor %}
+</div>
 <!-- 4 Cards in between text and sponsors -->
 <div class="card-deck text-dark text-center">
     <div class="card">
