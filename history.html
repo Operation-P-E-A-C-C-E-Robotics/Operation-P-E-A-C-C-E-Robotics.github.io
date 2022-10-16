@@ -2,18 +2,56 @@
 layout: default
 title: Team History
 ---
+
+<style>
+
+/* The actual timeline (the vertical ruler) */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: white;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+/* The actual content */
+.content {
+  padding: 20px 30px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+}
+
+</style>
+
+
+
 <br>
 
-<h class="text-center">Our Team's History</h>
+<h1 class="text-center">Our Team's History</h1>
 
 <div class="container-fluid">
-    {% for item in site.data.history %}
-    <div class="row bg-dark text-light" style="padding-left: 5%;">
-        <div class="col"><h1 style="font-family: 'BankGothicBold', sans-serif;">{{item.header}}</h1><br><h4>{{item.content}}</h4></div>
-        <div class="col-md"><img class="rounded img-fluid" src="{{item.image}}" style="width:500px"></img></div>
-        </div>
     
-    <br>
-    {% endfor %}
+    <div class="timeline">
+
+        {% for item in site.data.history %}
+        <div class="row bg-dark text-light content" style="padding-left: 5%;">
+            <div class="col"><h1>{{item.header}}</h1><br><h4>{{item.content}}</h4></div>
+            <div class="col-md"><img class="rounded img-fluid" src="{{item.image}}" style="width:500px"></img></div>
+        </div>
+        
+        <br>
+        {% endfor %}
+    </div>
 
 </div> 
