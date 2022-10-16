@@ -3,22 +3,12 @@ layout: default
 title: Team History
 ---
 
-<h1>Our Team's History</h1>
-
-<p>Operation P.E.A.C.C.E. Robotics started in 2010 with four teenagers who were interested in FIRST Robotics and wanted to start a team. All coming from different high schools, they decided to approach Litchfield County 4-H to become a 4-H affiliated team, independent of any school.
-
-    Our first year, we went to the Litchfield County 4-H Fair with a robot we borrowed from the Litchbots. As we did more with 4-H and other public events, our team grew from just a few members who were just trying out FIRST, to a solid team where the student members are the leaders.
-    
-    We started meeting in an old storefront, made our way to Thomaston High School, then later moved to a local business owner’s workshop before reaching our current home at the Arthur G Russell Company through the Connecticut Chamber of Commerce. With the help and support of AGR and their exceptional employees, along with our sponsors, we have won multiple competitions and awards over the years. In 2018, we qualified for the Worlds Competition in Detroit, MI for the first time.</p>
-
 
 <div class="container-fluid">
     {% for item in site.data.history %}
     <div class="row bg-dark text-light" style="padding-left: 5%;">
         <div class="col"><h1 style="font-family: 'BankGothicBold', sans-serif;">{{item.header}}</h1><br><h4>{{item.content}}</h4></div>
-        {% if item.image%}
         <div class="col-md"><img class="rounded img-fluid" src="{{item.image}}" style="width:500px"></img></div>
-        {% endif %}
         </div>
     
     <br>
