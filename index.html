@@ -41,13 +41,13 @@ Your browser does not support HTML Video playback.
     {% for item in site.data.home %}
     <div class="row bg-dark text-light" style="padding-left: 5%;">
       <div class="col">  
-        <div style="display:flex"> <h1 style="font-family: 'BankGothicBold', sans-serif;">{item.header}</h1>
-          <img src="{item.glyph}" style="height:50px; padding-left: 10px;"> 
+        <div style="display:flex"> <h1 style="font-family: 'BankGothicBold', sans-serif;">{{item.header}}</h1>
+          <img src="{{item.glyph}}" style="height:50px; padding-left: 10px;"> 
           <br>
         </div>
-        <h4>{item.content}</h4>
+        <h4>{{item.content}}</h4>
       </div>
-      <div class="col-md"><img class="rounded img-fluid mx-auto d-block" src="{item.image}" style="width:500px"></div>
+      <div class="col-md"><img class="rounded img-fluid mx-auto d-block" src="{{item.image}}" style="width:500px"></div>
     </div> 
     <br>
     {% endfor %}
