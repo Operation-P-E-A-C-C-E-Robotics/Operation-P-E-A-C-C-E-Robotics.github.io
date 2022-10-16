@@ -3,10 +3,8 @@
 # - name: Insert
 #   image: /assets/images/IMAGE.EXT
 #   imgpad: 20%     | Accepts all HTML Formats PX Auto etc
-#   imgheight:200px | Accepts all HTML Formats PX Auto etc
-#   sponsortier: Insert
-
-
+#   imgheight:max-content | Accepts all HTML Formats PX Auto etc, adjust if image is too tall
+#   sponsortier: IE Title, Gold, Bronze, Platinum "Sponsor" is appended afterward
 
 
 - name: Arthur G Russel Comapny
