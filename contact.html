@@ -11,9 +11,11 @@ title: Contact Us
 
     <h4 class="text-center">placeholder</h4>
 
+    <br>
+
     {% for item in site.data.contact %}
         <div class="text-center">
-            <h2>{{item.type | capitalcase}}: {{item.address}}</h2>
+            <h2>{{item.type | upcase}}: {{item.address}}</h2>
 
         </div>
     {% endfor %}
