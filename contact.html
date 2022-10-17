@@ -13,7 +13,7 @@ title: Contact Us
 
     {% for item in site.data.contact %}
         <div class="text-center">
-            <h2 style="font-family: 'BankGothicBold', sans-serif;">{{item.type | capitalcase}}: </h2><h2>{{item.address}}</h2>
+            <h2>{{item.type | capitalcase}}: {{item.address}}</h2>
 
         </div>
     {% endfor %}
