@@ -9,9 +9,11 @@ title: Contact Us
 
     <h1 class="text-center">Contact Us!</h1>
 
+    <h4>placeholder</h4>
+
     {% for item in site.data.contact %}
-        <div>
-            <h2 style="font-family: 'BankGothicBold', sans-serif;">{{item.type | capitalcase}}: {{item.address}}</h2>
+        <div class="float-right">
+            <h2 style="font-family: 'BankGothicBold', sans-serif;">{{item.type | capitalcase}}: </h2><h2>{{item.address}}</h2>
 
         </div>
     {% endfor %}
