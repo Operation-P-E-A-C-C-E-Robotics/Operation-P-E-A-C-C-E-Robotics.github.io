@@ -12,8 +12,8 @@ title: Contact Us
     <h4>placeholder</h4>
 
     {% for item in site.data.contact %}
-        <div class="float-right">
-            <h2 style="font-family: 'BankGothicBold', sans-serif;">{{item.type | capitalcase}}: </h2><h2>{{item.address}}</h2>
+        <div>
+            <h2 style="font-family: 'BankGothicBold', sans-serif;">{{item.type | capitalcase}}: </h2><h2 class="float-right">{{item.address}}</h2>
 
         </div>
     {% endfor %}
