@@ -1,0 +1,18 @@
+---
+layout: default
+title: Contact Us
+---
+
+<br>
+
+<div class="container-fluid">
+
+    <h1 class="text-center">Contact Us!</h1>
+
+    {% for item in site.data.contact %}
+        <div>
+            <h2 style="font-family: 'BankGothicBold', sans-serif;">{{item.type | capitalcase}}: {{item.address}}</h2>
+
+        </div>
+
+</div>
