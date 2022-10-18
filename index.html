@@ -56,19 +56,18 @@ Your browser does not support HTML Video playback.
 <div class="container-fluid">
   <!-- 4 Cards in between text and sponsors -->
   <div class="card-deck text-dark text-center">
-      <div class="card" style="width: 25%; height:5%">
-            <div class="card-body text-center">
+      <div class="card" style="width: 250px; height:250px">
                 <div id="demo" class="carousel slide" data-ride="carousel">
                   
                     <!-- The slideshow -->
-                    <div class="carousel-inner">
+                    <div class="carousel-inner card-img-top">
                       <div class="carousel-item active">
                         <img src="">
                       </div>
                       
                       {% for item in site.data.history %}
                       <div class="carousel-item">
-                            <img src="{{item.image}}" class="" style="width: max-content; height:60%; position:relative">
+                            <img src="{{item.image}}" class="img-rounded" style="width: max-content; height:225px; position:relative">
 
                             <div class="carousel-caption">
                                 <h3>{{item.header}}</h3>
@@ -79,31 +78,30 @@ Your browser does not support HTML Video playback.
                       {% endfor %}
                       
                     </div>
-                  
-
-                  
-                  </div>
-            
-             <p class="card-text">History</p>
+                
+                </div>
+           
+            <div class="card-body text-center">            
+             <p class="card-title">History</p>
 
             </div>
       </div>
 
       <div class="card">
             <div class="card-body text-center">
-            <p class="card-text">Outreach</p>
+            <p class="card-title">Outreach</p>
             </div>
       </div>
 
       <div class="card">
             <div class="card-body text-center">
-            <p class="card-text">TBD</p>
+            <p class="card-title">TBD</p>
             </div>
       </div>
 
       <div class="card">
             <div class="card-body text-center">
-            <p class="card-text">Top Story</p>
+            <p class="card-title">Top Story</p>
             </div>
       </div>
   
