@@ -64,16 +64,19 @@ Your browser does not support HTML Video playback.
                 <div class="carousel-inner active">
                     <div class="carousel-item">
                       <img src="">
+                    </div> 
                 </div>
 
                 <div class="carousel-inner">
                   {% for item in site.data.history %}
-                  <div class="carousel-item">
-                    <img src="{{item.image}}">
-                  </div>
+                    <div class="carousel-item">
+                     <img src="{{item.image}}">
+                    </div>
                   {% endfor %}
                 </div>
+                </div>
             </div>
+        </div>  
             <p class="card-text">History</p>
         </div>
       </div>
