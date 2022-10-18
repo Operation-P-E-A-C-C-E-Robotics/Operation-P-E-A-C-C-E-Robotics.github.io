@@ -56,7 +56,7 @@ Your browser does not support HTML Video playback.
 <div class="container-fluid">
   <!-- 4 Cards in between text and sponsors -->
   <div class="card-deck text-dark text-center">
-      <div class="card" style="width: 250px; height:300px">
+      <div class="card" style="height:300px">
                 
                 <div class="card-body text-center pb-1">            
                     <p class="card-title">History</p>
@@ -69,7 +69,7 @@ Your browser does not support HTML Video playback.
                     <!-- The slideshow -->
                     
                     <div class="carousel-item active">
-                            <img  src="/assets/images/PeacceLogoTieDyeWhiteText.svg" class="card-img-top img-rounded" style="width: max-content; height:230px; position:relative">
+                            <img  src="/assets/images/PeacceLogoTieDyeWhiteText.svg" class="img-rounded" style="width: max-content; height:230px; position:relative">
 
                             <div class="carousel-caption">
                                 <h3>{{item.header}}</h3>
@@ -84,7 +84,7 @@ Your browser does not support HTML Video playback.
                       {% if item.image and item.image != "" %}
 
                      <div class="carousel-item">
-                            <img  src="{{item.image}}" class="card-img-top img-rounded" style="width: max-content; height:230px; position:relative">
+                            <img  src="{{item.image}}" class="img-rounded" style="width: max-content; height:230px; position:relative">
 
                             <div class="carousel-caption">
                                 <h3>{{item.header}}</h3>
@@ -92,6 +92,9 @@ Your browser does not support HTML Video playback.
                             </div>
 
                       </div>
+                      
+                      <br>
+                      
                       {% endif %}
                       {% endfor %}
                       
