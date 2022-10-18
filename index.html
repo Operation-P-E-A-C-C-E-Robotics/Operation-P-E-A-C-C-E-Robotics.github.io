@@ -58,7 +58,17 @@ Your browser does not support HTML Video playback.
   <div class="card-deck text-dark text-center">
       <div class="card">
         <div class="card-body text-center">
-          <p class="card-text">History</p>
+            <div id="demo" class="carousel slide" data-ride="carousel">              
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                  {% for item in site.data.history %}
+                  <div class="carousel-item active">
+                    <img src="{{item.image}}">
+                  </div>
+                  {% endfor %}
+                </div>
+            </div>
+            <p class="card-text">History</p>
         </div>
       </div>
       <div class="card">
