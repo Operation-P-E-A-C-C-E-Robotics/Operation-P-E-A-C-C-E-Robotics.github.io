@@ -59,13 +59,6 @@ Your browser does not support HTML Video playback.
       <div class="card">
             <div class="card-body text-center">
                 <div id="demo" class="carousel slide" data-ride="carousel">
-
-                    <!-- Indicators -->
-                    <ul class="carousel-indicators">
-                      <li data-target="#demo" data-slide-to="0" class="active"></li>
-                      <li data-target="#demo" data-slide-to="1"></li>
-                      <li data-target="#demo" data-slide-to="2"></li>
-                    </ul>
                   
                     <!-- The slideshow -->
                     <div class="carousel-inner">
@@ -75,7 +68,13 @@ Your browser does not support HTML Video playback.
                       
                       {% for item in site.data.history %}
                       <div class="carousel-item">
-                            <img src="{{item.image}}" alt="{{item.header}}" style="width: max-content; height:fit-content">
+                            <img src="{{item.image}}" class="" style="width: max-content; height:60%; position:relative">
+
+                            <div class="carousel-caption">
+                                <h3>{{item.header}}</h3>
+                               
+                            </div>
+
                       </div>
                       {% endfor %}
                       
