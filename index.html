@@ -60,9 +60,15 @@ Your browser does not support HTML Video playback.
         <div class="card-body text-center">
             <div id="demo" class="carousel slide" data-ride="carousel">              
                 <!-- The slideshow -->
+
+                <div class="carousel-inner active">
+                    <div class="carousel-item">
+                      <img src="">
+                </div>
+
                 <div class="carousel-inner">
                   {% for item in site.data.history %}
-                  <div class="carousel-item active">
+                  <div class="carousel-item">
                     <img src="{{item.image}}">
                   </div>
                   {% endfor %}
