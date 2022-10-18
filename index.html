@@ -57,6 +57,11 @@ Your browser does not support HTML Video playback.
   <!-- 4 Cards in between text and sponsors -->
   <div class="card-deck text-dark text-center">
       <div class="card" style="width: 250px; height:250px">
+                
+                <div class="card-body text-center">            
+                    <p class="card-title">History</p>
+                </div>
+                
                 <div id="demo" class="carousel slide" data-ride="carousel">
                   
                     <!-- The slideshow -->
@@ -64,7 +69,8 @@ Your browser does not support HTML Video playback.
                       
                       {% for item in site.data.history %}
                       {% if item.image and item.image != "" %}
-                      <div class="carousel-item">
+
+                     <div class="carousel-item">
                             <img  src="{{item.image}}" class="card-img-top img-rounded" style="width: max-content; height:225px; position:relative">
 
                             <div class="carousel-caption">
@@ -79,14 +85,6 @@ Your browser does not support HTML Video playback.
                     </div>
                 
                 </div>
-        </div>
-           
-
-        <div class="card">
-            <div class="card-body text-center">            
-             <p class="card-title">History</p>
-
-            </div>
         </div>
       
 
