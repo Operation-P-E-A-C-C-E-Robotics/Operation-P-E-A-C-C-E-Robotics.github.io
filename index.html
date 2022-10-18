@@ -73,11 +73,11 @@ Your browser does not support HTML Video playback.
                         <img src="">
                       </div>
                       
-                      {{% for item in site.data.history %}}
+                      {% for item in site.data.history %}
                       <div class="carousel-item">
-                            <img src="{{item.image}}" alt="{{item.header}}">
+                            <img src="{{item.image}}" alt="{{item.header}}" style="width: max-content; height:fit-content">
                       </div>
-                      {{% endfor %}}
+                      {% endfor %}
                       
                     </div>
                   
@@ -85,7 +85,7 @@ Your browser does not support HTML Video playback.
                   
                   </div>
             
-             <p class="card-text">Outreach</p>
+             <p class="card-text">History</p>
 
             </div>
       </div>
