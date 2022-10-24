@@ -1,10 +1,12 @@
 - name: Home
   link: /
 - name: History
+  drop: true
   link: /history.html
+  link: /robots.html
+- name: Robots
+  link: /robots.html
 - name: Blog
   link: /blog.html
 - name: Contact Us
   link: /contact.html
-- name: Robot Profiels
-  link: /robots.html
