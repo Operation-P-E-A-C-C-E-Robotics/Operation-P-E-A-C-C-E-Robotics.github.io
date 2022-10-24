@@ -1,4 +1,5 @@
 ---
+layout: post
 title: 2019
 robot: Altair
 game: Destination Deep Space
