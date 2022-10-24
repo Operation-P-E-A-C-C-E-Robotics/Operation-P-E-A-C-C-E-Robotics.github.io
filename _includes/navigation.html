@@ -29,6 +29,7 @@
               <div class="dropdown-menu">
                 {% for link in item.link %}
                 <a class="dropdown-item" href="{{link.link}}">{{link.link | upcase}}</a>
+                {& endfor &}
               </div>
             </li>
           {% endif $}
