@@ -1,12 +1,16 @@
 - name: Home
+  drop: false
   link: /
 - name: History
   drop: true
   link: /history.html
   link: /robots.html
 - name: Robots
+  drop: false
   link: /robots.html
 - name: Blog
+  drop: false
   link: /blog.html
 - name: Contact Us
+  drop: false
   link: /contact.html
