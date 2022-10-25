@@ -22,16 +22,16 @@
             </li>
 
           {% else %}
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                  {{item.name}}
-                </a>
-                <div class="dropdown-menu">
-                  {% for link in item.link %}
-                    <a class="dropdown-item" href="{{link.link}}">{{link.link | upcase}}</a>
-                  {% endfor %}
-                </div>
-              </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                {{item.name}}
+              </a>
+              <div class="dropdown-menu">
+                {% for link in item %}
+                  <a class="dropdown-item" href="{{link}}">{{link | upcase}}</a>
+                {% endfor %}
+              </div>
+            </li>
           {% endif %}
         {% endfor %}
         </ul>
