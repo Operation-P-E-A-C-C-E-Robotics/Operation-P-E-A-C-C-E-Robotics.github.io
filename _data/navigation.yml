@@ -3,8 +3,10 @@
   link: /
 - name: History
   drop: true
-  link: /history.html
-  link: /robots.html
+  links:
+    - /history.html
+    - /robots.html
+
 - name: Robots
   drop: false
   link: /robots.html

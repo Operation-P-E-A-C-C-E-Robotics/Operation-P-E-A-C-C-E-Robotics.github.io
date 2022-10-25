@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
         <ul class="navbar-nav nav">
         {% for item in site.data.navigation %}
-          {% if item.drop and item.drop == false %}
+          {% if item.drop and item.drop == "false" %}
             <li class="nav-item text-lg-center ">
               <a class="nav-item text-lg-center nav-link" href="{{ item.link }}" {% if page.url == item.link %}style="color: black;"{% endif %}>
               {{ item.name }}
@@ -27,8 +27,8 @@
                 {{item.name}}
               </a>
               <div class="dropdown-menu">
-                {% for link in item %}
-                  <a class="dropdown-item" href="{{link}}">{{link | upcase}}</a>
+                {% for link in links %}
+                  <a class="dropdown-item" href="{{link}}">{{link | capitalcase}}</a>
                 {% endfor %}
               </div>
             </li>
