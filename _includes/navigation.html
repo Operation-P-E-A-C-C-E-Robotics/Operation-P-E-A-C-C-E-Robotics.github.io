@@ -28,7 +28,7 @@
               </a>
               <div class="dropdown-menu">
                 {% for url in item.links %}
-                  <a class="dropdown-item" href="{{url}}">{{url | capitalcase}}</a>
+                  <a class="dropdown-item" href="{{url.url}}">{{url.name | capitalcase}}</a>
                 {% endfor %}
               </div>
             </li>

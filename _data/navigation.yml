@@ -4,8 +4,10 @@
 - name: History
   drop: "true"
   links:
-    - /history.html
-    - /robots.html
+    - url: /history.html
+      name: history
+    - url: /robots.html
+      name: robots
 
 - name: Robots
   drop: "false"
