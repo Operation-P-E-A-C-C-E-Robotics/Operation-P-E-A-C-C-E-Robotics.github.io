@@ -5,9 +5,9 @@
   drop: "true"
   links:
     - url: /history.html
-      name: history
+      name: Timeline
     - url: /robots.html
-      name: robots
+      name: Robots
 
 - name: Robots
   drop: "false"
