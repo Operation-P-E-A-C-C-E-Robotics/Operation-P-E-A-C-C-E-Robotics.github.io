@@ -149,6 +149,12 @@ title: Team History
         <h2>{{item.header}}</h2>
         <h4>{{item.content}}</h4>
         <img src="{{item.image}}" class="rounded img-fluid">
+        <br>
+        {% for robot in site.robots %}
+          {% if robot.title and robot.title contains 'item.header' %}
+            <a href="{{robot.url}}" class="btn btn-primary">See Profile</a>
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
 {% endfor %}

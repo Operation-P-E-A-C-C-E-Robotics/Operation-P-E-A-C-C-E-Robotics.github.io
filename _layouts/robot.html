@@ -1,7 +1,13 @@
 ---
 layout: default
+endpoint: team/frc3461/events
 ---
-<h1>{{ page.title }} - {{page.robot}}</h1>
-<p>{{ page.game }}</p>
+<script src="/assets/js/tba.js"></script>
 
-{{ content }}
+<div class="container-fluid">
+    <h1>{{ page.title }} - {{page.robot}}</h1>
+    <p>{{ page.game }}</p>
+
+    {{ content }}
+
+</div>
