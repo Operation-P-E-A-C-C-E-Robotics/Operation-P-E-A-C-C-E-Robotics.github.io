@@ -9,13 +9,14 @@ title: Robot Profiles
 
   <div class="d-flex p-5">
     {% for robot in site.robots %}
-      <div class="card  d-flex w-25 h-25  text-dark">
+      <div class="card  d-flex w-25 h-25 m-3 text-dark">
           <img class="card-img-top" src="{{ robot.thumbnail }}" alt="Card image">
           <div class="card-body">
           <h2 class="card-title">{{ robot.title }}: {{ robot.game}} - {{robot.robot}}</h2>
           <a href="{{robot.url}}" class="btn btn-primary">See Profile</a>
           </div>
       </div>
+      <br>
     {% endfor %}
   </div>
 
