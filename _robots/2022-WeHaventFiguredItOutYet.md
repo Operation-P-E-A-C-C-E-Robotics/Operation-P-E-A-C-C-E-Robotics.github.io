@@ -3,6 +3,7 @@ layout: robot
 title: 2022
 robot: We Havent Figured It Out Yet
 game: Rapid React
+thumbnail: /assets/images/2022WorldsPitRobotTeam.png
 ---
 
 After 2 seasons of no competitions and no in person meetings, We finally had a full and proper season, and the result of that season was, well we havent figured it out yet... 
