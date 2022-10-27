@@ -7,14 +7,17 @@ title: Robot Profiles
   <br>
   <h1 class="text-center">Robot Profiles</h1>
 
-  <div class="card-deck d-flex p-5 w-50 h-25">
+  <div class="card-deck d-flex flex-row p-5">
     {% for robot in site.robots %}
       <div class="card  d-flex m-3 text-dark">
           <img class="card-img-top" src="{{ robot.thumbnail }}" alt="Card image">
           <div class="card-body">
           <h2 class="card-title">{{ robot.title }}: {{ robot.game}} - {{robot.robot}}</h2>
-          <a href="{{robot.url}}" class="btn btn-primary">See Profile</a>
-          </div>
+            <div>
+              <a href="{{robot.url}}" class="btn btn-primary">See Profile</a>
+            </div>
+        </div>
+
       </div>
       <br>
     {% endfor %}
