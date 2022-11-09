@@ -4,11 +4,12 @@ title: Robot Profiles
 ---
 
 <style>
-  body {margin:25px;}
+
   
   div.polaroid {
-    width: 80%;
+    width: 20%;
     background-color: white;
+    color:black;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 25px;
   }
@@ -23,15 +24,12 @@ title: Robot Profiles
   <br>
   <h1 class="text-center">Robot Profiles</h1>
 
-  <div class="d-flex">
+  <div class="logo-area bg-dark text-dark">
     {% for robot in site.robots %}
-    <div class="polaroid">
-      <img src="{{ robot.thumbnail }}" alt="{{ robot.title }}: {{ robot.game}} - {{robot.robot}}" style="width:100%">
-      <div class="content">
-      <p>{{ robot.title }}: {{ robot.game}} - {{robot.robot}}</p>
-      <a href="{{robot.url}}" class="btn btn-primary">See Profile</a>
-      </div>
-    </div>
+    <flex class="sponsorlogo logo-item"> 
+      <div style="width: 300px; height: 225px;"><img class="sponsorlogo" id="logo" src="{{robot.image}}" style="height:auto; max-height: 25%;"></div>
+      <p><b>{{item.sponsortier | upcase}} SPONSOR</b> <br> {{item.name}} </p>
+    </flex>
     {% endfor %}
   </div>
 
