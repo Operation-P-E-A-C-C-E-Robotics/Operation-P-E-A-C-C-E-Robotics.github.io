@@ -3,19 +3,35 @@ layout: default
 title: Robot Profiles
 ---
 
+<style>
+  body {margin:25px;}
+  
+  div.polaroid {
+    width: 80%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px;
+  }
+  
+  div.container {
+    text-align: center;
+    padding: 10px 20px;
+  }
+</style>
+
 <div class="container-fluid">
   <br>
   <h1 class="text-center">Robot Profiles</h1>
 
-  <div class="card-columns d-flex">
+  <div class="d-flex">
     {% for robot in site.robots %}
-      <div class="card m-1 text-dark" style="width:600px;">
-          <img class="card-img-top" src="{{ robot.thumbnail }}" alt="Card image">
-          <div class="card-body">
-          <h2 class="card-title">{{ robot.title }}: {{ robot.game}} - {{robot.robot}}</h2>
-          <a href="{{robot.url}}" class="btn btn-primary">See Profile</a>
-          </div>
+    <div class="polaroid">
+      <img src="{{ robot.thumbnail }}" alt="{{ robot.title }}: {{ robot.game}} - {{robot.robot}}" style="width:100%">
+      <div class="container">
+      <p>{{ robot.title }}: {{ robot.game}} - {{robot.robot}}</p>
+      <a href="{{robot.url}}" class="btn btn-primary">See Profile</a>
       </div>
+    </div>
     {% endfor %}
   </div>
 
