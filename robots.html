@@ -13,7 +13,7 @@ title: Robot Profiles
     margin-bottom: 25px;
   }
   
-  div.container {
+  div.content {
     text-align: center;
     padding: 10px 20px;
   }
@@ -27,7 +27,7 @@ title: Robot Profiles
     {% for robot in site.robots %}
     <div class="polaroid">
       <img src="{{ robot.thumbnail }}" alt="{{ robot.title }}: {{ robot.game}} - {{robot.robot}}" style="width:100%">
-      <div class="container">
+      <div class="content">
       <p>{{ robot.title }}: {{ robot.game}} - {{robot.robot}}</p>
       <a href="{{robot.url}}" class="btn btn-primary">See Profile</a>
       </div>
