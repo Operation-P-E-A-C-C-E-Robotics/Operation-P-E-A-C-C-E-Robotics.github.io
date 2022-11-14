@@ -1,6 +1,12 @@
 - name: Home
   drop: "false"
   link: /
+  
+ -name: About Us
+  drop: "false"
+  link: /about.hmtl
+  
+  
 - name: History
   drop: "true"
   links:
