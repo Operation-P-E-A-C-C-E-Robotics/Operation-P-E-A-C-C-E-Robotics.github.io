@@ -122,7 +122,14 @@ Your browser does not support HTML Video playback.
 
       <div class="card">
             <div class="card-body text-center">
-            <p class="card-title">Top Story</p>
+            <p class="card-title">Latest Story</p>
+              {% for post in site.posts limit:1 %}
+              ... Show the first post all big ...
+              {% endfor %}
+              <h1>Recent Posts</h1>
+              {% for post in site.posts offset:1 limit:2 %}
+              ... Show the next two posts ...
+              {% endfor %}
             </div>
       </div>
   
