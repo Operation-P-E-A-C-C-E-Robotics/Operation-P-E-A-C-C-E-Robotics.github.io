@@ -15,36 +15,33 @@ title: Stats - FRC 3461
 <!-- <h1 id="loading">Loading...</h1> -->
 <!-- table for showing data -->
 <table id="employees"></table>
-
 <script>
-    // api url
-
 const url1 = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
 const year = new Date().getFullYear();
 const url2 = "/statuses?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
 const authKey = "?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
 
 const eventstats = url1+year+url2;
-const eventurl = url1+year+authKey;
+const eventurl = url1+year+ "/simple" +authKey;
 
 // Defining async function
 async function getapi(eventurl, eventstats) {
-	
-	// Storing response
-	const eventResponse = await fetch(eventurl);
-	const eventStats = await fetch(eventstats);
-	// Storing data in form of JSON
-	var eventdata = await eventResponse.json();
+  
+  // Storing response
+  const eventResponse = await fetch(eventurl);
+  const eventStats = await fetch(eventstats);
+  // Storing data in form of JSON
+  var eventdata = await eventResponse.json();
     // var eventdata = JSON.parse(eventdatatemp);
     var eventstatdata = await eventStats.json();
-	console.log("Event Data")
+/*   console.log("Event Data")
     console.log(eventdata);
     console.log("Event Stats")
-    console.log(eventstatdata);
-	if (eventstatdata && eventdata) {
-		hideloader();
-	}
-	show(eventstatdata, eventdata);
+    console.log(eventstatdata); */
+  if (eventstatdata && eventdata) {
+    hideloader();
+  }
+  show(eventstatdata, eventdata);
 }
 // Calling that async function
 getapi(eventurl, eventstats);
@@ -55,6 +52,10 @@ function hideloader() {
 }
 // Function to define innerHTML for HTML table
 function show(event, stats) {
+  	console.log("event info");
+  console.log(event);
+  console.log("match info");
+  console.log(stats)
     let tab = 
         `<tr>
           <th>Name</th>
@@ -64,28 +65,30 @@ function show(event, stats) {
          </tr>`;
     
     // Loop to access all rows 
-    // for(var i = 0, l = event.length; i < l; ++i){
-    //     tab += `<tr> 
-    // <td>${event.name} </td>
-
-    // </tr>`;
-    // }
-	
-	// // Loop to access all rows
-	// for(var i = 0, l = stats.length; i < l; ++i){
-	// 	tab += `<tr>
-	// <td>${stats.overall_status_str} </td></tr>`;
-	// }
-
-    event.forEach(element => {
+/*     for(var i = 0, l = event.length; i < l; ++i){
+        tab += `<tr> 
+    <td>${event[0][1]} </td>
+    
+    </tr>`;
+    }
+      
+      // Loop to access all rows
+      for(var i = 0, l = stats.length; i < l; ++i){
         tab += `<tr>
-	    <td>${event.name} </td></tr>`;
-    });
+      <td>${stats.overall_status_str} </td></tr>`;
+      } */
+  
 
-    stats.forEach(element => {
+
+     event.forEach(Object => {
         tab += `<tr>
-	    <td>${event.overall_status_string} </td></tr>`;
+          <td>${overall_status_str} </td></tr>`;
     });
+    
+    stats.forEach(Object => {
+        tab += `<tr>
+          <td>${event[3]} </td></tr>`;
+    }); 
 
 
     
@@ -93,5 +96,3 @@ function show(event, stats) {
 	// Setting innerHTML as tab variable
 	document.getElementById("employees").innerHTML = tab;
 }
-
-</script>
