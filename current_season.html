@@ -50,7 +50,7 @@ function hideloader() {
 	document.getElementById('loading').style.display = 'none';
 }
 // Function to define innerHTML for HTML table
-function show(eventStats, eventInfo) {
+function show(event, stats) {
     let tab = 
         `<tr>
           <th>Name</th>
@@ -60,7 +60,7 @@ function show(eventStats, eventInfo) {
          </tr>`;
     
     // Loop to access all rows 
-    for (let r of eventStats.list) {
+    for (let r of event) {
         tab += `<tr> 
     <td>${r.name} </td>
     <td>${r.office}</td>
@@ -70,7 +70,7 @@ function show(eventStats, eventInfo) {
     }
 	
 	// Loop to access all rows
-	for (let r of eventInfo) {
+	for (let r of stats) {
 		tab += `<tr>
 	<td>${r.name} </td>`;
 	}
