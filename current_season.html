@@ -32,12 +32,13 @@ async function getapi(eventurl, eventstats) {
 	const eventResponse = await fetch(eventurl);
 	const eventStats = await fetch(eventstats);
 	// Storing data in form of JSON
-	var data = await eventResponse.json() && eventStats.json();
-	console.log(data);
-	if (eventResponse) {
+	var eventdata = await eventResponse.json();
+    var eventstatdata = await eventStats.json();
+	console.log(eventdata && eventstatdata);
+	if (eventResponse && eventdata) {
 		hideloader();
 	}
-	show(data);
+	show(eventStats, eventResponse);
 }
 // Calling that async function
 getapi(eventurl, eventstats);
@@ -47,7 +48,7 @@ function hideloader() {
 	document.getElementById('loading').style.display = 'none';
 }
 // Function to define innerHTML for HTML table
-function show(data) {
+function show(eventStats, eventInfo) {
 	let tab =
 		`<tr>
 		<th>Event</th>
@@ -57,14 +58,15 @@ function show(data) {
 		</tr>`;
 	
 	// Loop to access all rows
-	for (let r of data) {
+	for (let r of eventInfo) {
 		tab += `<tr>
-	<td>${r.name} </td>
-	<td>${r.office}</td>
-	<td>${r.position}</td>
-	<td>${r.salary}</td>		
-</tr>`;
+	<td>${r.name} </td>`;
 	}
+    for (let r of eventStats) {
+		tab += `<tr>
+	<td>${r.overall_status_str} </td></tr>`;
+	}
+ 
 	// Setting innerHTML as tab variable
 	document.getElementById("employees").innerHTML = tab;
 }
