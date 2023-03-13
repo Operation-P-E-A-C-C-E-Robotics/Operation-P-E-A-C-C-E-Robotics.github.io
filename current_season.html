@@ -34,8 +34,8 @@ async function getapi(eventurl, eventstats) {
 	const eventResponse = await fetch(eventurl);
 	const eventStats = await fetch(eventstats);
 	// Storing data in form of JSON
-	var eventdatatemp = await eventResponse.json();
-    var eventdata = JSON.parse(eventdatatemp);
+	var eventdata = await eventResponse.json();
+    // var eventdata = JSON.parse(eventdatatemp);
     var eventstatdata = await eventStats.json();
 	console.log("Event Data")
     console.log(eventdata);
