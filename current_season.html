@@ -49,14 +49,14 @@ function hideloader() {
 function show(data) {
 	let tab =
 		`<tr>
-		<th>Name</th>
+		<th>Event</th>
 		<th>Office</th>
 		<th>Position</th>
 		<th>Salary</th>
 		</tr>`;
 	
 	// Loop to access all rows
-	for (let r of data.list) {
+	for (let r of data) {
 		tab += `<tr>
 	<td>${r.name} </td>
 	<td>${r.office}</td>
