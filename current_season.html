@@ -35,7 +35,9 @@ async function getapi(eventurl, eventstats) {
 	// Storing data in form of JSON
 	var eventdata = await eventResponse.json();
     var eventstatdata = await eventStats.json();
-	console.log(eventdata);
+	console.log("Event Data")
+    console.log(eventdata);
+    console.log("Event Stats")
     console.log(eventstatdata);
 	if (eventstatdata && eventdata) {
 		hideloader();
