@@ -60,7 +60,7 @@ function show(eventStats, eventInfo) {
 		</tr>`;
 	
 	// Loop to access all rows
-	for (let r of eventInfo) {
+	for (let r of eventInfo.data) {
 		tab += `<tr>
 	<td>${r.name} </td>`;
 	}
