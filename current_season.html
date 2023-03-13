@@ -70,7 +70,7 @@ function show(event, stats) {
     }
 	
 	// Loop to access all rows
-	for (let r of stats) {
+	for (var r in stats) {
 		tab += `<tr>
 	<td>${r.overall_status_str} </td></tr>`;
 	}
