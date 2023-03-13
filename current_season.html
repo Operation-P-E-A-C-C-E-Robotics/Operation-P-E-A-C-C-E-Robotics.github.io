@@ -22,24 +22,25 @@ const url1 = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
 const year = new Date().getFullYear();
 const url2 = "/statuses?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
 
-const api_url = url1+year+url2;
+const eventstats = url1+year+url2;
+const evneturl = url1+year;
 
 // Defining async function
-async function getapi(url) {
+async function getapi(eventurl, eventstats) {
 	
 	// Storing response
-	const response = await fetch(url);
-	
+	const eventResponse = await fetch(eventurl);
+	const eventStats = await fetch(eventstats);
 	// Storing data in form of JSON
-	var data = await response.json();
+	var data = await eventResponse.json() && eventStats.json();
 	console.log(data);
-	if (response) {
+	if (eventResponse) {
 		hideloader();
 	}
 	show(data);
 }
 // Calling that async function
-getapi(api_url);
+getapi(eventurl, eventstats);
 
 // Function to hide the loader
 function hideloader() {
