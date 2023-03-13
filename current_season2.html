@@ -15,8 +15,10 @@ title: Stats - FRC 3461
 <!-- table for showing data -->
 <table id="employees"></table>
 
+<script type="module" src="/node_modules/tba-api-v3client/src/ApiClient.js"></script>
 <script>
 	import TbaApiV3client from 'tba-api-v3client';
+	// import TbaApiV3client;
 	let defaultClient = TbaApiV3client.ApiClient.instance;
 	// Configure API key authorization: apiKey
 	let apiKey = defaultClient.authentications['apiKey'];
