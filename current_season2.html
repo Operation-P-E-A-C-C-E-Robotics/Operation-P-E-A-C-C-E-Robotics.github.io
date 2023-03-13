@@ -16,15 +16,13 @@ title: Stats - FRC 3461
 <table id="employees"></table>
 
 <script>
-	var TbaApiV3client = require('tba-api-v3client');
-
-	var defaultClient = TbaApiV3client.ApiClient.instance;
+	import TbaApiV3client from 'tba-api-v3client';
+	let defaultClient = TbaApiV3client.ApiClient.instance;
 	// Configure API key authorization: apiKey
-	var apiKey = defaultClient.authentications['apiKey'];
-	apiKey.apiKey = "hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
+	let apiKey = defaultClient.authentications['apiKey'];
+	apiKey.apiKey = 'hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb';
 	// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-	//apiKey.apiKeyPrefix['X-TBA-Auth-Key'] = "Token"
-
+	//apiKey.apiKeyPrefix = 'Token';
 
 	let apiInstance = new TbaApiV3client.TeamApi();
 	let teamKey = "frc3461"; // String | TBA Team Key, eg `frc254`
