@@ -51,11 +51,15 @@ function hideloader() {
 	document.getElementById('loading').style.display = 'none';
 }
 // Function to define innerHTML for HTML table
-function show(Object: event, Array: stats) {
+function show(event, stats) {
   	console.log("event info");
   console.log(event);
   console.log("match info");
   console.log(stats)
+  
+  eventParsed = JSON.parse(event);
+  statsParsed = JSON.parse(stats)
+
     let tab = 
         `<tr>
           <th>Name</th>
@@ -65,17 +69,17 @@ function show(Object: event, Array: stats) {
          </tr>`;
     
     // Loop to access all rows 
-     for(var i = 0, l = event.length; i < l; ++i){
+     for(var i = 0, l = eventParsed.length; i < l; ++i){
         tab += `<tr> 
-    <td>${event[0][1]} </td>
+    <td>${eventParsed[0][1]} </td>
     
     </tr>`;
     }
       
       // Loop to access all rows
-      for(var i = 0, l = stats.length; i < l; ++i){
+      for(var i = 0, l = statsParsed.length; i < l; ++i){
         tab += `<tr>
-      <td>${stats.overall_status_str} </td></tr>`;
+      <td>${statsParsed.overall_status_str} </td></tr>`;
       } 
   
 
