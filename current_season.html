@@ -77,15 +77,26 @@ function show(event, stats) {
          } */
       
       // Loop to access all rows
-       for(var i = 0, l = stats.length; i < l; ++i){
+      // Loop to access all rows
+      for(i = 0, l = stats.length; i < l; ++i){
         tab += `<tr>
-      <td>${stats[i].name} </td></tr>`;
-      }  
-      
-      for(var i = 0, l = stats.length; i < l; ++i){
-        tab += `<tr>
-      <td>${stats[i].overall_status_str} </td></tr>`;
-      }  
+      <td>${stats[i].name} </td>`
+        
+      }
+        
+/*         for(var i = 0, l = event.length; i < l; ++i){
+          tab += `<tr>
+        <td>${event['2023ctwat'].last_match_key} </td>`
+        }   */
+
+Object.entries(event).forEach(entry => {
+  const [key, value] = entry;
+   const evekey = stats[i].key /*
+  const bullshit = event[evekey].key */
+  console.log(key, value);
+    tab += `<tr>
+    <td>${entry[evekey].overall_status_str}</td>`
+}); 
 
     
 
