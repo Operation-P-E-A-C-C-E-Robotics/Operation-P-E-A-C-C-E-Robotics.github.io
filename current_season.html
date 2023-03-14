@@ -79,9 +79,10 @@ function show(event, stats) {
       // Loop to access all rows
       // Loop to access all rows
       for(i = 0, l = stats.length; i < l; ++i){
+        const test = JSON.parse(event[stats[i].key]);
         tab += `<tr>
       <td>${stats[i].name} </td>
-      <td>${event[stats[i].key]} </td></tr>`;
+      <td>${test} </td></tr>`;
         
       }
         
