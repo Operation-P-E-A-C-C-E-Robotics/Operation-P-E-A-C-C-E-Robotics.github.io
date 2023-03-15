@@ -21,7 +21,7 @@ title: Stats - FRC 3461
   const url2 = "/statuses?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
   const authKey = "?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
 
-  const eventstats = url1+2022+url2;
+  const eventstats = url1+year+url2;
   const eventurl = url1+year+ "/simple" +authKey;
   
   function json2array(json){
@@ -82,7 +82,11 @@ title: Stats - FRC 3461
         }
         console.log(labels);
         for (var label in labels){
+        	if (labels[label][1] != null ) {
         	tab += `<tr><td>${labels[label][0]} </td><td>${labels[label][1].overall_status_str}</td></tr>`;
+          } else {
+          	tab += `<tr><td>${labels[label][0]} </td><td>No Data</td></tr>`
+          }
         }
         
     // Setting innerHTML as tab variable
