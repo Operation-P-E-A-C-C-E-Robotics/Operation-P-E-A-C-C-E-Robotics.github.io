@@ -1,0 +1,108 @@
+---
+layout: default
+title: Stats - FRC 3461
+---
+<br>
+<div class="container-fluid">
+  <!-- Here a loader is created which 
+          loads till response comes -->
+  <div class="d-flex justify-content-center">
+      <div class="spinner-border" 
+              role="status" id="loading">
+          <span class="sr-only">Loading...</span>
+      </div>
+  </div>
+  <h1 id="header" class="text-center">Loading...</h1>
+  <!-- <h1 id="loading">Loading...</h1> -->
+  <!-- table for showing data -->
+  <div class="table-responsive">
+    <table id="employees" class="table"></table>
+  </div> 
+</div>
+
+<script>
+  const url1 = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
+  const year = new Date().getFullYear();
+  const url2 = "/statuses?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
+  const authKey = "?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
+
+  const eventstats = url1+year+url2;
+  const eventurl = url1+year+ "/simple" +authKey;
+  
+  function json2array(json){
+          var result = [];
+          for(var i in json){
+              result.push([i, json [i]]);
+    			}
+          return result;
+        }
+  // Defining async function
+  async function getapi(eventurl, eventstats) {
+    
+    // Storing response
+    const eventResponse = await fetch(eventurl);
+    const eventStats = await fetch(eventstats);
+    // Storing data in form of JSON
+    var eventdata = await eventResponse.json();
+      // var eventdata = JSON.parse(eventdatatemp);
+      var eventstatdata = await eventStats.json();
+  /*   console.log("Event Data")
+      console.log(eventdata);
+      console.log("Event Stats")
+      console.log(eventstatdata); */
+    if (eventstatdata && eventdata) {
+      hideloader();
+    }
+    show(eventstatdata, eventdata);
+  }
+  // Calling that async function
+  getapi(eventurl, eventstats);
+
+  // Function to hide the loader
+  function hideloader() {
+    document.getElementById('loading').style.display = 'none';
+  }
+  // Function to define innerHTML for HTML table
+  function show(event, stats) {
+/*       console.log("event info");
+        console.log(event);
+        console.log("match info");
+        console.log(stats); */
+      let tab = 
+      `<tr>
+            <th>Event Name</th>
+            <th>Performance</th>
+          </tr>`;
+              
+        var result = json2array(event);   
+        var statResult = json2array(stats);
+
+        length = result.length;
+        //console.log(result);
+        labels = [];
+        values = [];
+        for (i = 0; i < length; i++) {
+          labels.push(result[i]);
+        }
+
+        console.log(labels);
+        for (var label in labels){
+        	if (labels[label][1] != null ) {
+        	tab += `<tr><td>${stats[label].name}</td><td>${labels[label][1].overall_status_str}</td></tr>`;
+          } else {
+          	tab += `<tr><td>${stats[label].name}</td><td>No Data</td></tr>`
+          }
+        }
+        
+        
+    // Setting innerHTML as tab variable
+    document.getElementById("header").innerHTML = year + " Competition Season"
+    document.getElementById("employees").innerHTML = tab;
+  }
+</script>
+<style>
+  table {
+    width: 75%;
+    align-self: center;
+  }
+</style>
