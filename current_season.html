@@ -3,18 +3,23 @@ layout: default
 title: Stats - FRC 3461
 ---
 
-<!-- Here a loader is created which 
-        loads till response comes -->
-<div class="d-flex justify-content-center">
-    <div class="spinner-border" 
-            role="status" id="loading">
-        <span class="sr-only">Loading...</span>
-    </div>
+<div class="container-fluid">
+  <!-- Here a loader is created which 
+          loads till response comes -->
+  <div class="d-flex justify-content-center">
+      <div class="spinner-border" 
+              role="status" id="loading">
+          <span class="sr-only">Loading...</span>
+      </div>
+  </div>
+  <h1 id="header">Loading...</h1>
+  <!-- <h1 id="loading">Loading...</h1> -->
+  <!-- table for showing data -->
+  <div class="table-responsive">
+    <table id="employees" class="table"></table>
+  </div> 
 </div>
-<h1>TBA Data Test</h1>
-<!-- <h1 id="loading">Loading...</h1> -->
-<!-- table for showing data -->
-<table id="employees"></table>
+
 <script>
   const url1 = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
   const year = new Date().getFullYear();
@@ -91,6 +96,13 @@ title: Stats - FRC 3461
         
         
     // Setting innerHTML as tab variable
+    document.getElementById("header").innerHTML = year + " Competition Season"
     document.getElementById("employees").innerHTML = tab;
   }
 </script>
+<style>
+  table {
+    width: 75%;
+    align-self: center;
+  }
+</style>
