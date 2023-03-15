@@ -64,30 +64,31 @@ title: Stats - FRC 3461
         console.log("match info");
         console.log(stats); */
       let tab = 
-          `<tr>
-            <th>Name</th>
-            <th>Location</th>
-            <th>Position</th>
-            <th>Salary</th>
+      `<tr>
+            <th>Event Name</th>
+            <th>Performance</th>
           </tr>`;
               
-        var result = json2array(event);      
+        var result = json2array(event);   
+        var statResult = json2array(stats);
+
         length = result.length;
-        console.log(result);
+        //console.log(result);
         labels = [];
         values = [];
         for (i = 0; i < length; i++) {
           labels.push(result[i]);
-          values.push(result[i][3]);
         }
+
         console.log(labels);
         for (var label in labels){
         	if (labels[label][1] != null ) {
-        	tab += `<tr><td>${labels[label][0]} </td><td>${labels[label][1].overall_status_str}</td></tr>`;
+        	tab += `<tr><td>${stats[label].name}</td><td>${labels[label][1].overall_status_str}</td></tr>`;
           } else {
-          	tab += `<tr><td>${labels[label][0]} </td><td>No Data</td></tr>`
+          	tab += `<tr><td>${stats[label].name}</td><td>No Data</td></tr>`
           }
         }
+        
         
     // Setting innerHTML as tab variable
     document.getElementById("employees").innerHTML = tab;
