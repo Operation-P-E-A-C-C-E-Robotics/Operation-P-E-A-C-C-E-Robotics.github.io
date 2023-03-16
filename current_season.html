@@ -49,18 +49,13 @@ title: Stats - FRC 3461
       console.log(eventdata);
       console.log("Event Stats")
       console.log(eventstatdata); */
-    if (eventstatdata && eventdata) {
-      hideloader();
-    }
     show(eventstatdata, eventdata);
   }
   // Calling that async function
   getapi(eventurl, eventstats);
 
   // Function to hide the loader
-  function hideloader() {
-    document.getElementById('loading').style.display = 'none';
-  }
+
   // Function to define innerHTML for HTML table
   function show(event, stats) {
 /*       console.log("event info");
