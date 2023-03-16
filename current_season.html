@@ -4,16 +4,14 @@ title: Stats - FRC 3461
 ---
 <br>
 <div class="container-fluid">
-  <!-- Here a loader is created which 
-          loads till response comes -->
-  <div class="d-flex justify-content-center">
-      <div class="spinner-border" 
-              role="status" id="loading">
-          <span class="sr-only">Loading...</span>
-      </div>
-  </div>
+
   <h1 id="header" class="text-center">Loading...</h1>
-  <!-- <h1 id="loading">Loading...</h1> -->
+  <div>
+    {% for robot in site.robots %}
+      {% if robot.title and robot.title contains 'date: "%Y"' %}
+      <img src="{{robot.thumbnail}}" style="height:auto;">
+    {% endfor %}
+  </div>
   <!-- table for showing data -->
   <div class="table-responsive">
     <table id="employees" class="table"></table>
