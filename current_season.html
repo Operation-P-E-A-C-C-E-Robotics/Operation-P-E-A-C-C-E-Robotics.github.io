@@ -10,6 +10,7 @@ title: Stats - FRC 3461
     {% for robot in site.robots %}
       {% if robot.title and robot.title contains 'date: "%Y"' %}
       <img src="{{robot.thumbnail}}" style="height:auto;">
+      {% endif %}
     {% endfor %}
   </div>
   <!-- table for showing data -->
