@@ -3,3 +3,5 @@ collections:
     output: true
 
 
+plugins:
+  - "jekyll-github-metadata"
