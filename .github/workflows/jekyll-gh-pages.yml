@@ -34,8 +34,10 @@ jobs:
         with:
           source: ./
           destination: ./_site
+          tba-auth-key: ${{ secrets.TBA_AUT_KEY }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
+
 
   # Deployment job
   deploy:
