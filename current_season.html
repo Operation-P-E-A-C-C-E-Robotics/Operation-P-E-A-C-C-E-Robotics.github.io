@@ -48,7 +48,7 @@ title: Stats - FRC 3461
     const mediaJSON = await apiResponse.json();
     console.log(mediaJSON);
     
-    for (i = 0; i < mediaJSON.length; i++) {
+    for (var i = 0; i < mediaJSON.length; i++) {
       var tempMedia = mediaJSON[i];
       console.log(mediaJSON[i].primary);
       if (mediaJSON[i].primary == true) {
