@@ -47,7 +47,15 @@ title: Stats - FRC 3461
     const apiResponse = await fetch(mediaURL);
     const mediaJSON = await apiResponse.json();
     console.log(mediaJSON);
-    document.getElementById("robotPrimary").setAttribute("src", mediaJSON[2][1]);
+    
+    for (i = 0; i < mediaJSON.length; i++) {
+     if (mediaJSON[i].primary == true) {
+       document.getElementById("robotPrimary").setAttribute("src", mediaJSON[i].direct_url);
+       document.getElementById("robotPrimary").setAttribute("src", mediaJSON[i].direct_url);
+     } 
+    }
+    
+    document.getElementById("robotPrimary").setAttribute("alt", year + "Competition Robot");
   }
   
   async function getapi(eventurl, eventstats) {
