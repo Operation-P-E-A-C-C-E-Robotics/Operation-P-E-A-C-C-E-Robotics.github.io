@@ -32,6 +32,7 @@ title: Stats - FRC 3461
 
   const eventstats = events+year+eventstatuses;
   const eventurl = events+year+ "/simple" +authKey;
+  const mediaurl = media+year+authkey;
   
   function json2array(json){
           var result = [];
@@ -71,6 +72,7 @@ title: Stats - FRC 3461
   }
   // Calling that async function
   getapi(eventurl, eventstats);
+  getMedia(mediaurl);
 
   // Function to hide the loader
   function hideloader() {
