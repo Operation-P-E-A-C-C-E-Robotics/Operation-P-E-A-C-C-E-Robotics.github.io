@@ -15,7 +15,7 @@ title: Stats - FRC 3461
   <h1 id="header" class="text-center">Loading...</h1>
   <!-- <h1 id="loading">Loading...</h1> -->
   <!-- table for showing data -->
-  <img src="/assets/images/notFound.png" class="img-thumbnail" alt="Image not found">
+  <img src="/assets/images/notFound.png" id="robotPrimary" class="img-thumbnail" alt="Image not found">
   <div class="table-responsive">
     <table id="employees" class="table"></table>
   </div> 
@@ -41,11 +41,20 @@ title: Stats - FRC 3461
           return result;
         }
   // Defining async function
+  
+  async function getMedia(mediaURL) {
+    const apiResponse = await fetch(mediaURL);
+    const mediaJSON = await apiRespone.json();
+    console.log(mediaJSON);
+    document.getElementById("robotPrimary").setAttribute("src", mediaJSON[2][0]);
+  }
+  
   async function getapi(eventurl, eventstats) {
     
     // Storing response
     const eventResponse = await fetch(eventurl);
     const eventStats = await fetch(eventstats);
+    
     // Storing data in form of JSON
     var eventdata = await eventResponse.json();
       // var eventdata = JSON.parse(eventdatatemp);
