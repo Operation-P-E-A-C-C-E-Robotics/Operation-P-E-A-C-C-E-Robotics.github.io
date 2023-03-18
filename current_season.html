@@ -16,6 +16,7 @@ title: Stats - FRC 3461
   <!-- <h1 id="loading">Loading...</h1> -->
   <!-- table for showing data -->
   <img src="/assets/images/notFound.png" id="robotPrimary" class="img-thumbnail" alt="Image not found">
+
   <div class="table-responsive">
     <table id="employees" class="table"></table>
   </div> 
@@ -33,6 +34,7 @@ title: Stats - FRC 3461
   const eventstats = events+year+eventstatuses;
   const eventurl = events+year+ "/simple" +authKey;
   const mediaurl = media+year+authKey;
+
   
   function json2array(json){
           var result = [];
@@ -42,6 +44,7 @@ title: Stats - FRC 3461
           return result;
         }
   // Defining async function
+
   
   async function getMedia(mediaURL) {
     const apiResponse = await fetch(mediaURL);
@@ -57,12 +60,7 @@ for (var i = 0; i < mediaJSON.length; i++) {
      } 
     }
     }  
-  async function getapi(eventurl, eventstats) {
-    
-    // Storing response
-    const eventResponse = await fetch(eventurl);
-    const eventStats = await fetch(eventstats);
-    
+
     // Storing data in form of JSON
     var eventdata = await eventResponse.json();
       // var eventdata = JSON.parse(eventdatatemp);
@@ -71,6 +69,7 @@ for (var i = 0; i < mediaJSON.length; i++) {
       console.log(eventdata);
       console.log("Event Stats")
       console.log(eventstatdata); */
+      
     if (eventstatdata && eventdata) {
       hideloader();
     }
@@ -85,6 +84,7 @@ for (var i = 0; i < mediaJSON.length; i++) {
   function hideloader() {
     document.getElementById('loading').style.display = 'none';
   }
+
   // Function to define innerHTML for HTML table
   function show(event, stats) {
 /*       console.log("event info");
@@ -119,6 +119,7 @@ for (var i = 0; i < mediaJSON.length; i++) {
         
         
     // Setting innerHTML as tab variable
+
     document.getElementById("employees").innerHTML = tab;
   }
 </script>
@@ -127,4 +128,6 @@ for (var i = 0; i < mediaJSON.length; i++) {
     width: 75%;
     align-self: center;
   }
+
 </style>
+
