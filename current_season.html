@@ -49,7 +49,9 @@ title: Stats - FRC 3461
     console.log(mediaJSON);
     
     for (i = 0; i < mediaJSON.length; i++) {
-     if (mediaJSON[i].primary == true) {
+      var tempMedia = mediaJSON[i];
+      console.log(mediaJSON[i].primary);
+      if (mediaJSON[i].primary == true) {
        document.getElementById("robotPrimary").setAttribute("src", mediaJSON[i].direct_url);
        document.getElementById("robotPrimary").setAttribute("src", mediaJSON[i].direct_url);
      } 
