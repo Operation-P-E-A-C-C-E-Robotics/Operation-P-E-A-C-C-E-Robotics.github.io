@@ -47,7 +47,7 @@ title: Stats - FRC 3461
     const apiResponse = await fetch(mediaURL);
     const mediaJSON = await apiResponse.json();
     console.log(mediaJSON);
-    document.getElementById("robotPrimary").setAttribute("src", mediaJSON[2][0]);
+    document.getElementById("robotPrimary").setAttribute("src", mediaJSON[2][1]);
   }
   
   async function getapi(eventurl, eventstats) {
