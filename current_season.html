@@ -65,18 +65,20 @@ title: Stats - FRC 3461
     const mediaJSON = await apiResponse.json();
     console.log(mediaJSON);
     
-for (var i = 0; i < mediaJSON.length; i++) {
+    for (var i = 0; i < mediaJSON.length; i++) {
       const tempMedia = mediaJSON[i];
       console.log(mediaJSON[i]);
       if (mediaJSON[i].preferred == true) {
         // document.getElementById("robotPrimary").setAttribute("src", mediaJSON[i].direct_url);
         // document.getElementById("robotPrimary").setAttribute("alt", year + " Robot Photo");
-        document.getElementById("robotPrimary").append(
-           <img  src={ mediaJSON[i].direct_url } class="img-rounded carousel-item" style="width: max-content; height:230px; position:relative"></img>
+        document.getElementById("robotPrimary").appendChild(document.createElement(
+           `<img src="${ mediaJSON[i].direct_url }" class="img-rounded carousel-item" style="width: max-content; height:230px; position:relative">`
+          )
         );
      } 
     }
-    }  
+  }
+
 async function getapi(eventurl, eventstats) {
     const eventResponse = await fetch(eventurl);
     const eventStats = await fetch(eventstats);  
