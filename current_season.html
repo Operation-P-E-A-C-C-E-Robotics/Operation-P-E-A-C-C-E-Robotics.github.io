@@ -71,10 +71,9 @@ title: Stats - FRC 3461
       if (mediaJSON[i].preferred == true) {
         // document.getElementById("robotPrimary").setAttribute("src", mediaJSON[i].direct_url);
         // document.getElementById("robotPrimary").setAttribute("alt", year + " Robot Photo");
-        document.getElementById("robotPrimary").appendChild(
-           `<img src="${ mediaJSON[i].direct_url }" class="img-rounded carousel-item" style="width: max-content; height:230px; position:relative">`
+        document.getElementById("robotPrimary").innerHTML += `<img src="${ mediaJSON[i].direct_url }" class="img-rounded carousel-item" style="width: max-content; height:230px; position:relative">`;
           
-        );
+      
      } 
     }
   }
