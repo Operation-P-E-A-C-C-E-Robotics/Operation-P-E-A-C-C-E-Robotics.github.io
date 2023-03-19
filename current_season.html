@@ -25,10 +25,7 @@ title: Stats - FRC 3461
     <div class="carousel-item active" id="robotImagePlaceholder">
         <img  src="/assets/images/notFound.png" class="img-rounded" style="width: max-content; height:230px; position:relative">
     </div>
-    <div class="carousel-inner">
-     <div class="carousel-item">
-        <img  src="assets/images/notFound.png" class="img-rounded" style="width: max-content; height:230px; position:relative">
-      </div>
+    <div class="carousel-inner" id="robotCarousel">
     </div>
 </div>
   <div class="table-responsive">
@@ -71,7 +68,11 @@ title: Stats - FRC 3461
       if (mediaJSON[i].preferred == true) {
         // document.getElementById("robotPrimary").setAttribute("src", mediaJSON[i].direct_url);
         // document.getElementById("robotPrimary").setAttribute("alt", year + " Robot Photo");
-        document.getElementById("robotPrimary").innerHTML += `<img src="${ mediaJSON[i].direct_url }" class="img-rounded carousel-item" style="width: max-content; height:230px; position:relative">`;
+        document.getElementById("robotCarousel").innerHTML += `
+        <div class="carousel-item">
+          <img src="${ mediaJSON[i].direct_url }" class="img-rounded carousel-item" style="width: max-content; height:230px; position:relative">
+        </div>`;
+        
           
       
      } 
