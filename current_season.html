@@ -138,7 +138,7 @@ async function getapi(eventurl, eventstats) {
           	tab += `<tr><td>${stats[label].name}</td><td>No Data</td></tr>`
           }
 
-          if (awards[label].event_key == labels[label].event_key) {
+          if (awards[label].event_key == labels[label][0]) {
             tab += `<td>${awards[label].name}</td>`
           }
 
