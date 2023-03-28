@@ -38,10 +38,11 @@ title: Stats - FRC 3461
   const media = "https://www.thebluealliance.com/api/v3/team/frc3461/media/"
   const awards = "https://www.thebluealliance.com/api/v3/team/frc3461/awards/"
 
+
   const eventstats = events+year+eventstatuses;
   const eventurl = events+year+ "/simple" +authKey;
   const mediaurl = media+year+authKey;
-
+  const awardsurl = awards+year+authKey;
   
   function json2array(json){
           var result = [];
@@ -78,10 +79,12 @@ title: Stats - FRC 3461
 async function getapi(eventurl, eventstats) {
     const eventResponse = await fetch(eventurl);
     const eventStats = await fetch(eventstats);  
+    const awardsData = await fetch(awardsurl);
   // Storing data in form of JSON
     var eventdata = await eventResponse.json();
       // var eventdata = JSON.parse(eventdatatemp);
       var eventstatdata = await eventStats.json();
+      var awardsForYear = await awardsData.json();
   /*   console.log("Event Data")
       console.log(eventdata);
       console.log("Event Stats")
@@ -90,7 +93,7 @@ async function getapi(eventurl, eventstats) {
     if (eventstatdata && eventdata) {
       hideloader();
     }
-    show(eventstatdata, eventdata);
+    show(eventstatdata, eventdata, awardsForYear);
     document.getElementById("header").innerHTML = year + " Competition Season"
   }
   // Calling that async function
@@ -103,7 +106,7 @@ async function getapi(eventurl, eventstats) {
   }
 
   // Function to define innerHTML for HTML table
-  function show(event, stats) {
+  function show(event, stats, awards) {
 /*       console.log("event info");
         console.log(event);
         console.log("match info");
@@ -111,8 +114,9 @@ async function getapi(eventurl, eventstats) {
       let tab = 
       `<tr>
             <th>Event Name</th>
-            <th>Performance</th>
-          </tr>`;
+            <th>Ranking</th>
+            <th>Awards</th>
+        </tr>`;
               
         var result = json2array(event);   
         var statResult = json2array(stats);
