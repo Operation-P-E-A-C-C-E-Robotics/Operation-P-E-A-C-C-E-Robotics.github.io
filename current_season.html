@@ -139,7 +139,7 @@ async function getapi(eventurl, eventstats) {
           }
 
           for (award in awards) {
-            document.getElementById(award.event_key+"awards").innerText = award.name;
+            document.getElementById(award.event_key+"awards").innerHTML = award.name;
           }
         //Old awards iterator
         // for (var label in labels){
