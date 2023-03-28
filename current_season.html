@@ -129,6 +129,10 @@ title: Stats - FRC 3461
           labels.push(result[i]);
         }
       
+        if (length == 0) {
+          	tab = `<h1 class=text-center>No Events Found</h1>`
+            document.getElementById("employees").innerHTML = tab;
+        }
 
         //console.log(labels);
         //console.log(awards)
@@ -142,6 +146,7 @@ title: Stats - FRC 3461
           document.getElementById("employees").innerHTML = tab;
         }
 
+        console.log(awards);
         for (var i = 0; i < awards.length; i++ ) {
           console.log(awards[i]);
           document.getElementById(awards[i].event_key+"awards").innerHTML = awards[i].name;
