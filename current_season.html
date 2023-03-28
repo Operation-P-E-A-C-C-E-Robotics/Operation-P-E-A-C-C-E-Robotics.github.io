@@ -133,23 +133,32 @@ async function getapi(eventurl, eventstats) {
         console.log(awards)
         for (var label in labels){
         	if (labels[label][1] != null ) {
-            if (awards[label].event_key != null && awards[label].event_key == labels[label][0]) {
-              tab += `<tr><td>${stats[label].name}</td><td>${labels[label][1].overall_status_str}</td><td>${awards[label].name}</td></tr>`
-            } else {
-              tab += `<tr><td>${stats[label].name}</td><td>${labels[label][1].overall_status_str}</td><td>No Data</td></tr>`;
-            }
+        	tab += `<tr><td id=${stats[label].key}>${stats[label].name}</td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}></tr>`;
           } else {
-          	tab += `<tr><td>${stats[label].name}</td><td>No Data</td></tr>`
+          	tab += `<tr><td id=${stats[label].key}>${stats[label].name}</td><td>No Data</td></tr>`
           }
 
-
-
-        }
+          for (award in awards) {
+            document.getElementById(award.event_key+"awards").innerText = award.name;
+          }
+        //Old awards iterator
+        // for (var label in labels){
+        // 	if (labels[label][1] != null ) {
+        //     if (awards[label].event_key != null && awards[label].event_key == labels[label][0]) {
+        //       tab += `<tr><td>${stats[label].name}</td><td>${labels[label][1].overall_status_str}</td><td>${awards[label].name}</td></tr>`
+        //     } else {
+        //       tab += `<tr><td>${stats[label].name}</td><td>${labels[label][1].overall_status_str}</td><td>No Data</td></tr>`;
+        //     }
+        //   } else {
+        //   	tab += `<tr><td>${stats[label].name}</td><td>No Data</td></tr>`
+        //   }
+        // }
         
         
     // Setting innerHTML as tab variable
 
     document.getElementById("employees").innerHTML = tab;
+    }
   }
 </script>
 <style>
