@@ -133,7 +133,7 @@ async function getapi(eventurl, eventstats) {
         console.log(awards)
         for (var label in labels){
         	if (labels[label][1] != null ) {
-            if (awards[label].event_key == labels[label][0]) {
+            if (awards[label].event_key != null && awards[label].event_key == labels[label][0]) {
               tab += `<tr><td>${stats[label].name}</td><td>${labels[label][1].overall_status_str}</td><td>${awards[label].name}</td></tr>`
             } else {
               tab += `<tr><td>${stats[label].name}</td><td>${labels[label][1].overall_status_str}</td><td>No Data</td></tr>`;
