@@ -18,8 +18,8 @@ title: Stats - FRC 3461
   <br>
   <div id="demo" class="carousel slide" data-ride="carousel" style="width:20%; background-color: white; border-radius: 5px;">
     <!-- The slideshow -->
-    <div class="carousel-item" id="robotImagePlaceholder">
-        <img  src="/assets/images/notFound.png" class="img-rounded" style="width: 500px; height:500px; position:relative">
+    <div class="carousel-item" id="robotImagePlaceholder" style="height: 500px;">
+        <img  src="/assets/images/notFound.png" class="img-rounded" style="width: 100%; height:max-content; position:relative">
     </div>
     <div class="carousel-inner" id="robotCarousel">
     </div>
@@ -31,19 +31,19 @@ title: Stats - FRC 3461
 </div>
 
 <script>
-      const events = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
+      var events = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
       var year = new Date().getFullYear();
-      const eventstatuses = "/statuses?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
+      var eventstatuses = "/statuses?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
       const authKey = "?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
 
-      const media = "https://www.thebluealliance.com/api/v3/team/frc3461/media/"
-      const awards = "https://www.thebluealliance.com/api/v3/team/frc3461/awards/"
+      var media = "https://www.thebluealliance.com/api/v3/team/frc3461/media/"
+      var awards = "https://www.thebluealliance.com/api/v3/team/frc3461/awards/"
 
 
-      const eventstats = events + year + eventstatuses;
-      const eventurl = events + year + "/simple" + authKey;
-      const mediaurl = media + year + authKey;
-      const awardsurl = awards + year + authKey;
+      var eventstats = events + year + eventstatuses;
+      var eventurl = events + year + "/simple" + authKey;
+      var mediaurl = media + year + authKey;
+      var awardsurl = awards + year + authKey;
 
       function json2array(json) {
         var result = [];
