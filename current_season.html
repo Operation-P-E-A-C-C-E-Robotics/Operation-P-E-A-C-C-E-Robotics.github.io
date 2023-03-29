@@ -74,10 +74,10 @@ title: Stats - FRC 3461
         }
       }
 
-      async function getapi(eventurl, eventstats) {
+      async function getapi(eventurl, eventstats, awards) {
         const eventResponse = await fetch(eventurl);
         const eventStats = await fetch(eventstats);
-        const awardsData = await fetch(awardsurl);
+        const awardsData = await fetch(awards);
         // Storing data in form of JSON
         var eventdata = await eventResponse.json();
         // var eventdata = JSON.parse(eventdatatemp);
@@ -95,7 +95,7 @@ title: Stats - FRC 3461
         document.getElementById("header").innerHTML = year + " Competition Season"
       }
       // Calling that async function
-      getapi(eventurl, eventstats);
+      getapi(eventurl, eventstats, awardsurl);
       getMedia(mediaurl);
 
       // Function to hide the loader
