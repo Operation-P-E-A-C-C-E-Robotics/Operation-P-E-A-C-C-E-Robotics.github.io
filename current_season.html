@@ -155,13 +155,12 @@ title: Stats - FRC 3461
             console.log(divisionEvent);
             //get data from the 2 events now, have we advanced yet?
             var parentEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + parentEvent.event_code + "/status" + authKey
-            var parentEventAPIResponse = await fetch(parentEventAPIResponse);
-        		console.log(parentEventAPIResponse);
+            var parentEventAPIResponse = await fetch(parentEventDataURL);
             var parentEventJSON = await parentEventAPIResponse.json();
             
             var divisionEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + divisionEvent.event_code + "/status" + authKey
             console.log(divisionEventDataURL);
-            var divisionEventAPIResponse = await fetch(divisionEventAPIResponse);
+            var divisionEventAPIResponse = await fetch(divisionEventDataURL);
         		
             var divisionEventJSON = await divisionEventAPIResponse.json();
             
