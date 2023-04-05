@@ -67,6 +67,8 @@ title: Stats - FRC 3461
       var awardsurl = awards + year + authKey;
       var countDownDate;
 
+      var eventdata = await eventResponse.json();
+
       function json2array(json) {
         var result = [];
         for (var i in json) {
@@ -107,7 +109,7 @@ title: Stats - FRC 3461
         const eventStats = await fetch(eventstats);
         const awardsData = await fetch(awards);
         // Storing data in form of JSON
-        var eventdata = await eventResponse.json();
+
         // var eventdata = JSON.parse(eventdatatemp);
         var eventstatdata = await eventStats.json();
         var awardsForYear = await awardsData.json();
