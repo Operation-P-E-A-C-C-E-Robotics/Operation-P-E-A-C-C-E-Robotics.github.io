@@ -203,7 +203,11 @@ title: Stats - FRC 3461
                   var teamStatusResponse = await fetch(teamStatusAPI);
                   var match = matchRespone.json();
                   var team = teamStatusAPI.json();
+                  if (matchRespone.predicted_time != undefined) {
                   countDownDate == new Date(matchRespone.predicted_time).getTime();
+                  } else {
+                    countDownDate == new Date().getTime();
+                  }
                   document.getElementById("currentNextMatch").innerHTML = match.comp_level + match.match_number
 
                 if (team != undefined) { 
