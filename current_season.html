@@ -17,20 +17,6 @@ title: Stats - FRC 3461
   <!-- table for showing data -->
   <br>
   <flex style="flex-flow: row wrap;">
-    <div id="duringEventBanner" style="display:none;" class="jumbotron text-dark">
-      <h1 id="currentCompetingEvent">
-        Currently Competing At () Event!
-      </h1>
-      <p id="currentRank">
-      Rank: 0/0
-      </p>
-      <p id="currentNextMatch">
-        Next Match: No Data
-      </p>
-      <p id="liveStream">
-      Event Webcast: No Data
-      </p>
-    </div>
     <div id="demo" class="carousel slide" data-ride="carousel" style="width:20%; background-color: white; border-radius: 5px;">
       <!-- The slideshow -->
       <div class="carousel-item" id="robotImagePlaceholder" style="height: 500px;">
@@ -38,8 +24,23 @@ title: Stats - FRC 3461
       </div>
       <div class="carousel-inner" id="robotCarousel">
       </div>
-  </div> 
-</flex>
+    </div> 
+    <br>
+    <div id="duringEventBanner" style="display:none;" class="jumbotron text-dark">
+      <h1 id="currentCompetingEvent">
+        Currently Competing At () Event!
+      </h1>
+      <h2 id="currentNextMatch">
+        Next Match: No Data
+      </h2>
+      <p id="currentRank">
+      Rank: 0/0
+      </p>
+      <p id="liveStream">
+      Event Webcast: No Data
+      </p>
+    </div>
+  </flex>
 <br>
   <div class="table-responsive">
     <table id="employees" class="table"></table>
@@ -156,21 +157,29 @@ title: Stats - FRC 3461
             //get data from the 2 events now, have we advanced yet?
             var parentEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + parentEvent.event_code + "/status" + authKey
             var parentEventAPIResponse = await fetch(parentEventDataURL);
+        		console.log(parentEventAPIResponse);
             var parentEventJSON = await parentEventAPIResponse.json();
             
             var divisionEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + divisionEvent.event_code + "/status" + authKey
-            console.log(divisionEventDataURL);
+            //console.log(divisionEventDataURL);
             var divisionEventAPIResponse = await fetch(divisionEventDataURL);
         		
             var divisionEventJSON = await divisionEventAPIResponse.json();
             
+            console.log("parent");
+            console.log(parentEventJSON);
             
-            if (parentEventJSON.next_match_key != null) { //if we have a match in the Parent event, then we must have advanced out of the division
-            		document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + parentEventJSON.name
+            console.log("division");
+            console.log(divisionEventJSON);
+            
+            if (parentEventJSON != undefined) { //if we have a match in the Parent event, then we must have advanced out of the division
+            		document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + parentEvent.name
                 
 								document.getElementById("duringEventBanner").style.display = "block";
-            } else if (divisionEventJSON.next_match_key != null) {
-                document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + divisionEventJSON.name
+            } 
+            
+            if (divisionEventJSON != undefined) {
+                document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + divisionEvent.name
 								document.getElementById("duringEventBanner").style.display = "block";
             }
             
