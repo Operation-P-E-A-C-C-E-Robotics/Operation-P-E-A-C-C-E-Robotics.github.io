@@ -207,8 +207,10 @@ title: Stats - FRC 3461
                  
            }
 
-            document.getElementById("currentRank").innerHTML = "Rank:" + team.qual.ranking.rank + "/" + team.qual.num_teams;
-						document.getElementById("duringEventBanner").style.display = "block";
+              if (team != undefined) { 
+                document.getElementById("currentRank").innerHTML = "Rank:" + team.qual.ranking.rank + "/" + team.qual.num_teams;
+                  document.getElementById("duringEventBanner").style.display = "block";
+              }
             }
             
             
