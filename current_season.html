@@ -67,8 +67,6 @@ title: Stats - FRC 3461
       var awardsurl = awards + year + authKey;
       var countDownDate;
 
-      var eventdata = await eventResponse.json();
-
       function json2array(json) {
         var result = [];
         for (var i in json) {
@@ -109,7 +107,7 @@ title: Stats - FRC 3461
         const eventStats = await fetch(eventstats);
         const awardsData = await fetch(awards);
         // Storing data in form of JSON
-
+        var eventdata = await eventResponse.json();
         // var eventdata = JSON.parse(eventdatatemp);
         var eventstatdata = await eventStats.json();
         var awardsForYear = await awardsData.json();
@@ -122,15 +120,17 @@ title: Stats - FRC 3461
           hideloader();
         }
         show(eventstatdata, eventdata, awardsForYear);
-        setBanner(eventdata);
+        
         document.getElementById("header").innerHTML = year + " Competition Season"
         getMedia(mediaurl);
       }
       // Calling that async function
       getapi(eventurl, eventstats, awardsurl);
-      
-      async function setBanner(events) {
-      	var curevents = []
+      setBanner(eventurl);
+      async function setBanner(eventsurl) {
+        var eventJSON = await fetch(eventsurl);
+        var events = await eventJSON.json();
+        var curevents = []
         for (var i = 0; i < events.length; i++) {
           //nsole.log(events[i]);
         		var dateConfig = { year: 'numeric', month: 'numeric', day: 'numeric', timezone: events[i].timezone};
@@ -297,11 +297,11 @@ title: Stats - FRC 3461
               }
 
               if (minutes < -4) {
-                setBanner(eventstats);
+                setBanner(eventurl);
               }
 
               if (minutes > 0 && seconds == 0) {
-                setBanner(eventstats);
+                setBanner(eventurl);
               }
 
 			}, 1000);
