@@ -194,7 +194,7 @@ title: Stats - FRC 3461
                   var matchAPI = "https://www.thebluealliance.com/api/v3/match/" + divisionEvent.next_match_key + authKey
                   var matchRespone = await fetch(matchAPI);
                   var match = matchRespone.json();
-                  countDownDate == matchRespone.predicted_time
+                  countDownDate == new Date(matchRespone.predicted_time).getTime();
                   document.getElementById("currentNextMatch").innerHTML = match.comp_level + match.match_number
            }
 						document.getElementById("duringEventBanner").style.display = "block";
@@ -272,6 +272,7 @@ title: Stats - FRC 3461
 
       var x = setInterval(function() {
 			var now = new Date().getTime();
+      var d = new Date().toLocaleTimeString();
       var distance = countDownDate - now;
 			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
