@@ -30,14 +30,14 @@ title: Stats - FRC 3461
       <h1 id="currentCompetingEvent">
         Currently Competing At () Event!
       </h1>
-      <h2 id="currentNextMatch">
-        Next Match: No Data
-      </h2>
+      <h3 id="currentNextMatch">
+        Next Match: Not Found
+      </h3>
       <p id="currentRank">
       Rank: 0/0
       </p>
       <p id="liveStream">
-      Event Webcast: No Data
+      Event Webcast: Not Found
       </p>
     </div>
   </flex>
@@ -152,8 +152,8 @@ title: Stats - FRC 3461
             divisionEvent = curevents[i];
             } 
           }
-            console.log(parentEvent);
-            console.log(divisionEvent);
+            //console.log(parentEvent);
+            //console.log(divisionEvent);
             //get data from the 2 events now, have we advanced yet?
             var parentEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + parentEvent.event_code + "/status" + authKey
             var parentEventAPIResponse = await fetch(parentEventDataURL);
@@ -165,6 +165,8 @@ title: Stats - FRC 3461
             var divisionEventAPIResponse = await fetch(divisionEventDataURL);
         		
             var divisionEventJSON = await divisionEventAPIResponse.json();
+
+            var countDownDate;
             
             console.log("parent");
             console.log(parentEventJSON);
@@ -174,19 +176,36 @@ title: Stats - FRC 3461
             
             if (parentEventJSON != undefined) { //if we have a match in the Parent event, then we must have advanced out of the division
             		document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + parentEvent.name
-                
+                 if (parentEvent.next_match_key != undefined){
+                  var matchAPI = "https://www.thebluealliance.com/api/v3/match/" + parentEvent.next_match_key + authKey
+                  var matchRespone = await fetch(matchAPI);
+                  var match = matchRespone.json();
+                  document.getElementById("currentNextMatch").innerHTML = match.comp_level + match.match_number
+           }
 								document.getElementById("duringEventBanner").style.display = "block";
-            } 
-            
-            if (divisionEventJSON != undefined) {
-                document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + divisionEvent.name
-								document.getElementById("duringEventBanner").style.display = "block";
+            } else {
+            document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + divisionEvent.name
+      		   if (divisionEvent.next_match_key != undefined){
+                  var matchAPI = "https://www.thebluealliance.com/api/v3/match/" + divisionEvent.next_match_key + authKey
+                  var matchRespone = await fetch(matchAPI);
+                  var match = matchRespone.json();
+                  countDownDate == matchRespone.predicted_time
+                  document.getElementById("currentNextMatch").innerHTML = match.comp_level + match.match_number
+           }
+						document.getElementById("duringEventBanner").style.display = "block";
             }
             
             
             
         } else {
             document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + curevents[0].name
+      		   if (curevents.next_match_key != null){
+                  var matchAPI = "https://www.thebluealliance.com/api/v3/match/" + curevents.next_match_key + authKey
+                  var matchRespone = await fetch(matchAPI);
+                  var match = matchRespone.json();
+                  
+                  document.getElementById("currentNextMatch").innerHTML = match.comp_level + match.match_number
+           }
 						document.getElementById("duringEventBanner").style.display = "block";
         }
         
@@ -245,7 +264,40 @@ title: Stats - FRC 3461
         }
 
       }
+
+      var x = setInterval(function() {
+			var distance = countDownDate - now;
+			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+			//   document.getElementById("counter").innerHTML = d + " | ";
+              document.getElementById("counter").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+              document.getElementById("time").innerHTML = d;
+              
+              if (hours == 0 && minutes < 20) {
+                document.getElementById("counter").classList.add("yellowwarning");
+                // document.getElementById("counter").innerHTML =  d + " | ";
+                document.getElementById("counter").innerHTML = hours + "h " + minutes + "m " + seconds + "s DOUBLE QUENE";
+              } 
+              if (hours == 0 && minutes < 10) {
+                document.getElementById("counter").classList.remove("yellowwarning");
+                document.getElementById("counter").classList.add("redalliance");
+                // document.getElementById("counter").innerHTML = d + " | ";
+                document.getElementById("counter").innerHTML = hours + "h " + minutes + "m " + seconds + "s QUENE";
+              }
+
+              if (minutes < -4) {
+                location.reload();
+              }
+
+              if (minutes > 0 && seconds == 0) {
+                location.reload();
+              }
+
+			}, 1000);
 </script>
+
 <style>
   table {
     width: 75%;
