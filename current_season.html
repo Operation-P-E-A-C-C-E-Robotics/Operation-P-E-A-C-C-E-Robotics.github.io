@@ -299,19 +299,19 @@ title: Stats - FRC 3461
 			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 			//   document.getElementById("counter").innerHTML = d + " | ";
-              document.getElementById("counter").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+              document.getElementById("counter").innerHTML = "~" + hours + "h " + minutes + "m " + seconds + "s ";
               document.getElementById("time").innerHTML = d;
               
               if (hours == 0 && minutes < 20) {
                 document.getElementById("counter").classList.add("yellowwarning");
                 // document.getElementById("counter").innerHTML =  d + " | ";
-                document.getElementById("counter").innerHTML = hours + "h " + minutes + "m " + seconds + "s DOUBLE QUENE";
+                document.getElementById("counter").innerHTML = "~" + hours + "h " + minutes + "m " + seconds + "s DOUBLE QUENE";
               } 
               if (hours == 0 && minutes < 10) {
                 document.getElementById("counter").classList.remove("yellowwarning");
                 document.getElementById("counter").classList.add("redalliance");
                 // document.getElementById("counter").innerHTML = d + " | ";
-                document.getElementById("counter").innerHTML = hours + "h " + minutes + "m " + seconds + "s QUENE";
+                document.getElementById("counter").innerHTML = "~" + hours + "h " + minutes + "m " + seconds + "s QUENE";
               }
 
               if (minutes < -4) {
