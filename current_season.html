@@ -196,12 +196,18 @@ title: Stats - FRC 3461
             } else {
             document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + divisionEvent.name
       		   if (divisionEvent.next_match_key != undefined){
+                  var teamStatusAPI = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + divisionEvent.event_key + authKey;
                   var matchAPI = "https://www.thebluealliance.com/api/v3/match/" + divisionEvent.next_match_key + authKey
                   var matchRespone = await fetch(matchAPI);
+                  var teamStatusResponse = await fetch(teamStatusAPI);
                   var match = matchRespone.json();
+                  var team = teamStatusAPI.json();
                   countDownDate == new Date(matchRespone.predicted_time).getTime();
                   document.getElementById("currentNextMatch").innerHTML = match.comp_level + match.match_number
+                 
            }
+
+            document.getElementById("currentRank").innerHTML = "Rank:" + team.qual.ranking.rank + "/" + team.qual.num_teams;
 						document.getElementById("duringEventBanner").style.display = "block";
             }
             
