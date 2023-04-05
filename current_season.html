@@ -16,14 +16,30 @@ title: Stats - FRC 3461
   <!-- <h1 id="loading">Loading...</h1> -->
   <!-- table for showing data -->
   <br>
-  <div id="demo" class="carousel slide" data-ride="carousel" style="width:20%; background-color: white; border-radius: 5px;">
-    <!-- The slideshow -->
-    <div class="carousel-item" id="robotImagePlaceholder" style="height: 500px;">
-        <img  src="/assets/images/notFound.png" class="img-rounded" style="width: 100%; height:max-content; position:relative">
+  <flex style="flex-flow: row wrap;">
+    <div id="duringEventBanner" style="display:none;" class="jumbotron text-dark">
+      <h1 id="currentCompetingEvent">
+        Currently Competing At () Event!
+      </h1>
+      <p id="currentRank">
+      Rank: 0/0
+      </p>
+      <p id="currentNextMatch">
+        Next Match: No Data
+      </p>
+      <p id="liveStream">
+      Event Webcast: No Data
+      </p>
     </div>
-    <div class="carousel-inner" id="robotCarousel">
-    </div>
-</div>
+    <div id="demo" class="carousel slide" data-ride="carousel" style="width:20%; background-color: white; border-radius: 5px;">
+      <!-- The slideshow -->
+      <div class="carousel-item" id="robotImagePlaceholder" style="height: 500px;">
+          <img  src="/assets/images/notFound.png" class="img-rounded" style="width: 100%; height:max-content; position:relative">
+      </div>
+      <div class="carousel-inner" id="robotCarousel">
+      </div>
+  </div> 
+</flex>
 <br>
   <div class="table-responsive">
     <table id="employees" class="table"></table>
@@ -31,7 +47,7 @@ title: Stats - FRC 3461
 </div>
 
 <script>
-      var events = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
+       var events = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
       var year = new Date().getFullYear();
       var eventstatuses = "/statuses?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
       const authKey = "?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
@@ -41,7 +57,7 @@ title: Stats - FRC 3461
 
 
       var eventstats = events + year + eventstatuses;
-      var eventurl = events + year + "/simple" + authKey;
+      var eventurl = events + year + authKey;
       var mediaurl = media + year + authKey;
       var awardsurl = awards + year + authKey;
 
@@ -89,7 +105,7 @@ title: Stats - FRC 3461
         // var eventdata = JSON.parse(eventdatatemp);
         var eventstatdata = await eventStats.json();
         var awardsForYear = await awardsData.json();
-        /*   console.log("Event Data")
+           /* console.log("Event Data")
             console.log(eventdata);
             console.log("Event Stats")
             console.log(eventstatdata); */
@@ -98,12 +114,75 @@ title: Stats - FRC 3461
           hideloader();
         }
         show(eventstatdata, eventdata, awardsForYear);
+        setBanner(eventdata);
         document.getElementById("header").innerHTML = year + " Competition Season"
         getMedia(mediaurl);
       }
       // Calling that async function
       getapi(eventurl, eventstats, awardsurl);
       
+      async function setBanner(events) {
+      	var curevents = []
+        for (var i = 0; i < events.length; i++) {
+          //nsole.log(events[i]);
+        		var dateConfig = { year: 'numeric', month: 'numeric', day: 'numeric', timezone: events[i].timezone};
+            var date = new Date()
+            var eventStartDate = new Date(events[i].start_date);
+            var eventEndDate = new Date(events[i].end_date);
+            //console.log(dateConfig);
+            //console.log(eventStartDate);
+            if (date.getTime() <= eventEndDate.getTime() && date.getTime() >= eventStartDate.getTime()) {
+            	curevents.push(events[i]);
+              //console.log(events[i]);
+              //console.log(curevents);
+              var currentEvent = events[i];              
+            }
+        }
+        
+        if (curevents.length > 1) {
+        	//error handling for when competing at DCMP or CMP where we are listed in the parent event and the division event at the same time
+          var parentEvent = {};
+          var divisionEvent = {};
+          //establish which event is a division and which one is the parent
+          for (var i = 0; i < curevents.length; i++) {
+          	if (curevents[i].parent_event_key == null) {
+            	parentEvent = curevents[i];
+            } else  {
+            divisionEvent = curevents[i];
+            } 
+          }
+            console.log(parentEvent);
+            console.log(divisionEvent);
+            //get data from the 2 events now, have we advanced yet?
+            var parentEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + parentEvent.event_code + "/status" + authKey
+            var parentEventAPIResponse = await fetch(parentEventAPIResponse);
+        		console.log(parentEventAPIResponse);
+            var parentEventJSON = await parentEventAPIResponse.json();
+            
+            var divisionEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + divisionEvent.event_code + "/status" + authKey
+            console.log(divisionEventDataURL);
+            var divisionEventAPIResponse = await fetch(divisionEventAPIResponse);
+        		
+            var divisionEventJSON = await divisionEventAPIResponse.json();
+            
+            
+            if (parentEventJSON.next_match_key != null) { //if we have a match in the Parent event, then we must have advanced out of the division
+            		document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + parentEventJSON.name
+                
+								document.getElementById("duringEventBanner").style.display = "block";
+            } else if (divisionEventJSON.next_match_key != null) {
+                document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + divisionEventJSON.name
+								document.getElementById("duringEventBanner").style.display = "block";
+            }
+            
+            
+            
+        } else {
+            document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + curevents[0].name
+						document.getElementById("duringEventBanner").style.display = "block";
+        }
+        
+      }
 
       // Function to hide the loader
       function hideloader() {
@@ -139,21 +218,21 @@ title: Stats - FRC 3461
             document.getElementById("employees").innerHTML = tab;
         }
 
-        //console.log(labels);
+        console.log(labels);
         //console.log(awards)
         for (var label in labels) {
           if (labels[label][1] != null) {
-            tab += `<tr><td id=${stats[label].key}>${stats[label].name}</td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>No Data</td></tr>`;
+            tab += `<tr><td id=${stats[label].key}>${stats[label].name}</td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>None Found</td></tr>`;
           } else {
-            tab += `<tr><td id=${stats[label].key}>${stats[label].name}</td><td>No Data</td></tr>`
+            tab += `<tr><td id=${stats[label].key}>${stats[label].name}</td><td>No Data</td><td>No Data</td></tr>`
           }
           // Setting innerHTML as tab variable
           document.getElementById("employees").innerHTML = tab;
         }
 
-        console.log(awards);
+        //console.log(awards);
         for (var i = 0; i < awards.length; i++ ) {
-          console.log(awards[i]);
+          //console.log(awards[i]);
           document.getElementById(awards[i].event_key+"awards").innerHTML = awards[i].name;
         }
 
