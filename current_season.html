@@ -295,11 +295,11 @@ title: Stats - FRC 3461
               }
 
               if (minutes < -4) {
-                location.reload();
+                setBanner(eventstats);
               }
 
               if (minutes > 0 && seconds == 0) {
-                location.reload();
+                setBanner(eventstats);
               }
 
 			}, 1000);
