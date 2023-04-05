@@ -33,6 +33,10 @@ title: Stats - FRC 3461
       <h3 id="currentNextMatch">
         Next Match: Not Found
       </h3>
+      <h3>
+        <p class='match' id='time'></p>
+        <p id='counter'>--h --m --s</p>
+      </h3>
       <p id="currentRank">
       Rank: 0/0
       </p>
@@ -61,6 +65,7 @@ title: Stats - FRC 3461
       var eventurl = events + year + authKey;
       var mediaurl = media + year + authKey;
       var awardsurl = awards + year + authKey;
+      var countDownDate;
 
       function json2array(json) {
         var result = [];
@@ -166,7 +171,7 @@ title: Stats - FRC 3461
         		
             var divisionEventJSON = await divisionEventAPIResponse.json();
 
-            var countDownDate;
+            
             
             console.log("parent");
             console.log(parentEventJSON);
