@@ -82,12 +82,12 @@ title: Stats - FRC 3461
         const apiResponse = await fetch(mediaURL);
         const mediaJSON = await apiResponse.json();
         //console.log(mediaJSON);
-
+        var hasPlacedImage = false;
         for (var i = 0; i < mediaJSON.length; i++) {
           const tempMedia = mediaJSON[i];
           //console.log(mediaJSON[i]);
           if (mediaJSON[i].preferred == true && mediaJSON[i].direct_url != undefined) {
-            var hasPlacedImage = false;
+            
             if (hasPlacedImage == false) {
               document.getElementById("robotCarousel").innerHTML += `<div class="carousel-item active img-thumbnail" style="width:100%; height:500px; background-size: 100% 100%; background-repeat: no-repeat; background-image:url('${mediaJSON[i].direct_url}');"></div>`;
               hasPlacedImage = true;
