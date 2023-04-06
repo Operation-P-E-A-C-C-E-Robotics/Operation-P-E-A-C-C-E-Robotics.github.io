@@ -199,8 +199,8 @@ title: Stats - FRC 3461
             //console.log(divisionEvent);
             var nextMatchKey = getTeamStatus(divisionEvent.event_code);
             //console.log(nextMatchKey);
-            //var nextMatchData = getMatchFromKey(nextMatchKey.next_match_key);
-            var nextMatchData = "2022necmp2_qm5"
+            var nextMatchData = getMatchFromKey(nextMatchKey.next_match_key);
+            //var nextMatchData = "2022necmp2_qm5"
             //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + divisionEvent.name
             bannerHelper(divisionEvent.name, nextMatchData);
           }
