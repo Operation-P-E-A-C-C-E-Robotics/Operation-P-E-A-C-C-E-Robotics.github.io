@@ -155,13 +155,13 @@ title: Stats - FRC 3461
            };
            console.log(key);
            var date = new Date()
-           var eventStartDate = new Date(key.start_date);
-           var eventEndDate = new Date(key.end_date);
+           var eventStartDate = new Date(key[1].start_date);
+           var eventEndDate = new Date(key[1].end_date);
            //console.log(dateConfig);
            console.log(eventStartDate);
            if (date.getTime() <= eventEndDate.getTime() && date.getTime() >= eventStartDate.getTime()) {
-             curevents.push(events[i]);
-             currentEvent = events[i];
+             curevents.push(key[1]);
+             currentEvent = key[1];
            }
          }
  
