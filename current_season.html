@@ -192,17 +192,20 @@ title: Stats - FRC 3461
  
            if (divisionEvent.status == "won") { //if we have data in the Parent event, then we must have advanced out of the division           
              var nextMatchKey = getTeamStatus(divisionEvent.event_code);
-             var nextMatchData = await getMatchFromKey(nextMatchKey.next_match_key);
+             var nextMatchData = await getMatchFromKey(nextMatchKey);
+             console.log(nextMatchData);
              bannerHelper(parentEvent.name, nextMatchData);
  
            } else { //otherwise we are still in the division
              var nextMatchKey = getTeamStatus(divisionEvent.event_code);
-             var nextMatchData = await getMatchFromKey(nextMatchKey.next_match_key);
+             var nextMatchData = await getMatchFromKey(nextMatchKey);
+             console.log(nextMatchData);
              bannerHelper(divisionEvent.name, nextMatchData);
            }
          } else {
            var nextMatchKey = getTeamStatus(curevents[0].event_code);
-           var nextMatchData = await getMatchFromKey(nextMatchKey.next_match_key);
+           var nextMatchData = await getMatchFromKey(nextMatchKey);
+           console.log(nextMatchData);
            bannerHelper(curevents[0].name, nextMatchData);
            //only playing at one event (district most likely)
            //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + curevents[0].name
