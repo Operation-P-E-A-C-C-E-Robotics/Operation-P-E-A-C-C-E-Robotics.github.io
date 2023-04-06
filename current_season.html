@@ -191,8 +191,8 @@ title: Stats - FRC 3461
 
             } else { //otherwise we are still in the division
               console.log(divisionEvent);
-              var nextMatchKey = getTeamStatus(divisionEvent.event_code).next_match_key;
-              var nextMatchData = getMatchFromKey(nextMatchKey);
+              var nextMatchKey = getTeamStatus(divisionEvent.event_code);
+              var nextMatchData = getMatchFromKey(nextMatchKey.next_match_key);
               //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + divisionEvent.name
               bannerHelper(divisionEvent.name);
             }         
