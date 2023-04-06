@@ -194,8 +194,8 @@ title: Stats - FRC 3461
                        console.log(divisionEventJSON);
  
            if (divisionEvent.status == "won") { //if we have data in the Parent event, then we must have advanced out of the division           
-             var nextMatchKey = getTeamStatus(divisionEventJSON.event_code);
-             var nextMatchData = await getMatchFromKey(nextMatchKey);
+             var nextMatchData = await getMatchFromKey(nextMatchKey.next_match_key);
+             console.log("Next Match Data")
              console.log(nextMatchData);
              bannerHelper(parentEvent.name, nextMatchData);
  
