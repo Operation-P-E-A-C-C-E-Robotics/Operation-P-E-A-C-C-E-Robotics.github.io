@@ -63,7 +63,7 @@ title: Stats - FRC 3461
 </div>
 
 <script>
-       var events = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
+ var events = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
       var year = new Date().getFullYear();
       var eventstatuses = "/statuses?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
       const authKey = "?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
@@ -97,7 +97,7 @@ title: Stats - FRC 3461
           const tempMedia = mediaJSON[i];
           //console.log(mediaJSON[i]);
           if (mediaJSON[i].preferred == true && mediaJSON[i].direct_url != undefined) {
-            
+
             if (hasPlacedImage == false) {
               document.getElementById("robotCarousel").innerHTML += `<div class="carousel-item active img-thumbnail" style="width:100%; height:500px; background-size: 100% 100%; background-repeat: no-repeat; background-image:url('${mediaJSON[i].direct_url}');"></div>`;
               hasPlacedImage = true;
@@ -124,16 +124,16 @@ title: Stats - FRC 3461
         // var eventdata = JSON.parse(eventdatatemp);
         var eventstatdata = await eventStats.json();
         var awardsForYear = await awardsData.json();
-           /* console.log("Event Data")
-            console.log(eventdata);
-            console.log("Event Stats")
-            console.log(eventstatdata); */
+        /* console.log("Event Data")
+         console.log(eventdata);
+         console.log("Event Stats")
+         console.log(eventstatdata); */
 
         if (eventstatdata && eventdata) {
           hideloader();
         }
         show(eventstatdata, eventdata, awardsForYear);
-        
+
         document.getElementById("header").innerHTML = year + " Competition Season"
         getMedia(mediaurl);
       }
@@ -145,85 +145,99 @@ title: Stats - FRC 3461
         var events = await eventJSON.json();
         var curevents = []
         for (var i = 0; i < events.length; i++) {
-        		var dateConfig = { year: 'numeric', month: 'numeric', day: 'numeric', timezone: events[i].timezone};
-            var date = new Date()
-            var eventStartDate = new Date(events[i].start_date);
-            var eventEndDate = new Date(events[i].end_date);
-            //console.log(dateConfig);
-            //console.log(eventStartDate);
-            if (date.getTime() <= eventEndDate.getTime() && date.getTime() >= eventStartDate.getTime()) {
-            	curevents.push(events[i]);
-              var currentEvent = events[i];              
-            }
+          var dateConfig = {
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+            timezone: events[i].timezone
+          };
+          var date = new Date()
+          var eventStartDate = new Date(events[i].start_date);
+          var eventEndDate = new Date(events[i].end_date);
+          //console.log(dateConfig);
+          //console.log(eventStartDate);
+          if (date.getTime() <= eventEndDate.getTime() && date.getTime() >= eventStartDate.getTime()) {
+            curevents.push(events[i]);
+            var currentEvent = events[i];
+          }
         }
-        
+
         if (curevents.length > 1) {
-        	//error handling for when competing at DCMP or CMP where we are listed in the parent event and the division event at the same time
+          //error handling for when competing at DCMP or CMP where we are listed in the parent event and the division event at the same time
           var parentEvent = {};
           var divisionEvent = {};
           //establish which event is a division and which one is the parent
           for (var i = 0; i < curevents.length; i++) {
-          	if (curevents[i].parent_event_key == null) {
-            	parentEvent = curevents[i];
-            } else  {
-            divisionEvent = curevents[i];
-            } 
+            if (curevents[i].parent_event_key == null) {
+              parentEvent = curevents[i];
+            } else {
+              divisionEvent = curevents[i];
+            }
           }
-            var parentEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + parentEvent.event_code + "/status" + authKey
-            var parentEventAPIResponse = await fetch(parentEventDataURL);
-        		//console.log(parentEventAPIResponse);
-            var parentEventJSON = parentEventAPIResponse.json();
-            var divisionEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + divisionEvent.event_code + "/status" + authKey
-            var divisionEventAPIResponse = await fetch(divisionEventDataURL);
-            var divisionEventJSON = divisionEventAPIResponse.json();
-            
-            // console.log("parent");
-            // console.log(parentEventJSON);
-            
-            // console.log("division");
-            // console.log(divisionEventJSON);
-            
-            if (parentEventJSON != undefined) { //if we have data in the Parent event, then we must have advanced out of the division
-            	console.log(parentEvent);	
-              //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + parentEvent.name
-              var nextMatchKey = getTeamStatus(parentEvent.event_code);
-              var nextMatchData = getMatchFromKey(nextMatchKey.next_match_key);
+          var parentEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + parentEvent.event_code + "/status" + authKey
+          var parentEventAPIResponse = await fetch(parentEventDataURL);
+          //console.log(parentEventAPIResponse);
+          var parentEventJSON = await parentEventAPIResponse.json();
+          var divisionEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + divisionEvent.event_code + "/status" + authKey
+          var divisionEventAPIResponse = await fetch(divisionEventDataURL);
+          var divisionEventJSON = await divisionEventAPIResponse.json();
 
-            } else { //otherwise we are still in the division
-              console.log(divisionEvent);
-              var nextMatchKey = getTeamStatus(divisionEvent.event_code);
-              var nextMatchData = getMatchFromKey(nextMatchKey.next_match_key);
-              //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + divisionEvent.name
-              bannerHelper(divisionEvent.name);
-            }         
+          /*             console.log("parent");
+                      console.log(parentEventJSON);
+                      
+                      console.log("division");
+                      console.log(divisionEventJSON); */
+
+          if (divisionEvent.status == "won") { //if we have data in the Parent event, then we must have advanced out of the division
+            //console.log(parentEvent);	
+            //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + parentEvent.name
+            var eventKey = getTeamStatus(parentEvent.event_code);
+            //console.log(eventKey);
+            var nextMatchData = getMatchFromKey(eventKey.next_match_key);
+
+          } else { //otherwise we are still in the division
+            //console.log(divisionEvent);
+            var nextMatchKey = getTeamStatus(divisionEvent.event_code);
+            //console.log(nextMatchKey);
+            //var nextMatchData = getMatchFromKey(nextMatchKey.next_match_key);
+            var nextMatchData = "2022necmp2_qm5"
+            //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + divisionEvent.name
+            bannerHelper(divisionEvent.name, nextMatchData);
+          }
         } else {
-            console.log(curevents[0]);
-            var nextMatchKey = getTeamStatus(curevents[0].event_code).next_match_key;
-            var nextMatchData = getMatchFromKey(nextMatchKey);
-            bannerHelper(curevents[0].name);
-            //only playing at one event (district most likely)
-            //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + curevents[0].name
-            //bannerHelper(curevents[0].name, )
+          //console.log(curevents[0]);
+          var nextMatchKey = getTeamStatus(curevents[0].event_code).next_match_key;
+          var nextMatchData = getMatchFromKey(nextMatchKey);
+          bannerHelper(curevents[0].name);
+          //only playing at one event (district most likely)
+          //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + curevents[0].name
+          //bannerHelper(curevents[0].name, )
         }
-        
+
       }
 
-      async function getMatchFromKey(matchKey){
-        var matchAPIURL = "https://www.thebluealliance.com/api/v3/match/"+matchKey+authKey;
+      async function getMatchFromKey(matchKey) {
+        var matchAPIURL = "https://www.thebluealliance.com/api/v3/match/" + matchKey + authKey;
         var matchAPIResponse = await fetch(matchAPIURL);
-        var match = matchAPIResponse.json();
+        var match = await matchAPIResponse.json();
+        //console.log(match);
         return match;
       }
 
-      async function getTeamStatus(eventKey){
-        var matchAPIURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/"+year+eventKey+"/status"+authKey;
+      async function getTeamStatus(eventKey) {
+        //console.log(eventKey);
+        var matchAPIURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + eventKey + "/status" + authKey;
         var matchAPIResponse = await fetch(matchAPIURL);
-        var match = matchAPIResponse.json();
+        var match = await  matchAPIResponse.json();
         return match;
       }
-      function bannerHelper(eventTitle, nextMatch, nextMatchRed, nextMatchBlue) {
+
+      function bannerHelper(eventTitle, nextMatch) {
+      	//console.log(nextMatch);
+        var match = getMatchFromKey(nextMatch);
+        console.log(match);
         document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + eventTitle;
-        document.getElementById("currentNextMatch").innerHTML = nextMatch.comp_level + nextMatch.match_number;
+        document.getElementById("currentNextMatch").innerHTML = match.comp_level;
         document.getElementById("duringEventBanner").style.display = "block";
       }
 
@@ -255,13 +269,13 @@ title: Stats - FRC 3461
         for (i = 0; i < length; i++) {
           labels.push(result[i]);
         }
-      
+
         if (length == 0) {
-          	tab = `<h1 class=text-center>No Events Found</h1>`
-            document.getElementById("employees").innerHTML = tab;
+          tab = `<h1 class=text-center>No Events Found</h1>`
+          document.getElementById("employees").innerHTML = tab;
         }
 
-        console.log(labels);
+        //console.log(labels);
         //console.log(awards)
         for (var label in labels) {
           if (labels[label][1] != null) {
@@ -274,46 +288,47 @@ title: Stats - FRC 3461
         }
 
         //console.log(awards);
-        for (var i = 0; i < awards.length; i++ ) {
+        for (var i = 0; i < awards.length; i++) {
           //console.log(awards[i]);
-          document.getElementById(awards[i].event_key+"awards").innerHTML = awards[i].name;
+          document.getElementById(awards[i].event_key + "awards").innerHTML = awards[i].name;
         }
 
       }
 
       var x = setInterval(function() {
-			var now = new Date().getTime();
-      var d = new Date().toLocaleTimeString();
-      var distance = countDownDate - now;
-			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        var now = new Date().getTime();
+        var d = new Date().toLocaleTimeString();
+        var distance = countDownDate - now;
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-			//   document.getElementById("counter").innerHTML = d + " | ";
-              document.getElementById("counter").innerHTML = "~" + hours + "h " + minutes + "m " + seconds + "s ";
-              document.getElementById("time").innerHTML = d;
-              
-              if (hours == 0 && minutes < 20) {
-                document.getElementById("counter").classList.add("yellowwarning");
-                // document.getElementById("counter").innerHTML =  d + " | ";
-                document.getElementById("counter").innerHTML = "~" + hours + "h " + minutes + "m " + seconds + "s DOUBLE QUENE";
-              } 
-              if (hours == 0 && minutes < 10) {
-                document.getElementById("counter").classList.remove("yellowwarning");
-                document.getElementById("counter").classList.add("redalliance");
-                // document.getElementById("counter").innerHTML = d + " | ";
-                document.getElementById("counter").innerHTML = "~" + hours + "h " + minutes + "m " + seconds + "s QUENE";
-              }
+        //   document.getElementById("counter").innerHTML = d + " | ";
+        document.getElementById("counter").innerHTML = "~" + hours + "h " + minutes + "m " + seconds + "s ";
+        document.getElementById("time").innerHTML = d;
 
-              if (minutes < -4) {
-                setBanner(eventurl);
-              }
+        if (hours == 0 && minutes < 20) {
+          document.getElementById("counter").classList.add("yellowwarning");
+          // document.getElementById("counter").innerHTML =  d + " | ";
+          document.getElementById("counter").innerHTML = "~" + hours + "h " + minutes + "m " + seconds + "s DOUBLE QUENE";
+        }
+        if (hours == 0 && minutes < 10) {
+          document.getElementById("counter").classList.remove("yellowwarning");
+          document.getElementById("counter").classList.add("redalliance");
+          // document.getElementById("counter").innerHTML = d + " | ";
+          document.getElementById("counter").innerHTML = "~" + hours + "h " + minutes + "m " + seconds + "s QUENE";
+        }
 
-              if (minutes > 0 && seconds == 0) {
-                setBanner(eventurl);
-              }
+        if (minutes < -4) {
+          setBanner(eventurl);
+        }
 
-			}, 1000);
+        if (minutes > 0 && seconds == 0) {
+          setBanner(eventurl);
+        }
+
+      }, 1000);
+
 </script>
 
 <style>
