@@ -172,10 +172,10 @@ title: Stats - FRC 3461
             var parentEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + parentEvent.event_code + "/status" + authKey
             var parentEventAPIResponse = await fetch(parentEventDataURL);
         		//console.log(parentEventAPIResponse);
-            var parentEventJSON = await parentEventAPIResponse.json();
+            var parentEventJSON = await(parentEventAPIResponse.json());
             var divisionEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + divisionEvent.event_code + "/status" + authKey
             var divisionEventAPIResponse = await fetch(divisionEventDataURL);
-            var divisionEventJSON = await divisionEventAPIResponse.json();
+            var divisionEventJSON = await(divisionEventAPIResponse.json());
             
             // console.log("parent");
             // console.log(parentEventJSON);
@@ -211,14 +211,14 @@ title: Stats - FRC 3461
       async function getMatchFromKey(matchKey){
         var matchAPIURL = "https://www.thebluealliance.com/api/v3/match/"+matchKey+authKey;
         var matchAPIResponse = fetch(matchAPIURL);
-        var match = await matchAPIResponse.json();
+        var match = await(matchAPIResponse.json());
         return match;
       }
 
       async function getTeamStatus(eventKey){
         var matchAPIURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/"+year+eventKey+"/status"+authKey;
         var matchAPIResponse = fetch(matchAPIURL);
-        var match = await matchAPIResponse.json();
+        var match = await(matchAPIResponse.json());
         return match;
       }
       function bannerHelper(eventTitle, nextMatch, nextMatchRed, nextMatchBlue) {
