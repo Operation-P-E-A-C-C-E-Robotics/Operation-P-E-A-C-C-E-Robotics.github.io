@@ -232,9 +232,9 @@ title: Stats - FRC 3461
         return match;
       }
 
-      function bannerHelper(eventTitle, nextMatch) {
+      async function bannerHelper(eventTitle, nextMatch) {
       	//console.log(nextMatch);
-        var match = getMatchFromKey(nextMatch);
+        var match = await getMatchFromKey(nextMatch);
         console.log(match);
         document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + eventTitle;
         document.getElementById("currentNextMatch").innerHTML = match.comp_level;
