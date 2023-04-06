@@ -218,7 +218,7 @@ title: Stats - FRC 3461
        }
  
        async function getMatchFromKey(matchKey) {
-         var matchAPIURL = "https://www.thebluealliance.com/api/v3/match/" + matchKey + authKey;
+         var matchAPIURL = "https://www.thebluealliance.com/api/v3/match/" + matchKey.next_match_key + authKey;
          var matchAPIResponse = await fetch(matchAPIURL);
          var match = await matchAPIResponse.json();
          console.log(match);
