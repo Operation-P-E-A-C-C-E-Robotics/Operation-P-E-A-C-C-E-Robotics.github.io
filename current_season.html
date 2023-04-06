@@ -139,6 +139,7 @@ title: Stats - FRC 3461
        }
        // Calling that async function
        getapi(eventurl, eventstats, awardsurl);
+       setBanner(eventstats)
        async function setBanner(eventsurl) {
          var eventJSON = await fetch(eventsurl);
          var events = await eventJSON.json();
