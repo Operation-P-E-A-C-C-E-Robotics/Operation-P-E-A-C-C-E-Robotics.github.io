@@ -146,16 +146,16 @@ title: Stats - FRC 3461
          var curevents = []
          var currentEvent;
          console.log(events);
-         for (var i = 0; i < events.length; i++) {
+         for (let key of Object.entries(events)) {
            var dateConfig = {
              year: 'numeric',
              month: 'numeric',
              day: 'numeric',
-             timezone: events[i].timezone
+             timezone: key.timezone
            };
            var date = new Date()
-           var eventStartDate = new Date(events[i].start_date);
-           var eventEndDate = new Date(events[i].end_date);
+           var eventStartDate = new Date(key.start_date);
+           var eventEndDate = new Date(key.end_date);
            //console.log(dateConfig);
            console.log(eventStartDate);
            if (date.getTime() <= eventEndDate.getTime() && date.getTime() >= eventStartDate.getTime()) {
