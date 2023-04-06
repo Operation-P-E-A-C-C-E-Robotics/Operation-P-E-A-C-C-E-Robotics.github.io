@@ -165,47 +165,47 @@ title: Stats - FRC 3461
            }
          }
  
-         console.log(curevents);
-         if (curevents.length > 1) {
-           console.log(curevents);
-           //error handling for when competing at DCMP or CMP where we are listed in the parent event and the division event at the same time
-           var parentEvent = {};
-           var divisionEvent = {};
-           //establish which event is a division and which one is the parent
-           for (var i = 0; i < curevents.length; i++) {
-             if (curevents[i].parent_event_key == null) {
-               parentEvent = curevents[i];
-             } else {
-               divisionEvent = curevents[i];
-             }
-           }
-           var parentEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + parentEventJSON.event_code + "/status" + authKey
-           var parentEventAPIResponse = await fetch(parentEventDataURL);
-           //console.log(parentEventAPIResponse);
-           var parentEventJSON = await parentEventAPIResponse.json();
-           var divisionEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + divisionEventJSON.event_code + "/status" + authKey
-           var divisionEventAPIResponse = await fetch(divisionEventDataURL);
-           var divisionEventJSON = await divisionEventAPIResponse.json();
+        //  console.log(curevents);
+        //  if (curevents.length > 1) {
+        //    console.log(curevents);
+        //    //error handling for when competing at DCMP or CMP where we are listed in the parent event and the division event at the same time
+        //    var parentEvent = {};
+        //    var divisionEvent = {};
+        //    //establish which event is a division and which one is the parent
+        //    for (var i = 0; i < curevents.length; i++) {
+        //      if (curevents[i].parent_event_key == null) {
+        //        parentEvent = curevents[i];
+        //      } else {
+        //        divisionEvent = curevents[i];
+        //      }
+        //    }
+        //    var parentEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + parentEventJSON.event_code + "/status" + authKey
+        //    var parentEventAPIResponse = await fetch(parentEventDataURL);
+        //    //console.log(parentEventAPIResponse);
+        //    var parentEventJSON = await parentEventAPIResponse.json();
+        //    var divisionEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + divisionEventJSON.event_code + "/status" + authKey
+        //    var divisionEventAPIResponse = await fetch(divisionEventDataURL);
+        //    var divisionEventJSON = await divisionEventAPIResponse.json();
  
-                        console.log("parent");
-                       console.log(parentEventJSON);
+        //                 console.log("parent");
+        //                console.log(parentEventJSON);
                        
-                       console.log("division");
-                       console.log(divisionEventJSON);
+        //                console.log("division");
+        //                console.log(divisionEventJSON);
  
-           if (divisionEvent.status == "won") { //if we have data in the Parent event, then we must have advanced out of the division           
-             var nextMatchData = await getMatchFromKey(nextMatchKey.next_match_key);
-             console.log("Next Match Data")
-             console.log(nextMatchData);
+        //    if (divisionEvent.status == "won") { //if we have data in the Parent event, then we must have advanced out of the division           
+        //      var nextMatchData = await getMatchFromKey(nextMatchKey.next_match_key);
+        //      console.log("Next Match Data")
+        //      console.log(nextMatchData);
              bannerHelper(parentEvent.name, nextMatchData);
  
-           } else { //otherwise we are still in the division
+          //  } else { //otherwise we are still in the division
              var nextMatchKey = getTeamStatus(divisionEventJSON.event_code);
              var nextMatchData = await getMatchFromKey(nextMatchKey);
              console.log(nextMatchData);
              bannerHelper(divisionEvent.name, nextMatchData);
            }
-         } else {
+        //  } else {
            var nextMatchKey = getTeamStatus(currentEvent.event_code);
            var nextMatchData = await getMatchFromKey(nextMatchKey);
            console.log(nextMatchData);
@@ -213,9 +213,9 @@ title: Stats - FRC 3461
            //only playing at one event (district most likely)
            //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + curevents[0].name
            //bannerHelper(curevents[0].name, )
-         }
+ //        }
  
-       }
+ //      }
  
        async function getMatchFromKey(matchKey) {
         console.log(matchKey);
