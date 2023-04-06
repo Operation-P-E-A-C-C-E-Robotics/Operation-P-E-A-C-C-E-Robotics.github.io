@@ -171,21 +171,23 @@ title: Stats - FRC 3461
           }
             var parentEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + parentEvent.event_code + "/status" + authKey
             var parentEventAPIResponse = await fetch(parentEventDataURL);
-        		console.log(parentEventAPIResponse);
+        		//console.log(parentEventAPIResponse);
             var parentEventJSON = await parentEventAPIResponse.json();
             var divisionEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + divisionEvent.event_code + "/status" + authKey
             var divisionEventAPIResponse = await fetch(divisionEventDataURL);
             var divisionEventJSON = await divisionEventAPIResponse.json();
             
-            console.log("parent");
-            console.log(parentEventJSON);
+            // console.log("parent");
+            // console.log(parentEventJSON);
             
-            console.log("division");
-            console.log(divisionEventJSON);
+            // console.log("division");
+            // console.log(divisionEventJSON);
             
             if (parentEventJSON != undefined) { //if we have data in the Parent event, then we must have advanced out of the division
-            		//document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + parentEvent.name
+            	console.log(parentEvent);	
+              //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + parentEvent.name
             } else { //otherwise we are still in the division
+              console.log(divisionEvent);
               //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + divisionEvent.name
             }         
         } else {
