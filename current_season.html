@@ -238,7 +238,7 @@ title: Stats - FRC 3461
         console.log(match);
         countDownDate = match.predicted_time;
         document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + eventTitle;
-        document.getElementById("currentNextMatch").innerHTML = match.comp_level + " " +match.match_number;
+        document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level + " " +match.match_number;
         document.getElementById("redTeams").innerHTML = clearFRCfromTeam(match.alliances.red.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[2])
         document.getElementById("duringEventBanner").style.display = "block";
       }
