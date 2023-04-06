@@ -179,11 +179,11 @@ title: Stats - FRC 3461
                divisionEvent = curevents[i];
              }
            }
-           var parentEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + parentEvent.event_code + "/status" + authKey
+           var parentEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + parentEventJSON.event_code + "/status" + authKey
            var parentEventAPIResponse = await fetch(parentEventDataURL);
            //console.log(parentEventAPIResponse);
            var parentEventJSON = await parentEventAPIResponse.json();
-           var divisionEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + divisionEvent.event_code + "/status" + authKey
+           var divisionEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + divisionEventJSON.event_code + "/status" + authKey
            var divisionEventAPIResponse = await fetch(divisionEventDataURL);
            var divisionEventJSON = await divisionEventAPIResponse.json();
  
