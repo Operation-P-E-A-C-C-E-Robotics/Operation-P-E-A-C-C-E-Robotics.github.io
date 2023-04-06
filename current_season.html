@@ -212,7 +212,7 @@ title: Stats - FRC 3461
         var matchAPIURL = "https://www.thebluealliance.com/api/v3/match/" + matchKey + authKey;
         var matchAPIResponse = await fetch(matchAPIURL);
         var match = await matchAPIResponse.json();
-        //console.log(match);
+        console.log(match);
         return match;
       }
 
