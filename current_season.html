@@ -186,8 +186,8 @@ title: Stats - FRC 3461
             if (parentEventJSON != undefined) { //if we have data in the Parent event, then we must have advanced out of the division
             	console.log(parentEvent);	
               //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + parentEvent.name
-              var nextMatchKey = getTeamStatus(parentEvent.event_code).next_match_key;
-              var nextMatchData = getMatchFromKey(nextMatchKey);
+              var nextMatchKey = getTeamStatus(parentEvent.event_code);
+              var nextMatchData = getMatchFromKey(nextMatchKey.next_match_key);
 
             } else { //otherwise we are still in the division
               console.log(divisionEvent);
