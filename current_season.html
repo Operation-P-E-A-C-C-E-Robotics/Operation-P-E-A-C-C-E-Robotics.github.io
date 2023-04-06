@@ -204,10 +204,10 @@ title: Stats - FRC 3461
              bannerHelper(divisionEvent.name, nextMatchData);
            }
          } else {
-           var nextMatchKey = getTeamStatus(curevents[0].event_code);
+           var nextMatchKey = getTeamStatus(currentEvent.event_code);
            var nextMatchData = await getMatchFromKey(nextMatchKey);
            console.log(nextMatchData);
-           bannerHelper(curevents[0].name, nextMatchData);
+           bannerHelper(currentEvent.name, nextMatchData);
            //only playing at one event (district most likely)
            //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + curevents[0].name
            //bannerHelper(curevents[0].name, )
