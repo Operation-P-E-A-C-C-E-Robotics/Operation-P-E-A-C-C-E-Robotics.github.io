@@ -145,7 +145,7 @@ title: Stats - FRC 3461
          var events = await eventJSON.json();
          var curevents = []
          var currentEvent;
-         console.log(events);
+         //console.log(events);
          for (let key of Object.entries(events)) {
            var dateConfig = {
              year: 'numeric',
@@ -153,12 +153,12 @@ title: Stats - FRC 3461
              day: 'numeric',
              timezone: key.timezone
            };
-           console.log(key);
+           //console.log(key);
            var date = new Date()
            var eventStartDate = new Date(key[1].start_date);
            var eventEndDate = new Date(key[1].end_date);
            //console.log(dateConfig);
-           console.log(eventStartDate);
+           //console.log(eventStartDate);
            if (date.getTime() <= eventEndDate.getTime() && date.getTime() >= eventStartDate.getTime()) {
              curevents.push(key[1]);
              currentEvent = key[1];
@@ -218,7 +218,6 @@ title: Stats - FRC 3461
       }
  
        async function getMatchFromKey(matchKey) {
-        console.log(matchKey);
          var matchAPIURL = "https://www.thebluealliance.com/api/v3/match/" + matchKey.next_match_key + authKey;
          var matchAPIResponse = await fetch(matchAPIURL);
          var match = await matchAPIResponse.json();
@@ -235,7 +234,7 @@ title: Stats - FRC 3461
        }
  
        async function bannerHelper(eventTitle, nextMatch) {
-         console.log(nextMatch);
+         //console.log(nextMatch);
          var match = await getMatchFromKey(nextMatch);
          console.log(match);
          countDownDate = match.predicted_time;
