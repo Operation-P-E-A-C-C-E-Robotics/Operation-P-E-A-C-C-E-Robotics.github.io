@@ -156,7 +156,7 @@ title: Stats - FRC 3461
            var eventStartDate = new Date(events[i].start_date);
            var eventEndDate = new Date(events[i].end_date);
            //console.log(dateConfig);
-           //console.log(eventStartDate);
+           console.log(eventStartDate);
            if (date.getTime() <= eventEndDate.getTime() && date.getTime() >= eventStartDate.getTime()) {
              curevents.push(events[i]);
              var currentEvent = events[i];
