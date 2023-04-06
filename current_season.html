@@ -209,7 +209,7 @@ title: Stats - FRC 3461
            var nextMatchKey = await getTeamStatus(currentEvent.event_code);
            var nextMatchData = await getMatchFromKey(nextMatchKey);
            console.log(nextMatchData);
-           bannerHelper(currentEvent.name, nextMatchData.next_match_key);
+           bannerHelper(currentEvent.name, nextMatchKey.next_match_key);
            //only playing at one event (district most likely)
            //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + curevents[0].name
            //bannerHelper(curevents[0].name, )
