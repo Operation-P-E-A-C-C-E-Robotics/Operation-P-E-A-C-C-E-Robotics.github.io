@@ -186,12 +186,21 @@ title: Stats - FRC 3461
             if (parentEventJSON != undefined) { //if we have data in the Parent event, then we must have advanced out of the division
             	console.log(parentEvent);	
               //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + parentEvent.name
+              var nextMatchKey = getTeamStatus(parentEvent.event_code).next_match_key;
+              var nextMatchData = getMatchFromKey(nextMatchKey);
+
             } else { //otherwise we are still in the division
               console.log(divisionEvent);
+              var nextMatchKey = getTeamStatus(divisionEvent.event_code).next_match_key;
+              var nextMatchData = getMatchFromKey(nextMatchKey);
               //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + divisionEvent.name
+              bannerHelper(divisionEvent.name);
             }         
         } else {
             console.log(curevents[0]);
+            var nextMatchKey = getTeamStatus(curevents[0].event_code).next_match_key;
+            var nextMatchData = getMatchFromKey(nextMatchKey);
+            bannerHelper(curevents[0].name);
             //only playing at one event (district most likely)
             //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + curevents[0].name
             //bannerHelper(curevents[0].name, )
@@ -200,11 +209,18 @@ title: Stats - FRC 3461
       }
 
       async function getMatchFromKey(matchKey){
-        var matchAPIURL = "https://www.thebluealliance.com/api/v3/match/"+matchKey;
+        var matchAPIURL = "https://www.thebluealliance.com/api/v3/match/"+matchKey+authKey;
         var matchAPIResponse = fetch(matchAPIURL);
         var match = await matchAPIResponse.json();
+        return match;
       }
 
+      async function getTeamStatus(eventKey){
+        var matchAPIURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/"+year+eventKey+"/status"+authKey;
+        var matchAPIResponse = fetch(matchAPIURL);
+        var match = await matchAPIResponse.json();
+        return match;
+      }
       function bannerHelper(eventTitle, nextMatch, nextMatchRed, nextMatchBlue) {
         document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + eventTitle;
         document.getElementById("currentNextMatch").innerHTML = nextMatch.comp_level + nextMatch.match_number;
