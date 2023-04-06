@@ -139,7 +139,6 @@ title: Stats - FRC 3461
       }
       // Calling that async function
       getapi(eventurl, eventstats, awardsurl);
-      setBanner(eventurl);
       async function setBanner(eventsurl) {
         var eventJSON = await fetch(eventsurl);
         var events = await eventJSON.json();
@@ -188,27 +187,20 @@ title: Stats - FRC 3461
                       console.log("division");
                       console.log(divisionEventJSON); */
 
-          if (divisionEvent.status == "won") { //if we have data in the Parent event, then we must have advanced out of the division
-            //console.log(parentEvent);	
-            //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + parentEvent.name
-            var eventKey = getTeamStatus(parentEvent.event_code);
-            //console.log(eventKey);
-            var nextMatchData = getMatchFromKey(eventKey.next_match_key);
+          if (divisionEvent.status == "won") { //if we have data in the Parent event, then we must have advanced out of the division           
+            var nextMatchKey = await getTeamStatus(divisionEvent.event_code);
+            var nextMatchData = await getMatchFromKey(nextMatchKey.next_match_key);
+            bannerHelper(parentEvent.name, nextMatchData);
 
           } else { //otherwise we are still in the division
-            //console.log(divisionEvent);
-            var nextMatchKey = getTeamStatus(divisionEvent.event_code);
-            //console.log(nextMatchKey);
-            var nextMatchData = getMatchFromKey(nextMatchKey.next_match_key);
-            //var nextMatchData = "2022necmp2_qm5"
-            //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + divisionEvent.name
+            var nextMatchKey = await getTeamStatus(divisionEvent.event_code);
+            var nextMatchData = await getMatchFromKey(nextMatchKey.next_match_key);
             bannerHelper(divisionEvent.name, nextMatchData);
           }
         } else {
-          //console.log(curevents[0]);
-          var nextMatchKey = getTeamStatus(curevents[0].event_code).next_match_key;
-          var nextMatchData = getMatchFromKey(nextMatchKey);
-          bannerHelper(curevents[0].name);
+          var nextMatchKey = await getTeamStatus(curevents[0].event_code);
+          var nextMatchData = await getMatchFromKey(nextMatchKey.next_match_key);
+          bannerHelper(curevents[0].name, nextMatchData);
           //only playing at one event (district most likely)
           //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + curevents[0].name
           //bannerHelper(curevents[0].name, )
@@ -228,26 +220,27 @@ title: Stats - FRC 3461
         //console.log(eventKey);
         var matchAPIURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + eventKey + "/status" + authKey;
         var matchAPIResponse = await fetch(matchAPIURL);
-        var match = await  matchAPIResponse.json();
+        var match = await matchAPIResponse.json();
         return match;
       }
 
       async function bannerHelper(eventTitle, nextMatch) {
-      	//console.log(nextMatch);
+        //console.log(nextMatch);
         var match = await getMatchFromKey(nextMatch);
         console.log(match);
         countDownDate = match.predicted_time;
         document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + eventTitle;
-        document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level + " " +match.match_number;
+        document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level + " " + match.match_number;
         document.getElementById("redTeams").innerHTML = clearFRCfromTeam(match.alliances.red.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[2])
         document.getElementById("blueTeams").innerHTML = clearFRCfromTeam(match.alliances.blue.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[2])
         document.getElementById("duringEventBanner").style.display = "block";
       }
 
       function clearFRCfromTeam(team) {
-        myString = team.replace(/\D/g,'');
+        myString = team.replace(/\D/g, '');
         return myString;
       }
+
 
       // Function to hide the loader
       function hideloader() {
