@@ -145,7 +145,6 @@ title: Stats - FRC 3461
         var events = await eventJSON.json();
         var curevents = []
         for (var i = 0; i < events.length; i++) {
-          //nsole.log(events[i]);
         		var dateConfig = { year: 'numeric', month: 'numeric', day: 'numeric', timezone: events[i].timezone};
             var date = new Date()
             var eventStartDate = new Date(events[i].start_date);
@@ -154,8 +153,6 @@ title: Stats - FRC 3461
             //console.log(eventStartDate);
             if (date.getTime() <= eventEndDate.getTime() && date.getTime() >= eventStartDate.getTime()) {
             	curevents.push(events[i]);
-              //console.log(events[i]);
-              //console.log(curevents);
               var currentEvent = events[i];              
             }
         }
@@ -172,21 +169,13 @@ title: Stats - FRC 3461
             divisionEvent = curevents[i];
             } 
           }
-            //console.log(parentEvent);
-            //console.log(divisionEvent);
-            //get data from the 2 events now, have we advanced yet?
             var parentEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + parentEvent.event_code + "/status" + authKey
             var parentEventAPIResponse = await fetch(parentEventDataURL);
         		console.log(parentEventAPIResponse);
             var parentEventJSON = await parentEventAPIResponse.json();
-            
             var divisionEventDataURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + divisionEvent.event_code + "/status" + authKey
-            //console.log(divisionEventDataURL);
             var divisionEventAPIResponse = await fetch(divisionEventDataURL);
-        		
             var divisionEventJSON = await divisionEventAPIResponse.json();
-
-            
             
             console.log("parent");
             console.log(parentEventJSON);
@@ -195,54 +184,29 @@ title: Stats - FRC 3461
             console.log(divisionEventJSON);
             
             if (parentEventJSON != undefined) { //if we have data in the Parent event, then we must have advanced out of the division
-            		document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + parentEvent.name
-                 if (parentEvent.next_match_key != undefined){
-                  var matchAPI = "https://www.thebluealliance.com/api/v3/match/" + parentEvent.next_match_key + authKey
-                  var matchRespone = await fetch(matchAPI);
-                  var match = matchRespone.json();
-                  document.getElementById("currentNextMatch").innerHTML = match.comp_level + match.match_number
-           }
-								document.getElementById("duringEventBanner").style.display = "block";
-            } else {
-            document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + divisionEvent.name
-      		   if (divisionEvent.next_match_key != undefined){
-                  var teamStatusAPI = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + divisionEvent.event_key + authKey;
-                  var matchAPI = "https://www.thebluealliance.com/api/v3/match/" + divisionEvent.next_match_key + authKey
-                  var matchRespone = await fetch(matchAPI);
-                  var teamStatusResponse = await fetch(teamStatusAPI);
-                  var match = matchRespone.json();
-                  var team = teamStatusAPI.json();
-                  if (matchRespone.predicted_time != undefined) {
-                  countDownDate == new Date(matchRespone.predicted_time).getTime();
-                  } else {
-                    countDownDate == new Date().getTime();
-                  }
-                  document.getElementById("currentNextMatch").innerHTML = match.comp_level + match.match_number
-
-                if (team != undefined) { 
-                document.getElementById("currentRank").innerHTML = "Rank:" + team.qual.ranking.rank + "/" + team.qual.num_teams;
-                  
-              }
-           }
-
-
-              document.getElementById("duringEventBanner").style.display = "block";
-            }
-            
-            
-            
+            		//document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + parentEvent.name
+            } else { //otherwise we are still in the division
+              //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + divisionEvent.name
+            }         
         } else {
-            document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + curevents[0].name
-      		   if (curevents.next_match_key != null){
-                  var matchAPI = "https://www.thebluealliance.com/api/v3/match/" + curevents.next_match_key + authKey
-                  var matchRespone = await fetch(matchAPI);
-                  var match = matchRespone.json();
-                  
-                  document.getElementById("currentNextMatch").innerHTML = match.comp_level + match.match_number
-           }
-						document.getElementById("duringEventBanner").style.display = "block";
+            console.log(curevents[0]);
+            //only playing at one event (district most likely)
+            //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + curevents[0].name
+            //bannerHelper(curevents[0].name, )
         }
         
+      }
+
+      async function getMatchFromKey(matchKey){
+        var matchAPIURL = "https://www.thebluealliance.com/api/v3/match/"+matchKey;
+        var matchAPIResponse = fetch(matchAPIURL);
+        var match = await matchAPIResponse.json();
+      }
+
+      function bannerHelper(eventTitle, nextMatch, nextMatchRed, nextMatchBlue) {
+        document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + eventTitle;
+        document.getElementById("currentNextMatch").innerHTML = nextMatch.comp_level + nextMatch.match_number;
+        document.getElementById("duringEventBanner").style.display = "block";
       }
 
       // Function to hide the loader
