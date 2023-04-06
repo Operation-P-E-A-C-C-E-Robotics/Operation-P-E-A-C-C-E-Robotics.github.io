@@ -144,6 +144,7 @@ title: Stats - FRC 3461
          var eventJSON = await fetch(eventsurl);
          var events = await eventJSON.json();
          var curevents = []
+         var currentEvent;
          console.log(events);
          for (var i = 0; i < events.length; i++) {
            var dateConfig = {
@@ -159,7 +160,7 @@ title: Stats - FRC 3461
            console.log(eventStartDate);
            if (date.getTime() <= eventEndDate.getTime() && date.getTime() >= eventStartDate.getTime()) {
              curevents.push(events[i]);
-             var currentEvent = events[i];
+             currentEvent = events[i];
            }
          }
  
