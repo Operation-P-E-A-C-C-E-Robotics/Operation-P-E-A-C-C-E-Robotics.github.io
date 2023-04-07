@@ -206,11 +206,15 @@ title: Stats - FRC 3461
             //  bannerHelper(divisionEvent.name, nextMatchData);
            //}
         //  } else {
-           var nextMatchKey = await getTeamStatus(currentEvent.event_code);
-           var nextMatchData = await getMatchFromKey(nextMatchKey);
-           console.log(nextMatchKey);
-           console.log(nextMatchData);
-           bannerHelper(currentEvent.name, nextMatchKey.next_match_key);
+                   //console.log(eventKey);
+         var matchAPIURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + curevents[0].event_code + "/status" + authKey;
+         var matchAPIResponse = await fetch(matchAPIURL);
+         var match = await matchAPIResponse.json();
+           
+         //let nextMatchData = await getMatchFromKey(nextMatchKey);
+           //console.log(nextMatchKey);
+           console.log(match);
+          bannerHelper(curevents[0].name, match.next_match_key);
            //only playing at one event (district most likely)
            //document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + curevents[0].name
            //bannerHelper(curevents[0].name, )
@@ -223,7 +227,7 @@ title: Stats - FRC 3461
          var matchAPIResponse = await fetch(matchAPIURL);
          var match = await matchAPIResponse.json();
          console.log(match);
-         return match;
+         return Promise.resolve(match);
        }
  
        async function getTeamStatus(eventKey) {
@@ -236,11 +240,11 @@ title: Stats - FRC 3461
  
        async function bannerHelper(eventTitle, nextMatch) {
          //console.log(nextMatch);
-         var match = await getMatchFromKey(nextMatch);
-         console.log(match);
-         countDownDate = match.predicted_time;
+         //var match = await getMatchFromKey(nextMatch);
+         console.log(nextMatch);
+         countDownDate = nextMatch.predicted_time;
          document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + eventTitle;
-         document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level + " " + match.match_number;
+         document.getElementById("currentNextMatch").innerHTML = "Next Match: " + nextMatch.comp_level + " " + nextMatch.match_number;
          document.getElementById("redTeams").innerHTML = clearFRCfromTeam(match.alliances.red.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[2])
          document.getElementById("blueTeams").innerHTML = clearFRCfromTeam(match.alliances.blue.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[2])
          document.getElementById("duringEventBanner").style.display = "block";
