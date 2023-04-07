@@ -208,6 +208,7 @@ title: Stats - FRC 3461
         //  } else {
            var nextMatchKey = await getTeamStatus(currentEvent.event_code);
            var nextMatchData = await getMatchFromKey(nextMatchKey);
+           console.log(nextMatchKey);
            console.log(nextMatchData);
            bannerHelper(currentEvent.name, nextMatchKey.next_match_key);
            //only playing at one event (district most likely)
