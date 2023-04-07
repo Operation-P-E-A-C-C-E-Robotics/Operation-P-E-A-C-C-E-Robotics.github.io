@@ -307,8 +307,12 @@ title: Stats - FRC 3461
  
        }
  
+       function convertTime(date) {
+                return new Date((typeof date === "string" ? new Date(date):date).toLocaleString('en-US', {timeZone: 'America/New_York'}))
+        }
+
        var x = setInterval(function() {
-         var now = Math.floor(new Date().getTime()/1000.0); //JS is in miliseconds whereas TBA is not
+         var now = convertTime(new Date()).getTime();
          var d = new Date().toLocaleTimeString();
          var distance = countDownDate - now; 
          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
