@@ -308,7 +308,7 @@ title: Stats - FRC 3461
        }
  
        var x = setInterval(function() {
-         var now = new Date().getTime();
+         var now = Math.floor(new Date().getTime()/1000.0);
          var d = new Date().toLocaleTimeString();
          var distance = countDownDate - (now / 1000); //JS is in miliseconds whereas TBA is not
          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
