@@ -314,7 +314,7 @@ title: Stats - FRC 3461
        var x = setInterval(function() {
          var now = convertTime(new Date()).getTime();
          var d = new Date().toLocaleTimeString();
-         var distance = countDownDate.getTime() - now; 
+         var distance = new Date(countDownDate).getTime() - now; 
          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
