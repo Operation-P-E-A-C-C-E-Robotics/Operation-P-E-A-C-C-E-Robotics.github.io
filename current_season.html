@@ -244,7 +244,7 @@ title: Stats - FRC 3461
          document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level + " " + match.match_number;
          document.getElementById("redTeams").innerHTML = clearFRCfromTeam(match.alliances.red.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[2])
          document.getElementById("blueTeams").innerHTML = clearFRCfromTeam(match.alliances.blue.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[2])
-         document.getElementById("currentRank").innerHTML = stats.qual.ranking.rank + "/" + stats.qual.num_teams
+         document.getElementById("currentRank").innerHTML = "Rank: " + stats.qual.ranking.rank + "/" + stats.qual.num_teams
          document.getElementById("duringEventBanner").style.display = "block";
        }
  
