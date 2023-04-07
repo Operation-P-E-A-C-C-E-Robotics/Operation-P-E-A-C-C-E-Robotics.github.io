@@ -147,12 +147,7 @@ title: Stats - FRC 3461
          var currentEvent;
          //console.log(events);
          for (let key of Object.entries(events)) {
-           var dateConfig = {
-             year: 'numeric',
-             month: 'numeric',
-             day: 'numeric',
-             timezone: key.timezone
-           };
+
            //console.log(key);
            var date = new Date()
            var eventStartDate = new Date(key[1].start_date);
@@ -313,7 +308,7 @@ title: Stats - FRC 3461
        var x = setInterval(function() {
          var now = new Date().getTime();
          var d = new Date().toLocaleTimeString();
-         var distance = countDownDate - now;
+         var distance = now - countDownDate;
          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
