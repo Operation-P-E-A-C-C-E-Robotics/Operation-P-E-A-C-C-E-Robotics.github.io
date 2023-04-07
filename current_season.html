@@ -239,7 +239,7 @@ title: Stats - FRC 3461
          //console.log(nextMatch);
          var match = await getMatchFromKey(nextMatch);
          console.log(nextMatch);
-         countDownDate = convertTime(new Date(match.predicted_time)).getTime();
+         countDownDate = new Date(match.predicted_time).toDateString();
          document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + eventTitle;
          document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level + " " + match.match_number;
          document.getElementById("redTeams").innerHTML = clearFRCfromTeam(match.alliances.red.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[2])
@@ -314,7 +314,7 @@ title: Stats - FRC 3461
        var x = setInterval(function() {
          var now = convertTime(new Date()).getTime();
          var d = new Date().toLocaleTimeString();
-         var distance = countDownDate - now; 
+         var distance = countDownDate.getTime() - now; 
          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
