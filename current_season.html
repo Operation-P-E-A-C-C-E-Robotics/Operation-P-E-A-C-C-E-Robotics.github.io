@@ -60,9 +60,8 @@ title: Stats - FRC 3461
           </div> 
       </div>
       <div>
-          <h1>Title 1</h1>
-          <h2>Title 2</h2>
-          <h3>Title 3</h3>
+        <h3 id="districtPoints">Current District Points: --</h3>
+        <h3 id="districtRank">Current District Rank: --</h3>
       </div>
   </flex>
   <br>
@@ -74,15 +73,16 @@ title: Stats - FRC 3461
 </div>
 
 <script>
-  var events = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
+       var events = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
        var year = new Date().getFullYear();
+       var district = "https://www.thebluealliance.com/api/v3/district/" +year +"ne/rankings"+authKey
        var eventstatuses = "/statuses?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
        const authKey = "?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
  
        var media = "https://www.thebluealliance.com/api/v3/team/frc3461/media/"
        var awards = "https://www.thebluealliance.com/api/v3/team/frc3461/awards/"
  
- 
+
        var eventstats = events + year + eventstatuses;
        var eventurl = events + year + authKey;
        var mediaurl = media + year + authKey;
@@ -150,7 +150,24 @@ title: Stats - FRC 3461
        }
        // Calling that async function
        getapi(eventurl, eventstats, awardsurl);
-       setBanner(eventurl)
+       setBanner(eventurl);
+       getDistrictStats(district);
+
+       async function getDistrictStats(district) {
+        var districtResponse = await fetch(district);
+        var districtJSON = await districtResponse.json();
+        var teamDistrictRankings;
+        
+        for (var i = 0; i < districtJSON.length; i++) {
+					if (districtJSON[i].team_key == "frc3461") {
+          	//console.log(districtJSON[i]);
+            document.getElementById("districtRank").innerHTML = "Current District Rank: " + districtJSON[i].rank; 
+            document.getElementById("districtPoints").innerHTML = "Current District Points: " + districtJSON[i].point_total; 
+          }
+        }
+
+       }
+
        async function setBanner(eventsurl) {
          var eventJSON = await fetch(eventsurl);
          var events = await eventJSON.json();
