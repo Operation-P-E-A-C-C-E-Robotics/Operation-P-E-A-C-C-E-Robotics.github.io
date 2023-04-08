@@ -6,7 +6,7 @@ endpoint: team/frc3461/events
 
 <div class="container-fluid">
     <flex style="flex-flow: row wrap;">
-        <div class="container" style="width: 20%;">
+        <div class="container float-left" style="width: 20%;">
             <div id="demo" class="carousel slide" data-ride="carousel" style="width:100%; background-color: white; border-radius: 5px;">
                 <!-- The slideshow -->
                 <div class="carousel-item" id="robotImagePlaceholder" style="height: 500px;">
@@ -16,8 +16,10 @@ endpoint: team/frc3461/events
                 </div>
             </div> 
         </div>
-        <h1>{{ page.title }} - {{page.robot}}</h1>
-        <p>{{ page.game }}</p>
+        <div>
+            <h1>{{ page.title }} - {{page.robot}}</h1>
+            <p>{{ page.game }}</p>
+        </div>
     </flex>
     {{ content }}
 
