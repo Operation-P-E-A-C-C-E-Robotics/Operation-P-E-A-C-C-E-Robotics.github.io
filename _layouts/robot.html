@@ -20,6 +20,8 @@ endpoint: team/frc3461/events
         <div>
             <h1>{{ page.title }} - {{page.robot}}</h1>
             <h2>{{ page.game }}</h2>
+            <h3 id="districtPoints">District Points Earned: --</h3>
+            <h3 id="districtRank">District Rank: --</h3>
             {{ content }}
         </div>
     </flex>
@@ -117,8 +119,8 @@ async function getapi(eventurl, eventstats, awards) {
     for (var i = 0; i < districtJSON.length; i++) {
                 if (districtJSON[i].team_key == "frc3461") {
         console.log(districtJSON[i]);
-        document.getElementById("districtRank").innerHTML = "Current District Rank: " + districtJSON[i].rank; 
-        document.getElementById("districtPoints").innerHTML = "Current District Points: " + districtJSON[i].point_total; 
+        document.getElementById("districtRank").innerHTML = "District Rank: " + districtJSON[i].rank; 
+        document.getElementById("districtPoints").innerHTML = "District Points Earned: " + districtJSON[i].point_total; 
     }
     }
 
