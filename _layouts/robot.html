@@ -36,7 +36,7 @@ var events = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
 var year = "{{ page.title }}"
 var eventstatuses = "/statuses?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
 const authKey = "?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
-
+var district = "https://www.thebluealliance.com/api/v3/district/{{ page.title }}ne/rankings"+authKey
 var media = "https://www.thebluealliance.com/api/v3/team/frc3461/media/"
 var awards = "https://www.thebluealliance.com/api/v3/team/frc3461/awards/"
 
@@ -107,7 +107,22 @@ async function getapi(eventurl, eventstats, awards) {
     // Calling that async function
     getapi(eventurl, eventstats, awardsurl);
 
+    getDistrictStats(district);
 
+    async function getDistrictStats(district) {
+    var districtResponse = await fetch(district);
+    var districtJSON = await districtResponse.json();
+    var teamDistrictRankings;
+    
+    for (var i = 0; i < districtJSON.length; i++) {
+                if (districtJSON[i].team_key == "frc3461") {
+        console.log(districtJSON[i]);
+        document.getElementById("districtRank").innerHTML = "Current District Rank: " + districtJSON[i].rank; 
+        document.getElementById("districtPoints").innerHTML = "Current District Points: " + districtJSON[i].point_total; 
+    }
+    }
+
+    }
 
 
     // Function to define innerHTML for HTML table
