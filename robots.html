@@ -27,8 +27,8 @@ title: Robot Profiles
   <div class="logo-area bg-dark text-dark">
     {% for robot in site.robots %}
     <flex class="sponsorlogo logo-item"> 
-      <div style="width: 300px; height: 425px;"><img class="sponsorlogo" id="logo" src="{{robot.thumbnail}}" style="height:auto;"></div>
-      <p>{{robot.title}}: {{ robot.game }} <br> <b>{{robot.robot}}</b> </p>
+      <div class="card card-body" style="width: 300px; height: 425px;"><img class="card-img-top" id="logo" src="{{robot.thumbnail}}" style="height:auto;"></div>
+      <p class="card-title">{{robot.title}}: {{ robot.game }} <br> <b>{{robot.robot}}</b> </p>
       <a href="{{robot.url}}" class="btn btn-primary">See Profile</a>
     </flex>
     {% endfor %}
