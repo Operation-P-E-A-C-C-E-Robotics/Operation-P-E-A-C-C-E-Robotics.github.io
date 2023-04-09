@@ -7,11 +7,11 @@ endpoint: team/frc3461/events
 <div class="container-fluid">
     <br>
     <flex style="flex-flow: row wrap;">
-        <div class="container float-left" style="width: 20%;">
-            <div id="demo" class="carousel slide" data-ride="carousel" style="width:100%; height: 20%; background-color: white; border-radius: 5px;">
+        <div class="container float-left" style="width: 20%; height: 100%;">
+            <div id="demo" class="carousel slide" data-ride="carousel" style="width:100%; height: 100%; background-color: white; border-radius: 5px;">
                 <!-- The slideshow -->
-                <div class="carousel-item" id="robotImagePlaceholder" style="height: 500px;">
-                    <img  src="/assets/images/notFound.png" class="img-rounded" style="width: 100%; height:max-content; position:relative">
+                <div class="carousel-item" id="robotImagePlaceholder">
+                    <img  src="/assets/images/notFound.png" class="img-rounded" style="height:max-content; position:relative">
                 </div>
                 <div class="carousel-inner" id="robotCarousel">
                 </div>
@@ -71,10 +71,10 @@ for (var i = 0; i < mediaJSON.length; i++) {
     if (mediaJSON[i].preferred == true && mediaJSON[i].direct_url != undefined) {
 
     if (hasPlacedImage == false) {
-        document.getElementById("robotCarousel").innerHTML += `<div class="carousel-item active img-thumbnail" style="width:100%; background-size: 100% 100%; background-repeat: no-repeat; background-image:url('${mediaJSON[i].direct_url}');"></div>`;
+        document.getElementById("robotCarousel").innerHTML += `<div class="carousel-item active img-thumbnail" style="background-size: 100% 100%; background-repeat: no-repeat; background-image:url('${mediaJSON[i].direct_url}');"></div>`;
         hasPlacedImage = true;
     } else {
-        document.getElementById("robotCarousel").innerHTML += `<div class="carousel-item img-thumbnail" style="width:100%; background-size: 100% 100%; background-repeat: no-repeat; background-image:url('${mediaJSON[i].direct_url}');"></div>`;
+        document.getElementById("robotCarousel").innerHTML += `<div class="carousel-item img-thumbnail" style="background-size: 100% 100%; background-repeat: no-repeat; background-image:url('${mediaJSON[i].direct_url}');"></div>`;
     }
 
 
