@@ -81,7 +81,7 @@ for (var i = 0; i < mediaJSON.length; i++) {
     }
 }
 
-if (mediaJSON.length == 0) {
+if (mediaJSON.length == 0 || hasPlacedImage == false) {
     document.getElementById("robotImagePlaceholder").classList.add("active");
 }
 
