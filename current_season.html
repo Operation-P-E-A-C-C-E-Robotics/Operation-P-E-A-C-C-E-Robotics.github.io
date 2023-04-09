@@ -111,10 +111,10 @@ title: Stats - FRC 3461
             if (mediaJSON[i].preferred == true && mediaJSON[i].direct_url != undefined) {
 
             if (hasPlacedImage == false) {
-                document.getElementById("robotCarousel").innerHTML += `<div class="carousel-item active img-thumbnail" style=" width: 400px; height:400px; background-size: 100% auto; background-repeat: no-repeat;  background: center center fixed; background-image:url('${mediaJSON[i].direct_url}');"></div>`;
+                document.getElementById("robotCarousel").innerHTML += `<div class="carousel-item active img-thumbnail" style=" width: 400px; height:400px; background-size: 100% auto; background-repeat: no-repeat center center fixed; background-image:url('${mediaJSON[i].direct_url}');"></div>`;
                 hasPlacedImage = true;
             } else {
-                document.getElementById("robotCarousel").innerHTML += `<div class="carousel-item img-thumbnail" style="width: 400px; height:400px; background-size: 100% auto; background-repeat: no-repeat;  background: center center fixed; background-image:url('${mediaJSON[i].direct_url}');"></div>`;
+                document.getElementById("robotCarousel").innerHTML += `<div class="carousel-item img-thumbnail" style="width: 400px; height:400px; background-size: 100% auto; background-repeat: no-repeat center center fixed; background-image:url('${mediaJSON[i].direct_url}');"></div>`;
             }
 
 
