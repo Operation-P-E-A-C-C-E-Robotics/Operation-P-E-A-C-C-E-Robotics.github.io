@@ -27,7 +27,7 @@ title: Robot Profiles
   <div class="bg-dark text-dark card-columns" id="cardHolder"> 
     {% for robot in site.robots %}
     <div class="card"> 
-      <div class="card-img-top" id="logo" style="width: 400px; height:400px; background-size: 100% auto; background-repeat: no-repeat; background: center center fixed; background-image:url('{{robot.thumbnail}}');"></div>
+      <div class="card-img-top" id="logo" style="height:400px; background-size: 100% auto; background-repeat: no-repeat; background: center center fixed; background-image:url('{{robot.thumbnail}}');"></div>
       <div class="card-body">
         <p class="card-title">{{robot.title}}: {{ robot.game }} <br> <b>{{robot.robot}}</b> </p>
         <a href="{{robot.url}}" class="btn btn-primary">See Profile</a>        
