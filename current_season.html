@@ -286,8 +286,16 @@ title: Stats - FRC 3461
         document.getElementById("employees").innerHTML = tab;
         //sortTable();
     }
+
+
+         //console.log(awards);
+         for (var i = 0; i < awards.length; i++) {
+           //console.log(awards[i]);
+           document.getElementById(awards[i].event_key + "awards").innerHTML = awards[i].name;
+         }
  
-    function sortTable() {
+       }
+       function sortTable() {
       var table, rows, switching, i, x, y, shouldSwitch;
       table = document.getElementById("employees");
       switching = true;
@@ -321,15 +329,6 @@ title: Stats - FRC 3461
         }
       }
     }
-
-         //console.log(awards);
-         for (var i = 0; i < awards.length; i++) {
-           //console.log(awards[i]);
-           document.getElementById(awards[i].event_key + "awards").innerHTML = awards[i].name;
-         }
- 
-       }
- 
        function convertTime(date) {
                 return new Date((typeof date === "string" ? new Date(date):date).toLocaleString('en-US', {timeZone: 'America/New_York'}))
         }
