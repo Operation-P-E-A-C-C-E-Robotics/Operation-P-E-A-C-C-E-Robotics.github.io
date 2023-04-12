@@ -161,12 +161,12 @@ async function getapi(eventurl, eventstats, awards) {
     for (var label in labels) {
         if (labels[label][1] != null) {
             if (stats[label].event_type_string == "Offseason") {
-                tab += `<tr date=${stats[label].start_date}><td id=${stats[label].key}>${stats[label].name} (Offseason Event)</td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>None Found</td></tr>`;
+                tab += `<tr><td date=${stats[label].start_date} id=${stats[label].key}>${stats[label].name} (Offseason Event)</td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>None Found</td></tr>`;
             } else {
-        tab += `<tr date=${stats[label].start_date}><td id=${stats[label].key}>${stats[label].name}</td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>None Found</td></tr>`;
+        tab += `<tr><td date=${stats[label].start_date} id=${stats[label].key}>${stats[label].name}</td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>None Found</td></tr>`;
             }
         } else {
-        tab += `<tr date=${stats[label].start_date}><td id=${stats[label].key}>${stats[label].name}</td><td>No Data</td><td>No Data</td></tr>`
+        tab += `<tr><td date=${stats[label].start_date} id=${stats[label].key}>${stats[label].name}</td><td>No Data</td><td>No Data</td></tr>`
         }
         // Setting innerHTML as tab variable
         document.getElementById("employees").innerHTML = tab;
