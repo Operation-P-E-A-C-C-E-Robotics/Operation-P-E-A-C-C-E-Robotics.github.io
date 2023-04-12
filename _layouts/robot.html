@@ -24,7 +24,11 @@ endpoint: team/frc3461/events
             <h3 id="districtPoints">District Points Earned: --</h3>
             <h3 id="districtRank">District Rank: --</h3>
             <div id="buttons">
-                <a type="button" class="btn btn-primary {% if page.techBinder and page.techBinder != '' %} disabled {% endif %}" id="techBinder">View Tech Binder <span><i  style="width:20px" class="fas fa-tools"></i></span></a>
+                {% if page.techBinder and page.techBinder != '' %}
+                <a type="button" class="btn btn-primary" href="{{page.techBinder}}" id="techBinder">View Tech Binder <span><i  style="width:20px" class="fas fa-tools"></i></span></a>
+                {% else %}
+                <a type="button" class="btn btn-primary  disabled" id="techBinder">View Tech Binder <span><i  style="width:20px" class="fas fa-tools"></i></span></a>
+                {% endif %}
                 <a type="button" class="btn btn-primary" href="https://www.thebluealliance.com/team/3461/{{ page.title }}">View On TBA <span><img style="width: 20px;" src="/assets/images/tba_lamp.svg"></span></a>
             </div>
             {{ content }}
