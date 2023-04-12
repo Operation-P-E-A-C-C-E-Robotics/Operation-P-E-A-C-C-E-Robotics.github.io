@@ -161,16 +161,16 @@ async function getapi(eventurl, eventstats, awards) {
     for (var label in labels) {
         if (labels[label][1] != null) {
             if (stats[label].event_type_string == "Offseason") {
-                tab += `<tr><td id=${stats[label].key}>${stats[label].name} (Offseason Event)</td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>None Found</td></tr>`;
+                tab += `<tr date=${stats[label].start_date}><td id=${stats[label].key}>${stats[label].name} (Offseason Event)</td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>None Found</td></tr>`;
             } else {
-        tab += `<tr><td id=${stats[label].key}>${stats[label].name}</td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>None Found</td></tr>`;
+        tab += `<tr date=${stats[label].start_date}><td id=${stats[label].key}>${stats[label].name}</td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>None Found</td></tr>`;
             }
         } else {
-        tab += `<tr><td id=${stats[label].key}>${stats[label].name}</td><td>No Data</td><td>No Data</td></tr>`
+        tab += `<tr date=${stats[label].start_date}><td id=${stats[label].key}>${stats[label].name}</td><td>No Data</td><td>No Data</td></tr>`
         }
         // Setting innerHTML as tab variable
         document.getElementById("employees").innerHTML = tab;
-        sortTable();
+        //sortTable();
     }
 
     //console.log(awards);
@@ -200,8 +200,10 @@ async function getapi(eventurl, eventstats, awards) {
           one from current row and one from the next: */
           x = rows[i].getElementsByTagName("TR")[0];
           y = rows[i + 1].getElementsByTagName("TR")[0];
+          xTime = new Date.parse(x.attr("date"));
+          yTime = new Date.parse(y.attr("date"));
           // Check if the two rows should switch place:
-          if (Date.parse(x.classList[0]).getTime() > Date.parse(y.classList[0]).getTime()) {
+          if (xTime.getTime() > yTime.getTime()) {
             // If so, mark as a switch and break the loop:
             shouldSwitch = true;
             break;
