@@ -322,14 +322,18 @@ title: Stats - FRC 3461
          //console.log(labels);
          //console.log(awards)
          for (var label in labels) {
-           if (labels[label][1] != null) {
-             tab += `<tr><td id=${stats[label].key}>${stats[label].name}</td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>None Found</td></tr>`;
-           } else {
-             tab += `<tr><td id=${stats[label].key}>${stats[label].name}</td><td>No Data</td><td>No Data</td></tr>`
-           }
-           // Setting innerHTML as tab variable
-           document.getElementById("employees").innerHTML = tab;
-         }
+        if (labels[label][1] != null) {
+            if (stats[label].event_type_string == "Offseason") {
+                tab += `<tr><td id=${stats[label].key}>${stats[label].name} (Offseason Event)</td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>None Found</td></tr>`;
+            } else {
+        tab += `<tr><td id=${stats[label].key}>${stats[label].name}</td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>None Found</td></tr>`;
+            }
+        } else {
+        tab += `<tr><td id=${stats[label].key}>${stats[label].name}</td><td>No Data</td><td>No Data</td></tr>`
+        }
+        // Setting innerHTML as tab variable
+        document.getElementById("employees").innerHTML = tab;
+    }
  
          //console.log(awards);
          for (var i = 0; i < awards.length; i++) {
