@@ -356,7 +356,7 @@ title: Stats - FRC 3461
           x = rows[i].getElementsByTagName("TR")[0];
           y = rows[i + 1].getElementsByTagName("TR")[0];
           // Check if the two rows should switch place:
-          if (x.classList.toLowerCase() > y.classList.toLowerCase()) {
+          if (Date.parse(x.classList).getTime() > Date.parse(y.classList).getTime()) {
             // If so, mark as a switch and break the loop:
             shouldSwitch = true;
             break;
