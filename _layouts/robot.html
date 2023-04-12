@@ -23,6 +23,13 @@ endpoint: team/frc3461/events
             <h2>{{ page.game }}</h2>
             <h3 id="districtPoints">District Points Earned: --</h3>
             <h3 id="districtRank">District Rank: --</h3>
+            <div id="buttons">
+                {{% if page.techBinder %}}
+                <a type="button" class="btn btn-primary" id="techBinder">View Tech Binder</a>
+                {{% else %}}
+                <a type="button" class="btn btn-primary disabled" id="techBinder">View Tech Binder</a>
+                {{% endif %}}
+            </div>
             {{ content }}
         </div>
     </flex>
