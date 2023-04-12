@@ -203,7 +203,7 @@ async function getapi(eventurl, eventstats, awards) {
           xTime = Date.parse(x.getAttribute("date"));
           yTime = Date.parse(y.getAttribute("date"));
           // Check if the two rows should switch place:
-          if (xTime.getTime() > yTime.getTime()) {
+          if (xTime > yTime) {
             // If so, mark as a switch and break the loop:
             shouldSwitch = true;
             break;
