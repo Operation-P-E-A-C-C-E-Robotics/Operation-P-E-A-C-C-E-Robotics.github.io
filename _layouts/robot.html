@@ -200,8 +200,8 @@ async function getapi(eventurl, eventstats, awards) {
           one from current row and one from the next: */
           x = rows[i].getElementsByTagName("TD")[0];
           y = rows[i + 1].getElementsByTagName("TD")[0];
-          xTime = new Date.parse(x.getAttribute("date"));
-          yTime = new Date.parse(y.getAttribute("date"));
+          xTime = Date.parse(x.getAttribute("date"));
+          yTime = Date.parse(y.getAttribute("date"));
           // Check if the two rows should switch place:
           if (xTime.getTime() > yTime.getTime()) {
             // If so, mark as a switch and break the loop:
