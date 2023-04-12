@@ -324,17 +324,53 @@ title: Stats - FRC 3461
          for (var label in labels) {
         if (labels[label][1] != null) {
             if (stats[label].event_type_string == "Offseason") {
-                tab += `<tr><td id=${stats[label].key}>${stats[label].name} (Offseason Event)</td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>None Found</td></tr>`;
+                tab += `<tr><td class=${stats[label].start_date} id=${stats[label].key}>${stats[label].name} (Offseason Event)</td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>None Found</td></tr>`;
             } else {
-        tab += `<tr><td id=${stats[label].key}>${stats[label].name}</td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>None Found</td></tr>`;
+        tab += `<tr><td class=${stats[label].start_date} id=${stats[label].key}>${stats[label].name}</td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>None Found</td></tr>`;
             }
         } else {
-        tab += `<tr><td id=${stats[label].key}>${stats[label].name}</td><td>No Data</td><td>No Data</td></tr>`
+        tab += `<tr><td class=${stats[label].start_date} id=${stats[label].key}>${stats[label].name}</td><td>No Data</td><td>No Data</td></tr>`
         }
         // Setting innerHTML as tab variable
         document.getElementById("employees").innerHTML = tab;
+        sortTable();
     }
  
+    function sortTable() {
+      var table, rows, switching, i, x, y, shouldSwitch;
+      table = document.getElementById("employees");
+      switching = true;
+      /* Make a loop that will continue until
+      no switching has been done: */
+      while (switching) {
+        // Start by saying: no switching is done:
+        switching = false;
+        rows = table.rows;
+        /* Loop through all table rows (except the
+        first, which contains table headers): */
+        for (i = 1; i < (rows.length - 1); i++) {
+          // Start by saying there should be no switching:
+          shouldSwitch = false;
+          /* Get the two elements you want to compare,
+          one from current row and one from the next: */
+          x = rows[i].getElementsByTagName("TD")[0];
+          y = rows[i + 1].getElementsByTagName("TD")[0];
+          // Check if the two rows should switch place:
+          if (x.classList.toLowerCase() > y.classList.toLowerCase()) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        }
+        if (shouldSwitch) {
+          /* If a switch has been marked, make the switch
+          and mark that a switch has been done: */
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+        }
+      }
+    }
+
          //console.log(awards);
          for (var i = 0; i < awards.length; i++) {
            //console.log(awards[i]);
