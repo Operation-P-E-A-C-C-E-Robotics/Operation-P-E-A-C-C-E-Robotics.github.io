@@ -25,12 +25,12 @@ endpoint: team/frc3461/events
             <h3 id="districtRank">District Rank: --</h3>
             <div id="buttons">
                 {% if page.techBinder and page.techBinder != '' %}
-                <button type="button" class="btn btn-primary align-middle" data-toggle="modal" data-target="#myModal">
+                <button type="button" class="btn btn-danger align-middle" data-toggle="modal" data-target="#myModal">
                     View Technical Binder
                     <i class="fa fa-book align-middle" style="font-size:25px"></i>
                   </button>
                 {% else %}
-                <button type="button" class="btn btn-primary  disabled align-middle" id="techBinder">View Tech Binder <i class="fa fa-book align-middle" style="font-size:25px"></i></button>
+                <button type="button" class="btn btn-danger  disabled align-middle" id="techBinder">View Tech Binder <i class="fa fa-book align-middle" style="font-size:25px"></i></button>
                 {% endif %}
                 <a type="button" class="btn btn-primary align-middle" href="https://www.thebluealliance.com/team/3461/{{ page.title }}">View On The Blue Alliance <span><img style="height: 25px;" src="/assets/images/tba_lamp.svg"></span></a>
             </div>
