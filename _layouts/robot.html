@@ -11,17 +11,16 @@ layout: default
 <div class="container-fluid">
     <br>
 
-        <div class="container float-md-left mx-sm-auto w-md-25 w-sm-20" style="max-width: 25rem; height: 30rem;">
-            <div id="demo" class="carousel slide" data-ride="carousel" style="width:100%; height: 100%; background-color: white; border-radius: 5px;">
-                <!-- The slideshow -->
-                <!-- <div id="robotImagePlaceholder" class="carousel-item img-thumbnail" style="width: 400px; height:400px; background-size: 100% auto; background-repeat: no-repeat; background: center center; background-image:url('/assets/images/notFound.png');"></div> -->
-                <img src="{{ page.thumbnail }}" id="robotImagePlaceholder" class="carousel-item img-thumbnail" style="width:100%; height:30rem; object-fit: cover;"></img>
-                <!-- </div> -->
-                <div class="carousel-inner" id="robotCarousel">
-                </div>
-            </div> 
+    <div class="d-flex flex-md-row flex-sm-column row">
+        <div class="w-md-25 w-sm-20 pr-3 col-sm-12 col-md-6 col-lg-3 pb-3" style="max-width: 25rem; height: 30rem;">
+          <div id="demo" class="carousel slide" data-ride="carousel" style="width:100%; height: 30rem; background-color: white; border-radius: 5px;">
+            <!-- The slideshow -->
+            <img src="/assets/images/notFound.png" id="robotImagePlaceholder" class="carousel-item img-thumbnail" style="width:100%; height:100%; object-fit: contain;"></img>
+            <div class="carousel-inner" id="robotCarousel">
+            </div>
+          </div> 
         </div>
-        <div>
+        <div class="pl-3 col-sm-12 col-md-6">
             <h1>{{ page.title }} - {{page.robot}}</h1>
             <h2>{{ page.game }}</h2>
             <h3 id="districtPoints">District Points Earned: --</h3>
@@ -39,12 +38,12 @@ layout: default
             </div>
             {{ content }}
         </div>
-
+    </div>
     <br>
 
 
-    <div class="table-responsive">
-        <table id="employees" class="table"></table>
+    <div class="table-responsive pt-2 rounded-lg">
+        <table id="employees" class="table table-bordered table-striped table-light text-dark"></table>
     </div> 
 
 </div>
