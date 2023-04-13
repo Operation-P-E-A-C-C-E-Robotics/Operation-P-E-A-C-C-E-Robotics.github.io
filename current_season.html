@@ -6,18 +6,6 @@ title: Stats - FRC 3461
 <meta property="og:description" content="current year performace and statistics"/>
 <br>
 <div class="container-fluid">
-  <!-- Here a loader is created which 
-          loads till response comes -->
-  <div class="d-flex justify-content-center">
-      <div class="spinner-border" 
-              role="status" id="loading">
-          <span class="sr-only">Loading...</span>
-      </div>
-  </div>
-  <h1 id="header" class="text-center">Loading...</h1>
-  <!-- <h1 id="loading">Loading...</h1> -->
-  <!-- table for showing data -->
-  <br>
   <flex style="flex-flow: row wrap;">
     <div id="duringEventBanner" style="display:none;" class="jumbotron text-dark">
       <h1 id="currentCompetingEvent" class="text-center">
@@ -51,7 +39,7 @@ title: Stats - FRC 3461
    
     </div>
 
-      <div class="container float-md-left mx-sm-auto" style="width: 25rem; height: 30rem;">
+      <div class="container float-md-left mx-sm-auto w-md-25 w-sm-20" style="height: 30rem;">
           <div id="demo" class="carousel slide" data-ride="carousel" style="width:100%; height: 100%; background-color: white; border-radius: 5px;">
               <!-- The slideshow -->
               <img src="/assets/images/notFound.png" id="robotImagePlaceholder" class="carousel-item img-thumbnail" style="width:100%; height:100%; object-fit: contain;"></img>
@@ -60,6 +48,7 @@ title: Stats - FRC 3461
           </div> 
       </div>
       <div class="float-lg-left mx-sm-auto">
+        <h1 id="header">Loading...</h1>
         <h3 id="districtPoints">Current District Points: --</h3>
         <h3 id="districtRank">Current District Rank: --</h3>
       </div>
