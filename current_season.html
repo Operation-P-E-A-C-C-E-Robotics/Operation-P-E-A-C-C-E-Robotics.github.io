@@ -11,25 +11,25 @@ title: Stats - FRC 3461
       Currently Competing At () Event!
     </h1>
     <div class="d-flex flex-lg-row flex-md-column flex-sm-column flex-xs-column">
-    <h3 id="currentNextMatch" style="text-transform: uppercase;" class="flex-fill">
-      Next Match: Not Found
-    </h3>
-    <h3>
-      <p class="flex-fill" id='counter'>--h --m --s</p>
-    </h3>
-    <h3 class="flex-fill" id="redTeams">
-      0000 0000 0000 
-    </h3>
-    <h3 class="flex-fill">
-    VS
-    </h3>
-    <h3 class="flex-fill" id="blueTeams">
-      0000 0000 0000
-    </h3>
-    <h3 class="flex-fill" id='time'></h3>
+      <h3 id="currentNextMatch" style="text-transform: uppercase;" class="flex-fill">
+        Next Match: Not Found
+      </h3>
+      <h3>
+        <p class="flex-fill" id='counter'>--h --m --s</p>
+      </h3>
+      <h3 class="flex-fill" id="redTeams">
+        0000 0000 0000 
+      </h3>
+      <h3 class="flex-fill">
+      VS
+      </h3>
+      <h3 class="flex-fill" id="blueTeams">
+        0000 0000 0000
+      </h3>
+      <h3 class="flex-fill" id='time'></h3>
     </div>
     <h4 id="currentRank">
-    Rank: 0/0
+      Rank: 0/0
     </h4>
 
     <!-- <p id="liveStream">
@@ -39,24 +39,25 @@ title: Stats - FRC 3461
   </div>
 
   <div class="container float-md-left mx-sm-auto w-md-25 w-sm-20" style="max-width: 25rem; height: 30rem;">
+    <div>
       <div id="demo" class="carousel slide" data-ride="carousel" style="width:100%; height: 100%; background-color: white; border-radius: 5px;">
-          <!-- The slideshow -->
-          <img src="/assets/images/notFound.png" id="robotImagePlaceholder" class="carousel-item img-thumbnail" style="width:100%; height:100%; object-fit: contain;"></img>
-          <div class="carousel-inner" id="robotCarousel">
-          </div>
+        <!-- The slideshow -->
+        <img src="/assets/images/notFound.png" id="robotImagePlaceholder" class="carousel-item img-thumbnail" style="width:100%; height:100%; object-fit: contain;"></img>
+        <div class="carousel-inner" id="robotCarousel">
+        </div>
       </div> 
+    </div>
+    <div class="float-lg-left mx-sm-auto">
+      <h1 id="header">Loading...</h1>
+      <h3 id="districtPoints">Current District Points: --</h3>
+      <h3 id="districtRank">Current District Rank: --</h3>
+      <button type="button" class="btn btn-primary align-middle" onclick=viewOnTBA();>View On The Blue Alliance <span><img style="height: 25px;" src="/assets/images/tba_lamp.svg"></span></button>
+    </div>
   </div>
-  <div class="float-lg-left mx-sm-auto">
-    <h1 id="header">Loading...</h1>
-    <h3 id="districtPoints">Current District Points: --</h3>
-    <h3 id="districtRank">Current District Rank: --</h3>
-    <button type="button" class="btn btn-primary align-middle" onclick=viewOnTBA();>View On The Blue Alliance <span><img style="height: 25px;" src="/assets/images/tba_lamp.svg"></span></button>
-  </div>
-
   <br>
-<br>
+
   <div class="table-responsive">
-    <table id="employees" class="table table-bordered table-striped rounded-lg pt-2"></table>
+    <table id="employees" class="table table-bordered table-striped table-light rounded-lg pt-2"></table>
   </div> 
 </div>
 
