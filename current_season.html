@@ -50,12 +50,13 @@ title: Stats - FRC 3461
     <h1 id="header">Loading...</h1>
     <h3 id="districtPoints">Current District Points: --</h3>
     <h3 id="districtRank">Current District Rank: --</h3>
+    <button type="button" class="btn btn-primary align-middle" onclick=viewOnTBA();>View On The Blue Alliance <span><img style="height: 25px;" src="/assets/images/tba_lamp.svg"></span></button>
   </div>
 
   <br>
 <br>
   <div class="table-responsive">
-    <table id="employees" class="table bg-light text-dark"></table>
+    <table id="employees" class="table table-bordered rounded-lg bg-light text-dark"></table>
   </div> 
 </div>
 
@@ -86,6 +87,10 @@ title: Stats - FRC 3461
        // Defining async function
  
  
+       function viewOnTBA() {
+        window.location.assign('https://www.thebluealliance.com/team/3461/' + year);
+       }
+
        async function getMedia(mediaURL) {
          const apiResponse = await fetch(mediaURL);
          const mediaJSON = await apiResponse.json();
