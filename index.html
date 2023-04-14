@@ -6,140 +6,149 @@ title: FRC 3461
 
 <image width="100%" height="440" src="/assets/images/bannerTemplate.png">
   {%- comment -%} <source src="/assets/videos/OPERATION PEACCE 2022 RECAP DONE.mp4" type="video/mp4"> {%- endcomment -%}
-{%- comment -%} Your browser does not support HTML Video playback. {%- endcomment -%}
+  {%- comment -%} Your browser does not support HTML Video playback. {%- endcomment -%}
 </image> 
-
-
 <br>
-<!-- Text and Image 1 -->
-<!-- <div class="jumbotron jumbotron-fluid bg-dark text-light text-left">
-    <div class="container">
-      <h1>Who are we?</h1>
-      <p>Some sample text to be filled later</p>
-      <img class="float-right " src="/assets/images/PeacceLogoTieDyeWhiteText.svg" style="width:100px"></img>
-      
-    </div>
-</div>
-
-<br>
-
- Text and Image 2 
-<div class="jumbotron jumbotron-fluid bg-dark text-light text-left">
-    <div class="container">
-        <h1>What is FIRST</h1>
-    </div>
-</div> -->
-
 <div class="container-fluid">
-    <!-- {% for item in site.data.index %}
-    <div class="row bg-dark text-light" style="padding-left: 5%;">
-      <div class="col"><h1 style="font-family: 'BankGothicBold', sans-serif;">{item.header}</h1><br><h4>{item.content}</h4></div>
-      <div class="col-md"><img class="rounded img-fluid mx-auto d-block" src="{item.image}" style="width:500px"></img></div>
-    </div>
-    <br>
-    {% endfor %} -->
-
-  
-    {% for item in site.data.index %}
-    <div class="row bg-dark text-light" style="padding-left: 5%;">
-      <div class="col">  
-        <div style="display:flex"> <h1 style="font-family: 'BankGothicBold', sans-serif;">{{item.header}}</h1>
-          <img src="{{item.glyph}}" style="height:50px; padding-left: 10px;"> 
-          <br>
-        </div>
-        <h4>{{item.content}}</h4>
+  {% for item in site.data.index %}
+  <div class="row bg-dark text-light" style="padding-left: 5%;">
+    <div class="col">  
+      <div style="display:flex"> <h1 style="font-family: 'BankGothicBold', sans-serif;">{{item.header}}</h1>
+        <img src="{{item.glyph}}" style="height:50px; padding-left: 10px;"> 
+        <br>
       </div>
-      <div class="col-md"><img class="rounded img-fluid mx-auto d-block" src="{{item.image}}" style="width:500px"></div>
-    </div> 
-    <br>
-    {% endfor %}
+      <h4>{{item.content}}</h4>
+    </div>
+    <div class="col-md"><img class="rounded img-fluid mx-auto d-block" src="{{item.image}}" style="width:500px"></div>
+  </div> 
+  <br>
+  {% endfor %}
 </div>
 
 <div class="container-fluid">
   <!-- 4 Cards in between text and sponsors -->
   <div class="card-deck text-dark text-center">
-      <div class="card" style="height:300px">
-                
-                <div class="card-body text-center pb-1">            
-                    <p class="card-title">History</p>
-                </div>
-                
-                <div id="demo" class="carousel slide pb-4" data-ride="carousel">
-                  
-
-
-                    <!-- The slideshow -->
-                    
-                    <div class="carousel-item active">
-                            <img  src="/assets/images/PeacceLogoTieDyeWhiteText.svg" class="img-rounded" style="width: max-content; height:230px; position:relative">
-
-                            <div class="carousel-caption">
-                                <h3>{{item.header}}</h3>
-                               
-                            </div>
-
-                    </div>
-
-                    <div class="carousel-inner">
-                      
-                      {% for item in site.data.history %}
-                      {% if item.image and item.image != "" %}
-
-                     <div class="carousel-item">
-                            <img  src="{{item.image}}" class="img-rounded" style="width: max-content; height:230px; position:relative">
-
-                            <div class="carousel-caption">
-                                <h3>{{item.header}}</h3>
-                               
-                            </div>
-
-                      </div>
-                      
-
-                      {% endif %}
-                      {% endfor %}
-                      
-                    </div>
-                
-                </div>
+    <div class="card" style="height:300px">      
+      <div class="card-body text-center pb-1">            
+        <p class="card-title">History</p>
+      </div>
+      <div id="demo" class="carousel slide pb-4" data-ride="carousel">
+        <div class="carousel-item active">
+          <img  src="/assets/images/PeacceLogoTieDyeWhiteText.svg" class="img-rounded" style="width: max-content; height:230px; position:relative">
+            <div class="carousel-caption">
+              <h3>{{item.header}}</h3>
+            </div>
         </div>
-      
-      <br>
-
-      <div class="card">
-            <div class="card-body text-center">
-            <p class="card-title">Outreach</p>
-            </div>
+        <div class="carousel-inner">
+          {% for item in site.data.history %}
+          {% if item.image and item.image != "" %}
+          <div class="carousel-item">
+            <img  src="{{item.image}}" class="img-rounded" style="width: max-content; height:230px; position:relative">
+            <div class="carousel-caption">
+             <h3>{{item.header}}</h3>
+             </div>
+          </div>
+          {% endif %}
+          {% endfor %}    
+        </div>
+        
       </div>
-
-      <br>
-
-      <div class="card">
-            <div class="card-body text-center">
-            <p class="card-title">TBD</p>
-            </div>
-      </div>
-
-      <br>
-
-      <div class="card">
-            <div class="card-body text-center">
-            <p class="card-title">Latest Story</p>
-              {% for post in site.posts limit:1 %}
-              <h1>{{post.title}}</h1>
-              <a url="{{post.url}}">{{ post.content | truncatewords: 60 }}</a>
-              {% endfor %}
-              <p>Recent Posts<p>
-              {% for post in site.posts offset:1 limit:2 %}
-              ... Show the next two posts ...
-              {% endfor %}
-            </div>
-      </div>
-  
-     <br>
-
     </div>
+
+    <br>
+
+    <div class="card">
+        <div class="card-body text-center">
+        <p class="card-title">Outreach</p>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="card">
+        <div class="card-body text-center">
+        <p class="card-title">TBD</p>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="card">
+      <div class="card-body text-center">
+        <p class="card-title">Latest Story</p>
+          {% for post in site.posts limit:1 %}
+          <h1>{{post.title}}</h1>
+          <a url="{{post.url}}">{{ post.content | truncatewords: 60 }}</a>
+          {% endfor %}
+          <p>Recent Posts<p>
+          {% for post in site.posts offset:1 limit:2 %}
+          ... Show the next two posts ...
+          {% endfor %}
+      </div>
+    </div>
+      
+        <br>
+  </div>
 </div>
+<br>
+<div class="container">
+  <div class="row">
+              
+    <div class="col-md-12">
+                  
+      <div class="mu-why-us-area">
+
+                      
+        <div class="mu-why-us-content">
+                          
+          <div class="row">
+            <div class="col-md-4">
+              <div class="mu-why-us-single">
+                <div class="my-why-us-single-icon">
+                  <i class="fa fa-trophy" aria-hidden="true"></i>
+                </div>
+                <h3>Prizes:</h3>
+                <p>    &#8226; 1st, 2nd, 3rd place  </p>
+                                      <p>    &#8226; Hole-in-one </p>
+                                      <p>    &#8226; Longest Drive </p>
+                                      <p>    &#8226; Closest To Pin </p>
+                                      <p>    &#8226; Raffle Prizes </p>
+                                      
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mu-why-us-single">
+                <div class="my-why-us-single-icon">
+                  <i class="fa fa-shopping-basket " aria-hidden="true"></i>
+                </div>
+                <h3>Golfing Includes:</h3>
+                                      <p> &#8226;18 holes of golf w/ cart</p> 
+                                      <p> &#8226; 4-person Scramble Format</p>
+                                      <p> &#8226; Continental Breakfast</p>
+                                      <p> &#8226; BBQ Cookout Dinner </p>
+                                      <p> &#8226; Gift Bag</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mu-why-us-single">
+                <div class="my-why-us-single-icon">
+                  <i class="fa fa-clock-o" aria-hidden="true"></i>
+                </div>
+                <h3>Schedule:</h3>
+                <p>&#8226; 7:00 - Breakfast and Registration</p>
+                                      <p>&#8226; 9:00 - Tee off</p>
+                                      <p>&#8226; 2:00 - BBQ Dinner and Awards</p>
+              </div>
+            </div>
+                              
+          </div>
+        </div>
+      </div>
+                  
+    </div>
+  </div>
+</div>
+
 <br>
 
 <h1 class="bg-dark text-center text-light" style="margin-bottom: 0%;">Thank you to our generous sponsors</h1>
