@@ -45,7 +45,7 @@ Lots of teamwork and dedication. There are many different aspects of building, l
 
 ### **WHEN ARE MEETINGS?**
 During off-season (the time after competition season and before build season, May-December) we usually meet once or twice a week, generally 6:30-9pm. During build and competition season, meetings pick up and it’s a lot more commitment. To find out more, see our calendar of events below.  
-<iframe class="container mx-auto" src="https://calendar.google.com/calendar/embed?height=700&wkst=1&bgcolor=%23ffffff&ctz=America%2FNew_York&showTitle=0&showNav=0&showPrint=0&showTabs=0&showCalendars=0&showTz=1&showDate=1&mode=MONTH&src=dGVhbUBwZWFjY2Uub3Jn&color=%23039BE5" style="border-width:0" width="100%" height="60rem" frameborder="0" scrolling="no"></iframe>
+<iframe class="container mx-auto" src="https://calendar.google.com/calendar/embed?height=700&wkst=1&bgcolor=%23ffffff&ctz=America%2FNew_York&showTitle=0&showNav=0&showPrint=0&showTabs=0&showCalendars=0&showTz=1&showDate=1&mode=MONTH&src=dGVhbUBwZWFjY2Uub3Jn&color=%23039BE5" style="border-width:0" width="100%" height="600rem" frameborder="0" scrolling="no"></iframe>
 
 
 
