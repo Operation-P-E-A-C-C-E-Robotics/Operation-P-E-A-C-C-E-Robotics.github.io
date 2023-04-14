@@ -5,7 +5,11 @@
 - name: About Us
   drop: "false"
   link: /about.html
-  
+
+- name: FAQ
+  drop: "false"
+  link: /faq
+
 - name: Current Season
   drop: "false"
   link: /current_season.html
