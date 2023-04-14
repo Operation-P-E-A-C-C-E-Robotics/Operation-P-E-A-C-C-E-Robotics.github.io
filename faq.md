@@ -1,7 +1,8 @@
 ---
-layout: default
+layout: markdown
 title: FAQ - FRC 3461
 ---
+<br>
 <div class="container">
 
 # WHAT DOES P.E.A.C.C.E. STAND FOR?  
