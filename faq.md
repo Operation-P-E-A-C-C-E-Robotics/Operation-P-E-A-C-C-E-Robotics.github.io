@@ -41,7 +41,7 @@ Of course. Running a robotics team is similar to running a business. Putting tog
 No, it is free to join!
 
 ### **WHEN/WHERE ARE COMPETITIONS?**
-Different places. Every year We are guarenteed two competitions within the "District", our district, the New England District, has events in all the New England states and we can chose any 2 of those competitions.  We like to chose one local one, such as Waterbury or Hartford, and one overnight one in a different New England state. Those 2 events determine our "District Ranking", if we are ranked high enough we go the District Championship.  The top team from the District Championship (abbreviated DCMP) go to the world championship.
+Different places. Every year We are guarenteed two competitions within the "District", our district, the New England District, has events in all the New England states and we can chose any 2 of those competitions.  We like to chose one local one, such as Waterbury or Hartford, and one overnight one in a different New England state. Those 2 events determine our "District Ranking", if we are ranked high enough we go the District Championship.  The top teams from the District Championship (abbreviated DCMP) go to the world championship.
 
 ### **WHAT DOES THE ROBOT DO?**
 All different kinds of things based, for example in 2017 the robots had to pick up Power Cubes (disguised milk crates) and place them on a scale and a switch, the robots also had to climb. The challenge changes every year however to give teams a new challenge every year and to prevent teams from reusing the same robot every year and dominating the competition.  
