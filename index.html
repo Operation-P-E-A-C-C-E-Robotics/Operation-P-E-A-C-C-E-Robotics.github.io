@@ -60,7 +60,7 @@ title: FRC 3461
   <div class="card-deck text-dark text-center">
       <div class="card" style="height:300px">
                 
-                <div class="card-body text-center pb-1">            
+                <div class="card-body text-center pb-1 z-depth-2">            
                     <p class="card-title">History</p>
                 </div>
                 
@@ -106,7 +106,7 @@ title: FRC 3461
       
       <br>
 
-      <div class="card">
+      <div class="card z-depth-2">
             <div class="card-body text-center">
             <p class="card-title">Outreach</p>
             </div>
@@ -114,7 +114,7 @@ title: FRC 3461
 
       <br>
 
-      <div class="card">
+      <div class="card z-depth-2">
             <div class="card-body text-center">
             <p class="card-title">TBD</p>
             </div>
@@ -122,7 +122,7 @@ title: FRC 3461
 
       <br>
 
-      <div class="card">
+      <div class="card z-depth-2">
             <div class="card-body text-center">
             <p class="card-title">Latest Story</p>
               {% for post in site.posts limit:1 %}
@@ -145,7 +145,7 @@ title: FRC 3461
 <h1 class="bg-dark text-center text-light" style="margin-bottom: 0%;">Thank you to our generous sponsors</h1>
 <div class="logo-area bg-dark text-dark">
   {% for item in site.data.sponsors %}
-    <flex class="sponsorlogo logo-item"> 
+    <flex class="sponsorlogo logo-item z-depth-2"> 
         <div style="width: 300px; height: 225px;"><img class="sponsorlogo" id="logo" src="{{item.image}}" style="padding-top:{{item.imgpad}}; height:{{item.imgheight}}"></div>
         <p><b>{{item.sponsortier | upcase}} SPONSOR</b> <br> {{item.name}} </p>
     </flex>
