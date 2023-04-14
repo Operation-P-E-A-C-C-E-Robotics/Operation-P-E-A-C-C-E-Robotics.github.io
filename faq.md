@@ -13,7 +13,7 @@ A robotics team is a dynamic group of all diverse kinds of people– from differ
 *FIRST* (For Inspiration and Recognition of Science and Technology) is a program made to get kids of any age involved in STEM (Science, Technology, Engineering, and Math). Each year they present teams with a new challenge and hold competitions for the teams to compete. The competitions involve completing a series of tasks to complete by the robot in both autonomous and teleops modes. There are different levels, starting with FLL (*FIRST* Lego League) for grades 4th to 8th,  FLL Jr. (*FIRST* Lego League Jr.) grades K to 4th, FTC (*FIRST* Tech Challenge), grades 7-12, and finally, our team is FRC (*FIRST* Robotics Competition) for grades 9-12.
 
 ### **AM I ELIGIBLE TO JOIN, AND HOW?**
-We accept a large variety of students, including both homeschoolers and public schoolers, ages 14-18 (but in some cases we’ve allowed younger students). If you’re interested, click here.
+We accept a large variety of students, including both homeschoolers and public schoolers, ages 14-18 (but in some cases we’ve allowed younger students). If you’re interested, click [here](https://docs.google.com/forms/d/e/1FAIpQLSf-I-r2HuqeCvdwj9XRkW1Ck4lOpqPt3bFdXjb8xnGw3ArFNw/viewform)
 
 ### **WHAT CAN I GET OUT OF JOINING THIS TEAM?**
 Not only do you learn all about STEM and about running a business, but it looks great on a college application. [*FIRST* also offers many scholarships!](https://www.firstinspires.org/alumni/scholarships)
