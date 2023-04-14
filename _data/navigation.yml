@@ -4,7 +4,7 @@
   
 - name: About Us
   drop: "false"
-  link: /about.html
+  link: /about
 
 - name: FAQ
   drop: "false"
@@ -12,20 +12,21 @@
 
 - name: Current Season
   drop: "false"
-  link: /current_season.html
+  link: /robots/current
 
 - name: History
   drop: "true"
   links:
-    - url: /history.html
+    - url: /history
       name: Timeline
-    - url: /robots.html
+    - url: /robots
       name: Robots
 
 
 - name: Blog
   drop: "false"
-  link: /blog.html
+  link: /blog
+
 - name: Contact Us
   drop: "false"
-  link: /contact.html
+  link: /contact
