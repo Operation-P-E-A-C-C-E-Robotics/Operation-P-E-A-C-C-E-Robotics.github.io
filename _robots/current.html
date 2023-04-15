@@ -66,7 +66,7 @@ title: Current Season
        var year = new Date().getFullYear();
        
        var eventstatuses = "/statuses?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
-       const authKey = "?X-TBA-Auth-Key={{process.env.TBA_AUT_KEY}}"
+       const authKey = "?X-TBA-Auth-Key=" + process.env.TBA_AUT_KEY
        var district = "https://www.thebluealliance.com/api/v3/district/" +year +"ne/rankings"+authKey
        var media = "https://www.thebluealliance.com/api/v3/team/frc3461/media/"
        var awards = "https://www.thebluealliance.com/api/v3/team/frc3461/awards/"
