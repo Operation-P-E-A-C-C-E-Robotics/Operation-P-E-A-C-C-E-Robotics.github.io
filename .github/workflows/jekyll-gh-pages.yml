@@ -52,5 +52,5 @@ jobs:
         uses: actions/deploy-pages@v1
       
       - uses: oNaiPs/secrets-to-env-action@v1
-      with:
-        secrets: ${{ toJSON(secrets) }}
+        with:
+          secrets: ${{ toJSON(secrets) }}
