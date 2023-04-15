@@ -33,9 +33,11 @@ jobs:
         uses: actions/configure-pages@v2
 
       - name: Inject API Keys
-        uses: oNaiPs/secrets-to-env-action@v1
-        with:
-          secrets: ${{ toJSON(secrets) }}
+        inputs:
+          who-to-greet:  # id of input
+            description: 'TBA Auth Key'
+            required: true
+            default: 'hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb'
 
 
       - name: Build with Jekyll
