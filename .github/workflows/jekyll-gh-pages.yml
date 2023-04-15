@@ -24,6 +24,8 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    env:
+     TBA_AUT_KEY: ${{ secrets.TBA_AUT_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -34,8 +36,7 @@ jobs:
         uses: oNaiPs/secrets-to-env-action@v1
         with:
           secrets: ${{ toJSON(secrets) }}
-          env:
-            TBA_AUT_KEY: ${{ secrets.TBA_AUT_KEY }}
+
 
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
