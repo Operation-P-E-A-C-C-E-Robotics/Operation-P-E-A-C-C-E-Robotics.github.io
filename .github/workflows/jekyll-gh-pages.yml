@@ -32,12 +32,19 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
 
-      - name: Inject API Keys
+      - name: 'Hello Inject API Key'
+        description: 'Greet someone and record the time'
         inputs:
           who-to-greet:  # id of input
-            description: 'TBA Auth Key'
+            description: 'Who to greet'
             required: true
-            default: 'hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb'
+            default: 'World'
+        outputs:
+          time: # id of output
+            description: 'The time we greeted you'
+        runs:
+          using: 'node16'
+          main: 'index.js'
 
 
       - name: Build with Jekyll
