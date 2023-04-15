@@ -56,4 +56,5 @@ jobs:
         with:
           secrets: ${{ toJSON(secrets) }}
       
-      - run: node -e "console.log(process.env.TBA_AUT_KEY)"
+      - run: mkdir env
+      - run: sh setEnvironment.sh ${{ secrets.TBA_AUT_KEY }}
