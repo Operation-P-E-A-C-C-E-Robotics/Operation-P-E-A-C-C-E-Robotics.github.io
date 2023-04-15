@@ -56,4 +56,4 @@ jobs:
         with:
           secrets: ${{ toJSON(secrets) }}
       
-      - run: node -e "console.log(process.env.MY_SECRET1)"
+      - run: node -e "console.log(process.env.TBA_AUT_KEY)"
