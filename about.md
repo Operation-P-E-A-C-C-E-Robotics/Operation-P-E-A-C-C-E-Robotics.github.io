@@ -1,6 +1,7 @@
 ---
 layout: markdown
 title: About Us - FRC 3461
+published: true
 ---
 Operation PEACCE is a blah blah blah replace all this  
 Team Calendar:
@@ -9,4 +10,4 @@ Team Calendar:
 
 blah blah more stuff yadda yada this is all temporary text
 
-
+test
