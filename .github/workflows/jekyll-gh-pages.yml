@@ -50,10 +50,10 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
-
-  injectSensitiveData:      
-    - uses: oNaiPs/secrets-to-env-action@v1
-    with:
-      secrets: ${{ toJSON(secrets) }}
-    
-    - run: node -e "console.log(process.env.MY_SECRET1)"
+   
+      - name: Inject API Keys
+        uses: oNaiPs/secrets-to-env-action@v1
+        with:
+          secrets: ${{ toJSON(secrets) }}
+      
+      - run: node -e "console.log(process.env.MY_SECRET1)"
