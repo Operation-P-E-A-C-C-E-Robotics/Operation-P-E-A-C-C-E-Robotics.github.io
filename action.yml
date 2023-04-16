@@ -5,6 +5,10 @@ inputs:
     description: 'Who to greet'
     required: true
     default: 'World'
+  api-key:
+    description: 'TBA API Key'
+    required: true
+    default: 'API key missing'
 outputs:
   time: # id of output
     description: 'The time we greeted you'
