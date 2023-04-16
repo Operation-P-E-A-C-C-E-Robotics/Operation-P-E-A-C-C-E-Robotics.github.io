@@ -18,7 +18,7 @@ var events = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
 var year = new Date().getFullYear();
 
 var eventstatuses = "/statuses?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
-var key = core.getInput('TBA API Key')
+var key = core.getInput('api-key');
 const authKey = "?X-TBA-Auth-Key=" + key 
 var district = "https://www.thebluealliance.com/api/v3/district/" +year +"ne/rankings"+authKey
 var media = "https://www.thebluealliance.com/api/v3/team/frc3461/media/"
