@@ -25,15 +25,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-     TBA_AUT_KEY: ${{ secrets.TBA_AUT_KEY }}
+     TBA_AUT_KEY: ${{ secrets.TBA_API_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v2
 
-
-    
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
