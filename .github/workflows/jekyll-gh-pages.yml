@@ -42,9 +42,9 @@ jobs:
         outputs:
           time: # id of output
             description: 'The time we greeted you'
-        runs:
-          using: 'node16'
-          main: 'index.js'
+        
+        uses: 'node16'
+          
 
 
       - name: Build with Jekyll
