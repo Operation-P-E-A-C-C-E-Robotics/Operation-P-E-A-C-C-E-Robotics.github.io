@@ -32,21 +32,8 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
 
-      - name: 'Hello Inject API Key'
-        description: 'Greet someone and record the time'
-        inputs:
-          who-to-greet:  # id of input
-            description: 'Who to greet'
-            required: true
-            default: 'World'
-        outputs:
-          time: # id of output
-            description: 'The time we greeted you'
-        
-        uses: 'node16'
-          
 
-
+    
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
