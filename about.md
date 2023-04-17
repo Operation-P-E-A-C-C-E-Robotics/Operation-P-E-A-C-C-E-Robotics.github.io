@@ -1,6 +1,6 @@
 ---
 layout: markdown
-title: About Us - FRC 3461
+title: About Us 
 published: true
 ---
 Operation PEACCE is a blah blah blah replace all this  

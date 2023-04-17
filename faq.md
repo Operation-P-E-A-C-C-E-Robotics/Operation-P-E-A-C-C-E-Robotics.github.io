@@ -1,6 +1,6 @@
 ---
 layout: markdown
-title: FAQ - FRC 3461
+title: FAQ 
 ---
 
 ### **WHAT DOES P.E.A.C.C.E. STAND FOR?**
