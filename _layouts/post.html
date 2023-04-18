@@ -3,7 +3,7 @@ layout: markdown
 ---
 <div class="container-fluid">
     <h1>{{ page.title }}</h1>
-    <p>{{ page.date | date_to_string }} - {{ page.author }}</p>
+    <p><i class="fa fa-clock-o"></i> {{ page.date | date_to_string }} <i class="fa fa-user"></i> {{ page.author }}</p>
     <div class="blog">
     {{ content }}
     </div>
@@ -13,5 +13,9 @@ layout: markdown
         max-width: 100%;
         margin: auto;
         padding: 5rem;
+    }
+
+    .blog {
+        font-size: larger;
     }
 </style>
