@@ -16,7 +16,7 @@
         {% for item in site.data.navigation %}
           {% if item.drop and item.drop == "false" %}
             <li class="nav-item text-lg-center ">
-              <a class="nav-item text-lg-center nav-link" href="{{ item.link }}" {% if page.url == item.link %}style="color: black;"{% endif %}>
+              <a class="nav-item text-lg-center nav-link" href="{{ item.link }}" {% if page.url == item.link + .html %}style="color: black;"{% endif %}>
               {{ item.name }}
               </a>
             </li>
