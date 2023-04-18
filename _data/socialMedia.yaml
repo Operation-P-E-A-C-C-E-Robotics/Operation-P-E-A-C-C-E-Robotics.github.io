@@ -1,5 +1,9 @@
 - platform: facebook
   link: https://www.facebook.com/PEACCE/
+  icon: fa fa-facebook-official
+  color: text-primary
 
 - platform: youtube
   link: https://www.youtube.com/@peacce3461
+  icon: fa fa-youtube-play
+  color: text-danger

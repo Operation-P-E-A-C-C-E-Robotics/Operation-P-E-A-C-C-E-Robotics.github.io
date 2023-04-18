@@ -16,8 +16,9 @@
           <a href="{{site.github.repository_url}}/tree/{{site.github.source.branch}}" id="branch" class="text-dark"><i class="fa fa-code-fork"></i> {{site.github.source.branch}}</a> 
         </div>
         <div style="font-size: 20px;" class="pr-2">
-          <a href="{{ site.data.socialMedia[0].link }}"><span><i class="fa fa-facebook-official text-dark"></i></span></a>
-          <a href="{{ site.data.socialMedia[1].link }}"><span><i class="fa fa-youtube-play text-dark"></i></span></a>
+          {% for platform in site.data.socialMedia %}
+          <a href="{{ platform.link }}"><span><i class="{{ platform.icon}} {{platform.color}} "></i></span></a>
+          {% endfor %}
         </div>
       </div>
     </footer>
