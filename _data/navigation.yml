@@ -14,16 +14,14 @@
   drop: "false"
   link: /robots/current
 
-# - name: History
-#   drop: "true"
-#   links:
-#     - url: /history
-#       name: Timeline
-#     - url: /robots
-#       name: Robots
-- name: Robots
-  drop: "false"
-  link: /robots
+- name: Seasons
+  drop: "true"
+  links:
+    - url: /robots/current
+      name: Current Season
+    - url: /robots
+      name: Past Seasons
+
 
 - name: Blog
   drop: "false"
