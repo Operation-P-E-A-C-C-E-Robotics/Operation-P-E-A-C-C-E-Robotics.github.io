@@ -88,10 +88,6 @@ title: Operation PEACCE Robotics
           <h1>{{post.title}}</h1>
           <a url="{{post.url}}">{{ post.content | truncatewords: 60 }}</a>
           {% endfor %}
-          <p>Recent Posts<p>
-          {% for post in site.posts offset:1 limit:2 %}
-          ... Show the next two posts ...
-          {% endfor %}
       </div>
     </div>
       
