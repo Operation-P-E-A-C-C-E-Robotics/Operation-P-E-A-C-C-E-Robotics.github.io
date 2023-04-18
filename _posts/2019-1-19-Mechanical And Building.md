@@ -2,7 +2,7 @@
 layout: post
 author: Test Blogger
 ---
-# Mechanical and Building
+
 The team started its second week of build season strong by continuing to prototype. Different members from the team have all had the opportunity to contribute ideas to our main concepts and designs. This past week has been a good chance for everyone, even non-mechanical committee members, to get involved and participate.
 
 We were able to make a starting model for our vision system. It allows us to use the robot as a camera to see our surroundings. This will be able to help us in the future when we are trying to accurately and efficiently line up game pieces during a match (this method was very beneficial in previous games).
