@@ -3,12 +3,15 @@
 # - name: Insert
 #   image: /.../.../IMAGE.EXT
 #   sponsortier: IE Title, Gold, Bronze, Platinum "Sponsor" is appended afterward
+#   isNameOnly: bool  if we have no logo image to display, only display the name and disable the image
 
 
 - name: Arthur G Russel Comapny
   image: /assets/sponsors/AGR.png
   sponsortier: Title
+  isNameOnly: false
 
 - name: Hartford County 4H
   image: /assets/sponsors/4h-logo.svg
   sponsortier: Title
+  isNameOnly: false
