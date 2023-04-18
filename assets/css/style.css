@@ -66,13 +66,13 @@ body {
 	align-self: center;
     text-align: center;
     max-width: 300px;
-	
+	max-height: 280px;
 	height: fit-content;
     	margin: 1em;
 	
 
 }
-.sponsorlogo img {
+/* .sponsorlogo img {
 	padding-top: 20%;
 	width: min-content;
 	height: min-content;
@@ -83,12 +83,12 @@ body {
 	border-top-right-radius: 30px;
 	border-bottom-left-radius: 0px;
 	border-bottom-right-radius: 0px;
-}
-.sponsorlogo p {
+} */
+/* .sponsorlogo p {
 	position: relative;
 	margin: 0%;
 
-}
+} */
 
 .sponsorlogo h1 {
 	width: 300px;

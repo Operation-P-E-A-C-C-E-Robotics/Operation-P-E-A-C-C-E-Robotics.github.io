@@ -1,28 +1,28 @@
 <!-- Footer -->
 
-
-<div class="container-fluid p-0 m-0 font-small bg-light text-dark pt-4">
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-0 my-0 border-top">
-    <div class="col-md-4 d-flex align-items-center">
-      <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-        <img src="../assets/images/PeacceLogoTieDyeWhiteText.svg" style="width:25px; height:25px; padding-right: 00.25rem;" class="float-left">
-      </a>
-      <span class="mb-3 mb-md-0 text-body-secondary">© 2023 Operation PEACCE Robotics</span>
-    </div>
-
-    <div class="col-md-4 justify-content-end m-0 p-0 align-items-center d-flex">
-      <div class="d-inline-block pr-2">
-        <a href="{{site.github.repository_url}}/tree/{{site.github.build_revision}}" id="commit" class="text-dark pr-2"><i class="fa fa-code"></i> </a>
-        <a href="{{site.github.repository_url}}/tree/{{site.github.source.branch}}" id="branch" class="text-dark"><i class="fa fa-code-fork"></i> {{site.github.source.branch}}</a> 
+<section>
+  <div class="container-fluid p-0 mt-5 font-small bg-light text-dark">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-0 my-0 border-top">
+      <div class="col-md-4 d-flex align-items-center">
+        <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+          <img src="../assets/images/PeacceLogoTieDyeWhiteText.svg" style="width:25px; height:25px; padding-right: 00.25rem;" class="float-left">
+        </a>
+        <span class="mb-3 mb-md-0 text-body-secondary">© 2023 Operation PEACCE Robotics</span>
       </div>
-      <div style="font-size: 20px;" class="pr-2">
-        <a href="{{ site.data.socialMedia[0].link }}"><span><i class="fa fa-facebook-official text-dark"></i></span></a>
-        <a href="{{ site.data.socialMedia[1].link }}"><span><i class="fa fa-youtube-play text-dark"></i></span></a>
-      </div>
-    </div>
-  </footer>
-</div>
 
+      <div class="col-md-4 justify-content-end m-0 p-0 align-items-center d-flex">
+        <div class="d-inline-block pr-2">
+          <a href="{{site.github.repository_url}}/tree/{{site.github.build_revision}}" id="commit" class="text-dark pr-2"><i class="fa fa-code"></i> </a>
+          <a href="{{site.github.repository_url}}/tree/{{site.github.source.branch}}" id="branch" class="text-dark"><i class="fa fa-code-fork"></i> {{site.github.source.branch}}</a> 
+        </div>
+        <div style="font-size: 20px;" class="pr-2">
+          <a href="{{ site.data.socialMedia[0].link }}"><span><i class="fa fa-facebook-official text-dark"></i></span></a>
+          <a href="{{ site.data.socialMedia[1].link }}"><span><i class="fa fa-youtube-play text-dark"></i></span></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</section>
 <script>
   truncateCommitNumber("{{ site.github.build_revision}}", 7);
   function truncateCommitNumber(str, num) {

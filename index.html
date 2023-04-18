@@ -171,13 +171,16 @@ title: Operation PEACCE Robotics
 </section>
 <br>
 
-<h1 class="bg-dark text-center text-light" style="margin-bottom: 0%;">Thank you to our generous sponsors</h1>
-<div class="logo-area bg-dark text-light">
+<h1 class="bg-dark text-center text-light">Thank you to our generous sponsors</h1>
+<div class="card-deck justify-content-center bg-dark text-dark">
   {% for item in site.data.sponsors %}
-    <flex class="sponsorlogo logo-item"> 
-        <div style="width: 300px; height: 225px;"><img class="sponsorlogo" id="logo" src="{{item.image}}" style="padding-top:{{item.imgpad}}; height:{{item.imgheight}}"></div>
-        <p><b>{{item.sponsortier | upcase}} SPONSOR</b> <br> {{item.name}} </p>
-    </flex>
+    <div class="card sponsorlogo" style="min-height: 280px; max-height: 280px;"> 
+      <img class="card-img-top img-fluid mx-auto" style=" height: 200px; object-fit: contain;" src="{{item.image}}">  
+      <div class="card-body">
+        <p>{{item.sponsortier | upcase}} SPONSOR</p>
+        <p><b>{{item.name}}</b></p>
+      </div>
+    </div>
   {% endfor %}
 
   <!-- <flex class="sponsorlogo logo-item"> 
@@ -187,7 +190,7 @@ title: Operation PEACCE Robotics
 
 </div>
 
-<style>
+<!-- <style>
 /* The hero image */
 .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
@@ -212,4 +215,4 @@ title: Operation PEACCE Robotics
   transform: translate(-50%, -50%);
   color: white;
 }
-</style>
+</style> -->

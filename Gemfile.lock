@@ -34,6 +34,7 @@ GEM
       safe_yaml (~> 1.0)
       terminal-table (>= 1.8, < 4.0)
       webrick (~> 1.7)
+    jekyll-env (1.1.0)
     jekyll-github-metadata (2.16.0)
       jekyll (>= 3.4, < 5.0)
       octokit (>= 4, < 7, != 4.4.0)
@@ -78,6 +79,7 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll
+  jekyll-env
   jekyll-github-metadata
 
 BUNDLED WITH
