@@ -26,7 +26,7 @@ title: Robot Profiles
   <br>
 <!-- d-flex flex-xs-column-reverse flex-sm-column-reverse flex-md-row-reverse flex-lg-row-reverse flex-xl-row-reverse -->
   <div class="row bg-dark mx-auto text-dark card-deck flex-md-row flex-sm-column-reverse" id="cardHolder"> 
-    {% for robot in site.robots | sort: 'robot.title' | reverse %}
+    {% for robot in site.robots | reverse %}
     {% if robot.title != "Current Season"%}
     <div class="col-sm-12 col-md-6 col-lg-3" style="padding-bottom: 0.5rem;">
       <div class="card"> 
