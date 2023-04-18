@@ -171,19 +171,20 @@ title: Operation PEACCE Robotics
 <br>
 
 <h1 class="bg-dark text-center text-light">Thank you to our generous sponsors</h1>
-<div class="card-deck justify-content-center bg-dark text-dark">
+<div class="card-deck logo-area mx-auto justify-content-center bg-dark text-dark">
   {% for item in site.data.sponsors %}
     <div class="card sponsorlogo" style="min-height: 280px; max-height: 280px;"> 
       {% if item.isNameOnly == false %}
-      <img class="card-img-top img-fluid mx-auto" style=" height: 200px; object-fit: contain;" src="{{item.image}}"> 
-      <div class="card-body">
+      <div class="sponsorlogo img-container"><img class="card-img-top img-fluid" src="{{item.image}}"></div>
+      <div class="card-body pt-2">
         <p>{{item.sponsortier | upcase}} SPONSOR</p>
         <p><b>{{item.name}}</b></p>
       </div>
       {% else %}
       <h1>{{item.name}}</h1>
-      <div class="card-body">
+      <div class="card-body pt-2 nameOnlyBottom">
         <p>{{item.sponsortier | upcase}} SPONSOR</p>
+        
       </div>
       {% endif %}
     </div>
