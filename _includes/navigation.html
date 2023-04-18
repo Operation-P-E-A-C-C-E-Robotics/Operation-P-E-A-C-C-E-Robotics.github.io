@@ -36,8 +36,9 @@
         {% endfor %}
         </ul>
         <div id="socialMediaContainer" class="text-dark" style="font-size: 35px; ">
-          <a href="{{ site.data.socialMedia[0].link }}"><span><i class="fa fa-facebook-official text-dark"></i></span></a>
-          <a href="{{ site.data.socialMedia[1].link }}"><span><i class="fa fa-youtube-play text-dark"></i></span></a>
+          {% for platform in site.data.socialMedia %}
+          <a href="{{ platform.link }}"><span><i class="{{ platform.icon}} {{platform.color}} "></i></span></a>
+          {% endfor %}
         </div>
         <script src="darkswitch.js"></script>
     </div>
