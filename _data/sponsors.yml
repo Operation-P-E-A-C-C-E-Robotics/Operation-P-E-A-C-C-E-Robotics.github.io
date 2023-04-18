@@ -1,11 +1,12 @@
 # Written by Logan Ayers | 10/15/2022
+# Displayed in the order the list is written
 # To add a new sponsor copy paste the following
 # - name: Insert
 #   image: /.../.../IMAGE.EXT
 #   sponsortier: IE Title, Gold, Bronze, Platinum "Sponsor" is appended afterward
 #   isNameOnly: bool  if we have no logo image to display, only display the name and disable the image
 
-
+#Title Sponsors
 - name: Arthur G Russel Comapny
   image: /assets/sponsors/AGR.png
   sponsortier: Title
@@ -15,3 +16,20 @@
   image: /assets/sponsors/4h-logo.svg
   sponsortier: Title
   isNameOnly: false
+
+#Platinum Sponsors
+- name: Mavice
+  image: /assets/sponsors/mavice.png
+  sponsortier: Platinum
+  isNameOnly: false
+
+- name: Solidworks
+  image: /assets/sponsors/solidworks.png
+  sponsortier: Platinum
+  isNameOnly: false
+
+#Gold Sponsors
+- name: Phillip Weingart
+  image: /assets/sponsors/solidworks.png
+  sponsortier: Platinum
+  isNameOnly: true
