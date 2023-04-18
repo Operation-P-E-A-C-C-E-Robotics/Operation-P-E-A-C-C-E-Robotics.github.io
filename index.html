@@ -85,8 +85,7 @@ title: Operation PEACCE Robotics
       <div class="card-body text-center">
         <p class="card-title">Latest Story</p>
           {% for post in site.posts limit:1 %}
-          <h1>{{post.title}}</h1>
-          <a url="{{post.url}}">{{ post.content | truncatewords: 60 }}</a>
+          <a href="{{post.url}}">{{ post.content | truncatewords: 60 }}</a>
           {% endfor %}
       </div>
     </div>
