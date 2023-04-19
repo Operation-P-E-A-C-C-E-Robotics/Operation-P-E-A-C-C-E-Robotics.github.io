@@ -219,10 +219,10 @@ async function getapi(eventurl, eventstats, awards) {
                 break;
 
                case "Regional":
-                    badge = `<span class="badge badge-pill badge-primary">Regional Event</span>`
+                    badge = `<span class="badge badge-pill badge-primary">Week ${stats[label].week + 1} Regional Event</span>`
                     break;
               case "District":
-                badge = `<span class="badge badge-pill badge-primary">District Event</span>`
+                badge = `<span class="badge badge-pill badge-primary">Week ${stats[label].week + 1} District Event</span>`
                 break;
               case "District Championship Division":
                 badge = `<span class="badge badge-pill badge-info">DCMP Division</span>`
