@@ -208,18 +208,47 @@ async function getapi(eventurl, eventstats, awards) {
     //console.log(labels);
     //console.log(awards)
     for (var label in labels) {
-        if (labels[label][1] != null) {
-            if (stats[label].event_type_string == "Offseason") {
-                tab += `<tr><td date=${stats[label].start_date} id=${stats[label].key}>${stats[label].name} (Offseason Event)</td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>None Found</td></tr>`;
-            } else {
-        tab += `<tr><td date=${stats[label].start_date} id=${stats[label].key}>${stats[label].name}</td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>None Found</td></tr>`;
+          if (labels[label][1] != null) {
+            var badge = ""
+            switch(stats[label].event_type_string) {
+              case "Preseason":
+                badge = `<span class="badge badge-pill badge-secondary">Preseason Event</span>`
+                break;
+              case "Offseason":
+                badge = `<span class="badge badge-pill badge-secondary">Offseason Event</span>`
+                break;
+
+               case "Regional":
+                    badge = `<span class="badge badge-pill badge-primary">Regional Event</span>`
+                    break;
+              case "District":
+                badge = `<span class="badge badge-pill badge-primary">District Event</span>`
+                break;
+              case "District Championship Division":
+                badge = `<span class="badge badge-pill badge-info">DCMP Division</span>`
+                break;
+              case "District Championship":
+                badge = `<span class="badge badge-pill badge-info">DCMP</span>`
+                break;
+              case "Championship Division":
+                badge = `<span class="badge badge-pill badge-success">CMP Division</span>`
+                break;
+              case "Championship Finals":
+                badge = `<span class="badge badge-pill badge-success">CMP Einstein</span>`
+                break;
+
+              default:
+                // code block
             }
-        } else {
-        tab += `<tr><td date=${stats[label].start_date} id=${stats[label].key}>${stats[label].name}</td><td>No Data</td><td>No Data</td></tr>`
-        }
-        // Setting innerHTML as tab variable
-        document.getElementById("employees").innerHTML = tab;
-        sortTable();
+          
+            tab += `<tr><td date=${stats[label].start_date} id=${stats[label].key}><a class="text-dark" href="https://www.thebluealliance.com/event/${stats[label].key}">${stats[label].name} ${badge}</a></td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>None Found</td></tr>`;
+              
+          } else {
+          tab += `<tr><td date=${stats[label].start_date} id=${stats[label].key}><a class="text-dark" href="https://www.thebluealliance.com/event/${stats[label].key}">${stats[label].name} ${badge}</a></td><td>No Data</td><td>No Data</td></tr>`
+          }
+          // Setting innerHTML as tab variable
+          document.getElementById("employees").innerHTML = tab;
+          sortTable();
     }
 
     //console.log(awards);
