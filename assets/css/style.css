@@ -56,7 +56,7 @@ body {
 }
 
 .sponsorlogo {
-	background-color: rgb(240, 239, 239);
+	background-color: rgb(255, 255, 255);
     color: black;
 	border-radius: 30px;
 	width: 300px;
@@ -70,6 +70,7 @@ body {
 	max-height: 280px;
 	margin: 15px;
 	display: block;
+	vertical-align: middle;
 	
 
 }
@@ -81,7 +82,6 @@ body {
 	padding-left: 20px;
 	padding-right: 20px;
 	padding-top: 50px;
-	margin-bottom: 10px;
 	border-top-left-radius: 30px;
 	border-top-right-radius: 30px;
 	border-bottom-left-radius: 0px;
@@ -101,11 +101,12 @@ body {
 }
 
 .sponsorlogo h1 {
+	display: block;
 	width: 300px;
 	height: 200px;
-	padding-top: 35%;
-	text-align: center;
-	vertical-align: middle;
+	position: relative;               
+	top: 60%;                         
+	transform: translate(0, -50%)
 }
 
 
