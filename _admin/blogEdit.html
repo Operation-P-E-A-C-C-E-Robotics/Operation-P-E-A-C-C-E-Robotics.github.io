@@ -8,6 +8,10 @@ title: Dashboard
     console.log(queryString);
     const urlParams = new URLSearchParams(queryString);
     const post = urlParams.get('post');
+    getPost();
     // https://cdn.jsdelivr.net/gh/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/_posts/ FILENAME
-    var postRaw = await fetch('https://cdn.jsdelivr.net/gh/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/_posts/' + post);
+    function getPost(post) {
+        const postRaw = await fetch('https://cdn.jsdelivr.net/gh/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/_posts/' + post);
+        console.log(postRaw);
+    }
 </script>
