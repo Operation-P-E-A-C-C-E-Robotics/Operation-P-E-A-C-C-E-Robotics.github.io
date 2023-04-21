@@ -8,7 +8,7 @@ plugins:
   - "jekyll-env"
 
 
-exclude: ['Archive']
+exclude: ['Archive', 'Documentation']
 
 repository: Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io
 
@@ -16,3 +16,4 @@ repository: Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github
 banner:
   image-url: "/assets/images/banner-size.png"
   image-align: "center"
+

@@ -2,11 +2,11 @@
 layout: default
 ---
 <!-- <script src="/assets/js/tba.js"></script> -->
-<title>{{ page.title }}: {{page.robot}} </title>
-<meta property="og:title" content="Operation PEACCE Robotics - {{ page.title }} {{ page.robot }}" />
+<title>{{ page.year }}: {{page.robotName}} </title>
+<meta property="og:title" content="Operation PEACCE Robotics - {{ page.year }} {{ page.robotName }}" />
 <meta property="og:description" content="{{ page.game }} performace and statistics"/>
 <meta property="og:image" content="{{ page.thumbnail }}?width=320">
-<meta property="title" content="Operation PEACCE Robotics - {{ page.title }} {{ page.robot }}" />
+<meta property="title" content="Operation PEACCE Robotics - {{ page.year }} {{ page.robotName }}" />
 <meta property="description" content="{{ page.game }} performace and statistics"/>
 <meta property="image" content="{{ page.thumbnail }}?width=320">
 <div class="container-fluid">
@@ -22,7 +22,7 @@ layout: default
           </div> 
         </div>
         <div class="pl-3 col-sm-12 col-md-9">
-            <h1>{{ page.title }} - {{page.robot}}</h1>
+            <h1>{{ page.year }} - {{page.robotName}}</h1>
             <h2>{{ page.game }}</h2>
             <h3 id="districtPoints">District Points Earned: --</h3>
             <h3 id="districtRank">District Rank: --</h3>
@@ -35,7 +35,7 @@ layout: default
                 {% else %}
                 <button type="button" class="btn btn-danger  disabled align-middle" id="techBinder">View Technical Binder <i class="fa fa-book align-middle" style="font-size:25px"></i></button>
                 {% endif %}
-                <button type="button" class="btn btn-primary align-middle" onclick="window.location.assign('https://www.thebluealliance.com/team/3461/{{ page.title }}');">View On The Blue Alliance <span><img style="height: 25px;" src="/assets/images/tba_lamp.svg"></span></button>
+                <button type="button" class="btn btn-primary align-middle" onclick="window.location.assign('https://www.thebluealliance.com/team/3461/{{ page.year }}');">View On The Blue Alliance <span><img style="height: 25px;" src="/assets/images/tba_lamp.svg"></span></button>
             </div>
             {{ content }}
         </div>
@@ -63,7 +63,7 @@ layout: default
       
             <!-- Modal Header -->
             <div class="modal-header">
-            <h4 class="modal-title">{{ page.title }} Technical Binder</h4>
+            <h4 class="modal-title">{{ page.year }} Technical Binder</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             
@@ -90,10 +90,10 @@ layout: default
 
 <script>
 var events = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
-var year = "{{ page.title }}"
+var year = "{{ page.year }}"
 var eventstatuses = "/statuses?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
 const authKey = "?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
-var district = "https://www.thebluealliance.com/api/v3/district/{{ page.title }}ne/rankings"+authKey
+var district = "https://www.thebluealliance.com/api/v3/district/{{ page.year }}ne/rankings"+authKey
 var media = "https://www.thebluealliance.com/api/v3/team/frc3461/media/"
 var awards = "https://www.thebluealliance.com/api/v3/team/frc3461/awards/"
 
