@@ -2,13 +2,24 @@
 layout: admin
 title: Dashboard
 ---
+<form>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <textarea class="form-control" rows="1" id="title"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="content">Content</label>
+      <textarea class="form-control" style="white-space: pre-wrap;" rows="25" id="content"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 
 <script>
     const queryString = window.location.search;
     console.log(queryString);
     const urlParams = new URLSearchParams(queryString);
     const post = urlParams.get('post');
-    var postContent = ""
+    let postContent = ""
     getPost(post);
     // https://cdn.jsdelivr.net/gh/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/_posts/ FILENAME
     async function getPost(post) {
@@ -17,5 +28,11 @@ title: Dashboard
         postContent = await postRaw.text();
         console.log(postRaw);
         console.log(postContent);
+
+        document.getElementById('title').innerHTML = postClean;
+        document.getElementById('content').innerHTML = postContent;
     }
+
+
+
 </script>

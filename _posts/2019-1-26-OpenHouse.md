@@ -2,6 +2,7 @@
 layout: post
 author: Test Blogger
 filename: OpenHouse
+title: Open House
 ---
 # Open House
 On January 21st, Martin Luther King Jr. Day, the team held an open house where we hosted our sponsors as well as AGR employees. We organized the event so that our sponsors could keep up with our activities in real-time and get a closer look at our workplace.
