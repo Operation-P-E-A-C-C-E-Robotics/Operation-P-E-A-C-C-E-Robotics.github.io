@@ -47,6 +47,12 @@ layout: default
         <table id="employees" class="table table-bordered table-striped table-light text-dark"></table>
     </div> 
 
+    {% if page.matchVideoPlaylist && page.matchVideoPlaylist != "" %}
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" src="{{ page.matchVideoPlaylist }}" allowfullscreen></iframe>
+    </div>
+    {% endif %}
+
 </div>
 
 
