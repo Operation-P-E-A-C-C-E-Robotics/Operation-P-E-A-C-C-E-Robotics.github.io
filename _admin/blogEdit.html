@@ -9,7 +9,7 @@ title: Dashboard
     const urlParams = new URLSearchParams(queryString);
     const post = urlParams.get('post');
     var postRaw = ""
-    getPost();
+    getPost(post);
     // https://cdn.jsdelivr.net/gh/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/_posts/ FILENAME
     async function getPost(post) {
         postRaw = await fetch('https://cdn.jsdelivr.net/gh/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/_posts/' + post);
