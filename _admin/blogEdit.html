@@ -2,21 +2,32 @@
 layout: admin
 title: Dashboard
 ---
-<form>
+<div>
+    <div id="dataInput">
     <div class="form-group">
-      <label for="title">Title</label>
+      <label for="title">Filename</label>
       <textarea class="form-control" rows="1" id="title"></textarea>
     </div>
     <div class="form-group">
       <label for="content">Content</label>
       <textarea class="form-control" style="white-space: pre-wrap;" rows="25" id="content"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+    </div>
+    <div class="dataUpload" hidden="true">
+        <iframe src="https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/upload/main/_posts"></iframe>
+    </div>
+    <button onclick="generatePostFile()" class="btn btn-primary">Download</button>
+    <button onclick="uploadToGithub()" type="button" class="btn btn-outline-primary">Upload to Github
+
+    </button>
+</div>
+
+
 
 <script>
+
     const queryString = window.location.search;
-    console.log(queryString);
+    // console.log(queryString);
     const urlParams = new URLSearchParams(queryString);
     const post = urlParams.get('post');
     let postContent = ""
@@ -26,13 +37,58 @@ title: Dashboard
         var postClean = post.replace('/', '-');
         var postRaw = await fetch('https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/main/_posts/' + postClean);
         postContent = await postRaw.text();
-        console.log(postRaw);
-        console.log(postContent);
+        // console.log(postRaw);
+        // console.log(postContent);
 
         document.getElementById('title').innerHTML = postClean;
         document.getElementById('content').innerHTML = postContent;
     }
 
+    function generatePostFile() {
+        var element = document.createElement(`a`);
+        var content = [];
+        var filename = document.getElementById('title').value;
+        console.log(filename);
+        var filecontent = document.getElementById('content').value;
+        //console.log(filecontent);
+        content.push(filecontent);
+        var blob = new Blob([content], { type: `plain/text` });
+        var fileUrl = URL.createObjectURL(blob);
+        element.setAttribute('href', fileUrl); //file location
+        element.setAttribute('download', filename); // file name
+        element.style.display ='none';
+        document.body.appendChild(element);
+        element.click();
+        // commitPost(blob);
+    }
 
+    function uploadToGithub() {
+        document.getElementById('dataInput').setAttribute("class", "embed-responsive embed-responsive-16by9 w-75");
+        document.getElementById('dataInput').innerHTML = `<iframe src="https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/upload/main/_posts"></iframe>`
+    }
+
+</script>
+<script type="module">
+    import { Octokit } from "https://cdn.skypack.dev/@octokit/rest";
+    window.commitPost = commitPost;
+    async function commitPost(file) {
+        // Octokit.js
+        // https://github.com/octokit/core.js#readme
+        const octokit = new Octokit({
+        auth: 'YOUR-TOKEN'
+        })
+
+        await octokit.request('POST /repos/{owner}/{repo}/pulls', {
+            owner: 'Operation-P-E-A-C-C-E-Robotics',
+            repo: 'Operation-P-E-A-C-C-E-Robotics.github.io',
+            title: 'Web Backend Changes',
+            body: 'Please pull these changes in',
+            head: 'Operation-P-E-A-C-C-E-Robotics:main',
+            base: 'master',
+            headers: {
+                'X-GitHub-Api-Version': '2022-11-28'
+            }
+        })
+    }
 
 </script>
