@@ -27,7 +27,7 @@ collections:
     fields: # The fields for each document, usually in front matter
       - {label: "Layout", name: "layout", widget: "hidden", default: "robot"}
       - {label: "Year", name: "year", widget: "string"}
-      - {label: "Robot Name", name: "author", widget: "string"}
+      - {label: "Robot Name", name: "robotName", widget: "string"}
       - {label: "Game Name", name: "game", widget: "string"}
       - {label: "Thumbnail", name: "thumbnail", widget: "string"}
       - {label: "Technical Binder", name: "techBinder", widget: "string"}
