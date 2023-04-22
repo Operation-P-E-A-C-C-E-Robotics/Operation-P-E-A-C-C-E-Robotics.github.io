@@ -3,8 +3,8 @@ backend:
   repo: Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io
   branch: main # Branch to update (optional; defaults to master)
 
-media_folder: "assets/uploads" # Media files will be stored in the repo under images/uploads
-public_folder: "/assets/uploads" # The src attribute for uploaded media will begin with /images/uploads
+media_folder: "assets/" # Media files will be stored in the repo under images/uploads
+public_folder: "assets/" # The src attribute for uploaded media will begin with /images/uploads
 
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
@@ -26,7 +26,7 @@ collections:
     slug: "{{year}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
       - {label: "Layout", name: "layout", widget: "hidden", default: "robot"}
-      - {label: "Year", name: "year", widget: "integer"}
+      - {label: "Year", name: "year", widget: "string"}
       - {label: "Robot Name", name: "author", widget: "string"}
       - {label: "Game Name", name: "game", widget: "string"}
       - {label: "Thumbnail", name: "thumbnail", widget: "string"}
