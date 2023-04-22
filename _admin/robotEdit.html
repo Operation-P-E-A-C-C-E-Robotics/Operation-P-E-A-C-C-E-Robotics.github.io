@@ -31,21 +31,23 @@ title: Dashboard
     if (post != null) {
     getPost(post);
     } else {
-        date = `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}-REPLACEME.md`;
+        date = `${new Date().getFullYear()}.md`;
         frontMatter = `---
-layout: post
-author: Test Blogger
-filename: REPLACE ME
-title: REPLACE ME
+layout: robot
+year: REPLACE ME
+robotName: REPLACE ME
+game: REPLACE ME
+thumbnail: /assets/images/notFound.png
+techBinder: ""
+matchVideoPlaylist: ""
 ---
 <-- Do not edit except for the REPLACE ME items -->`
         document.getElementById('title').innerHTML = date;
         document.getElementById('content').innerHTML = frontMatter;
     }
-    // https://cdn.jsdelivr.net/gh/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/_posts/ FILENAME
     async function getPost(post) {
         var postClean = post.replace('/', '-');
-        var postRaw = await fetch('https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/main/_posts/' + postClean);
+        var postRaw = await fetch('https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/main/_robots/' + postClean);
         postContent = await postRaw.text();
         // console.log(postRaw);
         // console.log(postContent);
@@ -73,7 +75,7 @@ title: REPLACE ME
     }
 
     function uploadToGithub() {
-        window.open("https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/upload/main/_posts", '_blank');
+        window.open("https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/upload/main/_robots", '_blank');
     }
 
 </script>
