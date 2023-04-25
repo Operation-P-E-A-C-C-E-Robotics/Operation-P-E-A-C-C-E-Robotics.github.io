@@ -89,60 +89,72 @@ layout: default
 
 
 <script>
-var events = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
-var year = "{{ page.year }}"
-var eventstatuses = "/statuses?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
-const authKey = "?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
-var district = "https://www.thebluealliance.com/api/v3/district/{{ page.year }}ne/rankings"+authKey
-var media = "https://www.thebluealliance.com/api/v3/team/frc3461/media/"
-var awards = "https://www.thebluealliance.com/api/v3/team/frc3461/awards/"
 
 
-var eventstats = events + year + eventstatuses;
-var eventurl = events + year + authKey;
-var mediaurl = media + year + authKey;
-var awardsurl = awards + year + authKey;
-var countDownDate;
-
-function json2array(json) {
-var result = [];
-for (var i in json) {
-    result.push([i, json[i]]);
-}
-return result;
-}
-// Defining async function
+  var events = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
+  var year = "{{page.year}}";
+  
+  var eventstatuses = "/statuses?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
+  const authKey = "?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb" 
+  var district = "https://www.thebluealliance.com/api/v3/district/" +year +"ne/rankings"+authKey
+  var media = "https://www.thebluealliance.com/api/v3/team/frc3461/media/"
+  var awards = "https://www.thebluealliance.com/api/v3/team/frc3461/awards/"
 
 
-async function getMedia(mediaURL) {
-const apiResponse = await fetch(mediaURL);
-const mediaJSON = await apiResponse.json();
-//console.log(mediaJSON);
-var hasPlacedImage = false;
-if (mediaJSON.length != 0)
-for (var i = 0; i < mediaJSON.length; i++) {
-    const tempMedia = mediaJSON[i];
-    //console.log(mediaJSON[i]);
-    if (mediaJSON[i].preferred == true && mediaJSON[i].direct_url != undefined) {
+  var eventstats = events + year + eventstatuses;
+  var eventurl = events + year + authKey;
+  var mediaurl = media + year + authKey;
+  var awardsurl = awards + year + authKey;
+  var countDownDate;
 
-    if (hasPlacedImage == false) {
-        document.getElementById("robotCarousel").innerHTML += `<img src="${mediaJSON[i].direct_url}" class="carousel-item active img-thumbnail" style="width:100%; height:30rem; object-fit: cover;"></img>`;
-        hasPlacedImage = true;
-    } else {
-        document.getElementById("robotCarousel").innerHTML += `<img src="${mediaJSON[i].direct_url}" class="carousel-item img-thumbnail" style="width:100%; height:30rem; object-fit: cover;"></img>`;
+  function json2array(json) {
+    var result = [];
+    for (var i in json) {
+      result.push([i, json[i]]);
+    }
+    return result;
+  }
+  // Defining async function
+
+
+  function viewOnTBA() {
+   window.location.assign('https://www.thebluealliance.com/team/3461/' + year);
+  }
+
+  async function getMedia(mediaURL) {
+    const apiResponse = await fetch(mediaURL);
+    const mediaJSON = await apiResponse.json();
+    //console.log(mediaJSON);
+    var hasPlacedImage = false;
+    if (mediaJSON.length != 0)
+   for (var i = 0; i < mediaJSON.length; i++) {
+       const tempMedia = mediaJSON[i];
+       //console.log(mediaJSON[i]);
+       if (mediaJSON[i].preferred == true && mediaJSON[i].direct_url != undefined) {
+
+       if (hasPlacedImage == false) {
+           document.getElementById("robotCarousel").innerHTML += `<img src="${mediaJSON[i].direct_url}" class="carousel-item active img-thumbnail" style="width:100%; height:30rem; object-fit: cover;"></img>`;
+           document.getElementById("image").setAttribute("content", mediaJSON[i].direct_url);
+           hasPlacedImage = true;
+       } else {
+           document.getElementById("robotCarousel").innerHTML += `<img src="${mediaJSON[i].direct_url}" class="carousel-item img-thumbnail" style="width:100%; height:30rem; object-fit: cover;"></img>`;
+       }
+
+
+       }
+   }
+
+   if (mediaJSON.length == 0 || hasPlacedImage == false) {
+       document.getElementById("robotImagePlaceholder").classList.add("active");
+   }
+
+    if (mediaJSON.length == 0) {
+      document.getElementById("robotImagePlaceholder").classList.add("active");
     }
 
+  }
 
-    }
-}
-
-if (mediaJSON.length == 0 || hasPlacedImage == false) {
-    document.getElementById("robotImagePlaceholder").classList.add("active");
-}
-
-}
-
-async function getapi(eventurl, eventstats, awards) {
+  async function getapi(eventurl, eventstats, awards) {
     const eventResponse = await fetch(eventurl);
     const eventStats = await fetch(eventstats);
     const awardsData = await fetch(awards);
@@ -152,153 +164,184 @@ async function getapi(eventurl, eventstats, awards) {
     var eventstatdata = await eventStats.json();
     var awardsForYear = await awardsData.json();
     /* console.log("Event Data")
-    console.log(eventdata);
-    console.log("Event Stats")
-    console.log(eventstatdata); */
+     console.log(eventdata);
+     console.log("Event Stats")
+     console.log(eventstatdata); */
+     console.log(eventdata); 
+     eventKeyValueArray = {};
+     for (var i = 0; i < eventdata.length; i++){
+       console.log(i)
+       eventKeyValueArray[[eventdata[i].key]] = eventdata[i];
+     }
 
 
-    show(eventstatdata, eventdata, awardsForYear);
+    show(eventstatdata, eventKeyValueArray, awardsForYear);
 
-    getMedia(mediaurl);
-    }
-    // Calling that async function
-    getapi(eventurl, eventstats, awardsurl);
-
-    getDistrictStats(district);
-
-    async function getDistrictStats(district) {
-    var districtResponse = await fetch(district);
-    var districtJSON = await districtResponse.json();
-    var teamDistrictRankings;
+    document.getElementById("header").innerHTML = year + " Competition Season"
     
-    for (var i = 0; i < districtJSON.length; i++) {
-                if (districtJSON[i].team_key == "frc3461") {
-        console.log(districtJSON[i]);
-        document.getElementById("districtRank").innerHTML = "District Rank: " + districtJSON[i].rank; 
-        document.getElementById("districtPoints").innerHTML = "District Points Earned: " + districtJSON[i].point_total; 
-    }
-    }
+  }
+  // Calling that async function
+  getapi(eventurl, eventstats, awardsurl);
+  getDistrictStats(district);
+  getMedia(mediaurl);
 
-    }
+  async function getDistrictStats(district) {
+   var districtResponse = await fetch(district);
+   var districtJSON = await districtResponse.json();
+   var teamDistrictRankings;
+   
+   for (var i = 0; i < districtJSON.length; i++) {
+     if (districtJSON[i].team_key == "frc3461") {
+       //console.log(districtJSON[i]);
+       document.getElementById("districtRank").innerHTML = "Current District Rank: " + districtJSON[i].rank; 
+       document.getElementById("districtPoints").innerHTML = "Current District Points: " + districtJSON[i].point_total; 
+     }
+   }
+
+  }
 
 
-    // Function to define innerHTML for HTML table
-    function show(event, stats, awards) {
-    /*       console.log("event info");
-            console.log(event);
-            console.log("match info");
-            console.log(stats); */
+
+
+
+
+
+
+
+
+
+  // Function to define innerHTML for HTML table
+  function show(event, stats, awards) {
+           //console.log("event info");
+           //console.log(event);
+           //  console.log("match info");
+           //  console.log(stats); 
     let tab =
-        `<tr>
+      `<tr>
         <th>Event Name</th>
         <th>Ranking</th>
         <th>Awards</th>
     </tr>`;
 
-    var result = json2array(event);
-    var statResult = json2array(stats);
+     var result = stats;
+   //  var statResult = json2array(stats);
 
     length = result.length;
     //console.log(result);
-    labels = [];
-    values = [];
-    for (i = 0; i < length; i++) {
-        labels.push(result[i]);
+     eventInfo = new Object();
+   //  values = [];
+     for (var i = 0; i < length; i++) {
+     //  eventInfo.assign([result[i].key, result[i]]);
+      
     }
-
+    console.log(stats)
     if (length == 0) {
-        tab = `<h1 class=text-center>No Events Found</h1>`
-        document.getElementById("employees").innerHTML = tab;
+      tab = `<h1 class=text-center>No Events Found</h1>`
+      document.getElementById("employees").innerHTML = tab;
     }
 
-    //console.log(labels);
+    //console.log(values);
     //console.log(awards)
-    for (var label in labels) {
-          if (labels[label][1] != null) {
-            var badge = ""
-            switch(stats[label].event_type_string) {
-              case "Preseason":
-                badge = `<span class="badge badge-pill badge-secondary">Preseason Event</span>`
-                break;
-              case "Offseason":
-                badge = `<span class="badge badge-pill badge-secondary">Offseason Event</span>`
-                break;
+   for (const [key, value] of Object.entries(event)) {
+     var eventInfo = "";  
+     // Object.keys(stats).forEach(createArray(key));
+     
 
-               case "Regional":
-                    badge = `<span class="badge badge-pill badge-primary">Week ${stats[label].week + 1} Regional Event</span>`
-                    break;
-              case "District":
-                badge = `<span class="badge badge-pill badge-primary">Week ${stats[label].week + 1} District Event</span>`
-                break;
-              case "District Championship Division":
-                badge = `<span class="badge badge-pill badge-info">DCMP Division</span>`
-                break;
-              case "District Championship":
-                badge = `<span class="badge badge-pill badge-info">DCMP</span>`
-                break;
-              case "Championship Division":
-                badge = `<span class="badge badge-pill badge-success">CMP Division</span>`
-                break;
-              case "Championship Finals":
-                badge = `<span class="badge badge-pill badge-success">CMP Einstein</span>`
-                break;
+     
 
-              default:
-                // code block
-            }
-          
-            tab += `<tr><td date=${stats[label].start_date} id=${stats[label].key}><a class="text-dark" href="https://www.thebluealliance.com/event/${stats[label].key}">${stats[label].name} ${badge}</a></td><td>${labels[label][1].overall_status_str}</td><td id=${stats[label].key + "awards"}>None Found</td></tr>`;
-              
-          } else {
-          tab += `<tr><td date=${stats[label].start_date} id=${stats[label].key}><a class="text-dark" href="https://www.thebluealliance.com/event/${stats[label].key}">${stats[label].name} ${badge}</a></td><td>No Data</td><td>No Data</td></tr>`
-          }
-          // Setting innerHTML as tab variable
-          document.getElementById("employees").innerHTML = tab;
-          sortTable();
-    }
+     if (value != null) {
+       
+       var badge = ""
+       switch(stats[key].event_type_string) {
+         case "Preseason":
+           badge = `<span class="badge badge-pill badge-secondary">Preseason Event</span>`
+           break;
+         case "Offseason":
+           badge = `<span class="badge badge-pill badge-secondary">Offseason Event</span>`
+           break;
+         
+         case "Regional":
+           badge = `<span class="badge badge-pill badge-primary">Week ${stats[key].week + 1} Regional Event</span>`
+           break;
+         case "District":
+           badge = `<span class="badge badge-pill badge-primary">Week ${stats[key].week + 1} District Event</span>`
+           break;
+         case "District Championship Division":
+           badge = `<span class="badge badge-pill badge-info">DCMP Division</span>`
+           break;
+         case "District Championship":
+           badge = `<span class="badge badge-pill badge-info">DCMP</span>`
+           break;
+         case "Championship Division":
+           badge = `<span class="badge badge-pill badge-success">CMP Division</span>`
+           break;
+         case "Championship Finals":
+           badge = `<span class="badge badge-pill badge-success">CMP Einstein</span>`
+           break;
+
+         default:
+           // code block
+       }
+       console.log("key");
+       console.log(key);
+       console.log("value")
+       console.log(value);
+       tab += `<tr><td date=${stats[key].start_date} id=${key}><a class="text-dark" href="https://www.thebluealliance.com/event/${key}">${stats[key].name} ${badge}</a></td><td id="${key}eventstatus">${value.overall_status_str}</td><td id=${key + "awards"}>None Found</td></tr>`;
+       // document.getElementById(value.key + "eventstatus").innerHTML = 
+     } else {
+     tab += `<tr><td date=${stats[key].start_date} id=${key}><a class="text-dark" href="https://www.thebluealliance.com/event/${key}">${stats[key].name} ${badge}</a></td><td>Check back on ${stats[key].start_date}</td><td>No Data</td></tr>`
+     }
+     // Setting innerHTML as tab variable
+     document.getElementById("employees").innerHTML = tab;
+     sortTable();
+     }
+
 
     //console.log(awards);
     for (var i = 0; i < awards.length; i++) {
-        //console.log(awards[i]);
-        document.getElementById(awards[i].event_key + "awards").innerHTML = awards[i].name;
+      //console.log(awards[i]);
+      document.getElementById(awards[i].event_key + "awards").innerHTML = awards[i].name;
     }
 
-    }
+  }
+  function sortTable() {
+ var table, rows, switching, i, x, y, shouldSwitch;
+ table = document.getElementById("employees");
+ switching = true;
+ /* Make a loop that will continue until
+ no switching has been done: */
+ while (switching) {
+   // Start by saying: no switching is done:
+   switching = false;
+   rows = table.rows;
+   /* Loop through all table rows (except the
+   first, which contains table headers): */
+   for (i = 1; i < (rows.length - 1); i++) {
+     // Start by saying there should be no switching:
+     shouldSwitch = false;
+     /* Get the two elements you want to compare,
+     one from current row and one from the next: */
+     x = rows[i].getElementsByTagName("TD")[0];
+     y = rows[i + 1].getElementsByTagName("TD")[0];
+     xTime = Date.parse(x.getAttribute("date"));
+     yTime = Date.parse(y.getAttribute("date"));
+     // Check if the two rows should switch place:
+     if (xTime > yTime) {
+       // If so, mark as a switch and break the loop:
+       shouldSwitch = true;
+       break;
+     }
+   }
+   if (shouldSwitch) {
+     /* If a switch has been marked, make the switch
+     and mark that a switch has been done: */
+     rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+     switching = true;
+   }
+ }
+}
 
-    function sortTable() {
-      var table, rows, switching, i, x, y, shouldSwitch;
-      table = document.getElementById("employees");
-      switching = true;
-      /* Make a loop that will continue until
-      no switching has been done: */
-      while (switching) {
-        // Start by saying: no switching is done:
-        switching = false;
-        rows = table.rows;
-        /* Loop through all table rows (except the
-        first, which contains table headers): */
-        for (i = 1; i < (rows.length - 1); i++) {
-          // Start by saying there should be no switching:
-          shouldSwitch = false;
-          /* Get the two elements you want to compare,
-          one from current row and one from the next: */
-          x = rows[i].getElementsByTagName("TD")[0];
-          y = rows[i + 1].getElementsByTagName("TD")[0];
-          xTime = Date.parse(x.getAttribute("date"));
-          yTime = Date.parse(y.getAttribute("date"));
-          // Check if the two rows should switch place:
-          if (xTime > yTime) {
-            // If so, mark as a switch and break the loop:
-            shouldSwitch = true;
-            break;
-          }
-        }
-        if (shouldSwitch) {
-          /* If a switch has been marked, make the switch
-          and mark that a switch has been done: */
-          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-          switching = true;
-        }
-      }
-    }
+
+
+
 </script>
