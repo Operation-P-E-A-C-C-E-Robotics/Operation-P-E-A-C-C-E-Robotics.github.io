@@ -97,12 +97,12 @@ title: Current Season
        async function getMedia(mediaURL) {
          const apiResponse = await fetch(mediaURL);
          const mediaJSON = await apiResponse.json();
-         //console.log(mediaJSON);
+         ////console.log(mediaJSON);
          var hasPlacedImage = false;
          if (mediaJSON.length != 0)
         for (var i = 0; i < mediaJSON.length; i++) {
             const tempMedia = mediaJSON[i];
-            //console.log(mediaJSON[i]);
+            ////console.log(mediaJSON[i]);
             if (mediaJSON[i].preferred == true && mediaJSON[i].direct_url != undefined) {
 
             if (hasPlacedImage == false) {
@@ -136,14 +136,14 @@ title: Current Season
          // var eventdata = JSON.parse(eventdatatemp);
          var eventstatdata = await eventStats.json();
          var awardsForYear = await awardsData.json();
-         /* console.log("Event Data")
-          console.log(eventdata);
-          console.log("Event Stats")
-          console.log(eventstatdata); */
-          console.log(eventdata); 
+         /* //console.log("Event Data")
+          //console.log(eventdata);
+          //console.log("Event Stats")
+          //console.log(eventstatdata); */
+          //console.log(eventdata); 
           eventKeyValueArray = {};
           for (var i = 0; i < eventdata.length; i++){
-            console.log(i)
+            //console.log(i)
             eventKeyValueArray[[eventdata[i].key]] = eventdata[i];
           }
  
@@ -166,7 +166,7 @@ title: Current Season
         
         for (var i = 0; i < districtJSON.length; i++) {
 					if (districtJSON[i].team_key == "frc3461") {
-          	//console.log(districtJSON[i]);
+          	////console.log(districtJSON[i]);
             document.getElementById("districtRank").innerHTML = "Current District Rank: " + districtJSON[i].rank; 
             document.getElementById("districtPoints").innerHTML = "Current District Points: " + districtJSON[i].point_total; 
           }
@@ -179,15 +179,15 @@ title: Current Season
          var events = await eventJSON.json();
          var curevents = []
          var currentEvent;
-         //console.log(events);
+         ////console.log(events);
          for (let key of Object.entries(events)) {
 
-           //console.log(key);
+           ////console.log(key);
            var date = new Date()
            var eventStartDate = new Date(key[1].start_date);
            var eventEndDate = new Date(key[1].end_date);
-           //console.log(dateConfig);
-           //console.log(eventStartDate);
+           ////console.log(dateConfig);
+           ////console.log(eventStartDate);
            if (date.getTime() <= eventEndDate.getTime() && date.getTime() >= eventStartDate.getTime()) {
              curevents.push(key[1]);
              currentEvent = key[1];
@@ -206,12 +206,12 @@ title: Current Season
          var matchAPIURL = "https://www.thebluealliance.com/api/v3/match/" + matchKey + authKey;
          var matchAPIResponse = await fetch(matchAPIURL);
          var match = await matchAPIResponse.json();
-         console.log(match);
+         //console.log(match);
          return Promise.resolve(match);
        }
  
        async function getTeamStatus(eventKey) {
-         //console.log(eventKey);
+         ////console.log(eventKey);
          var matchAPIURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + eventKey + "/status" + authKey;
          var matchAPIResponse = await fetch(matchAPIURL);
          var match = await matchAPIResponse.json();
@@ -219,9 +219,9 @@ title: Current Season
        }
  
        async function bannerHelper(eventTitle, nextMatch, stats) {
-         //console.log(nextMatch);
+         ////console.log(nextMatch);
          var match = await getMatchFromKey(nextMatch);
-         console.log(nextMatch);
+         //console.log(nextMatch);
          countDownDate = match.predicted_time
          document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + eventTitle;
          document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level + " " + match.match_number;
@@ -241,10 +241,10 @@ title: Current Season
  
        // Function to define innerHTML for HTML table
        function show(event, stats, awards) {
-                //console.log("event info");
-                //console.log(event);
-                //  console.log("match info");
-                //  console.log(stats); 
+                ////console.log("event info");
+                ////console.log(event);
+                //  //console.log("match info");
+                //  //console.log(stats); 
          let tab =
            `<tr>
              <th>Event Name</th>
@@ -256,21 +256,21 @@ title: Current Season
         //  var statResult = json2array(stats);
  
          length = result.length;
-         //console.log(result);
+         ////console.log(result);
           eventInfo = new Object();
         //  values = [];
           for (var i = 0; i < length; i++) {
           //  eventInfo.assign([result[i].key, result[i]]);
            
          }
-         console.log(stats)
+         //console.log(stats)
          if (length == 0) {
            tab = `<h1 class=text-center>No Events Found</h1>`
            document.getElementById("employees").innerHTML = tab;
          }
  
-         //console.log(values);
-         //console.log(awards)
+         ////console.log(values);
+         ////console.log(awards)
         for (const [key, value] of Object.entries(event)) {
           var eventInfo = "";  
           // Object.keys(stats).forEach(createArray(key));
@@ -311,10 +311,10 @@ title: Current Season
               default:
                 // code block
             }
-            console.log("key");
-            console.log(key);
-            console.log("value")
-            console.log(value);
+            //console.log("key");
+            //console.log(key);
+            //console.log("value")
+            //console.log(value);
             tab += `<tr><td date=${stats[key].start_date} id=${key}><a class="text-dark" href="https://www.thebluealliance.com/event/${key}">${stats[key].name} ${badge}</a></td><td id="${key}eventstatus">${value.overall_status_str}</td><td id=${key + "awards"}>None Found</td></tr>`;
             // document.getElementById(value.key + "eventstatus").innerHTML = 
           } else {
@@ -326,9 +326,9 @@ title: Current Season
           }
 
 
-         //console.log(awards);
+         ////console.log(awards);
          for (var i = 0; i < awards.length; i++) {
-           //console.log(awards[i]);
+           ////console.log(awards[i]);
            document.getElementById(awards[i].event_key + "awards").innerHTML = awards[i].name;
          }
  
