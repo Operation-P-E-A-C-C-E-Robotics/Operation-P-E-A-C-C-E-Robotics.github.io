@@ -252,30 +252,30 @@ layout: default
      if (value != null) {
        
        var badge = ""
-       switch(stats[key].event_type_string) {
-         case "Preseason":
+       switch(stats[key].event_type) {
+         case 100:
            badge = `<span class="badge badge-pill badge-secondary">Preseason Event</span>`
            break;
-         case "Offseason":
+         case 99:
            badge = `<span class="badge badge-pill badge-secondary">Offseason Event</span>`
            break;
          
-         case "Regional":
+         case 0:
            badge = `<span class="badge badge-pill badge-primary">Week ${stats[key].week + 1} Regional Event</span>`
            break;
-         case "District":
+         case 1:
            badge = `<span class="badge badge-pill badge-primary">Week ${stats[key].week + 1} District Event</span>`
            break;
-         case "District Championship Division":
+         case 5:
            badge = `<span class="badge badge-pill badge-info">DCMP Division</span>`
            break;
-         case "District Championship":
+         case 2:
            badge = `<span class="badge badge-pill badge-info">DCMP</span>`
            break;
-         case "Championship Division":
+         case 3:
            badge = `<span class="badge badge-pill badge-success">CMP Division</span>`
            break;
-         case "Championship Finals":
+         case 4:
            badge = `<span class="badge badge-pill badge-success">CMP Einstein</span>`
            break;
 
