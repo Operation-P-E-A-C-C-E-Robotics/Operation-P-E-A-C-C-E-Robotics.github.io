@@ -318,7 +318,7 @@ title: Current Season
             tab += `<tr><td date=${stats[key].start_date} id=${key}><a class="text-dark" href="https://www.thebluealliance.com/event/${key}">${stats[key].name} ${badge}</a></td><td id="${key}eventstatus">${value.overall_status_str}</td><td id=${key + "awards"}>None Found</td></tr>`;
             // document.getElementById(value.key + "eventstatus").innerHTML = 
           } else {
-          tab += `<tr><td date=${stats[key].start_date} id=${key}><a class="text-dark" href="https://www.thebluealliance.com/event/${key}">${stats[key].name} ${badge}</a></td><td>Check back on ${stats[key].start_date}</td><td>No Data</td></tr>`
+          tab += `<tr><td date=${stats[key].start_date} id=${key}><a class="text-dark" href="https://www.thebluealliance.com/event/${key}">${stats[key].name} ${badge}</a></td><td>No Matches Found, Check Back After ${stats[key].start_date}</td><td>No Data</td></tr>`
           }
           // Setting innerHTML as tab variable
           document.getElementById("employees").innerHTML = tab;

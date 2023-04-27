@@ -234,7 +234,7 @@ layout: default
      //  eventInfo.assign([result[i].key, result[i]]);
       
     }
-    //console.log(stats)
+    // console.log(stats)
     if (length == 0) {
       tab = `<h1 class=text-center>No Events Found</h1>`
       document.getElementById("employees").innerHTML = tab;
@@ -270,7 +270,13 @@ layout: default
            badge = `<span class="badge badge-pill badge-info">DCMP Division</span>`
            break;
          case 2:
+            console.log(key);
+            if (key == "2016nytv") {
+              badge = `<span class="badge badge-pill badge-secondary">Offseason Event</span>`
+              // for whatever reason, this 1 event identifies itself as an offseason event but gets the DCMP bage, no idea why, this is a bandaid fix
+            } else {
            badge = `<span class="badge badge-pill badge-info">DCMP</span>`
+            }
            break;
          case 3:
            badge = `<span class="badge badge-pill badge-success">CMP Division</span>`
@@ -280,8 +286,9 @@ layout: default
            break;
 
          default:
-           // code block
+           badge = ""
        }
+      //  console.log(stats[key].event_type);
        //console.log("key");
        //console.log(key);
        //console.log("value")
@@ -289,7 +296,7 @@ layout: default
        tab += `<tr><td date=${stats[key].start_date} id=${key}><a class="text-dark" href="https://www.thebluealliance.com/event/${key}">${stats[key].name} ${badge}</a></td><td id="${key}eventstatus">${value.overall_status_str}</td><td id=${key + "awards"}>None Found</td></tr>`;
        // document.getElementById(value.key + "eventstatus").innerHTML = 
      } else {
-     tab += `<tr><td date=${stats[key].start_date} id=${key}><a class="text-dark" href="https://www.thebluealliance.com/event/${key}">${stats[key].name} ${badge}</a></td><td>Check back on ${stats[key].start_date}</td><td>No Data</td></tr>`
+     tab += `<tr><td date=${stats[key].start_date} id=${key}><a class="text-dark" href="https://www.thebluealliance.com/event/${key}">${stats[key].name} ${badge}</a></td><td>No Matches Found, Check Back After ${stats[key].start_date}</td><td>No Data</td></tr>`
      }
      // Setting innerHTML as tab variable
      document.getElementById("employees").innerHTML = tab;
