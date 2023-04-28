@@ -18,7 +18,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-
+    <script src="/assets/js/helpers.js"></script>
 
     <!-- Meta Tags -->
     <!-- <meta name="description" content="From Bristol, Connecticut 06010, USA. Team information, match results, and match videos from the FIRST Robotics Competition."> -->
@@ -53,6 +53,7 @@
 </head> 
   <body class="bg-dark text-light">
     {% include navigation.html %}
+    <div id="alert"></div>
       {{ content }}
     {% include footer.html%}
   </body>
