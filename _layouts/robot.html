@@ -47,6 +47,10 @@ layout: default
         <table id="employees" class="table table-bordered table-striped table-light text-dark"></table>
     </div> 
 
+    <div class="container w-100 mx-auto pt-3 bg-light">
+      <canvas id="myChart" style="width:100%;"></canvas>
+    </div>
+
     {% if page.matchVideoPlaylist && page.matchVideoPlaylist != "" %}
     <div class="embed-responsive embed-responsive-16by9 w-75 mx-auto">
       <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list={{page.matchVideoPlaylist}}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -350,6 +354,171 @@ layout: default
 
 
 
+
+</script>
+
+
+<!-- for the graphs -->
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
+<script>
+  getMatchRecord();
+  async function getMatchRecord(){
+    // var year = 2019;
+    var apiURL = "https://www.thebluealliance.com/api/v3/team/frc3461/matches/"+ year +"/simple"+authKey;
+    var apiPromise = await fetch(apiURL);
+    var matches = await apiPromise.json();
+    generateDataSet(matches);
+  }
+
+  function generateDataSet(matches) {
+    var events = [];
+    var score = [];
+    var scorePure = [];
+    var eventsScorePair = [];
+    var matchNumber = [];
+    var redAlliance;
+    var blueAlliance; 
+     for (var i = 0; i < matches.length; i++) {
+        //console.log(matches[i]);
+        var match = new Object(matches[i]);
+        redAlliance = match.alliances.red.team_keys;
+        blueAlliance = match.alliances.blue.team_keys;
+        if (events.includes(match.event_key) == false) {
+          events.push(match.event_key);
+        }
+
+        if (redAlliance.includes("frc3461")) {
+          // events.find(any(match.event_key)).push(match.alliances.red.score);
+          scorePure.push(match.alliances.red.score);
+          // score.push([match.event_key, {x: match.match_number, y: match.alliances.red.score, compLevel: match.comp_level+match.match_number}]);
+          score.push([match.event_key, {x: match.match_number, y: match.alliances.red.score, num: match.time}]);
+          
+        } else if (blueAlliance.includes("frc3461")) {
+          scorePure.push(match.alliances.blue.score);
+          score.push([match.event_key, {x: match.match_number, y: match.alliances.blue.score, num: match.time}]);
+          
+        }
+
+        matchNumber.push(i);
+      }
+      var eventsWithScoreArray = new Object;
+      for (var i = 0; i < events.length; i++) {
+        eventsWithScoreArray[events[i]] = [];
+      }
+      // console.log(score);
+      for (var i=0; i<score.length; i++){
+        // console.log(score[i]);
+        eventsWithScoreArray[score[i][0]].push(score[i][1]);
+        // eventsWithScoreArray[score[i][1]].push(score[i][2]);
+        eventsWithScoreArray[score[i][0]].sort(function(a, b){return a.num - b.num});
+      }
+      // console.log(events);
+      // console.log(score);
+      // console.log(eventsScorePair);
+      //  console.log(eventsWithScoreArray);
+      
+
+      generateGraph(events, eventsWithScoreArray, matchNumber);
+  }
+
+  async function generateGraph(events, scores, match_number) {
+    const N = Math.max(...match_number) / events.length + 8;
+    const arr = Array.from({length: N}, (_, index) => "Match " + (index + 1) );
+    // console.log(arr);
+    // console.log(match_number);
+    var xValues = arr;
+    var barColors = ["red", "green","blue","orange","brown"];
+    var eventKeyNamePair = {};
+    var chartConfig = {
+      type: "line",
+      data: {
+        labels: arr,
+        datasets: []
+      },
+      options: {
+        legend: {display: true},
+        // scales: {
+        //   yAxes: [{ticks: {min: 0}}],
+        // }
+        title: {
+          display: true,
+          text: "Match Scores Over Time",
+          fontSize: 16
+        }
+      }
+    };
+
+
+    for (var i = 0; i < events.length; i++){
+    
+      var eventData = await getEventNameFromKey(events[i]);
+      // console.log(eventData);
+      eventKeyNamePair[events[i]] = eventData.name;
+    }
+    // console.log(eventKeyNamePair);
+
+    Object.entries(scores).forEach((entry, index) => {
+      const [key, value] = entry;
+
+
+      // console.log(eventName);
+      // console.log(entry);
+      // console.log(value.sort((a,b)=>a.x-b.x))
+      chartConfig.data.datasets.push({
+        label: eventKeyNamePair[key],
+        borderColor: barColors[index],
+        backgroundColor: barColors[index],
+        data: value.sort((a,b)=>sortNumerically(a.x.valueOf(),b.x.valueOf())).sort((a,b)=> sortNumerically(a.num, b.num)),
+        fill: false,
+        tension: 0
+      });
+    });
+
+    console.log(chartConfig);
+    new Chart("myChart", chartConfig);
+
+
+
+  }
+
+
+  function sortNumerically(a, b) {
+  if (a > b) {
+    return 1;
+  } else if (b > a) {
+    return -1;
+  } else {
+    return 0;
+  }
+  }
+
+  function sortCompLevel(a, b) {
+  if (a == "qm" && b == "qm" && a < b) {
+    return 1;
+  } else if (b == "qm" && a == "qm" && b < a) {
+    return -1;
+  } else if (a == "qm" && b == "qf" && a < b){
+    return 1;
+  } else if (b == "qm" && a == "qf" && b < a){
+    return -1;
+  }else if (a == "qf" && b == "sf" && a < b){
+    return 1;
+  } else if (b == "qf" && a == "sf" && b < a){
+    return -1;
+  }else if (b == "qf" && a != "sf" && b < a) {
+    return 1;
+  }
+  }
+
+
+  async function getEventNameFromKey(key) {
+    var apiURL = "https://www.thebluealliance.com/api/v3/event/" + key +"/simple" + authKey;
+    var apiResponse = await fetch(apiURL);
+    var event = apiResponse.json();
+    return event;
+  }
 
 </script>
 

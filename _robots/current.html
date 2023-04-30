@@ -446,7 +446,7 @@ title: Current Season
 <script>
   getMatchRecord();
   async function getMatchRecord(){
-    var year = new Date().getFullYear();
+    // var year = 2019;
     var apiURL = "https://www.thebluealliance.com/api/v3/team/frc3461/matches/"+ year +"/simple"+authKey;
     var apiPromise = await fetch(apiURL);
     var matches = await apiPromise.json();
@@ -474,11 +474,11 @@ title: Current Season
           // events.find(any(match.event_key)).push(match.alliances.red.score);
           scorePure.push(match.alliances.red.score);
           // score.push([match.event_key, {x: match.match_number, y: match.alliances.red.score, compLevel: match.comp_level+match.match_number}]);
-          score.push([match.event_key, {x: i+1, y: match.alliances.red.score, num: match.match_number}]);
+          score.push([match.event_key, {x: match.match_number, y: match.alliances.red.score, num: match.time}]);
           
         } else if (blueAlliance.includes("frc3461")) {
           scorePure.push(match.alliances.blue.score);
-          score.push([match.event_key, {x: i+1, y: match.alliances.blue.score, num: match.match_number}]);
+          score.push([match.event_key, {x: match.match_number, y: match.alliances.blue.score, num: match.time}]);
           
         }
 
@@ -498,7 +498,7 @@ title: Current Season
       // console.log(events);
       // console.log(score);
       // console.log(eventsScorePair);
-       console.log(eventsWithScoreArray);
+      //  console.log(eventsWithScoreArray);
       
 
       generateGraph(events, eventsWithScoreArray, matchNumber);
@@ -507,7 +507,7 @@ title: Current Season
   async function generateGraph(events, scores, match_number) {
     const N = Math.max(...match_number) / events.length + 8;
     const arr = Array.from({length: N}, (_, index) => "Match " + (index + 1) );
-    console.log(arr);
+    // console.log(arr);
     // console.log(match_number);
     var xValues = arr;
     var barColors = ["red", "green","blue","orange","brown"];
@@ -551,18 +551,48 @@ title: Current Season
         label: eventKeyNamePair[key],
         borderColor: barColors[index],
         backgroundColor: barColors[index],
-        data: value,
+        data: value.sort((a,b)=>sortNumerically(a.x.valueOf(),b.x.valueOf())).sort((a,b)=> sortNumerically(a.num, b.num)),
         fill: false,
         tension: 0
       });
     });
 
-    // console.log(chartConfig);
+    console.log(chartConfig);
     new Chart("myChart", chartConfig);
 
 
 
   }
+
+
+  function sortNumerically(a, b) {
+  if (a > b) {
+    return 1;
+  } else if (b > a) {
+    return -1;
+  } else {
+    return 0;
+  }
+  }
+
+  function sortCompLevel(a, b) {
+  if (a == "qm" && b == "qm" && a < b) {
+    return 1;
+  } else if (b == "qm" && a == "qm" && b < a) {
+    return -1;
+  } else if (a == "qm" && b == "qf" && a < b){
+    return 1;
+  } else if (b == "qm" && a == "qf" && b < a){
+    return -1;
+  }else if (a == "qf" && b == "sf" && a < b){
+    return 1;
+  } else if (b == "qf" && a == "sf" && b < a){
+    return -1;
+  }else if (b == "qf" && a != "sf" && b < a) {
+    return 1;
+  }
+  }
+
 
   async function getEventNameFromKey(key) {
     var apiURL = "https://www.thebluealliance.com/api/v3/event/" + key +"/simple" + authKey;
