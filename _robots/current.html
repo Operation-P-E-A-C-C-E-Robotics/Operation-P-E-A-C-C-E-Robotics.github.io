@@ -474,19 +474,12 @@ title: Current Season
           // events.find(any(match.event_key)).push(match.alliances.red.score);
           scorePure.push(match.alliances.red.score);
           // score.push([match.event_key, {x: match.match_number, y: match.alliances.red.score, compLevel: match.comp_level+match.match_number}]);
-          if (match.comp_level != "qm") {
-            score.push([match.event_key, {x:i, y: match.alliances.red.score}]);
-          } else {
-            score.push([match.event_key, {x: i, y: match.alliances.red.score}]);
-          }
+          score.push([match.event_key, {x: i+1, y: match.alliances.red.score, num: match.match_number}]);
           
         } else if (blueAlliance.includes("frc3461")) {
           scorePure.push(match.alliances.blue.score);
-          if (match.comp_level != "qm") {
-            score.push([match.event_key, {x: i, y: match.alliances.blue.score}]);
-          } else {
-            score.push([match.event_key, {x: i, y: match.alliances.blue.score}]);
-          }
+          score.push([match.event_key, {x: i+1, y: match.alliances.blue.score, num: match.match_number}]);
+          
         }
 
         matchNumber.push(i);
@@ -500,29 +493,29 @@ title: Current Season
         // console.log(score[i]);
         eventsWithScoreArray[score[i][0]].push(score[i][1]);
         // eventsWithScoreArray[score[i][1]].push(score[i][2]);
-        eventsWithScoreArray[score[i][0]].sort(function(a, b){return a.x - b.x});
+        eventsWithScoreArray[score[i][0]].sort(function(a, b){return a.num - b.num});
       }
       // console.log(events);
       // console.log(score);
       // console.log(eventsScorePair);
-      // console.log(eventsWithScoreArray);
+       console.log(eventsWithScoreArray);
       
 
       generateGraph(events, eventsWithScoreArray, matchNumber);
   }
 
   async function generateGraph(events, scores, match_number) {
-    const N = Math.max(...match_number);
-    const arr = Array.from({length: N}, (_, index) => index + 1);
-    // console.log(arr);
-    console.log(match_number);
+    const N = Math.max(...match_number) / events.length + 8;
+    const arr = Array.from({length: N}, (_, index) => "Match " + (index + 1) );
+    console.log(arr);
+    // console.log(match_number);
     var xValues = arr;
     var barColors = ["red", "green","blue","orange","brown"];
     var eventKeyNamePair = {};
     var chartConfig = {
-      type: "bar",
+      type: "line",
       data: {
-        labels: match_number.sort((a,b)=> a-b),
+        labels: arr,
         datasets: []
       },
       options: {
@@ -558,7 +551,7 @@ title: Current Season
         label: eventKeyNamePair[key],
         borderColor: barColors[index],
         backgroundColor: barColors[index],
-        data: value.sort((a,b)=> a.x-b.x),
+        data: value,
         fill: false,
         tension: 0
       });
