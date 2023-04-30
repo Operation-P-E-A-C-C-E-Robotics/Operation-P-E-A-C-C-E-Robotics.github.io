@@ -474,11 +474,11 @@ title: Current Season
           // events.find(any(match.event_key)).push(match.alliances.red.score);
           scorePure.push(match.alliances.red.score);
           // score.push([match.event_key, {x: match.match_number, y: match.alliances.red.score, compLevel: match.comp_level+match.match_number}]);
-          score.push([match.event_key, {x: match.match_number, y: match.alliances.red.score, num: match.time}]);
+          score.push([match.event_key, {x: match.match_number, y: match.alliances.red.score, num: match.time, comp: match.comp_level + match.match_number}]);
           
         } else if (blueAlliance.includes("frc3461")) {
           scorePure.push(match.alliances.blue.score);
-          score.push([match.event_key, {x: match.match_number, y: match.alliances.blue.score, num: match.time}]);
+          score.push([match.event_key, {x: match.match_number, y: match.alliances.blue.score, num: match.time, comp: match.comp_level + match.match_number}]);
           
         }
 
@@ -551,7 +551,7 @@ title: Current Season
         label: eventKeyNamePair[key],
         borderColor: barColors[index],
         backgroundColor: barColors[index],
-        data: value.sort((a,b)=>sortNumerically(a.x.valueOf(),b.x.valueOf())).sort((a,b)=> sortNumerically(a.num, b.num)),
+        data: value.sort(function(a,b) { if (a.num && b.num != null){sortNumerically(a.num, b.num)} else {sortNumerically(a.comp, b.comp)}}),
         fill: false,
         tension: 0
       });
