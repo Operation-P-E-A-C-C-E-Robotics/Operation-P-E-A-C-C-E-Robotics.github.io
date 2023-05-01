@@ -18,8 +18,8 @@ async def session():
     return tbaSession
 
 
-async def getAllMatches(tba_api_key):
-    tba = await session()
+def getAllMatches(tba_api_key):
+    tba = session()
     print(tba.event_teams_statuses("2023ctwat"))
 
 
