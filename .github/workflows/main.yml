@@ -19,4 +19,4 @@ jobs:
         run: |
           python tba.py
         env:
-          key: ${{ secrets.key }} # if run.py requires passwords..etc, set it as secrets
+          TBA_API_KEY: ${{ secrets.tba_api_key }} # if run.py requires passwords..etc, set it as secrets

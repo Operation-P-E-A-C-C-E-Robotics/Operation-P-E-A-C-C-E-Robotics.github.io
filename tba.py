@@ -1,9 +1,9 @@
 from num2words import num2words
 import aiohttp
 import aiotba
-import env
+import os
 
-tba = env.tba_api_key
+tba = os.getenv('TBA_API_KEY')
 
 async def session():
 
@@ -17,4 +17,4 @@ async def session():
     return tbaSession
 
 
-print("Script Ran")
+print(tba)
