@@ -1,18 +1,19 @@
 on: [push]
 
+
 jobs:
-  hello_world_job:
+  build:
     runs-on: ubuntu-latest
-    name: A job to say hello
+
     steps:
-      # To use this repository's private action,
-      # you must check out the repository
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Hello world action step
-        uses: ./ # Uses an action in the root directory
-        id: hello
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner.
+      - name: setup python
+        uses: actions/setup-python@v2
         with:
-          api-key: ${{ secrets.TBA_API_KEY }}
-      # Use the output from the `hello` step
-      # - name: Get the output time
+          python-version: 3.8 #install the python needed
+      - name: execute py script # run the run.py to get the latest data
+        run: |
+          python tba.py
+        env:
+          key: ${{ secrets.key }} # if run.py requires passwords..etc, set it as secrets
