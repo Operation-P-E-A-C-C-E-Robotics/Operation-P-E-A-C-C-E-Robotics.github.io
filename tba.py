@@ -3,12 +3,13 @@ import aiohttp
 import aiotba
 import os
 
-tba = os.getenv('TBA_API_KEY')
+tba_api_key = os.getenv('TBA_API_KEY')
+
 
 async def session():
 
     async with aiohttp.ClientSession() as http_session:     
-     tbaSession = aiotba.TBASession(tba, http_session)
+     tbaSession = aiotba.TBASession(tba_api_key, http_session)
      
      #  Thread(target=loop.run_forever).start()
      print("Session Function has been executed")
@@ -17,4 +18,9 @@ async def session():
     return tbaSession
 
 
-print(tba)
+async def getAllMatches(tba_api_key):
+    tba = await session()
+    print(tba.event_teams_statuses("2023ctwat"))
+
+
+getAllMatches(tba_api_key)
