@@ -1,3 +1,4 @@
+import asyncio
 from num2words import num2words
 import aiohttp
 import aiotba
@@ -40,4 +41,6 @@ async def matches(event:str, team:int):
         print(stats)
 
 
-matches(event, team)
+loop = asyncio.get_event_loop()
+coroutine = matches(event, team)
+loop.run_until_complete(coroutine)
