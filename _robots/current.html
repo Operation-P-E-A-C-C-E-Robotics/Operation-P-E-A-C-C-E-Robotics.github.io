@@ -206,19 +206,34 @@ title: Current Season
       }
  
        async function getMatchFromKey(matchKey) {
-         var matchAPIURL = "https://www.thebluealliance.com/api/v3/match/" + matchKey + authKey;
+         var matchAPIURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_matches.json";
          var matchAPIResponse = await fetch(matchAPIURL);
-         var match = await matchAPIResponse.json();
+         var matches = await matchAPIResponse.json();
+         for (match in matches) {
+          // //console.log(events[event]);
+        
+          if (matches[match].key == matchKey){
+            //console.log(events[event]);
+            return matches[match];
+          }  
+         }
          ////console.log(match);
          return Promise.resolve(match);
        }
  
        async function getTeamStatus(eventKey) {
          //////console.log(eventKey);
-         var matchAPIURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + eventKey + "/status" + authKey;
-         var matchAPIResponse = await fetch(matchAPIURL);
-         var match = await matchAPIResponse.json();
-         return match;
+         var matchAPIURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json";
+         eventRaw = await fetch(matchAPIURL);
+         events = await eventRaw.json();
+         for (event in events) {
+          // //console.log(events[event]);
+        
+          if (events[event].key == eventKey){
+            //console.log(events[event]);
+            return events[event].overall_status_str;
+          }  
+        }
        }
  
        async function bannerHelper(eventTitle, nextMatch, stats) {
