@@ -18,11 +18,11 @@ event = "2023ctwat"
 
 def yearsParticipated(api):
     years_participated = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/years_participated?X-TBA-Auth-Key={api}')
-    return years_participated
+    return years_participated.json()
 
 async def season(api):
     years = yearsParticipated(api)
-
+    print(years)
     for year in years:
         events = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/events/{year}?X-TBA-Auth-Key={api}')
         # print(tba_api_key)
