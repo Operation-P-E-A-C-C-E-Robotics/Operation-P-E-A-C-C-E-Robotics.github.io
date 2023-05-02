@@ -23,9 +23,22 @@ async def season(api):
     events = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/events/{year}?X-TBA-Auth-Key={api}')
     # print(tba_api_key)
     print(events.text)
-    print(os.listdir())
     with open("events.json", "w") as outfile:
         json.dump(events.json(), outfile)
+        outfile.close()
+    
+    awards = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/awards/{year}?X-TBA-Auth-Key={api}')
+    # print(tba_api_key)
+    print(awards.text)
+    with open("awards.json", "w") as outfile:
+        json.dump(awards.json(), outfile)
+        outfile.close()
+    
+    matches = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/matches/{year}?X-TBA-Auth-Key={api}')
+    # print(tba_api_key)
+    print(matches.text)
+    with open("matches.json", "w") as outfile:
+        json.dump(matches.json(), outfile)
         outfile.close()
 
 
