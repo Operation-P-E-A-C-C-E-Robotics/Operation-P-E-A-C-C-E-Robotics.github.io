@@ -8,6 +8,17 @@ on:
 name: Update data from The Blue Alliance once a month
 
 jobs:
+
+  Clear-API-Keys:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Find and Replace API Key with enviroment getter (Human error exists, this it to mitigate it)
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "${{ secrets.test_tba_auth_key }}"
+          replace: "os.getenv('TBA_API_KEY')"
+          regex: false
   Execute-Python-Script:
     runs-on: ubuntu-latest
     permissions:
