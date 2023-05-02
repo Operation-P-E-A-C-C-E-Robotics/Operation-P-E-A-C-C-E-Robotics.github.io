@@ -24,7 +24,7 @@ async def season(api):
     # print(tba_api_key)
     print(events.text)
     with open("events.json", "w") as outfile:
-        json.dump(events.text, outfile)
+        json.dump(events.json(), outfile)
 
 
 
