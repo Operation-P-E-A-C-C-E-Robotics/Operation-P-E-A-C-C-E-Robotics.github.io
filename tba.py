@@ -14,7 +14,7 @@ tba_api_key = os.getenv('TBA_API_KEY')
 # print(tba_api_key)
 
 team = 3461
-event = "2023ctwat"
+
 
 def yearsParticipated(api):
     years_participated = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/years_participated?X-TBA-Auth-Key={api}')
@@ -29,6 +29,13 @@ async def season(api):
         print(events.text)
         with open(f"{year}_events.json", "w") as outfile:
             json.dump(events.json(), outfile)
+            outfile.close()
+        
+        event_status = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/events/{year}/statuses?X-TBA-Auth-Key={api}')
+        # print(tba_api_key)
+        print(event_status.text)
+        with open(f"{year}_event_statuses.json", "w") as outfile:
+            json.dump(event_status.json(), outfile)
             outfile.close()
         
         awards = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/awards/{year}?X-TBA-Auth-Key={api}')
