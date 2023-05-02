@@ -11,7 +11,7 @@ import datetime
 
 # load_dotenv('/home/miguel/my_project/.env')
 tba_api_key = os.getenv('TBA_API_KEY')
-print(tba_api_key)
+# print(tba_api_key)
 
 team = 3461
 event = "2023ctwat"
@@ -25,6 +25,7 @@ async def season(api):
     print(events.text)
     with open("events.json", "w") as outfile:
         json.dump(events.json(), outfile)
+        outfile.close()
 
 
 
