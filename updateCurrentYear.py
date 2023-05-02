@@ -12,16 +12,8 @@ tba_api_key = os.getenv('TBA_API_KEY')
 
 
 
-def yearsParticipated(api):
-    years_participated = requests.get(f'https://www.thebluealliance.com/api/v3/status?X-TBA-Auth-Key={api}')
-    return years_participated.text
-
 async def season(api):
-    years = yearsParticipated(api)
-    data = json.loads(years)
-    print(data)
-    print(years)
-    year = 2023
+    year = datetime.date.today().year
     events = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/events/{year}?X-TBA-Auth-Key={api}')
     # print(tba_api_key)
     print(events.text)

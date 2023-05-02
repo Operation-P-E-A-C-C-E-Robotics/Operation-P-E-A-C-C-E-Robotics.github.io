@@ -1,0 +1,62 @@
+on:  
+  push:
+
+  schedule:
+    - cron: '*/5 * * 3-4 *'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+
+name: Update data from The Blue Alliance for current season every 5 minutes during competition hours
+
+jobs:
+
+  Clear-API-Keys:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Find and Replace API Key with enviroment getter (Human error exists, this it to mitigate it)
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "${{ secrets.test_tba_auth_key }}"
+          replace: "os.getenv('TBA_API_KEY')"
+          regex: false
+
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+  
+  Execute-Python-Script:
+    runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
+      contents: write
+    needs: Clear-API-Keys
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v3 # checkout the repository content to github runner.
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8 #install the python needed
+      - name: update pip
+        run: |
+          pip install --upgrade pip
+      - name: install python dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: execute python script # run the run.py to get the latest data
+        run: |
+          python updateCurrentYear.py
+        env:
+          TBA_API_KEY: ${{ secrets.tba_api_key }} # if run.py requires passwords..etc, set it as secrets
+  
+      - name: Commit Files
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Periodic TBA data update
+
+
