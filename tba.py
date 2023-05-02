@@ -3,6 +3,7 @@ from num2words import num2words
 import aiohttp
 import aiotba
 import os
+import json
 
 tba_api_key = os.getenv('TBA_API_KEY')
 
@@ -51,42 +52,9 @@ async def season(teamnum:int, year:int = None):
         # embed.set_thumbnail(url='https://frcavatars.herokuapp.com/get_image?team={}'.format(teamnum))
         
         if len(events) != 0:
-        
-            for event in events:
-                matches = await tbaSession.team_event_matches(f'frc{teamnum}', event=event.key, keys_only=True)
-                level = []
-                fancy = [level.sort()]
-                data = await tbaSession.event_teams_statuses(event.key)
-                teamdata = data.get(f"frc{teamnum}")
-                try:
-                    level.append(f'{teamdata.overall_status_str.replace("<b>", "**").replace("</b>", "**")} \n ')
-                except:
-                 pass
-                
-                if len(matches) != 0:
-                    for m in matches: 
-                        matchdata = await tbaSession.match(m)
-                        matchtitle=""
-                        if (matchdata.comp_level == "qm"):
-                            matchtitle = "Qualification"
-                        elif (matchdata.comp_level == "qf"):
-                            matchtitle = f"**Quarterfinal** {matchdata.set_number} Match"
-                        elif (matchdata.comp_level == "sf"):
-                            matchtitle = f"**Semifinal** {matchdata.set_number} Match"
-                        elif (matchdata.comp_level == "f"):
-                            matchtitle = f"**Final** {matchdata.set_number} Match"
-                        else:
-                            matchtitle = "Unknown"
-
-                        matchlvl = str(f'{matchtitle} {matchdata.match_number}')
-                        #(m)
-                        level.append(matchlvl)
-                    
-                    #return(f"{matchdata.comp_level}{matchdata.set_number}")
-                else:
-                 level.append("No Matches")
-                
-                print(f"{event.name} ({event.key})"'\n'.join(level))
+            eventJSON = json.dumps(events)
+            with open("events.json", "w") as outfile:
+                outfile.write(eventJSON, indent=4)
         else:
             print("No events found for this team, Check back later")
         
