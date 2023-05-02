@@ -10,7 +10,7 @@ import datetime
 # from dotenv.main import load_dotenv
 
 # load_dotenv('/home/miguel/my_project/.env')
-tba_api_key = 'hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb'
+tba_api_key = os.getenv('TBA_API_KEY')
 # print(tba_api_key)
 
 team = 3461
