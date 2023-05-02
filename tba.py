@@ -41,7 +41,7 @@ async def matches(event:str, team:int):
 
 async def season(teamnum:int, year:int = None):
     async with aiohttp.ClientSession() as http_session:     
-        tbaSession = aiotba.TBASession(tba, http_session)
+        tbaSession = aiotba.TBASession(tba_api_key, http_session)
         # team = await tbaSession.team(f'frc{teamnum}')
         if year is None:
             year = (await tbaSession.status()).current_season
