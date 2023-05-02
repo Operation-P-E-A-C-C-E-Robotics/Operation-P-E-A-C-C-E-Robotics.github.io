@@ -1,7 +1,7 @@
-- on: 
-    push
-    repository_dispatch:
-      types: []
+on: 
+  push
+  repository_dispatch:
+    types: []
 
 name: Save data from The Blue Alliance to local file
 
