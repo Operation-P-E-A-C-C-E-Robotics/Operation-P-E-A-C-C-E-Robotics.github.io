@@ -54,7 +54,7 @@ async def season(teamnum:int, year:int = None):
         if len(events) != 0:
             eventJSON = json.dumps(events)
             with open("events.json", "w") as outfile:
-                outfile.write(eventJSON, indent=4)
+                outfile.write(events, indent=4)
         else:
             print("No events found for this team, Check back later")
         
