@@ -9,10 +9,10 @@ team = 3461
 event = "2023ctwat"
 
 
-async def matches(ctx, event:str, team:int):
+async def matches(event:str, team:int):
     async with aiohttp.ClientSession() as http_session:     
-        tbaSession = aiotba.TBASession(tba, http_session)
-        msg = await ctx.send("Processing...")
+        tbaSession = aiotba.TBASession(tba_api_key, http_session)
+        # msg = await ctx.send("Processing...")
         eventdata = await tbaSession.event(event_key=event)
         stats = await tbaSession.team_event_matches(team=team, event=event)
         # embed = discord.Embed(title=f"{eventdata.name} {eventdata.year}", description=f"Week {eventdata.week} {eventdata.event_type_string} Event")
