@@ -7,14 +7,7 @@ import json
 import requests
 import datetime
 
-# from dotenv.main import load_dotenv
-
-# load_dotenv('/home/miguel/my_project/.env')
 tba_api_key = os.getenv('TBA_API_KEY')
-# print(tba_api_key)
-
-team = 3461
-
 
 def yearsParticipated(api):
     years_participated = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/years_participated?X-TBA-Auth-Key={api}')
