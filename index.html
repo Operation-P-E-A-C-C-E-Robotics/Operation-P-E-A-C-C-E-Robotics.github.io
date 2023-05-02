@@ -23,6 +23,40 @@ title: Operation PEACCE Robotics
 </div>
 <br>
 <div class="container-fluid">
+<div id="duringEventBanner" style="display:none;" class="jumbotron text-dark">
+  <h1 id="currentCompetingEvent" class="text-center pb-5">
+    Currently Competing At () Event!
+  </h1>
+  <div class="d-flex flex-lg-row flex-md-column flex-sm-column flex-xs-column justify-content-around">
+    <h3 id="currentNextMatch" style="text-transform: uppercase;" class="flex-fill">
+      Next Match: Not Found
+    </h3>
+    <h3>
+      <p class="flex-fill" id='counter'>--h --m --s</p>
+    </h3>
+    <h3 class="flex-fill" id="redTeams">
+      0000 0000 0000 
+    </h3>
+    <h3 class="flex-fill">
+    VS
+    </h3>
+    <h3 class="flex-fill" id="blueTeams">
+      0000 0000 0000
+    </h3>
+    <h3 class="flex-fill" id='time'></h3>
+  </div>
+  <h4 id="currentRank" class="pt-2">
+    Rank: 0/0
+  </h4>
+
+  <!-- <p id="liveStream">
+  Event Webcast: Not Found
+  </p> -->
+
+</div>
+</div>
+<br>
+<div class="container-fluid">
   {% for item in site.data.index %}
   <div class="row bg-dark text-light" style="padding-left: 5%;">
     <div class="col">  
@@ -229,3 +263,177 @@ title: Operation PEACCE Robotics
   color: white;
 }
 </style> -->
+
+<!-- for competing banner -->
+<script>
+   var year = new Date().getFullYear();
+   var eventurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_events.json";
+   var countDownDate;
+
+       async function setBanner(eventsurl) {
+         var eventJSON = await fetch(eventsurl);
+         var events = await eventJSON.json();
+         var curevents = []
+         var currentEvent;
+         var match
+         //console.log(events);
+         for (let key of Object.entries(events)) {
+
+           ////////console.log(key);
+           var date = new Date()
+           var eventStartDate = new Date(key[1].start_date);
+           var eventEndDate = new Date(key[1].end_date);
+           ////////console.log(dateConfig);
+           ////////console.log(eventStartDate);
+           if (date.getTime() <= eventEndDate.getTime() && date.getTime() >= eventStartDate.getTime()) {
+             curevents.push(key[1]);
+             currentEvent = key[1];
+           }
+         }
+ 
+         if (curevents[0] != undefined) {
+          var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json");
+          var events =  await apiResponse.json();
+          //console.log(events);
+          ////console.log(key);
+         for (var [key, value] of Object.entries(events)) {
+            //console.log(key, value);
+          
+            if (key == curevents[0].key){
+              //console.log(key, value);
+              match = value;
+            }  
+          }
+    
+         }
+        //  //console.log(curevents[0].name, curevents[0], match);
+        bannerHelper(curevents[0].name, match.next_match_key, match);
+      }
+ 
+       async function getMatchFromKey(matchKey) {
+         var matchAPIURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_matches.json";
+         var matchAPIResponse = await fetch(matchAPIURL);
+         var matches = await matchAPIResponse.json();
+         for (var match = 0; match < matches.length; match++) {
+          // ////console.log(events[event]);
+        
+          if (matches[match].key == matchKey){
+            ////console.log(events[event]);
+            return matches[match];
+          }  
+         }
+         //////console.log(match);
+        //  return Promise.resolve(match);
+       }
+ 
+       async function getTeamStatus(eventKey) {
+         ////////console.log(eventKey);
+         var matchAPIURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"event_statuses.json";
+         eventRaw = await fetch(matchAPIURL);
+         events = await eventRaw.json();
+         for (var event = 0;  event < events.length; event++) {
+          // ////console.log(events[event]);
+        
+          if (events[event].key == eventKey){
+            ////console.log(events[event]);
+            return events[event].overall_status_str;
+          }  
+        }
+       }
+ 
+       async function bannerHelper(eventTitle, nextMatch, stats) {
+        //console.log(eventTitle); 
+        //console.log(nextMatch);
+        //console.log(stats);
+         var match = await getMatchFromKey(nextMatch);
+         //////console.log(nextMatch);
+         countDownDate = match.predicted_time
+         document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + eventTitle;
+         document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level + " " + match.match_number;
+         document.getElementById("redTeams").innerHTML = clearFRCfromTeam(match.alliances.red.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[2])
+         document.getElementById("blueTeams").innerHTML = clearFRCfromTeam(match.alliances.blue.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[2])
+         document.getElementById("currentRank").innerHTML = "Rank: " + stats.qual.ranking.rank + "/" + stats.qual.num_teams
+         document.getElementById("duringEventBanner").style.display = "block";
+       }
+ 
+       function clearFRCfromTeam(team) {
+         myString = team.replace(/\D/g, '');
+         return myString;
+       }
+
+       setBanner(eventurl);
+
+       function convertTime(date) {
+                return new Date((typeof date === "string" ? new Date(date):date).toLocaleString('en-US', {timeZone: 'America/New_York'}))
+        }
+
+        function convertTimestamp(timestamp) {
+        var d = new Date(timestamp * 1000), // Convert the passed timestamp to milliseconds
+        yyyy = d.getFullYear(),
+        mm = ('0' + (d.getMonth() + 1)).slice(-2),  // Months are zero based. Add leading 0.
+        dd = ('0' + d.getDate()).slice(-2),         // Add leading 0.
+        hh = d.getHours(),
+        h = hh,
+        min = ('0' + d.getMinutes()).slice(-2),     // Add leading 0.
+        ampm = 'AM',
+        time;
+
+        if (hh > 12) {
+        h = hh - 12;
+        ampm = 'PM';
+       } else if (hh === 12) {
+        h = 12;
+        ampm = 'PM';
+       } else if (hh == 0) {
+        h = 12;
+      }
+
+        // ie: 2014-03-24, 3:00 PM
+        time = yyyy + '-' + mm + '-' + dd + ', ' + h + ':' + min + ' ' + ampm;
+        return time;
+}
+
+       var x = setInterval(function() {
+         var now = convertTime(new Date()).getTime();
+         var d = new Date().toLocaleTimeString();
+         var distance = new Date(convertTimestamp(countDownDate)).getTime() - now; 
+         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+ 
+         //   document.getElementById("counter").innerHTML = d + " | ";
+         document.getElementById("counter").innerHTML = "~" + hours + "h " + minutes + "m " + seconds + "s ";
+         document.getElementById("time").innerHTML = d;
+ 
+         if (hours == 0 && minutes < 20) {
+           document.getElementById("counter").classList.add("yellowwarning");
+           // document.getElementById("counter").innerHTML =  d + " | ";
+           document.getElementById("counter").innerHTML = "~" + hours + "h " + minutes + "m " + seconds + "s DOUBLE QUENE";
+         }
+         if (hours == 0 && minutes < 10) {
+           document.getElementById("counter").classList.remove("yellowwarning");
+           document.getElementById("counter").classList.add("redalliance");
+           // document.getElementById("counter").innerHTML = d + " | ";
+           document.getElementById("counter").innerHTML = "~" + hours + "h " + minutes + "m " + seconds + "s QUENE";
+         }
+ 
+         if (minutes < -4) {
+           setBanner(eventurl);
+         }
+ 
+         if (minutes > 0 && seconds == 0) {
+           setBanner(eventurl);
+         }
+ 
+       }, 1000);
+</script>
+<style>
+  #redTeams {
+    color: red;
+  }
+
+  #blueTeams {
+    color:blue;
+  }
+
+</style>
