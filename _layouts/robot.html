@@ -97,20 +97,21 @@ layout: default
 <script>
 
 
-  var events = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
+  // var events = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
   var year = "{{page.year}}";
   
-  var eventstatuses = "/statuses?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
-  const authKey = "?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb" 
-  var district = "https://www.thebluealliance.com/api/v3/district/" +year +"ne/rankings"+authKey
-  var media = "https://www.thebluealliance.com/api/v3/team/frc3461/media/"
-  var awards = "https://www.thebluealliance.com/api/v3/team/frc3461/awards/"
+  // var eventstatuses = "/statuses?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb"
+  // const authKey = "?X-TBA-Auth-Key=hOngAA1OYRpYtrfePLodT2G27R7fSBfrGJ57RwH1sOZJxaJv3rHGfhH37aLitVNb" 
+  var district = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_district_rankings.json";
+  //  var media = "https://www.thebluealliance.com/api/v3/team/frc3461/media/"
+  //  var awards = "https://www.thebluealliance.com/api/v3/team/frc3461/awards/"
 
 
-  var eventstats = events + year + eventstatuses;
-  var eventurl = events + year + authKey;
-  var mediaurl = media + year + authKey;
-  var awardsurl = awards + year + authKey;
+  var eventstats = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json";
+  var eventurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_events.json";
+  var mediaurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_media.json";
+  var awardsurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_awards.json"
+  var countDownDate;
   var countDownDate;
 
   function json2array(json) {
