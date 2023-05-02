@@ -24,7 +24,7 @@ title: Dashboard
 <script>
 
     const queryString = window.location.search;
-    // console.log(queryString);
+    // //console.log(queryString);
     const urlParams = new URLSearchParams(queryString);
     const post = urlParams.get('post');
     let postContent = ""
@@ -42,8 +42,8 @@ title: Dashboard
         var postClean = post.replace('/', '-');
         var postRaw = await fetch('https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/main/_data/' + postClean);
         postContent = await postRaw.text();
-        // console.log(postRaw);
-        // console.log(postContent);
+        // //console.log(postRaw);
+        // //console.log(postContent);
 
         document.getElementById('title').innerHTML = postClean;
         document.getElementById('content').innerHTML = postContent;
@@ -53,9 +53,9 @@ title: Dashboard
         var element = document.createElement(`a`);
         var content = [];
         var filename = document.getElementById('title').value;
-        console.log(filename);
+        //console.log(filename);
         var filecontent = document.getElementById('content').value;
-        //console.log(filecontent);
+        ////console.log(filecontent);
         content.push(filecontent);
         var blob = new Blob([content], { type: `plain/text` });
         var fileUrl = URL.createObjectURL(blob);
