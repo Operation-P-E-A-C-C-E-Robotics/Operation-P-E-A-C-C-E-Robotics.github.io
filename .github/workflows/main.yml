@@ -1,4 +1,4 @@
-on: [push]
+on: [push, page_build]
 
 name: Save data from The Blue Alliance to local file
 
