@@ -1,4 +1,7 @@
-on: [push, page_build]
+- on: 
+    push
+    repository_dispatch:
+      types: []
 
 name: Save data from The Blue Alliance to local file
 
@@ -32,3 +35,11 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Periodic TBA data update
+
+  run_if_failure:
+    if: ${{ !github.event.client_payload.passed }}
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          MESSAGE: ${{ github.event.client_payload.message }}
+        run: echo $MESSAGE
