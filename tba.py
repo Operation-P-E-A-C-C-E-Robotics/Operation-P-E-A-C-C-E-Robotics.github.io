@@ -23,6 +23,7 @@ async def season(api):
     events = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/events/{year}?X-TBA-Auth-Key={api}')
     # print(tba_api_key)
     print(events.text)
+    print(os.curdir)
     with open("./events.json", "w") as outfile:
         json.dump(events.json(), outfile)
         outfile.close()
