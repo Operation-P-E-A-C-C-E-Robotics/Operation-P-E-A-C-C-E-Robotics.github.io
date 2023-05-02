@@ -11,20 +11,21 @@ import datetime
 
 # load_dotenv('/home/miguel/my_project/.env')
 tba_api_key = os.getenv('TBA_API_KEY')
+print(tba_api_key)
 
 team = 3461
 event = "2023ctwat"
 
 
 
-async def season():
+async def season(api):
     year = datetime.date.today().year
-    events = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/events/{year}?X-TBA-Auth-Key={tba_api_key}')
-    print(tba_api_key)
+    events = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/events/{year}?X-TBA-Auth-Key={api}')
+    # print(tba_api_key)
     print(events.text)
 
 
 
 loop = asyncio.get_event_loop()
-coroutine = season()
+coroutine = season(tba_api_key)
 loop.run_until_complete(coroutine)
