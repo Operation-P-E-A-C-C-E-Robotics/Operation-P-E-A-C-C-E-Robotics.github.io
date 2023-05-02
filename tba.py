@@ -5,6 +5,9 @@ import os
 
 tba_api_key = os.getenv('TBA_API_KEY')
 
+team = 3461
+event = "2023ctwat"
+
 
 async def matches(ctx, event:str, team:int):
     async with aiohttp.ClientSession() as http_session:     
@@ -37,3 +40,4 @@ async def matches(ctx, event:str, team:int):
         print(stats)
 
 
+matches(event, team)

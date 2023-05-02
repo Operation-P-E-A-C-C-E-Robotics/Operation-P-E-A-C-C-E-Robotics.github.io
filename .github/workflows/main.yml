@@ -1,8 +1,9 @@
 on: [push]
 
+name: Save data from The Blue Alliance to local file
 
 jobs:
-  Pull-data-from-The-Blue-Alliance:
+  Execute-Python-Script:
     runs-on: ubuntu-latest
 
     steps:
