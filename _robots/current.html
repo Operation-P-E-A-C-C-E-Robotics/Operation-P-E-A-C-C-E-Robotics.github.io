@@ -182,7 +182,8 @@ title: Current Season
          var events = await eventJSON.json();
          var curevents = []
          var currentEvent;
-         //////console.log(events);
+         var match
+         console.log(events);
          for (let key of Object.entries(events)) {
 
            //////console.log(key);
@@ -198,18 +199,29 @@ title: Current Season
          }
  
          if (curevents[0] != undefined) {
-          var matchAPIURL = "https://www.thebluealliance.com/api/v3/team/frc3461/event/" + year + curevents[0].event_code + "/status" + authKey;
-          var matchAPIResponse = await fetch(matchAPIURL);
-          var match = await matchAPIResponse.json();
+          var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json");
+          var events =  await apiResponse.json();
+          console.log(events);
+          //console.log(key);
+         for (var [key, value] of Object.entries(events)) {
+            console.log(key, value);
+          
+            if (key == curevents[0].key){
+              console.log(key, value);
+              match = value;
+            }  
+          }
+    
          }
- 
+        //  console.log(curevents[0].name, curevents[0], match);
+        bannerHelper(curevents[0].name, match.next_match_key, match);
       }
  
        async function getMatchFromKey(matchKey) {
          var matchAPIURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_matches.json";
          var matchAPIResponse = await fetch(matchAPIURL);
          var matches = await matchAPIResponse.json();
-         for (match in matches) {
+         for (var match = 0; match < matches.length; match++) {
           // //console.log(events[event]);
         
           if (matches[match].key == matchKey){
@@ -218,15 +230,15 @@ title: Current Season
           }  
          }
          ////console.log(match);
-         return Promise.resolve(match);
+        //  return Promise.resolve(match);
        }
  
        async function getTeamStatus(eventKey) {
          //////console.log(eventKey);
-         var matchAPIURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json";
+         var matchAPIURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"event_statuses.json";
          eventRaw = await fetch(matchAPIURL);
          events = await eventRaw.json();
-         for (event in events) {
+         for (var event = 0;  event < events.length; event++) {
           // //console.log(events[event]);
         
           if (events[event].key == eventKey){
@@ -237,7 +249,9 @@ title: Current Season
        }
  
        async function bannerHelper(eventTitle, nextMatch, stats) {
-         //////console.log(nextMatch);
+        console.log(eventTitle); 
+        console.log(nextMatch);
+        console.log(stats);
          var match = await getMatchFromKey(nextMatch);
          ////console.log(nextMatch);
          countDownDate = match.predicted_time
