@@ -2,7 +2,7 @@ on: [push]
 
 
 jobs:
-  Pull data from The Blue Alliance:
+  Pull-data-from-The-Blue-Alliance:
     runs-on: ubuntu-latest
 
     steps:
