@@ -44,6 +44,23 @@ async def season(api):
         with open(f"{year}_matches.json", "w") as outfile:
             json.dump(matches.json(), outfile)
             outfile.close()
+        
+
+        media = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/media/{year}?X-TBA-Auth-Key={api}')
+        # print(tba_api_key)
+        print(media.text)
+        with open(f"{year}_media.json", "w") as outfile:
+            json.dump(media.json(), outfile)
+            outfile.close()
+
+    districts = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/districts?X-TBA-Auth-Key={api}')
+    for district in districts.json():
+        rankings = requests.get(f'https://www.thebluealliance.com/api/v3/district/{district.key}/rankings?X-TBA-Auth-Key={api}')
+        print(rankings.text)
+        with open(f"{year}_district.json", "w") as outfile:
+            json.dump(rankings.json(), outfile)
+            outfile.close()
+
 
 
 
