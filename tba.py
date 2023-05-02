@@ -35,10 +35,10 @@ async def matches(event:str, team:int):
             matchlvl = str('**Red:** {} \n **Blue:** {} \n **Winner:** {}').format('-'.join(matchdata.alliances.get("red").team_keys).replace('frc', ''), '-'.join(matchdata.alliances.get("blue").team_keys).replace('frc', ''), matchdata.winning_alliance.capitalize())
             ##(m)
             #level.append(matchlvl)
-            # embed.add_field(name=f"{matchtitle} {m.match_number}", value=f"{matchlvl.replace(f'{team}', f'**{team}**')}", inline=True)
+            print(f"{matchtitle} {m.match_number}" f"{matchlvl.replace(f'{team}', f'**{team}**')}")
         # await ctx.send(embed=embed)
         # await msg.delete()
-        print(stats)
+        
 
 
 loop = asyncio.get_event_loop()
