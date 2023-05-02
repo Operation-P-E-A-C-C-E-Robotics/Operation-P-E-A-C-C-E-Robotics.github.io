@@ -55,7 +55,7 @@ async def season(api):
 
     districts = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/districts?X-TBA-Auth-Key={api}')
     for district in districts.json():
-        rankings = requests.get(f'https://www.thebluealliance.com/api/v3/district/{district.key}/rankings?X-TBA-Auth-Key={api}')
+        rankings = requests.get(f'https://www.thebluealliance.com/api/v3/district/{district[key]}/rankings?X-TBA-Auth-Key={api}')
         print(rankings.text)
         with open(f"{year}_district.json", "w") as outfile:
             json.dump(rankings.json(), outfile)
