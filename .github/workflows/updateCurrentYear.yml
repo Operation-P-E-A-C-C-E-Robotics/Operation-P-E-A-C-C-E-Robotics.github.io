@@ -21,11 +21,11 @@ jobs:
           replace: "os.getenv('TBA_API_KEY')"
           regex: false
 
-      - name: Push changes
-        uses: ad-m/github-push-action@v0.6.0
+      - name: Push Changed Files
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          commit_message: Find And Replace
+
   
   Execute-Python-Script:
     runs-on: ubuntu-latest
