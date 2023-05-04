@@ -5,13 +5,20 @@ title: Operation PEACCE Robotics
 <meta property="og:title" content="Operation PEACCE Robotics - Team 3461" />
 <style>
   .header-row {
-  background-image: url("{{site.banner.image-url}}");
-  background-size: cover; 
-  background-repeat: no-repeat; 
-  background-position: center;
-  height: 10rem;
+    background-image: url("{{site.banner.image-url}}");
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: {{site.banner.image-align}};
+    height: 40rem;
 
-}
+  }
+  .header-text-area {
+    height: 20rem;
+  }
+  .body {
+
+    background-color: aliceblue!important;
+  }
 </style>
 <script>
   {% for item in site.alerts %}
@@ -19,7 +26,21 @@ title: Operation PEACCE Robotics
   {% endfor %}
 </script>
 <div class="container-fluid m-0 p-0 mh-25">
-  <div class="header-row" style="width: 100%;"></div>
+  <div class="header-row w-100">
+    <div id="Text Container" class="row w-100 h-100 justify-content-center align-items-center">
+      <h1 class="text-light text-center col pr-0" style="font-size: 9rem;"><b>Operation PEACCE Robotics</b></h1>
+    </div>
+  </div>
+  <div class="header-text-area bg-light text-dark" style="width: 100%;">
+    <div class="text-center pt-5">
+      <h1>Welcome to Operation PEACCE!</h1>
+      <h3>We would love to have you on Team 3461. No prior experience is required to join and all students are welcome!</h3>
+      <div class="w-75 pt-3 d-inline-flex justify-content-around">
+        <button class="btn btn-lg btn-outline-primary">Button 1</button>
+        <button class="btn btn-lg btn-outline-primary">Button 2</button>
+      </div>
+    </div>
+  </div>
 </div>
 <br>
 <div class="container-fluid">
@@ -211,7 +232,7 @@ title: Operation PEACCE Robotics
 
 <h1 class="bg-dark text-center text-light">Thank you to our generous sponsors</h1>
 <div class="logo-area justify-content-center bg-dark text-dark">
-  {% for item in site.data.sponsors %}
+  {% for item in site.data.sponsors.sponsors %}
     <div class="sponsorlogo"> 
       {% if item.isNameOnly == false %}
       <img src="{{item.image}}">
