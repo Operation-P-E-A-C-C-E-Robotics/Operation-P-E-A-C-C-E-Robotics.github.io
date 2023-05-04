@@ -1,9 +1,9 @@
-<nav class="navbar navbar-expand-sm bg-light navbar-light sticky-top">
+<nav class="navbar navbar-expand-xl bg-light navbar-light sticky-top">
 
 
-  <div class="navbar-brand pl-md-5 ml-md-5 d-flex">
-    <flex><img src="../assets/images/PeacceLogoTieDyeWhiteText.svg" style="width:45px; height:45px;" class="float-left"></flex>
-    <flex><h class="d-none d-md-block" style="font-family: 'BankGothicBold', sans-serif;padding-top: 9px;padding-left: 5px;">OPERATION P.E.A.C.C.E ROBOTICS</h></flex>
+  <div class="navbar-brand pl-lg-5 d-flex">
+    <img src="../assets/images/PeacceLogoTieDyeWhiteText.svg" style="width:45px; height:45px;" class="float-left">
+    <h class="d-none d-lg-block" style="font-family: 'BankGothicBold', sans-serif;padding-top: 9px;padding-left: 5px;">OPERATION P.E.A.C.C.E ROBOTICS</h>
   </div>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -15,15 +15,15 @@
         <ul class="navbar-nav nav">
         {% for item in site.data.navigation %}
           {% if item.drop and item.drop == "false" %}
-            <li class="nav-item text-lg-center ">
-              <a class="nav-item text-lg-center nav-link" href="{{ item.link }}" {% if page.url == item.link + .html %}style="color: black;"{% endif %}>
+            <li class="nav-item text-xl-center ">
+              <a class="nav-item text-xl-center nav-link" href="{{ item.link }}" {% if page.url == item.link + .html %}style="color: black;"{% endif %}>
               {{ item.name }}
               </a>
             </li>
 
           {% else %}
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              <a class="text-xl-center nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                 {{item.name}}
               </a>
               <div class="dropdown-menu">
