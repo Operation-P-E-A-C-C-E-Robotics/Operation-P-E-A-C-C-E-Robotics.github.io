@@ -4,12 +4,15 @@
   
 - name: About Us
   drop: "false"
-  link: /about
+  link: /about.html
 
 - name: FAQ
   drop: "false"
-  link: /faq
+  link: /faq.html
 
+- name: Sponsors
+  drop: "false"
+  link: /sponsors.html
 # - name: Current Season
 #   drop: "false"
 #   link: /robots/current
@@ -25,8 +28,8 @@
 
 - name: Blog
   drop: "false"
-  link: /blog
+  link: /blog.html
 
 - name: Contact Us
   drop: "false"
-  link: /contact
+  link: /contact.html

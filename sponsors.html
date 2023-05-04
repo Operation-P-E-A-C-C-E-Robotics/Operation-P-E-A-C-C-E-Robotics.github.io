@@ -1,0 +1,52 @@
+---
+layout: default
+title: Our Sponsors
+---
+<meta property="og:title" content="Our Sponsors - Team 3461" />
+<br>
+<div class="container-fluid">
+    <h1 class="text-center">{{site.data.sponsors.text.header}}</h1>
+    <h3 class="text-center">{{site.data.sponsors.text.p1}}</h3> <!-- "p1" in the data file -->
+    <h3 class="text-left text-light">{{site.data.sponsors.text.p2}}</h3>
+    <br>
+        {% for sponsor in site.data.sponsors.sponsors %}
+        {% if sponsor.displayOnSponsorPageAsHero == true %}
+        <div class="row text-dark sponsor mt-3 pt-3">
+            <div class="col-sm-4">
+            <img src="{{sponsor.image}}" class="logo p-2">
+            </div>
+            <div class="col-sm-8 text-left">
+                <div class="d-inline-flex">
+                    <div class="d-block">
+                    <h1>{{sponsor.name}}</h1>
+                    <h5>{{sponsor.summary}}</h5>
+                    <a class="btn btn-primary" href="{{sponsor.website}}">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        {% endif %}
+        {% endfor %}
+</div>
+<br>
+<style>
+.logo {
+	height: 200px;
+	object-fit: contain;
+    max-width: 100%;
+}
+
+
+.sponsor {
+	background-color: rgb(255, 255, 255);
+    color: black;
+	height: 580px;
+	align-items: top;
+	align-content: top;
+	align-self: center;
+    text-align: center;
+	/* max-height: 280px; */
+
+}
+</style>

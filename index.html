@@ -15,6 +15,9 @@ title: Operation PEACCE Robotics
   .header-text-area {
     height: 20rem;
   }
+    #header-row-text h1, #header-row-text h2 {
+    text-shadow: 5px 5px 4px #000000;
+  }
   .body {
 
     background-color: aliceblue!important;
@@ -27,8 +30,11 @@ title: Operation PEACCE Robotics
 </script>
 <div class="container-fluid m-0 p-0 mh-25">
   <div class="header-row w-100">
-    <div id="Text Container" class="row w-100 h-100 justify-content-center align-items-center">
-      <h1 class="text-light text-center col pr-0" style="font-size: 9rem;"><b>Operation PEACCE Robotics</b></h1>
+    <div id="header-row-text" class="row w-100 h-100 justify-content-center align-items-center">
+      <div class="d-block text-center">
+        <h1 class="text-light text-center col pr-0" style="font-size: 75pt;"><b>{{site.banner.header}}</b></h1>
+        <h2>{{site.banner.subheader}}</h2>
+      </div>
     </div>
   </div>
   <div class="header-text-area bg-light text-dark" style="width: 100%;">
