@@ -12,8 +12,13 @@ title: Operation PEACCE Robotics
     height: 65%;
 
   }
-    #header-row-text {
+    #header-row-text h1 {
     text-shadow: 5px 5px 4px #000000;
+    font-size:calc(100% + 5vw);
+  }
+  #header-row-text h2 {
+    text-shadow: 5px 5px 4px #000000;
+    font-size:calc(100% + 1vw);
   }
   .body {
 
@@ -29,8 +34,8 @@ title: Operation PEACCE Robotics
   <div class="header-row w-100" style="height:40rem">
     <div id="header-row-text" class="row w-100 h-100 pr-0 align-items-center">
       <div class="d-block text-center mx-auto">
-        <div class="font-weight-bold display-1 col pr-0">{{site.banner.header}}</div>
-        <div class="font-weight-normal display-4 col">{{site.banner.subheader}}</div>
+        <h1 class="font-weight-bold col pr-0">{{site.banner.header}}</h1>
+        <h2 class="font-weight-normal col">{{site.banner.subheader}}</h2>
       </div>
     </div>
   </div>
