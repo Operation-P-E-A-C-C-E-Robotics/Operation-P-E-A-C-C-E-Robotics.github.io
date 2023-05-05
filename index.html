@@ -7,12 +7,18 @@ title: Operation PEACCE Robotics
   .header-row {
     background-image: url("{{site.banner.image-url}}");
     background-size: cover; 
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
+    min-height:25rem; 
+    height: calc(30vw - 1vh);
     background-position: {{site.banner.image-align}};
-    height: 65%;
 
   }
-    #header-row-text h1 {
+
+  #header-row-text {
+    height:100%;
+    width:100%;
+  }
+  #header-row-text h1 {
     text-shadow: 5px 5px 4px #000000;
     font-size:calc(100% + 5vw);
   }
@@ -20,6 +26,7 @@ title: Operation PEACCE Robotics
     text-shadow: 5px 5px 4px #000000;
     font-size:calc(100% + 1vw);
   }
+
   .body {
 
     background-color: aliceblue!important;
@@ -30,9 +37,9 @@ title: Operation PEACCE Robotics
     showAlert({header:"{{item.header}}", message:"{{item.message}}", class:"{{item.class}}"});
   {% endfor %}
 </script>
-<div class="container-fluid m-0 p-0 mh-25">
-  <div class="header-row w-100" style="height:40rem">
-    <div id="header-row-text" class="row w-100 h-100 pr-0 align-items-center">
+<div class="container-fluid m-0 p-0 banner">
+  <div class="header-row">
+    <div id="header-row-text" class="row pr-0 align-items-center">
       <div class="d-block text-center mx-auto">
         <h1 class="font-weight-bold col pr-0">{{site.banner.header}}</h1>
         <h2 class="font-weight-normal col">{{site.banner.subheader}}</h2>
@@ -41,8 +48,8 @@ title: Operation PEACCE Robotics
   </div>
   <div class="header-text-area bg-light text-dark" style="width: 100%;">
     <div class="text-center pt-5 pb-5">
-      <h1>Welcome to Operation PEACCE!</h1>
-      <h3>We would love to have you on Team 3461. No prior experience is required to join and all students are welcome!</h3>
+      <h1 style="font-size:calc(100% + 2vw);">Welcome to Operation PEACCE!</h1>
+      <h3 style="font-size:calc(100% + 0.5vw);">We would love to have you on Team 3461. No prior experience is required to join and all students are welcome!</h3>
       <div class="w-75 pt-3 d-inline-flex justify-content-around">
         <button class="btn btn-lg btn-outline-primary">Button 1</button>
         <button class="btn btn-lg btn-outline-primary">Button 2</button>
