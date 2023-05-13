@@ -25,8 +25,7 @@
   </div>
 </section> -->
 
-<footer class="jumbotron jumbotron-fluid mb-0 p-0 bg-light text-dark" style="height: 25vh;">
-  <div class="container-fluid mh-100">
+<footer class="jumbotron jumbotron-fluid mb-0 p-0 bg-light text-dark">
     <div class="row w-100 m-0 pt-4 justify-content-center">
       <div class="col-md-4 m-0 p-0 align-items-center text-left">
         <h3>Contact Us</h3>
@@ -43,7 +42,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row justify-content-center">
       <div style="font-size: 50px;" class="col-12 align-items-center justify-content-center d-inline-flex">
         {% for platform in site.data.socialMedia %}
         <div class="ml-3 mr-3 socialLink">
@@ -53,7 +52,6 @@
       </div>
       <div class="mb-3 mb-md-0 text-body-primary text-center col pb-2"><strong>© {{ site.time | date: '%Y' }} Operation PEACCE Robotics</strong></div>
     </div>
-  </div>
 </footer>
 
 <script>
