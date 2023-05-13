@@ -1,9 +1,8 @@
 ---
-title: Mechanical And Building
-date: 2019-01-19 00:00:00 Z
 layout: post
 author: Test Blogger
 filename: MechanicalAndBuilding
+title: Mechanical And Building
 ---
 
 The team started its second week of build season strong by continuing to prototype. Different members from the team have all had the opportunity to contribute ideas to our main concepts and designs. This past week has been a good chance for everyone, even non-mechanical committee members, to get involved and participate.
