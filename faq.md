@@ -1,6 +1,6 @@
 ---
+title: FAQ
 layout: markdown
-title: FAQ 
 ---
 
 ### **WHAT DOES P.E.A.C.C.E. STAND FOR?**

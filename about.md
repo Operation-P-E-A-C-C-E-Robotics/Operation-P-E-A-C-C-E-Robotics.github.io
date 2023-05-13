@@ -1,8 +1,8 @@
 ---
+title: About Us
 layout: markdown
-title: About Us 
-published: true
 ---
+
 # About Us
 Operation P.E.A.C.C.E. is an FRC robotics team that strives to unite students from all over Connecticut. We work together in designing, programming, and building robots every year. We have a passion to spread creativity and the idea of STEM-based learning everywhere we can.
 
