@@ -26,4 +26,5 @@ events = response.json()["items"]
 
 # Save the events to a JSON file
 with open("events.json", "w") as f:
-    json.dump(events, f)
+    # json.dump(events, f)
+    f.write(json.dumps(events, indent=4))
