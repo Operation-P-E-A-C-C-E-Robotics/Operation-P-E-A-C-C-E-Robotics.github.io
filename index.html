@@ -191,9 +191,12 @@ title: Operation PEACCE Robotics
 
     <div class="card">
         <div class="card-body text-center">
-        <p class="card-title">Latest Post</p>
+          <p class="card-title">Latest Post</p>
+          <div style="overflow: hidden; height:100%; max-height: 350px; object-fit: contain;">
+              <div class="fb-page" style="overflow:hidden; clip: auto;" data-href="https://www.facebook.com/PEACCE" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false"><blockquote cite="https://www.facebook.com/PEACCE" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/PEACCE">Operation P.E.A.C.C.E. Robotics</a></blockquote></div>
+          </div>
         </div>
-        <div class="fb-page" data-href="https://www.facebook.com/PEACCE" data-tabs="timeline" data-width="" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false"><blockquote cite="https://www.facebook.com/PEACCE" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/PEACCE">Operation P.E.A.C.C.E. Robotics</a></blockquote></div>
+        
     </div>
 
     <br>
@@ -204,6 +207,7 @@ title: Operation PEACCE Robotics
           <h2 id="nextEvent">None Found</h2>
           <h2 id="startTime"><i class="fa fa-calendar"></i></h2>
           <h2 id="location"><i class="fa fa-map-marker"></i></h2>
+          <a id="goToCalendar" href="" class="btn btn-outline-primary"><i class="fa fa-calendar-plus-o"></i> Open in Google Calendar</a>
           <script>
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
             getNextNonRecurringEvent().then(data => {
@@ -212,6 +216,7 @@ title: Operation PEACCE Robotics
               document.getElementById('nextEvent').innerText = ' ' + data.summary
               document.getElementById('startTime').innerHTML += ' ' + date.toLocaleString('en-US', options)
               document.getElementById('location').innerHTML += ' ' + data.location
+              document.getElementById('goToCalendar').href = data.htmlLink
             
             })
             // document.getElementById('nextEvent').innerText += event
