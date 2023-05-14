@@ -15,7 +15,7 @@ api_key = os.environ['API_KEY']
 
 # Get the current date and time
 now = datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
-max = now + 1
+max = (datetime.datetime.utcnow() + datetime.timedelta(days=365)).isoformat() + 'Z' # one year from now
 # Set the API request parameters
 params = {
     "calendarId": calendar_id,
