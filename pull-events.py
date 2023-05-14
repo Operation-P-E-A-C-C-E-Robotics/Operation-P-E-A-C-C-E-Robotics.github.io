@@ -14,7 +14,7 @@ calendar_id = "team@peacce.org"
 api_key = os.environ['API_KEY']
 
 # Get the current date and time
-now = datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
+now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
 max = (datetime.datetime.utcnow() + datetime.timedelta(days=365)).isoformat() + 'Z'
 # Set the API request parameters
 params = {
