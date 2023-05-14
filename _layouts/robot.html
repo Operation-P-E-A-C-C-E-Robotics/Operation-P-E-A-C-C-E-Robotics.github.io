@@ -26,8 +26,8 @@ layout: default
         <div class="pl-3 col-sm-12 col-md-9">
             <h1>{{ page.year }} - {{page.robotName}}</h1>
             <h2>{{ page.game }}</h2>
-            <h3 id="districtPoints">District Points Earned: --</h3>
             <h3 id="districtRank">District Rank: --</h3>
+            <h3 id="districtPoints">Total District Points: --</h3>
             <div id="buttons" class="pb-3">
                 {% if page.techBinder and page.techBinder != '' %}
                 <button type="button" class="btn btn-danger align-middle" data-toggle="modal" data-target="#myModal">
@@ -201,21 +201,32 @@ layout: default
   getDistrictStats(district);
   getMedia(mediaurl);
 
-  async function getDistrictStats(district) {
-   var districtResponse = await fetch(district);
-   var districtJSON = await districtResponse.json();
-   var teamDistrictRankings;
+  // async function getDistrictStats(district) {
+  //  var districtResponse = await fetch(district);
+  //  var districtJSON = await districtResponse.json();
+  //  var teamDistrictRankings;
    
-   for (var i = 0; i < districtJSON.length; i++) {
-     if (districtJSON[i].team_key == "frc3461") {
-       //////console.log(districtJSON[i]);
-       document.getElementById("districtRank").innerHTML = "Current District Rank: " + districtJSON[i].rank; 
-       document.getElementById("districtPoints").innerHTML = "Current District Points: " + districtJSON[i].point_total; 
-     }
-   }
+  //  for (var i = 0; i < districtJSON.length; i++) {
+  //    if (districtJSON[i].team_key == "frc3461") {
+  //      //////console.log(districtJSON[i]);
+  //      document.getElementById("districtRank").innerHTML = "Current District Rank: " + districtJSON[i].rank; 
+  //      document.getElementById("districtPoints").innerHTML = "Current District Points: " + districtJSON[i].point_total; 
+  //    }
+  //  }
 
+  // }
+
+  // ChatGPT optomized my code for me and Im kinda finding it hilarious
+  async function getDistrictStats(district) {
+  const districtResponse = await fetch(district);
+  const districtJSON = await districtResponse.json();
+  const team = districtJSON.find((team) => team.team_key === "frc3461");
+
+  if (team) {
+    document.getElementById("districtRank").innerHTML = "District Rank: " + team.rank; 
+    document.getElementById("districtPoints").innerHTML = "Total District Points: " + team.point_total; 
   }
-
+ }
 
 
 
@@ -485,7 +496,7 @@ layout: default
         label: eventKeyNamePair[key],
         borderColor: barColors[index],
         backgroundColor: barColors[index],
-        data: value.sort(function(a,b) { if (a.num && b.num != null){sortNumerically(a.num, b.num)} else {sortNumerically(a.comp, b.comp)}}),
+        data: value.sort(function(a,b) { if (a.num && b.num != null){sortNumerically(a.num, b.num)} else {sortCompLevel(value)}}),
         fill: false,
         tension: 0
       });
@@ -509,40 +520,59 @@ layout: default
   }
   }
 
-  function sortCompLevel(a, b) {
-  if (a == "qm" && b == "qm" && a < b) {
-    return 1;
-  } else if (b == "qm" && a == "qm" && b < a) {
-    return -1;
-  } else if (a == "qm" && b == "qf" && a < b){
-    return 1;
-  } else if (b == "qm" && a == "qf" && b < a){
-    return -1;
-  }else if (a == "qf" && b == "sf" && a < b){
-    return 1;
-  } else if (b == "qf" && a == "sf" && b < a){
-    return -1;
-  }else if (b == "qf" && a != "sf" && b < a) {
-    return 1;
-  }
-  }
+  // function sortCompLevel(a, b) {
+  // if (a == "qm" && b == "qm" && a < b) {
+  //   return 1;
+  // } else if (b == "qm" && a == "qm" && b < a) {
+  //   return -1;
+  // } else if (a == "qm" && b == "qf" && a < b){
+  //   return 1;
+  // } else if (b == "qm" && a == "qf" && b < a){
+  //   return -1;
+  // }else if (a == "qf" && b == "sf" && a < b){
+  //   return 1;
+  // } else if (b == "qf" && a == "sf" && b < a){
+  //   return -1;
+  // }else if (b == "qf" && a != "sf" && b < a) {
+  //   return 1;
+  // }
+  // }
+
+  function sortCompLevel(array) {
+  const order = { qm: 1, ef: 2, qf: 3, sf: 4, f: 5 };
+
+  return array.sort((a, b) => {
+    return order[a] - order[b];
+  });
+}
 
 
+  // async function getEventNameFromKey(key) {
+  //   var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_events.json");
+  //   var events =  await apiResponse.json();
+  //   // //console.log(events);
+  //   //console.log(key);
+  //   for (event in events) {
+  //     // //console.log(events[event]);
+    
+  //     if (events[event].key == key){
+  //       //console.log(events[event]);
+  //       return events[event].name;
+  //     }  
+  //   }
+    
+  // }
+
+  //ChatGPT optomized this also
   async function getEventNameFromKey(key) {
-    var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_events.json");
-    var events =  await apiResponse.json();
-    // //console.log(events);
-    //console.log(key);
-    for (event in events) {
-      // //console.log(events[event]);
-    
-      if (events[event].key == key){
-        //console.log(events[event]);
-        return events[event].name;
-      }  
-    }
-    
-  }
+  const apiResponse = await fetch(`https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/${year}_events.json`);
+  const events = await apiResponse.json();
+  
+  const event = events.find(event => event.key === key);
+  
+  return event ? event.name : null;
+}
+
 
 </script>
 <!-- Overide default title -->
