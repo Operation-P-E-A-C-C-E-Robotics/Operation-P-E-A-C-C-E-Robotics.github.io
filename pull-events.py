@@ -1,7 +1,7 @@
 import json
 import os
 import requests
-from datetime import datetime
+import datetime
 
 
 # Set the Google Calendar API endpoint URL
@@ -15,7 +15,7 @@ api_key = os.environ['API_KEY']
 
 # Get the current date and time
 now = datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
-max = (datetime.utcnow() + datetime.timedelta(days=365)).isoformat() + 'Z' # one year from now
+max = (datetime.datetime.utcnow() + datetime.timedelta(days=365)).isoformat() + 'Z'
 # Set the API request parameters
 params = {
     "calendarId": calendar_id,
