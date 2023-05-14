@@ -1,36 +1,29 @@
-import os
 import json
+import os
 import requests
-from google.oauth2 import service_account
-from googleapiclient.discovery import build
 
-# Load API key from Repository Secrets
+# Set the Google Calendar API endpoint URL
+calendar_url = "https://www.googleapis.com/calendar/v3/calendars/{calendar_id}/events"
+
+# Set the calendar ID for the public calendar you want to access
+calendar_id = "team@peacce.org"
+
+# Set your Google API key
 api_key = os.environ['API_KEY']
 
-# Set up Google Calendar API credentials
-creds = service_account.Credentials.from_service_account_info({
-    'type': os.environ['TYPE'],
-    'project_id': os.environ['PROJECT_ID'],
-    'private_key_id': os.environ['PRIVATE_KEY_ID'],
-    'private_key': os.environ['PRIVATE_KEY'].replace('\\n', '\n'),
-    'client_email': os.environ['CLIENT_EMAIL'],
-    'client_id': os.environ['CLIENT_ID'],
-    'auth_uri': os.environ['AUTH_URI'],
-    'token_uri': os.environ['TOKEN_URI'],
-    'auth_provider_x509_cert_url': os.environ['AUTH_PROVIDER_X509_CERT_URL'],
-    'client_x509_cert_url': os.environ['CLIENT_X509_CERT_URL']
-})
+# Set the API request parameters
+params = {
+    "calendarId": calendar_id,
+    "key": api_key,
+    "timeZone": "UTC",
+}
 
-# Set up Google Calendar API client
-calendar = build('calendar', 'v3', credentials=creds)
+# Make the API request
+response = requests.get(calendar_url.format(calendar_id=calendar_id), params=params)
 
-# Set up API request to get events from public calendar
-calendar_id = 'team@peacce.org'
-url = f'https://www.googleapis.com/calendar/v3/calendars/{calendar_id}/events?key={api_key}'
+# Parse the response JSON
+events = response.json()["items"]
 
-# Make API request to get events from public calendar
-response = requests.get(url)
-data = json.loads(response.content.decode('utf-8'))
-
-# Output event data
-print(data)
+# Save the events to a JSON file
+with open("events.json", "w") as f:
+    json.dump(events, f)
