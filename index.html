@@ -42,7 +42,7 @@ title: Operation PEACCE Robotics
 <!-- for facebook integration -->
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0" nonce="B0ihQ3ct"></script>
-
+<script src="/assets/js/googleCalendar.js"></script>
 <div class="container-fluid m-0 p-0 banner">
   <div class="header-row">
     <div id="header-row-text" class="row pr-0 align-items-center">
@@ -200,7 +200,22 @@ title: Operation PEACCE Robotics
 
     <div class="card">
       <div class="card-body text-center">
-        <p class="card-title">TBD</p>
+        <p class="card-title">Next Event</p>
+          <h2 id="nextEvent">None Found</h2>
+          <h2 id="startTime"><i class="fa fa-calendar"></i></h2>
+          <h2 id="location"><i class="fa fa-map-marker"></i></h2>
+          <script>
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
+            getNextNonRecurringEvent().then(data => {
+              date = new Date(data.start.dateTime)
+              console.log(date)
+              document.getElementById('nextEvent').innerText = ' ' + data.summary
+              document.getElementById('startTime').innerHTML += ' ' + date.toLocaleString('en-US', options)
+              document.getElementById('location').innerHTML += ' ' + data.location
+            
+            })
+            // document.getElementById('nextEvent').innerText += event
+          </script>
           <!-- {% for post in site.posts limit:1 %}
           <a href="{{post.url}}" class="text-dark"><h3>{{post.title}}</h3> <br> {{ post.content | truncatewords: 60 }}</a>
           {% endfor %} -->
