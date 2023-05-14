@@ -20,8 +20,8 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Install Google API Client
-      run: pip install google-api-python-client
+    # - name: Install Google API Client
+    #   run: pip install google-api-python-client
 
     - name: Run Script
       env:
