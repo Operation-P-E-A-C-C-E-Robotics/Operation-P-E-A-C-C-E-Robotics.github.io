@@ -27,7 +27,7 @@ jobs:
         API_KEY: ${{ secrets.GOOGLE_CALENDAR_API_KEY }}
       run: python pull-events.py
 
-      - name: Commit Files 
-         uses: stefanzweifel/git-auto-commit-action@v4 
-         with: 
-           commit_message: Update google calendar data daily
+   - name: Commit Files 
+      uses: stefanzweifel/git-auto-commit-action@v4 
+      with: 
+        commit_message: Update google calendar data daily
