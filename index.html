@@ -205,7 +205,7 @@ title: Operation PEACCE Robotics
           <h2 id="startTime"><i class="fa fa-calendar"></i></h2>
           <h2 id="location"><i class="fa fa-map-marker"></i></h2>
           <script>
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
             getNextNonRecurringEvent().then(data => {
               date = new Date(data.start.dateTime)
               console.log(date)
