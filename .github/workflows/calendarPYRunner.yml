@@ -4,6 +4,9 @@ on:
   push:
     branches: [ google-api-backend ]
 
+  schedule:
+    - cron: '0 0 * * *'  # runs every day at midnight
+
 jobs:
   pull_events:
     runs-on: ubuntu-latest
