@@ -5,7 +5,7 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 
 # Load API key from Repository Secrets
-api_key = os.environ['GOOGLE_CALENDAR_API_KEY']
+api_key = os.environ['API_KEY']
 
 # Set up Google Calendar API credentials
 creds = service_account.Credentials.from_service_account_info({
