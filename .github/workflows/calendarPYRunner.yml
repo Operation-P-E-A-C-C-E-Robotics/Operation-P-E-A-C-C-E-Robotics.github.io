@@ -24,3 +24,13 @@ jobs:
       env:
         API_KEY: ${{ secrets.GOOGLE_CALENDAR_API_KEY }}
       run: python pull-events.py
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git add events.json
+        git commit -m "Update events.json"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
