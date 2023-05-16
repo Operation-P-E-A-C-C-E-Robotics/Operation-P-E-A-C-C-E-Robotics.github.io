@@ -6,10 +6,17 @@ collections:
     output: true
 
 
+defaults:
+  -
+    scope:
+      path: "_robots" # Empty string represents all files
+    values:
+      published: true
+
 plugins:
   - "jekyll-github-metadata"
   - "jekyll-env"
-
+  - jekyll-include-cache
 
 exclude: ['Archive', 'Documentation']
 

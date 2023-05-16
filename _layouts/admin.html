@@ -77,16 +77,14 @@
                 </a>
               </h6>
               <ul class="nav flex-column mb-2">
-                {% for post in site.robots %}
-                {% if post.title != "Current Season" %}
+                {% directory path: _robots/ %}
                 <li class="nav-item">
-                  <a class="nav-link" href="/admin/robotEdit?post={{post.year}}.md">
+                  <a class="nav-link" href="/admin/robotEdit?post={{file.name}}">
                     <i class="fa fa-file-text-o"></i>
-                    {{post.title}}
+                    {{file.name}}
                   </a>
                 </li>
-                {% endif %}
-                {% endfor %}
+                {% enddirectory %}
               </ul>
               <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>Sitewide Data</span>
