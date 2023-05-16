@@ -35,8 +35,9 @@
   <meta property="og:type" content="sports_team" />
   <meta property="og:url" content="{{ page.url }}"/>
   <meta property="image" content="/assets/images/PeacceLogoTieDyeWhiteText.svg" />
-  <meta property="og:description" content="{{site.data.metadata.default.description}}"/>
-  <meta property="og:site_name" content="Operation PEACCE Robotics" />
+  <meta property="og:description" content="{% if page.metadesc %} {{page.metadesc}} {% else %} {% if page.layout == "default" %}{{site.data.metadata.default.description}}{% endif %} {% if page.layout == "robot" %}{{site.data.metadata.robot.description}}{% endif %} {% endif %}"/>
+  <meta property="og:site_name" content="Operation PEACCE Robotics"/>
+  <meta property="title" content="Operation PEACCE Robotics {% if page.metatitle %}- {{ page.metatitle}}{% endif %}">
   <meta property="og:locality" content="Bristol" />
   <meta property="og:region" content="Connecticut" />
   <meta property="og:country-name" content="USA" />
