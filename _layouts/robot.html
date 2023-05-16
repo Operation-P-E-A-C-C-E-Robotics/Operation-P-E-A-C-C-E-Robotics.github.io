@@ -279,42 +279,50 @@ layout: default
      
 
      if (value != null) {
-       
+       console.log(value)
        var badge = ""
        switch(stats[key].event_type) {
+  
          case 100:
+          //  console.log(stats[key])
            badge = `<span class="badge badge-pill badge-secondary">Preseason Event</span>`
            break;
          case 99:
+          //  console.log(stats[key])
            badge = `<span class="badge badge-pill badge-secondary">Offseason Event</span>`
            break;
          
          case 0:
-           badge = `<span class="badge badge-pill badge-primary">Week ${stats[key].week + 1} Regional Event</span>`
+            // console.log(stats[key])
+            badge = `<span class="badge badge-pill badge-primary">Week ${stats[key].week + 1} Regional Event</span>`
            break;
          case 1:
+          //  console.log(stats[key])
            badge = `<span class="badge badge-pill badge-primary">Week ${stats[key].week + 1} District Event</span>`
            break;
          case 5:
+          //  console.log(stats[key])
            badge = `<span class="badge badge-pill badge-info">DCMP Division</span>`
            break;
          case 2:
-            //console.log(key);
-            if (key == "2016nytv") {
-              badge = `<span class="badge badge-pill badge-secondary">Offseason Event</span>`
-              // for whatever reason, this 1 event identifies itself as an offseason event but gets the DCMP bage, no idea why, this is a bandaid fix
-            } else {
            badge = `<span class="badge badge-pill badge-info">DCMP</span>`
-            }
            break;
          case 3:
+        //  console.log(stats[key])
            badge = `<span class="badge badge-pill badge-success">CMP Division</span>`
            break;
          case 4:
+        //  console.log(stats[key])
            badge = `<span class="badge badge-pill badge-success">CMP Einstein</span>`
            break;
 
+          case null:
+          // console.log(stats[key])
+            badge = ""
+            break; 
+
          default:
+          // console.log(stats[key])
            badge = ""
        }
       //  //console.log(stats[key].event_type);
@@ -325,7 +333,8 @@ layout: default
        tab += `<tr><td date=${stats[key].start_date} id=${key}><a class="text-dark" href="https://www.thebluealliance.com/event/${key}">${stats[key].name} ${badge}</a></td><td id="${key}eventstatus">${value.overall_status_str}</td><td id=${key + "awards"}>None Found</td></tr>`;
        // document.getElementById(value.key + "eventstatus").innerHTML = 
      } else {
-     tab += `<tr><td date=${stats[key].start_date} id=${key}><a class="text-dark" href="https://www.thebluealliance.com/event/${key}">${stats[key].name} ${badge}</a></td><td>No Matches Found, Check Back After ${stats[key].start_date}</td><td>No Data</td></tr>`
+      console.log(stats[key])
+     tab += `<tr><td date=${stats[key].start_date} id=${key}><a class="text-dark" href="https://www.thebluealliance.com/event/${key}">${stats[key].name} <span class="badge badge-pill badge-secondary">Unknown</span> </a></td><td>No Matches Found, Check Back After ${stats[key].start_date}</td><td>No Data</td></tr>`
      }
      // Setting innerHTML as tab variable
      document.getElementById("employees").innerHTML = tab;
