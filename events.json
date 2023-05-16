@@ -356,5 +356,35 @@
         "iCalUID": "4e4jv5edaudmt4ob3es3136jmg@google.com",
         "sequence": 0,
         "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3368492748160000\"",
+        "id": "32rajsrsqscosasuc8vuram4ap",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MzJyYWpzcnNxc2Nvc2FzdWM4dnVyYW00YXAgdGVhbUBwZWFjY2Uub3Jn&ctz=UTC",
+        "created": "2023-05-16T14:12:54.000Z",
+        "updated": "2023-05-16T14:12:54.080Z",
+        "summary": "Practice meeting for Senator Visit",
+        "location": "Arthur G. Russell Co., Inc., 750 Clark Ave, Bristol, CT 06010, USA",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-05-17T22:00:00Z",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-05-18T01:00:00Z",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "32rajsrsqscosasuc8vuram4ap@google.com",
+        "sequence": 0,
+        "eventType": "default"
     }
 ]
