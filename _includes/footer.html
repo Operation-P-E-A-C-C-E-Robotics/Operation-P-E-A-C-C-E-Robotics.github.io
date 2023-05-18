@@ -45,8 +45,8 @@
     <div class="row justify-content-center">
       <div style="font-size: 50px;" class="col-12 align-items-center justify-content-center d-inline-flex">
         {% for platform in site.data.socialMedia %}
-        <div class="ml-3 mr-3 socialLink">
-          <a href="{{ platform.link }}"><span><i class="{{ platform.icon}}"></i></span></a>
+        <div class="ml-3 mr-3">
+          <a href="{{ platform.link }}"><span><i class="{{ platform.icon}} socialLink"></i></span></a>
         </div>
         {% endfor %}
       </div>
@@ -63,12 +63,12 @@
 
 <style>
 
-.socialLink a {
-  color: #343a40;
+.socialLink {
+  color: #343a40!important;
 }
 
-.socialLink:hover a {
-  color: dimgray;
+.socialLink:hover {
+  color: dimgray!important;
 }
 
 </style>
