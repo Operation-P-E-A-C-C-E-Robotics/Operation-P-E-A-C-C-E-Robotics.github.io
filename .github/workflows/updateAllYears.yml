@@ -2,11 +2,11 @@ on:
   push:
 
   schedule:
-    - cron: '35 0 1 * *'
+    - cron: '35 0 * * 1'
 
 
 
-name: Update data from The Blue Alliance once a month
+name: Update data from The Blue Alliance once a week
 
 jobs:
 
