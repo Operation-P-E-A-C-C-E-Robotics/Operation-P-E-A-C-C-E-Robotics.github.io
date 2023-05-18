@@ -21,7 +21,10 @@ layout: default
             <img src="{{ page.thumbnail }}" id="robotImagePlaceholder" class="carousel-item img-thumbnail" style="width:100%; height:30rem; object-fit: cover;"></img>
             
             <div class="carousel-inner" id="robotCarousel">
-              
+              <!-- literally just for the 2020 bot and any other robot with no TBA photos -->
+              {% for img in page.slideshow %} 
+              <img src="/assets/{{page.year}}/{{ img.src }}" class="carousel-item img-thumbnail" style="width:100%; height:30rem; object-fit: cover;"></img>
+              {% endfor %}
             </div>
           </div> 
         </div>
