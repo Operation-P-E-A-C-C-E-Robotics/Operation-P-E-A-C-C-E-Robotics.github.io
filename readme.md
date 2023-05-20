@@ -1,9 +1,14 @@
+[![Update data from The Blue Alliance once a week](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/actions/workflows/updateAllYears.yml/badge.svg)](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/actions/workflows/updateAllYears.yml)
+
+[![Update data from The Blue Alliance for current season every 5 minutes during competition hours](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/actions/workflows/updateCurrentYear.yml/badge.svg)](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/actions/workflows/updateCurrentYear.yml)
+
+
 # Data Collection from The Blue Alliance API
 
 This branch in the GitHub repository is dedicated to collecting data from The Blue Alliance API and storing it in JSON files. The data is organized by year and type, with files like `2022_events.json`, `2022_matches.json`, `2022_district_rankings.json`, and so on. Additionally, the data collection process is automated using GitHub Actions, which runs at a specific schedule.
 
-## Repository Structure
-
+## Branch Structure
+`
 ├── .github/
 │   └── workflows/
 │       ├── updateAllYears.yml
@@ -13,7 +18,7 @@ This branch in the GitHub repository is dedicated to collecting data from The Bl
 ├── .gitignore
 ├── README.md
 └── *.json
-
+`
 
 - `.github/workflows/updateAllYears.yml`: GitHub Actions workflow file that automates the data collection process at a scheduled time.
 - `src/data_collection.py`: Python script that interacts with The Blue Alliance API, fetches data, and stores it in the appropriate JSON files.
@@ -44,6 +49,9 @@ on:
 
 This cron expression means that the workflow will run At every 5th minute (UTC) in every month from March through April. This schedule can be modified according to requirements or removed if a feasable way to connect a webhook from the Blue Alliance API can be found.
 
+### Creating new cron triggers
+to create a new cron trigger, use [this generator](https://crontab.guru/) to generate the proper syntax then copy paste it into the workflow file
+
 ## Data Collection Script
 The data collection scripts `updateAllYears.py` and `updateCurrentYear.py` are responsible for fetching data from The Blue Alliance API and storing it in JSON files. The script is located in the src/ directory of the repository.
 
@@ -61,4 +69,4 @@ Github Actions cron triggers have not proven to be reliable as of yet. So far no
 ## Issues
 Please write an Issue or Pull Request if there is a problem, avoid directly comiting changes without first reviewing with the rest of the Website maintainers (if you are the only person maintaing the site then you of course dont have to do this)
 
-### Last Updated May 20 2023 13:03hrs
+### Last Updated May 20 2023
