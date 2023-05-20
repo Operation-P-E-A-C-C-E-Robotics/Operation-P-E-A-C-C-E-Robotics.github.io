@@ -31,7 +31,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "16"
-      
+
+      - name: run NPM CI
+        run: npm install
+
       - name: run NPM CI
         run: npm ci
       - name: Build TinaCMS
