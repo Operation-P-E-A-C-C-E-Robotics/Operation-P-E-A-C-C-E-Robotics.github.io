@@ -64,12 +64,6 @@ jobs:
 
       - name: run NPM CI
         run: npm ci
-      - name: Build TinaCMS
-        env:
-          TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
-          TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
-          HEAD: ${{ github.ref_name}}
-        run: npx tinacms build
 
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
@@ -77,6 +71,13 @@ jobs:
           source: ./
           destination: ./_site
           
+      - name: Build TinaCMS
+        env:
+          TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
+          TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
+          HEAD: ${{ github.ref_name}}
+        run: npx tinacms build
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
