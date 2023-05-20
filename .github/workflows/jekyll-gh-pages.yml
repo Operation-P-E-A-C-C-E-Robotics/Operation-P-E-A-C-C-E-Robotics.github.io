@@ -21,11 +21,38 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-tina:
+  # build-tina:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout Repo
+  #       uses: actions/checkout@v3
+
+  #     - name: install Node
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: "16"
+
+  #     - name: run NPM Install
+  #       run: npm install
+
+  #     - name: run NPM CI
+  #       run: npm ci
+  #     - name: Build TinaCMS
+  #       env:
+  #         TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
+  #         TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
+  #         HEAD: ${{ github.ref_name}}
+  #       run: npx tinacms build
+  # Build job
+  build-jekyll:
     runs-on: ubuntu-latest
+    # env:
+    #  TBA_AUT_KEY: ${{ secrets.TBA_API_KEY }}
     steps:
-      - name: Checkout Repo
+      - name: Checkout
         uses: actions/checkout@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
 
       - name: install Node
         uses: actions/setup-node@v3
@@ -43,16 +70,6 @@ jobs:
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
           HEAD: ${{ github.ref_name}}
         run: npx tinacms build
-  # Build job
-  build-jekyll:
-    runs-on: ubuntu-latest
-    # env:
-    #  TBA_AUT_KEY: ${{ secrets.TBA_API_KEY }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
 
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
