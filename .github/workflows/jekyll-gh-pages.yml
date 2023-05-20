@@ -21,11 +21,12 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  - name: Build TinaCMS
-    env:
-      TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
-      TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
-    run: npx tinacms build
+  build-tina:
+    - name: Build TinaCMS
+      env:
+        TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
+        TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
+      run: npx tinacms build
   # Build job
   build-jekyll:
     runs-on: ubuntu-latest
