@@ -41,7 +41,7 @@ jobs:
         env:
           TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
-          HEAD: ${{ GITHUB_REF }}
+          HEAD: ${{ github.ref_name}}
         run: npx tinacms build
   # Build job
   build-jekyll:
