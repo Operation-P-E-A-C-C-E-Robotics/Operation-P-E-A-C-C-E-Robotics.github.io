@@ -2,8 +2,7 @@ collections:
   robots:
     output: true
 
-  admin:
-    output: true
+
 
 
 defaults:
@@ -12,6 +11,7 @@ defaults:
       path: "_robots" # Empty string represents all files
     values:
       published: true
+      layout: robot
 
 plugins:
   - "jekyll-github-metadata"
