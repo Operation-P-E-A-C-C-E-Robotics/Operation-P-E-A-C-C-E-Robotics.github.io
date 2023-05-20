@@ -24,6 +24,11 @@ jobs:
   build-tina:
     runs-on: ubuntu-latest
     steps:
+      - name: install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          
       - name: Build TinaCMS
         env:
           TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
