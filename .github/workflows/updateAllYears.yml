@@ -2,7 +2,7 @@ on:
   push:
 
   schedule:
-    - cron: '35 0 * * 1'
+    - cron: '35 4 * * 0' #run at 04:35hrs UTC (00:35hrs EST/EDT) on Sundays
 
 
 
