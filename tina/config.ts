@@ -78,6 +78,7 @@ export default defineConfig({
           return {
             // When a new post is created the title field will be set to "New post"
             year: `${new Date(Date.now()).getFullYear()}`,
+            robotName: 'Unnamed Robot',
             metatitle: `${new Date(Date.now()).getFullYear()} Robot: ROBOT NAME`,
             metadesc: `GAME NAME Performance and Statistics`,
           }
@@ -85,11 +86,11 @@ export default defineConfig({
         ui: {
           filename: {
             // if disabled, the editor can not edit the filename
-            readonly: false,
+            readonly: true,
             // Example of using a custom slugify function
             slugify: values => {
               // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
-              return `${new Date(Date.now()).getFullYear()}`
+              return `${values?.year}`
             },
           },
         },
@@ -115,7 +116,6 @@ export default defineConfig({
             type: 'image',
           },
           {
-
             name: 'metatitle',
             label: 'Meta Title',
             type: 'string',
