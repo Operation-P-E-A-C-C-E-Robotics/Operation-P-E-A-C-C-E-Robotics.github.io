@@ -10,8 +10,15 @@ defaults:
     scope:
       path: "_robots" # Empty string represents all files
     values:
-      published: true
+      published: false
       layout: robot
+
+  -
+    scope:
+      path: "_posts" # Empty string represents all files
+    values:
+      published: false
+      layout: post
 
 plugins:
   - "jekyll-github-metadata"
