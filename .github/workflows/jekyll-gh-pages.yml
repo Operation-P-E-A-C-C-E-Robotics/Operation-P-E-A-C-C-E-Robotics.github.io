@@ -20,31 +20,10 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
+
 jobs:
-  # build-tina:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout Repo
-  #       uses: actions/checkout@v3
-
-  #     - name: install Node
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: "16"
-
-  #     - name: run NPM Install
-  #       run: npm install
-
-  #     - name: run NPM CI
-  #       run: npm ci
-  #     - name: Build TinaCMS
-  #       env:
-  #         TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
-  #         TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
-  #         HEAD: ${{ github.ref_name}}
-  #       run: npx tinacms build
   # Build job
-  build-jekyll:
+  build:
     runs-on: ubuntu-latest
     # env:
     #  TBA_AUT_KEY: ${{ secrets.TBA_API_KEY }}
@@ -65,11 +44,6 @@ jobs:
       - name: run NPM CI
         run: npm ci
 
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
           
       - name: Build TinaCMS
         env:
@@ -78,9 +52,26 @@ jobs:
           HEAD: ${{ github.ref_name}}
         run: npx tinacms build
         
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site  # Change this to the build output directory of your Jekyll site
+          source: ./
+          destination: ./_site
+          
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
    
