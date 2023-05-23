@@ -15,7 +15,7 @@ defaults:
 
   -
     scope:
-      path:
+      path: ""
     values:
       bg: dark
       txt: light
