@@ -1,6 +1,8 @@
 ---
 layout: markdown
 title: FAQ 
+bg: light
+txt: dark
 ---
 
 ### **WHAT DOES P.E.A.C.C.E. STAND FOR?**

@@ -19,6 +19,14 @@ defaults:
     values:
       published: false
       layout: post
+      bg: light
+      txt: dark
+  -
+    scope:
+      path:
+    values:
+      bg: dark
+      txt: light
 
 plugins:
   - "jekyll-github-metadata"
