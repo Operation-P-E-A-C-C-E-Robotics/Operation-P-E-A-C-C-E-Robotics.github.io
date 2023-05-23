@@ -209,16 +209,20 @@ title: Operation PEACCE Robotics
           <h2 id="location"><i class="fa fa-map-marker"></i></h2>
           <a id="goToCalendar" href="" class="btn btn-outline-primary"><i class="fa fa-calendar-plus-o"></i> Open in Google Calendar</a>
           <script>
-
-            const nextNonRecurringEvent = getNextNonRecurringEvent()
-            const nextEvent = getNextEvent()
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
-
-            if (nextNonRecurringEvent === null || nextNonRecurringEvent === undefined) {
-              updateHomePageEventBox(nextEvent)
-            } else {
-              updateHomePageEventBox(nextNonRecurringEvent)
+            async function updateBox() {
+            event = await getNextEvent()
+            updateHomePageEventBox(event)
             }
+            updateBox()
+            // const nextNonRecurringEvent = getNextNonRecurringEvent()
+            // const nextEvent = getNextEvent()
+            
+
+            // if (nextNonRecurringEvent === null || nextNonRecurringEvent === undefined) {
+            //   updateHomePageEventBox(nextEvent)
+            // } else {
+            //   updateHomePageEventBox(nextNonRecurringEvent)
+            // }
             // document.getElementById('nextEvent').innerText += event
           </script>
           <!-- {% for post in site.posts limit:1 %}
