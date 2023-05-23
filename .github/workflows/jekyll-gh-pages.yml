@@ -52,9 +52,6 @@ jobs:
           HEAD: ${{ github.ref_name}}
         run: npx tinacms build
         
-      - name: run bundle install
-        run: bundle install
-
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
