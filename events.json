@@ -180,71 +180,6 @@
     },
     {
         "kind": "calendar#event",
-        "etag": "\"3367484005436000\"",
-        "id": "ollvras2jb4djplbp2pt58tcm7_20230522T220000Z",
-        "status": "confirmed",
-        "htmlLink": "https://www.google.com/calendar/event?eid=b2xsdnJhczJqYjRkanBsYnAycHQ1OHRjbTdfMjAyMzA1MjJUMjIwMDAwWiB0ZWFtQHBlYWNjZS5vcmc&ctz=UTC",
-        "created": "2022-08-11T00:53:28.000Z",
-        "updated": "2023-05-10T18:06:42.718Z",
-        "summary": "CT Senator Henri Martin Visit",
-        "location": "Arthur G. Russell Co., Inc., 750 Clark Ave, Bristol, CT 06010, USA",
-        "creator": {
-            "email": "team@peacce.org",
-            "self": true
-        },
-        "organizer": {
-            "email": "team@peacce.org",
-            "self": true
-        },
-        "start": {
-            "dateTime": "2023-05-22T21:30:00Z",
-            "timeZone": "America/New_York"
-        },
-        "end": {
-            "dateTime": "2023-05-23T00:30:00Z",
-            "timeZone": "America/New_York"
-        },
-        "recurringEventId": "ollvras2jb4djplbp2pt58tcm7",
-        "originalStartTime": {
-            "dateTime": "2023-05-22T22:00:00Z",
-            "timeZone": "America/New_York"
-        },
-        "iCalUID": "ollvras2jb4djplbp2pt58tcm7@google.com",
-        "sequence": 7,
-        "hangoutLink": "https://meet.google.com/kie-mszv-qhh",
-        "conferenceData": {
-            "entryPoints": [
-                {
-                    "entryPointType": "video",
-                    "uri": "https://meet.google.com/kie-mszv-qhh",
-                    "label": "meet.google.com/kie-mszv-qhh"
-                },
-                {
-                    "entryPointType": "more",
-                    "uri": "https://tel.meet/kie-mszv-qhh?pin=5271762824795",
-                    "pin": "5271762824795"
-                },
-                {
-                    "regionCode": "US",
-                    "entryPointType": "phone",
-                    "uri": "tel:+1-352-834-1029",
-                    "label": "+1 352-834-1029",
-                    "pin": "671099621"
-                }
-            ],
-            "conferenceSolution": {
-                "key": {
-                    "type": "hangoutsMeet"
-                },
-                "name": "Google Meet",
-                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
-            },
-            "conferenceId": "kie-mszv-qhh"
-        },
-        "eventType": "default"
-    },
-    {
-        "kind": "calendar#event",
         "etag": "\"3367484407876000\"",
         "id": "0d47h487e387ba07hhs1qdc055",
         "status": "confirmed",
@@ -298,5 +233,112 @@
         "iCalUID": "4e4jv5edaudmt4ob3es3136jmg@google.com",
         "sequence": 0,
         "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3369610873680000\"",
+        "id": "6437m1vms4drkvvqo7vhnjtplb",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NjQzN20xdm1zNGRya3Z2cW83dmhuanRwbGJfMjAyMzA2MTJUMjEwMDAwWiB0ZWFtQHBlYWNjZS5vcmc&ctz=UTC",
+        "created": "2023-05-23T01:29:18.000Z",
+        "updated": "2023-05-23T01:30:36.840Z",
+        "summary": "CAD Class",
+        "location": "Arthur G. Russell Co., Inc., 750 Clark Ave, Bristol, CT 06010, USA",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-06-12T21:00:00Z",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-06-12T23:00:00Z",
+            "timeZone": "America/New_York"
+        },
+        "recurrence": [
+            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20230630T035959Z;BYDAY=MO,TH"
+        ],
+        "iCalUID": "6437m1vms4drkvvqo7vhnjtplb@google.com",
+        "sequence": 0,
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3369611041094000\"",
+        "id": "17o77o5ermnnhtuh03c04fr49i",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MTdvNzdvNWVybW5uaHR1aDAzYzA0ZnI0OWlfMjAyMzA2MTVUMjMzMDAwWiB0ZWFtQHBlYWNjZS5vcmc&ctz=UTC",
+        "created": "2023-05-23T01:32:00.000Z",
+        "updated": "2023-05-23T01:32:00.547Z",
+        "summary": "Programming Class",
+        "location": "Arthur G. Russell Co., Inc., 750 Clark Ave, Bristol, CT 06010, USA",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-06-15T23:30:00Z",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-06-16T01:00:00Z",
+            "timeZone": "America/New_York"
+        },
+        "recurrence": [
+            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20230811T035959Z;BYDAY=TH"
+        ],
+        "iCalUID": "17o77o5ermnnhtuh03c04fr49i@google.com",
+        "sequence": 0,
+        "hangoutLink": "https://meet.google.com/ccz-hvih-ncy",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/ccz-hvih-ncy",
+                    "label": "meet.google.com/ccz-hvih-ncy"
+                },
+                {
+                    "entryPointType": "more",
+                    "uri": "https://tel.meet/ccz-hvih-ncy?pin=5928976212711",
+                    "pin": "5928976212711"
+                },
+                {
+                    "regionCode": "US",
+                    "entryPointType": "phone",
+                    "uri": "tel:+1-650-980-4490",
+                    "label": "+1 650-980-4490",
+                    "pin": "923420020"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "ccz-hvih-ncy"
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3369611105008000\"",
+        "id": "17o77o5ermnnhtuh03c04fr49i_20230706T233000Z",
+        "status": "cancelled",
+        "recurringEventId": "17o77o5ermnnhtuh03c04fr49i",
+        "originalStartTime": {
+            "dateTime": "2023-07-06T23:30:00Z",
+            "timeZone": "America/New_York"
+        }
     }
 ]
