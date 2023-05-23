@@ -80,17 +80,24 @@ async function getNextChronologicalDate() {
   return Promise.resolve(nextEvent);
 }
   
+async function getEventDate(event) {
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
+  var date
+  try {
+    date = new Date(event.start.dateTime)
+  } catch {
+    date = new Date(event.start.date)
+  }
+  console.log(date)
+  return Promise.resolve(date.toLocaleString('en-US', options))
+}
 
 
 async function updateHomePageEventBox(data) {
-  console.log(data)
-  console.log(data.start)
+  // console.log(data)
+  // console.log(data.start)
   options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
-  if (data.start.dateTime != undefined) {
-  date = new Date(data.start.dateTime)
-  } else if (data.start.date) {
-    date = new Date(data.start.date)
-  }
+  date = await getEventDate(data)
   console.log(data)
   document.getElementById('nextEvent').innerText = ' ' + data.summary
   document.getElementById('startTime').innerHTML += ' ' + date.toLocaleString('en-US', options)

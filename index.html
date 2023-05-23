@@ -210,10 +210,19 @@ title: Operation PEACCE Robotics
           <a id="goToCalendar" href="" class="btn btn-outline-primary"><i class="fa fa-calendar-plus-o"></i> Open in Google Calendar</a>
           <script>
             async function updateBox() {
-            event = await getNextEvent()
-            updateHomePageEventBox(event)
+              event = await getNextEvent()
+              date = await getEventDate(event)
+
+              topBarNotifier = {
+                "header": `Next Event: ${event.summary}`,
+                "message": `Please join us at ${date.toLocaleString()}`,
+                "class": "light"
+              }
+              updateHomePageEventBox(event)
+              showAlert(topBarNotifier)
             }
             updateBox()
+            
             // const nextNonRecurringEvent = getNextNonRecurringEvent()
             // const nextEvent = getNextEvent()
             
