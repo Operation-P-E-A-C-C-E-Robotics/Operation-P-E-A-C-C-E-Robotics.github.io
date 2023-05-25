@@ -5,13 +5,13 @@ title: Operation PEACCE Robotics
 <meta property="og:title" content="Operation PEACCE Robotics - Team 3461" />
 <style>
   .header-row {
-    background-image: url("{{site.banner.image-url}}");
+    background-image: url("{{site.data.index.banner.image-url}}");
     background-size:cover; 
     background-repeat: no-repeat;
     width: 100%;
     min-height:25rem; 
     height: calc(33vw - 1vh);
-    background-position: {{site.banner.image-align}};
+    background-position: {{site.data.index.banner.image-align}};
 
   }
 
@@ -47,8 +47,8 @@ title: Operation PEACCE Robotics
   <div class="header-row">
     <div id="header-row-text" class="row pr-0 align-items-center">
       <div class="d-block text-center mx-auto">
-        <h1 class="font-weight-bold col pr-0">{{site.banner.header}}</h1>
-        <h2 class="font-weight-normal col">{{site.banner.subheader}}</h2>
+        <h1 class="font-weight-bold col pr-0">{{site.data.index.banner.header}}</h1>
+        <h2 class="font-weight-normal col">{{site.data.index.banner.subheader}}</h2>
       </div>
     </div>
   </div>
@@ -134,7 +134,7 @@ title: Operation PEACCE Robotics
 </div>
 <br>
 <div class="container-fluid">
-  {% for item in site.data.index %}
+  {% for item in site.data.index.content %}
   <div class="row  " style="padding-left: 5%;">
     <div class="col">  
       <div style="display:flex"> <h1 style="font-family: 'BankGothicBold', sans-serif;">{{item.header}}</h1>

@@ -138,7 +138,101 @@ export default defineConfig({
             },
         ],
       },
-
+    //   {
+    //     name: "contact",
+    //     label: "Contact",
+    //     path: "_data",
+    //     match: {
+    //         // name of the data file
+    //         include: "contact",
+    //     },
+    //    format: "yaml",
+    //    fields: [
+    //      // contact fields here 
+    //    ],
+    //  },
+     {
+        name: "index",
+        label: "Home Page Config",
+        path: "_data",
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        match: {
+            // name of the data file
+            include: "index",
+        },
+       format: "yaml",
+       fields: [
+        {
+          label: "Banner Image",
+          name: "banner",
+          type: "object",
+          fields: [
+            {
+              label: "Image",
+              name: "imageurl",
+              nameOverride: 'image-url',
+              type: "image"
+            },
+            {
+              label: "Image Align",
+              name: "align",
+              nameOverride: 'image-align',
+              type: "string",
+              options: [{
+                value: "top",
+                label: "Top"
+              }, {
+                value: "music",
+                label: "Music"
+              }]
+            },
+            {
+              label: "Header",
+              name: "header",
+              type: "string"
+            },
+            {
+              label: "Sub Header",
+              name: "subheader",
+              type: "string"
+            },
+          ]
+        },
+        {
+        label: "Text/Image Columns",
+        name: "content",
+        type: "object",
+        list: true,
+        fields: [
+          {
+            label: "Header",
+            name: "header",
+            type: "string"
+          },
+          {
+            label: "Content",
+            name: "content",
+            type: "rich-text"
+          },
+          {
+            label: "Glyph",
+            name: "glyph",
+            type: "image",
+          },
+          {
+            label: "Image",
+            name: "image",
+            type: "image",
+          },
+        ]
+      },
+    ],
+     },
     ],
   },
 });
