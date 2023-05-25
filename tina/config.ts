@@ -138,7 +138,42 @@ export default defineConfig({
             },
         ],
       },
-    //   {
+    {
+      name: "about",
+      label: "Top Level Pages",
+      path: "/",
+      match: {
+        include: '*',
+      },
+     format: "md",
+     fields: [
+      {
+        type: "string",
+        name: "title",
+        label: "Title",
+        isTitle: true,
+        required: true,
+      },
+      {
+        type: "string",
+        name: "layout",
+        label: "Page Layout",
+        required: true,
+      },
+      {
+        type: "rich-text",
+        name: "body",
+        label: "Body",
+        isBody: true,
+      },
+      {
+      label: "Published",
+      name: "published",
+      type: "boolean",
+      },
+     ],
+   },
+       //   {
     //     name: "contact",
     //     label: "Contact",
     //     path: "_data",
@@ -223,6 +258,23 @@ export default defineConfig({
           ]
         },
         {
+          label: "Subbanner Text",
+          name: "subbanner",
+          type: "object",
+          fields: [
+            {
+              label: "Header",
+              name: "text",
+              type: "string"
+            },
+            {
+              label: "Sub Header",
+              name: "subtext",
+              type: "rich-text"
+            },
+          ]
+        },
+        {
         label: "Text/Image Columns",
         name: "content",
         type: "object",
@@ -259,6 +311,8 @@ export default defineConfig({
       },
     ],
      },
+     
     ],
   },
+  
 });

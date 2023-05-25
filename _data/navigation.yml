@@ -1,35 +1,36 @@
-- name: Home
-  drop: "false"
-  link: /
-  
-- name: About Us
-  drop: "false"
-  link: /about.html
+data: 
+  - name: Home
+    drop: "false"
+    link: /
+    
+  - name: About Us
+    drop: "false"
+    link: /about.html
 
-- name: FAQ
-  drop: "false"
-  link: /faq.html
+  - name: FAQ
+    drop: "false"
+    link: /faq.html
 
-- name: Sponsors
-  drop: "false"
-  link: /sponsors.html
-# - name: Current Season
-#   drop: "false"
-#   link: /robots/current
+  - name: Sponsors
+    drop: "false"
+    link: /sponsors.html
+  # - name: Current Season
+  #   drop: "false"
+  #   link: /robots/current
 
-- name: Seasons
-  drop: "true"
-  links:
-    - url: /robots/current
-      name: Current Season
-    - url: /robots
-      name: Past Seasons
+  - name: Seasons
+    drop: "true"
+    links:
+      - url: /robots/current
+        name: Current Season
+      - url: /robots
+        name: Past Seasons
 
 
-- name: Blog
-  drop: "false"
-  link: /blog.html
+  - name: Blog
+    drop: "false"
+    link: /blog.html
 
-- name: Contact Us
-  drop: "false"
-  link: /contact.html
+  - name: Contact Us
+    drop: "false"
+    link: /contact.html
