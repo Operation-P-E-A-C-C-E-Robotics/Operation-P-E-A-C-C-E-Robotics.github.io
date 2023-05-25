@@ -180,16 +180,35 @@ export default defineConfig({
             },
             {
               label: "Image Align",
-              name: "align",
+              name: "imagealign",
               nameOverride: 'image-align',
               type: "string",
               options: [{
                 value: "top",
                 label: "Top"
-              }, {
-                value: "music",
-                label: "Music"
-              }]
+              }, 
+              {
+                value: "left",
+                label: "Left"
+              },
+              {
+                value: "center",
+                label: "Center"
+              },
+              {
+                value: "right",
+                label: "Right"
+              },
+              {
+                value: "bottom",
+                label: "Bottom"
+              },
+              {
+                value: "inherit",
+                label: "Inherit/Default"
+              },
+
+            ]
             },
             {
               label: "Header",
@@ -208,6 +227,13 @@ export default defineConfig({
         name: "content",
         type: "object",
         list: true,
+        ui: {
+          // This allows the customization of the list item UI
+          // Data can be accessed by item?.<Name of field>
+          itemProps: (item) => {
+            return { label: `${item?.header}`}
+          },
+        },
         fields: [
           {
             label: "Header",
