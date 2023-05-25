@@ -13,7 +13,7 @@
     
     <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
         <ul class="navbar-nav nav">
-        {% for item in site.data.navigation %}
+        {% for item in site.data.navigation.data %}
           {% if item.drop and item.drop == "false" %}
             <li class="nav-item text-xl-center ">
               <a class="nav-item text-xl-center nav-link" href="{{ item.link }}" {% if page.url == item.link + .html %}style="color: black;"{% endif %}>
