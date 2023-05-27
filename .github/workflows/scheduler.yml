@@ -23,3 +23,12 @@ jobs:
         uses: peter-evans/repository-dispatch@v2
         with:
           event-type: tba-cur
+
+  trigger-google-calendar-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          event-type: calendar
+        
