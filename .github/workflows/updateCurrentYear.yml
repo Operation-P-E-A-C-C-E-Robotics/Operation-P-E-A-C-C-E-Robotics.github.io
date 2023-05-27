@@ -2,10 +2,8 @@ on:
   schedule:
     - cron: '*/5 * * 3-4 *'
 
-  workflow_run:
-    workflows: ["Trigger update workflows on all branches"]
-    types:
-      - completed
+  repository_dispatch:
+    types: [tba-cur]
 
 
 name: Update data from The Blue Alliance for current season every 5 minutes during competition hours
