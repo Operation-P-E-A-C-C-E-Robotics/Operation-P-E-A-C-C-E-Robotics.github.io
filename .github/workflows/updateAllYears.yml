@@ -4,6 +4,10 @@ on:
   schedule:
     - cron: '35 15 * * *' #run At 15:35hrs UTC (10:35hrs EST) 
 
+  workflow_run:
+    workflows: ["Trigger update workflows on all branches"]
+    types:
+      - completed
 
 
 name: Update data from The Blue Alliance once a week
