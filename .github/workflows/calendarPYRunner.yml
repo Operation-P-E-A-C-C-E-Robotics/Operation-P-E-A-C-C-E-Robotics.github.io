@@ -5,10 +5,7 @@ on:
   
   push:
     branches: ["google-api-backend"]
-
-  repository_dispatch:
-    types: [calendar]
-   
+       
   workflow_dispatch:
   
 jobs: 
