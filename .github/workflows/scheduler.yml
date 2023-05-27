@@ -18,7 +18,7 @@ jobs:
       - name: Invoke workflow without inputs
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: updateAllYears.yml
+          workflow: 56043978
     
   trigger-tba-current-workflow:
     runs-on: ubuntu-latest
@@ -30,7 +30,7 @@ jobs:
       - name: Invoke workflow without inputs
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: updateCurrentYear.yml
+          workflow: 56043979
 
   trigger-google-calendar-workflow:
     runs-on: ubuntu-latest
@@ -42,5 +42,5 @@ jobs:
       - name: Invoke workflow without inputs
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: calendarPYRunner.yml
+          workflow: 57165542
         
