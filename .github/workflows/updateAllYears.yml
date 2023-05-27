@@ -4,8 +4,6 @@ on:
   schedule:
     - cron: '35 15 * * *' #run At 15:35hrs UTC (10:35hrs EST) 
 
-  repository_dispatch:
-    types: [tba-all]
 
   workflow_dispatch:
 

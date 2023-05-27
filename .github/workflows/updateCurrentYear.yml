@@ -2,8 +2,6 @@ on:
   schedule:
     - cron: '*/5 * * 3-4 *'
 
-  repository_dispatch:
-    types: [tba-cur]
 
   workflow_dispatch:
 
