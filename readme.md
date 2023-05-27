@@ -8,7 +8,7 @@
 This branch in the GitHub repository is dedicated to collecting data from The Blue Alliance API and storing it in JSON files. The data is organized by year and type, with files like `2022_events.json`, `2022_matches.json`, `2022_district_rankings.json`, and so on. Additionally, the data collection process is automated using GitHub Actions, which runs at a specific schedule.
 
 ## Branch Structure
-`
+```
 ├── .github/
 │   └── workflows/
 │       ├── updateAllYears.yml
@@ -18,7 +18,7 @@ This branch in the GitHub repository is dedicated to collecting data from The Bl
 ├── .gitignore
 ├── README.md
 └── *.json
-`
+```
 
 - `.github/workflows/updateAllYears.yml`: GitHub Actions workflow file that automates the data collection process at a scheduled time.
 - `src/data_collection.py`: Python script that interacts with The Blue Alliance API, fetches data, and stores it in the appropriate JSON files.
@@ -62,9 +62,6 @@ To use the script locally:
 3. Run the script using `python updateAllYears.py` or `python updateCurrentYear.py`
 4. The script fetches the data and stores it in JSON files within the repository. The JSON files are organized based on the year and type of data collected.
 
-## Reliability
-
-Github Actions cron triggers have not proven to be reliable as of yet. So far none of these triggers have fired properly and I am investigating the cause, once this is resolved I will remove this notice
 
 ## Issues
 Please write an Issue or Pull Request if there is a problem, avoid directly comiting changes without first reviewing with the rest of the Website maintainers (if you are the only person maintaing the site then you of course dont have to do this)
