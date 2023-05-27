@@ -18,6 +18,7 @@ jobs:
       - name: Invoke workflow without inputs
         uses: benc-uk/workflow-dispatch@v1
         with:
+          ref: gh-actions-tba-backend
           workflow: 56043978
     
   trigger-tba-current-workflow:
@@ -30,6 +31,7 @@ jobs:
       - name: Invoke workflow without inputs
         uses: benc-uk/workflow-dispatch@v1
         with:
+          ref: gh-actions-tba-backend
           workflow: 56043979
 
   trigger-google-calendar-workflow:
@@ -42,5 +44,6 @@ jobs:
       - name: Invoke workflow without inputs
         uses: benc-uk/workflow-dispatch@v1
         with:
+          ref: google-api-backend
           workflow: 57165542
         
