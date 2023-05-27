@@ -66,9 +66,8 @@
     4. In the terminal or command prompt, use the git clone command followed by the repository URL to clone the repository. Paste the URL after the git clone command and press Enter.
    
     ```bash
-        git clone <repository-url>
+        git clone https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io
     ```
-    Replace <repository-url> with the actual URL you copied in the previous step.
 
     5.  The cloning process will begin, and you will see a progress indicator showing the download progress.
     6.  Once the cloning is complete, you will have a local copy of the repository on your machine.
@@ -104,11 +103,12 @@
 
     The Blue Alliance API integration retrieves match data from The Blue Alliance API and incorporates it into the website. The following outlines the process:
 
-    5. The GitHub Action runner on the designated branch runs at defined intervals or events.
+    5. The GitHub Action runner on the [designated branch](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/tree/gh-actions-tba-data-backend) runs at defined intervals or events.
     6. The runner authenticates with The Blue Alliance API using the provided credentials stored in GitHub Secrets.
     7. The runner retrieves the desired match data from the API and saves it as a JSON file in the repository.
     8. Client-side JavaScript on the website fetches the JSON file and processes the data to present match details and relevant information.
 
+    ### API Key Security
     It's important to ensure that the API credentials are securely stored in GitHub Secrets and not exposed publicly. The GitHub Actions workflows and runners are responsible for executing the necessary tasks and updating the JSON files, allowing the website to dynamically fetch and display the most recent data. At no point should you paste an API key into any of the files you are working with in the repo, all authentication is handled upon deploy.  When developing, just let the site fetch the data from the files on the git repo, those will serve as working data for your tests.
 
 
@@ -141,3 +141,4 @@
 
     API Integrations
    - [The Blue Alliance API v3 Documentation](https://www.thebluealliance.com/apidocs/v3)
+   - [Google Calendar API documentation](https://developers.google.com/calendar/overview)
