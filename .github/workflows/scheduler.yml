@@ -15,6 +15,10 @@ jobs:
         uses: peter-evans/repository-dispatch@v2
         with:
           event-type: tba-all
+      - name: Invoke workflow without inputs
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: updateAllYears.yml
     
   trigger-tba-current-workflow:
     runs-on: ubuntu-latest
@@ -23,6 +27,10 @@ jobs:
         uses: peter-evans/repository-dispatch@v2
         with:
           event-type: tba-cur
+      - name: Invoke workflow without inputs
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: updateCurrentYear.yml
 
   trigger-google-calendar-workflow:
     runs-on: ubuntu-latest
@@ -31,4 +39,8 @@ jobs:
         uses: peter-evans/repository-dispatch@v2
         with:
           event-type: calendar
+      - name: Invoke workflow without inputs
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: calendarPYRunner.yml
         
