@@ -9,7 +9,7 @@ on:
   repository_dispatch:
     types: [calendar]
    
-  workflow-dispatch:
+  workflow_dispatch:
   
 jobs: 
    pull_events: 
