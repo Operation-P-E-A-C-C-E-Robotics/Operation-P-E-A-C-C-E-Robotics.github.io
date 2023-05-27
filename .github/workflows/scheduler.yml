@@ -1,0 +1,7 @@
+name: Trigger update workflows on all branches 
+on: 
+  schedule: 
+   - cron: '35 15 * * *' #run At 15:35hrs UTC (10:35hrs EST) 
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
