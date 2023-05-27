@@ -6,10 +6,8 @@ on:
   push:
     branches: ["google-api-backend"]
 
-  workflow_run:
-    workflows: ["Trigger update workflows on all branches"]
-    types:
-      - completed
+  repository_dispatch:
+    types: [calendar]
    
   
 jobs: 
