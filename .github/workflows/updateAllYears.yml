@@ -7,7 +7,8 @@ on:
   repository_dispatch:
     types: [tba-all]
 
-
+  workflow-dispatch:
+  
 name: Update data from The Blue Alliance once a week
 
 jobs:

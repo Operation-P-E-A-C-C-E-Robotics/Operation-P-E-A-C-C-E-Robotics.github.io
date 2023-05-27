@@ -5,6 +5,7 @@ on:
   repository_dispatch:
     types: [tba-cur]
 
+  workflow-dispatch:
 
 name: Update data from The Blue Alliance for current season every 5 minutes during competition hours
 
