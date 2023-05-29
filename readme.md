@@ -8,6 +8,14 @@ Documentation is kept in the [Documentation Folder](https://github.com/Operation
 
 # Currnet Repository Status
 
+![Website](https://img.shields.io/website?label=Github%20Pages&up_message=Online&url=https%3A%2F%2Foperation-p-e-a-c-c-e-robotics.github.io%2F)
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io?color=green&include_prereleases&label=Latest%20Release)
+
+## Dependcy versions
+![Gem](https://img.shields.io/gem/v/jekyll?label=Jekyll%20Version%20%28Gem%29)
+
+# Github Action Runners
+
 ## Mission Critical
 [![Deploy Jekyll To Github Pages](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/actions/workflows/jekyll-gh-pages.yml)
 
