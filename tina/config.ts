@@ -311,6 +311,66 @@ export default defineConfig({
       },
     ],
      },
+
+     {
+      name: "sponsors",
+      label: "Sponsors",
+      path: "_data",
+      ui: {
+        allowedActions: {
+          create: false,
+          delete: false,
+        },
+      },
+      match: {
+          // name of the data file
+          include: "sponsors",
+      },
+     format: "yml",
+     fields: [
+      {
+      label: "Sponsors",
+      name: "sponsors",
+      type: "object",
+      list: true,
+      ui: {
+        // This allows the customization of the list item UI
+        // Data can be accessed by item?.<Name of field>
+        itemProps: (item) => {
+          return { label: `${item?.name}`}
+        },
+      },
+      fields: [
+        {
+          label: "Name",
+          name: "name",
+          type: "string"
+        },
+        {
+          label: "Sponsor Tier",
+          name: "sponsortier",
+          type: "string"
+        },
+        {
+          label: "Website",
+          name: "website",
+          type: "string"
+        },
+        {
+          label: "Display Name Only",
+          name:"isNameOnly",
+          type: "boolean",
+        },
+        {
+          label: "Logo",
+          name: "image",
+          type: "image"
+        },
+
+      ]
+    },
+  ],
+   },
      
     ],
   },
