@@ -323,6 +323,7 @@ title: Operation PEACCE Robotics
 <h1 class=" text-center ">Thank you to our generous sponsors</h1>
 <div class="logo-area justify-content-center  text-dark">
   {% for item in site.data.sponsors.sponsors limit:4 %}
+  {% if item.hidden == false %}
     <div class="sponsorlogo"> 
       {% if item.isNameOnly == false %}
       <img src="{{item.image}}">
@@ -338,6 +339,7 @@ title: Operation PEACCE Robotics
       </div>
       {% endif %}
     </div>
+    {% endif %}
     {% endfor %}
   
     <div class="sponsorlogo">

@@ -366,6 +366,11 @@ export default defineConfig({
           name: "image",
           type: "image"
         },
+        {
+          label: "Hide from Sponsor List",
+          name:"hidden",
+          type: "boolean",
+        },
 
       ]
     },

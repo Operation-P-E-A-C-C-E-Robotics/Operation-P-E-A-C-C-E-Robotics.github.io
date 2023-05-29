@@ -42,6 +42,7 @@ sponsors:
     displayOnSponsorPageAsHero: true
     summary: AGR is a really nice company
     website: https://arthurgrussell.com/
+    hidden: false
 
   - name: Hartford County 4H
     image: /assets/sponsors/4h-logo.svg
@@ -50,66 +51,76 @@ sponsors:
     displayOnSponsorPageAsHero: true
     summary: sample text
     website: https://4-h.extension.uconn.edu/
+    hidden: false
 
   #Platinum Sponsors
   - name: Mavice
     image: /assets/sponsors/mavice.png
     sponsortier: Platinum
     isNameOnly: false
+    hidden: false
 
   - name: Solidworks
     image: /assets/sponsors/solidworks.png
     sponsortier: Platinum
     isNameOnly: false
     displayOnSponsorPageAsHero: false
-
+    hidden: false
   #Gold Sponsors
   - name: Automation Associates, Inc
     image: /assets/sponsors/AutomationAssociates.jpeg
     sponsortier: Gold
     isNameOnly: false
     displayOnSponsorPageAsHero: false
+    hidden: false
 
   - name: Gene Haas Foundation
     image: /assets/sponsors/Gene-Haas.webp
     sponsortier: Gold
     isNameOnly: false
     displayOnSponsorPageAsHero: false
+    hidden: false
 
   - name: Phillip Weingart
     image: /assets/images/notFound.png
     sponsortier: Gold
     isNameOnly: true
     displayOnSponsorPageAsHero: false
+    hidden: false
 
   - name: RBC Bearings
     image: /assets/sponsors/RBC.png
     sponsortier: Gold
     isNameOnly: false
     displayOnSponsorPageAsHero: false
+    hidden: false
 
   - name: Sean Drzewiecki
     image: /assets/images/notFound.png
     sponsortier: Gold
     isNameOnly: true
     displayOnSponsorPageAsHero: false
+    hidden: false
 
   - name: Stepcraft
     image: /assets/sponsors/stepcraft.png
     sponsortier: Gold
     isNameOnly: false
     displayOnSponsorPageAsHero: false
+    hidden: false
 
   - name: TE Connectivity
     image: /assets/sponsors/TE_Connectivity.png
     sponsortier: Gold
     isNameOnly: false
     displayOnSponsorPageAsHero: false
+    hidden: false
 
   - name: Thomaston Savings Bank
     image: /assets/sponsors/thomastonBank.svg
     sponsortier: Gold
     isNameOnly: false
+    hidden: false
 
 
   #Silver Sponsors
@@ -117,81 +128,98 @@ sponsors:
     image: /assets/images/notFound.png
     sponsortier: Silver
     isNameOnly: true
+    hidden: false
 
   - name: Connecticut Tooling & Machining Association
     image: /assets/sponsors/ctma-logo.png
     sponsortier: Silver
     isNameOnly: false
+    hidden: false
 
   - name: DaCruz
     image: /assets/sponsors/DaCruz.png
     sponsortier: Silver
     isNameOnly: false
+    hidden: false
 
   - name: Dawn Newmin
     image: /assets/images/notFound.png
     sponsortier: Silver
     isNameOnly: true
+    hidden: false
 
   - name: Dennis Yard
     image: /assets/images/notFound.png
     sponsortier: Silver
     isNameOnly: true
+    hidden: false
 
   - name: Eileen Candels
     image: /assets/images/notFound.png
     sponsortier: Silver
     isNameOnly: true
+    hidden: false
 
   - name: Elizabeth Trotta
     image: /assets/images/notFound.png
     sponsortier: Silver
     isNameOnly: true
+    hidden: false
 
   - name: Frank Sathory
     image: /assets/images/notFound.png
     sponsortier: Silver
     isNameOnly: true
+    hidden: false
 
   - name: Friends and Family of PEACCE
     image: /assets/images/notFound.png
     sponsortier: Silver
     isNameOnly: true
+    hidden: false
+
 
   - name: Johnny Chea
     image: /assets/images/notFound.png
     sponsortier: Silver
     isNameOnly: true
+    hidden: false
 
   - name: Nancy Edwards
     image: /assets/images/notFound.png
     sponsortier: Silver
     isNameOnly: true
+    hidden: false
 
   - name: Patz Family
     image: /assets/images/notFound.png
     sponsortier: Silver
     isNameOnly: true
+    hidden: false
 
   - name: Price Chopper
     image: /assets/sponsors/priceChopper.png
     sponsortier: Silver
     isNameOnly: false
+    hidden: false
 
   - name: Richard Covell
     image: /assets/images/notFound.png
     sponsortier: Silver
     isNameOnly: true
+    hidden: false
 
   - name: Robert Butler
     image: /assets/images/notFound.png
     sponsortier: Silver
     isNameOnly: true
+    hidden: false
 
   - name: Sam Patterson
     image: /assets/images/notFound.png
     sponsortier: Silver
     isNameOnly: true
+    hidden: false
 
 
 
