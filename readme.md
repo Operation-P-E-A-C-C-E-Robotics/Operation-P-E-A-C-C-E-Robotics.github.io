@@ -13,6 +13,7 @@ Documentation is kept in the [Documentation Folder](https://github.com/Operation
 
 ## Dependcy versions
 ![Gem](https://img.shields.io/gem/v/jekyll?label=Jekyll%20Version%20%28Gem%29)
+![npm](https://img.shields.io/npm/v/tinacms?label=TinaCMS%20%28NPM%29)
 
 # Github Action Runners
 

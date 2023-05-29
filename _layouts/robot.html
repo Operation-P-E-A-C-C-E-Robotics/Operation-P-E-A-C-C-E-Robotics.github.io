@@ -295,6 +295,10 @@ layout: default
            badge = `<span class="badge badge-pill badge-secondary">Offseason Event</span>`
            break;
          
+           case -1:
+          //  console.log(stats[key])
+           badge = `<span class="badge badge-pill badge-warning">Unlabeled Event</span>`
+           break;         
          case 0:
             // console.log(stats[key])
             badge = `<span class="badge badge-pill badge-primary">Week ${stats[key].week + 1} Regional Event</span>`
@@ -303,10 +307,7 @@ layout: default
           //  console.log(stats[key])
            badge = `<span class="badge badge-pill badge-primary">Week ${stats[key].week + 1} District Event</span>`
            break;
-         case 5:
-          //  console.log(stats[key])
-           badge = `<span class="badge badge-pill badge-info">DCMP Division</span>`
-           break;
+
          case 2:
            badge = `<span class="badge badge-pill badge-info">DCMP</span>`
            break;
@@ -317,6 +318,16 @@ layout: default
          case 4:
         //  console.log(stats[key])
            badge = `<span class="badge badge-pill badge-success">CMP Einstein</span>`
+           break;
+          
+         case 5:
+          //  console.log(stats[key])
+           badge = `<span class="badge badge-pill badge-info">DCMP Division</span>`
+           break;
+
+        case 7:
+          //  console.log(stats[key])
+           badge = `<span class="badge badge-pill badge-danger">2020/21 Remote Event</span>` // Covid is fun isnt it
            break;
 
           case null:
