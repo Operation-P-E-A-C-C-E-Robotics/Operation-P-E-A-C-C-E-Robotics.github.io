@@ -1,49 +1,34 @@
-name: Trigger update workflows on all branches 
-on: 
-  schedule: 
-   - cron: '35 10 * * *' #run at 5:35 AM EST | 10:35 AM UTC (Github Actions runs on UTC, no Daylight Savings Time changes are accounted for in this trigger)
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
+name: Trigger update workflows on all branches
+on:
+  schedule:
+    - cron: '35 10 * * *' # Run at 5:35 AM EST | 10:35 AM UTC (Github Actions runs on UTC, no Daylight Savings Time changes are accounted for in this trigger)
+    - cron: '*/5 * * 3-4 *' # Run at every 5th minute in every month from March through April to update data from The Blue Alliance for the current season during competitions.
 
 jobs:
-  trigger-tba-all-workflow:
+  trigger-workflows:
     runs-on: ubuntu-latest
     steps:
-      - name: Repository Dispatch
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          event-type: tba-all
-      - name: Invoke workflow without inputs
+      - name: Check cron trigger
+        id: cron_check
+        run: echo "Cron trigger: ${{ github.event_name }}"
+
+      - name: Trigger TBA workflows
+        if: ${{ github.event_name == 'schedule' && github.event.schedule == '35 10 * * *' }}
         uses: benc-uk/workflow-dispatch@v1
         with:
           ref: gh-actions-tba-data-backend
           workflow: 56043978
-    
-  trigger-tba-current-workflow:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Repository Dispatch
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          event-type: tba-cur
-      - name: Invoke workflow without inputs
+
+      - name: Trigger TBA current workflow
+        if: ${{ github.event_name == 'schedule' && github.event.schedule == '*/5 * * 3-4 *' }}
         uses: benc-uk/workflow-dispatch@v1
         with:
           ref: gh-actions-tba-data-backend
           workflow: 56043979
 
-  trigger-google-calendar-workflow:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Repository Dispatch
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          event-type: calendar
-      - name: Invoke workflow without inputs
+      - name: Trigger Google Calendar workflow
+        if: ${{ github.event_name == 'schedule' && github.event.schedule == '35 10 * * *' }}
         uses: benc-uk/workflow-dispatch@v1
         with:
           ref: google-api-backend
           workflow: 57165542
-        
