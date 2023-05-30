@@ -16,21 +16,21 @@ jobs:
           echo "Cron trigger: ${{ github.event_name }}"
 
       - name: Trigger TBA workflows
-        if: ${{ github.event_name == 'schedule' && github.event.schedule == '35 10 * * *' }}
+        if: ${{ github.event_name == 'schedule' && github.event.schedule == '35 10 * * *' || github.event_name == 'workflow_dispatch'}}
         uses: benc-uk/workflow-dispatch@v1
         with:
           ref: gh-actions-tba-data-backend
           workflow: 56043978
 
       - name: Trigger TBA current workflow
-        if: ${{ github.event_name == 'schedule' && github.event.schedule == '*/5 * * 3-4 *' }}
+        if: ${{ github.event_name == 'schedule' && github.event.schedule == '*/5 * * 3-4 *' || github.event_name == 'workflow_dispatch' }}
         uses: benc-uk/workflow-dispatch@v1
         with:
           ref: gh-actions-tba-data-backend
           workflow: 56043979
 
       - name: Trigger Google Calendar workflow
-        if: ${{ github.event_name == 'schedule' && github.event.schedule == '35 10 * * *' }}
+        if: ${{ github.event_name == 'schedule' && github.event.schedule == '35 10 * * *' || github.event_name == 'workflow_dispatch' }}
         uses: benc-uk/workflow-dispatch@v1
         with:
           ref: google-api-backend
