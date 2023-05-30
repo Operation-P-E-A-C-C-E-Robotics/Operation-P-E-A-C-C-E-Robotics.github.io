@@ -10,7 +10,8 @@ jobs:
     steps:
       - name: Check cron trigger
         id: cron_check
-        run: echo "Cron trigger: ${{ github.event_name }}"
+        run: | 
+          echo "Cron trigger: ${{ github.event_name }}"
 
       - name: Trigger TBA workflows
         if: ${{ github.event_name == 'schedule' && github.event.schedule == '35 10 * * *' }}
