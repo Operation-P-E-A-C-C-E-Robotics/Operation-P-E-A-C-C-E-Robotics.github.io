@@ -46,13 +46,13 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const issueNumber = context.payload.issue.number;
-            const commentBody = 'Closing this issue.';
+            const commentBody = 'Github Actions was triggered automatically, Data has been updated in the Repository. Automatically closing this issue';
             const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
             octokit.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issueNumber,
-              body: Github Actions triggered succsefully, Data has been updated automatically; Auto-Closing
+              body: commentBody
             });
             octokit.issues.update({
               owner: context.repo.owner,
