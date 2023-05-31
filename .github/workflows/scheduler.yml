@@ -39,24 +39,35 @@ jobs:
           ref: google-api-backend
           workflow: 57165542
 
-      - name: Close TBA Issue
-        if: ${{ github.event_name == 'issues' }}
-        uses: actions/github-script@v4
+  close-issue-with-comment:
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Comment on Issue
+        uses: actions/github-rest-api@v3
+        if: ${{github.event_name == 'issues'}}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const issueNumber = context.payload.issue.number;
-            const commentBody = 'Github Actions was triggered automatically, Data has been updated in the Repository. Automatically closing this issue';
-            const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
-            octokit.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: issueNumber,
-              body: commentBody
-            });
-            octokit.issues.update({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: issueNumber,
-              state: 'closed'
-            });
+          endpoint: issues/create-comment
+          method: POST
+          body: |
+            {
+              "owner": "${{ github.repository_owner }}",
+              "repo": "${{ github.repository }}",
+              "issue_number": ${{ github.event.issue.number }},
+              "body": "Github Actions was succesfully triggered, Closing."
+            }
+
+      - name: Close Issue
+        uses: actions/github-rest-api@v3
+        if: ${{github.event_name == 'issues'}}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          endpoint: issues/update
+          method: PATCH
+          body: |
+            {
+              "owner": "${{ github.repository_owner }}",
+              "repo": "${{ github.repository }}",
+              "issue_number": ${{ github.event.issue.number }},
+              "state": "closed"
+            }
