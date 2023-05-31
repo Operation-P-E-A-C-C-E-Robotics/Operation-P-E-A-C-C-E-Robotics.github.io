@@ -39,35 +39,11 @@ jobs:
           ref: google-api-backend
           workflow: 57165542
 
-  close-issue-with-comment:
-    runs-on: ubuntu-latest 
-    steps:
-      - name: Comment on Issue
-        uses: actions/github-rest-api@v3
-        if: ${{github.event_name == 'issues'}}
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          endpoint: issues/create-comment
-          method: POST
-          body: |
-            {
-              "owner": "${{ github.repository_owner }}",
-              "repo": "${{ github.repository }}",
-              "issue_number": ${{ github.event.issue.number }},
-              "body": "Github Actions was succesfully triggered, Closing."
-            }
 
       - name: Close Issue
-        uses: actions/github-rest-api@v3
         if: ${{github.event_name == 'issues'}}
+        uses: peter-evans/close-issue@v3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          endpoint: issues/update
-          method: PATCH
-          body: |
-            {
-              "owner": "${{ github.repository_owner }}",
-              "repo": "${{ github.repository }}",
-              "issue_number": ${{ github.event.issue.number }},
-              "state": "closed"
-            }
+          issue-number: ${{ github.event.issue.number }}
+          comment: Auto-closing issue
+
