@@ -38,3 +38,25 @@ jobs:
         with:
           ref: google-api-backend
           workflow: 57165542
+
+      - name: Close TBA Issue
+        if: ${{ github.event_name == 'issues' }}
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issueNumber = context.payload.issue.number;
+            const commentBody = 'Closing this issue.';
+            const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
+            octokit.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body: Github Actions triggered succsefully, Data has been updated automatically; Auto-Closing
+            });
+            octokit.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              state: 'closed'
+            });
