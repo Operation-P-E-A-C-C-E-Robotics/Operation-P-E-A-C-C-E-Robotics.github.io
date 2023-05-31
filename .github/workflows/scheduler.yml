@@ -46,4 +46,6 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           comment: Github actions trigger fired, Auto closing
+          labels: |
+            Automation
 
