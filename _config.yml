@@ -1,6 +1,10 @@
 collections:
   robots:
     output: true
+  
+  
+  forms:
+    output: true
 
 
 
@@ -22,8 +26,16 @@ defaults:
 
   -
     scope:
+      path: "_forms"
+    values:
+      layout: gForm
+      bg: light
+      txt: dark
+  -
+    scope:
       path: "_posts" # Empty string represents all files
     values:
+      permalink: "/posts/:year/:title"
       published: false
       layout: post
       bg: light
