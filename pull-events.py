@@ -75,8 +75,10 @@ for event in events:
         occurrences = get_recurrence_occurrences(event, recurrence_rule)
 
         for occurence in occurrences:
-            print(occurence)
-        
+            
+            test = occurrences[occurence].get('start')
+            print(test)
+            
         # Add the individual occurrences to the list
         individual_events.extend(occurrences)
     else:
