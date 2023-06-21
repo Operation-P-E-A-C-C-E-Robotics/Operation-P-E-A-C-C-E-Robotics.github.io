@@ -64,21 +64,40 @@ events = response.json()["items"]
 # Create a list to store individual event objects
 individual_events = []
 
+# Get the current date and time
+current_date = datetime.datetime.utcnow()
+
+# Set the number of days to consider in the future
+days_limit = 15
+
 # Process each event
 for event in events:
     # Check if the event has a recurrence rule
     if "recurrence" in event:
         # Extract the recurrence rule
         recurrence_rule = event["recurrence"][0]
-        
+
         # Generate individual occurrences based on the recurrence rule
         occurrences = get_recurrence_occurrences(event, recurrence_rule)
-        
-        # Add the individual occurrences to the list
-        individual_events.extend(occurrences)
+
+        # Filter occurrences to include only those within the next 15 days
+        filtered_occurrences = [
+            occurrence for occurrence in occurrences
+            if parse(occurrence['start']['dateTime']) <= current_date + datetime.timedelta(days=days_limit)
+        ]
+
+        # Add the filtered occurrences to the list
+        individual_events.extend(filtered_occurrences)
     else:
-        # Event has no recurrence rule, add it as is
-        individual_events.append(event)
+        # Check if the event's start date is within the next 15 days
+        start_date = parse(event['start']['dateTime'])
+        if start_date <= current_date + datetime.timedelta(days=days_limit):
+            # Event has no recurrence rule and falls within the next 15 days, add it to the list
+            individual_events.append(event)
+
+# Save the individual events to a JSON file
+with open("events.json", "w") as f:
+    json.dump(individual_events, f, indent=4)
 
 # Save the individual events to a JSON file
 with open("events.json", "w") as f:
