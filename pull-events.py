@@ -76,9 +76,9 @@ for event in events:
 
         for occurence in occurrences:
             
-            test = occurrences[occurence].get('start')
+            test = occurence.get('start')
             print(test)
-            
+
         # Add the individual occurrences to the list
         individual_events.extend(occurrences)
     else:
