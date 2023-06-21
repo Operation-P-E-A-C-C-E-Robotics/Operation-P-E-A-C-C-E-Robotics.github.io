@@ -54,7 +54,7 @@ def get_recurrence_occurrences(event, recurrence_rule):
 response = requests.get(calendar_url.format(calendar_id=calendar_id), params=params)
 
 # Parse the response JSON
-events = response.json()["items"]
+events = response.json().get("items", [])
 
 # Create a list to store individual event objects
 individual_events = []
@@ -71,13 +71,13 @@ for event in events:
 
         # Add the individual occurrences within the next 15 days to the list
         for occurrence in occurrences:
-            start_datetime = parse(occurrence['start']['dateTime'])
-            if start_datetime <= max_date:
+            start_datetime = occurrence.get('start', {}).get('dateTime')
+            if start_datetime and parse(start_datetime) <= max_date:
                 individual_events.append(occurrence)
     else:
-        # Check if the event occurs within the next 15 days
-        start_datetime = parse(event['start']['dateTime'])
-        if start_datetime <= max_date:
+        # Check if the event occurs within the next 15 days and has 'start' and 'end' keys
+        start_datetime = event.get('start', {}).get('dateTime')
+        if start_datetime and parse(start_datetime) <= max_date:
             individual_events.append(event)
 
 # Save the individual events to a JSON file
