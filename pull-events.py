@@ -77,7 +77,7 @@ for event in events:
         for occurence in occurrences:
             
             test = occurence.get('start').get('datetime')
-            if (test <= now):
+            if (datetime.datetime.strptime(test) <= now):
                 print("pass:" + test)
             
             
