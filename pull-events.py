@@ -79,7 +79,7 @@ for event in events:
             test = occurence.get('start')['dateTime']
             print("Event Date:" + test)
             print("Cutoff Date:" + max)
-            if (datetime.datetime.strptime(test, "%Y-%m-%dT%H:%M:%S%z") <= datetime.datetime.strptime(max, "%Y-%m-%dT%H:%M:%S%z")):
+            if (datetime.datetime.strptime(test, "%Y-%m-%dT%H:%M:%S%z") <= datetime.datetime.strptime(max, "%Y-%m-%dT%H:%M:%SZ")):
                 print("pass:" + test)
             
             
