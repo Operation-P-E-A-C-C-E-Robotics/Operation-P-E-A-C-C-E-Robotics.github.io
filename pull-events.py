@@ -76,15 +76,14 @@ for event in events:
 
         for occurence in occurrences:
             
-            test = occurence.get('start')['dateTime']
-            print("Event Date:" + test)
+            start_datetime = occurence.get('start')['dateTime']
+            print("Event Date:" + start_datetime)
             print("Cutoff Date:" + max)
-            if (datetime.datetime.strptime(test, "%Y-%m-%dT%H:%M:%S%z") <= datetime.datetime.strptime(max, "%Y-%m-%dT%H:%M:%SZ")):
-                print("pass:" + test)
+            if start_datetime <= max:
+                individual_events.append(occurence)
             
             
             
-            print(test)
 
         # Add the individual occurrences to the list
         individual_events.extend(occurrences)
