@@ -76,7 +76,12 @@ for event in events:
 
         for occurence in occurrences:
             
-            test = occurence.get('start')
+            test = occurence.get('start').get('datetime')
+            if (test <= now):
+                print("pass:" + test)
+            
+            
+            
             print(test)
 
         # Add the individual occurrences to the list
