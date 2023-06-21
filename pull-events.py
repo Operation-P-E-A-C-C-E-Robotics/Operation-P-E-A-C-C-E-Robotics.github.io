@@ -5,6 +5,7 @@ import datetime
 from dateutil.rrule import rrulestr
 from dateutil.parser import parse
 from dotenv import load_dotenv
+import pytz
 
 load_dotenv()
 
@@ -61,11 +62,13 @@ response = requests.get(calendar_url.format(calendar_id=calendar_id), params=par
 # Parse the response JSON
 events = response.json()["items"]
 
+import pytz
+
 # Create a list to store individual event objects
 individual_events = []
 
 # Get the current date and time
-current_date = datetime.datetime.utcnow()
+current_date = datetime.datetime.now(pytz.utc).replace(tzinfo=None)
 
 # Set the number of days to consider in the future
 days_limit = 15
@@ -83,21 +86,18 @@ for event in events:
         # Filter occurrences to include only those within the next 15 days
         filtered_occurrences = [
             occurrence for occurrence in occurrences
-            if parse(occurrence['start']['dateTime']) <= current_date + datetime.timedelta(days=days_limit)
+            if parse(occurrence['start']['dateTime']).replace(tzinfo=None) <= current_date + datetime.timedelta(days=days_limit)
         ]
 
         # Add the filtered occurrences to the list
         individual_events.extend(filtered_occurrences)
     else:
         # Check if the event's start date is within the next 15 days
-        start_date = parse(event['start']['dateTime'])
+        start_date = parse(event['start']['dateTime']).replace(tzinfo=None)
         if start_date <= current_date + datetime.timedelta(days=days_limit):
             # Event has no recurrence rule and falls within the next 15 days, add it to the list
             individual_events.append(event)
 
-# Save the individual events to a JSON file
-with open("events.json", "w") as f:
-    json.dump(individual_events, f, indent=4)
 
 # Save the individual events to a JSON file
 with open("events.json", "w") as f:
