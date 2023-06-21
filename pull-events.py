@@ -4,6 +4,7 @@ import requests
 import datetime
 from dateutil.rrule import rrulestr
 from dateutil.parser import parse
+from dateutil.tz import tzutc
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -18,15 +19,16 @@ calendar_id = "team@peacce.org"
 api_key = os.environ['API_KEY']
 
 # Get the current date and time
-now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
-max_date = (datetime.datetime.utcnow() + datetime.timedelta(days=15)).isoformat() + 'Z'
+now = datetime.datetime.now().replace(tzinfo=tzutc())  # Current datetime with UTC timezone
+max_date = now + datetime.timedelta(days=15)  # Maximum datetime within 15 days
+
 # Set the API request parameters
 params = {
     "calendarId": calendar_id,
     "key": api_key,
     "timeZone": "UTC",
-    'timeMin': now,
-    'timeMax': max_date,
+    'timeMin': now.isoformat(),
+    'timeMax': max_date.isoformat(),
 }
 
 
@@ -70,12 +72,12 @@ for event in events:
         # Add the individual occurrences within the next 15 days to the list
         for occurrence in occurrences:
             start_datetime = parse(occurrence['start']['dateTime'])
-            if start_datetime <= (datetime.datetime.now() + datetime.timedelta(days=15)):
+            if start_datetime <= max_date:
                 individual_events.append(occurrence)
     else:
         # Check if the event occurs within the next 15 days
         start_datetime = parse(event['start']['dateTime'])
-        if start_datetime <= (datetime.datetime.now() + datetime.timedelta(days=15)):
+        if start_datetime <= max_date:
             individual_events.append(event)
 
 # Save the individual events to a JSON file
