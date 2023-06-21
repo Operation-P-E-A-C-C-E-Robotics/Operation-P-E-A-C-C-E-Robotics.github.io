@@ -4,7 +4,6 @@ import requests
 import datetime
 from dateutil.rrule import rrulestr
 from dateutil.parser import parse
-from dateutil.tz import tzutc
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -16,19 +15,25 @@ calendar_url = "https://www.googleapis.com/calendar/v3/calendars/{calendar_id}/e
 calendar_id = "team@peacce.org"
 
 # Set your Google API key
+# try:
 api_key = os.environ['API_KEY']
+print('Using environ API Key for Production')
+# except:
+#     api_key = os.getenv('API_KEY')
+#     print('Using env file API Key for Testing')
+#     print(api_key)
+#     print("heresy")
 
 # Get the current date and time
-now = datetime.datetime.now().replace(tzinfo=tzutc())  # Current datetime with UTC timezone
-max_date = now + datetime.timedelta(days=15)  # Maximum datetime within 15 days
-
+now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
+max = (datetime.datetime.utcnow() + datetime.timedelta(days=15)).isoformat() + 'Z'
 # Set the API request parameters
 params = {
     "calendarId": calendar_id,
     "key": api_key,
     "timeZone": "UTC",
-    'timeMin': now.isoformat(),
-    'timeMax': max_date.isoformat(),
+    'timeMin': now,
+    'timeMax': max,
 }
 
 
@@ -54,7 +59,7 @@ def get_recurrence_occurrences(event, recurrence_rule):
 response = requests.get(calendar_url.format(calendar_id=calendar_id), params=params)
 
 # Parse the response JSON
-events = response.json().get("items", [])
+events = response.json()["items"]
 
 # Create a list to store individual event objects
 individual_events = []
@@ -65,21 +70,21 @@ for event in events:
     if "recurrence" in event:
         # Extract the recurrence rule
         recurrence_rule = event["recurrence"][0]
-
+        
         # Generate individual occurrences based on the recurrence rule
         occurrences = get_recurrence_occurrences(event, recurrence_rule)
 
-        # Add the individual occurrences within the next 15 days to the list
-        for occurrence in occurrences:
-            start_datetime = occurrence.get('start', {}).get('dateTime')
-            if start_datetime and parse(start_datetime) <= max_date:
-                individual_events.append(occurrence)
+        for occurence in occurrences:
+            print(occurence)
+        
+        # Add the individual occurrences to the list
+        individual_events.extend(occurrences)
     else:
-        # Check if the event occurs within the next 15 days and has 'start' and 'end' keys
-        start_datetime = event.get('start', {}).get('dateTime')
-        if start_datetime and parse(start_datetime) <= max_date:
-            individual_events.append(event)
+        # Event has no recurrence rule, add it as is
+        individual_events.append(event)
 
 # Save the individual events to a JSON file
 with open("events.json", "w") as f:
     json.dump(individual_events, f, indent=4)
+
+
