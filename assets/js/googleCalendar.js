@@ -81,12 +81,15 @@ async function getNextChronologicalDate() {
 }
   
 async function getEventDate(event) {
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
+  var options
   var date
-  try {
-    date = new Date(event.start.dateTime)
-  } catch {
-    date = new Date(event.start.date)
+  if (event.start.date) {
+    const [year, month, day] = event.start.date.split('-');
+    options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+    date = new Date(year, month - 1, day);
+  } else if (event.start.dateTime) {
+    options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
+    date= new Date(event.start.dateTime);
   }
   console.log(date)
   return Promise.resolve(date.toLocaleString('en-US', options))
@@ -94,7 +97,7 @@ async function getEventDate(event) {
 
 
 async function updateHomePageEventBox(data) {
-  // console.log(data)
+  console.log(data)
   // console.log(data.start)
   options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
   date = await getEventDate(data)
