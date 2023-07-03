@@ -26,7 +26,7 @@ print('Using environ API Key for Production')
 
 # Get the current date and time
 now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
-max = (datetime.datetime.utcnow() + datetime.timedelta(days=15)).isoformat() + 'Z'
+max = (datetime.datetime.utcnow() + datetime.timedelta(days=30)).isoformat() + 'Z'
 # Set the API request parameters
 params = {
     "calendarId": calendar_id,
