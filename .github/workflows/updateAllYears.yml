@@ -36,6 +36,10 @@ jobs:
     steps:
       - name: checkout repo content
         uses: actions/checkout@v3 # checkout the repository content to github runner.
+      
+      - name: Run Git Pull
+       run: "git pull --rebase"
+       
       - name: setup python
         uses: actions/setup-python@v2
         with:
