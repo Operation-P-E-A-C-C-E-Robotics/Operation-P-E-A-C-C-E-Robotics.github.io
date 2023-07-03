@@ -3,12 +3,12 @@ const staticURL = "https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robot
 async function getEventsJson() {
     const response = await fetch(staticURL);
     const eventsJson = await response.json();
-    console.log('before')
-    console.log(eventsJson)
-    console.log('-----------------------------')
+    // console.log('before')
+    // console.log(eventsJson)
+    // console.log('-----------------------------')
     const filteredData = eventsJson.filter(obj => obj.status === "confirmed");
-    console.log('after')
-    console.log(filteredData)
+    // console.log('after')
+    // console.log(filteredData)
     return filteredData;
 }
 
@@ -41,9 +41,9 @@ async function getNextEvent() {
   const events = await getEventsJson();
   const currentDate = new Date();
   let nextEvent = null;
-  let nextEventDate = null;
 
   for (const event of events) {
+    console.log(event);
     let eventDate = null;
 
     if (event.start.date) {
@@ -52,9 +52,9 @@ async function getNextEvent() {
       eventDate = new Date(event.start.dateTime);
     }
 
-    if (eventDate && eventDate > currentDate && (!nextEventDate || eventDate < nextEventDate)) {
+    if (eventDate > currentDate) {
       nextEvent = event;
-      nextEventDate = eventDate;
+      console.log(nextEvent);
     }
   }
 
@@ -106,4 +106,5 @@ async function updateHomePageEventBox(data) {
   document.getElementById('startTime').innerHTML += ' ' + date.toLocaleString('en-US', options)
   document.getElementById('location').innerHTML += ' ' + data.location
   document.getElementById('goToCalendar').href = data.htmlLink
+  document.getElementById('calendarBoxButtons').style.display = "block"
 }

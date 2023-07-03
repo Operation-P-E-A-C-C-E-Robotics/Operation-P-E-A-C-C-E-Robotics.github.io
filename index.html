@@ -223,12 +223,15 @@ title: Operation PEACCE Robotics
     <div class="card-body text-center">
       <p class="card-title">Next Event</p>
         <h2 id="nextEvent">None Found</h2>
-        <h2 id="startTime"><i class="fa fa-calendar"></i></h2>
-        <h2 id="location"><i class="fa fa-map-marker"></i></h2>
-        <a id="goToCalendar" href="" class="btn btn-outline-primary"><i class="fa fa-calendar-plus-o"></i> Open in Google Calendar</a>
+        <div id="calendarBoxButtons" style="display: none;">
+          <h2 id="startTime"><i class="fa fa-calendar"></i></h2>
+          <h2 id="location"><i class="fa fa-map-marker"></i></h2>
+          <a id="goToCalendar" href="" class="btn btn-outline-primary"><i class="fa fa-calendar-plus-o"></i> Open in Google Calendar</a>
+        </div>
         <script>
           async function updateBox() {
             event = await getNextEvent()
+            console.log(event);
             date = await getEventDate(event)
 
             topBarNotifier = {
