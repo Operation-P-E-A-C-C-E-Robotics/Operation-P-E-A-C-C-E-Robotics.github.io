@@ -9,24 +9,7 @@ on:
 
 name: Update data from The Blue Alliance once a week
 
-jobs:
-
-  Clear-API-Keys:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Find and Replace API Key with enviroment getter (Human error exists, this it to mitigate it)
-        uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: "${{ secrets.test_tba_auth_key }}"
-          replace: "os.getenv('TBA_API_KEY')"
-          regex: false
-
-      - name: Push Changed Files
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Find And Replace
-  
+jobs:  
   Execute-Python-Script:
     runs-on: ubuntu-latest
     permissions:
@@ -38,8 +21,8 @@ jobs:
         uses: actions/checkout@v3 # checkout the repository content to github runner.
       
       - name: Run Git Pull
-       run: "git pull --rebase"
-       
+        run: "git pull --rebase"
+
       - name: setup python
         uses: actions/setup-python@v2
         with:
