@@ -104,7 +104,11 @@ async function updateHomePageEventBox(data) {
   console.log(data)
   document.getElementById('nextEvent').innerText = ' ' + data.summary
   document.getElementById('startTime').innerHTML += ' ' + date.toLocaleString('en-US', options)
-  document.getElementById('location').innerHTML += ' ' + data.location
+  if (data.location === undefined) {
+  document.getElementById('location').innerHTML += ' No Location Provided'
+  } else {
+    document.getElementById('location').innerHTML += ' ' + data.location
+  }
   document.getElementById('goToCalendar').href = data.htmlLink
   document.getElementById('calendarBoxButtons').style.display = "block"
 }
