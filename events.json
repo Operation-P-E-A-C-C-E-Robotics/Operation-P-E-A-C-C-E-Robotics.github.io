@@ -64,6 +64,34 @@
     },
     {
         "kind": "calendar#event",
+        "etag": "\"3366112775768000\"",
+        "id": "062p6f90lsbhfn27gpek7vmc4o",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MDYycDZmOTBsc2JoZm4yN2dwZWs3dm1jNG8gdGVhbUBwZWFjY2Uub3Jn&ctz=UTC",
+        "created": "2023-05-02T19:39:47.000Z",
+        "updated": "2023-05-02T19:39:47.884Z",
+        "summary": "Team Picnic",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "date": "2023-08-05"
+        },
+        "end": {
+            "date": "2023-08-06"
+        },
+        "transparency": "transparent",
+        "iCalUID": "062p6f90lsbhfn27gpek7vmc4o@google.com",
+        "sequence": 0,
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
         "etag": "\"3369611041094000\"",
         "id": "17o77o5ermnnhtuh03c04fr49i",
         "status": "confirmed",
