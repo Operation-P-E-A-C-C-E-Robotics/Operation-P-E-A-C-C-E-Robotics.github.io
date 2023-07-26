@@ -7,3 +7,8 @@ gem "jekyll"
 gem "jekyll-github-metadata"
 gem 'jekyll-env'
 gem 'jekyll-include-cache'
+
+
+# Critical security alert from Github Dependabot on Jul 26 2023
+# Unable to automatically patch, falling back to manually updating
+gem "webrick", ">= 2.2.8"
