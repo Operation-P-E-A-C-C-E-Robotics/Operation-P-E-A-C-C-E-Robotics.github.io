@@ -415,7 +415,7 @@ layout: default
   getMatchRecord();
   async function getMatchRecord(){
     // var year = 2019;
-    var apiURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_matches.json"
+    var apiURL = "https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_matches.json"
     var apiPromise = await fetch(apiURL);
     var matches = await apiPromise.json();
     generateDataSet(matches);
