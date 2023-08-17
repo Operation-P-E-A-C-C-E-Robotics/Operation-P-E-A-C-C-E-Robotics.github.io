@@ -38,7 +38,17 @@
   <meta property="image" content="/assets/images/PeacceLogoTieDyeWhiteText.svg" />
   <meta property="og:image" content="/assets/images/PeacceLogoTieDyeWhiteText.svg?width=320">
   {% endif %}
-  <meta property="og:description" content="{% if page.metadesc %} {{page.metadesc}} {% else %} {% if page.layout == "default" %}{{site.data.metadata.default.description}}{% endif %} {% if page.layout == "robot" %}{{site.data.metadata.robot.description}}{% endif %} {% endif %}"/>
+  <meta property="og:description" content="
+    {% if page.metadesc %}
+      {{ page.metadesc }}
+    {% else %}
+      {% if page.layout == "robot" %}
+        {{ site.data.metadata.robot.description }}
+      {% else %}
+        {{ site.data.metadata.default.description }}
+      {% endif %}
+    {% endif %}
+  "/>
   <meta property="og:site_name" content="Operation PEACCE Robotics"/>
   <meta property="title" content="Operation PEACCE Robotics {% if page.metatitle %}- {{ page.metatitle}}{% endif %}">
   <meta property="og:locality" content="Bristol" />
