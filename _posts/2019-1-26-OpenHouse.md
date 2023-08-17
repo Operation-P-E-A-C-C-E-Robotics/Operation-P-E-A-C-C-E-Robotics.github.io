@@ -1,6 +1,6 @@
 ---
 layout: post
-author: Test Blogger
+author: Rosie the Robot
 title: Open House
 published: true
 ---
