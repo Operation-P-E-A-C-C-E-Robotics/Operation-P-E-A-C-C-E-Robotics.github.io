@@ -61,5 +61,37 @@
             "conferenceId": "kie-mszv-qhh"
         },
         "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3384446597720000\"",
+        "id": "04asf6lstatb7na0j1k5h9tiu0",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MDRhc2Y2bHN0YXRiN25hMGoxazVoOXRpdTBfMjAyMzA4MjJUMjIwMDAwWiB0ZWFtQHBlYWNjZS5vcmc&ctz=UTC",
+        "created": "2023-08-16T21:36:52.000Z",
+        "updated": "2023-08-16T22:01:38.860Z",
+        "summary": "Veteran Member Meeting",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-08-22T22:00:00Z",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-08-23T01:00:00Z",
+            "timeZone": "America/New_York"
+        },
+        "recurrence": [
+            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20231114T045959Z;BYDAY=TU"
+        ],
+        "iCalUID": "04asf6lstatb7na0j1k5h9tiu0@google.com",
+        "sequence": 0,
+        "eventType": "default"
     }
 ]
