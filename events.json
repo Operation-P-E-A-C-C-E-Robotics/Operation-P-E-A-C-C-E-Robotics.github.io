@@ -115,5 +115,16 @@
             "dateTime": "2023-08-28T22:00:00Z",
             "timeZone": "America/New_York"
         }
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3384748283526000\"",
+        "id": "ollvras2jb4djplbp2pt58tcm7_20230904T220000Z",
+        "status": "cancelled",
+        "recurringEventId": "ollvras2jb4djplbp2pt58tcm7",
+        "originalStartTime": {
+            "dateTime": "2023-09-04T22:00:00Z",
+            "timeZone": "America/New_York"
+        }
     }
 ]
