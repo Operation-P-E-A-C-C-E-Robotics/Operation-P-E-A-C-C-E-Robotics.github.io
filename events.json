@@ -64,13 +64,36 @@
     },
     {
         "kind": "calendar#event",
-        "etag": "\"3384446597720000\"",
+        "etag": "\"3384748270456000\"",
+        "id": "ollvras2jb4djplbp2pt58tcm7_20230828T220000Z",
+        "status": "cancelled",
+        "recurringEventId": "ollvras2jb4djplbp2pt58tcm7",
+        "originalStartTime": {
+            "dateTime": "2023-08-28T22:00:00Z",
+            "timeZone": "America/New_York"
+        }
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3384748283526000\"",
+        "id": "ollvras2jb4djplbp2pt58tcm7_20230904T220000Z",
+        "status": "cancelled",
+        "recurringEventId": "ollvras2jb4djplbp2pt58tcm7",
+        "originalStartTime": {
+            "dateTime": "2023-09-04T22:00:00Z",
+            "timeZone": "America/New_York"
+        }
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3385249974708000\"",
         "id": "04asf6lstatb7na0j1k5h9tiu0",
         "status": "confirmed",
         "htmlLink": "https://www.google.com/calendar/event?eid=MDRhc2Y2bHN0YXRiN25hMGoxazVoOXRpdTBfMjAyMzA4MjJUMjIwMDAwWiB0ZWFtQHBlYWNjZS5vcmc&ctz=UTC",
         "created": "2023-08-16T21:36:52.000Z",
-        "updated": "2023-08-16T22:01:38.860Z",
+        "updated": "2023-08-21T13:36:27.354Z",
         "summary": "Veteran Member Meeting",
+        "location": "Arthur G. Russell Co., Inc., 750 Clark Ave, Bristol, CT 06010, USA",
         "creator": {
             "email": "team@peacce.org",
             "self": true
@@ -93,38 +116,5 @@
         "iCalUID": "04asf6lstatb7na0j1k5h9tiu0@google.com",
         "sequence": 0,
         "eventType": "default"
-    },
-    {
-        "kind": "calendar#event",
-        "etag": "\"3384748261680000\"",
-        "id": "ollvras2jb4djplbp2pt58tcm7_20230821T220000Z",
-        "status": "cancelled",
-        "recurringEventId": "ollvras2jb4djplbp2pt58tcm7",
-        "originalStartTime": {
-            "dateTime": "2023-08-21T22:00:00Z",
-            "timeZone": "America/New_York"
-        }
-    },
-    {
-        "kind": "calendar#event",
-        "etag": "\"3384748270456000\"",
-        "id": "ollvras2jb4djplbp2pt58tcm7_20230828T220000Z",
-        "status": "cancelled",
-        "recurringEventId": "ollvras2jb4djplbp2pt58tcm7",
-        "originalStartTime": {
-            "dateTime": "2023-08-28T22:00:00Z",
-            "timeZone": "America/New_York"
-        }
-    },
-    {
-        "kind": "calendar#event",
-        "etag": "\"3384748283526000\"",
-        "id": "ollvras2jb4djplbp2pt58tcm7_20230904T220000Z",
-        "status": "cancelled",
-        "recurringEventId": "ollvras2jb4djplbp2pt58tcm7",
-        "originalStartTime": {
-            "dateTime": "2023-09-04T22:00:00Z",
-            "timeZone": "America/New_York"
-        }
     }
 ]
