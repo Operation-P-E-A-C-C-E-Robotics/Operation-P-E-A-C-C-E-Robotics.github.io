@@ -64,6 +64,35 @@
     },
     {
         "kind": "calendar#event",
+        "etag": "\"3384442275952000\"",
+        "id": "3scc8bne3ero00p5nvrog419kj",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=M3NjYzhibmUzZXJvMDBwNW52cm9nNDE5a2ogdGVhbUBwZWFjY2Uub3Jn&ctz=UTC",
+        "created": "2023-08-16T21:25:37.000Z",
+        "updated": "2023-08-16T21:25:37.976Z",
+        "summary": "Golf Tournament Planing Meeting",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-09-09T14:00:00Z",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-09-09T18:00:00Z",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "3scc8bne3ero00p5nvrog419kj@google.com",
+        "sequence": 0,
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
         "etag": "\"3384748270456000\"",
         "id": "ollvras2jb4djplbp2pt58tcm7_20230828T220000Z",
         "status": "cancelled",
