@@ -64,6 +64,37 @@
     },
     {
         "kind": "calendar#event",
+        "etag": "\"3378574973002000\"",
+        "id": "0di3bpej2jmagpcj8rgf2sdqsd",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MGRpM2JwZWoyam1hZ3BjajhyZ2Yyc2Rxc2QgdGVhbUBwZWFjY2Uub3Jn&ctz=UTC",
+        "created": "2023-07-13T22:25:10.000Z",
+        "updated": "2023-07-13T22:31:26.501Z",
+        "summary": "CCRA 2023 Golf Tournament ",
+        "description": "Tournament Info:\u00a0<a href=\"https://golf.ccrarobotics.org/\">https://golf.ccrarobotics.org/</a><br><br>Contact Us: <a href=\"mailto:golf@peacce.org\">golf@peacce.org</a><br><b><br></b><br><b><br></b><br><b>Sched</b><b>ule</b><br><span>7:00 - Breakfast and Registration</span><br><p>8:30 - Tee off</p><p>1:30 - Lunch provided by Frankie's</p><p>2:00 - Awards</p>",
+        "location": "Hawk's Landing Country Club, 201 Pattonwood Dr, Southington, CT 06489, USA",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-09-10T11:30:00Z",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-09-10T18:30:00Z",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "0di3bpej2jmagpcj8rgf2sdqsd@google.com",
+        "sequence": 0,
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
         "etag": "\"3384442275952000\"",
         "id": "3scc8bne3ero00p5nvrog419kj",
         "status": "confirmed",
