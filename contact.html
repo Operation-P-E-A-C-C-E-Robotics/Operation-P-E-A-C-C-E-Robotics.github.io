@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Contact Us
+bg: white
 ---
 
 <br>
@@ -8,11 +9,7 @@ title: Contact Us
 <div class="container-fluid">
 
     <h1 class="text-center">Contact Us!</h1>
-
-    <h4 class="text-center">placeholder</h4>
-
     <br>
-
     {% for item in site.data.contact %}
         <div class="text-center">
             <h2>{{item.type | upcase}}: {{item.address}}</h2>
