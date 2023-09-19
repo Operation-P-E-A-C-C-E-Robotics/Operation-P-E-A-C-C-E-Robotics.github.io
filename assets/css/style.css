@@ -23,15 +23,29 @@ body {
 .fa-facebook-official {
 	color:#0091ff
 }
+
+.fa-facebook-official.socialLink {
+	color: #343a40!important;
+	transition: color 0.5s;
+}
+
 .fa-facebook-official:hover {
 	color:#0069b9
+	transition: color 0.5s;
 }
 
 .fa-youtube-play {
 	color:#ff0008
+	transition: color 0.5s;
+}
+
+.fa-youtube-play.socialLink {
+	color: #343a40!important;
+	transition: color 0.5s;
 }
 .fa-youtube-play:hover {
 	color:#b30006
+	transition: color 0.5s;
 }
 
 .fa-instagram {
@@ -40,6 +54,7 @@ body {
 			/* Also define standard property for compatibility */
 			background-clip: text;
 	-webkit-text-fill-color: transparent;
+	transition: color 0.5s;
 	
 }
 
@@ -49,17 +64,14 @@ body {
 			/* Also define standard property for compatibility */
 			background-clip: text;
 	-webkit-text-fill-color: transparent;
-	
+	transition: color 0.5s;
 }
 
 .fa-instagram.socialLink{
 	-webkit-text-fill-color: #343a40;
-	
+	transition: color 0.5s;
 }
-.fa-instagram.socialLink:hover{
-	-webkit-text-fill-color: dimgray;
-	
-}
+
 /* Scrollbar */
 
 /* width */
