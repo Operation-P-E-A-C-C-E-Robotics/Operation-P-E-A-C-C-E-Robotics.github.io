@@ -25,7 +25,7 @@ body {
 }
 
 .fa-facebook-official.socialLink {
-	color: #343a40!important;
+	color: #343a40;
 	transition: color 0.5s;
 }
 
@@ -50,7 +50,7 @@ body {
 }
 
 .fa-youtube-play.socialLink {
-	color: #343a40!important;
+	color: #343a40;
 	transition: color 0.5s;
 }
 .fa-youtube-play:hover {
@@ -74,6 +74,11 @@ body {
 			/* Also define standard property for compatibility */
 			background-clip: text;
 	-webkit-text-fill-color: transparent;
+	transition: color 0.5s;
+}
+
+.fa-instagram.socialLink {
+	color: #343a40;
 	transition: color 0.5s;
 }
 
