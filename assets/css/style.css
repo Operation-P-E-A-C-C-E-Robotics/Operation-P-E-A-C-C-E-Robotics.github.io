@@ -78,8 +78,12 @@ body {
 }
 
 .fa-instagram.socialLink {
-	color: #343a40;
-	transition: color 0.5s;
+	background: radial-gradient(circle at 30% 107%, #343a40 0%, #343a40 5%, #343a40 45%, #343a40 60%, #343a40 90%);
+	-webkit-background-clip: text;
+			/* Also define standard property for compatibility */
+			background-clip: text;
+	-webkit-text-fill-color: transparent;
+	transition: all 0.5s;
 }
 
 .fa-instagram.socialLink:hover {
@@ -88,7 +92,7 @@ body {
 			/* Also define standard property for compatibility */
 			background-clip: text;
 	-webkit-text-fill-color: transparent;
-	transition: color 0.5s;
+	transition: all 0.5s;
 	
 }
 
