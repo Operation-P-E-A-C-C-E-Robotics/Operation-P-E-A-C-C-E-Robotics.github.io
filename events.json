@@ -121,13 +121,13 @@
     },
     {
         "kind": "calendar#event",
-        "etag": "\"3384451077540000\"",
-        "id": "2sg7sh2ai4lu9k16hn5j1kdhb0",
+        "etag": "\"3384444859158000\"",
+        "id": "6han6o05qln097f8o8cf18u3jg",
         "status": "confirmed",
-        "htmlLink": "https://www.google.com/calendar/event?eid=MnNnN3NoMmFpNGx1OWsxNmhuNWoxa2RoYjAgdGVhbUBwZWFjY2Uub3Jn&ctz=UTC",
-        "created": "2023-08-16T22:11:50.000Z",
-        "updated": "2023-08-16T22:38:58.770Z",
-        "summary": "Mum Festival",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NmhhbjZvMDVxbG4wOTdmOG84Y2YxOHUzamcgdGVhbUBwZWFjY2Uub3Jn&ctz=UTC",
+        "created": "2023-08-16T21:47:09.000Z",
+        "updated": "2023-08-16T21:47:09.579Z",
+        "summary": "No Meeting Tonight",
         "creator": {
             "email": "team@peacce.org",
             "self": true
@@ -137,13 +137,14 @@
             "self": true
         },
         "start": {
-            "date": "2023-09-23"
+            "dateTime": "2023-10-09T22:00:00Z",
+            "timeZone": "America/New_York"
         },
         "end": {
-            "date": "2023-09-25"
+            "dateTime": "2023-10-10T01:00:00Z",
+            "timeZone": "America/New_York"
         },
-        "transparency": "transparent",
-        "iCalUID": "2sg7sh2ai4lu9k16hn5j1kdhb0@google.com",
+        "iCalUID": "6han6o05qln097f8o8cf18u3jg@google.com",
         "sequence": 0,
         "eventType": "default"
     },
@@ -210,5 +211,16 @@
         "iCalUID": "33p3v2qqfdde5h2mjqrkq00a5t@google.com",
         "sequence": 2,
         "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3389633501258000\"",
+        "id": "ollvras2jb4djplbp2pt58tcm7_20231009T220000Z",
+        "status": "cancelled",
+        "recurringEventId": "ollvras2jb4djplbp2pt58tcm7",
+        "originalStartTime": {
+            "dateTime": "2023-10-09T22:00:00Z",
+            "timeZone": "America/New_York"
+        }
     }
 ]
