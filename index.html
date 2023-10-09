@@ -408,18 +408,18 @@ title: Operation PEACCE Robotics
 
 <!-- for competing banner -->
 <script>
-   var year = new Date().getFullYear();
-   var eventurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_events.json";
-   var countDownDate;
-
-       async function setBanner(eventsurl) {
+var year = new Date().getFullYear();
+var eventurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_events.json";
+async function setBanner(eventsurl) {
          var eventJSON = await fetch(eventsurl);
+         var testJSON = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_events.json")
          var events = await eventJSON.json();
+         var testEvents = await testJSON.json();
          var curevents = []
          var currentEvent;
          var match
          //console.log(events);
-         for (let key of Object.entries(events)) {
+         for (let key of Object.entries(events) && Object.entries(testEvents)) {
 
            ////////console.log(key);
            var date = new Date()
@@ -432,36 +432,57 @@ title: Operation PEACCE Robotics
              currentEvent = key[1];
            }
          }
- 
-         if (curevents[0] != undefined) {
+
+          console.log("Cur Events")
+          console.log(curevents)
+         if (curevents.length != 0) {
           var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json");
+          var testResponse = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_event_statuses.json");
           var events =  await apiResponse.json();
+          var testEvents = await testResponse.json();
+          var nextMatchKey;
           //console.log(events);
           ////console.log(key);
-         for (var [key, value] of Object.entries(events)) {
-            //console.log(key, value);
+         for (var [key, value] of Object.entries(events) && Object.entries(testEvents)) {
+            console.log(curevents[0].key);
           
             if (key == curevents[0].key){
-              //console.log(key, value);
-              match = value;
+              console.log(key, value);
+              match = value
+              nextMatchKey = value.next_match_key
+              console.log(nextMatchKey);
             }  
+
           }
     
          }
         //  //console.log(curevents[0].name, curevents[0], match);
-        bannerHelper(curevents[0].name, match.next_match_key, match);
+        bannerHelper(curevents[0].name, nextMatchKey, match);
       }
  
        async function getMatchFromKey(matchKey) {
          var matchAPIURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_matches.json";
+         var testMatchURL = "https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_matches.json"
          var matchAPIResponse = await fetch(matchAPIURL);
+         var testResponse = await fetch(testMatchURL);
          var matches = await matchAPIResponse.json();
+         var testMatches = await testResponse.json();
+
          for (var match = 0; match < matches.length; match++) {
           // ////console.log(events[event]);
         
           if (matches[match].key == matchKey){
             ////console.log(events[event]);
             return matches[match];
+          }  
+         }
+
+         for (var match = 0; match < testMatches.length; match++) {
+          // ////console.log(events[event]);
+        
+          if (testMatches[match].key == matchKey){
+            ////console.log(events[event]);
+            return testMatches[match];
           }  
          }
          //////console.log(match);
@@ -488,15 +509,53 @@ title: Operation PEACCE Robotics
         //console.log(nextMatch);
         //console.log(stats);
          var match = await getMatchFromKey(nextMatch);
-         //////console.log(nextMatch);
-         countDownDate = match.predicted_time
+        //  console.log(nextMatch);
+         try {
+          countDownDate = match.predicted_time
+         } catch {
+          countDownDate = null
+         }
+
+         try {
          document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + eventTitle;
+         } catch {
+          console.error("failed to get event name");
+         }
+
+         try {
+          document.getElementById("currentStatusStr").innerHTML = stats.overall_status_str;
+         } catch {}
+
+         try{ 
          document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level + " " + match.match_number;
+         } catch {
+          console.error("failed to get next match");
+         }
+
+         try{
          document.getElementById("redTeams").innerHTML = clearFRCfromTeam(match.alliances.red.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[2])
+         } catch {
+          console.error("failed to get red teams");
+         }
+
+         try {
          document.getElementById("blueTeams").innerHTML = clearFRCfromTeam(match.alliances.blue.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[2])
+         } catch {
+          console.error("failed to get blue teams");
+         }
+
+         try {
          document.getElementById("currentRank").innerHTML = "Rank: " + stats.qual.ranking.rank + "/" + stats.qual.num_teams
+         } catch {
+          console.error("failed to get event rank");
+         }
+
+         try {
          document.getElementById("duringEventBanner").style.display = "block";
-       }
+          } catch {}
+        }
+ 
+
  
        function clearFRCfromTeam(team) {
          myString = team.replace(/\D/g, '');
