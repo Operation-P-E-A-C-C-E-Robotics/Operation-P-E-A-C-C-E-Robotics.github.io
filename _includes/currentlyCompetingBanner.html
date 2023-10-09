@@ -31,158 +31,162 @@
   
 </div>
 <script>
-var year = new Date().getFullYear();
-var eventurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_events.json";
-async function setBanner(eventsurl) {
-var eventJSON = await fetch(eventsurl);
-var testJSON = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_events.json")
-var events = await eventJSON.json();
-var testEvents = await testJSON.json();
-var curevents = []
-var currentEvent;
-var match
-//console.log(events);
-for (let key of Object.entries(events) && Object.entries(testEvents)) {
+     var year = new Date().getFullYear();
+    var countDownDate;
+    var eventurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_events.json";
 
-////////console.log(key);
-var date = new Date()
-var eventStartDate = new Date(key[1].start_date);
-var eventEndDate = new Date(key[1].end_date);
-////////console.log(dateConfig);
-////////console.log(eventStartDate);
-if (date.getTime() <= eventEndDate.getTime() && date.getTime() >= eventStartDate.getTime()) {
-    curevents.push(key[1]);
-    currentEvent = key[1];
-}
-}
+  async function setBanner(eventsurl) {
+         var eventJSON = await fetch(eventsurl);
+         var testJSON = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_events.json")
+         var events = await eventJSON.json();
+         var testEvents = await testJSON.json();
+         var curevents = []
+         var currentEvent;
+         var match
+         //console.log(events);
+         for (let key of Object.entries(events) && Object.entries(testEvents)) {
 
-console.log("Cur Events")
-console.log(curevents)
-if (curevents.length != 0) {
-var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json");
-var testResponse = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_event_statuses.json");
-var events =  await apiResponse.json();
-var testEvents = await testResponse.json();
-var nextMatchKey;
-//console.log(events);
-////console.log(key);
-for (var [key, value] of Object.entries(events) && Object.entries(testEvents)) {
-console.log(curevents[0].key);
+           ////////console.log(key);
+           var date = new Date()
+           var eventStartDate = new Date(key[1].start_date);
+           var eventEndDate = new Date(key[1].end_date);
+           ////////console.log(dateConfig);
+           ////////console.log(eventStartDate);
+           if (date.getTime() <= eventEndDate.getTime() && date.getTime() >= eventStartDate.getTime()) {
+             curevents.push(key[1]);
+             currentEvent = key[1];
+           }
+         }
 
-if (key == curevents[0].key){
-    console.log(key, value);
-    match = value
-    nextMatchKey = value.next_match_key
-    console.log(nextMatchKey);
-}  
+          // console.log("Cur Events")
+          // console.log(curevents)
+         if (curevents.length != 0) {
+          var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json");
+          var testResponse = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_event_statuses.json");
+          var events =  await apiResponse.json();
+          var testEvents = await testResponse.json();
+          var nextMatchKey;
+          //console.log(events);
+          ////console.log(key);
+         for (var [key, value] of Object.entries(events) && Object.entries(testEvents)) {
+            // console.log(curevents[0].key);
+          
+            if (key == curevents[0].key){
+              // console.log(key, value);
+              match = value
+              nextMatchKey = value.next_match_key
+              // console.log(nextMatchKey);
+            }  
 
-}
+          }
+    
+         }
+        //  //console.log(curevents[0].name, curevents[0], match);
+        bannerHelper(curevents[0].name, nextMatchKey, match);
+      }
+ 
+       async function getMatchFromKey(matchKey) {
+         var matchAPIURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_matches.json";
+         var testMatchURL = "https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_matches.json"
+         var matchAPIResponse = await fetch(matchAPIURL);
+         var testResponse = await fetch(testMatchURL);
+         var matches = await matchAPIResponse.json();
+         var testMatches = await testResponse.json();
 
-}
-bannerHelper(curevents[0].name, nextMatchKey, match);
-}
+         for (var match = 0; match < matches.length; match++) {
+          // ////console.log(events[event]);
+        
+          if (matches[match].key == matchKey){
+            ////console.log(events[event]);
+            return matches[match];
+          }  
+         }
 
-async function getMatchFromKey(matchKey) {
-    var matchAPIURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_matches.json";
-    var testMatchURL = "https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_matches.json"
-    var matchAPIResponse = await fetch(matchAPIURL);
-    var testResponse = await fetch(testMatchURL);
-    var matches = await matchAPIResponse.json();
-    var testMatches = await testResponse.json();
+         for (var match = 0; match < testMatches.length; match++) {
+          // ////console.log(events[event]);
+        
+          if (testMatches[match].key == matchKey){
+            ////console.log(events[event]);
+            return testMatches[match];
+          }  
+         }
+         //////console.log(match);
+        //  return Promise.resolve(match);
+       }
+ 
+       async function getTeamStatus(eventKey) {
+         ////////console.log(eventKey);
+         var matchAPIURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"event_statuses.json";
+         eventRaw = await fetch(matchAPIURL);
+         events = await eventRaw.json();
+         for (var event = 0;  event < events.length; event++) {
+          // ////console.log(events[event]);
+        
+          if (events[event].key == eventKey){
+            ////console.log(events[event]);
+            return events[event].overall_status_str;
+          }  
+        }
+       }
+ 
+       async function bannerHelper(eventTitle, nextMatch, stats) {
+        //console.log(eventTitle); 
+        //console.log(nextMatch);
+        //console.log(stats);
+         var match = await getMatchFromKey(nextMatch);
+        //  console.log(nextMatch);
+         try {
+          countDownDate = match.predicted_time
+         } catch {
+          countDownDate = null
+         }
 
-    for (var match = 0; match < matches.length; match++) {
-    // ////console.log(events[event]);
+         try {
+         document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + eventTitle;
+         } catch {
+          console.error("failed to get event name");
+         }
 
-    if (matches[match].key == matchKey){
-    ////console.log(events[event]);
-    return matches[match];
-    }  
-    }
+         try {
+          document.getElementById("currentStatusStr").innerHTML = stats.overall_status_str;
+         } catch {}
 
-    for (var match = 0; match < testMatches.length; match++) {
-    // ////console.log(events[event]);
+         try{ 
+         document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level + " " + match.match_number;
+         } catch {
+          console.error("failed to get next match");
+         }
 
-    if (testMatches[match].key == matchKey){
-    ////console.log(events[event]);
-    return testMatches[match];
-    }  
-    }
-    //////console.log(match);
-//  return Promise.resolve(match);
-}
+         try{
+         document.getElementById("redTeams").innerHTML = clearFRCfromTeam(match.alliances.red.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[2])
+         } catch {
+          console.error("failed to get red teams");
+         }
 
-async function getTeamStatus(eventKey) {
-    ////////console.log(eventKey);
-    var matchAPIURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"event_statuses.json";
-    eventRaw = await fetch(matchAPIURL);
-    events = await eventRaw.json();
-    for (var event = 0;  event < events.length; event++) {
-    // ////console.log(events[event]);
+         try {
+         document.getElementById("blueTeams").innerHTML = clearFRCfromTeam(match.alliances.blue.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[2])
+         } catch {
+          console.error("failed to get blue teams");
+         }
 
-    if (events[event].key == eventKey){
-    ////console.log(events[event]);
-    return events[event].overall_status_str;
-    }  
-}
-}
+         try {
+         document.getElementById("currentRank").innerHTML = "Rank: " + stats.qual.ranking.rank + "/" + stats.qual.num_teams
+         } catch {
+          console.error("failed to get event rank");
+         }
 
-async function bannerHelper(eventTitle, nextMatch, stats) {
-//console.log(eventTitle); 
-//console.log(nextMatch);
-//console.log(stats);
-    var match = await getMatchFromKey(nextMatch);
-//  console.log(nextMatch);
-    try {
-    countDownDate = match.predicted_time
-    } catch {
-    countDownDate = null
-    }
+         try {
+         document.getElementById("duringEventBanner").style.display = "block";
+          } catch {}
+        }
+ 
+       function clearFRCfromTeam(team) {
+         myString = team.replace(/\D/g, '');
+         return myString;
+       }
+ 
 
-    try {
-    document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + eventTitle;
-    } catch {
-    console.error("failed to get event name");
-    }
-
-    try {
-    document.getElementById("currentStatusStr").innerHTML = stats.overall_status_str;
-    } catch {}
-
-    try{ 
-    document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level + " " + match.match_number;
-    } catch {
-    console.error("failed to get next match");
-    }
-
-    try{
-    document.getElementById("redTeams").innerHTML = clearFRCfromTeam(match.alliances.red.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[2])
-    } catch {
-    console.error("failed to get red teams");
-    }
-
-    try {
-    document.getElementById("blueTeams").innerHTML = clearFRCfromTeam(match.alliances.blue.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[2])
-    } catch {
-    console.error("failed to get blue teams");
-    }
-
-    try {
-    document.getElementById("currentRank").innerHTML = "Rank: " + stats.qual.ranking.rank + "/" + stats.qual.num_teams
-    } catch {
-    console.error("failed to get event rank");
-    }
-
-    try {
-    document.getElementById("duringEventBanner").style.display = "block";
-    } catch {}
-}
-
-function clearFRCfromTeam(team) {
-    myString = team.replace(/\D/g, '');
-    return myString;
-}
-
-function convertTime(date) {
+       function convertTime(date) {
                 return new Date((typeof date === "string" ? new Date(date):date).toLocaleString('en-US', {timeZone: 'America/New_York'}))
         }
 
@@ -212,39 +216,42 @@ function convertTime(date) {
         return time;
 }
 
-var x = setInterval(function() {
-    var now = convertTime(new Date()).getTime();
-    var d = new Date().toLocaleTimeString();
-    var distance = new Date(convertTimestamp(countDownDate)).getTime() - now; 
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+       var x = setInterval(function() {
+         var now = convertTime(new Date()).getTime();
+         var d = new Date().toLocaleTimeString();
+         var distance = new Date(convertTimestamp(countDownDate)).getTime() - now; 
+         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+ 
+         //   document.getElementById("counter").innerHTML = d + " | ";
+         document.getElementById("counter").innerHTML = "~" + hours + "h " + minutes + "m " + seconds + "s ";
+         document.getElementById("time").innerHTML = d;
+ 
+         if (hours == 0 && minutes < 20) {
+           document.getElementById("counter").classList.add("yellowwarning");
+           // document.getElementById("counter").innerHTML =  d + " | ";
+           document.getElementById("counter").innerHTML = "~" + hours + "h " + minutes + "m " + seconds + "s DOUBLE QUENE";
+         }
+         if (hours == 0 && minutes < 10) {
+           document.getElementById("counter").classList.remove("yellowwarning");
+           document.getElementById("counter").classList.add("redalliance");
+           // document.getElementById("counter").innerHTML = d + " | ";
+           document.getElementById("counter").innerHTML = "~" + hours + "h " + minutes + "m " + seconds + "s QUENE";
+         }
+ 
+         if (minutes < -4) {
+           setBanner(eventurl);
+         }
+ 
+         if (minutes > 0 && seconds == 0) {
+           setBanner(eventurl);
+         }
+ 
+       }, 1000);
+ 
 
-    //   document.getElementById("counter").innerHTML = d + " | ";
-    document.getElementById("counter").innerHTML = "~" + hours + "h " + minutes + "m " + seconds + "s ";
-    document.getElementById("time").innerHTML = d;
-
-    if (hours == 0 && minutes < 20) {
-    document.getElementById("counter").classList.add("yellowwarning");
-    // document.getElementById("counter").innerHTML =  d + " | ";
-    document.getElementById("counter").innerHTML = "~" + hours + "h " + minutes + "m " + seconds + "s DOUBLE QUENE";
-    }
-    if (hours == 0 && minutes < 10) {
-    document.getElementById("counter").classList.remove("yellowwarning");
-    document.getElementById("counter").classList.add("redalliance");
-    // document.getElementById("counter").innerHTML = d + " | ";
-    document.getElementById("counter").innerHTML = "~" + hours + "h " + minutes + "m " + seconds + "s QUENE";
-    }
-
-    if (minutes < -4) {
-    setBanner(eventurl);
-    }
-
-    if (minutes > 0 && seconds == 0) {
-    setBanner(eventurl);
-    }
-
-}, 1000);
+ setBanner(eventurl);
 </script>
 <style>
     #redTeams {
