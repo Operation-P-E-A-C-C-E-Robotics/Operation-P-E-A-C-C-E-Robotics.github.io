@@ -33,7 +33,7 @@ layout: default
             <h2>{{ page.game }}</h2>
             <h3 id="districtRank">District Rank: --</h3>
             <h3 id="districtPoints">Total District Points: --</h3>
-            <h3>All data providied by The Blue Alliance <img src="/assets/images/tba_lamp.svg" style="height:3.5vh;"></h3>
+            <h3>All data provided by The Blue Alliance <img src="/assets/images/tba_lamp.svg" style="height:3.5vh;"></h3>
             <div id="buttons" class="pb-3">
                 {% if page.techBinder and page.techBinder != '' %}
                 <button type="button" class="btn btn-danger align-middle" data-toggle="modal" data-target="#myModal">
@@ -227,9 +227,11 @@ layout: default
   const districtResponse = await fetch(district);
   const districtJSON = await districtResponse.json();
   const team = districtJSON.find((team) => team.team_key === "frc3461");
+  const teams = districtJSON.filter(item => item.point_total !== 0);
+  console.log(teams)
 
   if (team) {
-    document.getElementById("districtRank").innerHTML = "District Rank: " + team.rank; 
+    document.getElementById("districtRank").innerHTML = "District Rank: " + team.rank + "/" + teams.length + "*"; 
     document.getElementById("districtPoints").innerHTML = "Total District Points: " + team.point_total; 
   }
  }

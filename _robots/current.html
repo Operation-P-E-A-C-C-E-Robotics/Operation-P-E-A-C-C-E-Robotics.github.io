@@ -50,9 +50,9 @@ published: true
     </div>
     <div class="pl-3 col-sm-12 col-md-6">
       <h1 id="header">Loading...</h1>
-      <h3 id="districtPoints">Current District Points: --</h3>
       <h3 id="districtRank">Current District Rank: --</h3>
-      <h3>All data providied by The Blue Alliance <img src="/assets/images/tba_lamp.svg" style="height:3.5vh;"></h3>
+      <h3 id="districtPoints">Current District Points: --</h3>
+      <h3>All data provided by The Blue Alliance <img src="/assets/images/tba_lamp.svg" style="height:3.5vh;"></h3>
       <button type="button" class="btn btn-primary align-middle" onclick=viewOnTBA();>View On The Blue Alliance <span><img style="height: 25px;" src="/assets/images/tba_lamp.svg"></span></button>
     </div>
   </div>
@@ -165,19 +165,17 @@ published: true
        getMedia(mediaurl);
 
        async function getDistrictStats(district) {
-        var districtResponse = await fetch(district);
-        var districtJSON = await districtResponse.json();
-        var teamDistrictRankings;
-        
-        for (var i = 0; i < districtJSON.length; i++) {
-					if (districtJSON[i].team_key == "frc3461") {
-          	////////console.log(districtJSON[i]);
-            document.getElementById("districtRank").innerHTML = "Current District Rank: " + districtJSON[i].rank; 
-            document.getElementById("districtPoints").innerHTML = "Current District Points: " + districtJSON[i].point_total; 
-          }
-        }
+        const districtResponse = await fetch(district);
+        const districtJSON = await districtResponse.json();
+        const team = districtJSON.find((team) => team.team_key === "frc3461");
+        const teams = districtJSON.filter(item => item.point_total !== 0);
+        console.log(teams)
 
-       }
+        if (team) {
+          document.getElementById("districtRank").innerHTML = "District Rank: " + team.rank + "/" + teams.length + "*"; 
+          document.getElementById("districtPoints").innerHTML = "Total District Points: " + team.point_total; 
+        }
+      }
 
        async function setBanner(eventsurl) {
          var eventJSON = await fetch(eventsurl);
