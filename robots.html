@@ -3,6 +3,8 @@ layout: default
 title: Robot Profiles
 metadesc: Past Robots info, design, performace and statistics all the way back to the first one
 metatitle: Past Robots
+bg: light
+txt: dark
 ---
 <meta property="og:title" content="Operation PEACCE Robotics - Past Robots" />
 <style>
@@ -27,7 +29,7 @@ metatitle: Past Robots
   <h1 class="text-center">Robot Profiles</h1>
   <br>
 <!-- d-flex flex-xs-column-reverse flex-sm-column-reverse flex-md-row-reverse flex-lg-row-reverse flex-xl-row-reverse -->
-  <div class="row bg-dark mx-auto text-dark card-deck flex-md-row flex-sm-column" id="cardHolder"> 
+  <div class="row mx-auto text-dark card-deck flex-md-row flex-sm-column" id="cardHolder"> 
     {% for robot in site.robots reversed %}
     {% if robot.published != "false" %}
     {% if robot.title != "Current Season"%}

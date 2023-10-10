@@ -21,7 +21,7 @@ async function getNextNonRecurringEvent() {
     for (let i = 0; i < events.length; i++) {
       let event = events[i];
       // console.log(event)
-      console.log(event.start)
+      // console.log(event.start)
       // console.log(event.start.dateTime)
       if (event.start.dateTime > now.toISOString() || event.start.date > now.toISOString()) {
         if (!event.recurrence || !event.recurringEventId) {
@@ -43,7 +43,7 @@ async function getNextEvent() {
   let nextEvent = null;
 
   for (const event of events) {
-    console.log(event);
+    // console.log(event);
     let eventDate = null;
 
     if (event.start.date) {
@@ -54,7 +54,7 @@ async function getNextEvent() {
 
     if (eventDate > currentDate) {
       nextEvent = event;
-      console.log(nextEvent);
+      // console.log(nextEvent);
     }
   }
 
@@ -91,17 +91,17 @@ async function getEventDate(event) {
     options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
     date= new Date(event.start.dateTime);
   }
-  console.log(date)
+  // console.log(date)
   return Promise.resolve(date.toLocaleString('en-US', options))
 }
 
 
 async function updateHomePageEventBox(data) {
-  console.log(data)
+  // console.log(data)
   // console.log(data.start)
   options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
   date = await getEventDate(data)
-  console.log(data)
+  // console.log(data)
   document.getElementById('nextEvent').innerText = ' ' + data.summary
   document.getElementById('startTime').innerHTML += ' ' + date.toLocaleString('en-US', options)
   if (data.location === undefined) {
