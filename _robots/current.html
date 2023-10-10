@@ -55,7 +55,9 @@ published: true
       <h3 id="districtPoints">Current District Points: --</h3>
       <h3>All data provided by The Blue Alliance <img src="/assets/images/tba_lamp.svg" style="height:3.5vh;"></h3>
       <button type="button" class="btn btn-primary align-middle" onclick=viewOnTBA();>View On The Blue Alliance <span><img style="height: 25px;" src="/assets/images/tba_lamp.svg"></span></button>
-      <h1 class="kickoffCountdown"></h1>
+      <div class="mx-auto">
+        <h1 id="kickoffCountdown" class="text-center pt-5" style="display: none;">Kickoff is in <b id="kickoffCountdownDays"></b> Days!</h1>
+      </div>
     </div>
   </div>
   <br>
@@ -68,6 +70,7 @@ published: true
   </div>
 </div>
 
+<script src="/assets/js/helpers.js"></script>
 <script>
 
 
@@ -77,6 +80,10 @@ published: true
 
        if (today.getDate() >= 9) {
           year = today.getFullYear() + 1;
+          kickoff = new Date(getFirstSaturdayInJanuary(year))
+          console.log(kickoff)
+          document.getElementById("kickoffCountdownDays").innerHTML += (Math.ceil( (kickoff.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
+          document.getElementById("kickoffCountdown").style.display = "block";
        } else {
         year = new Date().getFullYear();
        }
