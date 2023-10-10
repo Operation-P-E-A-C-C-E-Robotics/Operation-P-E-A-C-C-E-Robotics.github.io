@@ -3,8 +3,8 @@ import datetime
 
 
 def main():
-    # year = datetime.datetime.now().year
-    year = 2024
+    year = datetime.datetime.now().year
+    # year = 2024
     filename = f"_robots/{year}.md"
     toWrite =  f"""---
 layout: robot
