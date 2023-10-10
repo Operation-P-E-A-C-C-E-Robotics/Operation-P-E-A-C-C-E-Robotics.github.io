@@ -55,6 +55,7 @@ published: true
       <h3 id="districtPoints">Current District Points: --</h3>
       <h3>All data provided by The Blue Alliance <img src="/assets/images/tba_lamp.svg" style="height:3.5vh;"></h3>
       <button type="button" class="btn btn-primary align-middle" onclick=viewOnTBA();>View On The Blue Alliance <span><img style="height: 25px;" src="/assets/images/tba_lamp.svg"></span></button>
+      <h1 class="kickoffCountdown"></h1>
     </div>
   </div>
   <br>
@@ -71,7 +72,14 @@ published: true
 
 
       //  var events = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
-       var year = new Date().getFullYear();
+       var year;
+       var today = new Date();
+
+       if (today.getDate() >= 9) {
+          year = today.getFullYear() + 1;
+       } else {
+        year = new Date().getFullYear();
+       }
        
       //  var eventstatuses = "/statuses?noMoreSecurityLeaks"
       //  const authKey = "?noMoreSecurityLeaks" 
@@ -170,7 +178,7 @@ published: true
         const districtJSON = await districtResponse.json();
         const team = districtJSON.find((team) => team.team_key === "frc3461");
         const teams = districtJSON.filter(item => item.point_total !== 0);
-        console.log(teams)
+        // console.log(teams)
 
         if (team) {
           document.getElementById("districtRank").innerHTML = "District Rank: " + team.rank + "/" + teams.length + "*"; 
@@ -201,8 +209,8 @@ published: true
            }
          }
 
-          console.log("Cur Events")
-          console.log(curevents)
+          // console.log("Cur Events")
+          // console.log(curevents)
          if (curevents.length != 0) {
           var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json");
           var testResponse = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_event_statuses.json");
@@ -368,41 +376,66 @@ published: true
           // Object.keys(stats).forEach(createArray(key));
           
 
-          
-
+          var badge = ""
+          console.log(key, value)
           if (value != null) {
+          
             
-            var badge = ""
-            switch(stats[key].event_type_string) {
-              case "Preseason":
-                badge = `<span class="badge badge-pill badge-secondary">Preseason Event</span>`
-                break;
-              case "Offseason":
-                badge = `<span class="badge badge-pill badge-secondary">Offseason Event</span>`
-                break;
-              
-              case "Regional":
-                badge = `<span class="badge badge-pill badge-primary">Week ${stats[key].week + 1} Regional Event</span>`
-                break;
-              case "District":
-                badge = `<span class="badge badge-pill badge-primary">Week ${stats[key].week + 1} District Event</span>`
-                break;
-              case "District Championship Division":
-                badge = `<span class="badge badge-pill badge-info">DCMP Division</span>`
-                break;
-              case "District Championship":
-                badge = `<span class="badge badge-pill badge-info">DCMP</span>`
-                break;
-              case "Championship Division":
-                badge = `<span class="badge badge-pill badge-success">CMP Division</span>`
-                break;
-              case "Championship Finals":
-                badge = `<span class="badge badge-pill badge-success">CMP Einstein</span>`
-                break;
+            switch(stats[key].event_type) {
+              case 100:
+          //  console.log(stats[key])
+           badge = `<span class="badge badge-pill badge-secondary">Preseason Event</span>`
+           break;
+         case 99:
+          //  console.log(stats[key])
+           badge = `<span class="badge badge-pill badge-secondary">Offseason Event</span>`
+           break;
+         
+           case -1:
+          //  console.log(stats[key])
+           badge = `<span class="badge badge-pill badge-warning">Unlabeled Event</span>`
+           break;         
+         case 0:
+            // console.log(stats[key])
+            badge = `<span class="badge badge-pill badge-primary">Week ${stats[key].week + 1} Regional Event</span>`
+           break;
+         case 1:
+          //  console.log(stats[key])
+           badge = `<span class="badge badge-pill badge-primary">Week ${stats[key].week + 1} District Event</span>`
+           break;
 
-              default:
-                // code block
-            }
+         case 2:
+           badge = `<span class="badge badge-pill badge-info">DCMP</span>`
+           break;
+         case 3:
+        //  console.log(stats[key])
+           badge = `<span class="badge badge-pill badge-success">CMP Division</span>`
+           break;
+         case 4:
+        //  console.log(stats[key])
+           badge = `<span class="badge badge-pill badge-success">CMP Einstein</span>`
+           break;
+          
+         case 5:
+          //  console.log(stats[key])
+           badge = `<span class="badge badge-pill badge-info">DCMP Division</span>`
+           break;
+
+        case 7:
+          //  console.log(stats[key])
+           badge = `<span class="badge badge-pill badge-danger">2020/21 Remote Event</span>` // Covid is fun isnt it
+           break;
+
+          case null:
+          // console.log(stats[key])
+            badge = ""
+            break; 
+
+         default:
+          // console.log(stats[key])
+           badge = ""
+       }
+            
             //////console.log("key");
             //////console.log(key);
             //////console.log("value")
