@@ -107,11 +107,12 @@ txt: dark
 <br>
 <div class="container-fluid">
   {% for item in site.data.index.content %}
-  <div class="row  pl-5">
+  <div class="row  pl-md-5 pl-sm-0">
     <div class="col">  
-      <div style="display:flex"> <h1 style="font-family: 'BankGothicBold', sans-serif;">{{item.header}}</h1>
+      <div> 
+        <h1 style="font-family: 'BankGothicBold', sans-serif;">{{item.header}}
         <img src="{{item.glyph}}" style=" max-height: 50px; padding-left: 10px;"> 
-        <br>
+        </h1>
       </div>
       <h4>{{item.content | markdownify }}</h4>
     </div>
@@ -123,7 +124,7 @@ txt: dark
 
  
 {% assign robot = site.robots | where_exp: "item", "item.title != 'Current Season'" | last %}
-  <div class="row pl-5">
+  <div class="row pl-md-5 pl-sm-0">
     <div class="col">
       <h1 style="font-family: 'BankGothicBold', sans-serif;">Latest Robot: {{robot.robotName}}</h1>
       <h4>{{robot.content | markdownify }}</h4>
@@ -140,8 +141,10 @@ txt: dark
 
 <br>
 
+
+<div class="container-fluid mx-auto">
 <!-- 4 Cards in between text and sponsors -->
-<div class="card-deck justify-content-center text-dark text-center ml-4">
+<div class="card-deck justify-content-center text-dark text-center ">
   <div class="card">      
     <div class="card-body text-center pb-1">            
       <p class="card-title">History</p>
@@ -157,9 +160,9 @@ txt: dark
         {% for item in site.robots %}
         {% if item.thumbnail and item.thumbnail != "" %}
         <div class="carousel-item">
-          <img  src="{{item.thumbnail}}" class="img-rounded" style="width:100%; height:15rem; object-fit: contain;">
+          <img  src="{{item.thumbnail}}" class="img-rounded" style="width:fit-content; height: fit-content; max-height: 55vh; min-height: 55vh; object-fit: contain;">
           <div class="carousel-caption">
-            <h3 style="text-shadow: 5px; -webkit-text-stroke: 0.05rem; -webkit-text-stroke-color: black; font-size: 2rem;">{{item.title}}</h3>
+            <h3 style="text-shadow: 5px; -webkit-text-stroke: 0.05rem; -webkit-text-stroke-color: black; font-size: 5vh;">{{item.title}}</h3>
             </div>
         </div>
         {% endif %}
@@ -170,20 +173,20 @@ txt: dark
   </div>
 
   <br>
-
-  <div class="card">
+  <!-- Maybe if we ever do outreach we can use this -->
+  <!-- <div class="card">
       <div class="card-body text-center">
       <p class="card-title">Outreach</p>
       </div>
-  </div>
+  </div> -->
 
   <br>
 
   <div class="card">
       <div class="card-body text-center">
         <p class="card-title">Latest Post</p>
-        <div style="overflow: hidden; height:100%; max-height: 350px; object-fit: contain;">
-            <div class="fb-page" style="overflow:hidden; clip: auto;" data-href="https://www.facebook.com/PEACCE" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false"><blockquote cite="https://www.facebook.com/PEACCE" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/PEACCE">Operation P.E.A.C.C.E. Robotics</a></blockquote></div>
+        <div style="overflow: hidden; height:100%; max-height: 55vh; width: 100%;">
+            <div class="fb-page" style=" clip: auto;" data-href="https://www.facebook.com/PEACCE" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false"><blockquote cite="https://www.facebook.com/PEACCE" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/PEACCE">Operation P.E.A.C.C.E. Robotics</a></blockquote></div>
         </div>
       </div>
       
@@ -234,6 +237,7 @@ txt: dark
   </div>
     
       <br>
+</div>
 </div>
 
 <br>
