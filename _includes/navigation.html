@@ -34,6 +34,13 @@
             </li>
           {% endif %}
         {% endfor %}
+
+            <li class="nav-item"> 
+              <button type="button" id="darkModeToggle" onpress="toggleDarkMode()" class="btn">
+                <i class="fa fa-adjust"></i>
+              </button>
+            </li>
+
         </ul>
 <!--         <div id="socialMediaContainer" class="text-dark" style="font-size: 35px; ">
           {% for platform in site.data.socialMedia %}
