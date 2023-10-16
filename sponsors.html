@@ -15,8 +15,8 @@ title: Our Sponsors
             <div class="row text-dark mt-3 pt-3">
                 <div class="col-sm-4">
                     <img src="{{sponsor.image}}" class="logo p-2 mx-auto d-block">
-                    <h1>{{sponsor.name}}</h1>
-                    <h3>{{sponsor.sponsortier}} sponsor</h3>
+                    <h1 class="text-center">{{sponsor.name}}</h1>
+                    <h3 class="text-center">{{sponsor.sponsortier}} sponsor</h3>
                 </div>
                 <div class="col-sm-8 text-left">
                         <h5>{{sponsor.summary}}</h5>
@@ -26,12 +26,26 @@ title: Our Sponsors
         </div>
         <br>
         {% endif %}
+
+        {% if sponsor.sponsortier == "Platinum" %}
+            <div class="row text-dark mt-3 pt-3">
+                <div class="col-sm-4">
+                    <img src="{{sponsor.image}}" class="logo p-2 mx-auto d-block">
+                </div>
+                <div>
+                    <h1>{{sponsor.name}}</h1>
+                    <h3>{{sponsor.sponsortier}} sponsor</h3>
+                    <a class="btn btn-primary" href="{{sponsor.website}}">Learn More</a>
+                </div>
+            </div>
+        {% endif %}
+
         {% endfor %}
 </div>
 <br>
 <style>
 .logo {
-	height: 200px;
+	height: 25vh;
 	object-fit: contain;
     max-width: 100%;
 }
