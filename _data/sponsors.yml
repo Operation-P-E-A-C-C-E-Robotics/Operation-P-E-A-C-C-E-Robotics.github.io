@@ -35,14 +35,6 @@ text:
 
 sponsors:
   #Title Sponsors
-  - name: Arthur G Russell Company
-    image: /assets/sponsors/AGR.png
-    sponsortier: Title
-    isNameOnly: false
-    displayOnSponsorPageAsHero: true
-    summary: AGR is a really nice company
-    website: https://arthurgrussell.com/
-    hidden: false
 
   - name: Hartford County 4H
     image: /assets/sponsors/4h-logo.svg
@@ -51,6 +43,15 @@ sponsors:
     displayOnSponsorPageAsHero: true
     summary: sample text
     website: https://4-h.extension.uconn.edu/
+    hidden: false
+    
+  - name: Arthur G Russell Company
+    image: /assets/sponsors/AGR.png
+    sponsortier: Title
+    isNameOnly: false
+    displayOnSponsorPageAsHero: true
+    summary: AGR is a really nice company
+    website: https://arthurgrussell.com/
     hidden: false
 
   #Platinum Sponsors

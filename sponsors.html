@@ -7,14 +7,11 @@ title: Our Sponsors
 <div class="container-fluid">
     <h1 class="text-center">{{site.data.sponsors.text.header}}</h1>
     <h3 class="text-center">{{site.data.sponsors.text.p1}}</h3> <!-- "p1" in the data file -->
-    <h3 class="text-left">{{site.data.sponsors.text.p2}}</h3>
+    <h5 class="text-left">{{site.data.sponsors.text.p2}}</h5>
     <br>
         {% for sponsor in site.data.sponsors.sponsors %}
         {% if sponsor.displayOnSponsorPageAsHero == true %}
-        <div class="row text-dark mt-3 pt-3" style="border: 1px solid rgba(0,0,0,.125); min-height: 15rem; height: calc(13vw - 1vh);">
-            <div class="col-sm-4">
-            <img src="{{sponsor.image}}" class="logo p-2 mx-auto d-block">
-            </div>
+        <div class="row text-dark mt-3 pt-3">
             <div class="col-sm-8 text-left">
                 <div class="d-inline-flex">
                     <div class="d-block">
@@ -25,6 +22,9 @@ title: Our Sponsors
                     <a class="btn btn-primary" href="{{sponsor.website}}">Learn More</a>
                     </div>
                 </div>
+            </div>
+            <div class="col-sm-4">
+                <img src="{{sponsor.image}}" class="logo p-2 mx-auto d-block">
             </div>
         </div>
         <br>
