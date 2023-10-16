@@ -64,12 +64,12 @@
     },
     {
         "kind": "calendar#event",
-        "etag": "\"3385249974708000\"",
-        "id": "04asf6lstatb7na0j1k5h9tiu0",
+        "etag": "\"3394747003940000\"",
+        "id": "m0p0imhpapu4j7gspvgsduakk9",
         "status": "confirmed",
-        "htmlLink": "https://www.google.com/calendar/event?eid=MDRhc2Y2bHN0YXRiN25hMGoxazVoOXRpdTBfMjAyMzA4MjJUMjIwMDAwWiB0ZWFtQHBlYWNjZS5vcmc&ctz=UTC",
+        "htmlLink": "https://www.google.com/calendar/event?eid=bTBwMGltaHBhcHU0ajdnc3B2Z3NkdWFrazlfMjAyMzEwMTlUMjIwMDAwWiB0ZWFtQHBlYWNjZS5vcmc&ctz=UTC",
         "created": "2023-08-16T21:36:52.000Z",
-        "updated": "2023-08-21T13:36:27.354Z",
+        "updated": "2023-10-15T12:38:21.970Z",
         "summary": "Veteran Member Meeting",
         "location": "Arthur G. Russell Co., Inc., 750 Clark Ave, Bristol, CT 06010, USA",
         "creator": {
@@ -81,18 +81,18 @@
             "self": true
         },
         "start": {
-            "dateTime": "2023-08-22T22:00:00Z",
+            "dateTime": "2023-10-19T22:00:00Z",
             "timeZone": "America/New_York"
         },
         "end": {
-            "dateTime": "2023-08-23T01:00:00Z",
+            "dateTime": "2023-10-20T01:00:00Z",
             "timeZone": "America/New_York"
         },
         "recurrence": [
-            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20231114T045959Z;BYDAY=TU"
+            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20231116T045959Z;BYDAY=TH"
         ],
-        "iCalUID": "04asf6lstatb7na0j1k5h9tiu0@google.com",
-        "sequence": 0,
+        "iCalUID": "m0p0imhpapu4j7gspvgsduakk9@google.com",
+        "sequence": 1,
         "eventType": "default"
     }
 ]
