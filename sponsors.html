@@ -7,18 +7,20 @@ title: Our Sponsors
 <div class="container-fluid">
     <h1 class="text-center">{{site.data.sponsors.text.header}}</h1>
     <h3 class="text-center">{{site.data.sponsors.text.p1}}</h3> <!-- "p1" in the data file -->
-    <h3 class="text-left text-light">{{site.data.sponsors.text.p2}}</h3>
+    <h3 class="text-left">{{site.data.sponsors.text.p2}}</h3>
     <br>
         {% for sponsor in site.data.sponsors.sponsors %}
         {% if sponsor.displayOnSponsorPageAsHero == true %}
-        <div class="row text-dark sponsor mt-3 pt-3">
+        <div class="row text-dark mt-3 pt-3" style="border: 1px solid rgba(0,0,0,.125); min-height: 15rem; height: calc(13vw - 1vh);">
             <div class="col-sm-4">
-            <img src="{{sponsor.image}}" class="logo p-2">
+            <img src="{{sponsor.image}}" class="logo p-2 mx-auto d-block">
             </div>
             <div class="col-sm-8 text-left">
                 <div class="d-inline-flex">
                     <div class="d-block">
                     <h1>{{sponsor.name}}</h1>
+                    <h3>{{sponsor.sponsortier}} sponsor</h3>
+                    <br>
                     <h5>{{sponsor.summary}}</h5>
                     <a class="btn btn-primary" href="{{sponsor.website}}">Learn More</a>
                     </div>
