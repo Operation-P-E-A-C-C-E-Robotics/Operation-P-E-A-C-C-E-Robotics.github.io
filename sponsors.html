@@ -9,9 +9,9 @@ title: Our Sponsors
     <h3 class="text-center">{{site.data.sponsors.text.p1}}</h3> <!-- "p1" in the data file -->
     <h5 class="text-left">{{site.data.sponsors.text.p2}}</h5>
     <br>
+    <div class="container">
         {% for sponsor in site.data.sponsors.sponsors %}
         {% if sponsor.displayOnSponsorPageAsHero == true %}
-        <div class="container">
             <div class="row text-dark mt-3 pt-3">
                 <div class="col-sm-4">
                     <img src="{{sponsor.image}}" class="logo p-2 mx-auto d-block">
@@ -23,7 +23,6 @@ title: Our Sponsors
                         <a class="btn btn-primary" href="{{sponsor.website}}">Learn More</a>
                 </div>
             </div>
-        </div>
         <br>
         {% endif %}
 
@@ -41,11 +40,12 @@ title: Our Sponsors
         {% endif %}
 
         {% endfor %}
+    </div>
 </div>
 <br>
 <style>
 .logo {
-	height: 25vh;
+	height: 135px;
 	object-fit: contain;
     max-width: 100%;
 }
