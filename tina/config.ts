@@ -329,6 +329,30 @@ export default defineConfig({
      format: "yml",
      fields: [
       {
+        label: "Sponsor Benefits Description",
+        name: "text",
+        type: "object",
+        list: false,
+        fields: [
+          {
+            label: "Header",
+            name: "header",
+            type: "string"
+          },
+          {
+            label: "Explenation Paragraph",
+            name: "p1",
+            type: "rich-text"
+          },
+
+          {
+            label: "Benefits Paragraph",
+            name: "p2",
+            type: "rich-text"
+          }
+        ]
+      },
+      {
       label: "Sponsors",
       name: "sponsors",
       type: "object",
@@ -350,6 +374,11 @@ export default defineConfig({
           label: "Sponsor Tier",
           name: "sponsortier",
           type: "string"
+        },
+        {
+          label: "Sponsor Summary",
+          name: "summary",
+          type: "rich-text"
         },
         {
           label: "Website",
@@ -374,6 +403,7 @@ export default defineConfig({
 
       ]
     },
+
   ],
    },
      

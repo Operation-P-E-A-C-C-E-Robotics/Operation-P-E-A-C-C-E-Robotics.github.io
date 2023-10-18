@@ -319,7 +319,8 @@ txt: dark
 <div class="container-fluid">
 <h1 class=" text-center ">Thank you to our generous sponsors</h1>
 <div class="logo-area justify-content-center  text-dark">
-  {% for item in site.data.sponsors.sponsors limit:4 %}
+  {% for item in site.data.sponsors.sponsors %}
+  {% if item.sponsortier == "Title" or item.sponsortier == "Platinum" %}
   {% if item.hidden == false %}
     <div class="sponsorlogo"> 
       {% if item.isNameOnly == false %}
@@ -337,10 +338,11 @@ txt: dark
       {% endif %}
     </div>
     {% endif %}
+    {% endif %}
     {% endfor %}
   
     <div class="sponsorlogo">
-      <h1>And Many More
+      <h1 class="h2">And Many More
         <br>
         <a href="/sponsors.html" class="btn btn-outline-primary btn-lg text-center mt-4">See more info</a>
       </h1>
