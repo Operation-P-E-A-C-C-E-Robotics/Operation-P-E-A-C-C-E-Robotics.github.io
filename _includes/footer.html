@@ -26,14 +26,14 @@
 </section> -->
 
 <footer class="jumbotron jumbotron-fluid mb-0 p-0 bg-light text-dark" style="border: 1px solid rgba(0,0,0,.125);">
-    <div class="row w-100 m-0 pt-4 justify-content-center">
-      <div class="col-md-4 m-0 p-0 align-items-center text-left">
+    <div class="row w-100 m-0 pt-4">
+      <div class="col-md-4 col-sm-6 mx-auto text-center">
         <h3>Contact Us</h3>
         {% for item in site.data.contact %}
         <p>{{item.name}}: {{item.address}}</p>
         {% endfor %}
       </div>
-      <div class="col-md-4 justify-content-end m-0 p-0 align-items-center text-left">
+      <div class="col-md-4 col-sm-6 mx-auto text-center">
         <h3 class="mb-0">Site Version</h3>
         <div class="d-inline-block">
           <a href="{{site.github.repository_url}}/tree/{{site.github.build_revision}}" id="commit" class="text-dark pr-2"><i class="fa fa-code"></i> </a>
