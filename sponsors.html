@@ -45,7 +45,7 @@ title: Our Sponsors
         <br>
         {% for sponsor in site.data.sponsors.sponsors %}
         {% if sponsor.sponsortier == "Platinum" %}
-            <div class="row mt-3 pt-3">
+            <div class="row bg-light rounded mt-3 pt-3">
                 <div class="col-sm-4">
                     {% if sponsor.image %}
                     <img src="{{sponsor.image}}" class="logo p-2 mx-auto d-block">
@@ -72,7 +72,7 @@ title: Our Sponsors
         <br>
         {% for sponsor in site.data.sponsors.sponsors %}
         {% if sponsor.sponsortier == "Gold" %}
-            <div class="row mt-3 pt-3">
+            <div class="row mt-3 bg-light rounded pt-3">
                 <div class="col-sm-4">
                     {% if sponsor.image %}
                     <img src="{{sponsor.image}}" class="logo p-2 mx-auto d-block">
@@ -98,7 +98,7 @@ title: Our Sponsors
         <h2><strong>Silver Sponsors</strong></h2>
         {% for sponsor in site.data.sponsors.sponsors %}
         {% if sponsor.sponsortier == "Silver" %}
-            <div class="row mt-3 pt-3">
+            <div class="row mt-3 bg-light rounded pt-3">
                 <div class="col-sm-4">
                     {% if sponsor.image %}
                     <img src="{{sponsor.image}}" class="logo p-2 mx-auto d-block">
