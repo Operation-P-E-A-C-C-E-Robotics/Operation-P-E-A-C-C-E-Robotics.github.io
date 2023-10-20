@@ -28,12 +28,12 @@ txt: dark
   <br>
   <h1 class="text-center">Robot Profiles</h1>
   <br>
-<!-- d-flex flex-xs-column-reverse flex-sm-column-reverse flex-md-row-reverse flex-lg-row-reverse flex-xl-row-reverse -->
+  <!-- d-flex flex-xs-column-reverse flex-sm-column-reverse flex-md-row-reverse flex-lg-row-reverse flex-xl-row-reverse -->
   <div class="row mx-auto text-dark card-deck flex-md-row flex-sm-column" id="cardHolder"> 
     {% for robot in site.robots reversed %}
     {% if robot.published != "false" %}
     {% if robot.title != "Current Season"%}
-    <div class="col-sm-12 col-md-6 col-lg-3" style="padding-bottom: 0.5rem;">
+    <div class="col-sm-12 col-md-6 col-lg-3" style="padding-bottom: 5.5vh;">
       <div class="card"> 
         <img class="card-img-top img-thumbnail" src="{{ robot.thumbnail }}" id="logo" style="width:100%; height:30rem; object-fit: cover;"></img>
         <div class="card-body">
@@ -48,3 +48,4 @@ txt: dark
   </div>
 
 </div>
+<br>
