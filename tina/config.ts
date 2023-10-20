@@ -28,6 +28,388 @@ export default defineConfig({
   schema: {
     collections: [
       {
+        name: "about",
+        label: "Top Level Pages",
+        path: "/",
+        match: {
+          include: '*',
+        },
+       format: "md",
+       fields: [
+        {
+          type: "string",
+          name: "title",
+          label: "Title",
+          isTitle: true,
+          required: true,
+        },
+        {
+          type: "string",
+          name: "layout",
+          label: "Page Layout",
+          required: true,
+        },
+        {
+          type: "rich-text",
+          name: "body",
+          label: "Body",
+          isBody: true,
+        },
+        {
+        label: "Published",
+        name: "published",
+        type: "boolean",
+        },
+       ],
+     },
+     {
+      name: "index",
+      label: "Home Page Config",
+      path: "_data",
+      ui: {
+        allowedActions: {
+          create: false,
+          delete: false,
+        },
+      },
+      match: {
+          // name of the data file
+          include: "index",
+      },
+     format: "yaml",
+     fields: [
+      {
+        label: "Banner Image",
+        name: "banner",
+        type: "object",
+        fields: [
+          {
+            label: "Image",
+            name: "imageurl",
+            nameOverride: 'image-url',
+            type: "image"
+          },
+          {
+            label: "Image Align",
+            name: "imagealign",
+            nameOverride: 'image-align',
+            type: "string",
+            options: [{
+              value: "top",
+              label: "Top"
+            }, 
+            {
+              value: "left",
+              label: "Left"
+            },
+            {
+              value: "center",
+              label: "Center"
+            },
+            {
+              value: "right",
+              label: "Right"
+            },
+            {
+              value: "bottom",
+              label: "Bottom"
+            },
+            {
+              value: "inherit",
+              label: "Inherit/Default"
+            },
+
+          ]
+          },
+          {
+            label: "Header",
+            name: "header",
+            type: "string"
+          },
+          {
+            label: "Sub Header",
+            name: "subheader",
+            type: "string"
+          },
+        ]
+      },
+      {
+        label: "Subbanner Text",
+        name: "subbanner",
+        type: "object",
+        fields: [
+          {
+            label: "Header",
+            name: "text",
+            type: "string"
+          },
+          {
+            label: "Sub Header",
+            name: "subtext",
+            type: "rich-text"
+          },
+        ]
+      },
+      {
+      label: "Text/Image Columns",
+      name: "content",
+      type: "object",
+      list: true,
+      ui: {
+        // This allows the customization of the list item UI
+        // Data can be accessed by item?.<Name of field>
+        itemProps: (item) => {
+          return { label: `${item?.header}`}
+        },
+      },
+      fields: [
+        {
+          label: "Header",
+          name: "header",
+          type: "string"
+        },
+        {
+          label: "Content",
+          name: "content",
+          type: "rich-text"
+        },
+        {
+          label: "Glyph",
+          name: "glyph",
+          type: "image",
+        },
+        {
+          label: "Image",
+          name: "image",
+          type: "image",
+        },
+      ]
+    },
+  ],
+   },
+   {
+    name: "robots",
+    label: "Robot Profiles",
+    path: "/_robots",
+    defaultItem: () => {
+      return {
+        // When a new post is created the title field will be set to "New post"
+        year: `${new Date(Date.now()).getFullYear()}`,
+        robotName: 'Unnamed Robot',
+        metatitle: `${new Date(Date.now()).getFullYear()} Robot: ROBOT NAME`,
+        metadesc: `GAME NAME Performance and Statistics`,
+      }
+    },
+    ui: {
+      filename: {
+        // if disabled, the editor can not edit the filename
+        readonly: true,
+        // Example of using a custom slugify function
+        slugify: values => {
+          // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
+          return `${values?.year}`
+        },
+      },
+    },
+    fields: [
+      {
+        name: 'year',
+        label: 'Year',
+        type: 'number',
+      },
+      {
+        name: 'robotName',
+        label: 'Robot Name',
+        type: 'string',
+      },
+      {
+        name: 'game',
+        label: 'Game Name',
+        type: 'string',
+      },
+      {
+        name: 'thumbnail',
+        label: 'Thumbnail Image',
+        type: 'image',
+      },
+      {
+        name: 'metatitle',
+        label: 'Meta Title',
+        type: 'string',
+      },
+      {
+        name: 'metadesc',
+        label: 'Meta Description',
+        type: 'string',
+      },
+      {
+        type: "rich-text",
+        name: "body",
+        label: "Write Up",
+        isBody: true,
+      },
+      {
+        label: "Published",
+        name: "published",
+        type: "boolean",
+        },
+    ],
+  },
+
+   //   {
+//     name: "contact",
+//     label: "Contact",
+//     path: "_data",
+//     match: {
+//         // name of the data file
+//         include: "contact",
+//     },
+//    format: "yaml",
+//    fields: [
+//      // contact fields here 
+//    ],
+//  },
+ 
+ {
+  name: "sponsors",
+  label: "Sponsors",
+  path: "_data",
+  ui: {
+    allowedActions: {
+      create: false,
+      delete: false,
+    },
+  },
+  match: {
+      // name of the data file
+      include: "sponsors",
+  },
+ format: "yml",
+ fields: [
+  {
+    label: "Sponsor Benefits Description",
+    name: "text",
+    type: "object",
+    list: false,
+    fields: [
+      {
+        label: "Header",
+        name: "header",
+        type: "string"
+      },
+      {
+        label: "Explenation Paragraph",
+        name: "p1",
+        type: "rich-text"
+      },
+
+      {
+        label: "Benefits Paragraph",
+        name: "p2",
+        type: "rich-text"
+      }
+    ]
+  },
+  {
+  label: "Sponsors",
+  name: "sponsors",
+  type: "object",
+  list: true,
+  ui: {
+    // This allows the customization of the list item UI
+    // Data can be accessed by item?.<Name of field>
+    itemProps: (item) => {
+      return { label: `${item?.name}`}
+    },
+  },
+  fields: [
+    {
+      label: "Name",
+      name: "name",
+      type: "string"
+    },
+    {
+      label: "Sponsor Tier",
+      name: "sponsortier",
+      type: "string"
+    },
+    {
+      label: "Sponsor Summary",
+      name: "summary",
+      type: "rich-text"
+    },
+    {
+      label: "Website",
+      name: "website",
+      type: "string"
+    },
+    {
+      label: "Display Name Only",
+      name:"isNameOnly",
+      type: "boolean",
+    },
+    {
+      label: "Logo",
+      name: "image",
+      type: "image"
+    },
+    {
+      label: "Hide from Sponsor List",
+      name:"hidden",
+      type: "boolean",
+    },
+
+  ]
+},
+
+],
+},
+
+{
+  name: "faq",
+  label: "Frequently Asked Questions",
+  path: "_data",
+  ui: {
+        allowedActions: {
+          create: false,
+          delete: false,
+        },
+      },
+      match: {
+          // name of the data file
+          include: "faq",
+  },
+     format: "yml",
+     fields: [
+      {
+        label: "Frequently Asked Questions",
+        name: "faqs",
+        type: "object",
+        list: true,
+        ui: {
+          // This allows the customization of the list item UI
+          // Data can be accessed by item?.<Name of field>
+          itemProps: (item) => {
+            return { label: `${item?.question}`}
+          },
+        },
+        fields: [
+          {
+            name: "question",
+            label: "Question",
+            type: "string",
+          },
+          {
+            name: "answer",
+            label: "Answer",
+            type: "rich-text"
+          }
+        ]
+      }
+     ]
+},
+
+      {
         name: "post",
         label: "Blog Posts",
         path: "/_posts",
@@ -70,342 +452,7 @@ export default defineConfig({
           },
         ],
       },
-      {
-        name: "robots",
-        label: "Robot Profiles",
-        path: "/_robots",
-        defaultItem: () => {
-          return {
-            // When a new post is created the title field will be set to "New post"
-            year: `${new Date(Date.now()).getFullYear()}`,
-            robotName: 'Unnamed Robot',
-            metatitle: `${new Date(Date.now()).getFullYear()} Robot: ROBOT NAME`,
-            metadesc: `GAME NAME Performance and Statistics`,
-          }
-        },
-        ui: {
-          filename: {
-            // if disabled, the editor can not edit the filename
-            readonly: true,
-            // Example of using a custom slugify function
-            slugify: values => {
-              // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
-              return `${values?.year}`
-            },
-          },
-        },
-        fields: [
-          {
-            name: 'year',
-            label: 'Year',
-            type: 'number',
-          },
-          {
-            name: 'robotName',
-            label: 'Robot Name',
-            type: 'string',
-          },
-          {
-            name: 'game',
-            label: 'Game Name',
-            type: 'string',
-          },
-          {
-            name: 'thumbnail',
-            label: 'Thumbnail Image',
-            type: 'image',
-          },
-          {
-            name: 'metatitle',
-            label: 'Meta Title',
-            type: 'string',
-          },
-          {
-            name: 'metadesc',
-            label: 'Meta Description',
-            type: 'string',
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Write Up",
-            isBody: true,
-          },
-          {
-            label: "Published",
-            name: "published",
-            type: "boolean",
-            },
-        ],
-      },
-    {
-      name: "about",
-      label: "Top Level Pages",
-      path: "/",
-      match: {
-        include: '*',
-      },
-     format: "md",
-     fields: [
-      {
-        type: "string",
-        name: "title",
-        label: "Title",
-        isTitle: true,
-        required: true,
-      },
-      {
-        type: "string",
-        name: "layout",
-        label: "Page Layout",
-        required: true,
-      },
-      {
-        type: "rich-text",
-        name: "body",
-        label: "Body",
-        isBody: true,
-      },
-      {
-      label: "Published",
-      name: "published",
-      type: "boolean",
-      },
-     ],
-   },
-       //   {
-    //     name: "contact",
-    //     label: "Contact",
-    //     path: "_data",
-    //     match: {
-    //         // name of the data file
-    //         include: "contact",
-    //     },
-    //    format: "yaml",
-    //    fields: [
-    //      // contact fields here 
-    //    ],
-    //  },
-     {
-        name: "index",
-        label: "Home Page Config",
-        path: "_data",
-        ui: {
-          allowedActions: {
-            create: false,
-            delete: false,
-          },
-        },
-        match: {
-            // name of the data file
-            include: "index",
-        },
-       format: "yaml",
-       fields: [
-        {
-          label: "Banner Image",
-          name: "banner",
-          type: "object",
-          fields: [
-            {
-              label: "Image",
-              name: "imageurl",
-              nameOverride: 'image-url',
-              type: "image"
-            },
-            {
-              label: "Image Align",
-              name: "imagealign",
-              nameOverride: 'image-align',
-              type: "string",
-              options: [{
-                value: "top",
-                label: "Top"
-              }, 
-              {
-                value: "left",
-                label: "Left"
-              },
-              {
-                value: "center",
-                label: "Center"
-              },
-              {
-                value: "right",
-                label: "Right"
-              },
-              {
-                value: "bottom",
-                label: "Bottom"
-              },
-              {
-                value: "inherit",
-                label: "Inherit/Default"
-              },
 
-            ]
-            },
-            {
-              label: "Header",
-              name: "header",
-              type: "string"
-            },
-            {
-              label: "Sub Header",
-              name: "subheader",
-              type: "string"
-            },
-          ]
-        },
-        {
-          label: "Subbanner Text",
-          name: "subbanner",
-          type: "object",
-          fields: [
-            {
-              label: "Header",
-              name: "text",
-              type: "string"
-            },
-            {
-              label: "Sub Header",
-              name: "subtext",
-              type: "rich-text"
-            },
-          ]
-        },
-        {
-        label: "Text/Image Columns",
-        name: "content",
-        type: "object",
-        list: true,
-        ui: {
-          // This allows the customization of the list item UI
-          // Data can be accessed by item?.<Name of field>
-          itemProps: (item) => {
-            return { label: `${item?.header}`}
-          },
-        },
-        fields: [
-          {
-            label: "Header",
-            name: "header",
-            type: "string"
-          },
-          {
-            label: "Content",
-            name: "content",
-            type: "rich-text"
-          },
-          {
-            label: "Glyph",
-            name: "glyph",
-            type: "image",
-          },
-          {
-            label: "Image",
-            name: "image",
-            type: "image",
-          },
-        ]
-      },
-    ],
-     },
-
-     {
-      name: "sponsors",
-      label: "Sponsors",
-      path: "_data",
-      ui: {
-        allowedActions: {
-          create: false,
-          delete: false,
-        },
-      },
-      match: {
-          // name of the data file
-          include: "sponsors",
-      },
-     format: "yml",
-     fields: [
-      {
-        label: "Sponsor Benefits Description",
-        name: "text",
-        type: "object",
-        list: false,
-        fields: [
-          {
-            label: "Header",
-            name: "header",
-            type: "string"
-          },
-          {
-            label: "Explenation Paragraph",
-            name: "p1",
-            type: "rich-text"
-          },
-
-          {
-            label: "Benefits Paragraph",
-            name: "p2",
-            type: "rich-text"
-          }
-        ]
-      },
-      {
-      label: "Sponsors",
-      name: "sponsors",
-      type: "object",
-      list: true,
-      ui: {
-        // This allows the customization of the list item UI
-        // Data can be accessed by item?.<Name of field>
-        itemProps: (item) => {
-          return { label: `${item?.name}`}
-        },
-      },
-      fields: [
-        {
-          label: "Name",
-          name: "name",
-          type: "string"
-        },
-        {
-          label: "Sponsor Tier",
-          name: "sponsortier",
-          type: "string"
-        },
-        {
-          label: "Sponsor Summary",
-          name: "summary",
-          type: "rich-text"
-        },
-        {
-          label: "Website",
-          name: "website",
-          type: "string"
-        },
-        {
-          label: "Display Name Only",
-          name:"isNameOnly",
-          type: "boolean",
-        },
-        {
-          label: "Logo",
-          name: "image",
-          type: "image"
-        },
-        {
-          label: "Hide from Sponsor List",
-          name:"hidden",
-          type: "boolean",
-        },
-
-      ]
-    },
-
-  ],
-   },
      
     ],
   },
