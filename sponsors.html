@@ -8,7 +8,12 @@ title: Our Sponsors
     <div class="container">
         <h1 class="text-center">{{site.data.sponsors.text.header || markdownify}}</h1>
         <h3 class="text-center">{{site.data.sponsors.text.p1 || markdownify }}</h3><br> <!-- "p1" in the data file -->
-        <h5 class="text-left">{{site.data.sponsors.text.p2 || markdownify}}</h5>
+        <div class="text-left h5" id="benefits">{{site.data.sponsors.text.p2 || markdownify}}</div>
+        <style> 
+            #benefits ul li {
+                padding-bottom: 2vh;
+            }
+        </style>
     </div>
     <br>
     <div class="container">
@@ -25,14 +30,14 @@ title: Our Sponsors
                     <img src="/assets/sponsors/noLogo.png" class="logo p-2 mx-auto d-block">
                     {% endif %}
                     <h1 class="text-center">{{sponsor.name}}</h1>
-                    <h3 class="text-center">{{sponsor.sponsortier}} sponsor</h3>
+                    {% comment %}<h3 class="text-center">{{sponsor.sponsortier}} Sponsor</h3> {% endcomment %}
                 </div>
                 <div class="col-sm-8 text-left">
                         <h5>{{sponsor.summary}}</h5>
                         {% if sponsor.website %}
-                        <a class="btn btn-primary" href="{{sponsor.website}}">Learn More</a>
+                        <a class="btn btn-outline-primary" href="{{sponsor.website}}">Learn More</a>
                         {% else %}
-                        <a class="btn btn-primary disabled" href="">Learn More</a>
+                        <a class="btn btn-outline-primary disabled" href="">Learn More</a>
                         {% endif %}
                 </div>
             </div>
@@ -43,82 +48,100 @@ title: Our Sponsors
         <br>
         <h2><strong>Platinum Sponsors</strong></h2>
         <br>
+        <div class="row text-dark bg-light rounded mt-3 pt-3">
         {% for sponsor in site.data.sponsors.sponsors %}
         {% if sponsor.sponsortier == "Platinum" %}
-            <div class="row text-dark bg-light rounded mt-3 pt-3">
-                <div class="col-sm-4">
+        <div class="col-sm-6 p-4">
+            <!-- <div class="row text-dark mt-3 bg-light rounded pt-3"> -->
+                <!-- <div class="col-sm-4"> -->
                     {% if sponsor.image %}
                     <img src="{{sponsor.image}}" class="logo p-2 mx-auto d-block">
                     {% else %}
                     <img src="/assets/sponsors/noLogo.png" class="logo p-2 mx-auto d-block">
                     {% endif %}
-                </div>
-                <div class="col-sm-8">
-                    <h1>{{sponsor.name}}</h1>
-                    <h3>{{sponsor.sponsortier}} sponsor</h3>
-                    {% if sponsor.website %}
-                    <a class="btn btn-primary" href="{{sponsor.website}}">Learn More</a>
-                    {% else %}
-                    <a class="btn btn-primary disabled" href="">Learn More</a>
-                    {% endif %}
-                </div>
-            </div>
+                <!-- </div> -->
+                <!-- <div class="col-sm-8"> -->
+                    <h2 class="text-center">{{sponsor.name}}</h2>
+                   {% comment %} <h4 class="text-center">{{sponsor.sponsortier}} Sponsor</h4> {% endcomment %}
+                    <div class="d-flex justify-content-center align-items-center">
+                        {% if sponsor.website %}
+                        <a class="btn btn-outline-primary" href="{{sponsor.website}}">Learn More</a>
+                        {% else %}
+                        <a class="btn btn-outline-primary disabled" href="">Learn More</a>
+                        {% endif %}
+                    </div>
+                <!-- </div> -->
+            <!-- </div> -->
+        </div>
             <br>
         {% endif %}
         {% endfor %}
+        </div>
         <br>
         <br>
         <h2><strong>Gold Sponsors</strong></h2>
         <br>
+        <div class="row text-dark mt-3 bg-light rounded pt-3">
         {% for sponsor in site.data.sponsors.sponsors %}
         {% if sponsor.sponsortier == "Gold" %}
-            <div class="row text-dark mt-3 bg-light rounded pt-3">
-                <div class="col-sm-4">
-                    {% if sponsor.image %}
-                    <img src="{{sponsor.image}}" class="logo p-2 mx-auto d-block">
-                    {% else %}
-                    <img src="/assets/sponsors/noLogo.png" class="logo p-2 mx-auto d-block">
-                    {% endif %}
-                </div>
-                <div class="col-sm-8">
-                    <h1>{{sponsor.name}}</h1>
-                    <h3>{{sponsor.sponsortier}} sponsor</h3>
-                    {% if sponsor.website %}
-                    <a class="btn btn-primary" href="{{sponsor.website}}">Learn More</a>
-                    {% else %}
-                    <a class="btn btn-primary disabled" href="">Learn More</a>
-                    {% endif %}
-                </div>
+            <div class="col-sm-3 p-4">
+                <!-- <div class="row text-dark mt-3 bg-light rounded pt-3"> -->
+                    <!-- <div class="col-sm-4"> -->
+                        {% if sponsor.image %}
+                        <img src="{{sponsor.image}}" class="logo p-2 mx-auto d-block">
+                        {% else %}
+                        <img src="/assets/sponsors/noLogo.png" class="logo p-2 mx-auto d-block">
+                        {% endif %}
+                    <!-- </div> -->
+                    <!-- <div class="col-sm-8"> -->
+                        <h2 class="text-center">{{sponsor.name}}</h2>
+                       {% comment %} <h4 class="text-center">{{sponsor.sponsortier}} Sponsor</h4> {% endcomment %}
+                        <div class="d-flex justify-content-center align-items-center">
+                            {% if sponsor.website %}
+                            <a class="btn btn-outline-primary" href="{{sponsor.website}}">Learn More</a>
+                            {% else %}
+                            <a class="btn btn-outline-primary disabled" href="">Learn More</a>
+                            {% endif %}
+                        </div>
+                    <!-- </div> -->
+                <!-- </div> -->
             </div>
-            <br>
+            
         {% endif %}
         {% endfor %}
+        </div>
         <br>
         <br>
         <h2><strong>Silver Sponsors</strong></h2>
+        <div class="row text-dark mt-3 bg-light rounded pt-3">
         {% for sponsor in site.data.sponsors.sponsors %}
         {% if sponsor.sponsortier == "Silver" %}
-            <div class="row text-dark mt-3 bg-light rounded pt-3">
-                <div class="col-sm-4">
+        <div class="col-sm-3 p-4">
+            <!-- <div class="row text-dark mt-3 bg-light rounded pt-3"> -->
+                <!-- <div class="col-sm-4"> -->
                     {% if sponsor.image %}
                     <img src="{{sponsor.image}}" class="logo p-2 mx-auto d-block">
                     {% else %}
                     <img src="/assets/sponsors/noLogo.png" class="logo p-2 mx-auto d-block">
                     {% endif %}
-                </div>
-                <div class="col-sm-8">
-                    <h1 class="text-break">{{sponsor.name}}</h1>
-                    <h3>{{sponsor.sponsortier}} sponsor</h3>
-                    {% if sponsor.website %}
-                    <a class="btn btn-primary" href="{{sponsor.website}}">Learn More</a>
-                    {% else %}
-                    <a class="btn btn-primary disabled" href="">Learn More</a>
-                    {% endif %}
-                </div>
-            </div>
+                <!-- </div> -->
+                <!-- <div class="col-sm-8"> -->
+                    <h2 class="text-center">{{sponsor.name}}</h2>
+                    {% comment %}<h4 class="text-center">{{sponsor.sponsortier}} Sponsor</h4>{% endcomment %}
+                    <div class="d-flex justify-content-center align-items-center">
+                        {% if sponsor.website %}
+                        <a class="btn btn-outline-primary" href="{{sponsor.website}}">Learn More</a>
+                        {% else %}
+                        <a class="btn btn-outline-primary disabled" href="">Learn More</a>
+                        {% endif %}
+                    </div>
+                <!-- </div> -->
+            <!-- </div> -->
+        </div>
             <br>
         {% endif %}
         {% endfor %}
+        </div>
     </div>
 </div>
 <br>
