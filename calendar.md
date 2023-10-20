@@ -1,6 +1,7 @@
 ---
 title: calendar
 permalink: /calendar
+layout: default
 ---
 <div class="container m-3">
     <div class="embed-responsive embed-responsive-16by9">
