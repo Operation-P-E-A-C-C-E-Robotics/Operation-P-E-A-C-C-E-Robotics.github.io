@@ -357,144 +357,144 @@ export default defineConfig({
 //    ],
 //  },
  
- {
-  name: "sponsors",
-  label: "Sponsors",
-  path: "_data",
-  ui: {
-    allowedActions: {
-      create: false,
-      delete: false,
-    },
-  },
-  match: {
-      // name of the data file
-      include: "sponsors",
-  },
- format: "yml",
- fields: [
-  {
-    label: "Sponsor Benefits Description",
-    name: "text",
-    type: "object",
-    list: false,
-    fields: [
       {
-        label: "Header",
-        name: "header",
-        type: "string"
-      },
-      {
-        label: "Explenation Paragraph",
-        name: "p1",
-        type: "rich-text"
-      },
-
-      {
-        label: "Benefits Paragraph",
-        name: "p2",
-        type: "rich-text"
-      }
-    ]
-  },
-  {
-  label: "Sponsors",
-  name: "sponsors",
-  type: "object",
-  list: true,
-  ui: {
-    // This allows the customization of the list item UI
-    // Data can be accessed by item?.<Name of field>
-    itemProps: (item) => {
-      return { label: `${item?.name}`}
-    },
-  },
-  fields: [
-    {
-      label: "Name",
-      name: "name",
-      type: "string"
-    },
-    {
-      label: "Sponsor Tier",
-      name: "sponsortier",
-      type: "string"
-    },
-    {
-      label: "Sponsor Summary",
-      name: "summary",
-      type: "rich-text"
-    },
-    {
-      label: "Website",
-      name: "website",
-      type: "string"
-    },
-    {
-      label: "Display Name Only",
-      name:"isNameOnly",
-      type: "boolean",
-    },
-    {
-      label: "Logo",
-      name: "image",
-      type: "image"
-    },
-    {
-      label: "Hide from Sponsor List",
-      name:"hidden",
-      type: "boolean",
-    },
-
-  ]
-},
-
-],
-},
-
-{
-  name: "faq",
-  label: "Frequently Asked Questions",
-  path: "_data",
-  ui: {
-        allowedActions: {
-          create: false,
-          delete: false,
+        name: "sponsors",
+        label: "Sponsors",
+        path: "_data",
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
         },
-      },
-      match: {
-          // name of the data file
-          include: "faq",
-  },
-     format: "yml",
-     fields: [
-      {
-        label: "Frequently Asked Questions",
-        name: "faqs",
+        match: {
+            // name of the data file
+            include: "sponsors",
+        },
+      format: "yml",
+      fields: [
+        {
+          label: "Sponsor Benefits Description",
+          name: "text",
+          type: "object",
+          list: false,
+          fields: [
+            {
+              label: "Header",
+              name: "header",
+              type: "string"
+            },
+            {
+              label: "Explenation Paragraph",
+              name: "p1",
+              type: "rich-text"
+            },
+
+            {
+              label: "Benefits Paragraph",
+              name: "p2",
+              type: "rich-text"
+            }
+          ]
+        },
+        {
+        label: "Sponsors",
+        name: "sponsors",
         type: "object",
         list: true,
         ui: {
           // This allows the customization of the list item UI
           // Data can be accessed by item?.<Name of field>
           itemProps: (item) => {
-            return { label: `${item?.question}`}
+            return { label: `${item?.name}`}
           },
         },
         fields: [
           {
-            name: "question",
-            label: "Question",
-            type: "string",
+            label: "Name",
+            name: "name",
+            type: "string"
           },
           {
-            name: "answer",
-            label: "Answer",
+            label: "Sponsor Tier",
+            name: "sponsortier",
+            type: "string"
+          },
+          {
+            label: "Sponsor Summary",
+            name: "summary",
             type: "rich-text"
-          }
+          },
+          {
+            label: "Website",
+            name: "website",
+            type: "string"
+          },
+          {
+            label: "Display Name Only",
+            name:"isNameOnly",
+            type: "boolean",
+          },
+          {
+            label: "Logo",
+            name: "image",
+            type: "image"
+          },
+          {
+            label: "Hide from Sponsor List",
+            name:"hidden",
+            type: "boolean",
+          },
+
         ]
-      }
-     ]
-},
+      },
+
+      ],
+      },
+
+      {
+        name: "faq",
+        label: "Frequently Asked Questions",
+        path: "_data",
+        ui: {
+              allowedActions: {
+                create: false,
+                delete: false,
+              },
+            },
+            match: {
+                // name of the data file
+                include: "faq",
+        },
+          format: "yml",
+          fields: [
+            {
+              label: "Frequently Asked Questions",
+              name: "faqs",
+              type: "object",
+              list: true,
+              ui: {
+                // This allows the customization of the list item UI
+                // Data can be accessed by item?.<Name of field>
+                itemProps: (item) => {
+                  return { label: `${item?.question}`}
+                },
+              },
+              fields: [
+                {
+                  name: "question",
+                  label: "Question",
+                  type: "string",
+                },
+                {
+                  name: "answer",
+                  label: "Answer",
+                  type: "rich-text"
+                }
+              ]
+            }
+          ]
+      },
 
       {
         name: "post",
@@ -542,14 +542,6 @@ export default defineConfig({
 
      
     ],
-  },
-  search: {
-    tina: {
-      indexerToken: '<Your Search Token>',
-      stopwordLanguages: ['eng']
-    },
-    indexBatchSize: 100,
-    maxSearchIndexFieldLength: 100
   },
 
 });
