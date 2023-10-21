@@ -1,4 +1,4 @@
-import { defineConfig } from "tinacms";
+import { defineConfig, FieldDescription } from "tinacms";
 import { date } from "zod";
 
 // Your hosting provider likely exposes this as an environment variable
@@ -62,6 +62,90 @@ export default defineConfig({
         },
        ],
      },
+     {
+      name: "navigation",
+      label: "Nav Bar Links",
+      path: "_data",
+      ui: {
+        allowedActions: {
+
+          create: false,
+          delete: false,
+        },
+      },
+      match: {
+        include: "navigation",
+      },
+      format: "yml",
+      fields: [
+        {
+          name: "data",
+          label: "Navigation Bar Links",
+          type: "object",
+          list: true,
+          ui: {
+            // This allows the customization of the list item UI
+            // Data can be accessed by item?.<Name of field>
+            itemProps: (item) => {
+              return { label: `${item?.name}`}
+            },
+          },
+          fields: [
+            {
+              name: "name",
+              label: "Name",
+              type: "string",
+              description: "How the button will appear on the nav bar, NOT the link it will execute"
+            },
+
+            {
+              name: "link",
+              label: "Link to",
+              description: "When 'Enable Dropdown Menu' is 'False' this link is where the button will go, leave blank if enabeling drop down menu",
+              type: "string"
+            },
+            {
+              name: "drop",
+              label: "Enable Dropdown Menu",
+              type: "string",
+              options: [
+               "true",
+                "false",
+              ],
+            },
+            {
+              name: "links",
+              label: "Dropdown Menu Links",
+              description: "This will only work if 'Enable Dropdown Menu' is 'True'",
+              type: "object",
+              list: true,
+              ui: {
+                // This allows the customization of the list item UI
+                // Data can be accessed by item?.<Name of field>
+                itemProps: (item) => {
+                  return { label: `${item?.name}`}
+                },
+              },
+              fields: [
+                {
+                  name: "name",
+                  label: "Name",
+                  type: "string",
+                  description: "How the button will appear in the drop down menu, NOT the link it will execute"
+                },
+    
+                {
+                  name: "url",
+                  label: "Link to",
+                  description: "The link to go to",
+                  type: "string"
+                },
+              ],
+            },
+          ],
+        },
+      ]
+    },
      {
       name: "index",
       label: "Home Page Config",
