@@ -1,0 +1,35 @@
+---
+layout: default
+title: FAQ
+bg: light
+txt: dark
+published: true
+permalink: /faq
+---
+<br>
+<div class="container">
+    <h1 class="pb-5 pt-4"><strong>Frequently Asked Questions</strong></h1>
+    <div id="accordion">
+    {% for item in site.data.faq.faqs %}
+    <div class="card">
+        <div class="card-header">
+          <a class="card-title text-dark" data-toggle="collapse" href="#Q{{forloop.index0}}">
+            <h3 class="h3">
+                <strong>
+                {{item.question | markdownify}}
+                </strong>
+            </h3>
+          </a>
+        </div>
+        <div id="Q{{forloop.index0}}" class="collapse" data-parent="#accordion">
+          <div class="card-body text-dark">
+            <h5>
+            {{item.answer | markdownify}}
+            </h5>
+          </div>
+        </div>
+      </div>
+        <br>
+    {% endfor %}
+    </div>
+</div>
