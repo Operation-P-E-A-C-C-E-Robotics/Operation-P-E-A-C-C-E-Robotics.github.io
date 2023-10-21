@@ -1,40 +1,29 @@
-data: 
+data:
   - name: Home
-    drop: "false"
     link: /
-    
+    drop: 'false'
   - name: About Us
-    drop: "false"
     link: /about.html
-
+    drop: 'false'
   - name: FAQ
-    drop: "false"
     link: /faq
-
+    drop: 'false'
   - name: Sponsors
-    drop: "false"
-    link: /sponsors.html
-  # - name: Current Season
-  #   drop: "false"
-  #   link: /robots/current
-
+    link: /sponsors
+    drop: 'false'
   - name: Seasons
-    drop: "true"
+    drop: 'true'
     links:
-      - url: /robots/current
-        name: Current Season
-      - url: /robots
-        name: Past Seasons
-
-
+      - name: Current Season
+        url: /robots/current
+      - name: Past Seasons
+        url: /robots
   - name: Blog
-    drop: "false"
     link: /posts
-
+    drop: 'false'
   - name: Contact Us
-    drop: "false"
     link: /contact.html
-
+    drop: 'false'
   - name: Calendar
-    drop: "false"
     link: /calendar
+    drop: 'false'
