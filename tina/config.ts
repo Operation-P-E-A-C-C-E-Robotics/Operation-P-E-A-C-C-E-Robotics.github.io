@@ -6,9 +6,11 @@ import { date } from "zod";
   process.env.NEXT_PUBLIC_TINA_BRANCH ||
   process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF ||
   process.env.HEAD ||
-  ''
+  'main'
  const clientId = process.env.TINA_PUBLIC_CLIENT_ID || null
  const token = process.env.TINA_TOKEN || null
+
+ const searchToken = process.env.TINA_SEARCH || null
  
 export default defineConfig({
   branch,
@@ -25,6 +27,7 @@ export default defineConfig({
       publicFolder: "/",
     },
   },
+
   schema: {
     collections: [
       {
@@ -540,5 +543,13 @@ export default defineConfig({
      
     ],
   },
-  
+  search: {
+    tina: {
+      indexerToken: '<Your Search Token>',
+      stopwordLanguages: ['eng']
+    },
+    indexBatchSize: 100,
+    maxSearchIndexFieldLength: 100
+  },
+
 });
