@@ -1,9 +1,9 @@
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll To Github Pages
+ #Sample workflow for building and deploying a Jekyll site to GitHub Pages
+name:  PR Build with Jekyll + TinaCMS before approving merge to main
 
 on:
   # Runs on pushes targeting the default branch
-  push:
+  pull_request:
     branches: ["main"]
 
 
@@ -63,16 +63,3 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
-
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
-   
