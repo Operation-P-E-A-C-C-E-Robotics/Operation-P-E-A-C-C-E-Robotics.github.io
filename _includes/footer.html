@@ -30,7 +30,7 @@
       <div class="col-md-4 col-sm-6 mx-auto text-center">
         <h3>Contact Us</h3>
         {% for item in site.data.contact %}
-        <p>{{item.name}}: {{item.address}}</p>
+        <p>{{item.name}}: {% if item.type == "email"%}<a href="mailto:{{item.address}}">{{item.address}}</a> {% else %} {{item.address}} {%endif%}</p>
         {% endfor %}
       </div>
       <div class="col-md-4 col-sm-6 mx-auto text-center">
@@ -49,6 +49,18 @@
           <a href="{{ platform.link }}"><span><i class="{{ platform.icon}} socialLink"></i></span></a>
         </div>
         {% endfor %}
+      </div>
+      <div class="text-body-primary text-center col-12 pb-2">
+          {% for item in site.data.navigation.data %}
+          {% if item.drop == "false" %}
+          <a href="{{item.link}}" class="text-dark p-2">{{item.name}}</a>
+          {% else %}
+            {% for url in item.links %}
+            <a href="{{url.url}}" class="text-dark p-2">{{url.name}}</a>
+            {% endfor %}
+          </a>
+          {% endif %}
+          {% endfor %}
       </div>
       <div class="mb-3 mb-md-0 text-body-primary text-center col pb-2"><strong>Copyright © {{ site.time | date: '%Y' }} Operation P.E.A.C.C.E Robotics</strong></div>
     </div>
