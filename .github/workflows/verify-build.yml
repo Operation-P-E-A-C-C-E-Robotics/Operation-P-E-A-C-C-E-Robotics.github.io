@@ -51,7 +51,7 @@ jobs:
         env:
           TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
-          HEAD: ${{ github.ref_name}}
+          HEAD: main
         run: npx tinacms build
         
       - name: Build with Jekyll
@@ -60,6 +60,5 @@ jobs:
           source: ./
           destination: ./_site
           
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+
 
