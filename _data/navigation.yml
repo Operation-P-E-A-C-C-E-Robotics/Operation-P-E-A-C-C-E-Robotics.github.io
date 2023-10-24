@@ -3,14 +3,16 @@ data:
     link: /
     drop: 'false'
   - name: About Us
-    link: /about.html
-    drop: 'false'
+    link: ''
+    drop: 'true'
     links:
       - name: The Team
         url: /about
       - name: FIRST Robotics Competition
         url: >-
           https://www.firstinspires.org/robotics/frc/what-is-first-robotics-competition
+      - name: Hartford County 4-H
+        url: 'https://4-h.org/about/'
   - name: FAQ
     link: /faq
     drop: 'false'
