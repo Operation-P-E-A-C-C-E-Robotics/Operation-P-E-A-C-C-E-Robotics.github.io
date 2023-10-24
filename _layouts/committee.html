@@ -1,0 +1,51 @@
+---
+layout: default
+
+---
+
+<div class="container-fluid">
+    <!-- Row 1 with weird long image thing and text box -->
+    <div class="row">
+        <!-- Top corner image -->
+        <div class="col-md-4">
+            <img src="{{page.topcornerimage}}">
+        </div>
+
+        <!-- top right text -->
+        <div class="col-md-8">
+            <h1>{{page.toprighttitle}}</h1>
+            <br>
+            <p>{{page.toprighttext | markdownify}}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- middle left text -->
+        <div class="col-md-6">
+            <h1>{{page.middlelefttitle}}</h1>
+            <br>
+            <p>{{page.middlelefttext | markdownify}}</p>
+        </div>
+
+        <!-- middle right image -->
+        <div class="col-md-6">
+            <img src="{{page.middlerightimage}}">
+        </div>
+    
+    </div>
+
+    <div class="row">
+        <!-- bottom left image -->
+        <div class="col-md-6">
+            <img src="{{page.bottomleftimage}}">
+        </div>
+
+        <!-- bottom right text -->
+        <div class="col-md-6">
+            <h1>{{page.bottomrighttitle}}</h1>
+            <br>
+            <p>{{page.bottomrighttext | markdownify}}</p>
+        </div>
+    </div>
+
+</div>
