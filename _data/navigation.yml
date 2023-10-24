@@ -5,6 +5,12 @@ data:
   - name: About Us
     link: /about.html
     drop: 'false'
+    links:
+      - name: The Team
+        url: /about
+      - name: FIRST Robotics Competition
+        url: >-
+          https://www.firstinspires.org/robotics/frc/what-is-first-robotics-competition
   - name: FAQ
     link: /faq
     drop: 'false'
