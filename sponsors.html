@@ -7,9 +7,9 @@ permalink: /sponsors
 <br>
 <div class="container-fluid">
     <div class="container">
-        <h1 class="text-center">{{site.data.sponsors.text.header || markdownify}}</h1>
-        <h3 class="text-center">{{site.data.sponsors.text.p1 || markdownify }}</h3><br> <!-- "p1" in the data file -->
-        <div class="text-left h5" id="benefits">{{site.data.sponsors.text.p2 || markdownify}}</div>
+        <h1 class="text-center">{{site.data.sponsors.text.header | markdownify}}</h1>
+        <h3 class="text-center">{{site.data.sponsors.text.p1 | markdownify }}</h3><br> <!-- "p1" in the data file -->
+        <div class="text-left h5" id="benefits">{{site.data.sponsors.text.p2 | markdownify}}</div>
         <style> 
             #benefits ul li {
                 padding-bottom: 2vh;
