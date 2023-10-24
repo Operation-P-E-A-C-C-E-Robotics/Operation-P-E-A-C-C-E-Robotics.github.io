@@ -3,49 +3,43 @@ layout: default
 
 ---
 
-<div class="container-fluid">
-    <!-- Row 1 with weird long image thing and text box -->
+<div class="container" style="margin-top:30px">
     <div class="row">
-        <!-- Top corner image -->
-        <div class="col-md-4" style="height: 35vh;">
-            <img style="height: 75%;" src="{{page.topcornerimage}}">
+      <div class="col-sm-4">
+        <h2>{{page.title}}</h2>
+        <div class="fakeimg" style="background-image: url({{page.topcornerimage }}); background-position:left; background-size: contain; background-repeat:no-repeat;">
         </div>
 
-        <!-- top right text -->
-        <div class="col-md-8">
-            <h1>{{page.toprighttitle}}</h1>
-            <br>
-            <p>{{page.toprighttext | markdownify}}</p>
-        </div>
+        <br>
+        <!-- <p>Some text about me in culpa qui officia deserunt mollit anim..</p> -->
+        <h3>Useful Resources</h3>
+        <!-- <p></p> -->
+        <ul class="nav nav-pills flex-column">
+            {% for item in page.resources %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ item.link }}">{{item.name}}</a>
+          </li>
+          {% endfor %}
+        </ul>
+        <hr class="d-sm-none">
+      </div>
+      <div class="col-sm-8">
+        <h2>{{ page.toprighttitle }}</h2>
+        <p>{{ page.toprighttext }}</p>
+        <div class="fakeimg" style="background-image: url({{page.middlerightimage }}); background-position:center; background-size: contain; background-repeat: no-repeat;"></div>
+        <div class="pb-2"></div>
+        <br>
+        <h2>{{ page.middlelefttitle}}</h2>
+        <p>{{ page.middlelefttext }}</p>
+        <div class="fakeimg" style="background-image: url({{page.bottomleftimage }}); background-position:center; background-size: contain; background-repeat: no-repeat;"></div>
+        <div class="pb-5"></div>
+      </div>
     </div>
+  </div>
 
-    <div class="row" style="height: 35vh;">
-        <!-- middle left text -->
-        <div class="col-md-6">
-            <h1>{{page.middlelefttitle}}</h1>
-            <br>
-            <p>{{page.middlelefttext | markdownify}}</p>
-        </div>
 
-        <!-- middle right image -->
-        <div class="col-md-6" style="height: 35vh;">
-            <img style="height: 75%;" src="{{page.middlerightimage}}">
-        </div>
-    
-    </div>
-
-    <div class="row" style="height: 35vh;">
-        <!-- bottom left image -->
-        <div class="col-md-6">
-            <img style="height: 75%;" src="{{page.bottomleftimage}}">
-        </div>
-
-        <!-- bottom right text -->
-        <div class="col-md-6">
-            <h1>{{page.bottomrighttitle}}</h1>
-            <br>
-            <p>{{page.bottomrighttext | markdownify}}</p>
-        </div>
-    </div>
-
-</div>
+  <style>
+    .fakeimg {
+        height:200px;
+    }
+  </style>

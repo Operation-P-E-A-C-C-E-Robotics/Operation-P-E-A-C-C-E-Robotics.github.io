@@ -2,15 +2,22 @@
 layout: committee
 permalink: /committee/cad
 
-topcornerimage: /assets/2022/2022RapidReactRobot.png
-toprighttitle: "HIIIIIIII SMURF CAT"
+title: C.A.D
+
+topcornerimage: /assets/committee/cad/computerWork.JPG
+toprighttitle: "Computer Aided Design!"
 toprighttext: "lorem ipsum dolor sit"
 
-middlelefttitle: "Thing 2"
+middlelefttitle: "Middle Left Title"
 middlelefttext: "lorem ipsum dolor sit amor"
-middlerightimage: /assets/2013/2013Robot.jpg
+middlerightimage: /assets/committee/cad/gearbox.JPG
 
-bottomleftimage: /assets/2021/battleCryPit.jpg
+bottomleftimage: /assets/committee/cad/drivebaseRender.PNG
 bottomrighttitle: "Bottom Right Title"
 bottomrighttext: "qui est unde deus"
+
+resources:
+    - name: Onshape
+      link: https://www.onshape.com/en/
+
 ---
