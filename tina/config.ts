@@ -408,6 +408,33 @@ export default defineConfig({
         name: "bottomleftimage",
         type: "image",
         },
+      
+        {
+          label: "Useful Links / Resources",
+          name: "resources",
+          type: "object",
+          list: true,
+          ui: {
+            // This allows the customization of the list item UI
+            // Data can be accessed by item?.<Name of field>
+            itemProps: (item) => {
+              return { label: `${item?.name}`}
+            },
+          },
+          fields: [
+            {
+              name: "name",
+              label: "Display Name",
+              type: "string",
+            },
+            {
+              name: "link",
+              label: "Link or URL (Can be to a page on the website or external)",
+              type: "string",
+            },
+          ],
+
+        }, 
     ],
   },
 
