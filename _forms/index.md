@@ -5,7 +5,7 @@ layout: default
     <h1>Forms</h1>
     <ul>
     {% for form in site.forms %}
-    {% if form.title != "Index" | downcase %}
+    {% if form.title != "index" | downcase %}
         <li><a href="{{form.url}}">{{form.title}}</a></li>
     {% endif %}
     {% endfor%}

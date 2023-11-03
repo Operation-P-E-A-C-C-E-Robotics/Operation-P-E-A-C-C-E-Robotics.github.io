@@ -6,7 +6,8 @@ collections:
   forms:
     output: true
 
-
+  committees:
+    output: true
 
 
 defaults:
@@ -40,6 +41,7 @@ defaults:
       layout: post
       bg: light
       txt: dark
+
 
 
 plugins:

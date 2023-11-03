@@ -343,6 +343,74 @@ export default defineConfig({
     ],
   },
 
+  {
+    name: "committees",
+    label: "Committees",
+    path: "/_committees",
+    // defaultItem: () => {
+    //   return {
+    //     // When a new post is created the title field will be set to "New post"
+    //     year: `${new Date(Date.now()).getFullYear()}`,
+    //     robotName: 'Unnamed Robot',
+    //     metatitle: `${new Date(Date.now()).getFullYear()} Robot: ROBOT NAME`,
+    //     metadesc: `GAME NAME Performance and Statistics`,
+    //   }
+    // },
+    // ui: {
+    //   filename: {
+    //     // if disabled, the editor can not edit the filename
+    //     readonly: true,
+    //     // Example of using a custom slugify function
+    //     slugify: values => {
+    //       // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
+    //       return `${values?.year}`
+    //     },
+    //   },
+    // },
+    fields: [
+      {
+        name: 'title',
+        label: 'Committee Name (Top Left Text)',
+        type: 'string',
+      },
+      {
+        name: 'topcornerimage',
+        label: 'Top Left Image',
+        type: 'image',
+      },
+      {
+        name: 'toprighttitle',
+        label: 'Top Center Title',
+        type: 'rich-text',
+      },
+      {
+        name: 'toprighttext',
+        label: 'Top Center Paragraph',
+        type: 'rich-text',
+      },
+      {
+        name: 'middlerightimage',
+        label: 'Top Center Image',
+        type: 'image',
+      },
+      {
+        name: 'middlelefttitle',
+        label: 'Bottom Center Title',
+        type: 'rich-text',
+      },
+      {
+        type: "rich-text",
+        name: "middlelefttext",
+        label: "Bottom Center Paragraph",
+      },
+      {
+        label: "Bottom Center Image",
+        name: "bottomleftimage",
+        type: "image",
+        },
+    ],
+  },
+
    //   {
 //     name: "contact",
 //     label: "Contact",

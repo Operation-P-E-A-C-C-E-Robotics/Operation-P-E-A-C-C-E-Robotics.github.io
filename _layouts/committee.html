@@ -24,13 +24,13 @@ layout: default
         <hr class="d-sm-none">
       </div>
       <div class="col-sm-8">
-        <h2>{{ page.toprighttitle }}</h2>
-        <p>{{ page.toprighttext }}</p>
+        <h2>{{ page.toprighttitle | markdownify }}</h2>
+        <p>{{ page.toprighttext  | markdownify}}</p>
         <div class="fakeimg" style="background-image: url({{page.middlerightimage }}); background-position:center; background-size: contain; background-repeat: no-repeat;"></div>
         <div class="pb-2"></div>
         <br>
-        <h2>{{ page.middlelefttitle}}</h2>
-        <p>{{ page.middlelefttext }}</p>
+        <h2>{{ page.middlelefttitle | markdownify}}</h2>
+        <p>{{ page.middlelefttext  | markdownify}}</p>
         <div class="fakeimg" style="background-image: url({{page.bottomleftimage }}); background-position:center; background-size: contain; background-repeat: no-repeat;"></div>
         <div class="pb-5"></div>
       </div>
