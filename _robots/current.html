@@ -85,7 +85,7 @@ published: true
        var year;
        var today = new Date();
 
-       if (today.getDate() >= 9) {
+       if (today.getMonth() >= 9) {
           year = today.getFullYear() + 1;
           kickoff = new Date(getFirstSaturdayInJanuary(year))
           console.log(kickoff)
