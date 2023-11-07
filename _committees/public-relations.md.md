@@ -1,16 +1,16 @@
 ---
-layout: committee
-permalink: /committee/public-releations
-title: Public Releations
+title: Public Relations
 topcornerimage: /assets/committee/electrical/rioAndMotors.JPG
-toprighttitle: Electrical And Controls Systems
-toprighttext: Electrical and Controls interface the hardware with the software on the robot
-middlelefttitle: Middle Left Title
-middlelefttext: lorem ipsum dolor sit amor
+toprighttitle: |
+  Electrical And Controls Systems
+toprighttext: |
+  Electrical and Controls interface the hardware with the software on the robot
 middlerightimage: /assets/committee/electrical/writingDocumentation.JPG
+middlelefttitle: |
+  Middle Left Title
+middlelefttext: |
+  lorem ipsum dolor sit amor
 bottomleftimage: /assets/committee/electrical/frc-control-system-layout-rev.svg
-bottomrighttitle: Bottom Right Title
-bottomrighttext: qui est unde deus
 resources:
   - name: WPILib Electrical Quickstart
     link: >-
