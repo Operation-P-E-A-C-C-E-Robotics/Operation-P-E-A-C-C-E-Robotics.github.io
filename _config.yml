@@ -17,7 +17,7 @@ defaults:
     values:
       published: false
       layout: robot
-      permalink: "/robots/:year"
+      permalink: "/robots/:title"
 
   -
     scope:
