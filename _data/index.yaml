@@ -10,7 +10,8 @@ subbanner:
     join and all students are welcome! <br>This is what we do, and what you can
     learn
 content:
-  - header: Who are We?
+  - header: |
+      Who are We?
     content: >
       Operation P.E.A.C.C.E. (Practicing Engineering and Cooperative Competitive
       Excellence) Robotics was established in 2010 to excite students to pursue
@@ -21,7 +22,8 @@ content:
       become the next generation of innovators.
     glyph: /assets/images/PeacceLogoTieDyeWhiteText.svg
     image: /assets/2023/waterburyPose.jpg
-  - header: What is 4-H
+  - header: |
+      What is 4-H
     content: >
       4‑H is America’s largest youth development organization—empowering nearly
       six million young people with the skills to lead for a lifetime. 4‑H is
@@ -36,7 +38,8 @@ content:
       inclusion for all.
     glyph: /assets/sponsors/4h-logo.svg
     image: /assets/images/2019-4HFair.JPG
-  - header: 'What is <em style=font-family: Roboto, sans-serif;>FIRST</em>?'
+  - header: |
+      What is *First*
     content: >
       *FIRST* (For the Inspiration and Recognition of Science and Technology) is
       an organization created to inspire kids to get involved in STEM. There are

@@ -8,10 +8,11 @@ txt: dark
 <style>
   .header-row {
     background-image: url("{{site.data.index.banner.image-url}}");
-    background-size:cover; 
+    background-size: cover; 
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: {{site.data.index.banner.image-align}} 3em !important;
+    background-position: center {{site.data.index.banner.image-align}} !important;
+     
     width: 100%;
     min-height:25rem; 
     height: calc(33vw - 1vh);
@@ -118,10 +119,11 @@ txt: dark
   {% for item in site.data.index.content %}
   <div class="row  pl-md-5 pl-sm-0">
     <div class="col">  
-      <div> 
-        <h1 style="font-family: 'BankGothicBold', sans-serif;">{{item.header}}
-        <img src="{{item.glyph}}" style=" max-height: 50px; padding-left: 10px;"> 
-        </h1>
+      <div class="d-block"> 
+        <div class="h1 d-inline-block text-sm-center text-left" style="font-family: 'BankGothicBold', sans-serif;">{{item.header | markdownify}}
+  
+        </div>
+        <img class="d-inline-block" src="{{item.glyph}}" style=" max-height: 50px; padding-left: 10px;">       
       </div>
       <h4>{{item.content | markdownify }}</h4>
     </div>
@@ -137,10 +139,11 @@ txt: dark
     <div class="col">
       <h1 style="font-family: 'BankGothicBold', sans-serif;">Latest Robot: {{robot.robotName}}</h1>
       <h4>{{robot.content | markdownify }}</h4>
-      <a class="btn btn-primary" href="{{robot.url}}">See more</a>
+      <a class="btn btn-primary mb-3" href="{{robot.url}}">See more</a>
+      
     </div>
     <div class="col-md">
-      <img class="rounded img-fluid mx-auto d-block" src="{{robot.thumbnail}}" style="width:20vw">
+      <img class="rounded img-fluid mx-auto d-block" src="{{robot.thumbnail}}" style="max-width:25rem; min-height: 25vh">
     </div>
   </div>
 

@@ -253,7 +253,7 @@ export default defineConfig({
         {
           label: "Header",
           name: "header",
-          type: "string"
+          type: "rich-text"
         },
         {
           label: "Content",
