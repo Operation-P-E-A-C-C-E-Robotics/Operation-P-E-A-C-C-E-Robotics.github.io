@@ -1,51 +1,53 @@
-<nav class="navbar navbar-expand-xl bg-light navbar-light sticky-top" style="border: 1px solid rgba(0,0,0,.125);">
-
-
-  <div class="navbar-brand pl-lg-5 d-flex">
-    <img src="../assets/images/PeacceLogoTieDyeWhiteText.svg" style="width:45px; height:45px;" class="float-left">
-    <h class="d-none d-lg-block" style="font-family: 'BankGothicBold', sans-serif;padding-top: 9px;padding-left: 5px;">OPERATION P.E.A.C.C.E ROBOTICS</h>
-  </div>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    
-    <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-        <ul class="navbar-nav nav">
-        {% for item in site.data.navigation.data %}
-          {% if item.drop and item.drop == "false" %}
-            <li class="nav-item text-xl-center ">
-              <a class="nav-item text-xl-center nav-link {% if page.url == item.link + .html %}active{% endif %}" href="{{ item.link }}">
-              {{ item.name }}
-              </a>
-            </li>
-
-          {% else %}
-            <li class="nav-item dropdown">
-              <a class="text-xl-center nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                {{item.name}}
-              </a>
-              <div class="dropdown-menu">
-                {% for url in item.links %}
-                  <a class="dropdown-item" href="{{url.url}}">{{url.name | capitalcase}}</a>
-                {% endfor %}
-              </div>
-            </li>
-          {% endif %}
-        {% endfor %}
-
-            <li class="nav-item"> 
-              <button type="button" id="darkModeToggle" onpress="toggleDarkMode()" class="btn btn-link nav-link active">
-                <i class="fa fa-adjust"></i>
-              </button>
-            </li>
-
-        </ul>
-<!--         <div id="socialMediaContainer" class="text-dark" style="font-size: 35px; ">
-          {% for platform in site.data.socialMedia %}
-          <a href="{{ platform.link }}"><span><i class="{{ platform.icon}}"></i></span></a>
-          {% endfor %}
-        </div> -->
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-xl bg-light navbar-light sticky-top" style="border: 1px solid rgba(0,0,0,.125);">
+  
+  
+    <div class="navbar-brand pl-lg-5 d-flex">
+      <img src="../assets/images/PeacceLogoTieDyeWhiteText.svg" style="width:45px; height:45px;" class="float-left">
+      <h class="d-none d-lg-block" style="font-family: 'BankGothicBold', sans-serif;padding-top: 9px;padding-left: 5px;">OPERATION P.E.A.C.C.E ROBOTICS</h>
     </div>
-</nav>
+  
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      
+      <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+          <ul class="navbar-nav nav">
+          {% for item in site.data.navigation.data %}
+            {% if item.drop and item.drop == "false" %}
+              <li class="nav-item text-xl-center ">
+                <a class="nav-item text-xl-center nav-link {% if page.url == item.link + .html %}active{% endif %}" href="{{ item.link }}">
+                {{ item.name }}
+                </a>
+              </li>
+  
+            {% else %}
+              <li class="nav-item dropdown">
+                <a class="text-xl-center nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                  {{item.name}}
+                </a>
+                <div class="dropdown-menu">
+                  {% for url in item.links %}
+                    <a class="dropdown-item" href="{{url.url}}">{{url.name | capitalcase}}</a>
+                  {% endfor %}
+                </div>
+              </li>
+            {% endif %}
+          {% endfor %}
+  
+              <li class="nav-item"> 
+                <button type="button" id="darkModeToggle" onpress="toggleDarkMode()" class="btn btn-link nav-link active">
+                  <i class="fa fa-adjust"></i>
+                </button>
+              </li>
+  
+          </ul>
+  <!--         <div id="socialMediaContainer" class="text-dark" style="font-size: 35px; ">
+            {% for platform in site.data.socialMedia %}
+            <a href="{{ platform.link }}"><span><i class="{{ platform.icon}}"></i></span></a>
+            {% endfor %}
+          </div> -->
+      </div>
+  </nav>
+</div>
