@@ -315,6 +315,11 @@ export default defineConfig({
         type: 'string',
       },
       {
+        name: 'matchVideoPlaylist',
+        label: 'Youtube Match Playlist (Just the ID, IE "PLGO1K1mUB0_vJL2rH7uOtTbCbrRHuY6us")',
+        type: 'string',
+      },
+      {
         name: 'thumbnail',
         label: 'Thumbnail Image',
         type: 'image',
