@@ -61,7 +61,20 @@ jobs:
   #     - run: rm -rf staging/.git
   
 
+  build-jekyll:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Build Main with Jekyll
+    uses: actions/jekyll-build-pages@v1
+    with:
+      source: ./
+      destination: ./_site
 
+  - name: Build Staging with Jekyll
+    uses: actions/jekyll-build-pages@v1
+    with:
+      source: ./staging
+      destination: ./_site/staging
 
   # Build job
   build:
@@ -104,17 +117,17 @@ jobs:
           TINA_SEARCH: ${{secrets.TINA_SEARCH}}
         run: npx tinacms build
         
-      - name: Build Main with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
+      # - name: Build Main with Jekyll
+      #   uses: actions/jekyll-build-pages@v1
+      #   with:
+      #     source: ./
+      #     destination: ./_site
 
-      - name: Build Staging with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./staging
-          destination: ./_site/staging
+      # - name: Build Staging with Jekyll
+      #   uses: actions/jekyll-build-pages@v1
+      #   with:
+      #     source: ./staging
+      #     destination: ./_site/staging
                   
   
       - name: Upload artifact
@@ -127,7 +140,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
+    needs: [build, build-jekyll]
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
