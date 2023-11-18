@@ -52,16 +52,16 @@ jobs:
       - run: rm -rf staging/.git
 
   setup-node:
-  runs-on: ubuntu-latest
-  steps:
+    runs-on: ubuntu-latest
+    steps:
 
-    - name: install Node
-      uses: actions/setup-node@v3
-      with:
-        node-version: "16"
+      - name: install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
 
-    - name: run NPM CI
-      run: npm ci
+      - name: run NPM CI
+        run: npm ci
 
   # Build job
   build:
