@@ -325,6 +325,26 @@ export default defineConfig({
         type: 'image',
       },
       {
+        name: 'slideshow',
+        label: 'Top Left Corner Slideshow Photos (Supplemental, the main ones are supplied by The Blue Alliance)',
+        type: 'object',
+        list: true,
+        ui: {
+          // This allows the customization of the list item UI
+          // Data can be accessed by item?.<Name of field>
+          itemProps: (item) => {
+            return { label: `${item?.src}`}
+          },
+        },
+        fields: [
+          {
+            name: 'src',
+            label: 'Slideshow Image',
+            type: 'image',
+          },
+        ]
+      },
+      {
         name: 'metatitle',
         label: 'Meta Title',
         type: 'string',
