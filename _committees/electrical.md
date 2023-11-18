@@ -1,6 +1,5 @@
 ---
 layout: committee
-permalink: /committee/electrical
 
 title: Electrical
 

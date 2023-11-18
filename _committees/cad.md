@@ -1,6 +1,6 @@
 ---
 layout: committee
-permalink: /committee/cad
+
 
 title: C.A.D
 

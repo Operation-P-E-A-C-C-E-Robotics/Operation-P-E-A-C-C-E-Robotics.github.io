@@ -1,8 +1,9 @@
 ---
+layout: committee
 title: Public Relations
 topcornerimage: /assets/committee/electrical/rioAndMotors.JPG
 toprighttitle: |
-  Electrical And Controls Systems
+  Business
 toprighttext: |
   Electrical and Controls interface the hardware with the software on the robot
 middlerightimage: /assets/committee/electrical/writingDocumentation.JPG
@@ -18,4 +19,6 @@ resources:
   - name: 2023 Electrical Documentation
     link: /assets/2023/techBinder.pdf
 ---
+
+
 
