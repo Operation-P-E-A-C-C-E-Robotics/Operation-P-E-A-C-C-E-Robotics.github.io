@@ -31,11 +31,23 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
 
+  install-node:
+    runs-on: ubuntu-latest
+    steps:
+      - name: install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
   checkout:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Main
         uses: actions/checkout@v3
+          with: 
+            ref: main
+            path: main/
+            clean: false
 
 
       - uses: actions/checkout@v2
@@ -55,17 +67,11 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
-    needs: [setup-pages, checkout]
+    needs: [setup-pages, checkout, install-node]
     # env:
     #  TBA_AUT_KEY: ${{ secrets.TBA_API_KEY }}
     steps:      
-
-      - name: install Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: "16"
-
-      - name: run NPM install
+      - name: run NPM install ./main
         run: npm install
 
       - name: run NPM CI
@@ -82,7 +88,7 @@ jobs:
       - name: Build Main with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./
+          source: ./main
           destination: ./_site
 
       - name: Build Staging with Jekyll
