@@ -24,16 +24,22 @@ concurrency:
 
 
 jobs:
-  # Build job
-  build:
+
+  setup-pages:
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+
+  checkout-main:
     runs-on: ubuntu-latest
-    # env:
-    #  TBA_AUT_KEY: ${{ secrets.TBA_API_KEY }}
     steps:
       - name: Checkout Main
         uses: actions/checkout@v3
-
-
+  
+  checkout-staging:
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v2
         name: Checkout Staging
         with:
@@ -45,21 +51,25 @@ jobs:
       # This turns the files into a plain folder instead of a git repository
       - run: rm -rf staging/.git
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
+  setup-node:
+  runs-on: ubuntu-latest
+  steps:
 
-      - name: install Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: "16"
+    - name: install Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: "16"
 
-      - name: run NPM Install
-        run: npm install
+    - name: run NPM CI
+      run: npm ci
 
-      - name: run NPM CI
-        run: npm ci
-
-          
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    needs: [setup-pages, checkout-main, checkout-staging, setup-node]
+    # env:
+    #  TBA_AUT_KEY: ${{ secrets.TBA_API_KEY }}
+    steps:          
       - name: Build TinaCMS
         env:
           TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
