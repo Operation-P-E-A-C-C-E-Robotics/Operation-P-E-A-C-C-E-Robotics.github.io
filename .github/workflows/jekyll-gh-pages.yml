@@ -39,7 +39,7 @@ jobs:
         with:
           ref: staging
           # Put the checked out files inside the `big-island-buses/heleon` folder
-          path: /staging
+          path: staging/
           clean: false
       # Delete the .git folder from `big-island-buses/heleon`
       # This turns the files into a plain folder instead of a git repository
