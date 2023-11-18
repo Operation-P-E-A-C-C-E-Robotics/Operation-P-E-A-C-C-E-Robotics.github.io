@@ -4,7 +4,7 @@ name: Deploy Jekyll To Github Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: ["main", "staging"]
 
 
 
@@ -30,8 +30,21 @@ jobs:
     # env:
     #  TBA_AUT_KEY: ${{ secrets.TBA_API_KEY }}
     steps:
-      - name: Checkout
+      - name: Checkout Main
         uses: actions/checkout@v3
+
+
+      - uses: actions/checkout@v2
+        name: Checkout Staging
+        with:
+          ref: staging
+          # Put the checked out files inside the `big-island-buses/heleon` folder
+          path: /staging
+          clean: false
+      # Delete the .git folder from `big-island-buses/heleon`
+      # This turns the files into a plain folder instead of a git repository
+      - run: rm -rf staging/.git
+
       - name: Setup Pages
         uses: actions/configure-pages@v2
 
@@ -55,12 +68,19 @@ jobs:
           TINA_SEARCH: ${{secrets.TINA_SEARCH}}
         run: npx tinacms build
         
-      - name: Build with Jekyll
+      - name: Build Main with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
           destination: ./_site
-          
+
+        - name: Build Staging with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./staging
+          destination: ./_site/staging
+                  
+  
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
