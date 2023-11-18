@@ -44,10 +44,10 @@ jobs:
     steps:
       - name: Checkout Main
         uses: actions/checkout@v3
-          with: 
-            ref: main
-            path: main/
-            clean: false
+        with: 
+          ref: main
+          path: main/
+          clean: false
 
 
       - uses: actions/checkout@v2
