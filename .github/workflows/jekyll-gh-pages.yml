@@ -72,7 +72,7 @@ jobs:
     #  TBA_AUT_KEY: ${{ secrets.TBA_API_KEY }}
     steps:      
       - name: run NPM install ./main/
-        run: npm install ./main/
+        run: npm install ./Operation-P-E-A-C-C-E-Robotics.github.io/main/
 
       - name: run NPM CI
         run: npm ci
