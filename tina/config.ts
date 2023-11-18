@@ -29,6 +29,7 @@ export default defineConfig({
   },
 
   schema: {
+
     collections: [
       {
         name: "about",
@@ -148,7 +149,7 @@ export default defineConfig({
           ],
         },
       ]
-    },
+     },
      {
       name: "index",
       label: "Home Page Config",
@@ -271,211 +272,179 @@ export default defineConfig({
           type: "image",
         },
       ]
-    },
-  ],
-   },
-   {
-    name: "robots",
-    label: "Robot Profiles",
-    path: "/_robots",
-    defaultItem: () => {
-      return {
-        // When a new post is created the title field will be set to "New post"
-        year: `${new Date(Date.now()).getFullYear()}`,
-        robotName: 'Unnamed Robot',
-        metatitle: `${new Date(Date.now()).getFullYear()} Robot: ROBOT NAME`,
-        metadesc: `GAME NAME Performance and Statistics`,
-      }
-    },
-    ui: {
-      filename: {
-        // if disabled, the editor can not edit the filename
-        readonly: true,
-        // Example of using a custom slugify function
-        slugify: values => {
-          // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
-          return `${values?.year}`
+      },
+     ],
+     },
+     {
+        name: "robots",
+        label: "Robot Profiles",
+        path: "/_robots",
+        defaultItem: () => {
+          return {
+            // When a new post is created the title field will be set to "New post"
+            year: `${new Date(Date.now()).getFullYear()}`,
+            robotName: 'Unnamed Robot',
+            metatitle: `${new Date(Date.now()).getFullYear()} Robot: ROBOT NAME`,
+            metadesc: `GAME NAME Performance and Statistics`,
+          }
         },
-      },
-    },
-    fields: [
-      {
-        name: 'year',
-        label: 'Year',
-        type: 'number',
-      },
-      {
-        name: 'robotName',
-        label: 'Robot Name',
-        type: 'string',
-      },
-      {
-        name: 'game',
-        label: 'Game Name',
-        type: 'string',
-      },
-      {
-        name: 'matchVideoPlaylist',
-        label: 'Youtube Match Playlist (Just the ID, IE "PLGO1K1mUB0_vJL2rH7uOtTbCbrRHuY6us")',
-        type: 'string',
-      },
-      {
-        name: 'thumbnail',
-        label: 'Thumbnail Image',
-        type: 'image',
-      },
-      {
-        name: 'slideshow',
-        label: 'Top Left Corner Slideshow Photos (Supplemental, the main ones are supplied by The Blue Alliance)',
-        type: 'object',
-        list: true,
         ui: {
-          // This allows the customization of the list item UI
-          // Data can be accessed by item?.<Name of field>
-          itemProps: (item) => {
-            return { label: `${item?.src}`}
+          filename: {
+            // if disabled, the editor can not edit the filename
+            readonly: true,
+            // Example of using a custom slugify function
+            slugify: values => {
+              // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
+              return `${values?.year}`
+            },
           },
         },
         fields: [
           {
-            name: 'src',
-            label: 'Slideshow Image',
+            name: 'year',
+            label: 'Year',
+            type: 'number',
+          },
+          {
+            name: 'robotName',
+            label: 'Robot Name',
+            type: 'string',
+          },
+          {
+            name: 'game',
+            label: 'Game Name',
+            type: 'string',
+          },
+          {
+            name: 'matchVideoPlaylist',
+            label: 'Youtube Match Playlist (Just the ID, IE "PLGO1K1mUB0_vJL2rH7uOtTbCbrRHuY6us")',
+            type: 'string',
+          },
+          {
+            name: 'thumbnail',
+            label: 'Thumbnail Image',
             type: 'image',
           },
-        ]
-      },
-      {
-        name: 'metatitle',
-        label: 'Meta Title',
-        type: 'string',
-      },
-      {
-        name: 'metadesc',
-        label: 'Meta Description',
-        type: 'string',
-      },
-      {
-        type: "rich-text",
-        name: "body",
-        label: "Write Up",
-        isBody: true,
-      },
-      {
-        label: "Published",
-        name: "published",
-        type: "boolean",
-        },
-    ],
-  },
-
-  {
-    name: "committees",
-    label: "Committees",
-    path: "/_committees",
-    // defaultItem: () => {
-    //   return {
-    //     // When a new post is created the title field will be set to "New post"
-    //     year: `${new Date(Date.now()).getFullYear()}`,
-    //     robotName: 'Unnamed Robot',
-    //     metatitle: `${new Date(Date.now()).getFullYear()} Robot: ROBOT NAME`,
-    //     metadesc: `GAME NAME Performance and Statistics`,
-    //   }
-    // },
-    // ui: {
-    //   filename: {
-    //     // if disabled, the editor can not edit the filename
-    //     readonly: true,
-    //     // Example of using a custom slugify function
-    //     slugify: values => {
-    //       // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
-    //       return `${values?.year}`
-    //     },
-    //   },
-    // },
-    fields: [
-      {
-        name: 'title',
-        label: 'Committee Name (Top Left Text)',
-        type: 'string',
-      },
-      {
-        name: 'topcornerimage',
-        label: 'Top Left Image',
-        type: 'image',
-      },
-      {
-        name: 'toprighttitle',
-        label: 'Top Center Title',
-        type: 'rich-text',
-      },
-      {
-        name: 'toprighttext',
-        label: 'Top Center Paragraph',
-        type: 'rich-text',
-      },
-      {
-        name: 'middlerightimage',
-        label: 'Top Center Image',
-        type: 'image',
-      },
-      {
-        name: 'middlelefttitle',
-        label: 'Bottom Center Title',
-        type: 'rich-text',
-      },
-      {
-        type: "rich-text",
-        name: "middlelefttext",
-        label: "Bottom Center Paragraph",
-      },
-      {
-        label: "Bottom Center Image",
-        name: "bottomleftimage",
-        type: "image",
-        },
-      
-        {
-          label: "Useful Links / Resources",
-          name: "resources",
-          type: "object",
-          list: true,
-          ui: {
-            // This allows the customization of the list item UI
-            // Data can be accessed by item?.<Name of field>
-            itemProps: (item) => {
-              return { label: `${item?.name}`}
+          {
+            name: 'slideshow',
+            label: 'Top Left Corner Slideshow Photos (Supplemental, the main ones are supplied by The Blue Alliance)',
+            type: 'object',
+            list: true,
+            ui: {
+              // This allows the customization of the list item UI
+              // Data can be accessed by item?.<Name of field>
+              itemProps: (item) => {
+                return { label: `${item?.src}`}
+              },
             },
+            fields: [
+              {
+                name: 'src',
+                label: 'Slideshow Image',
+                type: 'image',
+              },
+            ]
           },
-          fields: [
-            {
-              name: "name",
-              label: "Display Name",
-              type: "string",
+          {
+            name: 'metatitle',
+            label: 'Meta Title',
+            type: 'string',
+          },
+          {
+            name: 'metadesc',
+            label: 'Meta Description',
+            type: 'string',
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Write Up",
+            isBody: true,
+          },
+          {
+            label: "Published",
+            name: "published",
+            type: "boolean",
             },
-            {
-              name: "link",
-              label: "Link or URL (Can be to a page on the website or external)",
-              type: "string",
+        ],
+      },
+
+      {
+        name: "committees",
+        label: "Committees",
+        path: "/_committees",
+        fields: [
+          {
+            name: 'title',
+            label: 'Committee Name (Top Left Text)',
+            type: 'string',
+          },
+          {
+            name: 'topcornerimage',
+            label: 'Top Left Image',
+            type: 'image',
+          },
+          {
+            name: 'toprighttitle',
+            label: 'Top Center Title',
+            type: 'rich-text',
+          },
+          {
+            name: 'toprighttext',
+            label: 'Top Center Paragraph',
+            type: 'rich-text',
+          },
+          {
+            name: 'middlerightimage',
+            label: 'Top Center Image',
+            type: 'image',
+          },
+          {
+            name: 'middlelefttitle',
+            label: 'Bottom Center Title',
+            type: 'rich-text',
+          },
+          {
+            type: "rich-text",
+            name: "middlelefttext",
+            label: "Bottom Center Paragraph",
+          },
+          {
+            label: "Bottom Center Image",
+            name: "bottomleftimage",
+            type: "image",
             },
-          ],
+          
+            {
+              label: "Useful Links / Resources",
+              name: "resources",
+              type: "object",
+              list: true,
+              ui: {
+                // This allows the customization of the list item UI
+                // Data can be accessed by item?.<Name of field>
+                itemProps: (item) => {
+                  return { label: `${item?.name}`}
+                },
+              },
+              fields: [
+                {
+                  name: "name",
+                  label: "Display Name",
+                  type: "string",
+                },
+                {
+                  name: "link",
+                  label: "Link or URL (Can be to a page on the website or external)",
+                  type: "string",
+                },
+              ],
 
-        }, 
-    ],
-  },
+            }, 
+        ],
+      },
 
-   //   {
-//     name: "contact",
-//     label: "Contact",
-//     path: "_data",
-//     match: {
-//         // name of the data file
-//         include: "contact",
-//     },
-//    format: "yaml",
-//    fields: [
-//      // contact fields here 
-//    ],
-//  },
+
  
       {
         name: "sponsors",
@@ -526,7 +495,7 @@ export default defineConfig({
           // This allows the customization of the list item UI
           // Data can be accessed by item?.<Name of field>
           itemProps: (item) => {
-            return { label: `${item?.name}`}
+            return { label: `${item?.name} (${item?.sponsortier})`}
           },
         },
         fields: [
@@ -684,6 +653,15 @@ export default defineConfig({
 
      
     ],
+
+    search: {
+      tina: {
+        indexerToken: searchToken,
+        stopwordLanguages: ['eng']
+      },
+      indexBatchSize: 100,
+      maxSearchIndexFieldLength: 100
+    },
   },
 
 });
