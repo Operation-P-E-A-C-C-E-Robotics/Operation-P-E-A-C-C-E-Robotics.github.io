@@ -38,7 +38,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: main
-          path: /
+          path: main/
           clean: false
   
   checkout-staging:
@@ -53,7 +53,7 @@ jobs:
           clean: false
       # Delete the .git folder from `big-island-buses/heleon`
       # This turns the files into a plain folder instead of a git repository
-      - run: rm -rf staging/.git
+      # - run: rm -rf staging/.git
 
 
 
@@ -89,7 +89,7 @@ jobs:
       - name: Build Main with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./
+          source: ./main
           destination: ./_site
 
       - name: Build Staging with Jekyll
