@@ -107,7 +107,7 @@ jobs:
       - name: Build Main with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./main
+          source: ./
           destination: ./_site
 
       - name: Build Staging with Jekyll
