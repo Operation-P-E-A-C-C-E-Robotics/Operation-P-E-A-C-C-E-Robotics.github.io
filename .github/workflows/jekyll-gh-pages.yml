@@ -61,6 +61,9 @@ jobs:
         with:
           node-version: "16"
 
+      - name: run NPM install
+        run: npm install
+
       - name: run NPM CI
         run: npm ci
 
