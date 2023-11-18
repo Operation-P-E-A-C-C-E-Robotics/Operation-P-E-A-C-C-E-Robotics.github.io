@@ -31,19 +31,13 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
 
-  checkout-main:
+  checkout:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Main
-        uses: actions/checkout@v2
-        with:
-          ref: main
-          path: main/
-          clean: false
-  
-  checkout-staging:
-    runs-on: ubuntu-latest
-    steps:
+        uses: actions/checkout@v3
+
+
       - uses: actions/checkout@v2
         name: Checkout Staging
         with:
@@ -53,16 +47,15 @@ jobs:
           clean: false
       # Delete the .git folder from `big-island-buses/heleon`
       # This turns the files into a plain folder instead of a git repository
-      # - run: rm -rf staging/.git
-
-
+      - run: rm -rf staging/.git
+  
 
 
 
   # Build job
   build:
     runs-on: ubuntu-latest
-    needs: [setup-pages, checkout-main, checkout-staging]
+    needs: [setup-pages, checkout]
     # env:
     #  TBA_AUT_KEY: ${{ secrets.TBA_API_KEY }}
     steps:      
@@ -89,7 +82,7 @@ jobs:
       - name: Build Main with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./main
+          source: ./
           destination: ./_site
 
       - name: Build Staging with Jekyll
