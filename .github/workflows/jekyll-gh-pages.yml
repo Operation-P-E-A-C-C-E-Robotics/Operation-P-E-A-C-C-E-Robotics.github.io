@@ -70,7 +70,12 @@ jobs:
     needs: [setup-pages, checkout, install-node]
     # env:
     #  TBA_AUT_KEY: ${{ secrets.TBA_API_KEY }}
+    
     steps:      
+
+      - run: dir
+        name: dir
+
       - name: run NPM install ./main/
         run: npm install
 
