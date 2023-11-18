@@ -63,6 +63,7 @@ jobs:
 
   build-jekyll:
     runs-on: ubuntu-latest
+    needs: [setup-pages, install-node]
     steps:
       - name: Build Main with Jekyll
         uses: actions/jekyll-build-pages@v1
