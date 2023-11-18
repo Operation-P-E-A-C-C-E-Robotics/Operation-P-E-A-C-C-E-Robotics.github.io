@@ -51,27 +51,14 @@ jobs:
       # This turns the files into a plain folder instead of a git repository
       - run: rm -rf staging/.git
 
-  build-jekyll:
-    needs: [checkout-main, checkout-staging]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Build Main with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
 
-      - name: Build Staging with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./staging
-          destination: ./_site/staging
+
 
 
   # Build job
-  build-tina:
+  build:
     runs-on: ubuntu-latest
-    needs: [checkout-main, checkout-staging]
+    needs: [setup-pages, checkout-main, checkout-staging]
     # env:
     #  TBA_AUT_KEY: ${{ secrets.TBA_API_KEY }}
     steps:      
@@ -95,8 +82,19 @@ jobs:
           TINA_SEARCH: ${{secrets.TINA_SEARCH}}
         run: npx tinacms build
         
+      - name: Build Main with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
 
+      - name: Build Staging with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./staging
+          destination: ./_site/staging
                   
+  
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
@@ -107,7 +105,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: [setup-pages, build-jekyll, build-tina]
+    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
