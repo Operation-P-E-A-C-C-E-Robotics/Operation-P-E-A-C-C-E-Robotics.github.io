@@ -71,8 +71,8 @@ jobs:
     # env:
     #  TBA_AUT_KEY: ${{ secrets.TBA_API_KEY }}
     steps:      
-      - name: run NPM install ./main
-        run: npm install ./main
+      - name: run NPM install /main
+        run: npm install /main
 
       - name: run NPM CI
         run: npm ci
