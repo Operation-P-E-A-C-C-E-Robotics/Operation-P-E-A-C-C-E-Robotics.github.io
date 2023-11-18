@@ -52,6 +52,7 @@ jobs:
       - run: rm -rf staging/.git
 
   setup-node:
+    needs: [checkout-main, checkout-staging]
     runs-on: ubuntu-latest
     steps:
 
