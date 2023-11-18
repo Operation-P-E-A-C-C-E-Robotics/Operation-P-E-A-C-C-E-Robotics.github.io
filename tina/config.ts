@@ -538,7 +538,29 @@ export default defineConfig({
           {
             label: "Sponsor Tier",
             name: "sponsortier",
-            type: "string"
+            type: "string",
+            options: [
+              {
+                value: "Title",
+                label: "Title",
+              }, 
+              {
+                value: "Platinum",
+                label: "Platinum",
+              },
+              {
+                value: "Gold",
+                label: "Gold",
+              },
+              {
+                value: "Silver",
+                label: "Silver",
+              },
+              {
+                value: "Bronze",
+                label: "Bronze",
+              },
+            ],
           },
           {
             label: "Sponsor Summary",
