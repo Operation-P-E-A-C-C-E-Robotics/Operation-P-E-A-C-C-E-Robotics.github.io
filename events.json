@@ -127,5 +127,16 @@
         "iCalUID": "m0p0imhpapu4j7gspvgsduakk9_R20231116T230000@google.com",
         "sequence": 1,
         "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3400836957802000\"",
+        "id": "m0p0imhpapu4j7gspvgsduakk9_20231123T230000Z",
+        "status": "cancelled",
+        "recurringEventId": "m0p0imhpapu4j7gspvgsduakk9_R20231116T230000",
+        "originalStartTime": {
+            "dateTime": "2023-11-23T23:00:00Z",
+            "timeZone": "America/New_York"
+        }
     }
 ]
