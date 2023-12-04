@@ -10,7 +10,7 @@ import { date } from "zod";
  const clientId = process.env.TINA_PUBLIC_CLIENT_ID || null
  const token = process.env.TINA_TOKEN || null
 
- const searchToken = process.env.TINA_SEARCH || null
+ const searchToken = process.env.TINA_SEARCH
  
 export default defineConfig({
   branch,
@@ -653,15 +653,15 @@ export default defineConfig({
 
      
     ],
+  },
 
-    search: {
-      tina: {
-        indexerToken: searchToken,
-        stopwordLanguages: ['eng']
-      },
-      indexBatchSize: 100,
-      maxSearchIndexFieldLength: 100
+  search: {
+    tina: {
+      indexerToken: searchToken,
+      stopwordLanguages: ['eng'],
     },
+    indexBatchSize: 100,
+    maxSearchIndexFieldLength: 100
   },
 
 });
