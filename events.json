@@ -127,5 +127,34 @@
         "iCalUID": "m0p0imhpapu4j7gspvgsduakk9_R20231116T230000@google.com",
         "sequence": 1,
         "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3403491270428000\"",
+        "id": "4oq7no5pracavmrolhgeegt6g4",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NG9xN25vNXByYWNhdm1yb2xoZ2VlZ3Q2ZzQgdGVhbUBwZWFjY2Uub3Jn&ctz=UTC",
+        "created": "2023-12-05T03:07:15.000Z",
+        "updated": "2023-12-05T03:07:15.214Z",
+        "summary": "Kickoff Preparation",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-12-21T23:00:00Z",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-12-22T02:00:00Z",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "4oq7no5pracavmrolhgeegt6g4@google.com",
+        "sequence": 0,
+        "eventType": "default"
     }
 ]
