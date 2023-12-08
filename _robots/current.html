@@ -22,7 +22,7 @@ permalink: /robots/current
         <p class="flex-fill" id='counter'>--h --m --s</p>
       </h3>
       <h3 class="flex-fill" id="redTeams">
-        0000 0000 0000 
+        0000 0000 0000
       </h3>
       <h3 class="flex-fill">
       VS
@@ -39,7 +39,7 @@ permalink: /robots/current
     <!-- <p id="liveStream">
     Event Webcast: Not Found
     </p> -->
-  
+
   </div>
   <div class="d-flex flex-md-row flex-sm-column row">
     <div class="w-md-25 w-sm-20 pr-3 col-sm-12 col-md-6 col-lg-3 pb-3" style="max-width: 25rem; height: 30rem;">
@@ -48,7 +48,7 @@ permalink: /robots/current
         <img src="/assets/images/notFound.png" id="robotImagePlaceholder" class="carousel-item img-thumbnail" style="width:100%; height:100%; object-fit: contain;"></img>
         <div class="carousel-inner" id="robotCarousel">
         </div>
-      </div> 
+      </div>
     </div>
     <div class="pl-3 col-sm-12 col-md-6">
       <h1 id="header">Loading...</h1>
@@ -58,6 +58,7 @@ permalink: /robots/current
       <button type="button" class="btn btn-primary align-middle" onclick=viewOnTBA();>View On The Blue Alliance <span><img style="height: 25px;" src="/assets/images/tba_lamp.svg"></span></button>
       <div class="mx-auto">
         <h1 id="kickoffCountdown" class="text-center pt-5" style="display: none;">Kickoff is in <b id="kickoffCountdownDays"></b> Days!</h1>
+        <h1 id="competitionCountdown" class="text-center pt-5" style="display:none;">Competition is in <b id="competitionCountdownDays"></b> Days!</h1>
       </div>
     </div>
   </div>
@@ -65,7 +66,7 @@ permalink: /robots/current
 
   <div class="table-responsive pt-2 rounded-lg" style="border: 1px solid rgba(0,0,0,.125); border-radius: 4px;">
     <table id="employees" class="table table-bordered table-striped table-light text-dark"></table>
-  </div> 
+  </div>
 
   <br>
 
@@ -95,20 +96,20 @@ permalink: /robots/current
        } else {
         year = new Date().getFullYear();
        }
-       
+
       //  var eventstatuses = "/statuses?noMoreSecurityLeaks"
-      //  const authKey = "?noMoreSecurityLeaks" 
+      //  const authKey = "?noMoreSecurityLeaks"
        var district = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_district_rankings.json";
       //  var media = "https://www.thebluealliance.com/api/v3/team/frc3461/media/"
       //  var awards = "https://www.thebluealliance.com/api/v3/team/frc3461/awards/"
- 
+
 
        var eventstats = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json";
        var eventurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_events.json";
        var mediaurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_media.json";
        var awardsurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_awards.json"
        var countDownDate;
- 
+
        function json2array(json) {
          var result = [];
          for (var i in json) {
@@ -117,8 +118,8 @@ permalink: /robots/current
          return result;
        }
        // Defining async function
- 
- 
+
+
        function viewOnTBA() {
         window.location.assign('https://www.thebluealliance.com/team/3461/' + year);
        }
@@ -149,13 +150,13 @@ permalink: /robots/current
         if (mediaJSON.length == 0 || hasPlacedImage == false) {
             document.getElementById("robotImagePlaceholder").classList.add("active");
         }
- 
+
          if (mediaJSON.length == 0) {
            document.getElementById("robotImagePlaceholder").classList.add("active");
          }
- 
+
        }
- 
+
        async function getapi(eventurl, eventstats, awards) {
          const eventResponse = await fetch(eventurl);
          const eventStats = await fetch(eventstats);
@@ -169,18 +170,18 @@ permalink: /robots/current
           //////console.log(eventdata);
           //////console.log("Event Stats")
           //////console.log(eventstatdata); */
-          //////console.log(eventdata); 
+          //////console.log(eventdata);
           eventKeyValueArray = {};
           for (var i = 0; i < eventdata.length; i++){
             //////console.log(i)
             eventKeyValueArray[[eventdata[i].key]] = eventdata[i];
           }
- 
+
 
          show(eventstatdata, eventKeyValueArray, awardsForYear);
- 
+
          document.getElementById("header").innerHTML = year + " Competition Season"
-         
+
        }
        // Calling that async function
        getapi(eventurl, eventstats, awardsurl);
@@ -196,8 +197,8 @@ permalink: /robots/current
         // console.log(teams)
 
         if (team) {
-          document.getElementById("districtRank").innerHTML = "District Rank: " + team.rank + "/" + teams.length + "*"; 
-          document.getElementById("districtPoints").innerHTML = "Total District Points: " + team.point_total; 
+          document.getElementById("districtRank").innerHTML = "District Rank: " + team.rank + "/" + teams.length + "*";
+          document.getElementById("districtPoints").innerHTML = "Total District Points: " + team.point_total;
         }
       }
 
@@ -236,21 +237,26 @@ permalink: /robots/current
           ////console.log(key);
          for (var [key, value] of Object.entries(events) && Object.entries(testEvents)) {
             console.log(curevents[0].key);
-          
+
             if (key == curevents[0].key){
               console.log(key, value);
               match = value
               nextMatchKey = value.next_match_key
               console.log(nextMatchKey);
-            }  
+            }
 
           }
-    
+
+         } else {
+          nextEvent = events[0];
+          nextEventDate = new Date(nextEvent.start_date);
+          document.getElementById("competitionCountdownDays").innerHTML += (Math.ceil( (nextEventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
+          document.getElementById("competitionCountdown").style.display = "block";
          }
         //  //console.log(curevents[0].name, curevents[0], match);
         bannerHelper(curevents[0].name, nextMatchKey, match);
       }
- 
+
        async function getMatchFromKey(matchKey) {
          var matchAPIURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_matches.json";
          var testMatchURL = "https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_matches.json"
@@ -261,25 +267,25 @@ permalink: /robots/current
 
          for (var match = 0; match < matches.length; match++) {
           // ////console.log(events[event]);
-        
+
           if (matches[match].key == matchKey){
             ////console.log(events[event]);
             return matches[match];
-          }  
+          }
          }
 
          for (var match = 0; match < testMatches.length; match++) {
           // ////console.log(events[event]);
-        
+
           if (testMatches[match].key == matchKey){
             ////console.log(events[event]);
             return testMatches[match];
-          }  
+          }
          }
          //////console.log(match);
         //  return Promise.resolve(match);
        }
- 
+
        async function getTeamStatus(eventKey) {
          ////////console.log(eventKey);
          var matchAPIURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"event_statuses.json";
@@ -287,16 +293,16 @@ permalink: /robots/current
          events = await eventRaw.json();
          for (var event = 0;  event < events.length; event++) {
           // ////console.log(events[event]);
-        
+
           if (events[event].key == eventKey){
             ////console.log(events[event]);
             return events[event].overall_status_str;
-          }  
+          }
         }
        }
- 
+
        async function bannerHelper(eventTitle, nextMatch, stats) {
-        //console.log(eventTitle); 
+        //console.log(eventTitle);
         //console.log(nextMatch);
         //console.log(stats);
          var match = await getMatchFromKey(nextMatch);
@@ -317,7 +323,7 @@ permalink: /robots/current
           document.getElementById("currentStatusStr").innerHTML = stats.overall_status_str;
          } catch {}
 
-         try{ 
+         try{
          document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level + " " + match.match_number;
          } catch {
           console.error("failed to get next match");
@@ -345,57 +351,57 @@ permalink: /robots/current
          document.getElementById("duringEventBanner").style.display = "block";
           } catch {}
         }
- 
+
        function clearFRCfromTeam(team) {
          myString = team.replace(/\D/g, '');
          return myString;
        }
- 
- 
 
- 
+
+
+
        // Function to define innerHTML for HTML table
        function show(event, stats, awards) {
                 ////////console.log("event info");
                 ////////console.log(event);
                 //  //////console.log("match info");
-                //  //////console.log(stats); 
+                //  //////console.log(stats);
          let tab =
            `<tr>
              <th>Event Name</th>
              <th>Ranking</th>
              <th>Awards</th>
          </tr>`;
- 
+
           var result = stats;
         //  var statResult = json2array(stats);
- 
+
          length = result.length;
          ////////console.log(result);
           eventInfo = new Object();
         //  values = [];
           for (var i = 0; i < length; i++) {
           //  eventInfo.assign([result[i].key, result[i]]);
-           
+
          }
          //////console.log(stats)
          if (length == 0) {
            tab = `<h1 class=text-center>No Events Found</h1>`
            document.getElementById("employees").innerHTML = tab;
          }
- 
+
          ////////console.log(values);
          ////////console.log(awards)
         for (const [key, value] of Object.entries(event)) {
-          var eventInfo = "";  
+          var eventInfo = "";
           // Object.keys(stats).forEach(createArray(key));
-          
+
 
           var badge = ""
           console.log(key, value)
           if (value != null) {
-          
-            
+
+
             switch(stats[key].event_type) {
               case 100:
           //  console.log(stats[key])
@@ -405,11 +411,11 @@ permalink: /robots/current
           //  console.log(stats[key])
            badge = `<span class="badge badge-pill badge-secondary">Offseason Event</span>`
            break;
-         
+
            case -1:
           //  console.log(stats[key])
            badge = `<span class="badge badge-pill badge-warning">Unlabeled Event</span>`
-           break;         
+           break;
          case 0:
             // console.log(stats[key])
             badge = `<span class="badge badge-pill badge-primary">Week ${stats[key].week + 1} Regional Event</span>`
@@ -430,7 +436,7 @@ permalink: /robots/current
         //  console.log(stats[key])
            badge = `<span class="badge badge-pill badge-success">CMP Einstein</span>`
            break;
-          
+
          case 5:
           //  console.log(stats[key])
            badge = `<span class="badge badge-pill badge-info">DCMP Division</span>`
@@ -444,19 +450,19 @@ permalink: /robots/current
           case null:
           // console.log(stats[key])
             badge = ""
-            break; 
+            break;
 
          default:
           // console.log(stats[key])
            badge = ""
        }
-            
+
             //////console.log("key");
             //////console.log(key);
             //////console.log("value")
             //////console.log(value);
             tab += `<tr><td date=${stats[key].start_date} id=${key}><a class="text-dark" href="https://www.thebluealliance.com/event/${key}">${stats[key].name} ${badge}</a></td><td id="${key}eventstatus">${value.overall_status_str}</td><td id=${key + "awards"}>None Found</td></tr>`;
-            // document.getElementById(value.key + "eventstatus").innerHTML = 
+            // document.getElementById(value.key + "eventstatus").innerHTML =
           } else {
           tab += `<tr><td date=${stats[key].start_date} id=${key}><a class="text-dark" href="https://www.thebluealliance.com/event/${key}">${stats[key].name} ${badge}</a></td><td>No Matches Found, Check Back After ${stats[key].start_date}</td><td>No Data</td></tr>`
           }
@@ -471,7 +477,7 @@ permalink: /robots/current
            ////////console.log(awards[i]);
            document.getElementById(awards[i].event_key + "awards").innerHTML = awards[i].name;
          }
- 
+
        }
        function sortTable() {
       var table, rows, switching, i, x, y, shouldSwitch;
@@ -542,15 +548,15 @@ permalink: /robots/current
        var x = setInterval(function() {
          var now = convertTime(new Date()).getTime();
          var d = new Date().toLocaleTimeString();
-         var distance = new Date(convertTimestamp(countDownDate)).getTime() - now; 
+         var distance = new Date(convertTimestamp(countDownDate)).getTime() - now;
          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
- 
+
          //   document.getElementById("counter").innerHTML = d + " | ";
          document.getElementById("counter").innerHTML = "~" + hours + "h " + minutes + "m " + seconds + "s ";
          document.getElementById("time").innerHTML = d;
- 
+
          if (hours == 0 && minutes < 20) {
            document.getElementById("counter").classList.add("yellowwarning");
            // document.getElementById("counter").innerHTML =  d + " | ";
@@ -562,17 +568,17 @@ permalink: /robots/current
            // document.getElementById("counter").innerHTML = d + " | ";
            document.getElementById("counter").innerHTML = "~" + hours + "h " + minutes + "m " + seconds + "s QUENE";
          }
- 
+
          if (minutes < -4) {
            setBanner(eventurl);
          }
- 
+
          if (minutes > 0 && seconds == 0) {
            setBanner(eventurl);
          }
- 
+
        }, 1000);
- 
+
  </script>
 
 
@@ -597,7 +603,7 @@ permalink: /robots/current
     var eventsScorePair = [];
     var matchNumber = [];
     var redAlliance;
-    var blueAlliance; 
+    var blueAlliance;
     // ////console.log(matches);
      for (var i = 0; i < matches.length; i++) {
         //////console.log(matches[i]);
@@ -614,11 +620,11 @@ permalink: /robots/current
           scorePure.push(match.alliances.red.score);
           // score.push([match.event_key, {x: match.match_number, y: match.alliances.red.score, compLevel: match.comp_level+match.match_number}]);
           score.push([match.event_key, {x: match.match_number, y: match.alliances.red.score, num: match.time, comp: match.comp_level + match.match_number}]);
-          
+
         } else if (blueAlliance.includes("frc3461")) {
           scorePure.push(match.alliances.blue.score);
           score.push([match.event_key, {x: match.match_number, y: match.alliances.blue.score, num: match.time, comp: match.comp_level + match.match_number}]);
-          
+
         }
 
         matchNumber.push(i);
@@ -638,7 +644,7 @@ permalink: /robots/current
       // ////console.log(score);
       // ////console.log(eventsScorePair);
       //  ////console.log(eventsWithScoreArray);
-      
+
 
       generateGraph(events, eventsWithScoreArray, matchNumber);
   }
@@ -673,7 +679,7 @@ permalink: /robots/current
 
 
     for (var i = 0; i < events.length; i++){
-    
+
       var eventData = await getEventNameFromKey(events[i]);
       // ////console.log(events[i]);
       eventKeyNamePair[events[i]] = eventData;
@@ -741,13 +747,13 @@ permalink: /robots/current
     ////console.log(key);
     for (event in events) {
       // ////console.log(events[event]);
-    
+
       if (events[event].key == key){
         ////console.log(events[event]);
         return events[event].name;
-      }  
+      }
     }
-    
+
   }
 
 </script>
