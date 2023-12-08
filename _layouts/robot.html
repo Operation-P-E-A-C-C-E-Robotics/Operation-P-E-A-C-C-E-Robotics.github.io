@@ -33,7 +33,7 @@ layout: default
             <h2>{{ page.game }}</h2>
             <h3 id="districtRank">District Rank: --</h3>
             <h3 id="districtPoints">Total District Points: --</h3>
-            <h3>All data provided by The Blue Alliance <img src="/assets/images/tba_lamp.svg" style="height:3.5vh;"></h3>
+            <h3>All data provided by The Blue Alliance <img src="/assets/images/tba_lamp.svg" style="height:3.5vh; color:#0f4bcb"></h3>
             <div id="buttons" class="pb-3">
                 {% if page.techBinder and page.techBinder != '' %}
                 <button type="button" class="btn btn-danger align-middle" data-toggle="modal" data-target="#myModal">
@@ -44,6 +44,17 @@ layout: default
                 <button type="button" class="btn btn-danger  disabled align-middle" id="techBinder">View Technical Binder <i class="fa fa-book align-middle" style="font-size:25px"></i></button>
                 {% endif %}
                 <button type="button" class="btn btn-primary align-middle" onclick="window.location.assign('https://www.thebluealliance.com/team/3461/{{ page.year }}');">View On The Blue Alliance <span><img style="height: 25px;" src="/assets/images/tba_lamp.svg"></span></button>
+                <!-- awards row -->
+                <br>
+                <div class="row pt-2" id="awards">
+                  <div class="col" id="banners">
+
+                  </div>
+                  <div class="col" id="trophies">
+
+                  </div>
+                </div>
+                <!-- !awards row -->
             </div>
             {{ content }}
         </div>
@@ -242,17 +253,8 @@ layout: default
   }
  }
 
-
-
-
-
-
-
-
-
-
   // Function to define innerHTML for HTML table
-  function show(event, stats, awards) {
+  async function show(event, stats, awards) {
            //////console.log("event info");
            //////console.log(event);
            //  ////console.log("match info");
@@ -368,7 +370,29 @@ layout: default
     //////console.log(awards);
     for (var i = 0; i < awards.length; i++) {
       //////console.log(awards[i]);
+      eventName = await getShortEventNameFromKey(awards[i].event_key)
+      let blueBanners =  ``
+      let trophies = ``
+
       document.getElementById(awards[i].event_key + "awards").innerHTML = awards[i].name;
+
+      blueBannerAwards = [0, 69, 1, 3, 74, 80] //TBA API award IDs that get a blue banner (CHAIRMANS, CHAIRMANS_FINALIST, WINNER, WOODIE_FLOWERS, SKILLS_COMPETITION_WINNER, GAME_DESIGN_CHALLENGE_WINNER)
+
+      if (blueBannerAwards.includes(awards[i].award_type)) {
+        blueBanners += `
+        <div class="banner">
+          <img src="assets/FIRSTBranding/Vertical/RGB/Reverse/FIRST_Vertical_RGB_reverse.png">
+          <div class="award-name">
+              <span>${awards[i].name}</span>
+          </div>
+          
+          <div class="award-event">
+              <span>${eventName}</span>
+          </div>
+          
+        </div>`
+      }
+      document.getElementById('banners').innerHTML += blueBanners
     }
 
   }
@@ -607,9 +631,115 @@ layout: default
   return event ? event.name : null;
 }
 
+async function getShortEventNameFromKey(key) {
+  const apiResponse = await fetch(`https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/${year}_events.json`);
+  const events = await apiResponse.json();
+  
+  const event = events.find(event => event.key === key);
+  
+  return event ? event.short_name : null;
+}
+
 
 </script>
 <!-- Overide default title -->
 <script>
    document.getElementsByTagName("TITLE")[0].innerHTML = "{{ page.year }} Robot: {{page.robotName}} - FRC 3461"
 </script>
+
+
+<style>
+.banner {
+    background: #0f4bcb;
+    color: #fff;
+    display: inline-block;
+    height: 170px;
+    line-height: 1.2;
+    margin: 0 0 40px;
+    padding: 8px;
+    position: relative;
+    text-align: center;
+    vertical-align: top;
+    white-space: normal;
+    width: 140px
+}
+
+.banner img {
+    margin-bottom: 3px;
+    margin-top: 10px;
+    max-height: 55px;
+    width: 75px;
+}
+
+.banner:after {
+    border-bottom: 70px solid #0f4bcb;
+    border-color: #0f4bcb #0f4bcb transparent;
+    border-style: solid;
+    border-width: 5px 70px 20px;
+    content: "";
+    display: block;
+    left: 0;
+    position: absolute;
+    top: 100%
+}
+
+.banner .award-name,.banner .award-name-long {
+    display: table;
+    font-weight: bolder;
+    height: 35px;
+    margin: 3px 0;
+    width: 100%
+}
+
+.banner .award-name span,.banner .award-name-long span {
+    display: table-cell;
+    font-style: italic;
+    text-transform: uppercase;
+    vertical-align: middle
+}
+
+.banner .award-name-long span {
+    font-size: 85%
+}
+
+.banner .award-event,.banner .award-event-long {
+    display: table;
+    height: 50px;
+    text-transform: uppercase;
+    width: 100%
+}
+
+.banner .award-event span,.banner .award-event-long span {
+    display: table-cell;
+    max-width: 124px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle
+}
+
+.banner .award-event {
+    font-size: 85%;
+    line-height: 130%
+}
+
+.banner .award-event-long {
+    font-size: 75%;
+    line-height: 110%
+}
+
+.banner,.banner:after {
+    -webkit-filter: drop-shadow(0 5px 5px rgba(0,0,0,.1));
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,.1))
+}
+
+.banner.black {
+    background: #000
+}
+
+.banner.black:after {
+    border-bottom: 2 solid #000;
+    border-color: #000 #000 transparent;
+    border-style: solid;
+    border-width: 5px 2 20px
+}
+</style>
