@@ -43,6 +43,16 @@ layout: default
                 {% else %}
                 <button type="button" class="btn btn-danger  disabled align-middle" id="techBinder">View Technical Binder <i class="fa fa-book align-middle" style="font-size:25px"></i></button>
                 {% endif %}
+
+                {% if page.buizBinder and page.buizBinder != '' %}
+                <button type="button" class="btn btn-success align-middle" data-toggle="modal" data-target="#buizModal">
+                    View Business Binder
+                    <i class="fa fa-book align-middle" style="font-size:25px"></i>
+                  </button>
+                {% else %}
+                <button type="button" class="btn btn-success  disabled align-middle" id="buizBinder">View Business Binder <i class="fa fa-book align-middle" style="font-size:25px"></i></button>
+                {% endif %}
+
                 <button type="button" class="btn btn-primary align-middle" onclick="window.location.assign('https://www.thebluealliance.com/team/3461/{{ page.year }}');">View On The Blue Alliance <span><img style="height: 25px;" src="/assets/images/tba_lamp.svg"></span></button>
                 <!-- awards row -->
                 <br>
@@ -67,7 +77,9 @@ layout: default
     </div> 
 
     <br>
+    <section id="event-graphs">
 
+    </section>
     <div class="w-100 mx-auto pt-3 bg-light" style="border: 1px solid rgba(0,0,0,.125); border-radius: 4px;">
       <canvas id="myChart" style="width:100%; max-height: 50rem"></canvas>
     </div>
@@ -114,6 +126,34 @@ layout: default
     </div>
 </div>
   
+<!-- Buiz Binder -->
+<div class="modal fade text-dark" id="buizModal">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+    
+          <!-- Modal Header -->
+          <div class="modal-header">
+          <h4 class="modal-title">{{ page.year }} Business Binder</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          
+          <!-- Modal body -->
+          <div class="modal-body">
+              <object data="{{page.buizBinder}}#view=Fit" type="application/pdf" width="100%" height="650">
+                  <p>
+                      It appears your Web browser is not configured to display PDF files. No worries, just <a href="{{page.techBinder}}">click here to download the PDF file.</a>
+                  </p>
+              </object> 
+          </div>
+          
+          <!-- Modal footer -->
+          <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+      
+    </div>
+  </div>
+</div>
 
 
 
@@ -245,7 +285,7 @@ layout: default
   const districtJSON = await districtResponse.json();
   const team = districtJSON.find((team) => team.team_key === "frc3461");
   const teams = districtJSON.filter(item => item.point_total !== 0);
-  console.log(teams)
+  // console.log(teams)
 
   if (team) {
     document.getElementById("districtRank").innerHTML = "District Rank: " + team.rank + "/" + teams.length + "*"; 
@@ -289,11 +329,31 @@ layout: default
      var eventInfo = "";  
      // Object.keys(stats).forEach(createArray(key));
      
+      // eventStatsSubBanner = document.getElementById("event-graphs")
+      // // console.log(eventStatsSubBanner)
+      // try {
+      //   eventStatsSubBanner.innerHTML += `
+      //     <div class="jumbotron row" id="${key}SubBanner" date="${stats[key].start_date}">
+      //       <div class="col" date="${stats[key].start_date}">
+      //         <h1 class="h2">${stats[key].name}</h1>
+      //         <h1 class="h4">${value.overall_status_str}</h1>
+      //       </div>
+      //       <div class="col">
+      //         <div class="w-100 mx-auto pt-3 bg-light" style="border: 1px solid rgba(0,0,0,.125); border-radius: 4px;">
+      //           <canvas id="${key}Chart" style="width:100%; max-height: 50rem"></canvas>
+      //         </div>
 
+      //       </div>
+      //     </div>
+      //   `
+      // } 
+      // finally {
+        
+      // }
      
 
      if (value != null) {
-       console.log(value)
+      //  console.log(value)
        var badge = ""
        switch(stats[key].event_type) {
   
@@ -358,12 +418,13 @@ layout: default
        tab += `<tr><td date=${stats[key].start_date} id=${key}><a class="text-dark" href="https://www.thebluealliance.com/event/${key}">${stats[key].name} ${badge}</a></td><td id="${key}eventstatus">${value.overall_status_str}</td><td id=${key + "awards"}>None Found</td></tr>`;
        // document.getElementById(value.key + "eventstatus").innerHTML = 
      } else {
-      console.log(stats[key])
+      // console.log(stats[key])
      tab += `<tr><td date=${stats[key].start_date} id=${key}><a class="text-dark" href="https://www.thebluealliance.com/event/${key}">${stats[key].name} <span class="badge badge-pill badge-secondary">Unknown</span> </a></td><td>No Matches Found, Check Back After ${stats[key].start_date}</td><td>No Data</td></tr>`
      }
      // Setting innerHTML as tab variable
      document.getElementById("employees").innerHTML = tab;
      sortTable();
+     sortEventBanners()
      }
 
 
@@ -433,7 +494,45 @@ layout: default
  }
 }
 
-
+function sortEventBanners() {
+ var table, rows, switching, i, x, y, shouldSwitch;
+ table = document.getElementById("event-graphs");
+ switching = true;
+ /* Make a loop that will continue until
+ no switching has been done: */
+ while (switching) {
+   // Start by saying: no switching is done:
+   switching = false;
+   rows = table.children;
+   /* Loop through all table rows (except the
+   first, which contains table headers): */
+   for (i = 0; i < (rows.length - 1); i++) {
+     // Start by saying there should be no switching:
+     shouldSwitch = false;
+     /* Get the two elements you want to compare,
+     one from current row and one from the next: */
+     x = rows[i].getElementsByTagName("div")[0];
+     y = rows[i + 1].getElementsByTagName("div")[0];
+     console.log(y)
+     xTime = Date.parse(x.getAttribute("date"));
+     yTime = Date.parse(y.getAttribute("date"));
+    //  console.log(xTime, yTime)
+     // Check if the two rows should switch place:
+     if (xTime > yTime) {
+       // If so, mark as a switch and break the loop:
+       shouldSwitch = true;
+       break;
+     }
+   }
+   if (shouldSwitch) {
+      console.log(shouldSwitch)
+     /* If a switch has been marked, make the switch
+     and mark that a switch has been done: */
+     rows[i].parentElement.insertBefore(rows[i + 1], rows[i]);
+     switching = true;
+   }
+ }
+}
 
 
 </script>
@@ -476,11 +575,21 @@ layout: default
           // events.find(any(match.event_key)).push(match.alliances.red.score);
           scorePure.push(match.alliances.red.score);
           // score.push([match.event_key, {x: match.match_number, y: match.alliances.red.score, compLevel: match.comp_level+match.match_number}]);
-          score.push([match.event_key, {x: match.match_number, y: match.alliances.red.score, num: match.time, comp: match.comp_level + match.match_number}]);
+          if (match.comp_level == "qm") {
+            score.push([match.event_key, {x: match.match_number, y: match.alliances.red.score, num: match.time, comp: match.comp_level + match.match_number}]);
+          }
+          else {
+            score.push([match.event_key, {x: match.match_number, y: match.alliances.red.score, num: match.time, comp: match.comp_level + match.set_number + "-" + match.match_number}]);
+          }
           
         } else if (blueAlliance.includes("frc3461")) {
           scorePure.push(match.alliances.blue.score);
-          score.push([match.event_key, {x: match.match_number, y: match.alliances.blue.score, num: match.time, comp: match.comp_level + match.match_number}]);
+          if (match.comp_level == "qm") {
+            score.push([match.event_key, {x: match.match_number, y: match.alliances.red.score, num: match.time, comp: match.comp_level + match.match_number}]);
+          }
+          else {
+            score.push([match.event_key, {x: match.match_number, y: match.alliances.red.score, num: match.time, comp: match.comp_level + match.set_number + "-" + match.match_number}]);
+          }
           
         }
 
@@ -504,6 +613,11 @@ layout: default
       
 
       generateGraph(events, eventsWithScoreArray, matchNumber);
+  }
+
+
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   async function generateGraph(events, scores, match_number) {
@@ -545,8 +659,27 @@ layout: default
 
     Object.entries(scores).forEach((entry, index) => {
       const [key, value] = entry;
-
-
+      console.log(scores)
+      var tempN = scores[key].length
+      var tempArr = Array.from({length: tempN}, (_, entry) => "" + (scores[key][entry].comp));
+      var tempChartConfig = {
+      type: "line",
+      data: {
+        labels: tempArr,
+        datasets: []
+      },
+      options: {
+        legend: {display: true},
+        // scales: {
+        //   yAxes: [{ticks: {min: 0}}],
+        // }
+        title: {
+          display: true,
+          text: "Match Scores Over Time",
+          fontSize: 16
+        }
+      }
+    };
       // //console.log(eventName);
       // //console.log(entry);
       // //console.log(value.sort((a,b)=>a.x-b.x))
@@ -558,6 +691,17 @@ layout: default
         fill: false,
         tension: 0
       });
+      // tempChartConfig.data.datasets.push({
+      //   label: eventKeyNamePair[key],
+      //   borderColor: barColors[index],
+      //   backgroundColor: barColors[index],
+      //   data: value.sort(function(a,b) { if (a.num && b.num != null){sortNumerically(a.num, b.num)} else {sortCompLevel(value)}}),
+      //   fill: false,
+      //   tension: 0
+      // });
+      // sleep(200).then(
+      //   new Chart(key+"Chart", tempChartConfig)
+      // )
     });
 
     //console.log(chartConfig);
