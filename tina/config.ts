@@ -311,6 +311,16 @@ export default defineConfig({
             type: 'string',
           },
           {
+            name: 'techBinder',
+            label: 'Technical Binder',
+            type: 'image',
+          },
+          {
+            name: 'buizBinder',
+            label: 'Business Binder',
+            type: 'image',
+          },
+          {
             name: 'game',
             label: 'Game Name',
             type: 'string',
