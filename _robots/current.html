@@ -90,7 +90,7 @@ permalink: /robots/current
        if (today.getMonth() >= 9) {
           year = today.getFullYear() + 1;
           kickoff = new Date(getFirstSaturdayInJanuary(year))
-          console.log(kickoff)
+          // console.log(kickoff)
           document.getElementById("kickoffCountdownDays").innerHTML += (Math.ceil( (kickoff.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
           document.getElementById("kickoffCountdown").style.display = "block";
        } else {
@@ -250,8 +250,11 @@ permalink: /robots/current
          } else {
           nextEvent = events[0];
           nextEventDate = new Date(nextEvent.start_date);
-          document.getElementById("competitionCountdownDays").innerHTML += (Math.ceil( (nextEventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
-          document.getElementById("competitionCountdown").style.display = "block";
+          today = new Date()
+          if ( today.getMonth() >= nextEventDate.getMonth() - 1 && today.getMonth() <= nextEventDate.getMonth() + 1) {
+            document.getElementById("competitionCountdownDays").innerHTML += (Math.ceil( (nextEventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
+            document.getElementById("competitionCountdown").style.display = "block";
+          }
          }
         //  //console.log(curevents[0].name, curevents[0], match);
         bannerHelper(curevents[0].name, nextMatchKey, match);
