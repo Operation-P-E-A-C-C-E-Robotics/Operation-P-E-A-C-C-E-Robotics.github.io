@@ -18,7 +18,7 @@ export default defineConfig({
   token, // Get this from tina.io
 
   build: {
-    basePath: "/website-staging/",
+    basePath: "website-staging",
     outputFolder: "admin",
     publicFolder: "/",
   },
