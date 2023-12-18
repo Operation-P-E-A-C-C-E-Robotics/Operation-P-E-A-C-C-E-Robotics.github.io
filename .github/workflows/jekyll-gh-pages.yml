@@ -79,16 +79,16 @@ jobs:
           clean: false
 
 
-      - uses: actions/checkout@v2
-        name: Checkout Staging
-        with:
-          ref: staging
-          # Put the checked out files inside the `big-island-buses/heleon` folder
-          path: staging/
-          clean: false
-      # Delete the .git folder from `big-island-buses/heleon`
-      # This turns the files into a plain folder instead of a git repository
-      - run: rm -rf staging/.git
+      # - uses: actions/checkout@v2
+      #   name: Checkout Staging
+      #   with:
+      #     ref: staging
+      #     # Put the checked out files inside the `big-island-buses/heleon` folder
+      #     path: staging/
+      #     clean: false
+      # # Delete the .git folder from `big-island-buses/heleon`
+      # # This turns the files into a plain folder instead of a git repository
+      # - run: rm -rf staging/.git
 
       # - name: run NPM install ./main/
       #   run: npm install
@@ -110,11 +110,11 @@ jobs:
           source: ./
           destination: ./_site
 
-      - name: Build Staging with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./staging
-          destination: ./_site/staging
+      # - name: Build Staging with Jekyll
+      #   uses: actions/jekyll-build-pages@v1
+      #   with:
+      #     source: ./staging
+      #     destination: ./_site/staging
                   
   
       - name: Upload artifact
