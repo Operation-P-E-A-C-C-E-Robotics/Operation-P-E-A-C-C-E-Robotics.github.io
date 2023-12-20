@@ -117,7 +117,7 @@ txt: dark
 <br>
 <div class="container-fluid">
   {% for item in site.data.index.content %}
-  <div class="row  pl-md-5 pl-sm-0">
+  <div class="row  p-md-3 p-sm-0">
     <div class="col">  
       <div class="d-block"> 
         <div class="h1 d-inline-block text-sm-center text-left" style="font-family: 'BankGothicBold', sans-serif;">{{item.header | markdownify}}
@@ -135,15 +135,18 @@ txt: dark
 
  
 {% assign robot = site.robots | where_exp: "item", "item.title != 'Current Season'" | last %}
-  <div class="row pl-md-5 pl-sm-0">
+  <div class="row p-md-3 p-sm-0">
     <div class="col">
-      <h1 style="font-family: 'BankGothicBold', sans-serif;">Latest Robot: {{robot.robotName}}</h1>
-      <h4>{{robot.content | markdownify }}</h4>
-      <a class="btn btn-primary mb-3" href="{{robot.url}}">See more</a>
-      
+        <div class="d-block">
+          <h1 style="font-family: 'BankGothicBold', sans-serif;">Latest Robot: {{robot.robotName}}</h1>
+        </div>
+        <h4>{{robot.content | markdownify }}</h4>
+        <a class="btn btn-primary mb-3" href="{{robot.url}}">See more</a>
     </div>
+      
+    
     <div class="col-md">
-      <img class="rounded img-fluid mx-auto d-block" src="{{robot.thumbnail}}" style="max-width:25rem; min-height: 25vh">
+      <img class="rounded img-fluid mx-auto d-block" src="{{robot.thumbnail}}" style="max-width:500px; width: 100%; height: auto;">
     </div>
   </div>
 
