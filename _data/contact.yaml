@@ -1,10 +1,12 @@
-#Written by Logan Ayers 10/17/2022
-
-#Conventions 
-# type: email, phone, mail, 
-# address: assosiated contact info for that type IE coach@peacce.org
-# name: what it should be used for 
-
-- type: email
-  address: coach@peacce.org
-  name: All inquiries
+contacts:
+  - type: email
+    address: coach@peacce.org
+    name: All inquiries
+  - type: Address
+    address: '750 Clark Ave, Bristol, CT'
+    name: PO Box
+images:
+  - src: /assets/images/WeAreNEFirstPose.jpg
+    alt: 2022 world championship team photo
+  - src: /assets/images/original-banner.jpg
+    alt: 2018 world championship team photo
