@@ -29,6 +29,69 @@
     },
     {
         "kind": "calendar#event",
+        "etag": "\"3395843820960000\"",
+        "id": "2edf35tsp629t3v4nag1k9n13j",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MmVkZjM1dHNwNjI5dDN2NG5hZzFrOW4xM2pfMjAyNDAxMDhUMjMwMDAwWiB0ZWFtQHBlYWNjZS5vcmc&ctz=UTC",
+        "created": "2023-10-17T15:11:24.000Z",
+        "updated": "2023-10-21T20:58:30.480Z",
+        "summary": "Robotics Meeting",
+        "location": "Arthur G. Russell Co., Inc., 750 Clark Ave, Bristol, CT 06010, USA",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2024-01-08T23:00:00Z",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2024-01-09T02:00:00Z",
+            "timeZone": "America/New_York"
+        },
+        "recurrence": [
+            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20240409T035959Z;BYDAY=MO,TU,WE,TH,FR"
+        ],
+        "iCalUID": "2edf35tsp629t3v4nag1k9n13j@google.com",
+        "sequence": 1,
+        "hangoutLink": "https://meet.google.com/jtx-yfor-kqj",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/jtx-yfor-kqj",
+                    "label": "meet.google.com/jtx-yfor-kqj"
+                },
+                {
+                    "entryPointType": "more",
+                    "uri": "https://tel.meet/jtx-yfor-kqj?pin=1636871291603",
+                    "pin": "1636871291603"
+                },
+                {
+                    "regionCode": "US",
+                    "entryPointType": "phone",
+                    "uri": "tel:+1-386-603-2487",
+                    "label": "+1 386-603-2487",
+                    "pin": "620796747"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "jtx-yfor-kqj"
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
         "etag": "\"3404692546440000\"",
         "id": "4oq7no5pracavmrolhgeegt6g4",
         "status": "confirmed",
