@@ -43,8 +43,17 @@
   <meta property="og:type" content="sports_team" />
   <meta property="og:url" content="{{ page.url }}"/>
   {% if page.layout != "robot" %}
+  <meta property="og:title" content="{{page.title}} - Operation PEACCE Robotics" />
+  <meta property="title" content="{{page.title}} - Operation PEACCE Robotics">
   <meta property="image" content="/assets/images/PeacceLogoTieDyeWhiteText.svg" />
   <meta property="og:image" content="/assets/images/PeacceLogoTieDyeWhiteText.svg?width=320">
+  {% else %}
+  <meta property="og:title" content="{{ page.year }} Robot: {{ page.robotName }} - Operation PEACCE Robotics" />
+  <meta property="og:description" content="{{ page.game }} performace and statistics"/>
+  <meta property="og:image" content="{{ page.thumbnail }}?width=320">
+  <meta property="title" content="{{ page.year }} Robot: {{ page.robotName }} - Operation PEACCE Robotics" />
+  <meta property="description" content="{{ page.game }} performace and statistics {{page.excerpt}}"/>
+  <meta property="image" content="{{ page.thumbnail }}?width=320">
   {% endif %}
   <meta property="og:description" content="
     {% if page.metadesc %}
@@ -58,7 +67,6 @@
     {% endif %}
   "/>
   <meta property="og:site_name" content="Operation PEACCE Robotics"/>
-  <meta property="title" content="Operation PEACCE Robotics {% if page.metatitle %}- {{ page.metatitle}}{% endif %}">
   <meta property="og:locality" content="Bristol" />
   <meta property="og:region" content="Connecticut" />
   <meta property="og:country-name" content="USA" />

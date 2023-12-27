@@ -1,6 +1,7 @@
 collections:
   robots:
     output: true
+    page_excerpts: true
   
   
   forms:
@@ -44,7 +45,7 @@ defaults:
       bg: light
       txt: dark
 
-
+page_excerpts: true
 
 plugins:
   - "jekyll-github-metadata"
