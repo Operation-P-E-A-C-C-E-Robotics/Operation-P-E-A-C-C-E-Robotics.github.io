@@ -43,17 +43,17 @@
   <meta property="og:type" content="sports_team" />
   <meta property="og:url" content="{{ page.url }}"/>
   {% if page.layout != "robot" %}
-  <meta property="og:title" content="{{page.title}} - Operation PEACCE Robotics" />
-  <meta property="title" content="{{page.title}} - Operation PEACCE Robotics">
+  <meta property="og:title" content="{{page.title}}" />
+  <meta property="title" content="{{page.title}}">
   <meta property="image" content="/assets/images/PeacceLogoTieDyeWhiteText.svg" />
-  <meta property="og:image" content="/assets/images/PeacceLogoTieDyeWhiteText.svg?width=320">
+  <meta property="og:image" content="/assets/images/PeacceLogoTieDyeWhiteText.svg">
   {% else %}
-  <meta property="og:title" content="{{ page.year }} Robot: {{ page.robotName }} - Operation PEACCE Robotics" />
+  <meta property="og:title" content="{{ page.year }} Robot: {{ page.robotName }}" />
   <meta property="og:description" content="{{ page.game }} performace and statistics"/>
   <meta property="og:image" content="{{ page.thumbnail }}?width=320">
-  <meta property="title" content="{{ page.year }} Robot: {{ page.robotName }} - Operation PEACCE Robotics" />
+  <meta property="title" content="{{ page.year }} Robot: {{ page.robotName }}" />
   <meta property="description" content="{{ page.game }} performace and statistics {{page.excerpt}}"/>
-  <meta property="image" content="{{ page.thumbnail }}?width=320">
+  <meta property="image" content="{{ page.thumbnail }}">
   {% endif %}
   <meta property="og:description" content="
     {% if page.metadesc %}
