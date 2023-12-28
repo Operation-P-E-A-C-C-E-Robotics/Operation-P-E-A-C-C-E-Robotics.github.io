@@ -61,7 +61,8 @@ bottomleftimage: /assets/committee/electrical/frc-control-system-layout-rev.svg
 resources:
   - name: FIRST Submitted Awards Page
     link: 'https://www.firstinspires.org/resource-library/frc/submitted-awards'
-  - name: 2023 Electrical Documentation
-    link: /assets/2023/techBinder.pdf
+  - name: FIRST Impact Award Resources
+    link: >-
+      https://www.firstinspires.org/resource-library/frc/first-impact-award-resources
 ---
 
