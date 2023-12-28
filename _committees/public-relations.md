@@ -59,9 +59,8 @@ middlelefttext: >
   graphic design, or public speaking, there's a place for you on our team.
 bottomleftimage: /assets/committee/electrical/frc-control-system-layout-rev.svg
 resources:
-  - name: WPILib Electrical Quickstart
-    link: >-
-      https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-1/intro-to-frc-robot-wiring.html
+  - name: FIRST Submitted Awards Page
+    link: 'https://www.firstinspires.org/resource-library/frc/submitted-awards'
   - name: 2023 Electrical Documentation
     link: /assets/2023/techBinder.pdf
 ---
