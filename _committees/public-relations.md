@@ -59,6 +59,7 @@ middlelefttext: >
   graphic design, or public speaking, there's a place for you on our team.
 bottomleftimage: /assets/committee/electrical/frc-control-system-layout-rev.svg
 resources:
+  - name: 3461 2023 Outreach Binder
   - name: FIRST Submitted Awards Page
     link: 'https://www.firstinspires.org/resource-library/frc/submitted-awards'
   - name: FIRST Impact Award Resources
