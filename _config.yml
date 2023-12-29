@@ -10,6 +10,7 @@ collections:
   committees:
     output: true
     permalink: /committee/:title
+    layout: committee
 
 
 defaults:

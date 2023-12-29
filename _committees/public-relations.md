@@ -1,7 +1,7 @@
 ---
-layout: committee
 title: Business Subteams
-topcornerimage: /assets/2023/PR Photos/PXL_20230311_163327451.PORTRAIT.jpg
+layout: committee
+topcornerimage: /assets/2023/PR-Photos/PXL_20230311_163327451.PORTRAIT.jpg
 toprighttitle: |
   What is the Business sub-team?
 toprighttext: >
@@ -18,8 +18,8 @@ toprighttext: >
   The Business Subteam oversees the logistical and administrative aspects of our
   team, ensuring smooth operations and efficient coordination among team
   members. From scheduling meetings to managing resources, we keep the team
-  running smoothly. 
-middlerightimage: /assets/2022/PR Photos/PXL_20220827_165501029.jpg
+  running smoothly.
+middlerightimage: /assets/2022/PR-Photos/PXL_20220827_165501029.jpg
 middlelefttitle: |
   What We Do
 middlelefttext: >
@@ -46,13 +46,13 @@ middlelefttext: >
   to support various aspects of our robotics projects, competitions, and
   outreach initiatives. Strategic financial planning is at the core of our
   operations. We analyze, forecast, and develop plans to ensure the long-term
-  financial health and sustainability of our team. 
+  financial health and sustainability of our team.
 
 
   We accomplish our goals by building lasting relationships with sponsors, who
   are crucial to our success. The Finance sub-team actively seeks partnerships
   with companies and organizations that share our vision, securing vital support
-  for our team's activities. 
+  for our team's activities.
 
 
   ##### Community Partnerships
@@ -93,7 +93,7 @@ middlelefttext: >
   our business team and help us spread the word about the incredible work we're
   doing! Whether you're interested in content creation, social media management,
   graphic design, or public speaking, there's a place for you on our team.
-bottomleftimage: /assets/2023/PR Photos/PXL_20230312_210303575.jpg
+bottomleftimage: /assets/2023/PR-Photos/PXL_20230312_210303575.jpg
 resources:
   - name: 3461 2023 Outreach Binder
   - name: FIRST Submitted Awards Page
