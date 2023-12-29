@@ -18,10 +18,21 @@ middlelefttext: >
   ##### Media Relations
 
 
-  We foster relationships with local media outlets, sharing our team's progress,
-  achievements, and impact within the community. Our efforts ensure that the
-  exciting developments and success stories from our team reach a broader
-  audience.
+  We foster relationships with local media outlets, such as NutmegTV, to share
+  our team's progress, achievements, and impact within the community. Our
+  efforts ensure that the exciting developments and success stories from our
+  team reach a broader audience.
+
+
+  ##### Budget Management
+
+
+  We meticulously manage the team's finances, allocating resources efficiently
+  to support various aspects of our robotics projects, competitions, and
+  outreach initiatives. We do this by building lasting relationships with
+  sponsors, who are crucial to our success. The Finance Subteam actively seeks
+  partnerships with companies and organizations that share our vision, securing
+  vital support for our team's activities.
 
 
   ##### Social Media Engagement
