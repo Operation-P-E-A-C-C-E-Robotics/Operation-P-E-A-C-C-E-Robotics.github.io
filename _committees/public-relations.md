@@ -1,7 +1,7 @@
 ---
 layout: committee
 title: Public Relations
-topcornerimage: /assets/committee/electrical/rioAndMotors.JPG
+topcornerimage: /assets/2023/PR Photos/PXL_20230311_163327451.PORTRAIT.jpg
 toprighttitle: |
   What We Do
 toprighttext: >
@@ -11,7 +11,7 @@ toprighttext: >
   ensure that our story, achievements, and passion for FIRST reach far and wide.
   Through strategic outreach and engagement, we aim to inspire, inform, and
   collaborate with diverse audiences.
-middlerightimage: /assets/committee/electrical/writingDocumentation.JPG
+middlerightimage: /assets/2022/PR Photos/PXL_20220827_165501029.jpg
 middlelefttitle: |
   What We Do
 middlelefttext: >
