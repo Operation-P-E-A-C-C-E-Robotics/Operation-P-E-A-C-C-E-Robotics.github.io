@@ -29,6 +29,39 @@
     },
     {
         "kind": "calendar#event",
+        "etag": "\"3395111732214000\"",
+        "id": "7r6chlkbilfhvkvila714po0b0",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=N3I2Y2hsa2JpbGZodmt2aWxhNzE0cG8wYjBfMjAyNDAxMTNUMTQwMDAwWiB0ZWFtQHBlYWNjZS5vcmc&ctz=UTC",
+        "created": "2023-10-17T15:14:03.000Z",
+        "updated": "2023-10-17T15:17:46.107Z",
+        "summary": "Robotics Meeting",
+        "location": "Arthur G. Russell Co., Inc., 750 Clark Ave, Bristol, CT 06010, USA",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2024-01-13T14:00:00Z",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2024-01-13T20:00:00Z",
+            "timeZone": "America/New_York"
+        },
+        "recurrence": [
+            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20240414T035959Z;BYDAY=SA"
+        ],
+        "iCalUID": "7r6chlkbilfhvkvila714po0b0@google.com",
+        "sequence": 0,
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
         "etag": "\"3395843820960000\"",
         "id": "2edf35tsp629t3v4nag1k9n13j",
         "status": "confirmed",
