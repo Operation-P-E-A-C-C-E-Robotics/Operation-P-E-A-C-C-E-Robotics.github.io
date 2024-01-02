@@ -86,15 +86,31 @@ permalink: /robots/current
       //  var events = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
        var year;
        var today = new Date();
-
+       kickoff = new Date(getFirstSaturdayInJanuary(year))
        if (today.getMonth() >= 9) {
           year = today.getFullYear() + 1;
-          kickoff = new Date(getFirstSaturdayInJanuary(year))
+          
           // console.log(kickoff)
-          document.getElementById("kickoffCountdownDays").innerHTML += (Math.ceil( (kickoff.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
-          document.getElementById("kickoffCountdown").style.display = "block";
+          // document.getElementById("kickoffCountdownDays").innerHTML += (Math.ceil( (kickoff.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
+          // document.getElementById("kickoffCountdown").style.display = "block";
        } else {
         year = new Date().getFullYear();
+       }
+
+       if (today >= kickoff) {
+        document.getElementById("kickoffCountdown").style.display = "block";
+        var x = setInterval(function() {
+          document.getElementById("kickoffCountdownDays").innerHTML += (Math.ceil( (kickoff.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
+          var now = convertTime(today).getTime();
+          // var d = new Date().toLocaleTimeString();
+          var distance = new Date(convertTimestamp(kickoff)).getTime() - now;
+          var days = Math.ceil( (kickoff.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) )
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          document.getElementById("kickoffCountdownDays").innerHTML = days + "d" + hours + "h " + minutes + "m " + seconds + "s ";
+        }, 1000);
+        
        }
 
       //  var eventstatuses = "/statuses?noMoreSecurityLeaks"
