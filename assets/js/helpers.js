@@ -17,6 +17,7 @@ function getFirstSaturdayInJanuary(year) {
 
     // Check if the day is a Saturday (where 0 is Sunday and 6 is Saturday) and not January 1st
     if (date.getDay() === 6 && day !== 1) {
+      return new Date(date.getFullYear(), date.getMonth(), date.getDay(), "12", "00")
       return date; // Found the first Saturday in January that is not New Year's Day
     }
   }
