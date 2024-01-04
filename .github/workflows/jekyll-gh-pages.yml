@@ -105,11 +105,7 @@ jobs:
         run: npx tinacms build
         
       - name: Build Main with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
-
+        run: bundle exec jekyll build --baseurl https://www.peacce.org/website-staging/
       # - name: Build Staging with Jekyll
       #   uses: actions/jekyll-build-pages@v1
       #   with:
