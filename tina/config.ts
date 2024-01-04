@@ -248,7 +248,8 @@ export default defineConfig({
         // This allows the customization of the list item UI
         // Data can be accessed by item?.<Name of field>
         itemProps: (item) => {
-          return { label: `${item?.header}`}
+          // console.log(item)
+          return { label: `${item?.header.children[0].children[0].text}`}
         },
       },
       fields: [
@@ -273,6 +274,81 @@ export default defineConfig({
           type: "image",
         },
       ]
+      },
+     ],
+     },
+     //start
+     {
+      name: "contact",
+      label: "Contact Page Config",
+      path: "_data",
+      ui: {
+        allowedActions: {
+          create: false,
+          delete: false,
+        },
+      },
+      match: {
+          // name of the data file
+          include: "contact",
+      },
+     format: "yaml",
+     fields: [
+      {
+        label: "Contact Info",
+        name: "contacts",
+        type: "object",
+        list: true,
+        ui: {
+          // This allows the customization of the list item UI
+          // Data can be accessed by item?.<Name of field>
+          itemProps: (item) => {
+            // console.log(item)
+            return { label: `${item?.address}`}
+          },
+        },
+        fields: [
+          {
+            label: "Type",
+            name: "type",
+            type: "string"
+          },
+          {
+            label: "Address",
+            name: "address",
+            type: "string"
+          },
+          {
+            label: "Description",
+            name: "name",
+            type: "string",
+          },
+        ]
+      },
+      {
+        name: 'images',
+        label: 'Image Slideshow',
+        type: 'object',
+        list: true,
+        ui: {
+          // This allows the customization of the list item UI
+          // Data can be accessed by item?.<Name of field>
+          itemProps: (item) => {
+            return { label: `${item?.alt}`}
+          },
+        },
+        fields: [
+          {
+            name: 'src',
+            label: 'Slideshow Image',
+            type: 'image',
+          },
+          {
+            name: 'alt',
+            label: 'Image Description',
+            type: 'string',
+          },
+        ]
       },
      ],
      },

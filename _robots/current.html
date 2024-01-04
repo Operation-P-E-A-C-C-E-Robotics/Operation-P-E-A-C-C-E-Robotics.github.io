@@ -57,7 +57,17 @@ permalink: /robots/current
       <h3>All data provided by The Blue Alliance <img src="/assets/images/tba_lamp.svg" style="height:3.5vh;"></h3>
       <button type="button" class="btn btn-primary align-middle" onclick=viewOnTBA();>View On The Blue Alliance <span><img style="height: 25px;" src="/assets/images/tba_lamp.svg"></span></button>
       <div class="mx-auto">
-        <h1 id="kickoffCountdown" class="text-center pt-5" style="display: none;">Kickoff is in <b id="kickoffCountdownDays"></b> Days!</h1>
+        <h1 class="countdown text-center pt-5" id="kickoffCountdown" style="display: none;">
+          Kickoff is in
+          <b>
+          <span class="countdown-number countdown-days">-</span><span class="countdown-label day-label">D </span>
+          <span class="countdown-number countdown-hours">-</span><span class="countdown-label">H </span>
+          <span class="countdown-number countdown-minutes">-</span><span class="countdown-label">M </span>
+          <span class="countdown-number countdown-seconds">-</span><span class="countdown-label">S</span>
+          </b>
+          <!-- <small>until Kickoff</small> -->
+        </h1>
+        <h1 id="kickoffCountdown" class="text-center pt-5" style="display: none;">Kickoff is in <b id="kickoffCountdownDays"></b></h1>
         <h1 id="competitionCountdown" class="text-center pt-5" style="display:none;">Competition is in <b id="competitionCountdownDays"></b> Days!</h1>
       </div>
     </div>
@@ -82,19 +92,62 @@ permalink: /robots/current
 <!-- <script src="/assets/js/helpers.js"></script> -->
 <script>
 
+  function update_countdown() {
+    var finish_utc = getFirstSaturdayInJanuary(year);
+    var current_utc = new Date().getTime();
+    var time_diff = finish_utc - current_utc;
+    var seconds = Math.floor(time_diff / 1000);
+    var minutes = Math.floor(seconds / 60);
+    var hours = Math.floor(minutes / 60);
+    var days = Math.floor(hours / 24);
+    var content;
 
+    hours %= 24;
+    minutes %= 60;
+    seconds %= 60;
+    
+    if (time_diff < 0) {
+        $('.countdown').remove();
+        return;
+    }
+
+    $('.countdown-days').text(days);
+    $('.countdown-hours').text(hours);
+    $('.countdown-minutes').text(minutes);
+    $('.countdown-seconds').text(seconds);
+    setTimeout('update_countdown()', 1000);
+  }
       //  var events = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
        var year;
        var today = new Date();
-
+       var kickoff = new Date(getFirstSaturdayInJanuary(year))
        if (today.getMonth() >= 9) {
           year = today.getFullYear() + 1;
-          kickoff = new Date(getFirstSaturdayInJanuary(year))
+          var kickoff = new Date(getFirstSaturdayInJanuary(year))
           // console.log(kickoff)
-          document.getElementById("kickoffCountdownDays").innerHTML += (Math.ceil( (kickoff.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
-          document.getElementById("kickoffCountdown").style.display = "block";
+          // document.getElementById("kickoffCountdownDays").innerHTML += (Math.ceil( (kickoff.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
+          // document.getElementById("kickoffCountdown").style.display = "block";
        } else {
         year = new Date().getFullYear();
+        var kickoff = new Date(getFirstSaturdayInJanuary(year))
+       }
+
+       if (today <= kickoff) {
+        // var x = setInterval(function() {
+        //   // document.getElementById("kickoffCountdownDays").innerHTML += (Math.ceil( (kickoff.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
+        //   var now = convertTime(new Date()).getTime();
+        //   // var d = new Date().toLocaleTimeString();
+        //   var distance = new Date(convertTimestamp(kickoff)).getTime() - now;
+        //   var days = Math.floor( (kickoff.getTime() - now) / (1000 * 60 * 60 * 24) )
+        //   var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        //   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        //   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        //   document.getElementById("kickoffCountdownDays").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        // }, 1000);
+        // console.log(x);
+
+        update_countdown()
+        document.getElementById("kickoffCountdown").style.display = "block";
        }
 
       //  var eventstatuses = "/statuses?noMoreSecurityLeaks"
@@ -197,7 +250,7 @@ permalink: /robots/current
         // console.log(teams)
 
         if (team) {
-          document.getElementById("districtRank").innerHTML = "District Rank: " + team.rank + "/" + teams.length + "*";
+          document.getElementById("districtRank").innerHTML = "District Rank: " + team.rank + "/" + teams.length;
           document.getElementById("districtPoints").innerHTML = "Total District Points: " + team.point_total;
         }
       }

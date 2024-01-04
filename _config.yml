@@ -1,6 +1,7 @@
 collections:
   robots:
     output: true
+    page_excerpts: true
   
   
   forms:
@@ -9,6 +10,7 @@ collections:
   committees:
     output: true
     permalink: /committee/:title
+    layout: committee
 
 
 defaults:
@@ -44,7 +46,7 @@ defaults:
       bg: light
       txt: dark
 
-
+page_excerpts: true
 
 plugins:
   - "jekyll-github-metadata"
