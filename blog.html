@@ -6,39 +6,33 @@ permalink: /posts
 <div class="container">
   <br>
   <div class="col-md-12 col-lg-12 text-dark">
-    {% assign posts_by_year = site.posts | group_by_exp:"post", "post.date | date: '%Y'" %}
+    {% for post in site.posts %}
+      <article class="post vt-post">
+          <div class="row">
 
-    {% for year in posts_by_year %}
-        <h2>{{ year.name }}</h2>
-        {% for post in year.items %}
-            <article class="post vt-post">
-                <div class="row">
-
-                    <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
-                        <div class="caption p-3">
-                            <h3 class="md-heading">{{post.title}}</h3>
-                            <p> {{post.excerpt}} </p>
-                            <a class="btn btn-default btn-outline-primary" href="{{post.url}}" role="button">Read More</a> 
-                        </div>
-                        <div class="author-info author-info-2">
-                            <ul class="list-inline">
-                            <li>
-                                <div class="info">
-                                    <p>Posted on:</p>
-                                    <strong>{{ post.date | date: 	'%A, %B %e %Y'}}</strong></div>
-                            </li>
-                            <li>
-                                <div class="info pl-5">
-                                    <p>Author:</p>
-                                    <strong>{{ post.author }}</strong></div>
-                            </li>
-                        </ul>
-                        </div>
-                    </div>
+              <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
+                  <div class="caption p-3">
+                      <h3 class="md-heading">{{post.title}}</h3>
+                      <p> {{post.excerpt}} </p>
+                      <a class="btn btn-default btn-outline-primary" href="{{post.url}}" role="button">Read More</a> 
+                  </div>
+                  <div class="author-info author-info-2">
+                    <ul class="list-inline">
+                      <li>
+                          <div class="info">
+                              <p>Posted on:</p>
+                              <strong>{{ post.date | date: 	'%A, %B %e %Y'}}</strong></div>
+                      </li>
+                      <li>
+                          <div class="info pl-5">
+                              <p>Author:</p>
+                              <strong>{{ post.author }}</strong></div>
+                      </li>
+                  </ul>
                 </div>
-            </article>
-        {% endfor %}
-
+              </div>
+          </div>
+      </article>
     {% endfor %}
       
       <!-- <div class="pagination-wrap">
