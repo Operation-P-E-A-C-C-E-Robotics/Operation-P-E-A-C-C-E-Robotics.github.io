@@ -304,7 +304,7 @@ permalink: /robots/current
           nextEvent = events[0];
           nextEventDate = new Date(nextEvent.start_date);
           today = new Date()
-          if ( today.getMonth() >= nextEventDate.getMonth() - 1 && today.getMonth() <= nextEventDate.getMonth() + 1) {
+          if ( today >= nextEventDate ) {
             document.getElementById("competitionCountdownDays").innerHTML += (Math.ceil( (nextEventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
             document.getElementById("competitionCountdown").style.display = "block";
           }
