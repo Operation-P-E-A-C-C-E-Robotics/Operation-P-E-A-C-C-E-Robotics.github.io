@@ -67,8 +67,18 @@ permalink: /robots/current
           </b>
           <!-- <small>until Kickoff</small> -->
         </h1>
-        <h1 id="kickoffCountdown" class="text-center pt-5" style="display: none;">Kickoff is in <b id="kickoffCountdownDays"></b></h1>
-        <h1 id="competitionCountdown" class="text-center pt-5" style="display:none;">Competition is in <b id="competitionCountdownDays"></b> Days!</h1>
+        <h1 id="kickoffCountdown" class="text-center pt-5" style="display: none;">Kickoff is in <b id="kickoffCountdownDays">
+
+          </b>
+        </h1>
+        <h1 id="competitionCountdown" class="text-center pt-5" style="display:none;">Competition is in 
+          <b id="competitionCountdownDays">
+            <span class="countdown-number countdown-days">-</span><span class="countdown-label day-label">D </span>
+            <span class="countdown-number countdown-hours">-</span><span class="countdown-label">H </span>
+            <span class="countdown-number countdown-minutes">-</span><span class="countdown-label">M </span>
+            <span class="countdown-number countdown-seconds">-</span><span class="countdown-label">S</span>
+          </b> 
+        </h1>
       </div>
     </div>
   </div>
@@ -92,8 +102,8 @@ permalink: /robots/current
 <!-- <script src="/assets/js/helpers.js"></script> -->
 <script>
 
-  function update_countdown() {
-    var finish_utc = getFirstSaturdayInJanuary(year);
+  function update_countdown(element, finish) {
+    var finish_utc = finish;
     var current_utc = new Date().getTime();
     var time_diff = finish_utc - current_utc;
     var seconds = Math.floor(time_diff / 1000);
@@ -107,14 +117,14 @@ permalink: /robots/current
     seconds %= 60;
     
     if (time_diff < 0) {
-        $('.countdown').remove();
+        $(element).remove();
         return;
     }
 
-    $('.countdown-days').text(days);
-    $('.countdown-hours').text(hours);
-    $('.countdown-minutes').text(minutes);
-    $('.countdown-seconds').text(seconds);
+    $(element)('.countdown-days').text(days);
+    $(element)('.countdown-hours').text(hours);
+    $(element)('.countdown-minutes').text(minutes);
+    $(element)('.countdown-seconds').text(seconds);
     setTimeout('update_countdown()', 1000);
   }
       //  var events = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
@@ -146,7 +156,7 @@ permalink: /robots/current
         // }, 1000);
         // console.log(x);
 
-        update_countdown()
+        update_countdown(document.getElementById('kickoffCountdownDays'), kickoff)
         document.getElementById("kickoffCountdown").style.display = "block";
        }
 
@@ -305,7 +315,8 @@ permalink: /robots/current
           nextEventDate = new Date(nextEvent.start_date);
           today = new Date()
           if ( today >= nextEventDate ) {
-            document.getElementById("competitionCountdownDays").innerHTML += (Math.ceil( (nextEventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
+            update_countdown(document.getElementById('competitionCountdownDays'), nextEventDate)
+            // document.getElementById("competitionCountdownDays").innerHTML += (Math.ceil( (nextEventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
             document.getElementById("competitionCountdown").style.display = "block";
           }
          }
