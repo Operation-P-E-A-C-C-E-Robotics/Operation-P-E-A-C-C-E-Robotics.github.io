@@ -18,7 +18,7 @@ export default defineConfig({
   token, // Get this from tina.io
 
   build: {
-    basePath: "website-staging",
+    basePath: "/",
     outputFolder: "admin",
     publicFolder: "/",
   },
@@ -448,6 +448,105 @@ export default defineConfig({
             label: "Write Up",
             isBody: true,
           },
+          //start
+            {
+              label: "Sponsor Benefits Description",
+              name: "text",
+              type: "object",
+              list: false,
+              fields: [
+                {
+                  label: "Header",
+                  name: "header",
+                  type: "string"
+                },
+                {
+                  label: "Explenation Paragraph",
+                  name: "p1",
+                  type: "rich-text"
+                },
+    
+                {
+                  label: "Benefits Paragraph",
+                  name: "p2",
+                  type: "rich-text"
+                }
+              ]
+            },
+            {
+            label: "Sponsors",
+            name: "sponsors",
+            type: "object",
+            list: true,
+            ui: {
+              // This allows the customization of the list item UI
+              // Data can be accessed by item?.<Name of field>
+              itemProps: (item) => {
+                return { label: `${item?.name} (${item?.sponsortier}) Hidden: ${item?.hidden}`}
+              },
+            },
+            fields: [
+              {
+                label: "Name",
+                name: "name",
+                type: "string"
+              },
+              {
+                label: "Sponsor Tier",
+                name: "sponsortier",
+                type: "string",
+                options: [
+                  {
+                    value: "Title",
+                    label: "Title",
+                  }, 
+                  {
+                    value: "Platinum",
+                    label: "Platinum",
+                  },
+                  {
+                    value: "Gold",
+                    label: "Gold",
+                  },
+                  {
+                    value: "Silver",
+                    label: "Silver",
+                  },
+                  {
+                    value: "Bronze",
+                    label: "Bronze",
+                  },
+                ],
+              },
+              {
+                label: "Sponsor Summary",
+                name: "summary",
+                type: "rich-text"
+              },
+              {
+                label: "Website",
+                name: "website",
+                type: "string"
+              },
+              {
+                label: "Display Name Only",
+                name:"isNameOnly",
+                type: "boolean",
+              },
+              {
+                label: "Logo",
+                name: "image",
+                type: "image"
+              },
+              {
+                label: "Hide from Sponsor List",
+                name:"hidden",
+                type: "boolean",
+              },
+    
+            ]
+          },          
+          //end
           {
             label: "Published",
             name: "published",
@@ -582,7 +681,7 @@ export default defineConfig({
           // This allows the customization of the list item UI
           // Data can be accessed by item?.<Name of field>
           itemProps: (item) => {
-            return { label: `${item?.name} (${item?.sponsortier})`}
+            return { label: `${item?.name} (${item?.sponsortier} Hidden: ${item?.hidden})`}
           },
         },
         fields: [
