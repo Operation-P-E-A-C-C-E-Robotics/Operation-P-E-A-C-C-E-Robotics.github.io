@@ -12,7 +12,7 @@ import { date } from "zod";
 
  const searchToken = process.env.TINA_SEARCH
 
- const buildPath = process.env.BUILD_PATH || null
+ const buildPath = process.env.BUILD_PATH || "/"
  
 export default defineConfig({
   branch,
