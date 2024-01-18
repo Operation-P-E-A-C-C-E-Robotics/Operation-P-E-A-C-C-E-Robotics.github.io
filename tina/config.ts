@@ -11,6 +11,8 @@ import { date } from "zod";
  const token = process.env.TINA_TOKEN || null
 
  const searchToken = process.env.TINA_SEARCH
+
+ const buildPath = process.env.BUILD_PATH || '/'
  
 export default defineConfig({
   branch,
@@ -18,6 +20,7 @@ export default defineConfig({
   token, // Get this from tina.io
 
   build: {
+    basePath: buildPath,
     outputFolder: "admin",
     publicFolder: "/",
   },
