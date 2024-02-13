@@ -76,7 +76,50 @@ layout: default
     <div class="table-responsive pt-2 rounded-lg" style="border: 1px solid rgba(0,0,0,.125); border-radius: 4px;">
         <table id="employees" class="table table-bordered table-light table-striped text-dark"></table>
     </div> 
-
+    <br>
+    <section id="bestMatch">
+      <div class="jumbotron text-dark">
+        <div class="row">
+          <div class="col-6">
+            <h1>Highest Scoring Match</h1>
+            <h2 id="bestMatchEventName"></h2>
+            <h2 id="bestMatchMatchName"></h2>
+            <div class="table-responsive pt-2 rounged-lg">
+              <table class="table table-bordered table-light text-light">
+                <tbody>
+                  <tr>
+                    <th class="bg-danger">Red Alliance</th>
+                    <th class="bg-primary">Blue Alliance</th>
+                  </tr>
+                  <tr>
+                    <td class="bg-danger" id="bestMatchRedOne"></td>
+                    <td class="bg-primary" id="bestMatchBlueOne"></td>
+                  </tr>
+                  <tr>
+                    <td class="bg-danger" id="bestMatchRedTwo"></td>
+                    <td class="bg-primary" id="bestMatchBlueTwo"></td>
+                  </tr>
+                  <tr>
+                    <td class="bg-danger" id="bestMatchRedThree"></td>
+                    <td class="bg-primary" id="bestMatchBlueThree"></td>
+                  </tr>
+                  <tr>
+                    <td class="bg-danger" id="bestMatchRedScore"></td>
+                    <td class="bg-primary" id="bestMatchBlueScore"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="embed-responsive embed-responsive-16by9 mx-auto">
+              <iframe  id="bestMatchYTEmbed" src="/assets/images/notFound.png" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+              
+          </div>
+        </div>
+      </div>
+    </section>
     <br>
     <section id="event-graphs">
 
@@ -551,6 +594,78 @@ function sortEventBanners() {
     var apiPromise = await fetch(apiURL);
     var matches = await apiPromise.json();
     generateDataSet(matches);
+    var highestScoringMatch = getHighestRankingOnSeasonMatch(matches);
+    // console.log(highestScoringMatch)
+    updateBestMatchBanner(highestScoringMatch);
+  }
+
+  async function updateBestMatchBanner(highScore) {
+    event_name = await getEventNameFromKey(highScore.event_key)
+    document.getElementById('bestMatchEventName').innerText += event_name 
+    match_name = await getMatchNameFromKey(highScore.key)
+    document.getElementById('bestMatchMatchName').innerText += match_name
+
+    try{ 
+    document.getElementById('bestMatchYTEmbed').src = "https://www.youtube-nocookie.com/embed/" + highScore.videos[0].key 
+    }
+    catch {
+
+    }
+    function clearFRCfromTeamKey(team_key) {
+      if (team_key.includes("3461")) {
+        return "<b>" + team_key.replace("frc", "") + "</b>" 
+      }
+      return team_key.replace("frc", "")
+    }
+
+    document.getElementById('bestMatchRedOne').innerHTML += clearFRCfromTeamKey(highScore.alliances.red.team_keys[0])
+    document.getElementById('bestMatchBlueOne').innerHTML += clearFRCfromTeamKey(highScore.alliances.blue.team_keys[0])
+
+    document.getElementById('bestMatchRedTwo').innerHTML += clearFRCfromTeamKey(highScore.alliances.red.team_keys[1])
+    document.getElementById('bestMatchBlueTwo').innerHTML += clearFRCfromTeamKey(highScore.alliances.blue.team_keys[1])
+
+    document.getElementById('bestMatchRedThree').innerHTML += clearFRCfromTeamKey(highScore.alliances.red.team_keys[2])
+    document.getElementById('bestMatchBlueThree').innerHTML += clearFRCfromTeamKey(highScore.alliances.blue.team_keys[2])
+
+    document.getElementById('bestMatchRedScore').innerText += "Score: "+ highScore.alliances.red.score
+    document.getElementById('bestMatchBlueScore').innerText += "Score: "+highScore.alliances.blue.score
+  }
+
+  function getHighestRankingOnSeasonMatch(matches) {
+    var bestMatch = null
+    var highScore = 0;
+    var currentScore = 0;
+    if (matches.length == 0) {
+      document.getElementById('bestMatch').hidden = true
+    }
+    for (var i = 0; i < matches.length; i++) {
+      match = new Object(matches[i]);
+      var redAlliance =  match.alliances.red
+      var blueAlliance =  match.alliances.blue
+      
+
+
+        function getScore(alliance) {
+          return alliance.score
+        }
+
+        if (redAlliance.team_keys.includes("frc3461")) {
+          currentScore = getScore(redAlliance)
+        } else if (blueAlliance.team_keys.includes("frc3461")) {
+          currentScore = getScore(blueAlliance)
+        }
+
+        // console.log(match.key, currentScore)
+        if (currentScore > highScore) {
+          highScore = currentScore
+          bestMatch = match
+          console.log("Best Scoring Match:", match.key, currentScore, ">", highScore)
+        }
+
+        
+    }
+    console.log(currentScore, bestMatch)
+    return bestMatch
   }
 
   function generateDataSet(matches) {
@@ -783,6 +898,27 @@ async function getShortEventNameFromKey(key) {
   const event = events.find(event => event.key === key);
   
   return event ? event.short_name : null;
+}
+
+async function getMatchNameFromKey(key) {
+  const apiResponse = await fetch(`https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/${year}_matches.json`);
+  const events = await apiResponse.json();
+  
+  const event = events.find(event => event.key === key);
+
+  if (event.comp_level === "qm") {
+      var matchtitle = "Qualification Match";
+  } else if (event.comp_level === "qf") {
+      var matchtitle = "Quarterfinal " + event.set_number + " Match";
+  } else if (event.comp_level === "sf") {
+      var matchtitle = "Semifinal " + event.set_number + " Match";
+  } else if (event.comp_level === "f") {
+      var matchtitle = "Final";
+  } else {
+      var matchtitle = "Unknown";
+  }
+  
+  return event ? matchtitle + " " + event.match_number : null;
 }
 
 
