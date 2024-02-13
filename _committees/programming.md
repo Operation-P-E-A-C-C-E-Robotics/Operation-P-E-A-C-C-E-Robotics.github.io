@@ -3,7 +3,7 @@ layout: committee
 bottomrighttitle: Bottom Right Title
 bottomrighttext: qui est unde deus
 title: Programming
-topcornerimage: /assets/committee/cad/computerWork.JPG
+topcornerimage: /assets/committee/programming/joystickDashboard.JPG
 toprighttitle: |
   Programming in a real-world enviroment!
 toprighttext: >
@@ -14,7 +14,7 @@ toprighttext: >
   FIRST Robotics Competition. Our dedicated team specializes in various
   programming languages like Java, Jekyll, and more, leveraging GitHub for
   collaborative code development to bring our robots to life.
-middlerightimage: /assets/committee/cad/gearbox.JPG
+middlerightimage: /assets/committee/programming/progMeeting.jpg
 middlelefttitle: |
   What We Do
 middlelefttext: >
@@ -58,9 +58,13 @@ middlelefttext: >
   development? Join our Programming sub-team and contribute your expertise in
   programming languages, algorithm design, or software testing to empower our
   robots with intelligence and precision.
-bottomleftimage: /assets/committee/cad/drivebaseRender.PNG
+bottomleftimage: /assets/committee/programming/confused.JPG
 resources:
-  - name: Onshape
-    link: 'https://www.onshape.com/en/'
+  - name: Team Github
+    link: 'https://github.com/Operation-P-E-A-C-C-E-Robotics'
+  - name: WPILib Documentation
+    link: 'https://docs.wpilib.org/en/stable/'
+  - name: WPILib Github
+    link: 'https://github.com/wpilibsuite/allwpilib'
 ---
 
