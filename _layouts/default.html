@@ -42,18 +42,19 @@
     
   <!-- <meta property="og:title" content="Operation PEACCE Robotics - Team 3461" /> -->
   <meta property="og:type" content="sports_team" />
-  <meta property="og:url" content="{{ page.url }}"/>
+  <meta property="og:url" content="{{ page.url | absolute_url }}"/>
   {% if page.layout != "robot" %}
   <meta property="og:title" content="{{page.title}}" />
   <meta property="title" content="{{page.title}}">
   <meta property="image" content="/assets/images/PeacceLogoTieDyeWhiteText.svg" />
   <meta property="og:image" content="/assets/images/PeacceLogoTieDyeWhiteText.svg">
   {% else %}
-  <meta property="og:title" content="{{ page.year }} Robot: {{ page.robotName }}" />
-  <meta property="og:description" content="{{ page.game }} performace and statistics"/>
+  <meta property="og:title" content="{{ page.year }} {{ page.game}} Robot: {{ page.robotName }}" />
+  {% assign stripped_content = page.content | strip_html %}
+  <meta property="og:description" content="{{stripped_content}}"/>
   <meta property="og:image" content="{{ page.thumbnail }}?width=320">
-  <meta property="title" content="{{ page.year }} Robot: {{ page.robotName }}" />
-  <meta property="description" content="{{ page.game }} performace and statistics {{page.excerpt}}"/>
+  <meta property="title" content="{{ page.year }} {{ page.game}} Robot: {{ page.robotName }}" />
+  <meta property="description" content="{{stripped_content}}"/>
   <meta property="image" content="{{ page.thumbnail }}">
   {% endif %}
   <meta property="og:description" content="
