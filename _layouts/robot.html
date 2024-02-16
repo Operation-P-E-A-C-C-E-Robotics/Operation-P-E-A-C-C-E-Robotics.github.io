@@ -163,9 +163,10 @@ layout: default
   <h1 class="text-center"><strong>Thank you to this year's Sponsors</strong></h1>
   <br>
   <h2><strong>Title Sponsors</strong></h2>
-  {% for sponsor in page.sponsors %}
+  {% assign page_year = page.year %}
+  {% for sponsor in site.data.sponsors.sponsors %}
+  {% if sponsor.years contains page_year %}
   {% if sponsor.sponsortier == "Title" %}
-  {% if sponsor.hidden == false %}
       <div class="row text-dark mt-3 pt-3 bg-light rounded">
           <div class="col-sm-4">
               {% if sponsor.image %}
@@ -194,9 +195,9 @@ layout: default
   <h2><strong>Platinum Sponsors</strong></h2>
   <br>
   <div class="row text-dark bg-light rounded mt-3 pt-3">
-  {% for sponsor in page.sponsors %}
+  {% for sponsor in site.data.sponsors.sponsors %}
+  {% if sponsor.years contains page_year %}
   {% if sponsor.sponsortier == "Platinum" %}
-  {% if sponsor.hidden == false %}
   <div class="col-sm-6 p-4">
       <!-- <div class="row text-dark mt-3 bg-light rounded pt-3"> -->
           <!-- <div class="col-sm-4"> -->
@@ -220,6 +221,7 @@ layout: default
       <!-- </div> -->
   </div>
       <br>
+    
   {% endif %}
   {% endif %}
   {% endfor %}
@@ -229,9 +231,9 @@ layout: default
   <h2><strong>Gold Sponsors</strong></h2>
   <br>
   <div class="row text-dark mt-3 bg-light rounded pt-3">
-  {% for sponsor in page.sponsors %}
+  {% for sponsor in site.data.sponsors.sponsors %}
+  {% if sponsor.years contains page_year %}
   {% if sponsor.sponsortier == "Gold" %}
-  {% if sponsor.hidden == false %}
       <div class="col-sm-3 p-4">
           <!-- <div class="row text-dark mt-3 bg-light rounded pt-3"> -->
               <!-- <div class="col-sm-4"> -->
@@ -263,9 +265,9 @@ layout: default
   <br>
   <h2><strong>Silver Sponsors</strong></h2>
   <div class="row text-dark mt-3 bg-light rounded pt-3">
-  {% for sponsor in page.sponsors %}
+  {% for sponsor in site.data.sponsors.sponsors %}
+  {% if sponsor.years contains page_year %}
   {% if sponsor.sponsortier == "Silver" %}
-  {% if sponsor.hidden == false %}
   <div class="col-sm-3 p-4">
       <!-- <div class="row text-dark mt-3 bg-light rounded pt-3"> -->
           <!-- <div class="col-sm-4"> -->

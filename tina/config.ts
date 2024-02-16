@@ -541,6 +541,28 @@ export default defineConfig({
                 type: "image"
               },
               {
+                label: "Years Sponsored",
+                name: "years",
+                type: "object",
+                list: "true",
+                fields: [
+                  // Other fields for the sponsor configuration
+                  {
+                    label: 'Years Sponsored',
+                    name: 'years',
+                    component: 'list',
+                    description: 'Select the years the sponsor has sponsored.',
+                    default: [],
+                    options: Array.from({ length: new Date().getFullYear() - 2010 }, (_, index) => {
+                      return {
+                        label: (2011 + index).toString(),
+                        value: 2011 + index
+                      };
+                    })
+                  }
+                ],
+              },
+              {
                 label: "Hide from Sponsor List",
                 name:"hidden",
                 type: "boolean",
