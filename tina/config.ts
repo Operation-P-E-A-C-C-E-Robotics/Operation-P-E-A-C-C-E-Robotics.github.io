@@ -475,107 +475,11 @@ export default defineConfig({
                 }
               ]
             },
-            {
-            label: "Sponsors",
-            name: "sponsors",
-            type: "object",
-            list: true,
-            ui: {
-              // This allows the customization of the list item UI
-              // Data can be accessed by item?.<Name of field>
-              itemProps: (item) => {
-                return { label: `${item?.name} (${item?.sponsortier}) Hidden: ${item?.hidden}`}
-              },
-            },
-            fields: [
-              {
-                label: "Name",
-                name: "name",
-                type: "string"
-              },
-              {
-                label: "Sponsor Tier",
-                name: "sponsortier",
-                type: "string",
-                options: [
-                  {
-                    value: "Title",
-                    label: "Title",
-                  }, 
-                  {
-                    value: "Platinum",
-                    label: "Platinum",
-                  },
-                  {
-                    value: "Gold",
-                    label: "Gold",
-                  },
-                  {
-                    value: "Silver",
-                    label: "Silver",
-                  },
-                  {
-                    value: "Bronze",
-                    label: "Bronze",
-                  },
-                ],
-              },
-              {
-                label: "Sponsor Summary",
-                name: "summary",
-                type: "rich-text"
-              },
-              {
-                label: "Website",
-                name: "website",
-                type: "string"
-              },
-              {
-                label: "Display Name Only",
-                name:"isNameOnly",
-                type: "boolean",
-              },
-              {
-                label: "Logo",
-                name: "image",
-                type: "image"
-              },
-              {
-                label: "Years Sponsored",
-                name: "years",
-                type: "object",
-                list: "true",
-                fields: [
-                  // Other fields for the sponsor configuration
-                  {
-                    label: 'Years Sponsored',
-                    name: 'years',
-                    component: 'list',
-                    description: 'Select the years the sponsor has sponsored.',
-                    default: [],
-                    options: Array.from({ length: new Date().getFullYear() - 2010 }, (_, index) => {
-                      return {
-                        label: (2011 + index).toString(),
-                        value: 2011 + index
-                      };
-                    })
-                  }
-                ],
-              },
-              {
-                label: "Hide from Sponsor List",
-                name:"hidden",
-                type: "boolean",
-              },
-    
-            ]
-          },          
-          //end
           {
             label: "Published",
             name: "published",
             type: "boolean",
-            },
+          },
         ],
       },
 
@@ -760,6 +664,20 @@ export default defineConfig({
             label: "Logo",
             name: "image",
             type: "image"
+          },
+          {
+            label: "Years Sponsored",
+            name: "years",
+            type: "string",
+            list: "true",
+            options: Array.from({ length: new Date().getFullYear() - 2010 }, (_, index) => {
+              return {
+                label: (2011 + index).toString(),
+                value: 2011 + index,
+              };
+            }),
+            description: 'Select the years the sponsor has sponsored.',
+            default: [],
           },
           {
             label: "Hide from Sponsor List",
