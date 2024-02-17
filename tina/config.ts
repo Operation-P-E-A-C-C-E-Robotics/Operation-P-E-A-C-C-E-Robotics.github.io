@@ -13,7 +13,16 @@ import { date } from "zod";
  const searchToken = process.env.TINA_SEARCH
 
  const buildPath = process.env.BUILD_PATH || "/"
- 
+
+  // Create an array of options for selecting years
+  const yearOptions = Array.from({ length: new Date().getFullYear() - 2010 }, (_, index) => {
+    const year = 2011 + index;
+    return {
+      label: year.toString(),
+      value: year.toString(),
+    };
+  });
+
 export default defineConfig({
   branch,
   clientId, // Get this from tina.io
@@ -31,6 +40,8 @@ export default defineConfig({
     },
   },
 
+
+  
   schema: {
 
     collections: [
@@ -587,7 +598,7 @@ export default defineConfig({
               name: "header",
               type: "string"
             },
-            {
+            { 
               label: "Explenation Paragraph",
               name: "p1",
               type: "rich-text"
@@ -598,7 +609,7 @@ export default defineConfig({
               name: "p2",
               type: "rich-text"
             }
-          ]
+          ],
         },
         {
         label: "Sponsors",
@@ -658,7 +669,7 @@ export default defineConfig({
           {
             label: "Display Name Only",
             name:"isNameOnly",
-            type: "boolean",
+            type: "boolean"
           },
           {
             label: "Logo",
@@ -669,23 +680,15 @@ export default defineConfig({
             label: "Years Sponsored",
             name: "years",
             type: "string",
-            list: "true",
-            options: Array.from({ length: new Date().getFullYear() - 2010 }, (_, index) => {
-              return {
-                label: (2011 + index).toString(),
-                value: 2011 + index,
-              };
-            }),
-            description: 'Select the years the sponsor has sponsored.',
-            default: [],
+            options: yearOptions,
           },
           {
             label: "Hide from Sponsor List",
             name:"hidden",
-            type: "boolean",
+            type: "boolean"
           },
 
-        ]
+        ],
       },
 
       ],
@@ -781,6 +784,7 @@ export default defineConfig({
 
      
     ],
+
   },
 
   search: {
@@ -792,4 +796,7 @@ export default defineConfig({
     maxSearchIndexFieldLength: 100
   },
 
+
+
 });
+
