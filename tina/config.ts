@@ -16,12 +16,12 @@ import { date } from "zod";
 
   // Create an array of options for selecting years
   const yearOptions = Array.from({ length: new Date().getFullYear() - 2010 }, (_, index) => {
-    const year = 2011 + index;
     return {
-      label: year.toString(),
-      value: year.toString(),
+      label: (2011 + index).toString(),
+      value: 2011 + index.toString(),
     };
-  });
+  })
+
 
 export default defineConfig({
   branch,
