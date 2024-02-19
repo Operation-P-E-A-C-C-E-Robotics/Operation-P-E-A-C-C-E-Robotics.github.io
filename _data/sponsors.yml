@@ -1,82 +1,4 @@
-text:
-  header: Sponsor and Donation Benefits
-  p1: >
-    Our team could always use sponsorship to help us pay for new tools and
-    parts, traveling to competitions, outreach opportunities, and more. We have
-    several guidelines and rules on the different levels of sponsorship or just
-    a donation with specific benefits listed.
-  p2: >
-    **Bronze ($25-99.00 donation)**
-
-
-    * A social media "shout-out" on our team Facebook, Twitter and Instagram
-    page
-
-    * A thank you letter
-
-
-    **Silver ($100-999.00 donation)**\\
-
-    Bronze benefits, plus...
-
-
-    * A business card sized logo displayed on our robot, our banner at events,
-    tournaments, fundraisers, and on the back of our t-shirts worn by team
-    members
-
-    * Your logo and a link to your website on the sponsorship page of our
-    website
-
-
-    **Gold ($1000-2,999.00 donation)**\\
-
-    Silver benefits, plus...
-
-
-    * A small version logo of your business displayed on our robot, our banner
-    at events, tournaments, fundraisers, and on the back of our t-shirts worn by
-    team members
-
-
-    **Platinum ($3,000-4,999.00 donation)**\\
-
-    Gold benefits, plus...
-
-
-    * A medium version of your business' logo displayed on our robot, our banner
-    at events, tournaments, fundraisers, and on the back of our t-shirts worn by
-    team members
-
-    * A thank you letter with a plaque
 sponsors:
-  - name: Dymax
-    sponsortier: Silver
-    summary: ''
-    website: 'https://dymax.com/'
-    image: /assets/sponsors/dymax_logo.png
-    years:
-      - '2022'
-    hidden: true
-  - name: Radcliff Wire Inc
-    sponsortier: Silver
-    summary: ''
-    website: 'https://radcliffwire.com/'
-    image: /assets/sponsors/Radcliff Wire Inc.png
-    years:
-      - '2022'
-      - '2019'
-      - '2018'
-      - '2017'
-    hidden: true
-  - name: Har-Conn Chrome Co.
-    sponsortier: Silver
-    summary: ''
-    website: 'https://www.har-conn.com/'
-    image: /assets/sponsors/har-conn-logo.png
-    years:
-      - '2022'
-      - '2019'
-    hidden: true
   - name: Aerospace Alloys Inc
     sponsortier: Silver
     summary: ''
@@ -87,38 +9,6 @@ sponsors:
       - '2019'
       - '2018'
       - '2017'
-    hidden: true
-  - name: Festo
-    sponsortier: Silver
-    summary: ''
-    website: 'https://www.festo.com'
-    image: /assets/sponsors/festo.svg
-    years:
-      - '2022'
-    hidden: true
-  - name: Olheiser
-    sponsortier: Gold
-    summary: ''
-    website: 'https://otcindustrial.com/ohlheiser'
-    image: /assets/sponsors/Olheiser.webp
-    years:
-      - '2022'
-      - '2018'
-      - '2017'
-    hidden: true
-  - name: Hartford County 4H
-    sponsortier: Title
-    summary: >
-      We have been with 4-H since the beginning of our team. We made this
-      decision to work with them so that we would be able to be non-affiliated
-      with a school of any kind (allowing a diverse environment for both
-      students attending high school and homeschoolers). They provide us with
-      helpful resources and help with our travel expenses and FIRST entrance
-      fees.
-    website: 'https://4-h.extension.uconn.edu/'
-    isNameOnly: false
-    image: /assets/sponsors/4h-logo.svg
-    years: []
     hidden: true
   - name: Arthur G Russell Company
     sponsortier: Title
@@ -147,40 +37,7 @@ sponsors:
       - '2024'
       - '2014'
     hidden: false
-  - name: Mavice
-    sponsortier: Platinum
-    summary: ''
-    website: 'https://www.mavice.com/'
-    isNameOnly: false
-    image: /assets/sponsors/mavice.png
-    years:
-      - '2022'
-      - '2023'
-      - '2018'
-    hidden: true
-  - name: Solidworks
-    sponsortier: Platinum
-    summary: ''
-    website: 'https://www.solidworks.com/'
-    isNameOnly: false
-    image: /assets/sponsors/solidworks.png
-    years:
-      - '2011'
-      - '2012'
-      - '2013'
-      - '2014'
-      - '2015'
-      - '2016'
-      - '2017'
-      - '2018'
-      - '2019'
-      - '2020'
-      - '2021'
-      - '2022'
-      - '2023'
-      - '2024'
-    hidden: false
-  - name: 'Automation Associates, Inc'
+  - name: Automation Associates, Inc
     sponsortier: Gold
     summary: ''
     website: 'https://autoassoc.com/'
@@ -189,76 +46,6 @@ sponsors:
     years:
       - '2022'
       - '2019'
-    hidden: false
-  - name: Gene Haas Foundation
-    sponsortier: Gold
-    summary: ''
-    website: 'https://ghaasfoundation.org/content/ghf/en/home.html'
-    isNameOnly: false
-    image: /assets/sponsors/Gene-Haas.webp
-    hidden: false
-  - name: Phillip Weingart
-    sponsortier: Gold
-    summary: ''
-    isNameOnly: true
-    image: /assets/sponsors/noLogo.png
-    years:
-      - '2022'
-    hidden: true
-  - name: RBC Bearings
-    sponsortier: Gold
-    summary: ''
-    website: 'https://www.rbcbearings.com/'
-    isNameOnly: false
-    image: /assets/sponsors/RBC.png
-    years:
-      - '2023'
-    hidden: false
-  - name: Sean Drzewiecki
-    sponsortier: Gold
-    summary: ''
-    isNameOnly: true
-    image: /assets/sponsors/noLogo.png
-    years:
-      - '2022'
-      - '2023'
-    hidden: true
-  - name: Stepcraft
-    sponsortier: Gold
-    summary: ''
-    website: 'https://www.stepcraft.us/'
-    isNameOnly: false
-    image: /assets/sponsors/stepcraft.png
-    years:
-      - '2019'
-      - '2021'
-      - '2020'
-      - '2022'
-      - '2023'
-      - '2024'
-    hidden: false
-  - name: TE Connectivity
-    sponsortier: Gold
-    summary: ''
-    website: 'https://www.te.com/'
-    isNameOnly: false
-    image: /assets/sponsors/TE_Connectivity.png
-    years:
-      - '2023'
-    hidden: false
-  - name: Thomaston Savings Bank
-    sponsortier: Gold
-    summary: ''
-    website: 'https://www.thomastonsavingsbank.com/'
-    isNameOnly: false
-    image: /assets/sponsors/thomastonBank.svg
-    years:
-      - '2019'
-      - '2020'
-      - '2021'
-      - '2022'
-      - '2023'
-      - '2024'
     hidden: false
   - name: City of Bristol Mayors Office
     sponsortier: Silver
@@ -310,6 +97,14 @@ sponsors:
       - '2023'
       - '2018'
     hidden: true
+  - name: Dymax
+    sponsortier: Silver
+    summary: ''
+    website: 'https://dymax.com/'
+    image: /assets/sponsors/dymax_logo.png
+    years:
+      - '2022'
+    hidden: true
   - name: Eileen Candels
     sponsortier: Silver
     summary: ''
@@ -324,6 +119,14 @@ sponsors:
     summary: ''
     isNameOnly: true
     image: /assets/sponsors/noLogo.png
+    hidden: true
+  - name: Festo
+    sponsortier: Silver
+    summary: ''
+    website: 'https://www.festo.com'
+    image: /assets/sponsors/festo.svg
+    years:
+      - '2022'
     hidden: true
   - name: Frank Sathory
     sponsortier: Silver
@@ -355,6 +158,36 @@ sponsors:
       - '2023'
       - '2024'
     hidden: false
+  - name: Gene Haas Foundation
+    sponsortier: Gold
+    summary: ''
+    website: 'https://ghaasfoundation.org/content/ghf/en/home.html'
+    isNameOnly: false
+    image: /assets/sponsors/Gene-Haas.webp
+    hidden: false
+  - name: Har-Conn Chrome Co.
+    sponsortier: Silver
+    summary: ''
+    website: 'https://www.har-conn.com/'
+    image: /assets/sponsors/har-conn-logo.png
+    years:
+      - '2022'
+      - '2019'
+    hidden: true
+  - name: Hartford County 4H
+    sponsortier: Title
+    summary: >
+      We have been with 4-H since the beginning of our team. We made this
+      decision to work with them so that we would be able to be non-affiliated
+      with a school of any kind (allowing a diverse environment for both
+      students attending high school and homeschoolers). They provide us with
+      helpful resources and help with our travel expenses and FIRST entrance
+      fees.
+    website: 'https://4-h.extension.uconn.edu/'
+    isNameOnly: false
+    image: /assets/sponsors/4h-logo.svg
+    years: []
+    hidden: true
   - name: Johnny Chea
     sponsortier: Silver
     summary: ''
@@ -371,6 +204,17 @@ sponsors:
     image: /assets/sponsors/lm-logo.svg
     years:
       - '2022'
+    hidden: true
+  - name: Mavice
+    sponsortier: Platinum
+    summary: ''
+    website: 'https://www.mavice.com/'
+    isNameOnly: false
+    image: /assets/sponsors/mavice.png
+    years:
+      - '2022'
+      - '2023'
+      - '2018'
     hidden: true
   - name: Medtronic
     sponsortier: Platinum
@@ -389,6 +233,16 @@ sponsors:
       - '2022'
       - '2023'
     hidden: true
+  - name: Olheiser
+    sponsortier: Gold
+    summary: ''
+    website: 'https://otcindustrial.com/ohlheiser'
+    image: /assets/sponsors/Olheiser.webp
+    years:
+      - '2022'
+      - '2018'
+      - '2017'
+    hidden: true
   - name: Otis
     sponsortier: Platinum
     summary: ''
@@ -399,6 +253,14 @@ sponsors:
     hidden: true
   - name: Patz Family
     sponsortier: Silver
+    summary: ''
+    isNameOnly: true
+    image: /assets/sponsors/noLogo.png
+    years:
+      - '2022'
+    hidden: true
+  - name: Phillip Weingart
+    sponsortier: Gold
     summary: ''
     isNameOnly: true
     image: /assets/sponsors/noLogo.png
@@ -416,6 +278,26 @@ sponsors:
       - '2023'
       - '2024'
     hidden: false
+  - name: RBC Bearings
+    sponsortier: Gold
+    summary: ''
+    website: 'https://www.rbcbearings.com/'
+    isNameOnly: false
+    image: /assets/sponsors/RBC.png
+    years:
+      - '2023'
+    hidden: false
+  - name: Radcliff Wire Inc
+    sponsortier: Silver
+    summary: ''
+    website: 'https://radcliffwire.com/'
+    image: /assets/sponsors/Radcliff Wire Inc.png
+    years:
+      - '2022'
+      - '2019'
+      - '2018'
+      - '2017'
+    hidden: true
   - name: Richard Covell
     sponsortier: Silver
     summary: ''
@@ -443,3 +325,57 @@ sponsors:
       - '2022'
       - '2023'
     hidden: true
+  - name: Sean Drzewiecki
+    sponsortier: Gold
+    summary: ''
+    isNameOnly: true
+    image: /assets/sponsors/noLogo.png
+    years:
+      - '2022'
+      - '2023'
+    hidden: true
+  - name: Solidworks
+    sponsortier: Platinum
+    summary: ''
+    website: 'https://www.solidworks.com/'
+    isNameOnly: false
+    image: /assets/sponsors/solidworks.png
+    years:
+      - '2011'
+      - '2012'
+      - '2013'
+      - '2014'
+      - '2015'
+      - '2016'
+      - '2017'
+      - '2018'
+      - '2019'
+      - '2020'
+      - '2021'
+      - '2022'
+      - '2023'
+      - '2024'
+    hidden: false
+  - name: Stepcraft
+    sponsortier: Gold
+    summary: ''
+    website: 'https://www.stepcraft.us/'
+    isNameOnly: false
+    image: /assets/sponsors/stepcraft.png
+    years:
+      - '2019'
+      - '2021'
+      - '2020'
+      - '2022'
+      - '2023'
+      - '2024'
+    hidden: false
+  - name: TE Connectivity
+    sponsortier: Gold
+    summary: ''
+    website: 'https://www.te.com/'
+    isNameOnly: false
+    image: /assets/sponsors/TE_Connectivity.png
+    years:
+      - '2023'
+    hidden: false
