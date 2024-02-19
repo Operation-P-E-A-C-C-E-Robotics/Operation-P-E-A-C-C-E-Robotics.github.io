@@ -163,7 +163,7 @@ layout: default
   <h1 class="text-center"><strong>Thank you to this year's Sponsors</strong></h1>
   <br>
   <h2><strong>Title Sponsors</strong></h2>
-  {% assign page_year = page.year %}
+  {% assign page_year = page.year | smartify  %}
   {% for sponsor in site.data.sponsors.sponsors %}
   {% if sponsor.years contains page_year %}
   {% if sponsor.sponsortier == "Title" %}
