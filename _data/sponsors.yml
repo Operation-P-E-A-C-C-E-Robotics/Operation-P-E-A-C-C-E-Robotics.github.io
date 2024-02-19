@@ -51,6 +51,7 @@ text:
 sponsors:
   - name: Dymax
     sponsortier: Silver
+    summary: ''
     website: 'https://dymax.com/'
     image: /assets/sponsors/dymax_logo.png
     years:
@@ -63,6 +64,7 @@ sponsors:
     image: /assets/sponsors/Radcliff Wire Inc.png
     years:
       - '2022'
+      - '2019'
     hidden: true
   - name: Har-Conn Chrome Co.
     sponsortier: Silver
@@ -71,6 +73,7 @@ sponsors:
     image: /assets/sponsors/har-conn-logo.png
     years:
       - '2022'
+      - '2019'
     hidden: true
   - name: Aerospace Alloys Inc
     sponsortier: Silver
@@ -79,6 +82,7 @@ sponsors:
     image: /assets/sponsors/aerospace-alloys-logo.jpg
     years:
       - '2022'
+      - '2019'
     hidden: true
   - name: Festo
     sponsortier: Silver
@@ -177,6 +181,7 @@ sponsors:
     image: /assets/sponsors/AutomationAssociates.jpeg
     years:
       - '2022'
+      - '2019'
     hidden: false
   - name: Gene Haas Foundation
     sponsortier: Gold
@@ -209,6 +214,7 @@ sponsors:
     image: /assets/sponsors/noLogo.png
     years:
       - '2022'
+      - '2023'
     hidden: true
   - name: Stepcraft
     sponsortier: Gold
@@ -227,9 +233,11 @@ sponsors:
   - name: TE Connectivity
     sponsortier: Gold
     summary: ''
-    website: 'https://www.te.com/usa-en/home.html'
+    website: 'https://www.te.com/'
     isNameOnly: false
     image: /assets/sponsors/TE_Connectivity.png
+    years:
+      - '2023'
     hidden: false
   - name: Thomaston Savings Bank
     sponsortier: Gold
@@ -261,6 +269,8 @@ sponsors:
     website: 'https://ct-ntma.org/'
     isNameOnly: false
     image: /assets/sponsors/ctma-logo.png
+    years:
+      - '2023'
     hidden: true
   - name: DaCruz
     sponsortier: Silver
@@ -270,24 +280,34 @@ sponsors:
     image: /assets/sponsors/DaCruz.png
     years:
       - '2022'
+      - '2023'
     hidden: true
   - name: Dawn Newmin
     sponsortier: Silver
     summary: ''
     isNameOnly: true
     image: /assets/sponsors/noLogo.png
+    years:
+      - '2022'
+      - '2023'
     hidden: true
   - name: Dennis Yard
     sponsortier: Silver
     summary: ''
     isNameOnly: true
     image: /assets/sponsors/noLogo.png
+    years:
+      - '2022'
+      - '2023'
     hidden: true
   - name: Eileen Candels
     sponsortier: Silver
     summary: ''
     isNameOnly: true
     image: /assets/sponsors/noLogo.png
+    years:
+      - '2022'
+      - '2023'
     hidden: true
   - name: Elizabeth Trotta
     sponsortier: Silver
@@ -300,6 +320,9 @@ sponsors:
     summary: ''
     isNameOnly: true
     image: /assets/sponsors/noLogo.png
+    years:
+      - '2022'
+      - '2023'
     hidden: true
   - name: Friends and Family of PEACCE
     sponsortier: Silver
@@ -329,6 +352,7 @@ sponsors:
     image: /assets/sponsors/noLogo.png
     years:
       - '2022'
+      - '2023'
     hidden: true
   - name: Lockheed Martin
     sponsortier: Title
@@ -351,6 +375,9 @@ sponsors:
     summary: ''
     isNameOnly: true
     image: /assets/sponsors/noLogo.png
+    years:
+      - '2022'
+      - '2023'
     hidden: true
   - name: Otis
     sponsortier: Platinum
@@ -386,6 +413,7 @@ sponsors:
     image: /assets/sponsors/noLogo.png
     years:
       - '2022'
+      - '2023'
     hidden: true
   - name: Robert Butler
     sponsortier: Silver
@@ -394,6 +422,7 @@ sponsors:
     image: /assets/sponsors/noLogo.png
     years:
       - '2022'
+      - '2023'
     hidden: true
   - name: Sam Patterson
     sponsortier: Silver
@@ -402,4 +431,5 @@ sponsors:
     image: /assets/sponsors/noLogo.png
     years:
       - '2022'
+      - '2023'
     hidden: true
