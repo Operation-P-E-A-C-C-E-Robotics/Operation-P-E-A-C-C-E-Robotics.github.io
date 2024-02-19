@@ -12,6 +12,7 @@ import { date } from "zod";
 
  const searchToken = process.env.TINA_SEARCH
 
+
  const buildPath = process.env.BUILD_PATH || "/"
 
   // Create an array of options for selecting years
