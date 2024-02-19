@@ -12,8 +12,27 @@ import { date } from "zod";
 
  const searchToken = process.env.TINA_SEARCH
 
- const buildPath = process.env.BUILD_PATH || null
- 
+
+ const buildPath = process.env.BUILD_PATH || "/"
+
+  // Create an array of options for selecting years
+  const yearOptions: { label: string; value: string;}[] = Array.from({ length: new Date().getFullYear() - 2010 }, (_, index) => {
+    const yearValue = (2011 + index).toString(); // Convert to string explicitly
+    return {
+        label: yearValue,
+        value: yearValue,
+    };
+  })
+  
+  // for (let i = 2011; i < new Date().getFullYear(); i++) {
+  //   yearOptions.push({
+  //     label: i.toString(), // Convert the number to a string
+  //     value: i.toString(), // Convert the number to a string
+  //   });
+  // }
+
+  console.log(yearOptions)
+
 export default defineConfig({
   branch,
   clientId, // Get this from tina.io
@@ -31,6 +50,8 @@ export default defineConfig({
     },
   },
 
+
+  
   schema: {
 
     collections: [
@@ -450,11 +471,12 @@ export default defineConfig({
             label: "Write Up",
             isBody: true,
           },
+         
           {
             label: "Published",
             name: "published",
             type: "boolean",
-            },
+          },
         ],
       },
 
@@ -562,7 +584,7 @@ export default defineConfig({
               name: "header",
               type: "string"
             },
-            {
+            { 
               label: "Explenation Paragraph",
               name: "p1",
               type: "rich-text"
@@ -573,7 +595,7 @@ export default defineConfig({
               name: "p2",
               type: "rich-text"
             }
-          ]
+          ],
         },
         {
         label: "Sponsors",
@@ -584,7 +606,7 @@ export default defineConfig({
           // This allows the customization of the list item UI
           // Data can be accessed by item?.<Name of field>
           itemProps: (item) => {
-            return { label: `${item?.name} (${item?.sponsortier})`}
+            return { label: `${item?.name} (${item?.sponsortier} Hidden: ${item?.hidden})`}
           },
         },
         fields: [
@@ -633,7 +655,7 @@ export default defineConfig({
           {
             label: "Display Name Only",
             name:"isNameOnly",
-            type: "boolean",
+            type: "boolean"
           },
           {
             label: "Logo",
@@ -641,12 +663,19 @@ export default defineConfig({
             type: "image"
           },
           {
+            label: "Years Sponsored",
+            name: "years",
+            type: "string",
+            list: true,
+            options: yearOptions,
+          },
+          {
             label: "Hide from Sponsor List",
             name:"hidden",
-            type: "boolean",
+            type: "boolean"
           },
 
-        ]
+        ],
       },
 
       ],
@@ -742,6 +771,7 @@ export default defineConfig({
 
      
     ],
+
   },
 
   search: {
@@ -753,4 +783,7 @@ export default defineConfig({
     maxSearchIndexFieldLength: 100
   },
 
+
+
 });
+
