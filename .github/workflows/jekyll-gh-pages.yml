@@ -110,7 +110,7 @@ jobs:
         with:
           source: ./
           destination: ./_site
-          future: true
+
                   
   
       - name: Upload artifact
