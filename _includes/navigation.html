@@ -19,7 +19,7 @@
           {% for item in site.data.navigation.data %}
             {% if item.drop and item.drop == "false" %}
               <li class="nav-item text-xl-center ">
-                <a class="nav-item text-xl-center nav-link {% if page.url == item.link + .html %}active{% endif %}" href="{{ item.link }}">
+                <a class="nav-item text-xl-center nav-link {% if page.url == item.link | remove: "absolute_url" %}active{% endif %}" href="{{ item.link | {{absolute_url}}">
                 {{ item.name }}
                 </a>
               </li>
@@ -31,7 +31,7 @@
                 </a>
                 <div class="dropdown-menu">
                   {% for url in item.links %}
-                    <a class="dropdown-item" href="{{url.url}}">{{url.name | capitalcase}}</a>
+                    <a class="dropdown-item" href="{{url.url | absolute_url}}">{{url.name | capitalcase}}</a>
                   {% endfor %}
                 </div>
               </li>

@@ -27,7 +27,7 @@ data:
       - name: Current Season
         url: /robots/current
       - name: Past Seasons
-        url: /robots
+        url: /robots/
   - name: Blog
     link: /posts
     drop: 'false'
