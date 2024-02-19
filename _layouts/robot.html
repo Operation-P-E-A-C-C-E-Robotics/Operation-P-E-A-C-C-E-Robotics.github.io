@@ -53,7 +53,7 @@ layout: default
         </div>
         <div class="pl-3 col-sm-12 col-md-9">
             <h1>{{ page.year }} - {{ page.game }}</h1>
-            <h2>{{page.robotName}}</h2>
+            <h1>{{page.robotName}}</h1>
             <h3 id="districtRank">District Rank: --</h3>
             <h3 id="districtPoints">Total District Points: --</h3>
             <h3>All data provided by The Blue Alliance <img src="/assets/images/tba_lamp.svg" style="height:3.5vh; color:#0f4bcb"></h3>
@@ -179,7 +179,7 @@ layout: default
           </div>
           <div class="col-sm-8 text-left">
                   <h5 class="mb-4">{{sponsor.summary}}</h5>
-                  {% if sponsor.website %}
+                  {% if sponsor.website and sponsor.website != "" != "" %}
                   <a class="btn btn-outline-primary" href="{{sponsor.website}}">Learn More</a>
                   {% else %}
                   <a class="btn btn-outline-primary disabled" href="">Learn More</a>
@@ -211,7 +211,7 @@ layout: default
               <h2 class="text-center">{{sponsor.name}}</h2>
              {% comment %} <h4 class="text-center">{{sponsor.sponsortier}} Sponsor</h4> {% endcomment %}
               <div class="d-flex justify-content-center align-items-center">
-                  {% if sponsor.website %}
+                  {% if sponsor.website and sponsor.website != "" != ""%}
                   <a class="btn btn-outline-primary" href="{{sponsor.website}}">Learn More</a>
                   {% else %}
                   <a class="btn btn-outline-primary disabled" href="">Learn More</a>
@@ -247,7 +247,7 @@ layout: default
                   <h2 class="text-center">{{sponsor.name}}</h2>
                  {% comment %} <h4 class="text-center">{{sponsor.sponsortier}} Sponsor</h4> {% endcomment %}
                   <div class="d-flex justify-content-center align-items-center">
-                      {% if sponsor.website %}
+                      {% if sponsor.website and sponsor.website != "" != "" %}
                       <a class="btn btn-outline-primary" href="{{sponsor.website}}">Learn More</a>
                       {% else %}
                       <a class="btn btn-outline-primary disabled" href="">Learn More</a>
@@ -281,7 +281,7 @@ layout: default
               <h2 class="text-center">{{sponsor.name}}</h2>
               {% comment %}<h4 class="text-center">{{sponsor.sponsortier}} Sponsor</h4>{% endcomment %}
               <div class="d-flex justify-content-center align-items-center">
-                  {% if sponsor.website %}
+                  {% if sponsor.website and sponsor.website != "" != "" %}
                   <a class="btn btn-outline-primary" href="{{sponsor.website}}">Learn More</a>
                   {% else %}
                   <a class="btn btn-outline-primary disabled" href="">Learn More</a>

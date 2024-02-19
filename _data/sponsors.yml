@@ -49,6 +49,53 @@ text:
 
     * A thank you letter with a plaque
 sponsors:
+  - name: Dymax
+    sponsortier: Silver
+    website: 'https://dymax.com/'
+    image: /assets/sponsors/dymax_logo.png
+    years:
+      - '2022'
+    hidden: true
+  - name: Radcliff Wire Inc
+    sponsortier: Silver
+    summary: ''
+    website: 'https://radcliffwire.com/'
+    image: /assets/sponsors/Radcliff Wire Inc.png
+    years:
+      - '2022'
+    hidden: true
+  - name: Har-Conn Chrome Co.
+    sponsortier: Silver
+    summary: ''
+    website: 'https://www.har-conn.com/'
+    image: /assets/sponsors/har-conn-logo.png
+    years:
+      - '2022'
+    hidden: true
+  - name: Aerospace Alloys Inc
+    sponsortier: Silver
+    summary: ''
+    website: 'https://www.aalloys.com/'
+    image: /assets/sponsors/aerospace-alloys-logo.jpg
+    years:
+      - '2022'
+    hidden: true
+  - name: Festo
+    sponsortier: Silver
+    summary: ''
+    website: 'https://www.festo.com'
+    image: /assets/sponsors/festo.svg
+    years:
+      - '2022'
+    hidden: true
+  - name: Olheiser
+    sponsortier: Gold
+    summary: ''
+    website: 'https://otcindustrial.com/ohlheiser'
+    image: /assets/sponsors/Olheiser.webp
+    years:
+      - '2022'
+    hidden: true
   - name: Hartford County 4H
     sponsortier: Title
     summary: >
@@ -96,6 +143,9 @@ sponsors:
     website: 'https://www.mavice.com/'
     isNameOnly: false
     image: /assets/sponsors/mavice.png
+    years:
+      - '2022'
+      - '2023'
     hidden: true
   - name: Solidworks
     sponsortier: Platinum
@@ -103,6 +153,21 @@ sponsors:
     website: 'https://www.solidworks.com/'
     isNameOnly: false
     image: /assets/sponsors/solidworks.png
+    years:
+      - '2011'
+      - '2012'
+      - '2013'
+      - '2014'
+      - '2015'
+      - '2016'
+      - '2017'
+      - '2018'
+      - '2019'
+      - '2020'
+      - '2021'
+      - '2022'
+      - '2023'
+      - '2024'
     hidden: false
   - name: 'Automation Associates, Inc'
     sponsortier: Gold
@@ -110,6 +175,8 @@ sponsors:
     website: 'https://autoassoc.com/'
     isNameOnly: false
     image: /assets/sponsors/AutomationAssociates.jpeg
+    years:
+      - '2022'
     hidden: false
   - name: Gene Haas Foundation
     sponsortier: Gold
@@ -123,6 +190,8 @@ sponsors:
     summary: ''
     isNameOnly: true
     image: /assets/sponsors/noLogo.png
+    years:
+      - '2022'
     hidden: true
   - name: RBC Bearings
     sponsortier: Gold
@@ -130,12 +199,16 @@ sponsors:
     website: 'https://www.rbcbearings.com/'
     isNameOnly: false
     image: /assets/sponsors/RBC.png
+    years:
+      - '2023'
     hidden: false
   - name: Sean Drzewiecki
     sponsortier: Gold
     summary: ''
     isNameOnly: true
     image: /assets/sponsors/noLogo.png
+    years:
+      - '2022'
     hidden: true
   - name: Stepcraft
     sponsortier: Gold
@@ -143,6 +216,13 @@ sponsors:
     website: 'https://www.stepcraft.us/'
     isNameOnly: false
     image: /assets/sponsors/stepcraft.png
+    years:
+      - '2019'
+      - '2021'
+      - '2020'
+      - '2022'
+      - '2023'
+      - '2024'
     hidden: false
   - name: TE Connectivity
     sponsortier: Gold
@@ -157,6 +237,13 @@ sponsors:
     website: 'https://www.thomastonsavingsbank.com/'
     isNameOnly: false
     image: /assets/sponsors/thomastonBank.svg
+    years:
+      - '2019'
+      - '2020'
+      - '2021'
+      - '2022'
+      - '2023'
+      - '2024'
     hidden: false
   - name: City of Bristol Mayors Office
     sponsortier: Silver
@@ -164,6 +251,9 @@ sponsors:
     website: 'https://www.bristolct.gov/172/Mayors-Office'
     isNameOnly: true
     image: /assets/sponsors/noLogo.png
+    years:
+      - '2022'
+      - '2023'
     hidden: true
   - name: Connecticut Tooling & Machining Association
     sponsortier: Silver
@@ -178,6 +268,8 @@ sponsors:
     website: 'https://dacruzmfg.com/'
     isNameOnly: false
     image: /assets/sponsors/DaCruz.png
+    years:
+      - '2022'
     hidden: true
   - name: Dawn Newmin
     sponsortier: Silver
@@ -214,12 +306,45 @@ sponsors:
     summary: ''
     isNameOnly: true
     image: /assets/sponsors/friendsOfPeacce.png
+    years:
+      - '2011'
+      - '2012'
+      - '2013'
+      - '2014'
+      - '2015'
+      - '2016'
+      - '2017'
+      - '2018'
+      - '2019'
+      - '2020'
+      - '2021'
+      - '2022'
+      - '2023'
+      - '2024'
     hidden: false
   - name: Johnny Chea
     sponsortier: Silver
     summary: ''
     isNameOnly: true
     image: /assets/sponsors/noLogo.png
+    years:
+      - '2022'
+    hidden: true
+  - name: Lockheed Martin
+    sponsortier: Title
+    summary: ''
+    website: 'https://www.lockheedmartin.com/'
+    image: /assets/sponsors/lm-logo.svg
+    years:
+      - '2022'
+    hidden: true
+  - name: Medtronic
+    sponsortier: Platinum
+    summary: ''
+    website: 'https://www.medtronic.com'
+    image: /assets/sponsors/mdt_logo_white.avif
+    years:
+      - '2022'
     hidden: true
   - name: Nancy Edwards
     sponsortier: Silver
@@ -227,11 +352,21 @@ sponsors:
     isNameOnly: true
     image: /assets/sponsors/noLogo.png
     hidden: true
+  - name: Otis
+    sponsortier: Platinum
+    summary: ''
+    website: 'https://www.otis.com'
+    image: /assets/sponsors/otis-logo.png
+    years:
+      - '2022'
+    hidden: true
   - name: Patz Family
     sponsortier: Silver
     summary: ''
     isNameOnly: true
     image: /assets/sponsors/noLogo.png
+    years:
+      - '2022'
     hidden: true
   - name: Price Chopper
     sponsortier: Silver
@@ -239,22 +374,32 @@ sponsors:
     website: 'https://www.pricechopper.com/stores/ct/bristol/price-chopper-204.html'
     isNameOnly: false
     image: /assets/sponsors/priceChopper.png
+    years:
+      - '2022'
+      - '2023'
+      - '2024'
     hidden: false
   - name: Richard Covell
     sponsortier: Silver
     summary: ''
     isNameOnly: true
     image: /assets/sponsors/noLogo.png
+    years:
+      - '2022'
     hidden: true
   - name: Robert Butler
     sponsortier: Silver
     summary: ''
     isNameOnly: true
     image: /assets/sponsors/noLogo.png
+    years:
+      - '2022'
     hidden: true
   - name: Sam Patterson
     sponsortier: Silver
     summary: ''
     isNameOnly: true
     image: /assets/sponsors/noLogo.png
+    years:
+      - '2022'
     hidden: true
