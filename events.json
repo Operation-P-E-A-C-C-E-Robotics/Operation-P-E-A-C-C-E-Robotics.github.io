@@ -137,6 +137,17 @@
     },
     {
         "kind": "calendar#event",
+        "etag": "\"3400299711726000\"",
+        "id": "7r6chlkbilfhvkvila714po0b0_20240309T140000Z",
+        "status": "cancelled",
+        "recurringEventId": "7r6chlkbilfhvkvila714po0b0",
+        "originalStartTime": {
+            "dateTime": "2024-03-09T14:00:00Z",
+            "timeZone": "America/New_York"
+        }
+    },
+    {
+        "kind": "calendar#event",
         "etag": "\"3415724985410000\"",
         "id": "7r6chlkbilfhvkvila714po0b0_20240224T140000Z",
         "status": "confirmed",
