@@ -55,6 +55,7 @@ permalink: /robots/current
       <h3 id="districtRank">Current District Rank: --</h3>
       <h3 id="districtPoints">Current District Points: --</h3>
       <h3>All data provided by The Blue Alliance <img src="/assets/images/tba_lamp.svg" style="height:3.5vh;"></h3>
+      <p class="small">Last Updated on <span id="dataLastUpdated"></span></p>
       <button type="button" class="btn btn-primary align-middle" onclick=viewOnTBA();>View On The Blue Alliance <span><img style="height: 25px;" src="/assets/images/tba_lamp.svg"></span></button>
       <div class="mx-auto">
         <h1 class="countdown text-center pt-5" id="kickoffCountdown" style="display: none;">
@@ -209,7 +210,7 @@ permalink: /robots/current
       //  var media = "https://www.thebluealliance.com/api/v3/team/frc3461/media/"
       //  var awards = "https://www.thebluealliance.com/api/v3/team/frc3461/awards/"
 
-
+       var tbaDataLastUpdatedurl = "https://api.github.com/repos/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/commits/gh-actions-tba-data-backend"
        var eventstats = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json";
        var eventurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_events.json";
        var mediaurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_media.json";
@@ -263,7 +264,8 @@ permalink: /robots/current
 
        }
 
-       async function getapi(eventurl, eventstats, awards) {
+       async function getapi(eventurl, eventstats, awards, gitCommitURL) {
+        const gitCommits = await fetch(gitCommitURL);
          const eventResponse = await fetch(eventurl);
          const eventStats = await fetch(eventstats);
          const awardsData = await fetch(awards);
@@ -272,6 +274,9 @@ permalink: /robots/current
          // var eventdata = JSON.parse(eventdatatemp);
          var eventstatdata = await eventStats.json();
          var awardsForYear = await awardsData.json();
+         var gitCommitJSON = await gitCommits.json()
+         var gitLastUpdatedDate = new Date(gitCommitJSON.commit.committer.date)
+         document.getElementById("dataLastUpdated").innerText += gitLastUpdatedDate.toLocaleDateString() + " at " + gitLastUpdatedDate.toLocaleTimeString()
          /* //////console.log("Event Data")
           //////console.log(eventdata);
           //////console.log("Event Stats")
@@ -290,7 +295,7 @@ permalink: /robots/current
 
        }
        // Calling that async function
-       getapi(eventurl, eventstats, awardsurl);
+       getapi(eventurl, eventstats, awardsurl, tbaDataLastUpdatedurl);
        setBanner(eventurl);
        getDistrictStats(district);
        getMedia(mediaurl);
