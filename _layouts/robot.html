@@ -165,30 +165,32 @@ layout: default
   <h2><strong>Title Sponsors</strong></h2>
   {% assign page_year = page.year | smartify  %}
   {% for sponsor in site.data.sponsors.sponsors %}
-  {% if sponsor.years contains page_year %}
-  {% if sponsor.sponsortier == "Title" %}
-      <div class="row text-dark mt-3 pt-3 bg-light rounded">
-          <div class="col-sm-4">
-              {% if sponsor.image %}
-              <img src="{{sponsor.image}}" class="logo p-2 mx-auto d-block">
-              {% else %}
-              <img src="/assets/sponsors/noLogo.png" class="logo p-2 mx-auto d-block">
-              {% endif %}
-              <h1 class="text-center">{{sponsor.name}}</h1>
-              {% comment %}<h3 class="text-center">{{sponsor.sponsortier}} Sponsor</h3> {% endcomment %}
-          </div>
-          <div class="col-sm-8 text-left">
-                  <h5 class="mb-4">{{sponsor.summary}}</h5>
-                  {% if sponsor.website and sponsor.website != "" != "" %}
-                  <a class="btn btn-outline-primary" href="{{sponsor.website}}">Learn More</a>
-                  {% else %}
-                  <a class="btn btn-outline-primary disabled" href="">Learn More</a>
-                  {% endif %}
-          </div>
-      </div>
-  <br>
-  {% endif %}
-  {% endif %}
+    {% for data in sponsor.years%}
+      {% if data.year contains page_year %}
+        {% if data.sponsortier == "Title" %}
+            <div class="row text-dark mt-3 pt-3 bg-light rounded">
+                <div class="col-sm-4">
+                    {% if sponsor.image %}
+                    <img src="{{sponsor.image}}" class="logo p-2 mx-auto d-block">
+                    {% else %}
+                    <img src="/assets/sponsors/noLogo.png" class="logo p-2 mx-auto d-block">
+                    {% endif %}
+                    <h1 class="text-center">{{sponsor.name}}</h1>
+                    {% comment %}<h3 class="text-center">{{sponsor.years.sponsortier}} Sponsor</h3> {% endcomment %}
+                </div>
+                <div class="col-sm-8 text-left">
+                        <h5 class="mb-4">{{sponsor.summary}}</h5>
+                        {% if sponsor.website and sponsor.website != "" %}
+                        <a class="btn btn-outline-primary" href="{{sponsor.website}}">Learn More</a>
+                        {% else %}
+                        <a class="btn btn-outline-primary disabled" href="">Learn More</a>
+                        {% endif %}
+                </div>
+            </div>
+          <br>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
   {% endfor %}
   <br>
   <br>
@@ -196,8 +198,9 @@ layout: default
   <br>
   <div class="row text-dark bg-light rounded mt-3 pt-3">
   {% for sponsor in site.data.sponsors.sponsors %}
-  {% if sponsor.years contains page_year %}
-  {% if sponsor.sponsortier == "Platinum" %}
+  {% for data in sponsor.years%}
+  {% if data.year contains page_year %}
+  {% if data.sponsortier == "Platinum" %}
   <div class="col-sm-6 p-4">
       <!-- <div class="row text-dark mt-3 bg-light rounded pt-3"> -->
           <!-- <div class="col-sm-4"> -->
@@ -209,9 +212,9 @@ layout: default
           <!-- </div> -->
           <!-- <div class="col-sm-8"> -->
               <h2 class="text-center">{{sponsor.name}}</h2>
-             {% comment %} <h4 class="text-center">{{sponsor.sponsortier}} Sponsor</h4> {% endcomment %}
+             {% comment %} <h4 class="text-center">{{sponsor.years.sponsortier}} Sponsor</h4> {% endcomment %}
               <div class="d-flex justify-content-center align-items-center">
-                  {% if sponsor.website and sponsor.website != "" != ""%}
+                  {% if sponsor.website and sponsor.website != ""%}
                   <a class="btn btn-outline-primary" href="{{sponsor.website}}">Learn More</a>
                   {% else %}
                   <a class="btn btn-outline-primary disabled" href="">Learn More</a>
@@ -225,6 +228,7 @@ layout: default
   {% endif %}
   {% endif %}
   {% endfor %}
+  {% endfor %}
   </div>
   <br>
   <br>
@@ -232,8 +236,9 @@ layout: default
   <br>
   <div class="row text-dark mt-3 bg-light rounded pt-3">
   {% for sponsor in site.data.sponsors.sponsors %}
-  {% if sponsor.years contains page_year %}
-  {% if sponsor.sponsortier == "Gold" %}
+  {% for data in sponsor.years%}
+  {% if data.year contains page_year %}
+  {% if data.sponsortier == "Gold" %}
       <div class="col-sm-3 p-4">
           <!-- <div class="row text-dark mt-3 bg-light rounded pt-3"> -->
               <!-- <div class="col-sm-4"> -->
@@ -245,9 +250,9 @@ layout: default
               <!-- </div> -->
               <!-- <div class="col-sm-8"> -->
                   <h2 class="text-center">{{sponsor.name}}</h2>
-                 {% comment %} <h4 class="text-center">{{sponsor.sponsortier}} Sponsor</h4> {% endcomment %}
+                 {% comment %} <h4 class="text-center">{{sponsor.years.sponsortier}} Sponsor</h4> {% endcomment %}
                   <div class="d-flex justify-content-center align-items-center">
-                      {% if sponsor.website and sponsor.website != "" != "" %}
+                      {% if sponsor.website and sponsor.website != "" %}
                       <a class="btn btn-outline-primary" href="{{sponsor.website}}">Learn More</a>
                       {% else %}
                       <a class="btn btn-outline-primary disabled" href="">Learn More</a>
@@ -260,14 +265,16 @@ layout: default
   {% endif %}
   {% endif %}
   {% endfor %}
+  {% endfor %}
   </div>
   <br>
   <br>
   <h2><strong>Silver Sponsors</strong></h2>
   <div class="row text-dark mt-3 bg-light rounded pt-3">
   {% for sponsor in site.data.sponsors.sponsors %}
-  {% if sponsor.years contains page_year %}
-  {% if sponsor.sponsortier == "Silver" %}
+  {% for data in sponsor.years %}
+  {% if data.year contains page_year %}
+  {% if data.sponsortier == "Silver" %}
   <div class="col-sm-3 p-4">
       <!-- <div class="row text-dark mt-3 bg-light rounded pt-3"> -->
           <!-- <div class="col-sm-4"> -->
@@ -279,9 +286,9 @@ layout: default
           <!-- </div> -->
           <!-- <div class="col-sm-8"> -->
               <h2 class="text-center">{{sponsor.name}}</h2>
-              {% comment %}<h4 class="text-center">{{sponsor.sponsortier}} Sponsor</h4>{% endcomment %}
+              {% comment %}<h4 class="text-center">{{sponsor.years.sponsortier}} Sponsor</h4>{% endcomment %}
               <div class="d-flex justify-content-center align-items-center">
-                  {% if sponsor.website and sponsor.website != "" != "" %}
+                  {% if sponsor.website and sponsor.website != "" %}
                   <a class="btn btn-outline-primary" href="{{sponsor.website}}">Learn More</a>
                   {% else %}
                   <a class="btn btn-outline-primary disabled" href="">Learn More</a>
@@ -293,6 +300,7 @@ layout: default
       <br>
   {% endif %}
   {% endif %}
+  {% endfor %}
   {% endfor %}
   </div>
 </div>

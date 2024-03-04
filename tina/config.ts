@@ -665,9 +665,47 @@ export default defineConfig({
           {
             label: "Years Sponsored",
             name: "years",
-            type: "string",
+            type: "object",
             list: true,
-            options: yearOptions,
+            itemProps: (item) => {
+              return { label: `${item?.year} - ${item?.sponsortier}`}
+            },
+            fields: [
+              {
+                label: "Years Sponsored",
+                name: "year",
+                type: "string",
+                options: yearOptions,
+              },
+              {
+                label: "Sponsor Tier",
+                name: "sponsortier",
+                type: "string",
+                options: [
+                  {
+                    value: "Title",
+                    label: "Title",
+                  }, 
+                  {
+                    value: "Platinum",
+                    label: "Platinum",
+                  },
+                  {
+                    value: "Gold",
+                    label: "Gold",
+                  },
+                  {
+                    value: "Silver",
+                    label: "Silver",
+                  },
+                  {
+                    value: "Bronze",
+                    label: "Bronze",
+                  },
+                ],
+              }
+            ]
+            
           },
           {
             label: "Hide from Sponsor List",
