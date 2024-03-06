@@ -8,39 +8,7 @@ permalink: /robots/current
 <meta property="og:description" content="Current year performace and statistics"/>
 <meta id="image" property="image" content="/assets/images/PeacceLogoTieDyeWhiteText.svg">
 <br>
-<div class="container-fluid">
-  <div id="duringEventBanner" style="display:none;" class="jumbotron text-dark">
-    <h1 id="currentCompetingEvent" class="text-center pb-2">
-      Currently Competing At () Event!
-    </h1>
-    <h4 id="currentStatusStr" class="text-center pb-">Team 3461's current status is unknown</h4>
-    <div class="d-flex flex-lg-row flex-md-column flex-sm-column flex-xs-column justify-content-around">
-      <h3 id="currentNextMatch" style="text-transform: uppercase;" class="flex-fill">
-        Next Match: Not Found
-      </h3>
-      <h3>
-        <p class="flex-fill" id='counter'>--h --m --s</p>
-      </h3>
-      <h3 class="flex-fill" id="redTeams">
-        0000 0000 0000
-      </h3>
-      <h3 class="flex-fill">
-      VS
-      </h3>
-      <h3 class="flex-fill" id="blueTeams">
-        0000 0000 0000
-      </h3>
-      <h3 class="flex-fill" id='time'></h3>
-    </div>
-    <h4 id="currentRank" class="pt-2">
-      Rank: 0/0
-    </h4>
 
-    <div id="liveStream" class="embed-responsive embed-responsive-16by9">
-      <iframe id="liveStreamFrame" class="embed-responsive-item" src="{{"/assets/images/notFound.png" | absolute_url}}" height="640" width="480"> </iframe>
-    </div>
-
-  </div>
   <div class="d-flex flex-md-row flex-sm-column row">
     <div class="w-md-25 w-sm-20 pr-3 col-sm-12 col-md-6 col-lg-3 pb-3" style="max-width: 25rem; height: 30rem;">
       <div id="demo" class="carousel slide" data-ride="carousel" style="width:100%; height: 30rem; background-color: white; border-radius: 5px;">
@@ -84,7 +52,50 @@ permalink: /robots/current
     </div>
   </div>
   <br>
-
+  <div id="duringEventBanner" style="display:none;" class="jumbotron text-dark">
+    <h1 id="currentCompetingEvent" class="text-center pb-2">
+      Currently Competing At () Event!
+    </h1>
+    <h4 id="currentStatusStr" class="text-center pb-3">Team 3461's current status is unknown</h4>
+    <div class="row">
+      <div class="col d-flex-col">
+        <div class="d-flex d-flex-row">
+          <h3 id="currentNextMatch" style="text-transform: capitalcase;">
+            Next Match: Not Found
+          </h3>
+          <h3 id='counter' class="pl-2">--h --m --s</h3>
+        </div>
+  
+        <div>
+          <h3 id="currentRank">
+            Rank: 0/0
+          </h3>
+        </div>
+  
+      </div>
+      <div class="col-3">
+        <div class="row">
+          <h3 class="col-4 text-center" id="redTeams">
+            0000 0000 0000 
+          </h3>
+          <h3 class="col-4 m-0 p-0 text-center mx-auto"><span class="mx-auto text-center">VS</span></h3>
+          <h3 class="col-4 text-center" id="blueTeams">
+            0000 0000 0000
+          </h3>
+        </div>
+      </div>
+  
+      <h3 class="col text-right" id='time'></h3>
+  
+    </div>
+  
+  
+    <div id="liveStream" class="embed-responsive embed-responsive-16by9">
+      <iframe id="liveStreamFrame" class="embed-responsive-item" src="{{"/assets/images/notFound.png" | absolute_url}}" height="640" width="480"> </iframe>
+    </div>
+  
+  </div>
+  <br>
   <div class="table-responsive pt-2 rounded-lg" style="border: 1px solid rgba(0,0,0,.125); border-radius: 4px;">
     <table id="employees" class="table table-bordered table-striped table-light text-dark"></table>
   </div>
@@ -353,7 +364,7 @@ permalink: /robots/current
               console.log(key, value);
               match = value
               nextMatchKey = value.next_match_key
-              console.log(nextMatchKey);
+              //console.log(nextMatchKey);
             }
 
           }
