@@ -47,8 +47,8 @@
     var eventurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_events.json";
 
   async function setBanner(eventsurl) {
-         var eventJSON = await fetch(eventsurl);
-         var testJSON = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_events.json")
+         var eventJSON = await fetch(eventsurl, { cache: "reload" });
+         var testJSON = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_events.json", { cache: "reload" })
          var events = await eventJSON.json();
          var testEvents = await testJSON.json();
          var curevents = []
@@ -72,8 +72,8 @@
           // console.log("Cur Events")
           // console.log(curevents)
          if (curevents.length != 0) {
-          var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json");
-          var testResponse = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_event_statuses.json");
+          var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json", { cache: "reload" });
+          var testResponse = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_event_statuses.json", { cache: "reload" });
           var events =  await apiResponse.json();
           var testEvents = await testResponse.json();
           var nextMatchKey;
@@ -99,8 +99,8 @@
        async function getMatchFromKey(matchKey) {
          var matchAPIURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_matches.json";
          var testMatchURL = "https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_matches.json"
-         var matchAPIResponse = await fetch(matchAPIURL);
-         var testResponse = await fetch(testMatchURL);
+         var matchAPIResponse = await fetch(matchAPIURL, { cache: "reload" });
+         var testResponse = await fetch(testMatchURL, { cache: "reload" });
          var matches = await matchAPIResponse.json();
          var testMatches = await testResponse.json();
 
@@ -128,7 +128,7 @@
        async function getTeamStatus(eventKey) {
          ////////console.log(eventKey);
          var matchAPIURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"event_statuses.json";
-         eventRaw = await fetch(matchAPIURL);
+         eventRaw = await fetch(matchAPIURL, { cache: "reload" });
          events = await eventRaw.json();
          for (var event = 0;  event < events.length; event++) {
           // ////console.log(events[event]);
