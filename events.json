@@ -1,6 +1,35 @@
 [
     {
         "kind": "calendar#event",
+        "etag": "\"3392599559532000\"",
+        "id": "5biu08o4317da5fav79lm34a1h",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NWJpdTA4bzQzMTdkYTVmYXY3OWxtMzRhMWggdGVhbUBwZWFjY2Uub3Jn&ctz=UTC",
+        "created": "2023-10-03T02:22:59.000Z",
+        "updated": "2023-10-03T02:22:59.766Z",
+        "summary": "NE District WNE Event",
+        "location": "Alumni Healthful Living Center, Evergreen Rd, Springfield, MA 01119, USA",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "date": "2024-03-22"
+        },
+        "end": {
+            "date": "2024-03-25"
+        },
+        "transparency": "transparent",
+        "iCalUID": "5biu08o4317da5fav79lm34a1h@google.com",
+        "sequence": 0,
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
         "etag": "\"3394433884072000\"",
         "id": "6ppq5u0iv6hnic26pq75f2ot5n",
         "status": "confirmed",
