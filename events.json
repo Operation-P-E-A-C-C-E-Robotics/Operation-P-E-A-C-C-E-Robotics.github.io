@@ -174,5 +174,16 @@
             "dateTime": "2024-03-09T14:00:00Z",
             "timeZone": "America/New_York"
         }
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3400301079644000\"",
+        "id": "2edf35tsp629t3v4nag1k9n13j_20240322T220000Z",
+        "status": "cancelled",
+        "recurringEventId": "2edf35tsp629t3v4nag1k9n13j",
+        "originalStartTime": {
+            "dateTime": "2024-03-22T22:00:00Z",
+            "timeZone": "America/New_York"
+        }
     }
 ]
