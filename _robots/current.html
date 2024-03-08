@@ -287,7 +287,7 @@ permalink: /robots/current
          var awardsForYear = await awardsData.json();
          var gitCommitJSON = await gitCommits.json()
          var gitLastUpdatedDate = new Date(gitCommitJSON.commit.committer.date)
-         document.getElementById("dataLastUpdated").innerText += gitLastUpdatedDate.toLocaleDateString() + " at " + gitLastUpdatedDate.toLocaleTimeString()
+         document.getElementById("dataLastUpdated").innerText = gitLastUpdatedDate.toLocaleDateString() + " at " + gitLastUpdatedDate.toLocaleTimeString()
          /* //////console.log("Event Data")
           //////console.log(eventdata);
           //////console.log("Event Stats")
