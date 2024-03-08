@@ -726,6 +726,11 @@ permalink: /robots/current
 
          if (minutes < -4) {
            setBanner(eventurl);
+           try {
+            getapi(eventurl, eventstats, awardsurl, tbaDataLastUpdatedurl);
+           } catch {
+            console.log("could not repoll the APIs")
+           }
          }
 
          if (minutes > 0 && seconds == 0) {
