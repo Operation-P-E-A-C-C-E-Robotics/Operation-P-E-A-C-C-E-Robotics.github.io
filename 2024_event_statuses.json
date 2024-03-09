@@ -2,29 +2,29 @@
     "2024ctwat": {
         "alliance": null,
         "alliance_status_str": "--",
-        "last_match_key": "2024ctwat_qm1",
-        "next_match_key": "2024ctwat_qm7",
-        "overall_status_str": "Team 3461 is <b>Rank 18/32</b> with a record of <b>0-1-0</b> in quals.",
+        "last_match_key": "2024ctwat_qm7",
+        "next_match_key": "2024ctwat_qm12",
+        "overall_status_str": "Team 3461 is <b>Rank 15/32</b> with a record of <b>1-1-0</b> in quals.",
         "playoff": null,
         "playoff_status_str": "--",
         "qual": {
             "num_teams": 32,
             "ranking": {
                 "dq": 0,
-                "matches_played": 1,
+                "matches_played": 2,
                 "qual_average": null,
-                "rank": 18,
+                "rank": 15,
                 "record": {
                     "losses": 1,
                     "ties": 0,
-                    "wins": 0
+                    "wins": 1
                 },
                 "sort_orders": [
-                    0.0,
-                    1.0,
-                    35.0,
-                    14.0,
-                    7.0,
+                    1.5,
+                    0.5,
+                    52.0,
+                    22.5,
+                    7.5,
                     0.0
                 ],
                 "team_key": "frc3461"
