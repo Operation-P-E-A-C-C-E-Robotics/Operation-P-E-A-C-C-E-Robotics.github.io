@@ -328,7 +328,7 @@ permalink: /robots/current
          var eventJSON = await fetch(eventsurl);
          var testJSON = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_events.json")
          var events = await eventJSON.json();
-         var testEvents = await testJSON.json();
+        // var testEvents = await testJSON.json();
          var curevents = []
          var currentEvent;
          var match
@@ -357,11 +357,11 @@ permalink: /robots/current
           var nextMatchKey;
           // console.log(events, testEvents);
           ////console.log(key);
-         for (var [key, value] of Object.entries(events) && Object.entries(testEvents)) {
+         for (var [key, value] of Object.entries(events)) {
             console.log(curevents[0].key);
 
             if (key == curevents[0].key){
-              console.log(key, value);
+              console.log("Current Event", key, value);
               match = value
               nextMatchKey = value.next_match_key
               //console.log(nextMatchKey);
@@ -400,16 +400,7 @@ permalink: /robots/current
           }
          }
 
-         for (var match = 0; match < testMatches.length; match++) {
-          // ////console.log(events[event]);
 
-          if (testMatches[match].key == matchKey){
-            ////console.log(events[event]);
-            return testMatches[match];
-          }
-         }
-         //////console.log(match);
-        //  return Promise.resolve(match);
        }
 
        async function getTeamStatus(eventKey) {
