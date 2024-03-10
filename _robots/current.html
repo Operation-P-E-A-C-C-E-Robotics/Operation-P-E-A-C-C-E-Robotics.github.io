@@ -338,7 +338,7 @@ permalink: /robots/current
            ////////console.log(key);
            var date = new Date()
            var eventStartDate = new Date(key[1].start_date);
-           var eventEndDate = new Date(key[1].end_date);
+           var eventEndDate = new Date(key[1].end_date) + 2;
            ////////console.log(dateConfig);
            ////////console.log(eventStartDate);
            if (date.getTime() <= eventEndDate.getTime() && date.getTime() >= eventStartDate.getTime()) {
@@ -348,7 +348,7 @@ permalink: /robots/current
          }
 
           // console.log("Cur Events")
-          // console.log(curevents)
+          console.log("Current Events", curevents)
          if (curevents.length != 0) {
           var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json");
           var testResponse = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_event_statuses.json");
