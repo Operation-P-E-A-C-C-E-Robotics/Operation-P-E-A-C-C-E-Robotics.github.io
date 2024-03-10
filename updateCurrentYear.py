@@ -14,6 +14,24 @@ start_time = "09:00:00"
 end_time = "21:00:00"
 commit_message = "Committing files via Python script"
 
+email = "actions@github.com"
+name = "Github Actions [Bot]"
+
+def set_git_config(email, name):
+    """
+    Set global Git configuration for email and name.
+
+    Args:
+        email: Git user email.
+        name: Git user name.
+    """
+    try:
+        subprocess.run(["git", "config", "--global", "user.email", email])
+        subprocess.run(["git", "config", "--global", "user.name", name])
+        print("Git configuration set successfully.")
+    except Exception as e:
+        print("Error setting Git configuration:", str(e))
+
 def git_commit(files, message):
     """
     Commit files to Git with a commit message.
@@ -81,8 +99,9 @@ async def season(api):
         outfile.close()
         git_commit([f"{year}_district_rankings.json"], commit_message)
         
-
-
+ git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+subprocess.run("")
 
 while True:
     current_time = time.strftime("%H:%M:%S")
