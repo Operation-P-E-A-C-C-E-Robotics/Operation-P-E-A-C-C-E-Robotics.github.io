@@ -43,6 +43,7 @@ def git_commit(files, message):
     try:
         subprocess.run(["git", "add"] + files)
         subprocess.run(["git", "commit", "-m", message])
+        subprocess.run(["git", "push", "--force"])
         print("Files committed successfully.")
     except Exception as e:
         print("Error committing files:", str(e))
