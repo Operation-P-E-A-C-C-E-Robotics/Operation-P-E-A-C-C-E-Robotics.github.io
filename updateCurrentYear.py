@@ -68,7 +68,7 @@ async def season(api):
 while True:
     current_time = time.strftime("%H:%M:%S")
     if start_time <= current_time <= end_time:
-        my_function()
+        # my_function()
         time.sleep(5)  # Adjust the sleep time as needed (5 seconds here)
         loop = asyncio.get_event_loop()
         coroutine = season(tba_api_key)
