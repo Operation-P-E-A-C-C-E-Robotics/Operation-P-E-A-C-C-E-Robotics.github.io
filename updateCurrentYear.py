@@ -38,7 +38,7 @@ async def season(api):
     with open(f"{year}_events.json", "w") as outfile:
         outfile.write(json.dumps(events.json(), indent=4))
         outfile.close()
-        git_commit(outfile, commit_message)
+        git_commit([f"{year}_events.json"], commit_message)
     
     event_status = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/events/{year}/statuses?X-TBA-Auth-Key={api}')
     # print(tba_api_key)
@@ -46,7 +46,8 @@ async def season(api):
     with open(f"{year}_event_statuses.json", "w") as outfile:
         outfile.write(json.dumps(event_status.json(), indent=4))
         outfile.close()
-        git_commit(outfile, commit_message)
+       
+        git_commit([f"{year}_event_statuses.json"], commit_message)
     
     awards = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/awards/{year}?X-TBA-Auth-Key={api}')
     # print(tba_api_key)
@@ -54,6 +55,7 @@ async def season(api):
     with open(f"{year}_awards.json", "w") as outfile:
         outfile.write(json.dumps(awards.json(), indent=4))
         outfile.close()
+        git_commit([f"{year}_awards.json"], commit_message)
     
     matches = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/matches/{year}?X-TBA-Auth-Key={api}')
     # print(tba_api_key)
@@ -61,7 +63,7 @@ async def season(api):
     with open(f"{year}_matches.json", "w") as outfile:
         outfile.write(json.dumps(matches.json(), indent=4))
         outfile.close()
-        git_commit(outfile, commit_message)
+        git_commit([f"{year}_matches.json"], commit_message)
     
 
     media = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/media/{year}?X-TBA-Auth-Key={api}')
@@ -70,14 +72,15 @@ async def season(api):
     with open(f"{year}_media.json", "w") as outfile:
         outfile.write(json.dumps(media.json(), indent=4))
         outfile.close()
-        git_commit(outfile, commit_message)
+        git_commit([f"{year}_media.json"], commit_message)
 
     districts = requests.get(f'https://www.thebluealliance.com/api/v3/district/{year}ne/rankings?X-TBA-Auth-Key={api}')
     print(districts.text)
     with open(f"{year}_district_rankings.json", "w") as outfile:
         outfile.write(json.dumps(districts.json(), indent=4))
         outfile.close()
-        git_commit(outfile, commit_message)
+        git_commit([f"{year}_district_rankings.json"], commit_message)
+        
 
 
 
