@@ -338,10 +338,11 @@ permalink: /robots/current
            ////////console.log(key);
            var date = new Date()
            var eventStartDate = new Date(key[1].start_date);
-           var eventEndDate = new Date(key[1].end_date) + 2;
+           var eventEndDate = new Date(key[1].end_date);
+          //  var eventEndDate = new Date().setDate(tempEventEndDate + 2);
            ////////console.log(dateConfig);
            ////////console.log(eventStartDate);
-           if (date.getTime() <= eventEndDate.getTime() && date.getTime() >= eventStartDate.getTime()) {
+           if (date.getTime() <= eventEndDate.getTime() && date.getTime() <= eventStartDate.getTime()) {
              curevents.push(key[1]);
              currentEvent = key[1];
            }
