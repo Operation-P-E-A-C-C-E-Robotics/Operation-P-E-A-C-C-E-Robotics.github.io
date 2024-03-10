@@ -6,11 +6,12 @@ import os
 import json
 import requests
 import datetime
-
+import time
+import subprocess
 
 tba_api_key = os.getenv('TBA_API_KEY')
 
-
+commit_message = "Committing files via Python script"
 
 async def season(api):
     year = datetime.date.today().year
@@ -20,6 +21,7 @@ async def season(api):
     with open(f"{year}_events.json", "w") as outfile:
         outfile.write(json.dumps(events.json(), indent=4))
         outfile.close()
+        git_commit(outfile, commit_message)
     
     event_status = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/events/{year}/statuses?X-TBA-Auth-Key={api}')
     # print(tba_api_key)
@@ -27,6 +29,7 @@ async def season(api):
     with open(f"{year}_event_statuses.json", "w") as outfile:
         outfile.write(json.dumps(event_status.json(), indent=4))
         outfile.close()
+        git_commit(outfile, commit_message)
     
     awards = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/awards/{year}?X-TBA-Auth-Key={api}')
     # print(tba_api_key)
@@ -41,6 +44,7 @@ async def season(api):
     with open(f"{year}_matches.json", "w") as outfile:
         outfile.write(json.dumps(matches.json(), indent=4))
         outfile.close()
+        git_commit(outfile, commit_message)
     
 
     media = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/media/{year}?X-TBA-Auth-Key={api}')
@@ -49,16 +53,52 @@ async def season(api):
     with open(f"{year}_media.json", "w") as outfile:
         outfile.write(json.dumps(media.json(), indent=4))
         outfile.close()
+        git_commit(outfile, commit_message)
 
     districts = requests.get(f'https://www.thebluealliance.com/api/v3/district/{year}ne/rankings?X-TBA-Auth-Key={api}')
     print(districts.text)
     with open(f"{year}_district_rankings.json", "w") as outfile:
         outfile.write(json.dumps(districts.json(), indent=4))
         outfile.close()
+        git_commit(outfile, commit_message)
+
+
+
+while True:
+    current_time = time.strftime("%H:%M:%S")
+    if start_time <= current_time <= end_time:
+        my_function()
+        time.sleep(5)  # Adjust the sleep time as needed (5 seconds here)
+        loop = asyncio.get_event_loop()
+        coroutine = season(tba_api_key)
+        loop.run_until_complete(coroutine)
+    else:
+        print("Outside of working hours. Exiting loop.")
+        break
 
 
 
 
-loop = asyncio.get_event_loop()
-coroutine = season(tba_api_key)
-loop.run_until_complete(coroutine)
+def git_commit(files, message):
+    """
+    Commit files to Git with a commit message.
+    
+    Args:
+        files: List of files to commit.
+        message: Commit message.
+    """
+    try:
+        subprocess.run(["git", "add"] + files)
+        subprocess.run(["git", "commit", "-m", message])
+        print("Files committed successfully.")
+    except Exception as e:
+        print("Error committing files:", str(e))
+
+# List of files to commit
+# files_to_commit = ["file1.py", "file2.py"]
+
+# Commit message
+# commit_message = "Committing files via Python script"
+
+# Call the function to commit
+# git_commit(files_to_commit, commit_message)
