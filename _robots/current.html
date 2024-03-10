@@ -332,17 +332,17 @@ permalink: /robots/current
          var curevents = []
          var currentEvent;
          var match
-         console.log(events);
+        //  console.log(events);
          for (let key of Object.entries(events)) {
 
            ////////console.log(key);
            var date = new Date()
            var eventStartDate = new Date(key[1].start_date);
-           var tempEventEndDate = new Date(key[1].end_date);
-           var eventEndDate = new Date().setDate(tempEventEndDate + 2);
+           var eventEndDate = new Date(key[1].end_date);
+          //  var eventEndDate = new Date().setDate(tempEventEndDate + 2);
            ////////console.log(dateConfig);
            ////////console.log(eventStartDate);
-           if (date.getTime() <= eventEndDate.getTime() && date.getTime() <= eventStartDate.getTime()) {
+           if (eventStartDate.getTime() <= date.getTime() <= eventEndDate.getTime()) {
              curevents.push(key[1]);
              currentEvent = key[1];
            }
@@ -359,7 +359,7 @@ permalink: /robots/current
           // console.log(events, testEvents);
           ////console.log(key);
          for (var [key, value] of Object.entries(events)) {
-            console.log(curevents[0].key);
+            //console.log(curevents[0].key);
 
             if (key == curevents[0].key){
               console.log("Current Event", key, value);
@@ -477,7 +477,7 @@ permalink: /robots/current
          try {
 event.webcasts.reverse()
             if (document.getElementById("liveStreamFrame").src == "{{"/assets/images/notFound.png" | absolute_url}}") {
-              console.log("setting stream iframe to " + event.webcasts[0])
+              //console.log("setting stream iframe to " + event.webcasts[0])
               if (event.webcasts[0].type == "twitch") {
                 document.getElementById("liveStreamFrame").src = "https://player.twitch.tv/?autoplay=true&channel=" + event.webcasts[0].channel + "&parent=www.peacce.org"
               }
@@ -489,7 +489,7 @@ event.webcasts.reverse()
 
               hasSetIFrame = true
             } else {
-              console.log("live stream iframe appears to be set, " + document.getElementById("liveStreamFrame").src)
+              //console.log("live stream iframe appears to be set, " + document.getElementById("liveStreamFrame").src)
             }
           } catch {
             document.getElementById("liveStream").style.display = "none"
@@ -546,7 +546,7 @@ event.webcasts.reverse()
 
 
           var badge = ""
-          console.log(key, value)
+          //console.log(key, value)
           if (value != null) {
 
 
