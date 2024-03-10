@@ -14,6 +14,22 @@ start_time = "09:00:00"
 end_time = "21:00:00"
 commit_message = "Committing files via Python script"
 
+def git_commit(files, message):
+    """
+    Commit files to Git with a commit message.
+    
+    Args:
+        files: List of files to commit.
+        message: Commit message.
+    """
+    try:
+        subprocess.run(["git", "add"] + files)
+        subprocess.run(["git", "commit", "-m", message])
+        print("Files committed successfully.")
+    except Exception as e:
+        print("Error committing files:", str(e))
+
+
 async def season(api):
     year = datetime.date.today().year
     events = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/events/{year}?X-TBA-Auth-Key={api}')
@@ -80,20 +96,20 @@ while True:
 
 
 
-def git_commit(files, message):
-    """
-    Commit files to Git with a commit message.
+# def git_commit(files, message):
+#     """
+#     Commit files to Git with a commit message.
     
-    Args:
-        files: List of files to commit.
-        message: Commit message.
-    """
-    try:
-        subprocess.run(["git", "add"] + files)
-        subprocess.run(["git", "commit", "-m", message])
-        print("Files committed successfully.")
-    except Exception as e:
-        print("Error committing files:", str(e))
+#     Args:
+#         files: List of files to commit.
+#         message: Commit message.
+#     """
+#     try:
+#         subprocess.run(["git", "add"] + files)
+#         subprocess.run(["git", "commit", "-m", message])
+#         print("Files committed successfully.")
+#     except Exception as e:
+#         print("Error committing files:", str(e))
 
 # List of files to commit
 # files_to_commit = ["file1.py", "file2.py"]
