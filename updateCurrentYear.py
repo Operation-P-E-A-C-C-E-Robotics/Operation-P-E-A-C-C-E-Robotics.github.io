@@ -98,12 +98,10 @@ async def season(api):
         outfile.write(json.dumps(districts.json(), indent=4))
         outfile.close()
         git_commit([f"{year}_district_rankings.json"], commit_message)
-        
- git config --global user.email "you@example.com"
-  git config --global user.name "Your Name"
-subprocess.run("")
+
 
 while True:
+    set_git_config(email, name)
     current_time = time.strftime("%H:%M:%S")
     if start_time <= current_time <= end_time:
         # my_function()
