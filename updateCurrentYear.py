@@ -10,7 +10,8 @@ import time
 import subprocess
 
 tba_api_key = os.getenv('TBA_API_KEY')
-
+start_time = "09:00:00"
+end_time = "21:00:00"
 commit_message = "Committing files via Python script"
 
 async def season(api):
