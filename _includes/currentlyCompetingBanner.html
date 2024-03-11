@@ -46,51 +46,61 @@
     var countDownDate;
     var eventurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_events.json";
 
-  async function setBanner(eventsurl) {
-         var eventJSON = await fetch(eventsurl, { cache: "reload" });
-         var testJSON = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_events.json", { cache: "reload" })
+    async function setBanner(eventsurl) {
+         var eventJSON = await fetch(eventsurl);
+         var testJSON = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_events.json")
          var events = await eventJSON.json();
-         var testEvents = await testJSON.json();
+        // var testEvents = await testJSON.json();
          var curevents = []
          var currentEvent;
          var match
-         //console.log(events);
+        //  console.log(events);
          for (let key of Object.entries(events)) {
 
            ////////console.log(key);
            var date = new Date()
            var eventStartDate = new Date(key[1].start_date);
            var eventEndDate = new Date(key[1].end_date);
+          //  var eventEndDate = new Date().setDate(tempEventEndDate + 2);
            ////////console.log(dateConfig);
            ////////console.log(eventStartDate);
-           if (date.getTime() <= eventEndDate.getTime() && date.getTime() >= eventStartDate.getTime()) {
+           if (eventStartDate.getTime() <= date.getTime() <= eventEndDate.getTime()) {
              curevents.push(key[1]);
              currentEvent = key[1];
            }
          }
 
           // console.log("Cur Events")
-          // console.log(curevents)
+          console.log("Current Events", curevents)
          if (curevents.length != 0) {
-          var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json", { cache: "reload" });
-          var testResponse = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_event_statuses.json", { cache: "reload" });
+          var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json");
+          var testResponse = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_event_statuses.json");
           var events =  await apiResponse.json();
           var testEvents = await testResponse.json();
           var nextMatchKey;
-          //console.log(events);
+          // console.log(events, testEvents);
           ////console.log(key);
-         for (var [key, value] of Object.entries(events) && Object.entries(testEvents)) {
-            // console.log(curevents[0].key);
-          
+         for (var [key, value] of Object.entries(events)) {
+            //console.log(curevents[0].key);
+
             if (key == curevents[0].key){
-              // console.log(key, value);
+              console.log("Current Event", key, value);
               match = value
               nextMatchKey = value.next_match_key
-              // console.log(nextMatchKey);
-            }  
+              //console.log(nextMatchKey);
+            }
 
           }
           bannerHelper(curevents[0].name, nextMatchKey, match, curevents[0]);
+         } else {
+          nextEvent = events[0];
+          nextEventDate = new Date(nextEvent.start_date);
+          today = new Date()
+          if ( nextEventDate >= today && today >= kickoff) {
+            update_countdown(document.getElementById('competitionCountdownDays'), nextEventDate)
+            // document.getElementById("competitionCountdownDays").innerHTML += (Math.ceil( (nextEventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
+            document.getElementById("competitionCountdown").style.display = "block";
+          }
          }
         //  //console.log(curevents[0].name, curevents[0], match);
         
