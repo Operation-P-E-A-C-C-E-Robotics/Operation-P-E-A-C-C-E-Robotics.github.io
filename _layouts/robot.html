@@ -1049,7 +1049,7 @@ function sortEventBanners() {
 
   //ChatGPT optomized this also
   async function getEventNameFromKey(key) {
-  const apiResponse = await fetch(`https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/${year}_events.json`);
+  const apiResponse = await fetch(`https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/${year}_events.json`, { cache: "reload" });
   const events = await apiResponse.json();
   
   const event = events.find(event => event.key === key);
@@ -1058,7 +1058,7 @@ function sortEventBanners() {
 }
 
 async function getShortEventNameFromKey(key) {
-  const apiResponse = await fetch(`https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/${year}_events.json`);
+  const apiResponse = await fetch(`https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/${year}_events.json`, { cache: "reload" });
   const events = await apiResponse.json();
   
   const event = events.find(event => event.key === key);
