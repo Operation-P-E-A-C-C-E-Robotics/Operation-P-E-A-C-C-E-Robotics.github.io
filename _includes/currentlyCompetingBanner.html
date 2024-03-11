@@ -64,7 +64,7 @@
           //  var eventEndDate = new Date().setDate(tempEventEndDate + 2);
            ////////console.log(dateConfig);
            ////////console.log(eventStartDate);
-           if (eventStartDate.getTime() <= date.getTime() <= eventEndDate.getTime()) {
+           if (date >= eventStartDate && date <= eventEndDate) {
              curevents.push(key[1]);
              currentEvent = key[1];
            }
@@ -123,14 +123,14 @@
           }  
          }
 
-         for (var match = 0; match < testMatches.length; match++) {
-          // ////console.log(events[event]);
+        //  for (var match = 0; match < testMatches.length; match++) {
+        //   // ////console.log(events[event]);
         
-          if (testMatches[match].key == matchKey){
-            ////console.log(events[event]);
-            return testMatches[match];
-          }  
-         }
+        //   if (testMatches[match].key == matchKey){
+        //     ////console.log(events[event]);
+        //     return testMatches[match];
+        //   }  
+        //  }
          //////console.log(match);
         //  return Promise.resolve(match);
        }

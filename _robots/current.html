@@ -342,7 +342,7 @@ permalink: /robots/current
           //  var eventEndDate = new Date().setDate(tempEventEndDate + 2);
            ////////console.log(dateConfig);
            ////////console.log(eventStartDate);
-           if (eventStartDate.getTime() <= date.getTime() <= eventEndDate.getTime()) {
+           if (date >= eventStartDate && date <= eventEndDate) {
              curevents.push(key[1]);
              currentEvent = key[1];
            }
@@ -760,12 +760,16 @@ event.webcasts.reverse()
       return team_key.replace("frc", "")
     }
 
-    try{ 
+    // try{ 
       event_name = await getEventNameFromKey(highScore.event_key)
       document.getElementById('bestMatchEventName').innerText += event_name 
       match_name = await getMatchNameFromKey(highScore.key)
       document.getElementById('bestMatchMatchName').innerText += match_name
+      try {
       document.getElementById('bestMatchYTEmbed').src = "https://www.youtube-nocookie.com/embed/" + highScore.videos[0].key 
+      } catch {
+
+      }
 
       document.getElementById('bestMatchRedOne').innerHTML += clearFRCfromTeamKey(highScore.alliances.red.team_keys[0])
       document.getElementById('bestMatchBlueOne').innerHTML += clearFRCfromTeamKey(highScore.alliances.blue.team_keys[0])
@@ -778,10 +782,10 @@ event.webcasts.reverse()
 
       document.getElementById('bestMatchRedScore').innerText += "Score: "+ highScore.alliances.red.score
       document.getElementById('bestMatchBlueScore').innerText += "Score: "+highScore.alliances.blue.score
-    }
-    catch {
+    // }
+    // catch {
       
-    }
+    // }
   }
 
   function getHighestRankingOnSeasonMatch(matches) {
@@ -812,12 +816,12 @@ event.webcasts.reverse()
         if (currentScore > highScore) {
           highScore = currentScore
           bestMatch = match
-          console.log("Best Scoring Match:", match.key, currentScore, ">", highScore)
+          // console.log("Best Scoring Match:", match.key, currentScore, ">", highScore)
         }
 
         
     }
-    console.log(currentScore, bestMatch)
+    // console.log(currentScore, bestMatch)
     return bestMatch
   }
 
@@ -877,9 +881,9 @@ event.webcasts.reverse()
   async function generateGraph(events, scores, match_number) {
     const N = Math.max(...match_number) / events.length + 8;
     const arr = Array.from({length: N}, (_, index) => "Match " + (index + 1) );
-    // ////console.log(arr);
-    // ////console.log(match_number);
-    // ////console.log(events)
+    //console.log(arr);
+    // console.log(match_number);
+    //console.log(events)
     var xValues = arr;
     var barColors = ["red", "green","blue","orange","brown"];
     var eventKeyNamePair = {};
@@ -917,7 +921,7 @@ event.webcasts.reverse()
 
       // ////console.log(eventName);
       // ////console.log(entry);
-      // ////console.log(value.sort((a,b)=>a.x-b.x))
+      //console.log(value)
       chartConfig.data.datasets.push({
         label: eventKeyNamePair[key],
         borderColor: barColors[index],
@@ -966,20 +970,44 @@ event.webcasts.reverse()
 
 
   async function getEventNameFromKey(key) {
-    var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_events.json");
-    var events =  await apiResponse.json();
-    // ////console.log(events);
-    ////console.log(key);
-    for (event in events) {
-      // ////console.log(events[event]);
+  const apiResponse = await fetch(`https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/${year}_events.json`);
+  const events = await apiResponse.json();
+  
+  const event = events.find(event => event.key === key);
+  
+  return event ? event.name : null;
+}
 
-      if (events[event].key == key){
-        ////console.log(events[event]);
-        return events[event].name;
-      }
-    }
+async function getShortEventNameFromKey(key) {
+  const apiResponse = await fetch(`https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/${year}_events.json`);
+  const events = await apiResponse.json();
+  
+  const event = events.find(event => event.key === key);
+  
+  return event ? event.short_name : null;
+}
 
+async function getMatchNameFromKey(key) {
+  const apiResponse = await fetch(`https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/${year}_matches.json`);
+  const events = await apiResponse.json();
+  
+  const event = events.find(event => event.key === key);
+
+  if (event.comp_level === "qm") {
+      var matchtitle = "Qualification Match";
+  } else if (event.comp_level === "qf") {
+      var matchtitle = "Quarterfinal " + event.set_number + " Match";
+  } else if (event.comp_level === "sf") {
+      var matchtitle = "Semifinal " + event.set_number + " Match";
+  } else if (event.comp_level === "f") {
+      var matchtitle = "Final";
+  } else {
+      var matchtitle = "Unknown";
   }
+  
+  return event ? matchtitle + " " + event.match_number : null;
+}
+
 
 </script>
 
