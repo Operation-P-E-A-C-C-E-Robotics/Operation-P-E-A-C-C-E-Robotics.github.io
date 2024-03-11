@@ -26,7 +26,7 @@ jobs:
           workflow: 56043978
 
       - name: Trigger TBA current workflow
-        if: ${{ github.event_name == 'schedule' && github.event.schedule == '*/5 * * 3-4 *' || github.event_name == 'workflow_dispatch' || github.event_name == 'issues' }}
+        if: ${{ github.event_name == 'schedule' && github.event.schedule == '0 9 * 3-4 *' || github.event_name == 'workflow_dispatch' || github.event_name == 'issues' }}
         uses: benc-uk/workflow-dispatch@v1
         with:
           ref: gh-actions-tba-data-backend
