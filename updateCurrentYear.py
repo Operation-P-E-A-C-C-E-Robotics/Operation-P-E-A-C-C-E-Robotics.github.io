@@ -8,6 +8,7 @@ import requests
 import datetime
 import time
 import subprocess
+import pytz
 
 tba_api_key = os.getenv('TBA_API_KEY')
 start_time = "09:00:00"
@@ -101,43 +102,24 @@ async def season(api):
         git_commit([f"{year}_district_rankings.json"], commit_message)
 
 
-while True:
+async def run_script():
     set_git_config(email, name)
-    timezone = time.localtime()
-    current_time = time.strftime("%H:%M:%S", timezone)
-    if start_time <= current_time <= end_time:
-        # my_function()
-        time.sleep(5)  # Adjust the sleep time as needed (5 seconds here)
-        loop = asyncio.get_event_loop()
-        coroutine = season(tba_api_key)
-        loop.run_until_complete(coroutine)
-    else:
-        print("Outside of working hours. Exiting loop.")
-        break
+    while True:
+        # Get the current datetime in Eastern Time
+        eastern = pytz.timezone('US/Eastern')
+        eastern_now = datetime.datetime.now(eastern)
 
+        # Check if it's between 9am and 9pm in Eastern Time
+        if start_time <= eastern_now.strftime("%H:%M:%S") <= end_time:
+            await season(tba_api_key)
+            print("Data fetched and committed.")
+        else:
+            print("Outside of working hours. Exiting loop.")
+            break
 
+        # Wait for 30 seconds before next iteration
+        await asyncio.sleep(30)
 
-
-# def git_commit(files, message):
-#     """
-#     Commit files to Git with a commit message.
-    
-#     Args:
-#         files: List of files to commit.
-#         message: Commit message.
-#     """
-#     try:
-#         subprocess.run(["git", "add"] + files)
-#         subprocess.run(["git", "commit", "-m", message])
-#         #print("Files committed successfully.")
-#     except Exception as e:
-#         #print("Error committing files:", str(e))
-
-# List of files to commit
-# files_to_commit = ["file1.py", "file2.py"]
-
-# Commit message
-# commit_message = "Committing files via Python script"
-
-# Call the function to commit
-# git_commit(files_to_commit, commit_message)
+if __name__ == "__main__":
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(run_script())
