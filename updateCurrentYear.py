@@ -103,7 +103,8 @@ async def season(api):
 
 while True:
     set_git_config(email, name)
-    current_time = time.strftime("%H:%M:%S")
+    timezone = time.localtime()
+    current_time = time.strftime("%H:%M:%S", timezone)
     if start_time <= current_time <= end_time:
         # my_function()
         time.sleep(5)  # Adjust the sleep time as needed (5 seconds here)
