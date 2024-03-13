@@ -3,10 +3,11 @@
       Currently Competing At () Event!
     </h1>
     <h4 id="currentStatusStr" class="text-center pb-3">Team 3461's current status is unknown</h4>
-    <div class="row justify-content-center">
-      <div class="col-sm-1 col-md-3">
-        <div class="">
-          <h3 id="currentNextMatch" style="text-transform: uppercase;">
+
+    <div class="row">
+      <div class="col d-flex-col">
+        <div class="d-flex d-flex-row">
+          <h3 id="currentNextMatch" style="text-transform: capitalcase;">
             Next Match: Not Found
           </h3>
           <h3 id='counter' class="pl-2">--h --m --s</h3>
@@ -19,19 +20,19 @@
         </div>
 
       </div>
-      <div class="col-sm-3 col-md-6 col-lg-6">
+      <div class="col-3">
         <div class="row">
-          <h3 class="col text-center" id="redTeams">
+          <h3 class="col-4 text-center" id="redTeams">
             0000 0000 0000 
           </h3>
-          <h3 class="col m-0 p-0 text-center mx-auto d-lg-block"><span class="mx-auto text-center">VS</span></h3>
-          <h3 class="col text-center" id="blueTeams">
+          <h3 class="col-4 m-0 p-0 text-center mx-auto"><span class="mx-auto text-center">VS</span></h3>
+          <h3 class="col-4 text-center" id="blueTeams">
             0000 0000 0000
           </h3>
         </div>
       </div>
 
-      <h3 class="col-sm-1 col-md-3 text-right d-lg-block" id='time'></h3>
+      <h3 class="col text-right" id='time'></h3>
 
     </div>
 
@@ -46,51 +47,64 @@
     var countDownDate;
     var eventurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_events.json";
 
+
   async function setBanner(eventsurl) {
          var eventJSON = await fetch(eventsurl, { cache: "reload" });
          var testJSON = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_events.json", { cache: "reload" })
          var events = await eventJSON.json();
-         var testEvents = await testJSON.json();
+        // var testEvents = await testJSON.json();
          var curevents = []
          var currentEvent;
          var match
-         //console.log(events);
-         for (let key of Object.entries(events) && Object.entries(testEvents)) {
+        //  console.log(events);
+         for (let key of Object.entries(events)) {
 
            ////////console.log(key);
            var date = new Date()
            var eventStartDate = new Date(key[1].start_date);
            var eventEndDate = new Date(key[1].end_date);
+          //  var eventEndDate = new Date().setDate(tempEventEndDate + 2);
            ////////console.log(dateConfig);
            ////////console.log(eventStartDate);
-           if (date.getTime() <= eventEndDate.getTime() && date.getTime() >= eventStartDate.getTime()) {
+           if (date >= eventStartDate && date <= eventEndDate) {
              curevents.push(key[1]);
              currentEvent = key[1];
            }
          }
 
           // console.log("Cur Events")
-          // console.log(curevents)
+          console.log("Current Events", curevents)
          if (curevents.length != 0) {
           var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json", { cache: "reload" });
           var testResponse = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_event_statuses.json", { cache: "reload" });
           var events =  await apiResponse.json();
           var testEvents = await testResponse.json();
           var nextMatchKey;
-          //console.log(events);
+          // console.log(events, testEvents);
           ////console.log(key);
-         for (var [key, value] of Object.entries(events) && Object.entries(testEvents)) {
-            // console.log(curevents[0].key);
-          
+         for (var [key, value] of Object.entries(events)) {
+            //console.log(curevents[0].key);
+
             if (key == curevents[0].key){
-              // console.log(key, value);
+              console.log("Current Event", key, value);
               match = value
               nextMatchKey = value.next_match_key
-              // console.log(nextMatchKey);
-            }  
+              //console.log(nextMatchKey);
+            }
 
           }
           bannerHelper(curevents[0].name, nextMatchKey, match, curevents[0]);
+
+         } else {
+          nextEvent = events[0];
+          nextEventDate = new Date(nextEvent.start_date);
+          today = new Date()
+          if ( nextEventDate >= today && today >= kickoff) {
+            update_countdown(document.getElementById('competitionCountdownDays'), nextEventDate)
+            // document.getElementById("competitionCountdownDays").innerHTML += (Math.ceil( (nextEventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
+            document.getElementById("competitionCountdown").style.display = "block";
+          }
+
          }
         //  //console.log(curevents[0].name, curevents[0], match);
         
@@ -113,14 +127,14 @@
           }  
          }
 
-         for (var match = 0; match < testMatches.length; match++) {
-          // ////console.log(events[event]);
+        //  for (var match = 0; match < testMatches.length; match++) {
+        //   // ////console.log(events[event]);
         
-          if (testMatches[match].key == matchKey){
-            ////console.log(events[event]);
-            return testMatches[match];
-          }  
-         }
+        //   if (testMatches[match].key == matchKey){
+        //     ////console.log(events[event]);
+        //     return testMatches[match];
+        //   }  
+        //  }
          //////console.log(match);
         //  return Promise.resolve(match);
        }
@@ -162,22 +176,28 @@
           document.getElementById("currentStatusStr").innerHTML = stats.overall_status_str;
          } catch {}
 
-         try{ 
+         try{
          document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level + " " + match.match_number;
+         document.getElementById("counter").style.display = "block"
          } catch {
           console.error("failed to get next match");
+          document.getElementById("counter").style.display = "None"
          }
 
          try{
+
          document.getElementById("redTeams").innerHTML = "<h3 class='col text-right'>" + clearFRCfromTeam(match.alliances.red.team_keys[0]) + "</h3>" + "<h3 class='col text-right'>" + clearFRCfromTeam(match.alliances.red.team_keys[1]) + "</h3>" + "<h3 class='col text-right'>" + clearFRCfromTeam(match.alliances.red.team_keys[2]) + "</h3>"
          } catch {
           console.error("failed to get red teams");
+          document.getElementById("redTeams").style.display = "None"
          }
 
          try {
+
          document.getElementById("blueTeams").innerHTML = "<h3 class='col text-left'>" + clearFRCfromTeam(match.alliances.blue.team_keys[0]) + "</h3>" + "<h3 class='col text-left'>" + clearFRCfromTeam(match.alliances.blue.team_keys[1]) + "</h3>" + "<h3 class='col text-left'>" + clearFRCfromTeam(match.alliances.blue.team_keys[2]) + "</h3>"
          } catch {
           console.error("failed to get blue teams");
+          document.getElementById("blueTeams").style.display = "None"
          }
 
          try {
@@ -186,6 +206,9 @@
           console.error("failed to get event rank");
          }
          try {
+
+          event.webcasts.reverse()
+
             if (document.getElementById("liveStreamFrame").src == "{{"/assets/images/notFound.png" | absolute_url}}") {
               console.log("setting stream iframe to " + event.webcasts[0])
               if (event.webcasts[0].type == "twitch") {

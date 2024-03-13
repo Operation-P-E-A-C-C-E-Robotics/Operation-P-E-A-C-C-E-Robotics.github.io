@@ -2,7 +2,7 @@ name: Trigger update workflows on all branches
 on:
   schedule:
     - cron: '35 10 * * *' # Run at 5:35 AM EST | 10:35 AM UTC (Github Actions runs on UTC, no Daylight Savings Time changes are accounted for in this trigger)
-    - cron: '*/5 * * 3-4 *' # Run at every 5th minute in every month from March through April to update data from The Blue Alliance for the current season during competitions.
+    - cron: '0 9 * 3-4 0,4,5,6' # Run at 09:00 on Sunday, Thursday, Friday, and Saturday in every month from March through April.
 
   issues:
     types: [opened]
@@ -26,7 +26,7 @@ jobs:
           workflow: 56043978
 
       - name: Trigger TBA current workflow
-        if: ${{ github.event_name == 'schedule' && github.event.schedule == '*/5 * * 3-4 *' || github.event_name == 'workflow_dispatch' || github.event_name == 'issues' }}
+        if: ${{ github.event_name == 'schedule' && github.event.schedule == '0 9 * 3-4 0,4,5,6' || github.event_name == 'workflow_dispatch' || github.event_name == 'issues' }}
         uses: benc-uk/workflow-dispatch@v1
         with:
           ref: gh-actions-tba-data-backend

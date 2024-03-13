@@ -60,7 +60,9 @@ permalink: /robots/current
     <div class="row">
       <div class="col d-flex-col">
         <div class="d-flex d-flex-row">
-          <h3 id="currentNextMatch" style="text-transform: uppercase;">
+
+          <h3 id="currentNextMatch" style="text-transform: capitalcase;">
+
             Next Match: Not Found
           </h3>
           <h3 id='counter' class="pl-2">--h --m --s</h3>
@@ -287,7 +289,7 @@ permalink: /robots/current
          var awardsForYear = await awardsData.json();
          var gitCommitJSON = await gitCommits.json()
          var gitLastUpdatedDate = new Date(gitCommitJSON.commit.committer.date)
-         document.getElementById("dataLastUpdated").innerText += gitLastUpdatedDate.toLocaleDateString() + " at " + gitLastUpdatedDate.toLocaleTimeString()
+         document.getElementById("dataLastUpdated").innerText = gitLastUpdatedDate.toLocaleDateString() + " at " + gitLastUpdatedDate.toLocaleTimeString()
          /* //////console.log("Event Data")
           //////console.log(eventdata);
           //////console.log("Event Stats")
@@ -328,27 +330,29 @@ permalink: /robots/current
          var eventJSON = await fetch(eventsurl);
          var testJSON = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_events.json")
          var events = await eventJSON.json();
-         var testEvents = await testJSON.json();
+        // var testEvents = await testJSON.json();
          var curevents = []
          var currentEvent;
          var match
-         console.log(events, testEvents);
-         for (let key of Object.entries(events) && Object.entries(testEvents)) {
+
+         for (let key of Object.entries(events)) {
+
 
            ////////console.log(key);
            var date = new Date()
            var eventStartDate = new Date(key[1].start_date);
            var eventEndDate = new Date(key[1].end_date);
+          //  var eventEndDate = new Date().setDate(tempEventEndDate + 2);
            ////////console.log(dateConfig);
            ////////console.log(eventStartDate);
-           if (date.getTime() <= eventEndDate.getTime() && date.getTime() >= eventStartDate.getTime()) {
+           if (date >= eventStartDate && date <= eventEndDate) {
              curevents.push(key[1]);
              currentEvent = key[1];
            }
          }
 
           // console.log("Cur Events")
-          // console.log(curevents)
+          console.log("Current Events", curevents)
          if (curevents.length != 0) {
           var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json");
           var testResponse = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_event_statuses.json");
@@ -357,11 +361,11 @@ permalink: /robots/current
           var nextMatchKey;
           // console.log(events, testEvents);
           ////console.log(key);
-         for (var [key, value] of Object.entries(events) && Object.entries(testEvents)) {
-            console.log(curevents[0].key);
+         for (var [key, value] of Object.entries(events)) {
+            //console.log(curevents[0].key);
 
             if (key == curevents[0].key){
-              console.log(key, value);
+              console.log("Current Event", key, value);
               match = value
               nextMatchKey = value.next_match_key
               //console.log(nextMatchKey);
@@ -400,16 +404,7 @@ permalink: /robots/current
           }
          }
 
-         for (var match = 0; match < testMatches.length; match++) {
-          // ////console.log(events[event]);
 
-          if (testMatches[match].key == matchKey){
-            ////console.log(events[event]);
-            return testMatches[match];
-          }
-         }
-         //////console.log(match);
-        //  return Promise.resolve(match);
        }
 
        async function getTeamStatus(eventKey) {
@@ -454,20 +449,26 @@ permalink: /robots/current
 
          try{
          document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level + " " + match.match_number;
+         document.getElementById("counter").style.display = "block"
          } catch {
           console.error("failed to get next match");
+          document.getElementById("counter").style.display = "None"
          }
 
          try{
          document.getElementById("redTeams").innerHTML = clearFRCfromTeam(match.alliances.red.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[2])
+         document.getElementById("redTeams").style.display = "block"
          } catch {
           console.error("failed to get red teams");
+          document.getElementById("redTeams").style.display = "None"
          }
 
          try {
          document.getElementById("blueTeams").innerHTML = clearFRCfromTeam(match.alliances.blue.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[2])
+         document.getElementById("blueTeams").style.display = "block"
          } catch {
           console.error("failed to get blue teams");
+          document.getElementById("blueTeams").style.display = "None"
          }
 
          try {
@@ -477,8 +478,9 @@ permalink: /robots/current
          }
 
          try {
+            event.webcasts.reverse()
             if (document.getElementById("liveStreamFrame").src == "{{"/assets/images/notFound.png" | absolute_url}}") {
-              console.log("setting stream iframe to " + event.webcasts[0])
+              //console.log("setting stream iframe to " + event.webcasts[0])
               if (event.webcasts[0].type == "twitch") {
                 document.getElementById("liveStreamFrame").src = "https://player.twitch.tv/?autoplay=true&channel=" + event.webcasts[0].channel + "&parent=www.peacce.org"
               }
@@ -490,15 +492,18 @@ permalink: /robots/current
 
               hasSetIFrame = true
             } else {
-              console.log("live stream iframe appears to be set, " + document.getElementById("liveStreamFrame").src)
+
+              //console.log("live stream iframe appears to be set, " + document.getElementById("liveStreamFrame").src)
             }
           } catch {
             document.getElementById("liveStream").style.display = "none"
           }
 
-         try {
+
+       //  try {
+
          document.getElementById("duringEventBanner").style.display = "block";
-          } catch {}
+       //   } catch {}
         }
 
        function clearFRCfromTeam(team) {
@@ -547,7 +552,7 @@ permalink: /robots/current
 
 
           var badge = ""
-          console.log(key, value)
+          //console.log(key, value)
           if (value != null) {
 
 
@@ -720,6 +725,11 @@ permalink: /robots/current
 
          if (minutes < -4) {
            setBanner(eventurl);
+           try {
+            getapi(eventurl, eventstats, awardsurl, tbaDataLastUpdatedurl);
+           } catch {
+            console.log("could not repoll the APIs")
+           }
          }
 
          if (minutes > 0 && seconds == 0) {
@@ -757,14 +767,26 @@ permalink: /robots/current
     }
 
     try{ 
+
       event_name = await getEventNameFromKey(highScore.event_key)
       document.getElementById('bestMatchEventName').innerText += event_name 
       match_name = await getMatchNameFromKey(highScore.key)
       document.getElementById('bestMatchMatchName').innerText += match_name
+
       document.getElementById('bestMatchYTEmbed').src = "https://www.youtube-nocookie.com/embed/" + highScore.videos[0].key 
 
       document.getElementById('bestMatchRedOne').innerHTML += clearFRCfromTeamKey(highScore.alliances.red.team_keys[0])
       document.getElementById('bestMatchBlueOne').innerHTML += clearFRCfromTeamKey(highScore.alliances.blue.team_keys[0])
+
+      try {
+      document.getElementById('bestMatchYTEmbed').src = "https://www.youtube-nocookie.com/embed/" + highScore.videos[0].key 
+      } catch {
+
+      }
+
+      document.getElementById('bestMatchRedOne').innerHTML += clearFRCfromTeamKey(highScore.alliances.red.team_keys[0])
+      document.getElementById('bestMatchBlueOne').innerHTML += clearFRCfromTeamKey(highScore.alliances.blue.team_keys[0])
+
 
       document.getElementById('bestMatchRedTwo').innerHTML += clearFRCfromTeamKey(highScore.alliances.red.team_keys[1])
       document.getElementById('bestMatchBlueTwo').innerHTML += clearFRCfromTeamKey(highScore.alliances.blue.team_keys[1])
@@ -774,10 +796,12 @@ permalink: /robots/current
 
       document.getElementById('bestMatchRedScore').innerText += "Score: "+ highScore.alliances.red.score
       document.getElementById('bestMatchBlueScore').innerText += "Score: "+highScore.alliances.blue.score
+
     }
     catch {
       
     }
+
   }
 
   function getHighestRankingOnSeasonMatch(matches) {
@@ -808,12 +832,12 @@ permalink: /robots/current
         if (currentScore > highScore) {
           highScore = currentScore
           bestMatch = match
-          console.log("Best Scoring Match:", match.key, currentScore, ">", highScore)
+          // console.log("Best Scoring Match:", match.key, currentScore, ">", highScore)
         }
 
         
     }
-    console.log(currentScore, bestMatch)
+    // console.log(currentScore, bestMatch)
     return bestMatch
   }
 
@@ -873,9 +897,9 @@ permalink: /robots/current
   async function generateGraph(events, scores, match_number) {
     const N = Math.max(...match_number) / events.length + 8;
     const arr = Array.from({length: N}, (_, index) => "Match " + (index + 1) );
-    // ////console.log(arr);
-    // ////console.log(match_number);
-    // ////console.log(events)
+    //console.log(arr);
+    // console.log(match_number);
+    //console.log(events)
     var xValues = arr;
     var barColors = ["red", "green","blue","orange","brown"];
     var eventKeyNamePair = {};
@@ -913,7 +937,7 @@ permalink: /robots/current
 
       // ////console.log(eventName);
       // ////console.log(entry);
-      // ////console.log(value.sort((a,b)=>a.x-b.x))
+      //console.log(value)
       chartConfig.data.datasets.push({
         label: eventKeyNamePair[key],
         borderColor: barColors[index],
@@ -962,20 +986,44 @@ permalink: /robots/current
 
 
   async function getEventNameFromKey(key) {
-    var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_events.json");
-    var events =  await apiResponse.json();
-    // ////console.log(events);
-    ////console.log(key);
-    for (event in events) {
-      // ////console.log(events[event]);
+  const apiResponse = await fetch(`https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/${year}_events.json`);
+  const events = await apiResponse.json();
+  
+  const event = events.find(event => event.key === key);
+  
+  return event ? event.name : null;
+}
 
-      if (events[event].key == key){
-        ////console.log(events[event]);
-        return events[event].name;
-      }
-    }
+async function getShortEventNameFromKey(key) {
+  const apiResponse = await fetch(`https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/${year}_events.json`);
+  const events = await apiResponse.json();
+  
+  const event = events.find(event => event.key === key);
+  
+  return event ? event.short_name : null;
+}
 
+async function getMatchNameFromKey(key) {
+  const apiResponse = await fetch(`https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/${year}_matches.json`);
+  const events = await apiResponse.json();
+  
+  const event = events.find(event => event.key === key);
+
+  if (event.comp_level === "qm") {
+      var matchtitle = "Qualification Match";
+  } else if (event.comp_level === "qf") {
+      var matchtitle = "Quarterfinal " + event.set_number + " Match";
+  } else if (event.comp_level === "sf") {
+      var matchtitle = "Semifinal " + event.set_number + " Match";
+  } else if (event.comp_level === "f") {
+      var matchtitle = "Final";
+  } else {
+      var matchtitle = "Unknown";
   }
+  
+  return event ? matchtitle + " " + event.match_number : null;
+}
+
 
 </script>
 
