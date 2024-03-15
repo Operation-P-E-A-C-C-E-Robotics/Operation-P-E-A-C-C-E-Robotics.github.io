@@ -349,6 +349,11 @@ permalink: /robots/current
              curevents.push(key[1]);
              currentEvent = key[1];
            }
+
+           if (eventEndDate >= date) {
+             events.pop() //delete the first event in the array (should be in order by date because TBA returns it sorted afaik
+           }
+           
          }
 
           // console.log("Cur Events")
