@@ -9,10 +9,9 @@ import datetime
 import time
 import subprocess
 import pytz
-from datetime import datetime
 
 tba_api_key = os.getenv('TBA_API_KEY')
-start_time = datetime.now()
+start_time = datetime.datetime.now()
 end_time = "21:00:00"
 commit_message = "Committing files via Python script"
 
