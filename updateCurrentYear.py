@@ -11,7 +11,7 @@ import subprocess
 import pytz
 
 tba_api_key = os.getenv('TBA_API_KEY')
-start_time = datetime.datetime.now().strftime("%H:%M:%S") - timedelta(minutes=5)
+# start_time = datetime.datetime.now().strftime("%H:%M:%S") - timedelta(minutes=5)
 end_time = "21:00:00"
 commit_message = "Committing files via Python script"
 
@@ -110,7 +110,7 @@ async def run_script():
         eastern_now = datetime.datetime.now(eastern)
 
         # Check if it's between 9am and 9pm in Eastern Time
-        if start_time <= eastern_now.strftime("%H:%M:%S") <= end_time:
+        if eastern_now.strftime("%H:%M:%S") <= end_time:
             await season(tba_api_key)
             print("Data fetched and committed.")
         else:
