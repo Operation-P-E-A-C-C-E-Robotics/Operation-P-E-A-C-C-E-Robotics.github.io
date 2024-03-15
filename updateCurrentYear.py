@@ -11,7 +11,7 @@ import subprocess
 import pytz
 
 tba_api_key = os.getenv('TBA_API_KEY')
-start_time = datetime.datetime.now().strftime("%H:%M:%S")
+start_time = datetime.datetime.now().strftime("%H:%M:%S") - timedelta(minutes=5)
 end_time = "21:00:00"
 commit_message = "Committing files via Python script"
 
