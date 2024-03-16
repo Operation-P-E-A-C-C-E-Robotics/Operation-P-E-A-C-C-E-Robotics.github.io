@@ -386,6 +386,8 @@ permalink: /robots/current
             update_countdown(document.getElementById('competitionCountdownDays'), nextEventDate)
             // document.getElementById("competitionCountdownDays").innerHTML += (Math.ceil( (nextEventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
             document.getElementById("competitionCountdown").style.display = "block";
+          } else {
+            document.getElementById("competitionCountdown").style.display = "none";
           }
          }
         //  //console.log(curevents[0].name, curevents[0], match);
