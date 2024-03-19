@@ -30,6 +30,35 @@
     },
     {
         "kind": "calendar#event",
+        "etag": "\"3392599723690000\"",
+        "id": "7u7d9bdl31mdpken0jpd4g65lt",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=N3U3ZDliZGwzMW1kcGtlbjBqcGQ0ZzY1bHQgdGVhbUBwZWFjY2Uub3Jn&ctz=UTC",
+        "created": "2023-09-13T02:07:00.000Z",
+        "updated": "2023-10-03T02:24:21.845Z",
+        "summary": "New England FIRST District Championship",
+        "location": "Eastern States Exposition, 1305 Memorial Ave, West Springfield, MA 01089, USA",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "date": "2024-04-03"
+        },
+        "end": {
+            "date": "2024-04-07"
+        },
+        "transparency": "transparent",
+        "iCalUID": "7u7d9bdl31mdpken0jpd4g65lt@google.com",
+        "sequence": 0,
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
         "etag": "\"3395111732214000\"",
         "id": "7r6chlkbilfhvkvila714po0b0",
         "status": "confirmed",
