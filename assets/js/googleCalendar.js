@@ -23,9 +23,9 @@ async function getNextNonRecurringEvent() {
       // console.log(event)
       // console.log(event.start)
       // console.log(event.start.dateTime)
-      if (event.start.dateTime > now.toISOString() || event.start.date > now.toISOString()) {
+      if (event.start.dateTime >= now.toISOString() || event.start.date >= now.toISOString()) {
         if (!event.recurrence || !event.recurringEventId) {
-          if (!nextEvent || event.start.dateTime < nextEvent.start.dateTime) {
+          if (!nextEvent || event.start.dateTime <= nextEvent.start.dateTime) {
             nextEvent = event;
           }
         }
@@ -52,7 +52,7 @@ async function getNextEvent() {
       eventDate = new Date(event.start.dateTime);
     }
 
-    if (eventDate > currentDate) {
+    if (eventDate >= currentDate) {
       nextEvent = event;
       // console.log(nextEvent);
     }
@@ -71,7 +71,7 @@ async function getNextChronologicalDate() {
   for (const event of events) {
     const startDate = new Date(event.start.date);
 
-    if (startDate > currentDate && (!nextDate || startDate < nextDate)) {
+    if (startDate >= currentDate && (!nextDate || startDate <= nextDate)) {
       nextDate = startDate;
       nextEvent = event
     }
