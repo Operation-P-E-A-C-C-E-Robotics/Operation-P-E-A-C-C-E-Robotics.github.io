@@ -20,7 +20,7 @@ max = (datetime.datetime.utcnow() + datetime.timedelta(days=15)).isoformat() + '
 params = {
     "calendarId": calendar_id,
     "key": api_key,
-    "timeZone": "UTC",
+    "timeZone": "America/New York",
     'timeMin': now,
     'timeMax': max,
 }
