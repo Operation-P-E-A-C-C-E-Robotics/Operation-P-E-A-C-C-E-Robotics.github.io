@@ -77,7 +77,7 @@ async function getNextEvent() {
 
 
 
-if (currentDate <= eventStartDate && currentDate <= eventEndDate) {
+if (currentDate >= eventStartDate && currentDate >= eventEndDate) {
       nextEvent = event;
       // console.log(nextEvent);
     }
