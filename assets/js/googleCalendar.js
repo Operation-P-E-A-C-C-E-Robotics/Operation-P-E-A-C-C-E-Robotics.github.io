@@ -17,6 +17,8 @@ async function getNextNonRecurringEvent() {
     // console.log(events)
     let now = new Date();
     let nextEvent = null;
+    let eventStartDate = null;
+    let eventEndDate = null;
   
     for (let i = 0; i < events.length; i++) {
       let event = events[i];
@@ -24,15 +26,15 @@ async function getNextNonRecurringEvent() {
       // console.log(event.start)
       // console.log(event.start.dateTime)
       try {
-          let eventStartDate = new Date(event.start.dateTime)
+          eventStartDate = new Date(event.start.dateTime)
       } catch {
-          let eventStartDate = new Date(event.start.date)
+          eventStartDate = new Date(event.start.date)
       }
 
       try {
-          let eventStartDate = new Date(event.end.dateTime)
+          eventEndDate = new Date(event.end.dateTime)
       } catch {
-          let eventStartDate = new Date(event.end.date)
+          eventEndDate = new Date(event.end.date)
       }
         
         if (now >= eventStartDate && now <= eventEndDate) {
