@@ -54,17 +54,27 @@ async function getNextEvent() {
   const currentDate = new Date();
   let nextEvent = null;
 
+
   for (const event of events) {
+
     // console.log(event);
     let eventDate = null;
 
-    if (event.start.date) {
-      eventDate = new Date(event.start.date);
-    } else if (event.start.dateTime) {
-      eventDate = new Date(event.start.dateTime);
-    }
+      try {
+          let eventStartDate = new Date(event.start.dateTime)
+      } catch {
+          let eventStartDate = new Date(event.start.date)
+      }
 
-    if (eventDate >= currentDate) {
+      try {
+          let eventStartDate = new Date(event.end.dateTime)
+      } catch {
+          let eventStartDate = new Date(event.end.date)
+      }
+
+
+
+if (currentDate >= eventStartDate && currentDate <= eventEndDate) {
       nextEvent = event;
       // console.log(nextEvent);
     }
