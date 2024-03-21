@@ -55,23 +55,32 @@ async function getNextEvent() {
   const events = await getEventsJson();
   const currentDate = new Date();
   let nextEvent = null;
-  let eventStartDate = null;
-  let eventEndDate = null;
+
+  
 
   for (const event of events) {
-    try {
-        eventStartDate = new Date(event.start.dateTime)
-    } catch {
-        eventStartDate = new Date(event.start.date)
-    }
+    let eventStartDate = null;
+    let eventEndDate = null;
+    // console.log(event)
 
+    try {
+      eventStartDate = new Date(event.start.dateTime)
+    } catch {}
+    try {
+      eventStartDate = new Date(event.start.date)
+    }
+    catch {}
+    // console.log(eventStartDate, event)
     try {
         eventEndDate = new Date(event.end.dateTime)
-    } catch {
-        eventEndDate = new Date(event.end.date)
-    }
+    } catch {}
 
-    if (currentDate <= eventStartDate) {
+    try {
+      eventEndDate = new Date(event.end.date)
+    } catch {}
+
+    console.log(currentDate, eventStartDate, eventEndDate, event)
+    if (currentDate <= eventStartDate && currentDate <= eventEndDate) {
       nextEvent = event;
       // console.log(nextEvent);
     }
