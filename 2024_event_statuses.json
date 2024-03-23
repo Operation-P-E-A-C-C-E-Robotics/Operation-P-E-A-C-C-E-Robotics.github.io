@@ -78,10 +78,27 @@
         "alliance": null,
         "alliance_status_str": "--",
         "last_match_key": null,
-        "next_match_key": null,
-        "overall_status_str": "Team 3461 is waiting for the event to begin.",
+        "next_match_key": "2024mawne_qm6",
+        "overall_status_str": "Team 3461 has a record of <b>0-0-0</b> in quals.",
         "playoff": null,
         "playoff_status_str": "--",
-        "qual": null
+        "qual": {
+            "num_teams": 36,
+            "ranking": {
+                "dq": null,
+                "matches_played": 0,
+                "qual_average": null,
+                "rank": null,
+                "record": {
+                    "losses": 0,
+                    "ties": 0,
+                    "wins": 0
+                },
+                "sort_orders": null,
+                "team_key": "frc3461"
+            },
+            "sort_order_info": null,
+            "status": "playing"
+        }
     }
 }
