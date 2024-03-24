@@ -78,10 +78,25 @@
         "alliance": null,
         "alliance_status_str": "--",
         "last_match_key": "2024mawne_qm67",
-        "next_match_key": null,
-        "overall_status_str": "Team 3461 was <b>Rank 16/36</b> with a record of <b>6-6-0</b> in quals.",
-        "playoff": null,
-        "playoff_status_str": "--",
+        "next_match_key": "2024mawne_sf2m1",
+        "overall_status_str": "Team 3461 is <b>0-0-0</b> in the <b>Double Elimination Bracket (Round 1)</b>.",
+        "playoff": {
+            "current_level_record": {
+                "losses": 0,
+                "ties": 0,
+                "wins": 0
+            },
+            "double_elim_round": "Round 1",
+            "level": "sf",
+            "playoff_type": 10,
+            "record": {
+                "losses": 0,
+                "ties": 0,
+                "wins": 0
+            },
+            "status": "playing"
+        },
+        "playoff_status_str": "Currently <b>0-0-0</b> in the <b>Double Elimination Bracket (Round 1)</b>",
         "qual": {
             "num_teams": 36,
             "ranking": {
