@@ -170,13 +170,34 @@
     },
     {
         "kind": "calendar#event",
-        "etag": "\"3422667614848000\"",
-        "id": "2edf35tsp629t3v4nag1k9n13j_20240325T220000Z",
-        "status": "cancelled",
-        "recurringEventId": "2edf35tsp629t3v4nag1k9n13j",
-        "originalStartTime": {
-            "dateTime": "2024-03-25T18:00:00-04:00",
+        "etag": "\"3408951247614000\"",
+        "id": "fm0s3obssvsj8u1e489jcca3t9",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=Zm0wczNvYnNzdnNqOHUxZTQ4OWpjY2EzdDlfMjAyNDA0MDlUMjIwMDAwWiB0ZWFtQHBlYWNjZS5vcmc",
+        "created": "2023-10-17T15:11:24.000Z",
+        "updated": "2024-01-05T17:27:03.807Z",
+        "summary": "Robotics Meeting",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2024-04-09T18:00:00-04:00",
             "timeZone": "America/New_York"
-        }
+        },
+        "end": {
+            "dateTime": "2024-04-09T21:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "recurrence": [
+            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20240418T035959Z;BYDAY=MO,TU,WE,TH,FR"
+        ],
+        "iCalUID": "fm0s3obssvsj8u1e489jcca3t9@google.com",
+        "sequence": 3,
+        "eventType": "default"
     }
 ]
