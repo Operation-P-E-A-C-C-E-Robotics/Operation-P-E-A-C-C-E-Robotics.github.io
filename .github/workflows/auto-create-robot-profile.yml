@@ -19,19 +19,19 @@ jobs:
 
     steps: 
 
-    - name: Checkout Repo
-      uses: actions/checkout@v3
-      with: 
-       ref: main
-       clean: false
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with: 
+        ref: main
+        clean: false
 
-    - name: Run Git Pull
-      run: "git pull --rebase"
+      - name: Run Git Pull
+        run: "git pull --rebase"
 
-    - name: Run Script 
-      run: python createRobotProfile.py
-    
-    - name: Commit Files  
-      uses: stefanzweifel/git-auto-commit-action@v4  
-      with:  
-        commit_message: Autocreate Robot Profile
+      - name: Run Script 
+        run: python createRobotProfile.py
+      
+      - name: Commit Files  
+        uses: stefanzweifel/git-auto-commit-action@v4  
+        with:  
+          commit_message: Autocreate Robot Profile
