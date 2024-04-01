@@ -6,14 +6,17 @@ on:
   workflow_dispatch:
 
 
-permissions:
-  contents: write
-  pages: write
-  id-token: write
+
 
 jobs: 
   create-robot-profile-if-not-exists:
     runs-on: ubuntu-latest 
+
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
+      contents: write
+
+
     steps: 
 
     - name: Checkout Repo
