@@ -4,14 +4,24 @@ on:
    - cron: '0 5 1 4 *'  # runs at 05:00 on the first day of April, right after the Season ends
 
   workflow_dispatch:
-  
+
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs: 
   create-robot-profile-if-not-exists:
     runs-on: ubuntu-latest 
     steps: 
+
     - name: Checkout Repo
-      uses: actions/checkout@v3 # checkout the repository content to github runner. 
-     
+      uses: actions/checkout@v3
+      with: 
+       ref: main
+       clean: false
+
     - name: Run Git Pull
       run: "git pull --rebase"
 
