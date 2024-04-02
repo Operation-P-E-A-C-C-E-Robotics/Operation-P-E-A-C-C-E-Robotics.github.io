@@ -30,9 +30,15 @@ jobs:
 
     - name: Run Script 
       run: python createRobotProfile.py
-    
-    - name: Commit Files  
-      uses: stefanzweifel/git-auto-commit-action@v5  
-      with:  
-        commit_message: Autocreate Robot Profile
-        push_options: '--force'
+
+
+    - name: Push to PR
+      uses: CasperWA/push-protected@v2
+      with:
+        branch: main
+
+    # - name: Commit Files  
+    #   uses: stefanzweifel/git-auto-commit-action@v5  
+    #   with:  
+    #     commit_message: Autocreate Robot Profile
+    #     push_options: '--force'
