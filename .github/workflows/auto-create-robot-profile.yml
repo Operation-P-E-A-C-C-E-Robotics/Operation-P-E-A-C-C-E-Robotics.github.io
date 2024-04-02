@@ -22,9 +22,9 @@ jobs:
 
 
     steps: 
-      - name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date +'%Y')"
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y')"
 
     - name: Checkout Repo
       uses: actions/checkout@v3
