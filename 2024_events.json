@@ -123,7 +123,12 @@
         "start_date": "2024-04-03",
         "state_prov": "MA",
         "timezone": null,
-        "webcasts": [],
+        "webcasts": [
+            {
+                "channel": "firstinspires18",
+                "type": "twitch"
+            }
+        ],
         "website": "https://nefirst.org/",
         "week": 5,
         "year": 2024
