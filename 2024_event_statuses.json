@@ -152,29 +152,29 @@
     "2024necmp1": {
         "alliance": null,
         "alliance_status_str": "--",
-        "last_match_key": "2024necmp1_qm82",
-        "next_match_key": "2024necmp1_qm90",
-        "overall_status_str": "Team 3461 is <b>Rank 39/48</b> with a record of <b>4-6-1</b> in quals.",
+        "last_match_key": "2024necmp1_qm90",
+        "next_match_key": null,
+        "overall_status_str": "Team 3461 is <b>Rank 34/48</b> with a record of <b>5-6-1</b> in quals.",
         "playoff": null,
         "playoff_status_str": "--",
         "qual": {
             "num_teams": 48,
             "ranking": {
                 "dq": 0,
-                "matches_played": 11,
+                "matches_played": 12,
                 "qual_average": null,
-                "rank": 39,
+                "rank": 34,
                 "record": {
                     "losses": 6,
                     "ties": 1,
-                    "wins": 4
+                    "wins": 5
                 },
                 "sort_orders": [
-                    1.91,
-                    0.73,
-                    76.0,
-                    27.91,
-                    7.55,
+                    2.0,
+                    0.75,
+                    76.42,
+                    27.75,
+                    7.0,
                     0.0
                 ],
                 "team_key": "frc3461"
