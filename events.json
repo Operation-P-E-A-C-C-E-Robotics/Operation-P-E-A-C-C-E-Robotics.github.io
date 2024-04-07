@@ -1,35 +1,6 @@
 [
     {
         "kind": "calendar#event",
-        "etag": "\"3389141576424000\"",
-        "id": "0gjrtdr89bbog4nu4q2euqrts0",
-        "status": "confirmed",
-        "htmlLink": "https://www.google.com/calendar/event?eid=MGdqcnRkcjg5YmJvZzRudTRxMmV1cXJ0czAgdGVhbUBwZWFjY2Uub3Jn",
-        "created": "2023-09-13T02:06:28.000Z",
-        "updated": "2023-09-13T02:06:28.212Z",
-        "summary": "FIRST Championship",
-        "location": "George R. Brown Convention Center, 1001 Avenida De Las Americas, Houston, TX 77010, USA",
-        "creator": {
-            "email": "team@peacce.org",
-            "self": true
-        },
-        "organizer": {
-            "email": "team@peacce.org",
-            "self": true
-        },
-        "start": {
-            "date": "2024-04-17"
-        },
-        "end": {
-            "date": "2024-04-21"
-        },
-        "transparency": "transparent",
-        "iCalUID": "0gjrtdr89bbog4nu4q2euqrts0@google.com",
-        "sequence": 0,
-        "eventType": "default"
-    },
-    {
-        "kind": "calendar#event",
         "etag": "\"3392599723690000\"",
         "id": "7u7d9bdl31mdpken0jpd4g65lt",
         "status": "confirmed",
@@ -155,17 +126,6 @@
     },
     {
         "kind": "calendar#event",
-        "etag": "\"3400297618316000\"",
-        "id": "7r6chlkbilfhvkvila714po0b0_20240406T130000Z",
-        "status": "cancelled",
-        "recurringEventId": "7r6chlkbilfhvkvila714po0b0",
-        "originalStartTime": {
-            "dateTime": "2024-04-06T09:00:00-04:00",
-            "timeZone": "America/New_York"
-        }
-    },
-    {
-        "kind": "calendar#event",
         "etag": "\"3408951247614000\"",
         "id": "fm0s3obssvsj8u1e489jcca3t9",
         "status": "confirmed",
@@ -209,36 +169,79 @@
     },
     {
         "kind": "calendar#event",
-        "etag": "\"3408951262782000\"",
+        "etag": "\"3424900782978000\"",
+        "id": "2edf35tsp629t3v4nag1k9n13j_20240408T220000Z",
+        "status": "cancelled",
+        "recurringEventId": "2edf35tsp629t3v4nag1k9n13j",
+        "originalStartTime": {
+            "dateTime": "2024-04-08T18:00:00-04:00",
+            "timeZone": "America/New_York"
+        }
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3424900795422000\"",
+        "id": "fm0s3obssvsj8u1e489jcca3t9_20240410T220000Z",
+        "status": "cancelled",
+        "recurringEventId": "fm0s3obssvsj8u1e489jcca3t9",
+        "originalStartTime": {
+            "dateTime": "2024-04-10T18:00:00-04:00",
+            "timeZone": "America/New_York"
+        }
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3424900804270000\"",
+        "id": "fm0s3obssvsj8u1e489jcca3t9_20240411T220000Z",
+        "status": "cancelled",
+        "recurringEventId": "fm0s3obssvsj8u1e489jcca3t9",
+        "originalStartTime": {
+            "dateTime": "2024-04-11T18:00:00-04:00",
+            "timeZone": "America/New_York"
+        }
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3424900817436000\"",
+        "id": "fm0s3obssvsj8u1e489jcca3t9_20240412T220000Z",
+        "status": "cancelled",
+        "recurringEventId": "fm0s3obssvsj8u1e489jcca3t9",
+        "originalStartTime": {
+            "dateTime": "2024-04-12T18:00:00-04:00",
+            "timeZone": "America/New_York"
+        }
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3424900825020000\"",
+        "id": "7r6chlkbilfhvkvila714po0b0_20240413T130000Z",
+        "status": "cancelled",
+        "recurringEventId": "7r6chlkbilfhvkvila714po0b0",
+        "originalStartTime": {
+            "dateTime": "2024-04-13T09:00:00-04:00",
+            "timeZone": "America/New_York"
+        }
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3424900832702000\"",
         "id": "fm0s3obssvsj8u1e489jcca3t9_20240417T220000Z",
-        "status": "confirmed",
-        "htmlLink": "https://www.google.com/calendar/event?eid=Zm0wczNvYnNzdnNqOHUxZTQ4OWpjY2EzdDlfMjAyNDA0MTdUMjIwMDAwWiB0ZWFtQHBlYWNjZS5vcmc",
-        "created": "2023-10-17T15:11:24.000Z",
-        "updated": "2024-01-05T17:27:11.391Z",
-        "summary": "Robotics Meeting",
-        "creator": {
-            "email": "team@peacce.org",
-            "self": true
-        },
-        "organizer": {
-            "email": "team@peacce.org",
-            "self": true
-        },
-        "start": {
-            "dateTime": "2024-04-15T18:00:00-04:00",
-            "timeZone": "America/New_York"
-        },
-        "end": {
-            "dateTime": "2024-04-15T21:00:00-04:00",
-            "timeZone": "America/New_York"
-        },
+        "status": "cancelled",
         "recurringEventId": "fm0s3obssvsj8u1e489jcca3t9",
         "originalStartTime": {
             "dateTime": "2024-04-17T18:00:00-04:00",
             "timeZone": "America/New_York"
-        },
-        "iCalUID": "fm0s3obssvsj8u1e489jcca3t9@google.com",
-        "sequence": 4,
-        "eventType": "default"
+        }
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3424900839322000\"",
+        "id": "fm0s3obssvsj8u1e489jcca3t9_20240416T220000Z",
+        "status": "cancelled",
+        "recurringEventId": "fm0s3obssvsj8u1e489jcca3t9",
+        "originalStartTime": {
+            "dateTime": "2024-04-16T18:00:00-04:00",
+            "timeZone": "America/New_York"
+        }
     }
 ]
