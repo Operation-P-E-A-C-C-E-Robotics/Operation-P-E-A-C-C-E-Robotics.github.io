@@ -108,17 +108,19 @@
           bannerHelper(curevents[0].name, nextMatchKey, match, curevents[0]);
          } else {
           nextEvent = events[0];
-          nextEventDate = new Date(nextEvent.start_date + "T09:00:00-04:00");
-          console.log("Next Event", nextEvent)
-          console.log("Next Event Start:" + nextEventDate, "Next Event is in future", nextEventDate >= today)
-          today = new Date()
-          if ( nextEventDate >= today && today >= kickoff) {
-            update_countdown(document.getElementById('competitionCountdownDays'), nextEventDate)
-            // document.getElementById("competitionCountdownDays").innerHTML += (Math.ceil( (nextEventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
-            document.getElementById("competitionCountdown").style.display = "block";
-          } else {
-            document.getElementById("competitionCountdown").style.display = "none";
-          }
+          try {
+            nextEventDate = new Date(nextEvent.start_date + "T09:00:00-04:00");
+            console.log("Next Event", nextEvent)
+            console.log("Next Event Start:" + nextEventDate, "Next Event is in future", nextEventDate >= today)
+            today = new Date()
+            if ( nextEventDate >= today && today >= kickoff) {
+              update_countdown(document.getElementById('competitionCountdownDays'), nextEventDate)
+              // document.getElementById("competitionCountdownDays").innerHTML += (Math.ceil( (nextEventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
+              document.getElementById("competitionCountdown").style.display = "block";
+            } else {
+              document.getElementById("competitionCountdown").style.display = "none";
+            }
+          } catch {}
          }
         //  //console.log(curevents[0].name, curevents[0], match);
         
