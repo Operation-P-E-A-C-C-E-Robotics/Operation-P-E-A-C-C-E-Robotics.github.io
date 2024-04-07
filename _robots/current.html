@@ -778,50 +778,64 @@ permalink: /robots/current
     updateBestMatchBanner(highestScoringMatch);
   }
 
-  async function updateBestMatchBanner(highScore) {
-    function clearFRCfromTeamKey(team_key) {
-      if (team_key.includes("3461")) {
-        return "<b>" + team_key.replace("frc", "") + "</b>" 
-      }
-      return team_key.replace("frc", "")
-    }
 
-    try{ 
+  function clearFRCfromTeamKey(team_key) {
+    if (team_key.includes("3461")) {
+      return "<b>" + team_key.replace("frc", "") + "</b>" 
+    }
+    return team_key.replace("frc", "")
+  }
+
+  async function updateBestMatchBanner(highScore) {
+
+
+    try { 
 
       event_name = await getEventNameFromKey(highScore.event_key)
       document.getElementById('bestMatchEventName').innerText += event_name 
       match_name = await getMatchNameFromKey(highScore.key)
       document.getElementById('bestMatchMatchName').innerText += match_name
-
-      document.getElementById('bestMatchYTEmbed').src = "https://www.youtube-nocookie.com/embed/" + highScore.videos[0].key 
+    } catch {
+      console.log("failed to get event or match name")
+    }
+      // document.getElementById('bestMatchYTEmbed').src = "https://www.youtube-nocookie.com/embed/" + highScore.videos[0].key 
 
      //document.getElementById('bestMatchRedOne').innerHTML += clearFRCfromTeamKey(highScore.alliances.red.team_keys[0])
       //document.getElementById('bestMatchBlueOne').innerHTML += clearFRCfromTeamKey(highScore.alliances.blue.team_keys[0])
 
-      try {
+    try {
       document.getElementById('bestMatchYTEmbed').src = "https://www.youtube-nocookie.com/embed/" + highScore.videos[0].key 
-      } catch {
+    } catch {
+     console.log("failed to set youtube match link")
+    }
 
-      }
-
+    try {
       document.getElementById('bestMatchRedOne').innerHTML += clearFRCfromTeamKey(highScore.alliances.red.team_keys[0])
       document.getElementById('bestMatchBlueOne').innerHTML += clearFRCfromTeamKey(highScore.alliances.blue.team_keys[0])
+    } catch {
+      console.log("failed to get Red/Blue team one")
+    }
 
-
+    try {
       document.getElementById('bestMatchRedTwo').innerHTML += clearFRCfromTeamKey(highScore.alliances.red.team_keys[1])
       document.getElementById('bestMatchBlueTwo').innerHTML += clearFRCfromTeamKey(highScore.alliances.blue.team_keys[1])
+    } catch {
+      console.log("failed to get Red/Blue team two")
+    }
 
+    try {
       document.getElementById('bestMatchRedThree').innerHTML += clearFRCfromTeamKey(highScore.alliances.red.team_keys[2])
       document.getElementById('bestMatchBlueThree').innerHTML += clearFRCfromTeamKey(highScore.alliances.blue.team_keys[2])
+    } catch {
+      console.log("failed to get Red/Blue team three")
+    }
 
+    try {
       document.getElementById('bestMatchRedScore').innerText += "Score: "+ highScore.alliances.red.score
       document.getElementById('bestMatchBlueScore').innerText += "Score: "+highScore.alliances.blue.score
-
+    } catch {
+      console.log("failed to get Red/Blue match score")
     }
-    catch {
-      
-    }
-
   }
 
   function getHighestRankingOnSeasonMatch(matches) {
