@@ -101,11 +101,11 @@ layout: default
     <br>
     <section id="bestMatch">
       <div class="jumbotron text-dark">
-        <div class="row">
-          <div class="col-6">
-            <h1>Highest Scoring Match</h1>
-            <h2 id="bestMatchEventName"></h2>
-            <h2 id="bestMatchMatchName"></h2>
+        <h1>Highest Scoring Match</h1>
+        <h2 id="bestMatchEventName"></h2>
+        <h2 id="bestMatchMatchName"></h2>
+        <div class="row flex-column flex-sm-row">
+          <div class="col col-lg-6 order-lg-0 order-sm-1">
             <div class="table-responsive pt-2 rounged-lg">
               <table class="table table-bordered table-light text-light">
                 <tbody>
@@ -133,7 +133,7 @@ layout: default
               </table>
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-lg-6" id="bestMatchYTEmbedContainer">
             <div class="embed-responsive embed-responsive-16by9 mx-auto">
               <iframe  id="bestMatchYTEmbed" src="/assets/images/notFound.png" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
@@ -1189,4 +1189,13 @@ async function getMatchNameFromKey(key) {
     border-style: solid;
     border-width: 5px 2 20px
 }
+
+
+
+@media (max-width: 575.98px) {
+  .flex-sm-row {
+    flex-direction: row !important;
+  }
+}
+
 </style>
