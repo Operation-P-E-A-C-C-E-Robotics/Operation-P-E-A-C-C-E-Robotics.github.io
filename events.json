@@ -1,56 +1,12 @@
 [
     {
         "kind": "calendar#event",
-        "etag": "\"3395111732214000\"",
-        "id": "7r6chlkbilfhvkvila714po0b0",
-        "status": "confirmed",
-        "htmlLink": "https://www.google.com/calendar/event?eid=N3I2Y2hsa2JpbGZodmt2aWxhNzE0cG8wYjBfMjAyNDAxMTNUMTQwMDAwWiB0ZWFtQHBlYWNjZS5vcmc",
-        "created": "2023-10-17T15:14:03.000Z",
-        "updated": "2023-10-17T15:17:46.107Z",
-        "summary": "Robotics Meeting",
-        "location": "Arthur G. Russell Co., Inc., 750 Clark Ave, Bristol, CT 06010, USA",
-        "creator": {
-            "email": "team@peacce.org",
-            "self": true
-        },
-        "organizer": {
-            "email": "team@peacce.org",
-            "self": true
-        },
-        "start": {
-            "dateTime": "2024-01-13T09:00:00-05:00",
-            "timeZone": "America/New_York"
-        },
-        "end": {
-            "dateTime": "2024-01-13T15:00:00-05:00",
-            "timeZone": "America/New_York"
-        },
-        "recurrence": [
-            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20240414T035959Z;BYDAY=SA"
-        ],
-        "iCalUID": "7r6chlkbilfhvkvila714po0b0@google.com",
-        "sequence": 0,
-        "eventType": "default"
-    },
-    {
-        "kind": "calendar#event",
         "etag": "\"3408951247614000\"",
         "id": "fm0s3obssvsj8u1e489jcca3t9_20240415T220000Z",
         "status": "cancelled",
         "recurringEventId": "fm0s3obssvsj8u1e489jcca3t9",
         "originalStartTime": {
             "dateTime": "2024-04-15T18:00:00-04:00",
-            "timeZone": "America/New_York"
-        }
-    },
-    {
-        "kind": "calendar#event",
-        "etag": "\"3424900825020000\"",
-        "id": "7r6chlkbilfhvkvila714po0b0_20240413T130000Z",
-        "status": "cancelled",
-        "recurringEventId": "7r6chlkbilfhvkvila714po0b0",
-        "originalStartTime": {
-            "dateTime": "2024-04-13T09:00:00-04:00",
             "timeZone": "America/New_York"
         }
     },
