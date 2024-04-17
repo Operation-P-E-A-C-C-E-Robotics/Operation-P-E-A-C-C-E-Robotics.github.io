@@ -12,13 +12,30 @@
     },
     {
         "kind": "calendar#event",
-        "etag": "\"3424900839322000\"",
-        "id": "fm0s3obssvsj8u1e489jcca3t9_20240416T220000Z",
-        "status": "cancelled",
-        "recurringEventId": "fm0s3obssvsj8u1e489jcca3t9",
-        "originalStartTime": {
-            "dateTime": "2024-04-16T18:00:00-04:00",
-            "timeZone": "America/New_York"
-        }
+        "etag": "\"3426548788614000\"",
+        "id": "2d4uu8iva9l0kl14keho5hanc6",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MmQ0dXU4aXZhOWwwa2wxNGtlaG81aGFuYzYgdGVhbUBwZWFjY2Uub3Jn",
+        "created": "2024-04-16T13:33:14.000Z",
+        "updated": "2024-04-16T13:33:14.307Z",
+        "summary": "Nutmeg TV Interview",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "date": "2024-05-02"
+        },
+        "end": {
+            "date": "2024-05-03"
+        },
+        "transparency": "transparent",
+        "iCalUID": "2d4uu8iva9l0kl14keho5hanc6@google.com",
+        "sequence": 0,
+        "eventType": "default"
     }
 ]
