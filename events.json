@@ -26,5 +26,35 @@
         "iCalUID": "2d4uu8iva9l0kl14keho5hanc6@google.com",
         "sequence": 0,
         "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3427319064778000\"",
+        "id": "27296v3heqaeaurlp2o78ug84i",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MjcyOTZ2M2hlcWFlYXVybHAybzc4dWc4NGkgdGVhbUBwZWFjY2Uub3Jn",
+        "created": "2024-04-21T00:32:12.000Z",
+        "updated": "2024-04-21T00:32:12.389Z",
+        "summary": "Robotics Meeting",
+        "location": "Arthur G. Russell Co., Inc., 750 Clark Ave, Bristol, CT 06010, USA",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2024-04-30T18:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2024-04-30T21:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "27296v3heqaeaurlp2o78ug84i@google.com",
+        "sequence": 0,
+        "eventType": "default"
     }
 ]
