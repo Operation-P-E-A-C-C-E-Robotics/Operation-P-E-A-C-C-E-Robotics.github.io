@@ -30,6 +30,33 @@
     },
     {
         "kind": "calendar#event",
+        "etag": "\"3426544241376000\"",
+        "id": "73t01t0u7o5tq5t1kh2us4d3jn",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NzN0MDF0MHU3bzV0cTV0MWtoMnVzNGQzam4gdGVhbUBwZWFjY2Uub3Jn",
+        "created": "2024-04-16T00:26:28.000Z",
+        "updated": "2024-04-16T12:55:20.688Z",
+        "summary": "Team Picnic",
+        "creator": {
+            "email": "coach@peacce.org"
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "date": "2024-06-01"
+        },
+        "end": {
+            "date": "2024-06-02"
+        },
+        "transparency": "transparent",
+        "iCalUID": "73t01t0u7o5tq5t1kh2us4d3jn@google.com",
+        "sequence": 0,
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
         "etag": "\"3427787321516000\"",
         "id": "4irbbajderoa52qcqfd47vebm6",
         "status": "confirmed",
