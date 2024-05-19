@@ -468,7 +468,7 @@ permalink: /robots/current
          } catch {}
 
          try{
-         document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level + " " + match.match_number;
+         document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level.toUpperCase() + " " + match.match_number;
          document.getElementById("counter").style.display = "block"
          } catch {
           console.error("failed to get next match");
