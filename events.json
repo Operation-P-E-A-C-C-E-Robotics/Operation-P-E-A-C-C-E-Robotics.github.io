@@ -28,6 +28,37 @@
     },
     {
         "kind": "calendar#event",
+        "etag": "\"3428973818826000\"",
+        "id": "2ae0e2p3o64nb3lmppm34jt90o",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MmFlMGUycDNvNjRuYjNsbXBwbTM0anQ5MG8gdGVhbUBwZWFjY2Uub3Jn",
+        "created": "2024-04-26T15:45:59.000Z",
+        "updated": "2024-04-30T14:21:49.413Z",
+        "summary": "W.I.W.I.",
+        "description": "Where is Wolcott Invitational",
+        "location": "Wolcott High School, 457 Bound Line Rd, Wolcott, CT 06716, USA",
+        "creator": {
+            "email": "coach@peacce.org"
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2024-06-08T10:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2024-06-08T17:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "transparency": "transparent",
+        "iCalUID": "2ae0e2p3o64nb3lmppm34jt90o@google.com",
+        "sequence": 1,
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
         "etag": "\"3432777898728000\"",
         "id": "311qmqo6hdi517cbatha5o8tct",
         "status": "confirmed",
