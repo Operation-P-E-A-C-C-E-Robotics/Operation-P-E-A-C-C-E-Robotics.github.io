@@ -95,14 +95,14 @@ jobs:
       - name: run NPM CI
         run: npm ci
 
-      - name: Build TinaCMS
+      - name: Build TinaCMS (no indexing)
         env:
           BUILD_PATH: ${{vars.BUILD_PATH}}
           TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
-          HEAD: ${{ github.ref_name}}
+          #HEAD: ${{ github.ref_name}}
           TINA_SEARCH: ${{secrets.TINA_SEARCH}}
-        run: npx tinacms build --skip-indexing
+        run: npx tinacms build --skip-indexing --upstream-branch ${{ github.ref_name}}
         
       - name: Build Main with Jekyll
         uses: actions/jekyll-build-pages@v1
