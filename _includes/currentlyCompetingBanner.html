@@ -3,31 +3,43 @@
       Currently Competing At () Event!
     </h1>
     <h4 id="currentStatusStr" class="text-center pb-3">Team 3461's current status is unknown</h4>
-    <div class="d-flex flex-lg-row flex-md-column flex-sm-column flex-xs-column justify-content-around">
-      <h3 id="currentNextMatch" style="text-transform: uppercase;" class="flex-fill">
-        Next Match: Not Found
-      </h3>
-      <h3>
-        <p class="flex-fill" id='counter'>--h --m --s</p>
-      </h3>
-      <h3 class="flex-fill" id="redTeams">
-        0000 0000 0000 
-      </h3>
-      <h3 class="flex-fill">
-      VS
-      </h3>
-      <h3 class="flex-fill" id="blueTeams">
-        0000 0000 0000
-      </h3>
-      <h3 class="flex-fill" id='time'></h3>
-    </div>
-    <h4 id="currentRank" class="pt-2">
-      Rank: 0/0
-    </h4>
 
-    <!-- <p id="liveStream">
-    Event Webcast: Not Found
-    </p> -->
+    <div class="row">
+      <div class="col d-flex-col">
+        <div class="d-flex d-flex-row">
+          <h3 id="currentNextMatch" style="text-transform: capitalcase;">
+            Next Match: Not Found
+          </h3>
+          <h3 id='counter' class="pl-2">--h --m --s</h3>
+        </div>
+
+        <div>
+          <h3 id="currentRank">
+            Rank: 0/0
+          </h3>
+        </div>
+
+      </div>
+      <div class="col-3">
+        <div class="row">
+          <h3 class="col-4 text-center" id="redTeams">
+            0000 0000 0000 
+          </h3>
+          <h3 class="col-4 m-0 p-0 text-center mx-auto"><span class="mx-auto text-center">VS</span></h3>
+          <h3 class="col-4 text-center" id="blueTeams">
+            0000 0000 0000
+          </h3>
+        </div>
+      </div>
+
+      <h3 class="col text-right" id='time'></h3>
+
+    </div>
+
+
+    <div id="liveStream" class="embed-responsive embed-responsive-16by9">
+      <iframe id="liveStreamFrame" class="embed-responsive-item" src="{{"/assets/images/notFound.png" | absolute_url}}" height="640" width="480"> </iframe>
+    </div>
   
 </div>
 <script>
@@ -35,61 +47,90 @@
     var countDownDate;
     var eventurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_events.json";
 
-  async function setBanner(eventsurl) {
+
+    async function setBanner(eventsurl) {
          var eventJSON = await fetch(eventsurl);
          var testJSON = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_events.json")
          var events = await eventJSON.json();
-         var testEvents = await testJSON.json();
+        // var testEvents = await testJSON.json();
          var curevents = []
          var currentEvent;
          var match
-         //console.log(events);
-         for (let key of Object.entries(events) && Object.entries(testEvents)) {
+
+         for (let key of Object.entries(events)) {
+
 
            ////////console.log(key);
            var date = new Date()
-           var eventStartDate = new Date(key[1].start_date);
-           var eventEndDate = new Date(key[1].end_date);
+           var eventStartDate = new Date(key[1].start_date + "T09:00:00-04:00");
+           var eventEndDate = new Date(key[1].end_date + "T22:00:00-04:00");
+          //  var eventEndDate = new Date().setDate(tempEventEndDate + 2);
            ////////console.log(dateConfig);
-           ////////console.log(eventStartDate);
-           if (date.getTime() <= eventEndDate.getTime() && date.getTime() >= eventStartDate.getTime()) {
+           console.log("Now:" + date, "Event Start Date:" + eventStartDate, "Event End Date:" + eventEndDate, "Event JSON:", key);
+           if (date >= eventStartDate && date <= eventEndDate) {
              curevents.push(key[1]);
              currentEvent = key[1];
            }
+
+           if (eventEndDate < date) {
+              console.log("Elimininating event from array because End Date is in the past", key[1])
+             events.shift() //delete the first event in the array (should be in order by date because TBA returns it sorted afaik
+           }
+           
          }
 
           // console.log("Cur Events")
-          // console.log(curevents)
+          console.log("Current Events", curevents)
          if (curevents.length != 0) {
           var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json");
           var testResponse = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_event_statuses.json");
           var events =  await apiResponse.json();
           var testEvents = await testResponse.json();
           var nextMatchKey;
-          //console.log(events);
+          // console.log(events, testEvents);
           ////console.log(key);
-         for (var [key, value] of Object.entries(events) && Object.entries(testEvents)) {
-            // console.log(curevents[0].key);
-          
+         for (var [key, value] of Object.entries(events)) {
+            //console.log(curevents[0].key);
+
             if (key == curevents[0].key){
-              // console.log(key, value);
+              console.log("Current Event", key, value);
               match = value
+              try {
               nextMatchKey = value.next_match_key
-              // console.log(nextMatchKey);
-            }  
+              console.log(nextMatchKey);
+              } catch {
+                nextMatchKey = null
+                console.log("Next Match not found")
+              }
+            }
 
           }
-    
+          bannerHelper(curevents[0].name, nextMatchKey, match, curevents[0]);
+         } else {
+          nextEvent = events[0];
+          try {
+            nextEventDate = new Date(nextEvent.start_date + "T09:00:00-04:00");
+            console.log("Next Event", nextEvent)
+            console.log("Next Event Start:" + nextEventDate, "Next Event is in future", nextEventDate >= today)
+            today = new Date()
+            if ( nextEventDate >= today && today >= kickoff) {
+              update_countdown(document.getElementById('competitionCountdownDays'), nextEventDate)
+              // document.getElementById("competitionCountdownDays").innerHTML += (Math.ceil( (nextEventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
+              document.getElementById("competitionCountdown").style.display = "block";
+            } else {
+              document.getElementById("competitionCountdown").style.display = "none";
+            }
+          } catch {}
          }
         //  //console.log(curevents[0].name, curevents[0], match);
-        bannerHelper(curevents[0].name, nextMatchKey, match);
+        
       }
  
        async function getMatchFromKey(matchKey) {
          var matchAPIURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_matches.json";
          var testMatchURL = "https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_matches.json"
-         var matchAPIResponse = await fetch(matchAPIURL);
-         var testResponse = await fetch(testMatchURL);
+         var matchAPIResponse = await fetch(matchAPIURL, { cache: "reload" });
+         var testResponse = await fetch(testMatchURL, { cache: "reload" });
          var matches = await matchAPIResponse.json();
          var testMatches = await testResponse.json();
 
@@ -102,14 +143,14 @@
           }  
          }
 
-         for (var match = 0; match < testMatches.length; match++) {
-          // ////console.log(events[event]);
+        //  for (var match = 0; match < testMatches.length; match++) {
+        //   // ////console.log(events[event]);
         
-          if (testMatches[match].key == matchKey){
-            ////console.log(events[event]);
-            return testMatches[match];
-          }  
-         }
+        //   if (testMatches[match].key == matchKey){
+        //     ////console.log(events[event]);
+        //     return testMatches[match];
+        //   }  
+        //  }
          //////console.log(match);
         //  return Promise.resolve(match);
        }
@@ -117,7 +158,7 @@
        async function getTeamStatus(eventKey) {
          ////////console.log(eventKey);
          var matchAPIURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"event_statuses.json";
-         eventRaw = await fetch(matchAPIURL);
+         eventRaw = await fetch(matchAPIURL, { cache: "reload" });
          events = await eventRaw.json();
          for (var event = 0;  event < events.length; event++) {
           // ////console.log(events[event]);
@@ -129,7 +170,7 @@
         }
        }
  
-       async function bannerHelper(eventTitle, nextMatch, stats) {
+       async function bannerHelper(eventTitle, nextMatch, stats, event) {
         //console.log(eventTitle); 
         //console.log(nextMatch);
         //console.log(stats);
@@ -151,22 +192,28 @@
           document.getElementById("currentStatusStr").innerHTML = stats.overall_status_str;
          } catch {}
 
-         try{ 
+         try{
          document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level + " " + match.match_number;
+         document.getElementById("counter").style.display = "block"
          } catch {
           console.error("failed to get next match");
+          document.getElementById("counter").style.display = "None"
          }
 
          try{
-         document.getElementById("redTeams").innerHTML = clearFRCfromTeam(match.alliances.red.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[2])
+
+         document.getElementById("redTeams").innerHTML = "<h3 class='col text-right'>" + clearFRCfromTeam(match.alliances.red.team_keys[0]) + "</h3>" + "<h3 class='col text-right'>" + clearFRCfromTeam(match.alliances.red.team_keys[1]) + "</h3>" + "<h3 class='col text-right'>" + clearFRCfromTeam(match.alliances.red.team_keys[2]) + "</h3>"
          } catch {
           console.error("failed to get red teams");
+          document.getElementById("redTeams").style.display = "None"
          }
 
          try {
-         document.getElementById("blueTeams").innerHTML = clearFRCfromTeam(match.alliances.blue.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[2])
+
+         document.getElementById("blueTeams").innerHTML = "<h3 class='col text-left'>" + clearFRCfromTeam(match.alliances.blue.team_keys[0]) + "</h3>" + "<h3 class='col text-left'>" + clearFRCfromTeam(match.alliances.blue.team_keys[1]) + "</h3>" + "<h3 class='col text-left'>" + clearFRCfromTeam(match.alliances.blue.team_keys[2]) + "</h3>"
          } catch {
           console.error("failed to get blue teams");
+          document.getElementById("blueTeams").style.display = "None"
          }
 
          try {
@@ -174,7 +221,28 @@
          } catch {
           console.error("failed to get event rank");
          }
+         try {
 
+          event.webcasts.reverse()
+
+            if (document.getElementById("liveStreamFrame").src == "{{"/assets/images/notFound.png" | absolute_url}}") {
+              console.log("setting stream iframe to " + event.webcasts[0])
+              if (event.webcasts[0].type == "twitch") {
+                document.getElementById("liveStreamFrame").src = "https://player.twitch.tv/?autoplay=true&channel=" + event.webcasts[0].channel + "&parent=www.peacce.org"
+              }
+
+              if (event.webcasts[0].type == "youtube") {
+                
+                document.getElementById("liveStreamFrame").src = "https://www.youtube.com/embed/live_stream?channel=" + event.webcasts[0].channel
+              }
+
+              hasSetIFrame = true
+            } else {
+              console.log("live stream iframe appears to be set, " + document.getElementById("liveStreamFrame").src)
+            }
+          } catch {
+            document.getElementById("liveStream").style.display = "none"
+          }
          try {
          document.getElementById("duringEventBanner").style.display = "block";
           } catch {}

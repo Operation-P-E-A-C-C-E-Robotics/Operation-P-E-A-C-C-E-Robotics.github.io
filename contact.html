@@ -8,15 +8,47 @@ permalink: /contact
 
 <br>
 
-<div class="container-fluid" style="height: 50vh;">
-    <div>
-    <h1 class="text-center">Contact Us!</h1>
-    <br>
-    {% for item in site.data.contact %}
-        <div class="text-center">
-            <h2>{{item.type | upcase}}: {{item.address}}</h2>
-
+<div class="container-fluid mb-5 pb-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center">Contact Us!</h1>
+            <h2 class="w-75 text-center mx-auto">Get in touch and we'll get back to you as soon as we can.  We look forward to hearing from you!</h2>
+            <br>
+            {% for item in site.data.contact.contacts %}
+                <div class="text-center">
+                    <!-- {{item}} -->
+                    <h2>{{item.type |  capitalize}}: {% if item.type == "email"%}<a href="mailto:{{item.address}}">{{item.address}}</a> {% else %} {{item.address}} {%endif%}</h2>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+        <div class="col">
+            <div id="demo" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <!-- <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+                <li data-target="#demo" data-slide-to="2"></li>
+            </ul> -->
+            <!-- The slideshow -->
+            <div class="carousel-inner rounded-lg mx-auto" style="height: 55vh; width: 45vw;">
+                {% for item in site.data.contact.images %}
+                <div class="carousel-item" style="background-image: url({{item.src}}); background-position: center, center; background-size: cover; background-repeat: no-repeat; height: 100%; width: 100%;">
+                <!-- <img src="{{item.src}}" alt="{{item.alt}}" class="img-fluid mx-auto d-block"> -->
+                </div>
+                {% endfor %}
+            </div>
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+            </div>  
+        </div>
     </div>
 </div>
+
+<script>
+    document.getElementsByClassName("carousel-item")[0].classList += " active"
+</script>

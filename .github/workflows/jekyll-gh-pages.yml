@@ -4,7 +4,7 @@ name: Deploy Jekyll To Github Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: ["main", "staging"]
 
 
 
@@ -24,43 +24,95 @@ concurrency:
 
 
 jobs:
-  # Build job
-  build:
-    runs-on: ubuntu-latest
-    # env:
-    #  TBA_AUT_KEY: ${{ secrets.TBA_API_KEY }}
+
+  setup-pages:
+    runs-on: ubuntu-latest 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v2
 
+  install-node:
+    runs-on: ubuntu-latest
+    steps:
       - name: install Node
         uses: actions/setup-node@v3
         with:
           node-version: "16"
 
-      - name: run NPM Install
-        run: npm install
+  # checkout:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout Main
+  #       uses: actions/checkout@v3
+  #       with: 
+  #         ref: main
+  #         clean: false
+
+
+  #     - uses: actions/checkout@v2
+  #       name: Checkout Staging
+  #       with:
+  #         ref: staging
+  #         # Put the checked out files inside the `big-island-buses/heleon` folder
+  #         path: staging/
+  #         clean: false
+  #     # Delete the .git folder from `big-island-buses/heleon`
+  #     # This turns the files into a plain folder instead of a git repository
+  #     - run: rm -rf staging/.git
+  
+
+
+
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    needs: [setup-pages, install-node]
+    # env:
+    #  TBA_AUT_KEY: ${{ secrets.TBA_API_KEY }}
+    
+    steps:      
+
+      - name: Checkout Main
+        uses: actions/checkout@v3
+        with: 
+          ref: main
+          clean: false
+
+
+      # - uses: actions/checkout@v2
+      #   name: Checkout Staging
+      #   with:
+      #     ref: staging
+      #     # Put the checked out files inside the `big-island-buses/heleon` folder
+      #     path: staging/
+      #     clean: false
+      # # Delete the .git folder from `big-island-buses/heleon`
+      # # This turns the files into a plain folder instead of a git repository
+      # - run: rm -rf staging/.git
+
+      # - name: run NPM install ./main/
+      #   run: npm install
 
       - name: run NPM CI
         run: npm ci
 
-          
       - name: Build TinaCMS
         env:
+          BUILD_PATH: ${{vars.BUILD_PATH}}
           TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
           HEAD: ${{ github.ref_name}}
           TINA_SEARCH: ${{secrets.TINA_SEARCH}}
         run: npx tinacms build
         
-      - name: Build with Jekyll
+      - name: Build Main with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
           destination: ./_site
-          
+
+                  
+  
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 

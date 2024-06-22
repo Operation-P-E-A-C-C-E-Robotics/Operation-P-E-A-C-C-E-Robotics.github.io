@@ -10,14 +10,36 @@ import { date } from "zod";
  const clientId = process.env.TINA_PUBLIC_CLIENT_ID || null
  const token = process.env.TINA_TOKEN || null
 
- const searchToken = process.env.TINA_SEARCH || null
- 
+ const searchToken = process.env.TINA_SEARCH
+
+
+ const buildPath = process.env.BUILD_PATH
+
+  // Create an array of options for selecting years
+  const yearOptions: { label: string; value: string;}[] = Array.from({ length: new Date().getFullYear() - 2010 }, (_, index) => {
+    const yearValue = (2011 + index).toString(); // Convert to string explicitly
+    return {
+        label: yearValue,
+        value: yearValue,
+    };
+  })
+  
+  // for (let i = 2011; i < new Date().getFullYear(); i++) {
+  //   yearOptions.push({
+  //     label: i.toString(), // Convert the number to a string
+  //     value: i.toString(), // Convert the number to a string
+  //   });
+  // }
+
+  console.log(yearOptions)
+
 export default defineConfig({
   branch,
   clientId, // Get this from tina.io
   token, // Get this from tina.io
 
   build: {
+    basePath: buildPath,
     outputFolder: "admin",
     publicFolder: "/",
   },
@@ -28,7 +50,10 @@ export default defineConfig({
     },
   },
 
+
+  
   schema: {
+
     collections: [
       {
         name: "about",
@@ -148,7 +173,7 @@ export default defineConfig({
           ],
         },
       ]
-    },
+     },
      {
       name: "index",
       label: "Home Page Config",
@@ -246,7 +271,8 @@ export default defineConfig({
         // This allows the customization of the list item UI
         // Data can be accessed by item?.<Name of field>
         itemProps: (item) => {
-          return { label: `${item?.header}`}
+          // console.log(item)
+          return { label: `${item?.header.children[0].children[0].text}`}
         },
       },
       fields: [
@@ -271,186 +297,265 @@ export default defineConfig({
           type: "image",
         },
       ]
-    },
-  ],
-   },
-   {
-    name: "robots",
-    label: "Robot Profiles",
-    path: "/_robots",
-    defaultItem: () => {
-      return {
-        // When a new post is created the title field will be set to "New post"
-        year: `${new Date(Date.now()).getFullYear()}`,
-        robotName: 'Unnamed Robot',
-        metatitle: `${new Date(Date.now()).getFullYear()} Robot: ROBOT NAME`,
-        metadesc: `GAME NAME Performance and Statistics`,
-      }
-    },
-    ui: {
-      filename: {
-        // if disabled, the editor can not edit the filename
-        readonly: true,
-        // Example of using a custom slugify function
-        slugify: values => {
-          // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
-          return `${values?.year}`
+      },
+     ],
+     },
+     //start
+     {
+      name: "contact",
+      label: "Contact Page Config",
+      path: "_data",
+      ui: {
+        allowedActions: {
+          create: false,
+          delete: false,
         },
       },
-    },
-    fields: [
-      {
-        name: 'year',
-        label: 'Year',
-        type: 'number',
+      match: {
+          // name of the data file
+          include: "contact",
       },
+     format: "yaml",
+     fields: [
       {
-        name: 'robotName',
-        label: 'Robot Name',
-        type: 'string',
-      },
-      {
-        name: 'game',
-        label: 'Game Name',
-        type: 'string',
-      },
-      {
-        name: 'thumbnail',
-        label: 'Thumbnail Image',
-        type: 'image',
-      },
-      {
-        name: 'metatitle',
-        label: 'Meta Title',
-        type: 'string',
-      },
-      {
-        name: 'metadesc',
-        label: 'Meta Description',
-        type: 'string',
-      },
-      {
-        type: "rich-text",
-        name: "body",
-        label: "Write Up",
-        isBody: true,
-      },
-      {
-        label: "Published",
-        name: "published",
-        type: "boolean",
+        label: "Contact Info",
+        name: "contacts",
+        type: "object",
+        list: true,
+        ui: {
+          // This allows the customization of the list item UI
+          // Data can be accessed by item?.<Name of field>
+          itemProps: (item) => {
+            // console.log(item)
+            return { label: `${item?.address}`}
+          },
         },
-    ],
-  },
-
-  {
-    name: "committees",
-    label: "Committees",
-    path: "/_committees",
-    // defaultItem: () => {
-    //   return {
-    //     // When a new post is created the title field will be set to "New post"
-    //     year: `${new Date(Date.now()).getFullYear()}`,
-    //     robotName: 'Unnamed Robot',
-    //     metatitle: `${new Date(Date.now()).getFullYear()} Robot: ROBOT NAME`,
-    //     metadesc: `GAME NAME Performance and Statistics`,
-    //   }
-    // },
-    // ui: {
-    //   filename: {
-    //     // if disabled, the editor can not edit the filename
-    //     readonly: true,
-    //     // Example of using a custom slugify function
-    //     slugify: values => {
-    //       // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
-    //       return `${values?.year}`
-    //     },
-    //   },
-    // },
-    fields: [
-      {
-        name: 'title',
-        label: 'Committee Name (Top Left Text)',
-        type: 'string',
+        fields: [
+          {
+            label: "Type",
+            name: "type",
+            type: "string"
+          },
+          {
+            label: "Address",
+            name: "address",
+            type: "string"
+          },
+          {
+            label: "Description",
+            name: "name",
+            type: "string",
+          },
+        ]
       },
       {
-        name: 'topcornerimage',
-        label: 'Top Left Image',
-        type: 'image',
-      },
-      {
-        name: 'toprighttitle',
-        label: 'Top Center Title',
-        type: 'rich-text',
-      },
-      {
-        name: 'toprighttext',
-        label: 'Top Center Paragraph',
-        type: 'rich-text',
-      },
-      {
-        name: 'middlerightimage',
-        label: 'Top Center Image',
-        type: 'image',
-      },
-      {
-        name: 'middlelefttitle',
-        label: 'Bottom Center Title',
-        type: 'rich-text',
-      },
-      {
-        type: "rich-text",
-        name: "middlelefttext",
-        label: "Bottom Center Paragraph",
-      },
-      {
-        label: "Bottom Center Image",
-        name: "bottomleftimage",
-        type: "image",
+        name: 'images',
+        label: 'Image Slideshow',
+        type: 'object',
+        list: true,
+        ui: {
+          // This allows the customization of the list item UI
+          // Data can be accessed by item?.<Name of field>
+          itemProps: (item) => {
+            return { label: `${item?.alt}`}
+          },
         },
-      
-        {
-          label: "Useful Links / Resources",
-          name: "resources",
-          type: "object",
-          list: true,
-          ui: {
-            // This allows the customization of the list item UI
-            // Data can be accessed by item?.<Name of field>
-            itemProps: (item) => {
-              return { label: `${item?.name}`}
+        fields: [
+          {
+            name: 'src',
+            label: 'Slideshow Image',
+            type: 'image',
+          },
+          {
+            name: 'alt',
+            label: 'Image Description',
+            type: 'string',
+          },
+        ]
+      },
+     ],
+     },
+     {
+        name: "robots",
+        label: "Robot Profiles",
+        path: "/_robots",
+        defaultItem: () => {
+          return {
+            // When a new post is created the title field will be set to "New post"
+            year: `${new Date(Date.now()).getFullYear()}`,
+            robotName: 'Unnamed Robot',
+            metatitle: `${new Date(Date.now()).getFullYear()} Robot: ROBOT NAME`,
+            metadesc: `GAME NAME Performance and Statistics`,
+          }
+        },
+        ui: {
+          filename: {
+            // if disabled, the editor can not edit the filename
+            readonly: true,
+            // Example of using a custom slugify function
+            slugify: values => {
+              // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
+              return `${values?.year}`
             },
           },
-          fields: [
-            {
-              name: "name",
-              label: "Display Name",
-              type: "string",
+        },
+        fields: [
+          {
+            name: 'year',
+            label: 'Year',
+            type: 'number',
+          },
+          {
+            name: 'robotName',
+            label: 'Robot Name',
+            type: 'string',
+          },
+          {
+            name: 'techBinder',
+            label: 'Technical Binder',
+            type: 'image',
+          },
+          {
+            name: 'buizBinder',
+            label: 'Business Binder',
+            type: 'image',
+          },
+          {
+            name: 'game',
+            label: 'Game Name',
+            type: 'string',
+          },
+          {
+            name: 'matchVideoPlaylist',
+            label: 'Youtube Match Playlist (Just the ID, IE "PLGO1K1mUB0_vJL2rH7uOtTbCbrRHuY6us")',
+            type: 'string',
+          },
+          {
+            name: 'thumbnail',
+            label: 'Thumbnail Image',
+            type: 'image',
+          },
+          {
+            name: 'slideshow',
+            label: 'Top Left Corner Slideshow Photos (Supplemental, the main ones are supplied by The Blue Alliance)',
+            type: 'object',
+            list: true,
+            ui: {
+              // This allows the customization of the list item UI
+              // Data can be accessed by item?.<Name of field>
+              itemProps: (item) => {
+                return { label: `${item?.src}`}
+              },
             },
-            {
-              name: "link",
-              label: "Link or URL (Can be to a page on the website or external)",
-              type: "string",
+            fields: [
+              {
+                name: 'src',
+                label: 'Slideshow Image',
+                type: 'image',
+              },
+            ]
+          },
+          {
+            name: 'metatitle',
+            label: 'Meta Title',
+            type: 'string',
+          },
+          {
+            name: 'metadesc',
+            label: 'Meta Description',
+            type: 'string',
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Write Up",
+            isBody: true,
+          },
+         
+          {
+            label: "Published",
+            name: "published",
+            type: "boolean",
+          },
+        ],
+      },
+
+      {
+        name: "committees",
+        label: "Committees",
+        path: "/_committees",
+        fields: [
+          {
+            name: 'title',
+            label: 'Committee Name (Top Left Text)',
+            type: 'string',
+          },
+          {
+            name: 'topcornerimage',
+            label: 'Top Left Image',
+            type: 'image',
+          },
+          {
+            name: 'toprighttitle',
+            label: 'Top Center Title',
+            type: 'rich-text',
+          },
+          {
+            name: 'toprighttext',
+            label: 'Top Center Paragraph',
+            type: 'rich-text',
+          },
+          {
+            name: 'middlerightimage',
+            label: 'Top Center Image',
+            type: 'image',
+          },
+          {
+            name: 'middlelefttitle',
+            label: 'Bottom Center Title',
+            type: 'rich-text',
+          },
+          {
+            type: "rich-text",
+            name: "middlelefttext",
+            label: "Bottom Center Paragraph",
+          },
+          {
+            label: "Bottom Center Image",
+            name: "bottomleftimage",
+            type: "image",
             },
-          ],
+          
+            {
+              label: "Useful Links / Resources",
+              name: "resources",
+              type: "object",
+              list: true,
+              ui: {
+                // This allows the customization of the list item UI
+                // Data can be accessed by item?.<Name of field>
+                itemProps: (item) => {
+                  return { label: `${item?.name}`}
+                },
+              },
+              fields: [
+                {
+                  name: "name",
+                  label: "Display Name",
+                  type: "string",
+                },
+                {
+                  name: "link",
+                  label: "Link or URL (Can be to a page on the website or external)",
+                  type: "string",
+                },
+              ],
 
-        }, 
-    ],
-  },
+            }, 
+        ],
+      },
 
-   //   {
-//     name: "contact",
-//     label: "Contact",
-//     path: "_data",
-//     match: {
-//         // name of the data file
-//         include: "contact",
-//     },
-//    format: "yaml",
-//    fields: [
-//      // contact fields here 
-//    ],
-//  },
+
  
       {
         name: "sponsors",
@@ -479,7 +584,7 @@ export default defineConfig({
               name: "header",
               type: "string"
             },
-            {
+            { 
               label: "Explenation Paragraph",
               name: "p1",
               type: "rich-text"
@@ -490,7 +595,7 @@ export default defineConfig({
               name: "p2",
               type: "rich-text"
             }
-          ]
+          ],
         },
         {
         label: "Sponsors",
@@ -501,7 +606,7 @@ export default defineConfig({
           // This allows the customization of the list item UI
           // Data can be accessed by item?.<Name of field>
           itemProps: (item) => {
-            return { label: `${item?.name}`}
+            return { label: `${item?.name} (${item?.sponsortier} Hidden: ${item?.hidden})`}
           },
         },
         fields: [
@@ -513,7 +618,29 @@ export default defineConfig({
           {
             label: "Sponsor Tier",
             name: "sponsortier",
-            type: "string"
+            type: "string",
+            options: [
+              {
+                value: "Title",
+                label: "Title",
+              }, 
+              {
+                value: "Platinum",
+                label: "Platinum",
+              },
+              {
+                value: "Gold",
+                label: "Gold",
+              },
+              {
+                value: "Silver",
+                label: "Silver",
+              },
+              {
+                value: "Bronze",
+                label: "Bronze",
+              },
+            ],
           },
           {
             label: "Sponsor Summary",
@@ -528,7 +655,7 @@ export default defineConfig({
           {
             label: "Display Name Only",
             name:"isNameOnly",
-            type: "boolean",
+            type: "boolean"
           },
           {
             label: "Logo",
@@ -536,12 +663,57 @@ export default defineConfig({
             type: "image"
           },
           {
+            label: "Years Sponsored",
+            name: "years",
+            type: "object",
+            list: true,
+            itemProps: (item) => {
+              return { label: `${item?.year} - ${item?.sponsortier}`}
+            },
+            fields: [
+              {
+                label: "Years Sponsored",
+                name: "year",
+                type: "string",
+                options: yearOptions,
+              },
+              {
+                label: "Sponsor Tier",
+                name: "sponsortier",
+                type: "string",
+                options: [
+                  {
+                    value: "Title",
+                    label: "Title",
+                  }, 
+                  {
+                    value: "Platinum",
+                    label: "Platinum",
+                  },
+                  {
+                    value: "Gold",
+                    label: "Gold",
+                  },
+                  {
+                    value: "Silver",
+                    label: "Silver",
+                  },
+                  {
+                    value: "Bronze",
+                    label: "Bronze",
+                  },
+                ],
+              }
+            ]
+            
+          },
+          {
             label: "Hide from Sponsor List",
             name:"hidden",
-            type: "boolean",
+            type: "boolean"
           },
 
-        ]
+        ],
       },
 
       ],
@@ -637,6 +809,19 @@ export default defineConfig({
 
      
     ],
+
   },
 
+  search: {
+    tina: {
+      indexerToken: searchToken,
+      stopwordLanguages: ['eng'],
+    },
+    indexBatchSize: 100,
+    maxSearchIndexFieldLength: 100
+  },
+
+
+
 });
+

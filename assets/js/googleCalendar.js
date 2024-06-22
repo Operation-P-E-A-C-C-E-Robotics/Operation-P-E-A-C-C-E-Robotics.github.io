@@ -17,15 +17,29 @@ async function getNextNonRecurringEvent() {
     // console.log(events)
     let now = new Date();
     let nextEvent = null;
+    let eventStartDate = null;
+    let eventEndDate = null;
   
     for (let i = 0; i < events.length; i++) {
       let event = events[i];
       // console.log(event)
       // console.log(event.start)
       // console.log(event.start.dateTime)
-      if (event.start.dateTime > now.toISOString() || event.start.date > now.toISOString()) {
+      try {
+          eventStartDate = new Date(event.start.dateTime)
+      } catch {
+          eventStartDate = new Date(event.start.date)
+      }
+
+      try {
+          eventEndDate = new Date(event.end.dateTime)
+      } catch {
+          eventEndDate = new Date(event.end.date)
+      }
+        
+        if (now >= eventStartDate && now <= eventEndDate) {
         if (!event.recurrence || !event.recurringEventId) {
-          if (!nextEvent || event.start.dateTime < nextEvent.start.dateTime) {
+          if (!nextEvent || event.start.dateTime <= nextEvent.start.dateTime) {
             nextEvent = event;
           }
         }
@@ -42,17 +56,31 @@ async function getNextEvent() {
   const currentDate = new Date();
   let nextEvent = null;
 
+  
+
   for (const event of events) {
-    // console.log(event);
-    let eventDate = null;
+    let eventStartDate = null;
+    let eventEndDate = null;
+    // console.log(event)
 
-    if (event.start.date) {
-      eventDate = new Date(event.start.date);
-    } else if (event.start.dateTime) {
-      eventDate = new Date(event.start.dateTime);
+    try {
+      eventStartDate = new Date(event.start.dateTime)
+    } catch {}
+    try {
+      eventStartDate = new Date(event.start.date)
     }
+    catch {}
+    // console.log(eventStartDate, event)
+    try {
+        eventEndDate = new Date(event.end.dateTime)
+    } catch {}
 
-    if (eventDate > currentDate) {
+    try {
+      eventEndDate = new Date(event.end.date)
+    } catch {}
+
+    console.log(currentDate, eventStartDate, eventEndDate, event)
+    if (currentDate <= eventStartDate || currentDate <= eventEndDate) {
       nextEvent = event;
       // console.log(nextEvent);
     }
@@ -71,7 +99,7 @@ async function getNextChronologicalDate() {
   for (const event of events) {
     const startDate = new Date(event.start.date);
 
-    if (startDate > currentDate && (!nextDate || startDate < nextDate)) {
+    if (startDate >= currentDate && (!nextDate || startDate <= nextDate)) {
       nextDate = startDate;
       nextEvent = event
     }

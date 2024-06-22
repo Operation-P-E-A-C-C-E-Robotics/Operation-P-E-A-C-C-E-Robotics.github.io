@@ -1,13 +1,13 @@
 <!doctype html>
 <html>
   <head>
-    <BASE href="/admin/dash.html">
+    <BASE href="{{"/admin/dash.html" | absolute_url}}">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <title>{{ page.title }} - Administrative Portal</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/icon" href="/assets/images/PeacceLogoTieDyeWhiteText.svg"/>
+    <link rel="shortcut icon" type="image/icon" href="{{"/assets/images/PeacceLogoTieDyeWhiteText.svg" | absolute_url}}"/>
     <!-- Font Awesome -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,7 +19,7 @@
 
     <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <!-- Main Style -->
-    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="{{"/assets/css/style.css" | absolute_url}}" rel="stylesheet">
 
     <!-- Fonts -->
       <!-- <link href="assets/fonts/BankGothicWebFontConvert/stylesheet.css" rel="stylsheet"> -->
@@ -56,14 +56,14 @@
   
               <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>Blog Posts</span>
-                <a class="d-flex align-items-center text-muted" href="/admin/blogEdit.html">
+                <a class="d-flex align-items-center text-muted" href="{{"/admin/blogEdit.html" | absolute_url}}">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
                 </a>
               </h6>
               <ul class="nav flex-column mb-2">
                 {% for post in site.posts %}
                 <li class="nav-item">
-                  <a class="nav-link" href="/admin/blogEdit?post={{ post.date | date: '%Y-%-m-%d'}}-{{post.filename}}.md">
+                  <a class="nav-link" href="{{"/admin/blogEdit?post={{ post.date | date: '%Y-%-m-%d'}}-{{post.filename}}.md" | absolute_url}}">
                     <i class="fa fa-file-text-o"></i>
                     {{post.title}}
                   </a>
@@ -80,7 +80,7 @@
                 {% comment %}
                 {% directory path: _robots/ %}
                 <li class="nav-item">
-                  <a class="nav-link" href="/admin/robotEdit?post={{file.name}}">
+                  <a class="nav-link" href="{{"/admin/robotEdit?post={{file.name}}" | absolute_url}}">
                     <i class="fa fa-file-text-o"></i>
                     {{file.name}}
                   </a>
@@ -97,7 +97,7 @@
               <ul class="nav flex-column mb-2">
                 {% for post in site.data %}
                 <li class="nav-item">
-                  <a class="nav-link" href="/admin/robotEdit?post={{post.path}}.md">
+                  <a class="nav-link" href="{{"/admin/robotEdit?post={{post.path}}.md" | absolute_url}}">
                     <i class="fa fa-file-text-o"></i>
                     {{post[0]}}
                   </a>

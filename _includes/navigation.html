@@ -4,7 +4,9 @@
   
     <div class="navbar-brand pl-lg-5 d-flex">
       <img src="../assets/images/PeacceLogoTieDyeWhiteText.svg" style="width:45px; height:45px;" class="float-left">
-      <h class="d-none d-lg-block" style="font-family: 'BankGothicBold', sans-serif;padding-top: 9px;padding-left: 5px;">OPERATION P.E.A.C.C.E ROBOTICS</h>
+      <div class="pl-3" id="seperator"></div>
+      <img src="../assets/sponsors/4h-logo.svg" style="width:45px; height:45px;" class="float-left">
+      <h class="d-none d-lg-block pl-3" style="font-family: 'BankGothicBold', sans-serif;padding-top: 9px;padding-left: 5px;">OPERATION P.E.A.C.C.E ROBOTICS</h>
     </div>
     <div class = "navbar-brand pl-lg-1 d-flex">
       <img src = "/assets/sponsors/4h-logo.svg" style="width:45px; height:45px;" class="float-right">
@@ -23,7 +25,7 @@
           {% for item in site.data.navigation.data %}
             {% if item.drop and item.drop == "false" %}
               <li class="nav-item text-xl-center ">
-                <a class="nav-item text-xl-center nav-link {% if page.url == item.link + .html %}active{% endif %}" href="{{ item.link }}">
+                <a class="nav-item text-xl-center nav-link {% if page.url == item.link | remove: "absolute_url" %}active{% endif %}" href="{{ item.link | {{absolute_url}}">
                 {{ item.name }}
                 </a>
               </li>
@@ -35,7 +37,7 @@
                 </a>
                 <div class="dropdown-menu">
                   {% for url in item.links %}
-                    <a class="dropdown-item" href="{{url.url}}">{{url.name | capitalcase}}</a>
+                    <a class="dropdown-item" href="{{url.url | absolute_url}}">{{url.name | capitalcase}}</a>
                   {% endfor %}
                 </div>
               </li>

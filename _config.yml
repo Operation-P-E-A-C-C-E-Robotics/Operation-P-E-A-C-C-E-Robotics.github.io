@@ -1,6 +1,7 @@
 collections:
   robots:
     output: true
+    page_excerpts: true
   
   
   forms:
@@ -8,6 +9,8 @@ collections:
 
   committees:
     output: true
+    permalink: /committee/:title
+    layout: committee
 
 
 defaults:
@@ -43,7 +46,7 @@ defaults:
       bg: light
       txt: dark
 
-
+page_excerpts: true
 
 plugins:
   - "jekyll-github-metadata"
@@ -54,12 +57,8 @@ exclude: ['Archive', 'Documentation', 'node_modules']
 
 repository: Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io
 
+baseurl: /
 
-banner:
-  image-url: "/assets/images/original-banner.jpg"
-  image-align: "top"
-  header: "Operation PEACCE Robotics"
-  subheader: "Practicing Engineering and Competitive Cooperative Excellence"
 
 #set alert banners to be shown on the 
 alerts:
