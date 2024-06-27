@@ -52,5 +52,4 @@ jobs:
         commit-message: Automatically Create Robot Profile
         title: Create a robot profile for ${{ steps.date.outputs.date }}
         branch: robot-profile-${{ steps.date.outputs.date }}
-        delete-branch: true
 
