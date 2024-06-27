@@ -51,4 +51,4 @@ jobs:
       with:
        ref: ${{ steps.cpr.pull-request-branch }}
        workflow: 73393124
-
+       token:  ${{ secrets.github_token }}
