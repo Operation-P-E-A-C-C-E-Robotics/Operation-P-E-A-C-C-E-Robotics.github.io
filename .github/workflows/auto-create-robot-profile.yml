@@ -12,6 +12,7 @@ permissions:
   pages: write
   id-token: write
   pull-requests: write
+  actions: write
 
 jobs: 
   create-robot-profile-if-not-exists:
