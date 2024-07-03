@@ -45,9 +45,10 @@ jobs:
         
         body: |
           Do not merge this PR without first filling in the template this automated action has created
-          open [this link](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/edit/robot-profile-${{ steps.date.outputs.date }}/_robots/${{ steps.date.outputs.date }}.md) fill in the words that are in ALL CAPITAL LETTERS
-          once you have done that, hit save, commit the files to THIS BRANCH (named robot-profile-${{ steps.date.outputs.date }}), once you have commited the changes they should appear here on this pull request
-          once you verify the files are correct, approve the changes and merge the Pull Request to publish them to the internet.
+          To fill in the template, follow these instructions:
+          1. open [this link](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/edit/robot-profile-${{ steps.date.outputs.date }}/_robots/${{ steps.date.outputs.date }}.md) and fill in the words that are in ALL CAPITAL LETTERS
+          2. hit the green "Commit Changes" button, Select "commit the files to this branch" (named robot-profile-${{ steps.date.outputs.date }}), once you have commited the changes they should appear here on this pull request, in the box right below.
+          3. verify the information in the file is correct, if so, approve the changes and merge the Pull Request to publish them to the internet.
         
           after you merge the Pull Request, fill in any additional data at [this link](https://www.peacce.org/admin/#/collections/edit/robots/${{ steps.date.outputs.date }}) (if you need to login, login with the team github credentials) and set the published flag to true
         
