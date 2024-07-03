@@ -111,11 +111,11 @@ async function getNextChronologicalDate() {
 async function getEventDate(event) {
   var options
   var date
-  if (event.start.date) {
+  try {
     const [year, month, day] = event.start.date.split('-');
     options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
     date = new Date(year, month - 1, day);
-  } else if (event.start.dateTime) {
+  } catch {
     options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
     date= new Date(event.start.dateTime);
   }
