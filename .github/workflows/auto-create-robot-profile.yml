@@ -41,9 +41,9 @@ jobs:
       id: cpr
       uses: peter-evans/create-pull-request@v6
       with:
-        commit-message: | 
-          Automatically Create Robot Profile
-
+        commit-message: Automatically Create Robot Profile
+        
+        body: |
           Do not merge this PR without first filling in the template this automated action has created
           open [this link](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/edit/robot-profile-${{ steps.date.outputs.date }}/_robots/${{ steps.date.outputs.date }}.md) fill in the words that are in ALL CAPITAL LETTERS
           once you have done that, hit save, commit the files to THIS BRANCH (named robot-profile-${{ steps.date.outputs.date }}), once you have commited the changes they should appear here on this pull request
