@@ -66,14 +66,14 @@
            var eventEndDate = new Date(key[1].end_date + "T22:00:00-04:00");
           //  var eventEndDate = new Date().setDate(tempEventEndDate + 2);
            ////////console.log(dateConfig);
-           console.log("Now:" + date, "Event Start Date:" + eventStartDate, "Event End Date:" + eventEndDate, "Event JSON:", key);
+          //  console.log("Now:" + date, "Event Start Date:" + eventStartDate, "Event End Date:" + eventEndDate, "Event JSON:", key);
            if (date >= eventStartDate && date <= eventEndDate) {
              curevents.push(key[1]);
              currentEvent = key[1];
            }
 
            if (eventEndDate < date) {
-              console.log("Elimininating event from array because End Date is in the past", key[1])
+              // console.log("Elimininating event from array because End Date is in the past", key[1])
              events.shift() //delete the first event in the array (should be in order by date because TBA returns it sorted afaik
            }
            
