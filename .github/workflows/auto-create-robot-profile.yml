@@ -11,15 +11,12 @@ permissions:
   contents: write
   pages: write
   id-token: write
+  pull-requests: write
+  actions: write
 
 jobs: 
   create-robot-profile-if-not-exists:
     runs-on: ubuntu-latest 
-
-    permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
-      contents: write
-
 
     steps: 
     - name: Get current date
@@ -32,25 +29,21 @@ jobs:
        ref: main
        clean: false
 
-    - name: Run Git Pull
-      run: "git pull --rebase"
-
     - name: Run Script 
       run: python createRobotProfile.py
 
 
-    # - name: Commit Files  
-    #   uses: stefanzweifel/git-auto-commit-action@v5  
-    #   with:  
-    #     commit_message: Autocreate Robot Profile for ${{ steps.date.outputs.date }}
-
-
     - name: Create Pull Request
+      id: cpr
       uses: peter-evans/create-pull-request@v6
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: Automatically Create Robot Profile
         title: Create a robot profile for ${{ steps.date.outputs.date }}
         branch: robot-profile-${{ steps.date.outputs.date }}
-        delete-branch: true
 
+    - name: Fire CI-CD Action
+      uses: benc-uk/workflow-dispatch@v1
+      with:
+       ref: main/pull/${{ steps.cpr.outputs.pull-request-number }}
+       workflow: 73393124
+       token:  ${{ secrets.github_token }}
