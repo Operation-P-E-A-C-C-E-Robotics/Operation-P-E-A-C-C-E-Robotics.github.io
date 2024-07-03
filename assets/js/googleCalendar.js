@@ -65,11 +65,17 @@ async function getNextEvent() {
 
     try {
       eventStartDate = new Date(event.start.dateTime)
+      if (eventStartDate != null) {
+        continue
+      }
     } catch {
       console.warn("Unable to set eventStartDate to event.start.dateTime")
     }
     try {
       eventStartDate = new Date(event.start.date)
+      if (eventStartDate != null) {
+        continue
+      }
     }
     catch {
       console.warn("Unable to set eventStartDate to event.start.date")
@@ -77,12 +83,18 @@ async function getNextEvent() {
     // console.log(eventStartDate, event)
     try {
         eventEndDate = new Date(event.end.dateTime)
+        if (eventEndDate != null) {
+          continue
+        }
     } catch {
       console.warn("Unable to set eventEndDate to event.end.dateTime")
     }
 
     try {
       eventEndDate = new Date(event.end.date)
+      if (eventEndDate != null) {
+        continue
+      }
     } catch {
       console.warn("Unable to set eventEndDate to event.end.date")
     }
