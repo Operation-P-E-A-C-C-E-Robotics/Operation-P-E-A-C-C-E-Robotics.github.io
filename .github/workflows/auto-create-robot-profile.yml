@@ -44,6 +44,6 @@ jobs:
     - name: Fire CI-CD Action
       uses: benc-uk/workflow-dispatch@v1
       with:
-       ref: pull/${{ steps.cpr.outputs.pull-request-number }}
+       ref: main/pull/${{ steps.cpr.outputs.pull-request-number }}
        workflow: 73393124
        token:  ${{ secrets.github_token }}
