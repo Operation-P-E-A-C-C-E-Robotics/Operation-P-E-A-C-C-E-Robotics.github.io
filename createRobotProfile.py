@@ -11,10 +11,10 @@ layout: robot
 year: {year}
 robotName: ROBOT NAME
 game: GAME NAME
-thumbnail: /assets/images/notFound.png
+thumbnail: /assets/images/notFound.png #supply a path to an image of the robot, you should place it in /assets/YYYY/example.png
 metatitle: "{year} Robot: ROBOT NAME"
 metadesc: GAME NAME Performance and Statistics
-published: false #remove this line once youve filled in the data
+published: false #remove this line once youve filled in the data, or set the value to true
 ---"""
 
     if not os.path.exists(filename):
