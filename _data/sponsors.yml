@@ -27,13 +27,6 @@ text:
     tournaments, fundraisers, and on the back of our t-shirts worn by team
     members A thank you letter with a plaque
 sponsors:
-  - name: RTX
-    sponsortier: Silver
-    website: 'https://www.rtx.com/'
-    image: /assets/sponsors/rtx_logo.svg
-    years:
-      - year: '2024'
-        sponsortier: Silver
   - name: Aerospace Alloys Inc
     sponsortier: Silver
     summary: ''
@@ -107,6 +100,8 @@ sponsors:
     isNameOnly: false
     image: /assets/sponsors/AutomationAssociates.jpeg
     years:
+      - year: '2024'
+        sponsortier: Gold
       - year: '2022'
         sponsortier: Gold
       - year: '2019'
@@ -114,6 +109,12 @@ sponsors:
       - year: '2023'
         sponsortier: Gold
     hidden: false
+  - name: The Baily Family
+    sponsortier: Gold
+    isNameOnly: true
+    years:
+      - year: '2024'
+        sponsortier: Gold
   - name: Cape Cod Fence
     sponsortier: Silver
     summary: ''
@@ -327,6 +328,12 @@ sponsors:
       - year: '2023'
         sponsortier: Silver
     hidden: true
+  - name: Little Shop of Odie
+    sponsortier: Bronze
+    isNameOnly: true
+    years:
+      - year: '2024'
+        sponsortier: Bronze
   - name: Lockheed Martin
     sponsortier: Title
     summary: ''
@@ -447,6 +454,13 @@ sponsors:
       - year: '2023'
         sponsortier: Gold
     hidden: false
+  - name: RTX
+    sponsortier: Silver
+    website: 'https://www.rtx.com/'
+    image: /assets/sponsors/rtx_logo.svg
+    years:
+      - year: '2024'
+        sponsortier: Silver
   - name: Radcliff Wire Inc
     sponsortier: Silver
     summary: ''
@@ -549,6 +563,8 @@ sponsors:
     isNameOnly: false
     image: /assets/sponsors/stepcraft.png
     years:
+      - year: '2024'
+        sponsortier: Gold
       - year: '2023'
         sponsortier: Gold
       - year: '2022'
@@ -567,6 +583,8 @@ sponsors:
     isNameOnly: false
     image: /assets/sponsors/TE_Connectivity.png
     years:
+      - year: '2024'
+        sponsortier: Gold
       - year: '2023'
         sponsortier: Gold
     hidden: false
@@ -576,6 +594,8 @@ sponsors:
     website: 'https://www.thomastonsavingsbank.com/'
     image: /assets/sponsors/thomastonBank.svg
     years:
+      - year: '2024'
+        sponsortier: Gold
       - year: '2023'
         sponsortier: Gold
       - year: '2022'
