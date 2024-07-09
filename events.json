@@ -1,45 +1,12 @@
 [
     {
         "kind": "calendar#event",
-        "etag": "\"3432777898728000\"",
-        "id": "311qmqo6hdi517cbatha5o8tct",
-        "status": "confirmed",
-        "htmlLink": "https://www.google.com/calendar/event?eid=MzExcW1xbzZoZGk1MTdjYmF0aGE1bzh0Y3RfMjAyNDA2MDNUMjIwMDAwWiB0ZWFtQHBlYWNjZS5vcmc",
-        "created": "2024-05-22T14:42:29.000Z",
-        "updated": "2024-05-22T14:42:29.364Z",
-        "summary": "Robotics Meeting",
-        "location": "Arthur G. Russell Co., Inc., 750 Clark Ave, Bristol, CT 06010, USA",
-        "creator": {
-            "email": "team@peacce.org",
-            "self": true
-        },
-        "organizer": {
-            "email": "team@peacce.org",
-            "self": true
-        },
-        "start": {
-            "dateTime": "2024-06-03T18:00:00-04:00",
-            "timeZone": "America/New_York"
-        },
-        "end": {
-            "dateTime": "2024-06-03T21:00:00-04:00",
-            "timeZone": "America/New_York"
-        },
-        "recurrence": [
-            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20241210T045959Z;BYDAY=MO"
-        ],
-        "iCalUID": "311qmqo6hdi517cbatha5o8tct@google.com",
-        "sequence": 0,
-        "eventType": "default"
-    },
-    {
-        "kind": "calendar#event",
-        "etag": "\"3438909362260000\"",
+        "etag": "\"3440876886808000\"",
         "id": "0611s1ooc3kmng421f20seil1d",
         "status": "confirmed",
         "htmlLink": "https://www.google.com/calendar/event?eid=MDYxMXMxb29jM2ttbmc0MjFmMjBzZWlsMWQgdGVhbUBwZWFjY2Uub3Jn",
         "created": "2024-05-06T22:00:07.000Z",
-        "updated": "2024-06-27T02:18:01.130Z",
+        "updated": "2024-07-08T11:34:03.404Z",
         "summary": "Open House",
         "location": "Arthur G. Russell Co., Inc., 750 Clark Ave, Bristol, CT 06010, USA",
         "creator": {
@@ -69,6 +36,72 @@
                 "responseStatus": "accepted"
             }
         ],
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3440986006100000\"",
+        "id": "311qmqo6hdi517cbatha5o8tct",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MzExcW1xbzZoZGk1MTdjYmF0aGE1bzh0Y3RfMjAyNDA2MDNUMjIwMDAwWiB0ZWFtQHBlYWNjZS5vcmc",
+        "created": "2024-05-22T14:42:29.000Z",
+        "updated": "2024-07-09T02:43:23.050Z",
+        "summary": "Robotics Meeting",
+        "location": "Arthur G. Russell Co., Inc., 750 Clark Ave, Bristol, CT 06010, USA",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2024-06-03T18:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2024-06-03T21:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "recurrence": [
+            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20240722T035959Z;BYDAY=MO"
+        ],
+        "iCalUID": "311qmqo6hdi517cbatha5o8tct@google.com",
+        "sequence": 0,
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3440986006100000\"",
+        "id": "omhl73hcmilhqbo3uj2bftaa2d",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=b21obDczaGNtaWxocWJvM3VqMmJmdGFhMmRfMjAyNDA3MjJUMjIwMDAwWiB0ZWFtQHBlYWNjZS5vcmc",
+        "created": "2024-05-22T14:42:29.000Z",
+        "updated": "2024-07-09T02:43:23.050Z",
+        "summary": "Robotics Meeting",
+        "location": "Arthur G. Russell Co., Inc., 750 Clark Ave, Bristol, CT 06010, USA",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2024-07-22T18:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2024-07-22T21:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "recurrence": [
+            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20241204T045959Z;BYDAY=MO"
+        ],
+        "iCalUID": "omhl73hcmilhqbo3uj2bftaa2d@google.com",
+        "sequence": 1,
         "eventType": "default"
     }
 ]
