@@ -1,13 +1,19 @@
 ---
 layout: default
+published: true
+title: "Forms"
+form: "/forms/"
 ---
-<div class="conatiner mx-auto w-25">
-    <h1>Forms</h1>
-    <ul>
-    {% for form in site.forms %}
-    {% if form.title != "index" | downcase %}
-        <li><a href="{{form.url}}">{{form.title}}</a></li>
-    {% endif %}
-    {% endfor%}
+
+<br>
+<div class="container" style="height: 30vh; margin: 15vh auto;">
+    <ul class="nav flex-column mx-auto text-center font-weight-bold">
+        {% assign forms = site.forms | where_exp: "item", "item.title != 'Forms'" | sort_natural %}
+        {% for form in forms%}
+        <li>
+          <a href="{{form.url}}" class="h1">{{form.title | captialize}}</a>  
+        </li> 
+        <br>
+        {% endfor %}
     </ul>
 </div>

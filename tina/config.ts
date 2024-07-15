@@ -56,6 +56,41 @@ export default defineConfig({
 
     collections: [
       {
+        name: "forms",
+        label: "Google Forms",
+        path: "_forms",
+        format: "md",
+        ui: {
+          filename: {
+            // if disabled, the editor can not edit the filename
+            readonly: true,
+            // Example of using a custom slugify function
+            slugify: values => {
+              // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
+              return `${new Date().getFullYear() ||
+                'no-topic'}-${values?.title?.toLowerCase().replace(/ /g, '-')}`
+            },
+          },
+        },
+        fields : [
+          {
+            type: "string",
+            name: "title",
+            label: "Title"
+          },
+          {
+            type: "string",
+            name: "form",
+            label: "URL to Google Form"
+          },
+          {
+            type: "boolean",
+            name: "published",
+            label: "Published"
+          }
+        ]
+      },
+      {
         name: "about",
         label: "Top Level Pages",
         path: "/",
