@@ -6,6 +6,8 @@ collections:
   
   forms:
     output: true
+    published: true
+    permalink: /forms/:title
 
   committees:
     output: true
