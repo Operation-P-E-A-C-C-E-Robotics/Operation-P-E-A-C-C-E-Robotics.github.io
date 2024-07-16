@@ -1,13 +1,13 @@
 [
     {
         "kind": "calendar#event",
-        "etag": "\"3440986006100000\"",
-        "id": "311qmqo6hdi517cbatha5o8tct",
+        "etag": "\"3440985916214000\"",
+        "id": "14mgqnh7lvqcpofa5n9c71nqu2",
         "status": "confirmed",
-        "htmlLink": "https://www.google.com/calendar/event?eid=MzExcW1xbzZoZGk1MTdjYmF0aGE1bzh0Y3RfMjAyNDA2MDNUMjIwMDAwWiB0ZWFtQHBlYWNjZS5vcmc",
-        "created": "2024-05-22T14:42:29.000Z",
-        "updated": "2024-07-09T02:43:23.050Z",
-        "summary": "Robotics Meeting",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MTRtZ3FuaDdsdnFjcG9mYTVuOWM3MW5xdTJfMjAyNDA3MzBUMjIwMDAwWiB0ZWFtQHBlYWNjZS5vcmc",
+        "created": "2024-05-10T15:33:11.000Z",
+        "updated": "2024-07-09T02:42:38.107Z",
+        "summary": "Programming Basics Class",
         "location": "Arthur G. Russell Co., Inc., 750 Clark Ave, Bristol, CT 06010, USA",
         "creator": {
             "email": "team@peacce.org",
@@ -18,18 +18,18 @@
             "self": true
         },
         "start": {
-            "dateTime": "2024-06-03T18:00:00-04:00",
+            "dateTime": "2024-07-30T18:00:00-04:00",
             "timeZone": "America/New_York"
         },
         "end": {
-            "dateTime": "2024-06-03T21:00:00-04:00",
+            "dateTime": "2024-07-30T19:30:00-04:00",
             "timeZone": "America/New_York"
         },
         "recurrence": [
-            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20240722T035959Z;BYDAY=MO"
+            "RRULE:FREQ=WEEKLY;WKST=SU;COUNT=6;BYDAY=TU"
         ],
-        "iCalUID": "311qmqo6hdi517cbatha5o8tct@google.com",
-        "sequence": 0,
+        "iCalUID": "14mgqnh7lvqcpofa5n9c71nqu2@google.com",
+        "sequence": 1,
         "eventType": "default"
     },
     {
