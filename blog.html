@@ -11,7 +11,7 @@ permalink: /posts
     {% for year in posts_by_year %}
         <h2>{{ year.name }}</h2>
         {% for post in year.items %}
-            <article class="post vt-post">
+            <article class="post vt-post bg-light">
                 <div class="row">
 
                     <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
@@ -197,7 +197,6 @@ permalink: /posts
 
 .post .caption h3 {
     margin: 0px 0px 20px 0px;
-    color: #000;
     font-weight: 300;
     font-size: 34px;
     line-height: 42px;
@@ -214,7 +213,7 @@ permalink: /posts
     text-align: left;
     min-height: 60px;
     border-bottom: 1px solid #ddd;
-    background: #fcfcfc;
+
     float: left;
     width: 100%;
 }
@@ -237,15 +236,16 @@ permalink: /posts
 
 .post .author-info ul li p {
     line-height: 16px;
-    color: #3b4952;
+    /* color: #3b4952; */
     font-weight: 300;
     font-size: 14px;
     margin: 0px;
 }
 
-.post .author-info ul li strong {
-    color: #3b4952;
-}
+/* .post .author-info ul li strong {
+     color: #3b4952; 
+} 
+*/
 
 .post .author-info ul li a {
     color: #3b4952;
@@ -652,7 +652,6 @@ blockquote {
 
 .post .caption h3 {
     margin: 0px 0px 20px 0px;
-    color: #000;
     font-weight: 300;
     font-size: 34px;
     line-height: 42px;
