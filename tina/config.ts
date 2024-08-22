@@ -633,6 +633,12 @@ export default defineConfig({
           ],
         },
         {
+          label: "Sponsor Packet Button",
+          description: "The URL to the current Sponsor Packet",
+          name: "sponsorPacket",
+          type: "image"
+        },
+        {
         label: "Sponsors",
         name: "sponsors",
         type: "object",
