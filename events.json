@@ -29,6 +29,34 @@
     },
     {
         "kind": "calendar#event",
+        "etag": "\"3426545664764000\"",
+        "id": "3rb8ipqnm8vvb212gi1v37qmc1",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=M3JiOGlwcW5tOHZ2YjIxMmdpMXYzN3FtYzEgdGVhbUBwZWFjY2Uub3Jn",
+        "created": "2024-04-16T13:07:12.000Z",
+        "updated": "2024-04-16T13:07:12.382Z",
+        "summary": "CCRA Golf Tournament",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "date": "2024-09-07"
+        },
+        "end": {
+            "date": "2024-09-08"
+        },
+        "transparency": "transparent",
+        "iCalUID": "3rb8ipqnm8vvb212gi1v37qmc1@google.com",
+        "sequence": 0,
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
         "etag": "\"3440985916214000\"",
         "id": "14mgqnh7lvqcpofa5n9c71nqu2",
         "status": "confirmed",
