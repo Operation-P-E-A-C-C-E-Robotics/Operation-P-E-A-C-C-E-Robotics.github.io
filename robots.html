@@ -34,11 +34,11 @@ txt: dark
     {% if robot.published != "false" %}
     {% if robot.title != "Current Season"%}
     <div class="col-sm-12 col-md-6 col-lg-3" style="padding-bottom: 5.5vh;">
-      <div class="card"> 
+      <div class="card bg-light"> 
         <img class="card-img-top img-thumbnail" src="{{ robot.thumbnail }}" id="logo" style="width:100%; height:30rem; object-fit: cover;"></img>
-        <div class="card-body">
+        <div class="card-body bg-light">
           <p class="card-title">{{robot.title}}: {{ robot.game }} <br> <b>{{robot.robotName}}</b> </p>
-          <a href="{{robot.url | absolute_url}}" class="btn btn-primary">See Profile</a>        
+          <a href="{{robot.url | absolute_url}}" class="btn btn-outline-primary">See Profile</a>        
         </div>
       </div>
     </div>
