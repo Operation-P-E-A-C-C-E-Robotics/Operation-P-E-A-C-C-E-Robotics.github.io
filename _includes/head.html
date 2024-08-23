@@ -39,6 +39,10 @@
 {% if page.metaimage %}
   <meta property="og:image" content="{{ page.metaimage | absolute_url}}">
   <meta property="image" content="{{ page.metaimage | absolute_url }}">
+
+{% else if page.layout == "committee" %}
+  <meta property="og:image" content="{{ page.topcornerimage | absolute_url}}">
+  <meta property="image" content="{{ page.topcornerimage | absolute_url }}">
 {% else %}
   <meta property="og:image" content="{{site.data.metadata.default.image | absolute_url}}">
   <meta property="image" content="{{site.data.metadata.default.image | absolute_url}}">
@@ -48,6 +52,10 @@
 {% if page.metadesc and page.metadesc !=""%}
   <meta property="description" content="{{page.metadesc}}">
   <meta property="og:description" content="{{page.metadesc}}">
+
+{% else if page.layout == "committee" %}
+  <meta property="description" content="{{ page.toprighttext | escape}}">
+  <meta property="og:description" content="{{ page.toprighttext | escape }}">
 {% else %}
   <meta property="description" content="{{ site.data.metadata.default.description }}">
   <meta property="og:description" content="{{ site.data.metadata.default.description }}">
