@@ -46,11 +46,11 @@
 {% endif %} {%- endcomment -%}
 {%- comment -%} end default {%- endcomment -%}
 
-{{ page.layout }}
+
 
 
 {% case page.layout %}
-  {% when "default", "markdown" %}
+  {% when "default", "markdown", "post" %}
     <meta property="og:title" content="{{page.title}}" />
     <meta property="title" content="{{page.title}}">
     {%- comment -%} <meta property="og:description" content="{{ site.data.metadata.default.description }}"/> {%- endcomment -%}
@@ -58,40 +58,61 @@
     {% if page.metadesc %}
       <meta property="og:description" content="{{ page.metadesc }}"/>
       <meta property="description" content="{{ page.metadesc }}"/>
-    
+    {% elsif (page.layout == "markdown" or page.layout == "post") && page.excerpt%}
+      <meta property="og:description" content="{{ page.excerpt | strip_html}}"/>
+      <meta property="description" content="{{ page.excerpt | strip_html }}"/>  
     {% else %}
       <meta property="og:description" content="{{ site.data.metadata.default.description }}"/>
       <meta property="description" content="{{ site.data.metadata.default.description }}"/>
     {% endif %}
 
+    {% if page.metaimage %}
+      <meta property="og:image" content="{{ page.metaimage | absolute_url}}">
+      <meta property="image" content="{{ page.metaimage | absolute_url }}">
+    {% else %}
+      <meta property="og:image" content="{{site.data.metadata.default.image | absolute_url}}">
+      <meta property="image" content="{{site.data.metadata.default.image | absolute_url}}">
+    {% endif %}
+
+
 
   {% when "robot" %}
     <meta property="og:title" content="{{ page.year }} {{ page.game}} Robot: {{ page.robotName }}" />
-    <meta property="description" content="{{page.content | strip_html}}"/>
-    <meta property="og:description" content="{{page.content | strip_html}}"/>
+    {% assign desc = page.content %}
+    {% if page.content.size > 1%}
+      <meta property="description" content="{{desc | strip_html}}"/>
+      <meta property="og:description" content="{{desc | strip_html}}"/>
+    {% else %}
+      <meta property="description" content="{{page.metadesc}}"/>
+      <meta property="og:description" content="{{page.metadesc}}"/>      
+    {% endif %}
     <meta property="image" content="{{ page.thumbnail | absolute_url}}">
     <meta property="og:image" content="{{ page.thumbnail | absolute_url}}">
 
   {% when "committee"%}
     <meta property="description" content="{{ page.toprighttext | escape}}">
     <meta property="og:description" content="{{ page.toprighttext | escape }}">
+    <meta property="og:image" content="{{ page.topcornerimage | absolute_url}}">
+    <meta property="image" content="{{ page.topcornerimage | absolute_url }}">
 
   {% else %}
     <meta property="og:title" content="{{page.title}}" />
     <meta property="title" content="{{page.title}}">
     <meta property="og:description" content="{{ site.data.metadata.default.description }}"/>
     <meta property="description" content="{{ site.data.metadata.default.description }}"/>
+   
+    {% if page.metaimage %}
+      <meta property="og:image" content="{{ page.metaimage | absolute_url}}">
+      <meta property="image" content="{{ page.metaimage | absolute_url }}">
+    {% else %}
+      <meta property="og:image" content="{{site.data.metadata.default.image | absolute_url}}">
+      <meta property="image" content="{{site.data.metadata.default.image | absolute_url}}">
+    {% endif %}
+
 {% endcase %}
 
 
 
-{% if page.metaimage %}
-  <meta property="og:image" content="{{ page.metaimage | absolute_url}}">
-  <meta property="image" content="{{ page.metaimage | absolute_url }}">
-{% else %}
-  <meta property="og:image" content="{{site.data.metadata.default.image | absolute_url}}">
-  <meta property="image" content="{{site.data.metadata.default.image | absolute_url}}">
-{% endif %}
 
 <meta property="og:site_name" content="Operation P.E.A.C.C.E Robotics"/>
 <meta property="og:locality" content="Bristol" />
