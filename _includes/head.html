@@ -90,6 +90,8 @@
     <meta property="og:image" content="{{ page.thumbnail | absolute_url}}">
 
   {% when "committee"%}
+    <meta property="og:title" content="{{page.title}}" />
+    <meta property="title" content="{{page.title}}">
     <meta property="description" content="{{ page.toprighttext | escape}}">
     <meta property="og:description" content="{{ page.toprighttext | escape }}">
     <meta property="og:image" content="{{ page.topcornerimage | absolute_url}}">
