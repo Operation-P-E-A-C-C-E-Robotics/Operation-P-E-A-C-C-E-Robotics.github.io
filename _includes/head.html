@@ -27,50 +27,70 @@
 
 
 <!-- Meta Tags -->
-
 <meta name="keywords" content="Operation PEACCE Robotics, FRC 3461, FIRST Robotics, FIRST Robotics Competition, robotics, first, firstrobotics, competition, team, regionals, matches, videos">
 <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-
 <meta property="og:type" content="sports_team" />
 <meta property="og:url" content="{{ page.url | absolute_url }}"/>
-{% if page.layout != "robot" %}
-<meta property="og:title" content="{{page.title}}" />
-<meta property="title" content="{{page.title}}">
+{%- comment -%} {% if page.layout != "robot" %}
+  <meta property="og:title" content="{{page.title}}" />
+  <meta property="title" content="{{page.title}}">
+  <!-- <meta property="image" content="/assets/images/PeacceLogoTieDyeWhiteText.svg" /> 
+  <meta property="og:image" content="/assets/images/PeacceLogoTieDyeWhiteText.svg"> -->
+
+
+{% else %}
+  <meta property="og:title" content="{{ page.year }} {{ page.game}} Robot: {{ page.robotName }}" />
+  {% assign stripped_content = page.content | strip_html %}
+  <meta property="description" content="{{stripped_content}}"/>
+  <meta property="image" content="{{ page.thumbnail }}">
+{% endif %} {%- endcomment -%}
+{%- comment -%} end default {%- endcomment -%}
+
+{{ page.layout }}
+
+
+{% case page.layout %}
+  {% when "default", "markdown" %}
+    <meta property="og:title" content="{{page.title}}" />
+    <meta property="title" content="{{page.title}}">
+    {%- comment -%} <meta property="og:description" content="{{ site.data.metadata.default.description }}"/> {%- endcomment -%}
+    {%- comment -%} <meta property="description" content="{{ site.data.metadata.default.description }}"/> {%- endcomment -%}
+    {% if page.metadesc %}
+      <meta property="og:description" content="{{ page.metadesc }}"/>
+      <meta property="description" content="{{ page.metadesc }}"/>
+    
+    {% else %}
+      <meta property="og:description" content="{{ site.data.metadata.default.description }}"/>
+      <meta property="description" content="{{ site.data.metadata.default.description }}"/>
+    {% endif %}
+
+
+  {% when "robot" %}
+    <meta property="og:title" content="{{ page.year }} {{ page.game}} Robot: {{ page.robotName }}" />
+    <meta property="description" content="{{page.content | strip_html}}"/>
+    <meta property="og:description" content="{{page.content | strip_html}}"/>
+    <meta property="image" content="{{ page.thumbnail | absolute_url}}">
+    <meta property="og:image" content="{{ page.thumbnail | absolute_url}}">
+
+  {% when "committee"%}
+    <meta property="description" content="{{ page.toprighttext | escape}}">
+    <meta property="og:description" content="{{ page.toprighttext | escape }}">
+
+  {% else %}
+    <meta property="og:title" content="{{page.title}}" />
+    <meta property="title" content="{{page.title}}">
+    <meta property="og:description" content="{{ site.data.metadata.default.description }}"/>
+    <meta property="description" content="{{ site.data.metadata.default.description }}"/>
+{% endcase %}
+
+
+
 {% if page.metaimage %}
   <meta property="og:image" content="{{ page.metaimage | absolute_url}}">
   <meta property="image" content="{{ page.metaimage | absolute_url }}">
-
-{% else if page.layout == "committee" %}
-  <meta property="og:image" content="{{ page.topcornerimage | absolute_url}}">
-  <meta property="image" content="{{ page.topcornerimage | absolute_url }}">
 {% else %}
   <meta property="og:image" content="{{site.data.metadata.default.image | absolute_url}}">
   <meta property="image" content="{{site.data.metadata.default.image | absolute_url}}">
-{% endif %}
-
-
-{% if page.metadesc and page.metadesc !=""%}
-  <meta property="description" content="{{page.metadesc}}">
-  <meta property="og:description" content="{{page.metadesc}}">
-
-{% else if page.layout == "committee" %}
-  <meta property="description" content="{{ page.toprighttext | escape}}">
-  <meta property="og:description" content="{{ page.toprighttext | escape }}">
-{% else %}
-  <meta property="description" content="{{ site.data.metadata.default.description }}">
-  <meta property="og:description" content="{{ site.data.metadata.default.description }}">
-{% endif %}
-
-
-
-{% else %}
-<meta property="og:title" content="{{ page.year }} {{ page.game}} Robot: {{ page.robotName }}" />
-{% assign stripped_content = page.content | strip_html %}
-<meta property="og:description" content="{{stripped_content}}"/>
-<meta property="og:image" content="{{ page.thumbnail }}">
-<meta property="title" content="{{ page.year }} {{ page.game}} Robot: {{ page.robotName }}" />
-<meta property="description" content="{{stripped_content}}"/>
-<meta property="image" content="{{ page.thumbnail }}">
 {% endif %}
 
 <meta property="og:site_name" content="Operation P.E.A.C.C.E Robotics"/>
