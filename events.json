@@ -34,12 +34,12 @@
     },
     {
         "kind": "calendar#event",
-        "etag": "\"3440986006100000\"",
+        "etag": "\"3449534012992000\"",
         "id": "omhl73hcmilhqbo3uj2bftaa2d",
         "status": "confirmed",
         "htmlLink": "https://www.google.com/calendar/event?eid=b21obDczaGNtaWxocWJvM3VqMmJmdGFhMmRfMjAyNDA3MjJUMjIwMDAwWiB0ZWFtQHBlYWNjZS5vcmc",
         "created": "2024-05-22T14:42:29.000Z",
-        "updated": "2024-07-09T02:43:23.050Z",
+        "updated": "2024-08-27T13:56:46.496Z",
         "summary": "Robotics Meeting",
         "location": "Arthur G. Russell Co., Inc., 750 Clark Ave, Bristol, CT 06010, USA",
         "creator": {
@@ -64,5 +64,16 @@
         "iCalUID": "omhl73hcmilhqbo3uj2bftaa2d@google.com",
         "sequence": 1,
         "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3449534012992000\"",
+        "id": "omhl73hcmilhqbo3uj2bftaa2d_20240902T220000Z",
+        "status": "cancelled",
+        "recurringEventId": "omhl73hcmilhqbo3uj2bftaa2d",
+        "originalStartTime": {
+            "dateTime": "2024-09-02T18:00:00-04:00",
+            "timeZone": "America/New_York"
+        }
     }
 ]
