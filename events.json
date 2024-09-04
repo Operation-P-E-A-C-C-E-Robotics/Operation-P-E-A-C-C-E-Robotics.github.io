@@ -1,39 +1,6 @@
 [
     {
         "kind": "calendar#event",
-        "etag": "\"3440985916214000\"",
-        "id": "14mgqnh7lvqcpofa5n9c71nqu2",
-        "status": "confirmed",
-        "htmlLink": "https://www.google.com/calendar/event?eid=MTRtZ3FuaDdsdnFjcG9mYTVuOWM3MW5xdTJfMjAyNDA3MzBUMjIwMDAwWiB0ZWFtQHBlYWNjZS5vcmc",
-        "created": "2024-05-10T15:33:11.000Z",
-        "updated": "2024-07-09T02:42:38.107Z",
-        "summary": "Programming Basics Class",
-        "location": "Arthur G. Russell Co., Inc., 750 Clark Ave, Bristol, CT 06010, USA",
-        "creator": {
-            "email": "team@peacce.org",
-            "self": true
-        },
-        "organizer": {
-            "email": "team@peacce.org",
-            "self": true
-        },
-        "start": {
-            "dateTime": "2024-07-30T18:00:00-04:00",
-            "timeZone": "America/New_York"
-        },
-        "end": {
-            "dateTime": "2024-07-30T19:30:00-04:00",
-            "timeZone": "America/New_York"
-        },
-        "recurrence": [
-            "RRULE:FREQ=WEEKLY;WKST=SU;COUNT=6;BYDAY=TU"
-        ],
-        "iCalUID": "14mgqnh7lvqcpofa5n9c71nqu2@google.com",
-        "sequence": 1,
-        "eventType": "default"
-    },
-    {
-        "kind": "calendar#event",
         "etag": "\"3449534012992000\"",
         "id": "omhl73hcmilhqbo3uj2bftaa2d",
         "status": "confirmed",
