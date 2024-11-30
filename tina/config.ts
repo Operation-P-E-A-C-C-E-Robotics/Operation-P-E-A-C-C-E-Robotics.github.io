@@ -506,7 +506,41 @@ export default defineConfig({
             label: "Write Up",
             isBody: true,
           },
-         
+          {
+            label: "Documentation",
+            name: "documentation",
+            type: "object",
+            list: true,
+            ui: {
+              // This allows the customization of the list item UI
+              // Data can be accessed by item?.<Name of field>
+              itemProps: (item) => {
+                return { label: `${item?.name}`}
+              },
+            },
+            fields: [
+              {
+                name: "name",
+                label: "Display Name",
+                type: "string",
+              },
+              {
+                name: "link",
+                label: "PDF File in the folder for this year",
+                type: "image",
+              },
+              {
+                name: "type",
+                label: "Type",
+                type: "string",
+                options: [
+                  "tech",
+                  "buiz"
+                ]
+              },
+            ],
+
+          }, 
           {
             label: "Published",
             name: "published",
