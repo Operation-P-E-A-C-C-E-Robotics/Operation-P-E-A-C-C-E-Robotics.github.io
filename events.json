@@ -1,67 +1,6 @@
 [
     {
         "kind": "calendar#event",
-        "etag": "\"3424906587410000\"",
-        "id": "4noh4ljghf70jlnbvl0abea2n1",
-        "status": "confirmed",
-        "htmlLink": "https://www.google.com/calendar/event?eid=NG5vaDRsamdoZjcwamxuYnZsMGFiZWEybjEgdGVhbUBwZWFjY2Uub3Jn",
-        "created": "2024-04-07T01:28:13.000Z",
-        "updated": "2024-04-07T01:28:13.705Z",
-        "summary": "Season Kickoff",
-        "creator": {
-            "email": "team@peacce.org",
-            "self": true
-        },
-        "organizer": {
-            "email": "team@peacce.org",
-            "self": true
-        },
-        "start": {
-            "date": "2025-01-04"
-        },
-        "end": {
-            "date": "2025-01-05"
-        },
-        "transparency": "transparent",
-        "iCalUID": "4noh4ljghf70jlnbvl0abea2n1@google.com",
-        "sequence": 0,
-        "eventType": "default"
-    },
-    {
-        "kind": "calendar#event",
-        "etag": "\"3471216809740000\"",
-        "id": "30g0io5uplel05ct2csnhhq8n4",
-        "status": "confirmed",
-        "htmlLink": "https://www.google.com/calendar/event?eid=MzBnMGlvNXVwbGVsMDVjdDJjc25oaHE4bjRfMjAyNTAxMDZUMjMwMDAwWiB0ZWFtQHBlYWNjZS5vcmc",
-        "created": "2024-12-31T01:25:35.000Z",
-        "updated": "2024-12-31T01:26:44.870Z",
-        "summary": "Robotics Meeting",
-        "location": "750 Clark Ave, Bristol, CT 06010, USA",
-        "creator": {
-            "email": "team@peacce.org",
-            "self": true
-        },
-        "organizer": {
-            "email": "team@peacce.org",
-            "self": true
-        },
-        "start": {
-            "dateTime": "2025-01-06T18:00:00-05:00",
-            "timeZone": "America/New_York"
-        },
-        "end": {
-            "dateTime": "2025-01-06T21:00:00-05:00",
-            "timeZone": "America/New_York"
-        },
-        "recurrence": [
-            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20250416T035959Z;BYDAY=MO,TU,WE,TH,FR"
-        ],
-        "iCalUID": "30g0io5uplel05ct2csnhhq8n4@google.com",
-        "sequence": 0,
-        "eventType": "default"
-    },
-    {
-        "kind": "calendar#event",
         "etag": "\"3471216815866000\"",
         "id": "5mbrjpdtnhc8jevak1n7b43ph4",
         "status": "confirmed",
@@ -91,6 +30,69 @@
         ],
         "iCalUID": "5mbrjpdtnhc8jevak1n7b43ph4@google.com",
         "sequence": 0,
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3472005509918000\"",
+        "id": "30g0io5uplel05ct2csnhhq8n4",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MzBnMGlvNXVwbGVsMDVjdDJjc25oaHE4bjRfMjAyNTAxMDZUMjMwMDAwWiB0ZWFtQHBlYWNjZS5vcmc",
+        "created": "2024-12-31T01:25:35.000Z",
+        "updated": "2025-01-04T14:59:14.959Z",
+        "summary": "Robotics Meeting",
+        "location": "750 Clark Ave, Bristol, CT 06010, USA",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2025-01-06T18:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2025-01-06T21:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "recurrence": [
+            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20250416T035959Z;BYDAY=MO,TU,WE,TH,FR"
+        ],
+        "iCalUID": "30g0io5uplel05ct2csnhhq8n4@google.com",
+        "sequence": 0,
+        "hangoutLink": "https://meet.google.com/anr-deur-dsw",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/anr-deur-dsw",
+                    "label": "meet.google.com/anr-deur-dsw"
+                },
+                {
+                    "entryPointType": "more",
+                    "uri": "https://tel.meet/anr-deur-dsw?pin=9970823388224",
+                    "pin": "9970823388224"
+                },
+                {
+                    "regionCode": "US",
+                    "entryPointType": "phone",
+                    "uri": "tel:+1-209-425-2489",
+                    "label": "+1 209-425-2489",
+                    "pin": "707714361"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "anr-deur-dsw"
+        },
         "eventType": "default"
     }
 ]
