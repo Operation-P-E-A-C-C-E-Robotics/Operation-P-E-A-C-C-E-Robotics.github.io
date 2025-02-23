@@ -31,7 +31,12 @@
         "start_date": "2025-03-28",
         "state_prov": "CT",
         "timezone": "America/New_York",
-        "webcasts": [],
+        "webcasts": [
+            {
+                "channel": "firstinspires19",
+                "type": "twitch"
+            }
+        ],
         "website": "http://www.nefirst.org/",
         "week": 4,
         "year": 2025
@@ -68,7 +73,12 @@
         "start_date": "2025-03-14",
         "state_prov": "MA",
         "timezone": "America/New_York",
-        "webcasts": [],
+        "webcasts": [
+            {
+                "channel": "firstinspires19",
+                "type": "twitch"
+            }
+        ],
         "website": "https://nefirst.org/",
         "week": 2,
         "year": 2025
