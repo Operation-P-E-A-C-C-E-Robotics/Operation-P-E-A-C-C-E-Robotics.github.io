@@ -1,6 +1,34 @@
 [
     {
         "kind": "calendar#event",
+        "etag": "\"3455499047296000\"",
+        "id": "5o17ilovc4gtml95tune7o18cc",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NW8xN2lsb3ZjNGd0bWw5NXR1bmU3bzE4Y2MgdGVhbUBwZWFjY2Uub3Jn",
+        "created": "2024-10-01T02:25:23.000Z",
+        "updated": "2024-10-01T02:25:23.648Z",
+        "summary": "New England District WNE Event",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "date": "2025-03-14"
+        },
+        "end": {
+            "date": "2025-03-17"
+        },
+        "transparency": "transparent",
+        "iCalUID": "5o17ilovc4gtml95tune7o18cc@google.com",
+        "sequence": 0,
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
         "etag": "\"3471216815866000\"",
         "id": "5mbrjpdtnhc8jevak1n7b43ph4",
         "status": "confirmed",
