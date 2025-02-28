@@ -122,5 +122,16 @@
             "conferenceId": "anr-deur-dsw"
         },
         "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3476407294886000\"",
+        "id": "30g0io5uplel05ct2csnhhq8n4_20250314T220000Z",
+        "status": "cancelled",
+        "recurringEventId": "30g0io5uplel05ct2csnhhq8n4",
+        "originalStartTime": {
+            "dateTime": "2025-03-14T18:00:00-04:00",
+            "timeZone": "America/New_York"
+        }
     }
 ]
