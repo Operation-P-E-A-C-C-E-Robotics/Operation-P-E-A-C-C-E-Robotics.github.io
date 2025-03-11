@@ -118,7 +118,7 @@ async def run_script():
             break
 
         # Wait for 30 seconds before next iteration
-        await asyncio.sleep(30)
+        await asyncio.sleep(90)
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
