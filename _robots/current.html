@@ -393,6 +393,7 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
           }
           bannerHelper(curevents[0].name, nextMatchKey, match, curevents[0]);
          } else {
+          events.sort(function(a,b){ return new Date(a['start_date']) - new Date(b['start_date'])});
           nextEvent = events[0];
           try {
             nextEventDate = new Date(nextEvent.start_date + "T09:00:00-04:00");
