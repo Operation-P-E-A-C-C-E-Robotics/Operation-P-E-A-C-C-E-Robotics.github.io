@@ -211,7 +211,7 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
         // }, 1000);
         // console.log(x);
 
-        update_countdown(document.getElementById('kickoffCountdownDays'), kickoff)
+        update_countdown(document.getElementById('kickoffCountdown'), kickoff)
         document.getElementById("kickoffCountdown").style.display = "block";
        }
 
@@ -276,18 +276,26 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
        }
 
        async function getapi(eventurl, eventstats, awards, gitCommitURL) {
+        try { 
         const gitCommits = await fetch(gitCommitURL);
+        var gitCommitJSON = await gitCommits.json()
+        var gitLastUpdatedDate = new Date(gitCommitJSON.commit.committer.date)
+        document.getElementById("dataLastUpdated").innerText = gitLastUpdatedDate.toLocaleDateString() + " at " + gitLastUpdatedDate.toLocaleTimeString()
+        } catch {}
+        try {
          const eventResponse = await fetch(eventurl);
-         const eventStats = await fetch(eventstats);
-         const awardsData = await fetch(awards);
-         // Storing data in form of JSON
          var eventdata = await eventResponse.json();
-         // var eventdata = JSON.parse(eventdatatemp);
+        } catch {}
+        try { 
+         const eventStats = await fetch(eventstats);
          var eventstatdata = await eventStats.json();
+        } catch {}
+        try{ 
+         const awardsData = await fetch(awards);
          var awardsForYear = await awardsData.json();
-         var gitCommitJSON = await gitCommits.json()
-         var gitLastUpdatedDate = new Date(gitCommitJSON.commit.committer.date)
-         document.getElementById("dataLastUpdated").innerText = gitLastUpdatedDate.toLocaleDateString() + " at " + gitLastUpdatedDate.toLocaleTimeString()
+        } catch {}
+         
+
          /* //////console.log("Event Data")
           //////console.log(eventdata);
           //////console.log("Event Stats")
@@ -306,10 +314,12 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
 
        }
        // Calling that async function
-       getapi(eventurl, eventstats, awardsurl, tbaDataLastUpdatedurl);
-       setBanner(eventurl);
-       getDistrictStats(district);
-       getMedia(mediaurl);
+      //  if (today > kickoff ) {
+        getapi(eventurl, eventstats, awardsurl, tbaDataLastUpdatedurl);
+        setBanner(eventurl);
+        getDistrictStats(district);
+        getMedia(mediaurl);
+      //  }
 
        async function getDistrictStats(district) {
         const districtResponse = await fetch(district);
@@ -383,6 +393,7 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
           }
           bannerHelper(curevents[0].name, nextMatchKey, match, curevents[0]);
          } else {
+          events.sort(function(a,b){ return new Date(a['start_date']) - new Date(b['start_date'])});
           nextEvent = events[0];
           try {
             nextEventDate = new Date(nextEvent.start_date + "T09:00:00-04:00");
@@ -764,7 +775,12 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
   src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 </script>
 <script>
-  getMatchRecord();
+  if (today > kickoff) {
+    getMatchRecord();
+  } else {
+    document.getElementById('bestMatch').hidden = true
+
+  }
   async function getMatchRecord(){
     // var year = 2019;
     var apiURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_matches.json"

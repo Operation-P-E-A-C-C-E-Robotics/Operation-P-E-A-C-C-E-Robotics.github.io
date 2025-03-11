@@ -12,15 +12,26 @@ function getFirstSaturdayInJanuary(year) {
   // const year = year; // Get the current year
 
   // Loop through the days of January until you find a Saturday that is not January 1st
-  for (let day = 2; day <= 7; day++) { // Start from January 2nd (day 2) and go up to January 7th (day 7)
-    const date = new Date(year, january, day);
+  
+  let found = false
+// Start from January 2nd (day 2) and go up to January 7th (day 7)
+    for (let day=2; day<18; day++) {
+      if (found == true) {
+        break
+      }
+      const thisdate = new Date(year=year, monthIndex=january, date=day, "12", "00");
 
-    // Check if the day is a Saturday (where 0 is Sunday and 6 is Saturday) and not January 1st
-    if (date.getDay() === 6 && day !== 1) {
-      return new Date(date.getFullYear(), date.getMonth(), date.getDay(), "12", "00")
-      return date; // Found the first Saturday in January that is not New Year's Day
+      // Check if the day is a Saturday (where 0 is Sunday and 6 is Saturday) and not January 1st
+      if (thisdate.getDay() == 6) {
+        console.log("accepted date " + thisdate)
+        found = true
+        return new Date(thisdate.getFullYear(), thisdate.getMonth(), thisdate.getDate(), "12", "00")
+      } else {
+        console.log("rejecting date" + thisdate)
+      }
+  
     }
-  }
+  
 
   // If no suitable date is found, you can return a message or handle it as needed
   return "No suitable date found in January.";
