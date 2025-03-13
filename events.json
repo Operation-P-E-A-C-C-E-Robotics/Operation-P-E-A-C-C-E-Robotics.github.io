@@ -29,6 +29,34 @@
     },
     {
         "kind": "calendar#event",
+        "etag": "\"3455499094126000\"",
+        "id": "1rup0usk0708k70v3nr1kperdl",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MXJ1cDB1c2swNzA4azcwdjNucjFrcGVyZGwgdGVhbUBwZWFjY2Uub3Jn",
+        "created": "2024-10-01T02:25:47.000Z",
+        "updated": "2024-10-01T02:25:47.063Z",
+        "summary": "New England District Hartford Event",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "date": "2025-03-28"
+        },
+        "end": {
+            "date": "2025-03-31"
+        },
+        "transparency": "transparent",
+        "iCalUID": "1rup0usk0708k70v3nr1kperdl@google.com",
+        "sequence": 0,
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
         "etag": "\"3471216815866000\"",
         "id": "5mbrjpdtnhc8jevak1n7b43ph4",
         "status": "confirmed",
