@@ -94,7 +94,7 @@ jobs:
       - name: run NPM CI
         run: npm ci
 
-      - name: Build TinaCMS (no indexing)
+      - name: Build TinaCMS (Index PR branch)
         env:
           BUILD_PATH: ${{vars.BUILD_PATH}}
           TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
