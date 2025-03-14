@@ -6,7 +6,6 @@ on:
   pull_request:
     branches: ["main"]
     paths-ignore:
-      - '.github/**'
       - 'Documentation/**'
       - 'Archive/**'
 
@@ -100,9 +99,9 @@ jobs:
           BUILD_PATH: ${{vars.BUILD_PATH}}
           TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
-          #HEAD: ${{ github.ref_name}}
+          HEAD: ${{ github.head_ref}}
           TINA_SEARCH: ${{secrets.TINA_SEARCH}}
-        run: npx tinacms build --skip-indexing --upstream-branch main
+        run: npx tinacms build --skip-indexing
         
       - name: Build Main with Jekyll
         uses: actions/jekyll-build-pages@v1
