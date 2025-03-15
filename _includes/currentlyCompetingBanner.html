@@ -258,11 +258,6 @@
          } catch {}
 
          try{
-          if (match.comp_level != "qm") {
-            document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level + match.set_number + " M" + match.match_number;
-          } else {
-            document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level + " " + match.match_number;
-          }
           matchName = await getMatchNameFromKey(match.key)
           document.getElementById("currentNextMatch").innerHTML += matchName
          document.getElementById("counter").style.display = "block"
