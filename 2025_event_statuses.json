@@ -12,27 +12,55 @@
     "2025mawne": {
         "alliance": null,
         "alliance_status_str": "--",
-        "last_match_key": "2025mawne_qm23",
-        "next_match_key": "2025mawne_qm29",
-        "overall_status_str": "Team 3461 has a record of <b>2-2-0</b> in quals.",
+        "last_match_key": "2025mawne_qm29",
+        "next_match_key": "2025mawne_qm34",
+        "overall_status_str": "Team 3461 is <b>Rank 17/35</b> with a record of <b>3-2-0</b> in quals.",
         "playoff": null,
         "playoff_status_str": "--",
         "qual": {
             "num_teams": 35,
             "ranking": {
-                "dq": null,
-                "matches_played": 4,
+                "dq": 0,
+                "matches_played": 5,
                 "qual_average": null,
-                "rank": null,
+                "rank": 17,
                 "record": {
                     "losses": 2,
                     "ties": 0,
-                    "wins": 2
+                    "wins": 3
                 },
-                "sort_orders": null,
+                "sort_orders": [
+                    3.0,
+                    0.0,
+                    83.6,
+                    14.2,
+                    12.8,
+                    0.0
+                ],
                 "team_key": "frc3461"
             },
-            "sort_order_info": null,
+            "sort_order_info": [
+                {
+                    "name": "Ranking Score",
+                    "precision": 2
+                },
+                {
+                    "name": "Avg Coop",
+                    "precision": 2
+                },
+                {
+                    "name": "Avg Match",
+                    "precision": 2
+                },
+                {
+                    "name": "Avg Auto",
+                    "precision": 2
+                },
+                {
+                    "name": "Avg Barge",
+                    "precision": 2
+                }
+            ],
             "status": "playing"
         }
     }
