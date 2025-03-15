@@ -79,6 +79,26 @@
   
 </div>
 <script>
+  async function getMatchNameFromKey(key) {
+  const apiResponse = await fetch(`https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/${year}_matches.json`);
+  const events = await apiResponse.json();
+  
+  const event = events.find(event => event.key === key);
+
+  if (event.comp_level === "qm") {
+      var matchtitle = "Qualification Match";
+  } else if (event.comp_level === "qf") {
+      var matchtitle = "Quarterfinal " + event.set_number + " Match";
+  } else if (event.comp_level === "sf") {
+      var matchtitle = "Semifinal " + event.set_number + " Match";
+  } else if (event.comp_level === "f") {
+      var matchtitle = "Final";
+  } else {
+      var matchtitle = "Unknown";
+  }
+  
+  return event ? matchtitle + " " + event.match_number : null;
+}
     function clearFRCfromTeamKey(team_key) {
     if (team_key.includes("3461")) {
       return "<b>" + team_key.replace("frc", "") + "</b>" 
@@ -243,6 +263,8 @@
           } else {
             document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level + " " + match.match_number;
           }
+          matchName = await getMatchNameFromKey(match.key)
+          document.getElementById("currentNextMatch").innerHTML += matchName
          document.getElementById("counter").style.display = "block"
          } catch {
           console.error("failed to get next match");
