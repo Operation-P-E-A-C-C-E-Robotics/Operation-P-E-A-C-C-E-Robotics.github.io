@@ -1397,6 +1397,32 @@
     {
         "event_points": [
             {
+                "alliance_points": 10,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2025mefal",
+                "qual_points": 10,
+                "total": 20
+            },
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2025melew",
+                "qual_points": 14,
+                "total": 14
+            }
+        ],
+        "point_total": 34,
+        "rank": 64,
+        "rookie_bonus": 0,
+        "team_key": "frc4041"
+    },
+    {
+        "event_points": [
+            {
                 "alliance_points": 0,
                 "award_points": 5,
                 "district_cmp": false,
@@ -1416,7 +1442,7 @@
             }
         ],
         "point_total": 34,
-        "rank": 64,
+        "rank": 65,
         "rookie_bonus": 0,
         "team_key": "frc3566"
     },
@@ -1442,7 +1468,7 @@
             }
         ],
         "point_total": 34,
-        "rank": 65,
+        "rank": 66,
         "rookie_bonus": 0,
         "team_key": "frc4473"
     },
@@ -1468,7 +1494,7 @@
             }
         ],
         "point_total": 34,
-        "rank": 66,
+        "rank": 67,
         "rookie_bonus": 0,
         "team_key": "frc4176"
     },
@@ -1494,7 +1520,7 @@
             }
         ],
         "point_total": 34,
-        "rank": 67,
+        "rank": 68,
         "rookie_bonus": 10,
         "team_key": "frc10592"
     },
@@ -1511,7 +1537,7 @@
             }
         ],
         "point_total": 33,
-        "rank": 68,
+        "rank": 69,
         "rookie_bonus": 0,
         "team_key": "frc1512"
     },
@@ -1528,35 +1554,9 @@
             }
         ],
         "point_total": 33,
-        "rank": 69,
-        "rookie_bonus": 0,
-        "team_key": "frc1058"
-    },
-    {
-        "event_points": [
-            {
-                "alliance_points": 10,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2025mefal",
-                "qual_points": 10,
-                "total": 20
-            },
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2025melew",
-                "qual_points": 13,
-                "total": 13
-            }
-        ],
-        "point_total": 33,
         "rank": 70,
         "rookie_bonus": 0,
-        "team_key": "frc4041"
+        "team_key": "frc1058"
     },
     {
         "event_points": [
@@ -2114,11 +2114,11 @@
                 "district_cmp": false,
                 "elim_points": 0,
                 "event_key": "2025melew",
-                "qual_points": 14,
-                "total": 14
+                "qual_points": 13,
+                "total": 13
             }
         ],
-        "point_total": 24,
+        "point_total": 23,
         "rank": 99,
         "rookie_bonus": 10,
         "team_key": "frc10066"
