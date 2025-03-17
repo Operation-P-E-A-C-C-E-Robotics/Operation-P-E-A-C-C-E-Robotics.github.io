@@ -335,87 +335,87 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
         }
       }
 
-       async function setBanner(eventsurl) {
-         var eventJSON = await fetch(eventsurl);
-         var testJSON = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_events.json")
-         var events = await eventJSON.json();
-        // var testEvents = await testJSON.json();
-         var curevents = []
-         var currentEvent;
-         var match
+      //  async function setBanner(eventsurl) {
+      //    var eventJSON = await fetch(eventsurl);
+      //    var testJSON = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_events.json")
+      //    var events = await eventJSON.json();
+      //   // var testEvents = await testJSON.json();
+      //    var curevents = []
+      //    var currentEvent;
+      //    var match
 
-         for (let key of Object.entries(events)) {
+      //    for (let key of Object.entries(events)) {
 
 
-           ////////console.log(key);
-           var date = new Date()
-           var eventStartDate = new Date(key[1].start_date + "T09:00:00-04:00");
-           var eventEndDate = new Date(key[1].end_date + "T23:59:59-04:00");
-          //  var eventEndDate = new Date().setDate(tempEventEndDate + 2);
-           ////////console.log(dateConfig);
-           console.log("Now:" + date, "Event Start Date:" + eventStartDate, "Event End Date:" + eventEndDate, "Event JSON:", key);
-           if (date >= eventStartDate && date <= eventEndDate) {
-             curevents.push(key[1]);
-             currentEvent = key[1];
-           }
+      //      ////////console.log(key);
+      //      var date = new Date()
+      //      var eventStartDate = new Date(key[1].start_date + "T09:00:00-04:00");
+      //      var eventEndDate = new Date(key[1].end_date + "T23:59:59-04:00");
+      //     //  var eventEndDate = new Date().setDate(tempEventEndDate + 2);
+      //      ////////console.log(dateConfig);
+      //      console.log("Now:" + date, "Event Start Date:" + eventStartDate, "Event End Date:" + eventEndDate, "Event JSON:", key);
+      //      if (date >= eventStartDate && date <= eventEndDate) {
+      //        curevents.push(key[1]);
+      //        currentEvent = key[1];
+      //      }
 
-           if (eventEndDate < date) {
-              console.log("Elimininating event from array because End Date is in the past", key[1])
-             events.shift() //delete the first event in the array (should be in order by date because TBA returns it sorted afaik
-           }
+      //      if (eventEndDate < date) {
+      //         console.log("Elimininating event from array because End Date is in the past", key[1])
+      //        events.shift() //delete the first event in the array (should be in order by date because TBA returns it sorted afaik
+      //      }
            
-         }
+      //    }
 
-          // console.log("Cur Events")
-          console.log("Current Events", curevents)
-         if (curevents.length != 0) {
-          var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json");
-          var testResponse = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_event_statuses.json");
-          var events =  await apiResponse.json();
-          var testEvents = await testResponse.json();
-          var nextMatchKey;
-          // console.log(events, testEvents);
-          ////console.log(key);
-         for (var [key, value] of Object.entries(events)) {
-            //console.log(curevents[0].key);
+      //     // console.log("Cur Events")
+      //     console.log("Current Events", curevents)
+      //    if (curevents.length != 0) {
+      //     var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json");
+      //     var testResponse = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_event_statuses.json");
+      //     var events =  await apiResponse.json();
+      //     var testEvents = await testResponse.json();
+      //     var nextMatchKey;
+      //     // console.log(events, testEvents);
+      //     ////console.log(key);
+      //    for (var [key, value] of Object.entries(events)) {
+      //       //console.log(curevents[0].key);
 
-            if (key == curevents[0].key){
-              console.log("Current Event", key, value);
-              match = value
-              try {
-              nextMatchKey = value.next_match_key
-              console.log(nextMatchKey);
-              } catch {
-                nextMatchKey = null
-                console.log("Next Match not found")
-              }
-            }
+      //       if (key == curevents[0].key){
+      //         console.log("Current Event", key, value);
+      //         match = value
+      //         try {
+      //         nextMatchKey = value.next_match_key
+      //         console.log(nextMatchKey);
+      //         } catch {
+      //           nextMatchKey = null
+      //           console.log("Next Match not found")
+      //         }
+      //       }
 
-          }
-          //bannerHelper(curevents[0].name, nextMatchKey, match, curevents[0]);
-         } else {
-          events.sort(function(a,b){ return new Date(a['start_date']) - new Date(b['start_date'])});
-          nextEvent = events[0];
-          try {
-            nextEventDate = new Date(nextEvent.start_date + "T09:00:00-04:00");
-            console.log("Next Event", nextEvent)
-            console.log("Next Event Start:" + nextEventDate, "Next Event is in future", nextEventDate >= today)
-            today = new Date()
-            if ( nextEventDate >= today && today >= kickoff) {
-              update_countdown(document.getElementById('competitionCountdownDays'), nextEventDate)
-              // document.getElementById("competitionCountdownDays").innerHTML += (Math.ceil( (nextEventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
-              document.getElementById("competitionCountdown").style.display = "block";
-            } else {
-              document.getElementById("competitionCountdown").style.display = "none";
-            }
-          } catch {
-            console.log("No next event found")
-          }
+      //     }
+      //     //bannerHelper(curevents[0].name, nextMatchKey, match, curevents[0]);
+      //    } else {
+      //     events.sort(function(a,b){ return new Date(a['start_date']) - new Date(b['start_date'])});
+      //     nextEvent = events[0];
+      //     try {
+      //       nextEventDate = new Date(nextEvent.start_date + "T09:00:00-04:00");
+      //       console.log("Next Event", nextEvent)
+      //       console.log("Next Event Start:" + nextEventDate, "Next Event is in future", nextEventDate >= today)
+      //       today = new Date()
+      //       if ( nextEventDate >= today && today >= kickoff) {
+      //         update_countdown(document.getElementById('competitionCountdownDays'), nextEventDate)
+      //         // document.getElementById("competitionCountdownDays").innerHTML += (Math.ceil( (nextEventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
+      //         document.getElementById("competitionCountdown").style.display = "block";
+      //       } else {
+      //         document.getElementById("competitionCountdown").style.display = "none";
+      //       }
+      //     } catch {
+      //       console.log("No next event found")
+      //     }
 
-         }
-        //  //console.log(curevents[0].name, curevents[0], match);
+      //    }
+      //   //  //console.log(curevents[0].name, curevents[0], match);
         
-      }
+      // }
 
        async function getMatchFromKey(matchKey) {
          var matchAPIURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_matches.json";
@@ -754,7 +754,7 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
          }
 
          if (minutes < -4) {
-           setBanner(eventurl);
+           //setBanner(eventurl);
            try {
             getapi(eventurl, eventstats, awardsurl, tbaDataLastUpdatedurl);
            } catch {
@@ -763,7 +763,7 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
          }
 
          if (minutes > 0 && seconds == 0) {
-           setBanner(eventurl);
+           //setBanner(eventurl);
          }
 
        }, 1000);
