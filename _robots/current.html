@@ -50,7 +50,8 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
     </div>
   </div>
   <br>
-  <div id="duringEventBanner" style="display:none;" class="jumbotron text-dark bg-light">
+  {% include currentlyCompetingBanner.html %}
+  <!-- <div id="duringEventBanner" style="display:none;" class="jumbotron text-dark bg-light">
     <h1 id="currentCompetingEvent" class="text-center pb-2">
       Currently Competing At () Event!
     </h1>
@@ -94,7 +95,7 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
       <iframe id="liveStreamFrame" class="embed-responsive-item" src="{{"/assets/images/notFound.png" | absolute_url}}" height="640" width="480"> </iframe>
     </div>
   
-  </div>
+  </div> -->
   <br>
   <div class="table-responsive pt-2 rounded-lg" style="border: 1px solid rgba(0,0,0,.125); border-radius: 4px;">
     <table id="employees" class="table table-bordered table-striped table-light bg-light text-dark"></table>
@@ -316,7 +317,7 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
        // Calling that async function
       //  if (today > kickoff ) {
         getapi(eventurl, eventstats, awardsurl, tbaDataLastUpdatedurl);
-        setBanner(eventurl);
+        //setBanner(eventurl);
         getDistrictStats(district);
         getMedia(mediaurl);
       //  }
@@ -334,87 +335,87 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
         }
       }
 
-       async function setBanner(eventsurl) {
-         var eventJSON = await fetch(eventsurl);
-         var testJSON = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_events.json")
-         var events = await eventJSON.json();
-        // var testEvents = await testJSON.json();
-         var curevents = []
-         var currentEvent;
-         var match
+      //  async function setBanner(eventsurl) {
+      //    var eventJSON = await fetch(eventsurl);
+      //    var testJSON = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_events.json")
+      //    var events = await eventJSON.json();
+      //   // var testEvents = await testJSON.json();
+      //    var curevents = []
+      //    var currentEvent;
+      //    var match
 
-         for (let key of Object.entries(events)) {
+      //    for (let key of Object.entries(events)) {
 
 
-           ////////console.log(key);
-           var date = new Date()
-           var eventStartDate = new Date(key[1].start_date + "T09:00:00-04:00");
-           var eventEndDate = new Date(key[1].end_date + "T22:00:00-04:00");
-          //  var eventEndDate = new Date().setDate(tempEventEndDate + 2);
-           ////////console.log(dateConfig);
-           console.log("Now:" + date, "Event Start Date:" + eventStartDate, "Event End Date:" + eventEndDate, "Event JSON:", key);
-           if (date >= eventStartDate && date <= eventEndDate) {
-             curevents.push(key[1]);
-             currentEvent = key[1];
-           }
+      //      ////////console.log(key);
+      //      var date = new Date()
+      //      var eventStartDate = new Date(key[1].start_date + "T09:00:00-04:00");
+      //      var eventEndDate = new Date(key[1].end_date + "T23:59:59-04:00");
+      //     //  var eventEndDate = new Date().setDate(tempEventEndDate + 2);
+      //      ////////console.log(dateConfig);
+      //      console.log("Now:" + date, "Event Start Date:" + eventStartDate, "Event End Date:" + eventEndDate, "Event JSON:", key);
+      //      if (date >= eventStartDate && date <= eventEndDate) {
+      //        curevents.push(key[1]);
+      //        currentEvent = key[1];
+      //      }
 
-           if (eventEndDate < date) {
-              console.log("Elimininating event from array because End Date is in the past", key[1])
-             events.shift() //delete the first event in the array (should be in order by date because TBA returns it sorted afaik
-           }
+      //      if (eventEndDate < date) {
+      //         console.log("Elimininating event from array because End Date is in the past", key[1])
+      //        events.shift() //delete the first event in the array (should be in order by date because TBA returns it sorted afaik
+      //      }
            
-         }
+      //    }
 
-          // console.log("Cur Events")
-          console.log("Current Events", curevents)
-         if (curevents.length != 0) {
-          var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json");
-          var testResponse = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_event_statuses.json");
-          var events =  await apiResponse.json();
-          var testEvents = await testResponse.json();
-          var nextMatchKey;
-          // console.log(events, testEvents);
-          ////console.log(key);
-         for (var [key, value] of Object.entries(events)) {
-            //console.log(curevents[0].key);
+      //     // console.log("Cur Events")
+      //     console.log("Current Events", curevents)
+      //    if (curevents.length != 0) {
+      //     var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json");
+      //     var testResponse = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_event_statuses.json");
+      //     var events =  await apiResponse.json();
+      //     var testEvents = await testResponse.json();
+      //     var nextMatchKey;
+      //     // console.log(events, testEvents);
+      //     ////console.log(key);
+      //    for (var [key, value] of Object.entries(events)) {
+      //       //console.log(curevents[0].key);
 
-            if (key == curevents[0].key){
-              console.log("Current Event", key, value);
-              match = value
-              try {
-              nextMatchKey = value.next_match_key
-              console.log(nextMatchKey);
-              } catch {
-                nextMatchKey = null
-                console.log("Next Match not found")
-              }
-            }
+      //       if (key == curevents[0].key){
+      //         console.log("Current Event", key, value);
+      //         match = value
+      //         try {
+      //         nextMatchKey = value.next_match_key
+      //         console.log(nextMatchKey);
+      //         } catch {
+      //           nextMatchKey = null
+      //           console.log("Next Match not found")
+      //         }
+      //       }
 
-          }
-          bannerHelper(curevents[0].name, nextMatchKey, match, curevents[0]);
-         } else {
-          events.sort(function(a,b){ return new Date(a['start_date']) - new Date(b['start_date'])});
-          nextEvent = events[0];
-          try {
-            nextEventDate = new Date(nextEvent.start_date + "T09:00:00-04:00");
-            console.log("Next Event", nextEvent)
-            console.log("Next Event Start:" + nextEventDate, "Next Event is in future", nextEventDate >= today)
-            today = new Date()
-            if ( nextEventDate >= today && today >= kickoff) {
-              update_countdown(document.getElementById('competitionCountdownDays'), nextEventDate)
-              // document.getElementById("competitionCountdownDays").innerHTML += (Math.ceil( (nextEventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
-              document.getElementById("competitionCountdown").style.display = "block";
-            } else {
-              document.getElementById("competitionCountdown").style.display = "none";
-            }
-          } catch {
-            console.log("No next event found")
-          }
+      //     }
+      //     //bannerHelper(curevents[0].name, nextMatchKey, match, curevents[0]);
+      //    } else {
+      //     events.sort(function(a,b){ return new Date(a['start_date']) - new Date(b['start_date'])});
+      //     nextEvent = events[0];
+      //     try {
+      //       nextEventDate = new Date(nextEvent.start_date + "T09:00:00-04:00");
+      //       console.log("Next Event", nextEvent)
+      //       console.log("Next Event Start:" + nextEventDate, "Next Event is in future", nextEventDate >= today)
+      //       today = new Date()
+      //       if ( nextEventDate >= today && today >= kickoff) {
+      //         update_countdown(document.getElementById('competitionCountdownDays'), nextEventDate)
+      //         // document.getElementById("competitionCountdownDays").innerHTML += (Math.ceil( (nextEventDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
+      //         document.getElementById("competitionCountdown").style.display = "block";
+      //       } else {
+      //         document.getElementById("competitionCountdown").style.display = "none";
+      //       }
+      //     } catch {
+      //       console.log("No next event found")
+      //     }
 
-         }
-        //  //console.log(curevents[0].name, curevents[0], match);
+      //    }
+      //   //  //console.log(curevents[0].name, curevents[0], match);
         
-      }
+      // }
 
        async function getMatchFromKey(matchKey) {
          var matchAPIURL = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_matches.json";
@@ -451,89 +452,89 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
         }
        }
 
-       async function bannerHelper(eventTitle, nextMatch, stats, event) {
-        //console.log(eventTitle);
-        //console.log(nextMatch);
-        //console.log(stats);
-         var match = await getMatchFromKey(nextMatch);
+      //  async function bannerHelper(eventTitle, nextMatch, stats, event) {
+      //   //console.log(eventTitle);
+      //   //console.log(nextMatch);
+      //   //console.log(stats);
+      //    var match = await getMatchFromKey(nextMatch);
 
          
          
-        //  console.log(nextMatch);
-         try {
-          countDownDate = match.predicted_time
-         } catch {
-          countDownDate = null
-         }
+      //   //  console.log(nextMatch);
+      //    try {
+      //     countDownDate = match.predicted_time
+      //    } catch {
+      //     countDownDate = null
+      //    }
 
-         try {
-         document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + eventTitle;
-         } catch {
-          console.error("failed to get event name");
-         }
+      //    try {
+      //    document.getElementById("currentCompetingEvent").innerHTML = "Currently Competing At " + eventTitle;
+      //    } catch {
+      //     console.error("failed to get event name");
+      //    }
 
-         try {
-          document.getElementById("currentStatusStr").innerHTML = stats.overall_status_str;
-         } catch {}
+      //    try {
+      //     document.getElementById("currentStatusStr").innerHTML = stats.overall_status_str;
+      //    } catch {}
 
-         try{
-         document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level.toUpperCase() + " " + match.match_number;
-         document.getElementById("counter").style.display = "block"
-         } catch {
-          console.error("failed to get next match");
-          document.getElementById("counter").style.display = "None"
-         }
+      //    try{
+      //    document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level.toUpperCase() + " " + match.match_number;
+      //    document.getElementById("counter").style.display = "block"
+      //    } catch {
+      //     console.error("failed to get next match");
+      //     document.getElementById("counter").style.display = "None"
+      //    }
 
-         try{
-         document.getElementById("redTeams").innerHTML = clearFRCfromTeam(match.alliances.red.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[2])
-         document.getElementById("redTeams").style.display = "block"
-         } catch {
-          console.error("failed to get red teams");
-          document.getElementById("redTeams").style.display = "None"
-         }
+      //    try{
+      //    document.getElementById("redTeams").innerHTML = clearFRCfromTeam(match.alliances.red.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.red.team_keys[2])
+      //    document.getElementById("redTeams").style.display = "block"
+      //    } catch {
+      //     console.error("failed to get red teams");
+      //     document.getElementById("redTeams").style.display = "None"
+      //    }
 
-         try {
-         document.getElementById("blueTeams").innerHTML = clearFRCfromTeam(match.alliances.blue.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[2])
-         document.getElementById("blueTeams").style.display = "block"
-         } catch {
-          console.error("failed to get blue teams");
-          document.getElementById("blueTeams").style.display = "None"
-         }
+      //    try {
+      //    document.getElementById("blueTeams").innerHTML = clearFRCfromTeam(match.alliances.blue.team_keys[0]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[1]) + " " + clearFRCfromTeam(match.alliances.blue.team_keys[2])
+      //    document.getElementById("blueTeams").style.display = "block"
+      //    } catch {
+      //     console.error("failed to get blue teams");
+      //     document.getElementById("blueTeams").style.display = "None"
+      //    }
 
-         try {
-         document.getElementById("currentRank").innerHTML = "Rank: " + stats.qual.ranking.rank + "/" + stats.qual.num_teams
-         } catch {
-          console.error("failed to get event rank");
-         }
+      //    try {
+      //    document.getElementById("currentRank").innerHTML = "Rank: " + stats.qual.ranking.rank + "/" + stats.qual.num_teams
+      //    } catch {
+      //     console.error("failed to get event rank");
+      //    }
 
-         try {
-            event.webcasts.reverse()
-            if (document.getElementById("liveStreamFrame").src == "{{"/assets/images/notFound.png" | absolute_url}}") {
-              //console.log("setting stream iframe to " + event.webcasts[0])
-              if (event.webcasts[0].type == "twitch") {
-                document.getElementById("liveStreamFrame").src = "https://player.twitch.tv/?autoplay=true&channel=" + event.webcasts[0].channel + "&parent=www.peacce.org"
-              }
+      //    try {
+      //       event.webcasts.reverse()
+      //       if (document.getElementById("liveStreamFrame").src == "{{"/assets/images/notFound.png" | absolute_url}}") {
+      //         //console.log("setting stream iframe to " + event.webcasts[0])
+      //         if (event.webcasts[0].type == "twitch") {
+      //           document.getElementById("liveStreamFrame").src = "https://player.twitch.tv/?autoplay=true&channel=" + event.webcasts[0].channel + "&parent=www.peacce.org"
+      //         }
 
-              if (event.webcasts[0].type == "youtube") {
+      //         if (event.webcasts[0].type == "youtube") {
                 
-                document.getElementById("liveStreamFrame").src = "https://www.youtube.com/embed/live_stream?channel=" + event.webcasts[0].channel
-              }
+      //           document.getElementById("liveStreamFrame").src = "https://www.youtube.com/embed/live_stream?channel=" + event.webcasts[0].channel
+      //         }
 
-              hasSetIFrame = true
-            } else {
+      //         hasSetIFrame = true
+      //       } else {
 
-              //console.log("live stream iframe appears to be set, " + document.getElementById("liveStreamFrame").src)
-            }
-          } catch {
-            document.getElementById("liveStream").style.display = "none"
-          }
+      //         //console.log("live stream iframe appears to be set, " + document.getElementById("liveStreamFrame").src)
+      //       }
+      //     } catch {
+      //       document.getElementById("liveStream").style.display = "none"
+      //     }
 
 
-       //  try {
+      //  //  try {
 
-         document.getElementById("duringEventBanner").style.display = "block";
-       //   } catch {}
-        }
+      //    document.getElementById("duringEventBanner").style.display = "block";
+      //  //   } catch {}
+      //   }
 
        function clearFRCfromTeam(team) {
          myString = team.replace(/\D/g, '');
@@ -753,7 +754,7 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
          }
 
          if (minutes < -4) {
-           setBanner(eventurl);
+           //setBanner(eventurl);
            try {
             getapi(eventurl, eventstats, awardsurl, tbaDataLastUpdatedurl);
            } catch {
@@ -762,7 +763,7 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
          }
 
          if (minutes > 0 && seconds == 0) {
-           setBanner(eventurl);
+           //setBanner(eventurl);
          }
 
        }, 1000);

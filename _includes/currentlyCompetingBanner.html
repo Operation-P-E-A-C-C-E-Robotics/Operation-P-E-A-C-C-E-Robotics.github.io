@@ -1,4 +1,4 @@
-<div id="duringEventBanner" style="display:none;" class="jumbotron text-dark">
+<div id="duringEventBanner" style="display:none;" class="jumbotron bg-light">
     <h1 id="currentCompetingEvent" class="text-center pb-2">
       Currently Competing At () Event!
     </h1>
@@ -6,23 +6,13 @@
 
     <div class="row">
       <div class="col d-flex-col">
-        <div class="d-flex d-flex-row">
-          <!-- <h3 id="currentNextMatch" style="text-transform: capitalcase;">
-            Next Match: Not Found
-          </h3> -->
-          
-        </div>
-
-        <div>
-          <h3 id="currentRank">
+          <h3 id="currentRank" class="text-nowrap">
             Rank: 0/0
           </h3>
-        </div>
-
       </div>
-      <div class="col-3">
+      <div class="col">
         <div class="row">
-          <h3 id='counter' class="pl-2">--h --m --s</h3>
+          <h3 id='counter' class="pl-2 text-nowrap text-center">--h --m --s</h3>
           <!-- <h3 class="col-4 text-center" id="redTeams">
             0000 0000 0000 
           </h3>
@@ -33,7 +23,7 @@
         </div>
       </div>
 
-      <h3 class="col text-right" id='time'></h3>
+      <h3 class="col text-right text-nowrap" id='time'></h3>
 
     </div>
 
@@ -66,7 +56,7 @@
             </tbody>
           </table>
         </div>
-        <div class="table-responsive pt-2 rounged-lg d-xs-none d-md-block">
+        <div class="table-responsive pt-2 rounged-lg d-none d-sm-none d-md-block">
           <table class="table table-bordered table-light text-light">
             <tbody>
               <tr class="bg-secondary"><th colspan="2" id="currentLastMatch">Last Match: Not Found</th></tr>
@@ -154,7 +144,7 @@
            ////////console.log(key);
            var date = new Date()
            var eventStartDate = new Date(key[1].start_date + "T09:00:00-04:00");
-           var eventEndDate = new Date(key[1].end_date + "T22:00:00-04:00");
+           var eventEndDate = new Date(key[1].end_date + "T23:59:59-04:00");
           //  var eventEndDate = new Date().setDate(tempEventEndDate + 2);
            ////////console.log(dateConfig);
           //  console.log("Now:" + date, "Event Start Date:" + eventStartDate, "Event End Date:" + eventEndDate, "Event JSON:", key);
@@ -165,7 +155,7 @@
 
            if (eventEndDate < date) {
               // console.log("Elimininating event from array because End Date is in the past", key[1])
-             events.shift() //delete the first event in the array (should be in order by date because TBA returns it sorted afaik
+             //events.shift() //delete the first event in the array (should be in order by date because TBA returns it sorted afaik
            }
            
          }
