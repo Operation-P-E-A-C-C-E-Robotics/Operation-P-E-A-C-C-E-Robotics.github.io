@@ -1,4 +1,4 @@
-<div id="duringEventBanner" style="display:none;" class="jumbotron text-dark">
+<div id="duringEventBanner" style="display:none;" class="jumbotron bg-light">
     <h1 id="currentCompetingEvent" class="text-center pb-2">
       Currently Competing At () Event!
     </h1>
@@ -154,7 +154,7 @@
            ////////console.log(key);
            var date = new Date()
            var eventStartDate = new Date(key[1].start_date + "T09:00:00-04:00");
-           var eventEndDate = new Date(key[1].end_date + "T22:00:00-04:00");
+           var eventEndDate = new Date(key[1].end_date + "T23:59:59-04:00");
           //  var eventEndDate = new Date().setDate(tempEventEndDate + 2);
            ////////console.log(dateConfig);
           //  console.log("Now:" + date, "Event Start Date:" + eventStartDate, "Event End Date:" + eventEndDate, "Event JSON:", key);
