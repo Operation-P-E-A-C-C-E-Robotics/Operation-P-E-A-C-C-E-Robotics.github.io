@@ -7,10 +7,10 @@
     <div class="row">
       <div class="col d-flex-col">
         <div class="d-flex d-flex-row">
-          <h3 id="currentNextMatch" style="text-transform: capitalcase;">
+          <!-- <h3 id="currentNextMatch" style="text-transform: capitalcase;">
             Next Match: Not Found
-          </h3>
-          <h3 id='counter' class="pl-2">--h --m --s</h3>
+          </h3> -->
+          
         </div>
 
         <div>
@@ -22,13 +22,14 @@
       </div>
       <div class="col-3">
         <div class="row">
-          <h3 class="col-4 text-center" id="redTeams">
+          <h3 id='counter' class="pl-2">--h --m --s</h3>
+          <!-- <h3 class="col-4 text-center" id="redTeams">
             0000 0000 0000 
           </h3>
           <h3 class="col-4 m-0 p-0 text-center mx-auto"><span class="mx-auto text-center">VS</span></h3>
           <h3 class="col-4 text-center" id="blueTeams">
             0000 0000 0000
-          </h3>
+          </h3> -->
         </div>
       </div>
 
@@ -36,13 +37,103 @@
 
     </div>
 
-
-    <div id="liveStream" class="embed-responsive embed-responsive-16by9">
-      <iframe id="liveStreamFrame" class="embed-responsive-item" src="{{"/assets/images/notFound.png" | absolute_url}}" height="640" width="480"> </iframe>
+    <div class="row flex-column flex-sm-row">
+      <div class="col col-lg-6 order-lg-0 order-sm-1">
+        <div class="table-responsive pt-2 rounged-lg">
+          <table class="table table-bordered table-light text-light">
+            <tbody>
+              <tr class="bg-secondary"><th colspan="2" id="currentNextMatch">Next Match: Not Found</th></tr>
+              <tr>
+                <th class="bg-danger">Red Alliance</th>
+                <th class="bg-primary">Blue Alliance</th>
+              </tr>
+              <tr>
+                <td class="bg-danger" id="curMatchRedOne"></td>
+                <td class="bg-primary" id="curMatchBlueOne"></td>
+              </tr>
+              <tr>
+                <td class="bg-danger" id="curMatchRedTwo"></td>
+                <td class="bg-primary" id="curMatchBlueTwo"></td>
+              </tr>
+              <tr>
+                <td class="bg-danger" id="curMatchRedThree"></td>
+                <td class="bg-primary" id="curMatchBlueThree"></td>
+              </tr>
+              <!-- <tr>
+                <td class="bg-danger" id="curMatchRedScore"></td>
+                <td class="bg-primary" id="curMatchBlueScore"></td>
+              </tr> -->
+            </tbody>
+          </table>
+        </div>
+        <div class="table-responsive pt-2 rounged-lg d-xs-none d-md-block">
+          <table class="table table-bordered table-light text-light">
+            <tbody>
+              <tr class="bg-secondary"><th colspan="2" id="currentLastMatch">Last Match: Not Found</th></tr>
+              <tr>
+                <th class="bg-danger">Red Alliance</th>
+                <th class="bg-primary">Blue Alliance</th>
+              </tr>
+              <tr>
+                <td class="bg-danger" id="lasMatchRedOne"></td>
+                <td class="bg-primary" id="lasMatchBlueOne"></td>
+              </tr>
+              <tr>
+                <td class="bg-danger" id="lasMatchRedTwo"></td>
+                <td class="bg-primary" id="lasMatchBlueTwo"></td>
+              </tr>
+              <tr>
+                <td class="bg-danger" id="lasMatchRedThree"></td>
+                <td class="bg-primary" id="lasMatchBlueThree"></td>
+              </tr>
+              <tr>
+                <td class="bg-danger" id="lasMatchRedScore"></td>
+                <td class="bg-primary" id="lasMatchBlueScore"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-lg-6" id="liveStream">
+        <div class="embed-responsive embed-responsive-16by9 mx-auto">
+          <iframe id="liveStreamFrame" class="embed-responsive-item" src="{{"/assets/images/notFound.png" | absolute_url}}"> </iframe>
+        </div>
+          
+      </div>
     </div>
+    <!-- <div id="liveStream" class="embed-responsive embed-responsive-16by9">
+      <iframe id="liveStreamFrame" class="embed-responsive-item" src="{{"/assets/images/notFound.png" | absolute_url}}"> </iframe>
+    </div> -->
   
 </div>
 <script>
+  async function getMatchNameFromKey(key) {
+  const apiResponse = await fetch(`https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/${year}_matches.json`);
+  const events = await apiResponse.json();
+  
+  const event = events.find(event => event.key === key);
+
+  if (event.comp_level === "qm") {
+      var matchtitle = "Qualification Match";
+  } else if (event.comp_level === "qf") {
+      var matchtitle = "Quarterfinal " + event.set_number + " Match";
+  } else if (event.comp_level === "sf") {
+      var matchtitle = "Semifinal " + event.set_number + " Match";
+  } else if (event.comp_level === "f") {
+      var matchtitle = "Final";
+  } else {
+      var matchtitle = "Unknown";
+  }
+  
+  return event ? matchtitle + " " + event.match_number : null;
+}
+    function clearFRCfromTeamKey(team_key) {
+    if (team_key.includes("3461")) {
+      return "<b>" + team_key.replace("frc", "") + "</b>" 
+    }
+    return team_key.replace("frc", "")
+  }
+
      var year = new Date().getFullYear();
     var countDownDate;
     var eventurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_events.json";
@@ -80,7 +171,7 @@
          }
 
           // console.log("Cur Events")
-          console.log("Current Events", curevents)
+          //console.log("Current Events", curevents)
          if (curevents.length != 0) {
           var apiResponse = await fetch("https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json");
           var testResponse = await fetch("https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/test_event_statuses.json");
@@ -97,6 +188,7 @@
               match = value
               try {
               nextMatchKey = value.next_match_key
+              lastMatchKey = value.last_match_key
               console.log(nextMatchKey);
               } catch {
                 nextMatchKey = null
@@ -105,7 +197,7 @@
             }
 
           }
-          bannerHelper(curevents[0].name, nextMatchKey, match, curevents[0]);
+          bannerHelper(curevents[0].name, nextMatchKey, match, curevents[0], lastMatchKey);
          } else {
           nextEvent = events[0];
           try {
@@ -170,11 +262,12 @@
         }
        }
  
-       async function bannerHelper(eventTitle, nextMatch, stats, event) {
+       async function bannerHelper(eventTitle, nextMatch, stats, event, lastMatch) {
         //console.log(eventTitle); 
         //console.log(nextMatch);
         //console.log(stats);
          var match = await getMatchFromKey(nextMatch);
+         var lastMatch = await getMatchFromKey(lastMatch);
         //  console.log(nextMatch);
          try {
           countDownDate = match.predicted_time
@@ -193,28 +286,70 @@
          } catch {}
 
          try{
-         document.getElementById("currentNextMatch").innerHTML = "Next Match: " + match.comp_level + " " + match.match_number;
+          matchName = await getMatchNameFromKey(match.key)
+          document.getElementById("currentNextMatch").innerHTML += matchName
          document.getElementById("counter").style.display = "block"
          } catch {
           console.error("failed to get next match");
           document.getElementById("counter").style.display = "None"
          }
 
-         try{
-
-         document.getElementById("redTeams").innerHTML = "<h3 class='col text-right'>" + clearFRCfromTeam(match.alliances.red.team_keys[0]) + "</h3>" + "<h3 class='col text-right'>" + clearFRCfromTeam(match.alliances.red.team_keys[1]) + "</h3>" + "<h3 class='col text-right'>" + clearFRCfromTeam(match.alliances.red.team_keys[2]) + "</h3>"
-         } catch {
-          console.error("failed to get red teams");
-          document.getElementById("redTeams").style.display = "None"
-         }
-
          try {
-
-         document.getElementById("blueTeams").innerHTML = "<h3 class='col text-left'>" + clearFRCfromTeam(match.alliances.blue.team_keys[0]) + "</h3>" + "<h3 class='col text-left'>" + clearFRCfromTeam(match.alliances.blue.team_keys[1]) + "</h3>" + "<h3 class='col text-left'>" + clearFRCfromTeam(match.alliances.blue.team_keys[2]) + "</h3>"
+          lastMatchName = await getMatchNameFromKey(lastMatch.key)
+          document.getElementById("currentLastMatch").innerHTML = "Last Match: " + lastMatchName
          } catch {
-          console.error("failed to get blue teams");
-          document.getElementById("blueTeams").style.display = "None"
+          console.error("could not set last match name")
          }
+
+        try{
+
+         //document.getElementById("redTeams").innerHTML = "<h3 class='col text-right'>" + clearFRCfromTeam(match.alliances.red.team_keys[0]) + "</h3>" + "<h3 class='col text-right'>" + clearFRCfromTeam(match.alliances.red.team_keys[1]) + "</h3>" + "<h3 class='col text-right'>" + clearFRCfromTeam(match.alliances.red.team_keys[2]) + "</h3>"
+         document.getElementById('curMatchRedOne').innerHTML = clearFRCfromTeamKey(match.alliances.red.team_keys[0])
+         document.getElementById('curMatchRedTwo').innerHTML = clearFRCfromTeamKey(match.alliances.red.team_keys[1]) 
+         document.getElementById('curMatchRedThree').innerHTML = clearFRCfromTeamKey(match.alliances.red.team_keys[2])
+        } catch {
+          console.error("failed to get next match red teams");
+          //document.getElementById("redTeams").style.display = "None"
+        }
+
+        try {
+
+         //document.getElementById("blueTeams").innerHTML = "<h3 class='col text-left'>" + clearFRCfromTeam(match.alliances.blue.team_keys[0]) + "</h3>" + "<h3 class='col text-left'>" + clearFRCfromTeam(match.alliances.blue.team_keys[1]) + "</h3>" + "<h3 class='col text-left'>" + clearFRCfromTeam(match.alliances.blue.team_keys[2]) + "</h3>"
+         document.getElementById('curMatchBlueOne').innerHTML += clearFRCfromTeamKey(match.alliances.blue.team_keys[0])
+         document.getElementById('curMatchBlueTwo').innerHTML += clearFRCfromTeamKey(match.alliances.blue.team_keys[1]) 
+         document.getElementById('curMatchBlueThree').innerHTML += clearFRCfromTeamKey(match.alliances.blue.team_keys[2]) 
+        } catch {
+          console.error("failed to get next match blue teams");
+          //document.getElementById("blueTeams").style.display = "None"
+        }
+
+        try{
+
+          //document.getElementById("redTeams").innerHTML = "<h3 class='col text-right'>" + clearFRCfromTeam(match.alliances.red.team_keys[0]) + "</h3>" + "<h3 class='col text-right'>" + clearFRCfromTeam(match.alliances.red.team_keys[1]) + "</h3>" + "<h3 class='col text-right'>" + clearFRCfromTeam(match.alliances.red.team_keys[2]) + "</h3>"
+          document.getElementById('lasMatchRedOne').innerHTML = clearFRCfromTeamKey(lastMatch.alliances.red.team_keys[0])
+          document.getElementById('lasMatchRedTwo').innerHTML = clearFRCfromTeamKey(lastMatch.alliances.red.team_keys[1]) 
+          document.getElementById('lasMatchRedThree').innerHTML = clearFRCfromTeamKey(lastMatch.alliances.red.team_keys[2])
+         } catch {
+           console.error("failed to get last match red teams");
+           //document.getElementById("redTeams").style.display = "None"
+         }
+ 
+         try {
+ 
+          //document.getElementById("blueTeams").innerHTML = "<h3 class='col text-left'>" + clearFRCfromTeam(match.alliances.blue.team_keys[0]) + "</h3>" + "<h3 class='col text-left'>" + clearFRCfromTeam(match.alliances.blue.team_keys[1]) + "</h3>" + "<h3 class='col text-left'>" + clearFRCfromTeam(match.alliances.blue.team_keys[2]) + "</h3>"
+          document.getElementById('lasMatchBlueOne').innerHTML = clearFRCfromTeamKey(lastMatch.alliances.blue.team_keys[0])
+          document.getElementById('lasMatchBlueTwo').innerHTML = clearFRCfromTeamKey(lastMatch.alliances.blue.team_keys[1]) 
+          document.getElementById('lasMatchBlueThree').innerHTML = clearFRCfromTeamKey(lastMatch.alliances.blue.team_keys[2]) 
+         } catch {
+           console.error("failed to get last match blue teams");
+           //document.getElementById("blueTeams").style.display = "None"
+         }
+         try {
+          document.getElementById('lasMatchRedScore').innerText = "Score: "+ lastMatch.alliances.red.score
+          document.getElementById('lasMatchBlueScore').innerText = "Score: "+lastMatch.alliances.blue.score
+        } catch {
+          console.error("failed to get Red/Blue last match score")
+        }
 
          try {
          document.getElementById("currentRank").innerHTML = "Rank: " + stats.qual.ranking.rank + "/" + stats.qual.num_teams
