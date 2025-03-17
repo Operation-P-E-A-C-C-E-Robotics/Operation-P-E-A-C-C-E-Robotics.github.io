@@ -78,7 +78,7 @@ jobs:
       - name: Checkout Main
         uses: actions/checkout@v4
         with: 
-          ref: main
+          ref: ${{ github.ref}}
           clean: false
 
 
