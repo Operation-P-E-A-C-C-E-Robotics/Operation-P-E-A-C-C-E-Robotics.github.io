@@ -153,6 +153,17 @@
     },
     {
         "kind": "calendar#event",
+        "etag": "\"3481597425987326\"",
+        "id": "30g0io5uplel05ct2csnhhq8n4_20250404T220000Z",
+        "status": "cancelled",
+        "recurringEventId": "30g0io5uplel05ct2csnhhq8n4",
+        "originalStartTime": {
+            "dateTime": "2025-04-04T18:00:00-04:00",
+            "timeZone": "America/New_York"
+        }
+    },
+    {
+        "kind": "calendar#event",
         "etag": "\"3481597535071198\"",
         "id": "30g0io5uplel05ct2csnhhq8n4_20250402T220000Z",
         "status": "cancelled",
