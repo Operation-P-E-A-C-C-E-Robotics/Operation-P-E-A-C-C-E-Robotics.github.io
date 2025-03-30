@@ -1,10 +1,15 @@
 {
     "2025cthar": {
-        "alliance": null,
-        "alliance_status_str": "--",
+        "alliance": {
+            "backup": null,
+            "name": "Alliance 7",
+            "number": 7,
+            "pick": 2
+        },
+        "alliance_status_str": "<b>2nd Pick</b> of <b>Alliance 7</b>",
         "last_match_key": "2025cthar_qm72",
         "next_match_key": "2025cthar_sf3m1",
-        "overall_status_str": "Team 3461 is <b>0-0-0</b> in the <b>Double Elimination Bracket (Round 1)</b>.",
+        "overall_status_str": "Team 3461 is <b>0-0-0</b> in the <b>Double Elimination Bracket (Round 1)</b> as the <b>2nd Pick</b> of <b>Alliance 7</b>.",
         "playoff": {
             "current_level_record": {
                 "losses": 0,
