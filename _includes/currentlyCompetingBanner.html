@@ -277,7 +277,7 @@
 
          try{
           matchName = await getMatchNameFromKey(match.key)
-          document.getElementById("currentNextMatch").innerHTML = matchName
+          document.getElementById("currentNextMatch").innerHTML = "Next Match: " + lastMatchName
          document.getElementById("counter").style.display = "block"
          } catch {
           console.error("failed to get next match");
