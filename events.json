@@ -1,40 +1,12 @@
 [
     {
         "kind": "calendar#event",
-        "etag": "\"3454619815888000\"",
-        "id": "52ed544jid5u21sc08vtjl506g",
-        "status": "confirmed",
-        "htmlLink": "https://www.google.com/calendar/event?eid=NTJlZDU0NGppZDV1MjFzYzA4dnRqbDUwNmcgdGVhbUBwZWFjY2Uub3Jn",
-        "created": "2024-09-26T00:18:27.000Z",
-        "updated": "2024-09-26T00:18:27.944Z",
-        "summary": "New England FIRST District Championship",
-        "creator": {
-            "email": "team@peacce.org",
-            "self": true
-        },
-        "organizer": {
-            "email": "team@peacce.org",
-            "self": true
-        },
-        "start": {
-            "date": "2025-04-02"
-        },
-        "end": {
-            "date": "2025-04-06"
-        },
-        "transparency": "transparent",
-        "iCalUID": "52ed544jid5u21sc08vtjl506g@google.com",
-        "sequence": 0,
-        "eventType": "default"
-    },
-    {
-        "kind": "calendar#event",
-        "etag": "\"3471216815866000\"",
+        "etag": "\"3486876997564926\"",
         "id": "5mbrjpdtnhc8jevak1n7b43ph4",
         "status": "confirmed",
         "htmlLink": "https://www.google.com/calendar/event?eid=NW1icmpwZHRuaGM4amV2YWsxbjdiNDNwaDRfMjAyNTAxMTFUMTQwMDAwWiB0ZWFtQHBlYWNjZS5vcmc",
         "created": "2024-12-31T01:26:16.000Z",
-        "updated": "2024-12-31T01:26:47.933Z",
+        "updated": "2025-03-31T16:28:18.782Z",
         "summary": "Robotics Meeting",
         "location": "750 Clark Ave, Bristol, CT 06010, USA",
         "creator": {
@@ -54,7 +26,7 @@
             "timeZone": "America/New_York"
         },
         "recurrence": [
-            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20250413T035959Z;BYDAY=SA"
+            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20250412T035959Z;BYDAY=SA"
         ],
         "iCalUID": "5mbrjpdtnhc8jevak1n7b43ph4@google.com",
         "sequence": 0,
@@ -62,12 +34,23 @@
     },
     {
         "kind": "calendar#event",
-        "etag": "\"3472005509918000\"",
+        "etag": "\"3486876997564926\"",
+        "id": "5mbrjpdtnhc8jevak1n7b43ph4_20250405T130000Z",
+        "status": "cancelled",
+        "recurringEventId": "5mbrjpdtnhc8jevak1n7b43ph4",
+        "originalStartTime": {
+            "dateTime": "2025-04-05T09:00:00-04:00",
+            "timeZone": "America/New_York"
+        }
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3486877035693982\"",
         "id": "30g0io5uplel05ct2csnhhq8n4",
         "status": "confirmed",
         "htmlLink": "https://www.google.com/calendar/event?eid=MzBnMGlvNXVwbGVsMDVjdDJjc25oaHE4bjRfMjAyNTAxMDZUMjMwMDAwWiB0ZWFtQHBlYWNjZS5vcmc",
         "created": "2024-12-31T01:25:35.000Z",
-        "updated": "2025-01-04T14:59:14.959Z",
+        "updated": "2025-03-31T16:28:37.846Z",
         "summary": "Robotics Meeting",
         "location": "750 Clark Ave, Bristol, CT 06010, USA",
         "creator": {
@@ -87,7 +70,7 @@
             "timeZone": "America/New_York"
         },
         "recurrence": [
-            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20250416T035959Z;BYDAY=MO,TU,WE,TH,FR"
+            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20250407T035959Z;BYDAY=MO,TU,WE,TH,FR"
         ],
         "iCalUID": "30g0io5uplel05ct2csnhhq8n4@google.com",
         "sequence": 0,
@@ -125,18 +108,72 @@
     },
     {
         "kind": "calendar#event",
-        "etag": "\"3481597425987326\"",
-        "id": "30g0io5uplel05ct2csnhhq8n4_20250404T220000Z",
-        "status": "cancelled",
+        "etag": "\"3486877035693982\"",
+        "id": "30g0io5uplel05ct2csnhhq8n4_20250401T220000Z",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MzBnMGlvNXVwbGVsMDVjdDJjc25oaHE4bjRfMjAyNTA0MDFUMjIwMDAwWiB0ZWFtQHBlYWNjZS5vcmc",
+        "created": "2024-12-31T01:25:35.000Z",
+        "updated": "2025-03-31T16:28:37.846Z",
+        "summary": "Robotics Meeting",
+        "location": "750 Clark Ave, Bristol, CT 06010, USA",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2025-04-03T18:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2025-04-03T21:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
         "recurringEventId": "30g0io5uplel05ct2csnhhq8n4",
         "originalStartTime": {
-            "dateTime": "2025-04-04T18:00:00-04:00",
+            "dateTime": "2025-04-01T18:00:00-04:00",
             "timeZone": "America/New_York"
-        }
+        },
+        "iCalUID": "30g0io5uplel05ct2csnhhq8n4@google.com",
+        "sequence": 1,
+        "hangoutLink": "https://meet.google.com/anr-deur-dsw",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/anr-deur-dsw",
+                    "label": "meet.google.com/anr-deur-dsw"
+                },
+                {
+                    "entryPointType": "more",
+                    "uri": "https://tel.meet/anr-deur-dsw?pin=9970823388224",
+                    "pin": "9970823388224"
+                },
+                {
+                    "regionCode": "US",
+                    "entryPointType": "phone",
+                    "uri": "tel:+1-209-425-2489",
+                    "label": "+1 209-425-2489",
+                    "pin": "707714361"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "anr-deur-dsw"
+        },
+        "eventType": "default"
     },
     {
         "kind": "calendar#event",
-        "etag": "\"3481597535071198\"",
+        "etag": "\"3486877035693982\"",
         "id": "30g0io5uplel05ct2csnhhq8n4_20250402T220000Z",
         "status": "cancelled",
         "recurringEventId": "30g0io5uplel05ct2csnhhq8n4",
@@ -147,18 +184,7 @@
     },
     {
         "kind": "calendar#event",
-        "etag": "\"3481598823538270\"",
-        "id": "5mbrjpdtnhc8jevak1n7b43ph4_20250405T130000Z",
-        "status": "cancelled",
-        "recurringEventId": "5mbrjpdtnhc8jevak1n7b43ph4",
-        "originalStartTime": {
-            "dateTime": "2025-04-05T09:00:00-04:00",
-            "timeZone": "America/New_York"
-        }
-    },
-    {
-        "kind": "calendar#event",
-        "etag": "\"3481599037017726\"",
+        "etag": "\"3486877035693982\"",
         "id": "30g0io5uplel05ct2csnhhq8n4_20250403T220000Z",
         "status": "cancelled",
         "recurringEventId": "30g0io5uplel05ct2csnhhq8n4",
@@ -166,5 +192,81 @@
             "dateTime": "2025-04-03T18:00:00-04:00",
             "timeZone": "America/New_York"
         }
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3486877035693982\"",
+        "id": "30g0io5uplel05ct2csnhhq8n4_20250404T220000Z",
+        "status": "cancelled",
+        "recurringEventId": "30g0io5uplel05ct2csnhhq8n4",
+        "originalStartTime": {
+            "dateTime": "2025-04-04T18:00:00-04:00",
+            "timeZone": "America/New_York"
+        }
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3486890459861598\"",
+        "id": "30g0io5uplel05ct2csnhhq8n4_20250331T220000Z",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MzBnMGlvNXVwbGVsMDVjdDJjc25oaHE4bjRfMjAyNTAzMzFUMjIwMDAwWiB0ZWFtQHBlYWNjZS5vcmc",
+        "created": "2024-12-31T01:25:35.000Z",
+        "updated": "2025-03-31T18:20:29.930Z",
+        "summary": "Robotics Meeting",
+        "location": "750 Clark Ave, Bristol, CT 06010, USA",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2025-04-01T18:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2025-04-01T21:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "recurringEventId": "30g0io5uplel05ct2csnhhq8n4",
+        "originalStartTime": {
+            "dateTime": "2025-03-31T18:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "30g0io5uplel05ct2csnhhq8n4@google.com",
+        "sequence": 2,
+        "hangoutLink": "https://meet.google.com/anr-deur-dsw",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/anr-deur-dsw",
+                    "label": "meet.google.com/anr-deur-dsw"
+                },
+                {
+                    "entryPointType": "more",
+                    "uri": "https://tel.meet/anr-deur-dsw?pin=9970823388224",
+                    "pin": "9970823388224"
+                },
+                {
+                    "regionCode": "US",
+                    "entryPointType": "phone",
+                    "uri": "tel:+1-209-425-2489",
+                    "label": "+1 209-425-2489",
+                    "pin": "707714361"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "anr-deur-dsw"
+        },
+        "eventType": "default"
     }
 ]
