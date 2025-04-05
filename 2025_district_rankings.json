@@ -255,6 +255,78 @@
         "adjustments": 0,
         "event_points": [
             {
+                "alliance_points": 15,
+                "award_points": 5,
+                "district_cmp": false,
+                "elim_points": 20,
+                "event_key": "2025rikin",
+                "qual_points": 21,
+                "total": 61
+            },
+            {
+                "alliance_points": 15,
+                "award_points": 5,
+                "district_cmp": false,
+                "elim_points": 20,
+                "event_key": "2025mawor",
+                "qual_points": 16,
+                "total": 56
+            },
+            {
+                "alliance_points": 45,
+                "award_points": 0,
+                "district_cmp": true,
+                "elim_points": 60,
+                "event_key": "2025necmp2",
+                "qual_points": 54,
+                "total": 159
+            }
+        ],
+        "point_total": 276,
+        "rank": 8,
+        "rookie_bonus": 0,
+        "team_key": "frc88"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
+                "alliance_points": 14,
+                "award_points": 5,
+                "district_cmp": false,
+                "elim_points": 13,
+                "event_key": "2025rikin",
+                "qual_points": 19,
+                "total": 51
+            },
+            {
+                "alliance_points": 14,
+                "award_points": 5,
+                "district_cmp": false,
+                "elim_points": 13,
+                "event_key": "2025mawor",
+                "qual_points": 19,
+                "total": 51
+            },
+            {
+                "alliance_points": 45,
+                "award_points": 0,
+                "district_cmp": true,
+                "elim_points": 60,
+                "event_key": "2025necmp2",
+                "qual_points": 63,
+                "total": 168
+            }
+        ],
+        "point_total": 270,
+        "rank": 9,
+        "rookie_bonus": 0,
+        "team_key": "frc1153"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
                 "alliance_points": 14,
                 "award_points": 5,
                 "district_cmp": false,
@@ -283,7 +355,7 @@
             }
         ],
         "point_total": 257,
-        "rank": 8,
+        "rank": 10,
         "rookie_bonus": 0,
         "team_key": "frc5687"
     },
@@ -319,45 +391,9 @@
             }
         ],
         "point_total": 255,
-        "rank": 9,
+        "rank": 11,
         "rookie_bonus": 0,
         "team_key": "frc6324"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
-                "alliance_points": 15,
-                "award_points": 5,
-                "district_cmp": false,
-                "elim_points": 20,
-                "event_key": "2025rikin",
-                "qual_points": 21,
-                "total": 61
-            },
-            {
-                "alliance_points": 15,
-                "award_points": 5,
-                "district_cmp": false,
-                "elim_points": 20,
-                "event_key": "2025mawor",
-                "qual_points": 16,
-                "total": 56
-            },
-            {
-                "alliance_points": 45,
-                "award_points": 0,
-                "district_cmp": true,
-                "elim_points": 39,
-                "event_key": "2025necmp2",
-                "qual_points": 54,
-                "total": 138
-            }
-        ],
-        "point_total": 255,
-        "rank": 10,
-        "rookie_bonus": 0,
-        "team_key": "frc88"
     },
     {
         "adjustments": 0,
@@ -391,45 +427,9 @@
             }
         ],
         "point_total": 255,
-        "rank": 11,
-        "rookie_bonus": 0,
-        "team_key": "frc1768"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
-                "alliance_points": 14,
-                "award_points": 5,
-                "district_cmp": false,
-                "elim_points": 13,
-                "event_key": "2025rikin",
-                "qual_points": 19,
-                "total": 51
-            },
-            {
-                "alliance_points": 14,
-                "award_points": 5,
-                "district_cmp": false,
-                "elim_points": 13,
-                "event_key": "2025mawor",
-                "qual_points": 19,
-                "total": 51
-            },
-            {
-                "alliance_points": 45,
-                "award_points": 0,
-                "district_cmp": true,
-                "elim_points": 39,
-                "event_key": "2025necmp2",
-                "qual_points": 63,
-                "total": 147
-            }
-        ],
-        "point_total": 249,
         "rank": 12,
         "rookie_bonus": 0,
-        "team_key": "frc1153"
+        "team_key": "frc1768"
     },
     {
         "adjustments": 0,
@@ -579,6 +579,42 @@
         "adjustments": 0,
         "event_points": [
             {
+                "alliance_points": 14,
+                "award_points": 5,
+                "district_cmp": false,
+                "elim_points": 13,
+                "event_key": "2025ctwat",
+                "qual_points": 14,
+                "total": 46
+            },
+            {
+                "alliance_points": 14,
+                "award_points": 5,
+                "district_cmp": false,
+                "elim_points": 20,
+                "event_key": "2025cthar",
+                "qual_points": 19,
+                "total": 58
+            },
+            {
+                "alliance_points": 6,
+                "award_points": 0,
+                "district_cmp": true,
+                "elim_points": 60,
+                "event_key": "2025necmp2",
+                "qual_points": 42,
+                "total": 108
+            }
+        ],
+        "point_total": 212,
+        "rank": 17,
+        "rookie_bonus": 0,
+        "team_key": "frc5142"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
                 "alliance_points": 13,
                 "award_points": 5,
                 "district_cmp": false,
@@ -607,7 +643,7 @@
             }
         ],
         "point_total": 211,
-        "rank": 17,
+        "rank": 18,
         "rookie_bonus": 0,
         "team_key": "frc2370"
     },
@@ -643,7 +679,7 @@
             }
         ],
         "point_total": 202,
-        "rank": 18,
+        "rank": 19,
         "rookie_bonus": 0,
         "team_key": "frc2342"
     },
@@ -679,45 +715,9 @@
             }
         ],
         "point_total": 193,
-        "rank": 19,
-        "rookie_bonus": 0,
-        "team_key": "frc839"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
-                "alliance_points": 14,
-                "award_points": 5,
-                "district_cmp": false,
-                "elim_points": 13,
-                "event_key": "2025ctwat",
-                "qual_points": 14,
-                "total": 46
-            },
-            {
-                "alliance_points": 14,
-                "award_points": 5,
-                "district_cmp": false,
-                "elim_points": 20,
-                "event_key": "2025cthar",
-                "qual_points": 19,
-                "total": 58
-            },
-            {
-                "alliance_points": 6,
-                "award_points": 0,
-                "district_cmp": true,
-                "elim_points": 39,
-                "event_key": "2025necmp2",
-                "qual_points": 42,
-                "total": 87
-            }
-        ],
-        "point_total": 191,
         "rank": 20,
         "rookie_bonus": 0,
-        "team_key": "frc5142"
+        "team_key": "frc839"
     },
     {
         "adjustments": 0,
