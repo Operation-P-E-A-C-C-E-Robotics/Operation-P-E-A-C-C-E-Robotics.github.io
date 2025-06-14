@@ -132,29 +132,29 @@
     "2025wiwi": {
         "alliance": null,
         "alliance_status_str": "--",
-        "last_match_key": "2025wiwi_qm3",
-        "next_match_key": "2025wiwi_qm5",
-        "overall_status_str": "Team 3461 is <b>Rank 19/22</b> with a record of <b>0-1-0</b> in quals.",
+        "last_match_key": "2025wiwi_qm5",
+        "next_match_key": "2025wiwi_qm9",
+        "overall_status_str": "Team 3461 is <b>Rank 21/22</b> with a record of <b>0-2-0</b> in quals.",
         "playoff": null,
         "playoff_status_str": "--",
         "qual": {
             "num_teams": 22,
             "ranking": {
                 "dq": 0,
-                "matches_played": 1,
+                "matches_played": 2,
                 "qual_average": null,
-                "rank": 19,
+                "rank": 21,
                 "record": {
-                    "losses": 1,
+                    "losses": 2,
                     "ties": 0,
                     "wins": 0
                 },
                 "sort_orders": [
                     0.0,
-                    1.0,
-                    32.0,
-                    6.0,
-                    6.0,
+                    0.5,
+                    41.0,
+                    7.5,
+                    3.0,
                     0.0
                 ],
                 "team_key": "frc3461"
