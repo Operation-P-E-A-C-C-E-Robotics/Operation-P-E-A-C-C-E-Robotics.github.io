@@ -132,9 +132,9 @@
     "2025wiwi": {
         "alliance": null,
         "alliance_status_str": "--",
-        "last_match_key": "2025wiwi_qm21",
-        "next_match_key": "2025wiwi_qm26",
-        "overall_status_str": "Team 3461 is <b>Rank 19/22</b> with a record of <b>2-5-0</b> in quals.",
+        "last_match_key": "2025wiwi_qm26",
+        "next_match_key": null,
+        "overall_status_str": "Team 3461 was <b>Rank 19/22</b> with a record of <b>2-5-0</b> in quals.",
         "playoff": null,
         "playoff_status_str": "--",
         "qual": {
@@ -181,7 +181,7 @@
                     "precision": 2
                 }
             ],
-            "status": "playing"
+            "status": "completed"
         }
     }
 }
