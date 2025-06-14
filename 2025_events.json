@@ -126,7 +126,12 @@
         "start_date": "2025-06-13",
         "state_prov": "CT",
         "timezone": "America/New_York",
-        "webcasts": [],
+        "webcasts": [
+            {
+                "channel": "xLg-BE_CNFw",
+                "type": "youtube"
+            }
+        ],
         "website": "https://www.max1071.org/wiwi",
         "week": null,
         "year": 2025
