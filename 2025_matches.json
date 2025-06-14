@@ -10484,7 +10484,7 @@
         "alliances": {
             "blue": {
                 "dq_team_keys": [],
-                "score": -1,
+                "score": 37,
                 "surrogate_team_keys": [],
                 "team_keys": [
                     "frc237",
@@ -10494,11 +10494,11 @@
             },
             "red": {
                 "dq_team_keys": [],
-                "score": -1,
+                "score": 82,
                 "surrogate_team_keys": [],
                 "team_keys": [
-                    "frc7153",
                     "frc228",
+                    "frc7153",
                     "frc9193"
                 ]
             }
@@ -10550,6 +10550,9 @@
                         "nodeK": false,
                         "nodeL": false
                     },
+                    "tba_botRowCount": 0,
+                    "tba_midRowCount": 0,
+                    "tba_topRowCount": 0,
                     "topRow": {
                         "nodeA": false,
                         "nodeB": false,
@@ -10614,6 +10617,9 @@
                         "nodeK": true,
                         "nodeL": true
                     },
+                    "tba_botRowCount": 0,
+                    "tba_midRowCount": 4,
+                    "tba_topRowCount": 1,
                     "topRow": {
                         "nodeA": false,
                         "nodeB": false,
@@ -10673,6 +10679,9 @@
                         "nodeK": false,
                         "nodeL": false
                     },
+                    "tba_botRowCount": 0,
+                    "tba_midRowCount": 0,
+                    "tba_topRowCount": 0,
                     "topRow": {
                         "nodeA": false,
                         "nodeB": false,
@@ -10737,6 +10746,9 @@
                         "nodeK": false,
                         "nodeL": false
                     },
+                    "tba_botRowCount": 0,
+                    "tba_midRowCount": 2,
+                    "tba_topRowCount": 3,
                     "topRow": {
                         "nodeA": true,
                         "nodeB": false,
@@ -10760,6 +10772,6 @@
         "set_number": 3,
         "time": 1749927600,
         "videos": [],
-        "winning_alliance": "blue"
+        "winning_alliance": "red"
     }
 ]
