@@ -1,6 +1,35 @@
 [
     {
         "kind": "calendar#event",
+        "etag": "\"3492974358307262\"",
+        "id": "2jg2p3nmq1ksfjaogqp2oeot8d",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MmpnMnAzbm1xMWtzZmphb2dxcDJvZW90OGQgdGVhbUBwZWFjY2Uub3Jn",
+        "created": "2025-05-05T23:19:39.000Z",
+        "updated": "2025-05-05T23:19:39.153Z",
+        "summary": "Harwington Fair",
+        "location": "Harwinton Fairgrounds, 150 Locust Rd, Harwinton, CT 06791, USA",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "date": "2025-10-03"
+        },
+        "end": {
+            "date": "2025-10-06"
+        },
+        "transparency": "transparent",
+        "iCalUID": "2jg2p3nmq1ksfjaogqp2oeot8d@google.com",
+        "sequence": 0,
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
         "etag": "\"3492975351522302\"",
         "id": "1ljpslp8uqtludllv50kmnh0fn",
         "status": "confirmed",
