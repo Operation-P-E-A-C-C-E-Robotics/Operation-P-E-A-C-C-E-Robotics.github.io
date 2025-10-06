@@ -11,7 +11,7 @@
           </h3>
       </div>
       <div class="col">
-        <div class="row">
+        <!-- <div class="row"> -->
           <h3 id='counter' class="pl-2 text-nowrap text-center">--h --m --s</h3>
           <!-- <h3 class="col-4 text-center" id="redTeams">
             0000 0000 0000 
@@ -20,7 +20,7 @@
           <h3 class="col-4 text-center" id="blueTeams">
             0000 0000 0000
           </h3> -->
-        </div>
+        <!-- </div> -->
       </div>
 
       <h3 class="col text-right text-nowrap" id='time'></h3>
@@ -277,7 +277,7 @@
 
          try{
           matchName = await getMatchNameFromKey(match.key)
-          document.getElementById("currentNextMatch").innerHTML += matchName
+          document.getElementById("currentNextMatch").innerHTML = "Next Match: " + matchName
          document.getElementById("counter").style.display = "block"
          } catch {
           console.error("failed to get next match");
@@ -305,9 +305,9 @@
         try {
 
          //document.getElementById("blueTeams").innerHTML = "<h3 class='col text-left'>" + clearFRCfromTeam(match.alliances.blue.team_keys[0]) + "</h3>" + "<h3 class='col text-left'>" + clearFRCfromTeam(match.alliances.blue.team_keys[1]) + "</h3>" + "<h3 class='col text-left'>" + clearFRCfromTeam(match.alliances.blue.team_keys[2]) + "</h3>"
-         document.getElementById('curMatchBlueOne').innerHTML += clearFRCfromTeamKey(match.alliances.blue.team_keys[0])
-         document.getElementById('curMatchBlueTwo').innerHTML += clearFRCfromTeamKey(match.alliances.blue.team_keys[1]) 
-         document.getElementById('curMatchBlueThree').innerHTML += clearFRCfromTeamKey(match.alliances.blue.team_keys[2]) 
+         document.getElementById('curMatchBlueOne').innerHTML = clearFRCfromTeamKey(match.alliances.blue.team_keys[0])
+         document.getElementById('curMatchBlueTwo').innerHTML = clearFRCfromTeamKey(match.alliances.blue.team_keys[1]) 
+         document.getElementById('curMatchBlueThree').innerHTML = clearFRCfromTeamKey(match.alliances.blue.team_keys[2]) 
         } catch {
           console.error("failed to get next match blue teams");
           //document.getElementById("blueTeams").style.display = "None"
