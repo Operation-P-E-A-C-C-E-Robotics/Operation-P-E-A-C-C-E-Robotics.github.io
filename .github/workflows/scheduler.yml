@@ -2,6 +2,7 @@ name: Trigger update workflows on all branches
 permissions:
   contents: read
   issues: write
+  actions: write
 on:
   schedule:
     - cron: '35 10 * * *' # Run at 5:35 AM EST | 10:35 AM UTC (Github Actions runs on UTC, no Daylight Savings Time changes are accounted for in this trigger)
