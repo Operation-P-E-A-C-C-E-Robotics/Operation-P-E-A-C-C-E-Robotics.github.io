@@ -1,6 +1,6 @@
 [
     {
-        "address": "55 Forest St, Hartford, CT 06105, USA",
+        "address": "55 Forest Street",
         "city": "Hartford",
         "country": "USA",
         "district": {
@@ -16,11 +16,11 @@
         "event_type_string": "District",
         "first_event_code": "cthar",
         "first_event_id": null,
-        "gmaps_place_id": "ChIJJXtBS05T5okRl3RS1A9iLHE",
-        "gmaps_url": "https://maps.google.com/?cid=8155000845387330711",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
         "key": "2026cthar",
-        "lat": 41.76455989999999,
-        "lng": -72.7007889,
+        "lat": null,
+        "lng": null,
         "location_name": "Hartford Public High School",
         "name": "NE District Hartford Event",
         "parent_event_key": null,
@@ -38,7 +38,7 @@
         "year": 2026
     },
     {
-        "address": "1215 Wilbraham Rd, Springfield, MA 01119, USA",
+        "address": "1215 Wilbraham Road",
         "city": "Springfield",
         "country": "USA",
         "district": {
@@ -54,12 +54,12 @@
         "event_type_string": "District",
         "first_event_code": "mawne",
         "first_event_id": null,
-        "gmaps_place_id": "ChIJZdNaTnXo5okREYz9JpDctQo",
-        "gmaps_url": "https://maps.google.com/?cid=771765422851460113",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
         "key": "2026mawne",
-        "lat": 42.1137254,
-        "lng": -72.5195877,
-        "location_name": "1215 Wilbraham Rd",
+        "lat": null,
+        "lng": null,
+        "location_name": "Western New England University",
         "name": "NE District Western NE Event",
         "parent_event_key": null,
         "playoff_type": 10,
