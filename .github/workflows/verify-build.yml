@@ -102,7 +102,7 @@ jobs:
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
           HEAD: ${{ github.head_ref}}
           TINA_SEARCH: ${{secrets.TINA_SEARCH}}
-        run: npx tinacms build
+        run: npx tinacms build -v --skip-indexing --skip-cloud-checks --skip-search-index
         
       - name: Build Main with Jekyll
         uses: actions/jekyll-build-pages@v1
