@@ -28,7 +28,7 @@ jobs:
       run: echo "::set-output name=date::$(date +'%Y')"
 
     - name: Checkout Repo
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
       with: 
        ref: main
        clean: false
