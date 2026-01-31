@@ -1,31 +1,15 @@
 text:
   header: Sponsor and Donation Benefits
-  p1: >
-    Our team could always use sponsorship to help us pay for new tools and
-    parts, traveling to competitions, outreach opportunities, and more. We have
-    several guidelines and rules on the different levels of sponsorship or just
-    a donation with specific benefits listed.
-  p2: >
-    **Bronze ($25-99.00 donation)** A social media "shout-out" on our team
-    Facebook, Twitter and Instagram page A thank you letter
+  p1: |
+    Our team could always use sponsorship to help us pay for new tools and parts, traveling to competitions, outreach opportunities, and more. We have several guidelines and rules on the different levels of sponsorship or just a donation with specific benefits listed.
+  p2: |
+    **Bronze ($25-99.00 donation)** A social media "shout-out" on our team Facebook, Twitter and Instagram page A thank you letter
 
+    **Silver ($100-999.00 donation)** Bronze benefits, plus... A business card sized logo displayed on our robot, our banner at events, tournaments, fundraisers, and on the back of our t-shirts worn by team members Your logo and a link to your website on the sponsorship page of our website
 
-    **Silver ($100-999.00 donation)** Bronze benefits, plus... A business card
-    sized logo displayed on our robot, our banner at events, tournaments,
-    fundraisers, and on the back of our t-shirts worn by team members Your logo
-    and a link to your website on the sponsorship page of our website
+    **Gold ($1000-2,999.00 donation)** Silver benefits, plus... A small version logo of your business displayed on our robot, our banner at events, tournaments, fundraisers, and on the back of our t-shirts worn by team members
 
-
-    **Gold ($1000-2,999.00 donation)** Silver benefits, plus... A small version
-    logo of your business displayed on our robot, our banner at events,
-    tournaments, fundraisers, and on the back of our t-shirts worn by team
-    members
-
-
-    **Platinum ($3,000-4,999.00 donation)** Gold benefits, plus... \* A medium
-    version of your business' logo displayed on our robot, our banner at events,
-    tournaments, fundraisers, and on the back of our t-shirts worn by team
-    members A thank you letter with a plaque
+    **Platinum ($3,000-4,999.00 donation)** Gold benefits, plus... \* A medium version of your business' logo displayed on our robot, our banner at events, tournaments, fundraisers, and on the back of our t-shirts worn by team members A thank you letter with a plaque
 sponsorPacket: /assets/committee/public-releations/PRINT_ONLY_-_3461_Sponsor_Packet_1.pdf
 sponsors:
   - name: Aerospace Alloys Inc
@@ -60,15 +44,8 @@ sponsors:
     hidden: true
   - name: Arthur G Russell Company
     sponsortier: Title
-    summary: >
-      AGR is our closest sponsor. In 2015, our team stayed at several different
-      locations as we struggled to find somewhere permanent, eventually, we
-      found the Arthur G. Russell Company. AGR allows us to use their loft that
-      overlooks the factory floor. They have supported us in several different
-      ways, such as allowing us to use their machinery on the shop floor and
-      having access to many tools and parts, providing us with financial aid
-      annually, featuring us at their holiday luncheons, and with employee
-      mentors who are willing to help our team grow and learn.
+    summary: |
+      AGR is our closest sponsor. In 2015, our team stayed at several different locations as we struggled to find somewhere permanent, eventually, we found the Arthur G. Russell Company. AGR allows us to use their loft that overlooks the factory floor. They have supported us in several different ways, such as allowing us to use their machinery on the shop floor and having access to many tools and parts, providing us with financial aid annually, featuring us at their holiday luncheons, and with employee mentors who are willing to help our team grow and learn.
     website: 'https://arthurgrussell.com/'
     isNameOnly: false
     image: /assets/sponsors/AGR.png
@@ -92,6 +69,8 @@ sponsors:
       - year: '2023'
         sponsortier: Title
       - year: '2024'
+        sponsortier: Title
+      - year: '2025'
         sponsortier: Title
     hidden: false
   - name: 'Automation Associates, Inc'
@@ -337,13 +316,8 @@ sponsors:
     hidden: true
   - name: Hartford County 4H
     sponsortier: Title
-    summary: >
-      We have been with 4-H since the beginning of our team. We made this
-      decision to work with them so that we would be able to be non-affiliated
-      with a school of any kind (allowing a diverse environment for both
-      students attending high school and homeschoolers). They provide us with
-      helpful resources and help with our travel expenses and FIRST entrance
-      fees.
+    summary: |
+      We have been with 4-H since the beginning of our team. We made this decision to work with them so that we would be able to be non-affiliated with a school of any kind (allowing a diverse environment for both students attending high school and homeschoolers). They provide us with helpful resources and help with our travel expenses and FIRST entrance fees.
     website: 'https://4-h.extension.uconn.edu/'
     isNameOnly: false
     image: /assets/sponsors/4h-logo.svg
