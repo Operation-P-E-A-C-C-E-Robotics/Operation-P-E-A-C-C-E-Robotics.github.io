@@ -708,8 +708,12 @@ export default defineConfig({
             name: "years",
             type: "object",
             list: true,
-            itemProps: (item) => {
-              return { label: `${item?.year} - ${item?.sponsortier}`}
+            ui: {
+              // This allows the customization of the list item UI
+              // Data can be accessed by item?.<Name of field>
+              itemProps: (item) => {
+                return { label: `${item?.year} - ${item?.sponsortier}`}
+              },
             },
             fields: [
               {

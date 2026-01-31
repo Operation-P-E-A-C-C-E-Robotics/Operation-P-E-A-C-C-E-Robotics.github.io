@@ -3,5 +3,8 @@
     "@tinacms/cli": "^2.1.2",
     "simple-git": "^3.28.0",
     "tinacms": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^25.1.0"
   }
 }
