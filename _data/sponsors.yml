@@ -9,7 +9,7 @@ text:
 
     **Gold ($1000-2,999.00 donation)** Silver benefits, plus... A small version logo of your business displayed on our robot, our banner at events, tournaments, fundraisers, and on the back of our t-shirts worn by team members
 
-    **Platinum ($3,000-4,999.00 donation)** Gold benefits, plus... \* A medium version of your business' logo displayed on our robot, our banner at events, tournaments, fundraisers, and on the back of our t-shirts worn by team members A thank you letter with a plaque
+    **Platinum ($3,000-4,999.00 donation)** Gold benefits, plus...  A medium version of your business' logo displayed on our robot, our banner at events, tournaments, fundraisers, and on the back of our t-shirts worn by team members A thank you letter with a plaque
 sponsorPacket: /assets/committee/public-releations/PRINT_ONLY_-_3461_Sponsor_Packet_1.pdf
 sponsors:
   - name: Aerospace Alloys Inc
@@ -52,28 +52,7 @@ sponsors:
     years:
       - year: '2015'
         sponsortier: Title
-      - year: '2016'
-        sponsortier: Title
-      - year: '2017'
-        sponsortier: Title
-      - year: '2018'
-        sponsortier: Title
-      - year: '2019'
-        sponsortier: Title
-      - year: '2020'
-        sponsortier: Title
-      - year: '2022'
-        sponsortier: Title
-      - year: '2021'
-        sponsortier: Title
-      - year: '2023'
-        sponsortier: Title
-      - year: '2024'
-        sponsortier: Title
-      - year: '2025'
-        sponsortier: Title
-      - year: '2026'
-        sponsortier: Title
+    isPerpetual: true
     hidden: false
   - name: 'Automation Associates, Inc'
     sponsortier: Gold
@@ -90,6 +69,8 @@ sponsors:
         sponsortier: Gold
       - year: '2023'
         sponsortier: Gold
+      - year: '2026'
+        sponsortier: Silver
     hidden: false
   - name: The Baily Family
     sponsortier: Gold
@@ -191,6 +172,8 @@ sponsors:
     years:
       - year: '2024'
         sponsortier: Silver
+      - year: '2025'
+        sponsortier: Silver
   - name: Dunkin' Donuts
     sponsortier: Silver
     summary: ''
@@ -266,32 +249,7 @@ sponsors:
     years:
       - year: '2011'
         sponsortier: Silver
-      - year: '2012'
-        sponsortier: Silver
-      - year: '2013'
-        sponsortier: Silver
-      - year: '2014'
-        sponsortier: Silver
-      - year: '2015'
-        sponsortier: Silver
-      - year: '2016'
-        sponsortier: Silver
-      - year: '2017'
-        sponsortier: Silver
-      - year: '2018'
-        sponsortier: Silver
-      - year: '2019'
-        sponsortier: Silver
-      - year: '2020'
-        sponsortier: Silver
-      - year: '2021'
-        sponsortier: Silver
-      - year: '2022'
-        sponsortier: Silver
-      - year: '2023'
-        sponsortier: Silver
-      - year: '2024'
-        sponsortier: Silver
+    isPerpetual: true
     hidden: false
   - name: Gene Haas Foundation
     sponsortier: Gold
@@ -304,6 +262,7 @@ sponsors:
         sponsortier: Gold
       - year: '2024'
         sponsortier: Gold
+    isPerpetual: true
     hidden: false
   - name: Har-Conn Chrome Co.
     sponsortier: Silver
@@ -332,6 +291,10 @@ sponsors:
     years:
       - year: '2024'
         sponsortier: Silver
+      - year: '2025'
+        sponsortier: Silver
+      - year: '2026'
+        sponsortier: Silver
   - name: Johnny Chea
     sponsortier: Silver
     summary: ''
@@ -349,6 +312,8 @@ sponsors:
     isNameOnly: true
     years:
       - year: '2024'
+        sponsortier: Bronze
+      - year: '2025'
         sponsortier: Bronze
   - name: Lockheed Martin
     sponsortier: Title
@@ -391,6 +356,8 @@ sponsors:
     image: /assets/sponsors/Microsoft-logo_rgb_c-gray-181x94.webp
     years:
       - year: '2024'
+        sponsortier: Gold
+      - year: '2025'
         sponsortier: Gold
   - name: Nancy Edwards
     sponsortier: Silver
@@ -468,6 +435,8 @@ sponsors:
       - year: '2023'
         sponsortier: Silver
       - year: '2024'
+        sponsortier: Silver
+      - year: '2025'
         sponsortier: Silver
     hidden: false
   - name: RBC Bearings
@@ -584,6 +553,7 @@ sponsors:
         sponsortier: Platinum
       - year: '2024'
         sponsortier: Platinum
+    isPerpetual: true
     hidden: false
   - name: Stepcraft
     sponsortier: Gold
@@ -604,6 +574,7 @@ sponsors:
         sponsortier: Gold
       - year: '2020'
         sponsortier: Gold
+    isPerpetual: true
     hidden: true
   - name: TE Connectivity
     sponsortier: Gold
@@ -635,6 +606,7 @@ sponsors:
         sponsortier: Gold
       - year: '2013'
         sponsortier: Gold
+    isPerpetual: true
     hidden: false
   - name: United Technologies
     sponsortier: Gold

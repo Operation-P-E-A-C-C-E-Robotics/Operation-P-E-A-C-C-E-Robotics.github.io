@@ -16,4 +16,5 @@ gem 'jekyll-include-cache'
 
 # Critical security alert from Github Dependabot on May 18 2024
 # Unable to automatically patch, falling back to manually updating
-# gem "rexml", ">= 3.2.7"
+gem "rexml", ">= 3.4.2"
+gem "uri", ">= 0.11.0"

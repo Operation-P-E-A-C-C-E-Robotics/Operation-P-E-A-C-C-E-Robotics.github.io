@@ -647,7 +647,7 @@ export default defineConfig({
           // This allows the customization of the list item UI
           // Data can be accessed by item?.<Name of field>
           itemProps: (item) => {
-            return { label: `${item?.name} (${item?.sponsortier} Hidden: ${item?.hidden})`}
+            return { label: `${item?.name}  | Sponsor Tier: ${item?.sponsortier} | Years Sponsored: ${item?.years?.map((y: { year: any; }) => y.year).join(', ')} | Hidden From Sponsor Page: ${item?.hidden ? 'Yes' : 'No'}` }
           },
         },
         fields: [
@@ -751,6 +751,12 @@ export default defineConfig({
               }
             ]
             
+          },
+          {
+            label: "Perpetual Sponsor",
+            name: "isPerpetual",
+            description: "If checked, this sponsor will be shown on the sponsor page every year",
+            type: "boolean",
           },
           {
             label: "Hide from Sponsor List",
