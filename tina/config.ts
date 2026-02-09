@@ -65,7 +65,7 @@ export default defineConfig({
             // if disabled, the editor can not edit the filename
             readonly: true,
             // Example of using a custom slugify function
-            slugify: values => {
+            slugify: (values: { title: string; }) => {
               // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
               return `${new Date().getFullYear() ||
                 'no-topic'}-${values?.title?.toLowerCase().replace(/ /g, '-')}`
@@ -149,7 +149,7 @@ export default defineConfig({
           ui: {
             // This allows the customization of the list item UI
             // Data can be accessed by item?.<Name of field>
-            itemProps: (item) => {
+            itemProps: (item: { name: any; }) => {
               return { label: `${item?.name}`}
             },
           },
@@ -185,7 +185,7 @@ export default defineConfig({
               ui: {
                 // This allows the customization of the list item UI
                 // Data can be accessed by item?.<Name of field>
-                itemProps: (item) => {
+                itemProps: (item: { name: any; }) => {
                   return { label: `${item?.name}`}
                 },
               },
@@ -305,7 +305,7 @@ export default defineConfig({
       ui: {
         // This allows the customization of the list item UI
         // Data can be accessed by item?.<Name of field>
-        itemProps: (item) => {
+        itemProps: (item: { header: { children: { children: { text: any; }[]; }[]; }; }) => {
           // console.log(item)
           return { label: `${item?.header.children[0].children[0].text}`}
         },
@@ -360,7 +360,7 @@ export default defineConfig({
         ui: {
           // This allows the customization of the list item UI
           // Data can be accessed by item?.<Name of field>
-          itemProps: (item) => {
+          itemProps: (item: { address: any; }) => {
             // console.log(item)
             return { label: `${item?.address}`}
           },
@@ -391,7 +391,7 @@ export default defineConfig({
         ui: {
           // This allows the customization of the list item UI
           // Data can be accessed by item?.<Name of field>
-          itemProps: (item) => {
+          itemProps: (item: { alt: any; }) => {
             return { label: `${item?.alt}`}
           },
         },
@@ -428,7 +428,7 @@ export default defineConfig({
             // if disabled, the editor can not edit the filename
             readonly: true,
             // Example of using a custom slugify function
-            slugify: values => {
+            slugify: (values: { year: any; }) => {
               // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
               return `${values?.year}`
             },
@@ -478,7 +478,7 @@ export default defineConfig({
             ui: {
               // This allows the customization of the list item UI
               // Data can be accessed by item?.<Name of field>
-              itemProps: (item) => {
+              itemProps: (item: { src: any; }) => {
                 return { label: `${item?.src}`}
               },
             },
@@ -569,7 +569,7 @@ export default defineConfig({
               ui: {
                 // This allows the customization of the list item UI
                 // Data can be accessed by item?.<Name of field>
-                itemProps: (item) => {
+                itemProps: (item: { name: any; }) => {
                   return { label: `${item?.name}`}
                 },
               },
@@ -646,7 +646,7 @@ export default defineConfig({
         ui: {
           // This allows the customization of the list item UI
           // Data can be accessed by item?.<Name of field>
-          itemProps: (item) => {
+          itemProps: (item: { name: any; sponsortier: any; years: { year: any; }[]; hidden: any; }) => {
             return { label: `${item?.name}  | Sponsor Tier: ${item?.sponsortier} | Years Sponsored: ${item?.years?.map((y: { year: any; }) => y.year).join(', ')} | Hidden From Sponsor Page: ${item?.hidden ? 'Yes' : 'No'}` }
           },
         },
@@ -711,7 +711,7 @@ export default defineConfig({
             ui: {
               // This allows the customization of the list item UI
               // Data can be accessed by item?.<Name of field>
-              itemProps: (item) => {
+              itemProps: (item: { year: any; sponsortier: any; }) => {
                 return { label: `${item?.year} - ${item?.sponsortier}`}
               },
             },
@@ -794,7 +794,7 @@ export default defineConfig({
               ui: {
                 // This allows the customization of the list item UI
                 // Data can be accessed by item?.<Name of field>
-                itemProps: (item) => {
+                itemProps: (item: { question: any; }) => {
                   return { label: `${item?.question}`}
                 },
               },
@@ -823,7 +823,7 @@ export default defineConfig({
             // if disabled, the editor can not edit the filename
             readonly: true,
             // Example of using a custom slugify function
-            slugify: values => {
+            slugify: (values: { title: string; }) => {
               // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
               return `${new Date(Date.now()).toISOString().split('T')[0] ||
                 'no-topic'}-${values?.title?.toLowerCase().replace(/ /g, '-')}`
