@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+            ref: ${{ github.ref }} # Check out the current branch to ensure we are working with the correct codebase
       
       - name: Set up Node.js
         uses: actions/setup-node@v3
