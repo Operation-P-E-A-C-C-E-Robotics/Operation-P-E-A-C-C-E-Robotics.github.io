@@ -23,6 +23,7 @@ jobs:
         with:
           node-version: 'latest' # Use the latest Node.js version
       - name: Run npm audit and fix vulnerabilities
+        id: npm-audit
         run: |
           npm audit fix
       - name: Commit and push changes
@@ -37,20 +38,15 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v8
         with:
-            commit-message: Automatically Create Robot Profile
+            commit-message: Weekly npm audit fixes
             body: |
-                Do not merge this PR without first filling in the template this automated action has created
-                To fill in the template, follow these instructions:
-                1. open [this link](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/edit/robot-profile-${{ steps.date.outputs.date }}/_robots/${{ steps.date.outputs.date }}.md) and fill in the words that are in ALL CAPITAL LETTERS
-                2. hit the green "Commit Changes" button, Select "commit the files to this branch" (named robot-profile-${{ steps.date.outputs.date }}), once you have commited the changes they should appear here on this pull request, in the box right below.
-                3. verify the information in the file is correct, if so, approve the changes and merge the Pull Request to publish them to the internet.
-                
-                after you merge the Pull Request, fill in any additional data at [this link](https://www.peacce.org/admin/#/collections/edit/robots/${{ steps.date.outputs.date }}) (if you need to login, login with the team github credentials) and set the published flag to true
-                
-            title: Create a robot profile for ${{ steps.date.outputs.date }}
-            branch: robot-profile-${{ steps.date.outputs.date }}
+               ${{ steps.npm-audit.outputs.summary }}
+            title: Weekly npm audit fixes - ${{ github.run_number}}
+            base: main
+            branch: npm-audit-fixes-${{ github.run_number }}
+            token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Fire CI-CD Action
+      - name: Fire CI-CD Action #Trigger site rebuild
         uses: benc-uk/workflow-dispatch@v1
         with:
             ref: ${{ steps.cpr.outputs.pull-request-branch }}
