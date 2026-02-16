@@ -46,7 +46,7 @@ middlelefttext: |
 bottomleftimage: /assets/2023/PR-Photos/PXL_20230312_210303575.jpg
 resources:
   - name: 3461 2023 Outreach Binder
-    link: /assets/2023/buizBinder.pdf
+    link: /assets/2023/outreachReport.pdf
   - name: FIRST Submitted Awards Page
     link: 'https://www.firstinspires.org/resource-library/frc/submitted-awards'
   - name: FIRST Impact Award Resources
