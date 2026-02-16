@@ -1,13 +1,13 @@
 {
   "dependencies": {
-    "node":">=22.12.0",
+    "node":">=25.6.1",
     "@tinacms/cli": "^2.1.5",
     "simple-git": "^3.31.1",
     "tinacms": "^3.3.2"
   },
   "devDependencies": {
-    "@types/node": "^25.2.2",
-    "node":">=22.12.0",
+    "@types/node": "^25.2.3",
+    "node":">=25.6.1",
     "@tinacms/cli": "^2.1.5",
     "simple-git": "^3.31.1",
     "tinacms": "^3.3.2"
