@@ -24,7 +24,7 @@ jobs:
         run: |
           npm audit fix
       - name: Commit and push changes
-        continue-on-error: true # Continue even if NPM audit fails
+        if: always() # Continue even if NPM audit fails
         run: |
             git config --global user.name "GitHub Actions"
             git config --global user.email "actions@github.com"
