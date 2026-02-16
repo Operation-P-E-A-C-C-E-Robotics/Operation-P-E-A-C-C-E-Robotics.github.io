@@ -57,6 +57,7 @@ jobs:
             token:  ${{ secrets.github_token }}
       
       - name: Enable Auto-Merge
+        if: always() # Continue even if NPM can not fix all vulerabilities
         uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
