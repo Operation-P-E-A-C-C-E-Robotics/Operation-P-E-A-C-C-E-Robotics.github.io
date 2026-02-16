@@ -46,6 +46,7 @@ jobs:
             base: main
             branch: npm-audit-fixes-${{ github.run_number }}
             token: ${{ secrets.GITHUB_TOKEN }}
+            delete-branch: true # Automatically delete the branch on the next run to prevent cluttering the repository with branches
 
       - name: Fire CI-CD Action #Trigger site rebuild
         if: always() # Continue even if NPM can not fix all vulerabilities
@@ -54,11 +55,9 @@ jobs:
             ref: ${{ steps.cpr.outputs.pull-request-branch }}
             workflow: 73393124
             token:  ${{ secrets.github_token }}
-
-      - name: Merge Pull Request
-        if: always() # Continue even if NPM can not fix all vulerabilities
-        uses: juliangruber/merge-pull-request-action@v1
+      
+      - name: Enable Auto-Merge
+        uses: peter-evans/enable-pull-request-automerge@v3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          number: ${{ steps.cpr.outputs.pull-request-number }}
-          method: squash # merge rebase
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
