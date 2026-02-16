@@ -1,7 +1,5 @@
 ---
 layout: committee
-bottomrighttitle: Bottom Right Title
-bottomrighttext: qui est unde deus
 title: C.A.D
 topcornerimage: /assets/2026/IMG_2620.jpg
 toprighttitle: |

@@ -1,7 +1,5 @@
 ---
 layout: committee
-bottomrighttitle: Bottom Right Title
-bottomrighttext: qui est unde deus
 title: Electrical
 topcornerimage: /assets/committee/electrical/rioAndMotors.JPG
 toprighttitle: |

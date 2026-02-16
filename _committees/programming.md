@@ -1,7 +1,5 @@
 ---
 layout: committee
-bottomrighttitle: Bottom Right Title
-bottomrighttext: qui est unde deus
 title: Programming
 topcornerimage: /assets/committee/programming/joystickDashboard.JPG
 toprighttitle: |
