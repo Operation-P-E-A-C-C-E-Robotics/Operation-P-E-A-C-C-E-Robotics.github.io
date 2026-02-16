@@ -34,6 +34,7 @@ middlelefttext: |
 bottomleftimage: /assets/committee/cad/drivebaseRender.PNG
 resources:
   - name: 3461 2023 Technical Overview
+    link: /assets/2023/tradingCardBack.png
   - name: Onshape
     link: 'https://www.onshape.com/en/'
 ---
