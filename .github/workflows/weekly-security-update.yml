@@ -22,11 +22,12 @@ jobs:
           node-version: 'latest' # Use the latest Node.js version
       - name: Run npm audit and fix vulnerabilities
         run: |
-          npm audit fix # Automatically fix vulnerabilities, do not force fixes that may cause breaking changes
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
+          npm audit fix
       - name: Commit and push changes
+        continue-on-error: true # Continue even if NPM audit fails
         run: |
+            git config --global user.name "GitHub Actions"
+            git config --global user.email "actions@github.com"
             git add . 
             git commit -m "Weekly npm audit fixes" 
             git push origin ${{ github.ref }} --force 
