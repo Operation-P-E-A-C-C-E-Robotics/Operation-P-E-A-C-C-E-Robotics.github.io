@@ -18,8 +18,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 'latest' # Use the latest Node.js version
-      - name: Install dependencies
-        run: npm install
       - name: Run npm audit and fix vulnerabilities
         run: |
           npm audit fix # Automatically fix vulnerabilities, do not force fixes that may cause breaking changes
