@@ -43,7 +43,7 @@ jobs:
             body: |
                ${{ steps.npm-audit.outputs.summary }}
             title: Weekly npm audit fixes - ${{ github.run_number}}
-            base: main
+            base: ${{github.ref_name}} # Create the pull request against the current branch
             branch: npm-audit-fixes-${{ github.run_number }}
             token: ${{ secrets.GITHUB_TOKEN }}
             delete-branch: true # Automatically delete the branch on the next run to prevent cluttering the repository with branches
