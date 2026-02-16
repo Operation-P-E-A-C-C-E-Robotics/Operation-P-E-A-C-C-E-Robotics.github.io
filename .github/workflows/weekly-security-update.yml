@@ -53,10 +53,6 @@ jobs:
             workflow: 73393124
             token:  ${{ secrets.github_token }}
 
-
-  merge-pr:
-    runs-on: ubuntu-latest
-    steps: 
       - name: Merge Pull Request
         if: ${{ github.event_name == 'workflow_run'}}
         uses: juliangruber/merge-pull-request-action@v1
