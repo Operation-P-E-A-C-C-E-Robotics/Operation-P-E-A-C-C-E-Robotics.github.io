@@ -55,12 +55,14 @@ sponsors:
     isPerpetual: true
     hidden: false
   - name: 'Automation Associates, Inc'
-    sponsortier: Gold
+    sponsortier: Silver
     summary: ''
     website: 'https://autoassoc.com/'
     isNameOnly: false
     image: /assets/sponsors/AutomationAssociates.jpeg
     years:
+      - year: '2026'
+        sponsortier: Silver
       - year: '2024'
         sponsortier: Gold
       - year: '2022'
@@ -69,10 +71,6 @@ sponsors:
         sponsortier: Gold
       - year: '2023'
         sponsortier: Gold
-      - year: '2026'
-        sponsortier: Silver
-      - year: '2026'
-        sponsortier: Silver
     hidden: false
   - name: The Baily Family
     sponsortier: Gold
