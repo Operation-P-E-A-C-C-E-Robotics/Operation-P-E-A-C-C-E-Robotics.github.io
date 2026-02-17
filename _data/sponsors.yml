@@ -229,6 +229,14 @@ sponsors:
     years:
       - year: '2024'
         sponsortier: Silver
+  - name: Fastenal
+    sponsortier: Gold
+    summary: ''
+    website: 'https://www.fastenal.com/'
+    image: /assets/sponsors/fastenal.png
+    years:
+      - year: '2026'
+        sponsortier: Gold
   - name: Festo
     sponsortier: Silver
     summary: ''
@@ -319,6 +327,7 @@ sponsors:
         sponsortier: Silver
       - year: '2026'
         sponsortier: Silver
+    hidden: true
   - name: Johnny Chea
     sponsortier: Silver
     summary: ''
@@ -660,11 +669,3 @@ sponsors:
       - year: '2013'
         sponsortier: Gold
     hidden: true
-  - name: Fastenal
-    sponsortier: Gold
-    summary: ''
-    website: 'https://www.fastenal.com/'
-    image: /assets/sponsors/fastenal.png
-    years:
-      - year: '2026'
-        sponsortier: Gold
