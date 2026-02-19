@@ -1,16 +1,12 @@
 {
   "dependencies": {
-    "node":">=25.6.1",
-    "@tinacms/cli": "^2.1.5",
+    "@tinacms/app": "^2.3.25",
+    "@tinacms/cli": "^2.1.6",
+    "@tinacms/graphql": "^2.1.2",
+    "node": ">=25.6.1",
     "simple-git": "^3.31.1",
-    "tinacms": "^3.3.2"
-  },
-  "devDependencies": {
-    "@types/node": "^25.2.3",
-    "node":">=25.6.1",
-    "@tinacms/cli": "^2.1.5",
-    "simple-git": "^3.31.1",
-    "tinacms": "^3.3.2"
+    "tina": "^0.3.23",
+    "tinacms": "^3.5.0"
   },
   "overrides": {
     "dompurify": "^3.2.4",
