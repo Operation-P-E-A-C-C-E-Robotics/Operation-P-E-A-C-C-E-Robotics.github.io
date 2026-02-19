@@ -33,7 +33,6 @@ jobs:
         id: npm-audit
         run: | 
           npm audit fix
-          echo $(npm audit --json) > audit.json # Save the audit report as JSON for later parsing
         continue-on-error: true # Continue even if NPM can not fix all vulnerabilities
 
       - name: Parse audit safely
@@ -51,7 +50,7 @@ jobs:
           SAFE_MESSAGE=$(printf "%s" "$MESSAGE" | tr '\n' ' ' | tr -cd '[:alnum:] .,:()-')
 
           echo "message=$SAFE_MESSAGE" >> "$GITHUB_OUTPUT"     
-             
+
       - name: Commit and push changes
         id: commit
         continue-on-error: true # Continue even if there are no changes to commit
