@@ -12,6 +12,8 @@ permissions:
 jobs:
   npm-audit:
     runs-on: ubuntu-latest
+    outputs:
+      npm-audit: ${{ steps.npm-audit.outputs.npm-audit }} # Capture the output of the npm audit fix command to include in the pull request body for reference    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -29,7 +31,9 @@ jobs:
           cache: 'npm' # Enable caching of node modules to speed up subsequent runs
       - name: Run npm audit and fix vulnerabilities
         id: npm-audit
-        run: npm audit fix > $GITHUB_OUTPUT
+        run: | 
+          npm audit fix
+          echo "npm-audit<<EOF" >> $GITHUB_OUTPUT
         continue-on-error: true # Continue even if NPM can not fix all vulnerabilities
       - name: Commit and push changes
         if: always() # Continue even if NPM can not fix all vulerabilities
