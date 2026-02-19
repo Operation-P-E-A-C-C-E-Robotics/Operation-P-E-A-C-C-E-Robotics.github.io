@@ -36,8 +36,6 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: "latest"
-          cache: 'npm' # Enable caching of node modules to speed up subsequent runs
-
 
   # Build job
   pr-build:

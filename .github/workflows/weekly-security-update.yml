@@ -28,7 +28,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 'latest' # Use the latest Node.js version
-          cache: 'npm' # Enable caching of node modules to speed up subsequent runs
 
       - name: Run npm audit and fix vulnerabilities
         id: npm-audit
@@ -53,7 +52,7 @@ jobs:
         with:
             commit-message: Weekly npm audit fixes
             body: |
-               ${{ steps.npm-audit.outputs.npm-audit }} # Include the output of the npm audit fix command in the pull request body for reference
+               ${{ steps.npm-audit.outputs.npm-audit }}
             title: Weekly npm audit fixes - ${{ github.run_number}}
             base: ${{github.ref_name}} # Create the pull request against the current branch
             branch: npm-audit-fixes-${{ github.run_number }}
