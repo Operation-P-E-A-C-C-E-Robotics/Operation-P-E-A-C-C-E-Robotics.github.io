@@ -33,9 +33,23 @@ jobs:
         id: npm-audit
         run: | 
           npm audit fix
-          echo "npm-audit<<EOF" >> $GITHUB_OUTPUT
+          echo $(npm audit --json) >> $GITHUB_OUTPUT
         continue-on-error: true # Continue even if NPM can not fix all vulnerabilities
-        
+
+      - name: Parse audit safely
+        id: parse-audit
+        run: |
+          HIGH=$(jq '.metadata.vulnerabilities.high' audit.json)
+          MOD=$(jq '.metadata.vulnerabilities.moderate' audit.json)
+          LOW=$(jq '.metadata.vulnerabilities.low' audit.json)
+          TOTAL=$(jq '.metadata.vulnerabilities.total' audit.json)
+
+          MESSAGE="chore: npm audit report - $TOTAL vulnerabilities ($HIGH high, $MOD moderate, $LOW low)"
+
+          # sanitize (remove newlines and dangerous chars)
+          SAFE_MESSAGE=$(printf "%s" "$MESSAGE" | tr '\n' ' ' | tr -cd '[:alnum:] .,:()-')
+
+          echo "message=$SAFE_MESSAGE" >> "$GITHUB_OUTPUT"        
       - name: Commit and push changes
         id: commit
         continue-on-error: true # Continue even if there are no changes to commit
@@ -52,7 +66,7 @@ jobs:
         with:
             commit-message: Weekly npm audit fixes
             body: |
-               ${{ steps.npm-audit.outputs.npm-audit }}
+               ${{ steps.parse-audit.outputs.message }}
             title: Weekly npm audit fixes - ${{ github.run_number}}
             base: ${{github.ref_name}} # Create the pull request against the current branch
             branch: npm-audit-fixes-${{ github.run_number }}
