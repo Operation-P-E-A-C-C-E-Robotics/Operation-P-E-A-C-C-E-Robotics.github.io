@@ -50,7 +50,8 @@ jobs:
             title: Weekly npm audit fixes - ${{ github.run_number}}
             base: ${{github.ref_name}} # Create the pull request against the current branch
             branch: npm-audit-fixes-${{ github.run_number }}
-            token: ${{ secrets.GITHUB_TOKEN }}
+            token: ${{ secrets.NPM_AUDIT_PUSH_PAT_CLASSIC }} # Use a personal access token with write permissions to the repository
+            
             delete-branch: true # Automatically delete the branch on the next run to prevent cluttering the repository with branches
 
       # - name: Fire CI-CD Action #Trigger site rebuild
