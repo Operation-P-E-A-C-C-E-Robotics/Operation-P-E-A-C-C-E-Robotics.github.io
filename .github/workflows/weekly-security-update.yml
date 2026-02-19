@@ -4,10 +4,14 @@ on:
     - cron: '0 0 * * 0' # Runs every Sunday at midnight
   workflow_dispatch: # Allows manual triggering of the workflow 
     inputs:
+      pull-request-title:
+        description: 'Title for the pull request'
+        required: false
+        default: 'Manual npm audit'
       commit-message:
         description: 'Commit message for npm audit fixes'
         required: false
-        default: 'Manual trigger: npm audit fixes'
+        default: 'Manual npm audit update to fix vulnerabilities'
 permissions:
   contents: write # Allows the workflow to commit changes to the repository
   pull-requests: write
@@ -72,7 +76,7 @@ jobs:
             commit-message: "${{ github.event.inputs.commit-message || steps.parse-audit.outputs.message }}" # Use the custom commit message if provided, otherwise use the default message from the npm audit report
             body: |
                ${{ steps.parse-audit.outputs.message }}
-            title: Weekly npm audit fixes - ${{ github.run_number}}
+            title: "${{ github.event.inputs.commit-message}} || Weekly Security Audit -${{github.run_number}}" # Use the same message for the pull request title for consistency
             base: ${{github.ref_name}} # Create the pull request against the current branch
             branch: npm-audit-fixes-${{ github.run_number }}
             token: ${{ secrets.NPM_AUDIT_PUSH_PAT_CLASSIC }} # Use a personal access token with write permissions to the repository
