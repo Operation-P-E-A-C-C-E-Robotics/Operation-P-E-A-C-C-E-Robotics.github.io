@@ -29,14 +29,17 @@ jobs:
         with:
           node-version: 'latest' # Use the latest Node.js version
           cache: 'npm' # Enable caching of node modules to speed up subsequent runs
+
       - name: Run npm audit and fix vulnerabilities
         id: npm-audit
         run: | 
           npm audit fix
           echo "npm-audit<<EOF" >> $GITHUB_OUTPUT
         continue-on-error: true # Continue even if NPM can not fix all vulnerabilities
+        
       - name: Commit and push changes
-        if: always() # Continue even if NPM can not fix all vulerabilities
+        id: commit
+        continue-on-error: true # Continue even if there are no changes to commit
         run: |
             git config --global user.name "GitHub Actions"
             git config --global user.email "actions@github.com"
@@ -44,8 +47,8 @@ jobs:
             git commit -m "Weekly npm audit fixes" 
             
       - name: Create Pull Request
-        if: always() # Continue even if NPM can not fix all vulerabilities
         id: cpr
+        if: steps.commit.outcome == 'success' # Only create a pull request if there were changes to commit
         uses: peter-evans/create-pull-request@v8
         with:
             commit-message: Weekly npm audit fixes
@@ -59,8 +62,8 @@ jobs:
             delete-branch: true # Automatically delete the branch on the next run to prevent cluttering the repository with branches
       
       - name: Enable Auto-Merge
-        if: always() # Continue even if NPM can not fix all vulerabilities
         uses: peter-evans/enable-pull-request-automerge@v3
+        if: steps.cpr.outcome == 'success' # Only enable auto-merge if the pull request was successfully created
         with:
           token: ${{ secrets.NPM_AUDIT_PUSH_PAT_CLASSIC }} # Use the same personal access token to enable auto-merge on the pull request
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
