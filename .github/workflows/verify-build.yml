@@ -63,7 +63,7 @@ jobs:
 
 
   # Build job
-  build:
+  pr-build:
     runs-on: ubuntu-latest
     needs: [setup-pages, install-node]
     # env:
