@@ -42,6 +42,7 @@ jobs:
         with:
           node-version: "latest"
           cache: 'npm' # Enable caching of node modules to speed up subsequent runs
+          cache-dependency-path: package-lock.json # Use package-lock.json to determine cache validity
 
   # Build job
   build:
