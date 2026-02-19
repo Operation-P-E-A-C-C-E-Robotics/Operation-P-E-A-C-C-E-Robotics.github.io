@@ -37,6 +37,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: "latest"
+          cache: 'npm' # Enable caching of node modules to speed up subsequent runs
 
   # checkout:
   #   runs-on: ubuntu-latest
@@ -94,6 +95,7 @@ jobs:
 
       - name: run NPM CI
         run: npm ci
+        
 
       - name: Build TinaCMS (Index PR branch)
         env:
