@@ -28,8 +28,7 @@ jobs:
           node-version: 'latest' # Use the latest Node.js version
       - name: Run npm audit and fix vulnerabilities
         id: npm-audit
-        run: |
-          echo "NPM_OUTPUT=$(npm audit fix)" >> $GITHUB_OUTPUT
+        run: npm audit fix > $GITHUB_OUTPUT
         continue-on-error: true # Continue even if NPM can not fix all vulnerabilities
       - name: Commit and push changes
         if: always() # Continue even if NPM can not fix all vulerabilities
@@ -46,7 +45,7 @@ jobs:
         with:
             commit-message: Weekly npm audit fixes
             body: |
-               ${{ steps.npm-audit.outputs.npm_output }}
+               ${{ steps.npm-audit.outputs.npm-audit }} # Include the output of the npm audit fix command in the pull request body for reference
             title: Weekly npm audit fixes - ${{ github.run_number}}
             base: ${{github.ref_name}} # Create the pull request against the current branch
             branch: npm-audit-fixes-${{ github.run_number }}
