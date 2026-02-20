@@ -114,7 +114,6 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
 <script src="/assets/js/countdown.js"></script>
 <script id="setEventCountdown">
   async function setEventCountdown() {
-    const nextEvent = await getNextEvent();
     
     if (nextEvent) {
       const counterEl = document.getElementById('competitionCountdown');
@@ -127,6 +126,7 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
 
 <script>
   document.getElementById("header").innerHTML = year + " Competition Season"
+  const year = getCurrentSeasonYear();
 </script>
 
 <script id="setMedia">
