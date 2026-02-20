@@ -30,7 +30,7 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v6
       with: 
-       ref: main
+       ref: ${{ github.ref}}
        clean: false
 
     - name: Run Script 
