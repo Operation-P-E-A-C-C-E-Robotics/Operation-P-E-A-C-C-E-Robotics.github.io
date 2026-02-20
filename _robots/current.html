@@ -114,7 +114,6 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
 <script src="/assets/js/countdown.js"></script>
 <script id="setEventCountdown">
   async function setEventCountdown() {
-    const year = getCurrentSeasonYear();
     const nextEvent = await getNextEvent();
     
     if (nextEvent) {
@@ -192,8 +191,8 @@ setDistrictStats();
     const awards = await getAwards();
     const event = await getEvents();
     const eventStats = await getEventStatuses();
-    stats = {};
-    eventKeyEventInfoPair = {};
+    const stats = {};
+    const eventKeyEventInfoPair = {};
     for (var i = 0; i < event.length; i++){
       stats[event[i].key] = eventStats[i] || null;
       eventKeyEventInfoPair[event[i].key] = event[i];
@@ -211,8 +210,6 @@ setDistrictStats();
       document.getElementById("employees").innerHTML = tab;
     }
   for (const [key, value] of Object.entries(stats)) {
-    var eventInfo = "";
-
     var badge = ""
     if (value != null) {
       switch(stats[key].event_type) {
@@ -271,8 +268,8 @@ setDistrictStats();
 }
 function sortTable() {
   var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementById("employees");
-  switching = true;
+  var table = document.getElementById("employees");
+  var switching = true;
   /* Make a loop that will continue until
   no switching has been done: */
   while (switching) {
@@ -286,10 +283,10 @@ function sortTable() {
       shouldSwitch = false;
       /* Get the two elements you want to compare,
       one from current row and one from the next: */
-      x = rows[i].getElementsByTagName("TD")[0];
-      y = rows[i + 1].getElementsByTagName("TD")[0];
-      xTime = Date.parse(x.getAttribute("date"));
-      yTime = Date.parse(y.getAttribute("date"));
+      var x = rows[i].getElementsByTagName("TD")[0];
+      var y = rows[i + 1].getElementsByTagName("TD")[0];
+      var xTime = Date.parse(x.getAttribute("date"));
+      var yTime = Date.parse(y.getAttribute("date"));
       // Check if the two rows should switch place:
       if (xTime > yTime) {
         // If so, mark as a switch and break the loop:
@@ -431,8 +428,8 @@ show();
         //////console.log(matches[i]);
         var match = new Object(matches[i]);
         // ////console.log(match);
-        redAlliance = match.alliances.red.team_keys;
-        blueAlliance = match.alliances.blue.team_keys;
+        var redAlliance = match.alliances.red.team_keys;
+        var blueAlliance = match.alliances.blue.team_keys;
         if (events.includes(match.event_key) == false) {
           events.push(match.event_key);
         }
