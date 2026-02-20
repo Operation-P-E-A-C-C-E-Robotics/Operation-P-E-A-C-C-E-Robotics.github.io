@@ -155,36 +155,24 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
 
 
 <!-- <script src="/assets/js/helpers.js"></script> -->
+ <script src="/assets/js/tba.js"></script>
+ <script src="/assets/js/countdown.js"></script>
+<script>
+  (async () => {
+    const year = getCurrentSeasonYear();
+    const nextEvent = await getNextEvent();
+    
+    if (nextEvent) {
+      const counterEl = document.getElementById('competitionCountdown');
+      eventCountdown(nextEvent, counterEl);
+      counterEl.style.display = 'block';
+    }
+  })();
+</script>
 <script>
 
-  function update_countdown(element, finish) {
-    // console.log(finish)
-    var finish_utc = finish;
-    var current_utc = new Date().getTime();
-    var time_diff = finish_utc - current_utc;
-    var seconds = Math.floor(time_diff / 1000);
-    var minutes = Math.floor(seconds / 60);
-    var hours = Math.floor(minutes / 60);
-    var days = Math.floor(hours / 24);
-    var content;
 
-    hours %= 24;
-    minutes %= 60;
-    seconds %= 60;
-    
-    if (time_diff < 0) {
-        $(element).hide();
-        return;
-    }
-
-    $(element).find('.countdown-days').text(days);
-    $(element).find('.countdown-hours').text(hours);
-    $(element).find('.countdown-minutes').text(minutes);
-    $(element).find('.countdown-seconds').text(seconds);
-    setTimeout(function(){update_countdown(element, finish);}, 1000);
-  }
       //  var events = "https://www.thebluealliance.com/api/v3/team/frc3461/events/";
-       var year;
        var today = new Date();
        var kickoff = new Date(getFirstSaturdayInJanuary(year))
        if (today.getMonth() >= 9) {
@@ -194,7 +182,7 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
           // document.getElementById("kickoffCountdownDays").innerHTML += (Math.ceil( (kickoff.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) ));
           // document.getElementById("kickoffCountdown").style.display = "block";
        } else {
-        year = new Date().getFullYear();
+        //year = new Date().getFullYear();
         var kickoff = new Date(getFirstSaturdayInJanuary(year))
        }
 
@@ -224,10 +212,10 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
 
        var tbaDataLastUpdatedurl = "https://api.github.com/repos/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/commits/gh-actions-tba-data-backend"
        var eventstats = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_event_statuses.json";
-       var eventurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_events.json";
+       //var eventurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_events.json";
        var mediaurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_media.json";
        var awardsurl = "https://raw.githubusercontent.com//Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/"+year+"_awards.json"
-       var countDownDate;
+       //var countDownDate;
 
        function json2array(json) {
          var result = [];
