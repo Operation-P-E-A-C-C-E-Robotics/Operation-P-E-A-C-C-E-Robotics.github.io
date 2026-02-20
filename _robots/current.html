@@ -195,7 +195,7 @@ setDistrictStats();
     stats = {};
     eventKeyEventInfoPair = {};
     for (var i = 0; i < event.length; i++){
-      stats[[event[i].key]] = eventStats[i] || null;
+      stats[event[i].key] = eventStats[i] || null;
       eventKeyEventInfoPair[event[i].key] = event[i];
     }
     let tab =
