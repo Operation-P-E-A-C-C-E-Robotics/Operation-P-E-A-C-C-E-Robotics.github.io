@@ -1,12 +1,8 @@
 import asyncio
-from num2words import num2words
-import aiohttp
-import aiotba
 import os
 import json
 import requests
 import datetime
-import time
 import subprocess
 import pytz
 
@@ -102,14 +98,12 @@ async def season(api):
         git_commit([f"{year}_district_rankings.json"], commit_message)
 
 
+# Get the current datetime in Eastern Time
+eastern = pytz.timezone('US/Eastern')
 async def run_script():
-    set_git_config(email, name)
     while True:
-        # Get the current datetime in Eastern Time
-        eastern = pytz.timezone('US/Eastern')
-        eastern_now = datetime.datetime.now(eastern)
-
         # Check if it's between 9am and 9pm in Eastern Time
+        eastern_now = datetime.datetime.now(eastern)
         if eastern_now.strftime("%H:%M:%S") <= end_time:
             await season(tba_api_key)
             print("Data fetched and committed.")
@@ -118,8 +112,10 @@ async def run_script():
             break
 
         # Wait for 30 seconds before next iteration
+        print("Waiting for 90 seconds before next update...")
         await asyncio.sleep(90)
 
 if __name__ == "__main__":
+    set_git_config(email, name)
     loop = asyncio.get_event_loop()
     loop.run_until_complete(run_script())

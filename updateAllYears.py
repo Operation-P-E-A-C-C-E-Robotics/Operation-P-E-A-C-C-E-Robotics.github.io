@@ -1,11 +1,7 @@
 import asyncio
-from num2words import num2words
-import aiohttp
-import aiotba
 import os
 import json
 import requests
-import datetime
 
 tba_api_key = os.getenv('TBA_API_KEY')
 
