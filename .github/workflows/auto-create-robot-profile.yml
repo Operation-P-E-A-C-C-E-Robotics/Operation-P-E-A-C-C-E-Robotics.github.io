@@ -25,7 +25,7 @@ jobs:
     steps: 
     - name: Get current date
       id: date
-      run: echo "::set-output name=date::$(date +'%Y')"
+      run: echo "DATE=$(date +'%Y')" >> $GITHUB_OUTPUT
 
     - name: Checkout Repo
       uses: actions/checkout@v6
@@ -41,7 +41,7 @@ jobs:
       id: cpr
       uses: peter-evans/create-pull-request@v8
       with:
-        commit-message: Automatically Create Robot Profile
+        commit-message: Automatically Create ${{ steps.date.outputs.date }} Robot Profile
         
         body: |
           Do not merge this PR without first filling in the template this automated action has created
@@ -54,29 +54,12 @@ jobs:
         
         title: Create a robot profile for ${{ steps.date.outputs.date }}
         branch: robot-profile-${{ steps.date.outputs.date }}
-
-    - name: Fire CI-CD Action
-      uses: benc-uk/workflow-dispatch@v1
+        token: ${{ secrets.NPM_AUDIT_PUSH_PAT_CLASSIC }} # Use a personal access token with write permissions to the repository
+        delete-branch: true # Automatically delete the branch on the next run to prevent cluttering the repository with branches
+    
+    - name: Enable Auto-Merge
+      uses: peter-evans/enable-pull-request-automerge@v3
+      if: steps.cpr.outcome == 'success' # Only enable auto-merge if the pull request was successfully created
       with:
-       ref: ${{ steps.cpr.outputs.pull-request-branch }}
-       workflow: 73393124
-       token:  ${{ secrets.github_token }}
-
-
-  # merge-pr:
-  #   runs-on: ubuntu-latest
-  #   steps: 
-  #     - name: Approve Pull Request
-  #       if: ${{ github.event_name == 'workflow_run'}}
-  #       uses: juliangruber/approve-pull-request-action@v2
-  #       with:
-  #         github-token: ${{ secrets.GITHUB_TOKEN }}
-  #         number: ${{ steps.cpr.outputs.pull-request-number }}
-
-  #     - name: Merge Pull Request
-  #       if: ${{ github.event_name == 'workflow_run'}}
-  #       uses: juliangruber/merge-pull-request-action@v1
-  #       with:
-  #         github-token: ${{ secrets.GITHUB_TOKEN }}
-  #         number: ${{ steps.cpr.outputs.pull-request-number }}
-  #         method: squash # merge rebase
+        token: ${{ secrets.NPM_AUDIT_PUSH_PAT_CLASSIC }} # Use the same personal access token to enable auto-merge on the pull request
+        pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
