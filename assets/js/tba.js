@@ -13,7 +13,9 @@ function getCurrentSeasonYear(date = new Date()) {
     return season;
 }
 
-
+function viewOnTBA() {
+window.location.assign('https://www.thebluealliance.com/team/3461/' + year);
+}
 
 /**
  * Fetch and parse events JSON for the current year
@@ -21,6 +23,11 @@ function getCurrentSeasonYear(date = new Date()) {
 async function getEvents() {
     const response = await fetch(`${TBA_BASE_URL}/${year}_events.json`);
     return await response.json();
+}
+
+async function getEvent(eventKey) {
+    const events = await getEvents();
+    return events.find(e => e.key === eventKey) || null;
 }
 
 /**
@@ -37,6 +44,16 @@ async function getMatches() {
 async function getEventStatuses() {
     const response = await fetch(`${TBA_BASE_URL}/${year}_event_statuses.json`);
     return await response.json();
+}
+/**
+ * 
+ * @param {string} eventKey 
+ * @returns json object with event status, or null if not found
+ */
+async function getTeamStatus(eventKey) {
+    const eventStatuses = await getEventStatuses();
+    const status = eventStatuses.find(e => e.key === eventKey);
+    return status ? status.overall_status_str : null;
 }
 
 /**
@@ -139,6 +156,36 @@ async function getNextEvent() {
 async function getTeamDistrictStats() {
     const rankings = await getDistrictRankings();
     return rankings.find(team => team.team_key === "frc3461") || null;
+}
+
+async function getAwards() {
+    const response = await fetch(`${TBA_BASE_URL}/${year}_awards.json`);
+    const awards = await response.json();
+    return awards.filter(award => award.team_key === "frc3461");
+}
+
+async function getMedia() {
+    const response = await fetch(`${TBA_BASE_URL}/${year}_media.json`);
+    const media = await response.json();
+    return media.filter(m => m.team_key === "frc3461");
+}
+
+function sortCompLevel(a, b) {
+if (a == "qm" && b == "qm" && a < b) {
+    return 1;
+} else if (b == "qm" && a == "qm" && b < a) {
+    return -1;
+} else if (a == "qm" && b == "qf" && a < b){
+    return 1;
+} else if (b == "qm" && a == "qf" && b < a){
+    return -1;
+}else if (a == "qf" && b == "sf" && a < b){
+    return 1;
+} else if (b == "qf" && a == "sf" && b < a){
+    return -1;
+}else if (b == "qf" && a != "sf" && b < a) {
+    return 1;
+}
 }
 
 /**
