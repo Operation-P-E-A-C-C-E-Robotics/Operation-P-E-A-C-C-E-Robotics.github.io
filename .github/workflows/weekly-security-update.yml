@@ -24,7 +24,7 @@ jobs:
       npm-audit: ${{ steps.npm-audit.outputs.npm-audit }} # Capture the output of the npm audit fix command to include in the pull request body for reference    
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
             ref: ${{ github.ref }} # Check out the current branch to ensure we are working with the correct codebase
             sparse-checkout: |
