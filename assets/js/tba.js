@@ -134,8 +134,8 @@ async function getCurrentEvent() {
     const now = new Date();
 
     return events
-        .filter(event => new Date(event.end_date + "T23:59:59-04:00") >= now)
-        .sort((a, b) => a.week - b.week)[0] || null;
+        .filter(event => new Date(event.end_date + "T23:59:59-04:00") >= now && new Date(event.start_date + "T09:00:00-04:00") <= now)
+        .sort((a, b) => a.start_date - b.start_date)[0] || null;
 }
 
 /**
@@ -188,13 +188,6 @@ if (a == "qm" && b == "qm" && a < b) {
 }
 }
 
-/**
- * Convert timestamp to Eastern time
- */
-function convertTime(date) {
-    const dateObj = typeof date === "string" ? new Date(date) : date;
-    return new Date(dateObj.toLocaleString('en-US', { timeZone: 'America/New_York' }));
-}
 
 /**
  * Convert Unix timestamp to formatted date/time string

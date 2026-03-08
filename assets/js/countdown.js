@@ -10,9 +10,9 @@
  */
 function matchCountdown(countDownDate, counterEl, timeEl, eventTimeZone) {
     const interval = setInterval(() => {
-        const now = convertTime(new Date()).getTime();
+        const now = new Date().toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit', second: '2-digit' }).getTime();
         const currentTime = new Date().toLocaleTimeString("en-US", { timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit', second: '2-digit' });
-        const distance = new Date(formatTimestamp(countDownDate)).getTime() - now;
+        const distance = new Date(formatTimestamp(countDownDate, eventTimeZone)).getTime() - now;
         
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -89,7 +89,7 @@ function kickoffCountdown(counterEl) {
  * @returns {number} Interval ID
  */
 function eventCountdown(event, counterEl) {
-    const eventDate = new Date(event.start_date + "T09:00:00-04:00");
+    const eventDate = new Date(event.start_date).toLocaleTimeString("en-US", { timeZone: event.timezone, hour: '2-digit', minute: '2-digit', second: '2-digit' });;
     
     const interval = setInterval(() => {
         const now = new Date().getTime();

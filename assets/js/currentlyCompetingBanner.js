@@ -130,13 +130,14 @@ async function setBanner() {
             const statuses = await getEventStatuses();
             const status = statuses[currentEvent.key];
             //console.log("Event Status:", status);
-                const nextMatchKey = status.next_match_key || null;
-                const lastMatchKey = status.last_match_key || null;
-                await bannerHelper(currentEvent.name, nextMatchKey, status, currentEvent, lastMatchKey);
+            const nextMatchKey = status.next_match_key || null;
+            const lastMatchKey = status.last_match_key || null;
+            await bannerHelper(currentEvent.name, nextMatchKey, status, currentEvent, lastMatchKey);
             
         }
     } catch (error) {
         console.error('Failed to set banner:', error);
+        return;
     }
 }
 

@@ -123,6 +123,8 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
       var nextEvent = await getNextEvent();
       var currentEvent = await getCurrentEvent();
       if (currentEvent) {
+        console.log("Hiding Competition Countdown because we are currently Competing at:", currentEvent.name);
+        
         return; // If we're currently at an event, we don't want to show the "Next Event" countdown
       }
       console.log("Next Event:", nextEvent);
@@ -262,7 +264,7 @@ setDistrictStats();
       }
       tab += `<tr><td date=${eventKeyEventInfoPair[key].start_date} id=${key}><a class="text-dark" href="https://www.thebluealliance.com/event/${key}">${eventKeyEventInfoPair[key].name} ${badge}</a></td><td id="${key}eventstatus"> ${value.overall_status_str}</td><td id=${key + "awards"}>None Found</td></tr>`;
     } else {
-      tab += `<tr><td date=${eventKeyEventInfoPair[key].start_date} id=${key}><a class="text-dark" href="https://www.thebluealliance.com/event/${key}">${eventKeyEventInfoPair[key].name} ${badge}</a></td><td>No Matches Found, Check Back After ${eventKeyEventInfoPair[key].start_date}</td><td>No Data</td></tr>`
+      tab += `<tr><td date=${eventKeyEventInfoPair[key].start_date} id=${key}><a class="text-dark" href="https://www.thebluealliance.com/event/${key}">${eventKeyEventInfoPair[key].name} ${badge}</a></td><td>Event Begins on ${new Date(eventKeyEventInfoPair[key].start_date + "T09:00:00").toLocaleString(navigator.languages[0], { timeZone: eventKeyEventInfoPair[key].timezone, day: 'numeric', month: 'long', year: 'numeric' })}</td><td>No Data</td></tr>`
     }
     // Setting innerHTML as tab variable
     document.getElementById("employees").innerHTML = tab;
@@ -328,6 +330,12 @@ show();
   }
   async function getMatchRecord(){
     var matches = await getMatches();
+    if (matches.length == 0) {
+      // If there are no matches, we can't really show any data, so we'll hide the best match banner and the graph
+      console.log("No matches found for the current season. Hiding best match banner and graph.");
+      document.getElementById('bestMatch').hidden = true
+      document.getElementById('myChart').hidden = true
+    }
     generateDataSet(matches);
     var highestScoringMatch = getHighestRankingOnSeasonMatch(matches);
     // console.log(highestScoringMatch)
