@@ -26,15 +26,22 @@ function matchCountdown(countDownDate, counterEl, timeEl, eventTimeZone) {
         counterEl.innerHTML = `Next Match: ~${hours}h ${minutes}m ${seconds}s`;
         timeEl.innerHTML = `Event Local Time: ${currentTime}`;
         counterEl.classList.remove('yellowwarning', 'redalliance');
-
-        if (hours === 0 && minutes < 20) {
-            counterEl.classList.add('yellowwarning');
-            counterEl.innerHTML = `~${hours}h ${minutes}m ${seconds}s DOUBLE QUEUE`;
-        }
-        if (hours === 0 && minutes < 10) {
+        if (hours === 0 && minutes <= 10) {
             counterEl.classList.add('redalliance');
-            counterEl.innerHTML = `~${hours}h ${minutes}m ${seconds}s QUEUE`;
+            //counterEl.innerHTML = `~${hours}h ${minutes}m ${seconds}s`;
+        } else if (hours === 0 && minutes <= 20) {
+            counterEl.classList.add('yellowwarning');
+            //counterEl.innerHTML = `~${hours}h ${minutes}m ${seconds}s`;
+        } else {
+            counterEl.classList.remove('yellowwarning', 'redalliance');
         }
+        if (distance < 0) {
+            counterEl.innerHTML = `Next Match: On Field Soon!`;
+            setBanner(); // Refresh banner to show match results
+            clearInterval(interval);
+            return;
+        }
+
     }, 1000);
 
     return interval;

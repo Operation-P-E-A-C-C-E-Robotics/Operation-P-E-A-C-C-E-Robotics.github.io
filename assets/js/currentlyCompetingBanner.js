@@ -63,6 +63,9 @@ async function bannerHelper(eventTitle, nextMatchKey, stats, event, lastMatchKey
 
     if (match?.predicted_time) {
         setMatchCountdown(match.predicted_time, event.timezone);
+    } else {
+        console.warn('No predicted time for next match, hiding countdown');
+        document.getElementById('counter').style.display = 'none';
     }
 
     try {

@@ -21,7 +21,7 @@ window.location.assign('https://www.thebluealliance.com/team/3461/' + year);
  * Fetch and parse events JSON for the current year
  */
 async function getEvents() {
-    const response = await fetch(`${TBA_BASE_URL}/${year}_events.json`);
+    const response = await fetch(`${TBA_BASE_URL}/${year}_events.json?t=${Date.now()}`);
     return await response.json();
 }
 
@@ -34,7 +34,7 @@ async function getEvent(eventKey) {
  * Fetch and parse matches JSON for the current year
  */
 async function getMatches() {
-    const response = await fetch(`${TBA_BASE_URL}/${year}_matches.json`);
+    const response = await fetch(`${TBA_BASE_URL}/${year}_matches.json?t=${Date.now()}`);
     return await response.json();
 }
 
@@ -42,7 +42,7 @@ async function getMatches() {
  * Fetch and parse event statuses JSON
  */
 async function getEventStatuses() {
-    const response = await fetch(`${TBA_BASE_URL}/${year}_event_statuses.json`);
+    const response = await fetch(`${TBA_BASE_URL}/${year}_event_statuses.json?t=${Date.now()}`);
     return await response.json();
 }
 /**
@@ -60,7 +60,7 @@ async function getTeamStatus(eventKey) {
  * Fetch and parse district rankings JSON
  */
 async function getDistrictRankings() {
-    const response = await fetch(`${TBA_BASE_URL}/${year}_district_rankings.json`);
+    const response = await fetch(`${TBA_BASE_URL}/${year}_district_rankings.json?t=${Date.now()}`);
     return await response.json();
 }
 
