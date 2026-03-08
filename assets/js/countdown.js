@@ -89,7 +89,7 @@ function kickoffCountdown(counterEl) {
  * @returns {number} Interval ID
  */
 function eventCountdown(event, counterEl) {
-    const eventDate = new Date(event.start_date).toLocaleTimeString("en-US", { timeZone: event.timezone, hour: '2-digit', minute: '2-digit', second: '2-digit' });;
+    const eventDate = new Date(event.start_date)//.toLocaleTimeString("en-US", { timeZone: event.timezone, hour: '2-digit', minute: '2-digit', second: '2-digit' });;
     
     const interval = setInterval(() => {
         const now = new Date().getTime();
