@@ -86,7 +86,8 @@ async function bannerHelper(eventTitle, nextMatchKey, stats, event, lastMatchKey
         document.getElementById('counter').style.display = 'block';
     } catch (error) {
         console.error('Failed to set next match:', error);
-        document.getElementById('counter').style.display = 'none';
+        //document.getElementById('counter').style.display = 'none';
+        document.getElementById('currentNextMatch').innerHTML = `Next Match: Unknown`;
     }
 
     try {
