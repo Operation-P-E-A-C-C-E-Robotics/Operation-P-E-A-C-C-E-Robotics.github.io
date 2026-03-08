@@ -53,7 +53,7 @@ jobs:
           LOW=$(printf '%s' "$AUDIT_JSON" | jq '.metadata.vulnerabilities.low')
           TOTAL=$(printf '%s' "$AUDIT_JSON" | jq '.metadata.vulnerabilities.total')
 
-          MESSAGE="chore: npm audit report - $TOTAL vulnerabilities ($HIGH high, $MOD moderate, $LOW low)"
+          MESSAGE="npm audit report - $TOTAL vulnerabilities ($HIGH high, $MOD moderate, $LOW low)"
 
           SAFE_MESSAGE=$(printf "%s" "$MESSAGE" | tr '\n' ' ' | tr -cd '[:alnum:] .,:()-')
 
@@ -63,8 +63,8 @@ jobs:
         id: commit
         continue-on-error: true # Continue even if there are no changes to commit
         run: |
-            git config --global user.name "${{ github.actor }}"
-            git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+            git config --global user.name "frc-3461"
+            git config --global user.email "Operation-P-E-A-C-C-E-Robotics@users.noreply.github.com"
             git add . 
             git commit -m "${{ steps.parse-audit.outputs.message }}"  
             
@@ -76,7 +76,7 @@ jobs:
             commit-message: "${{ github.event.inputs.commit-message || steps.parse-audit.outputs.message }}" # Use the custom commit message if provided, otherwise use the default message from the npm audit report
             body: |
                ${{ steps.parse-audit.outputs.message }}
-            title: "${{ github.event.inputs.commit-message}} || Weekly Security Audit -${{github.run_number}}" # Use the same message for the pull request title for consistency
+            title: "${{ github.event.inputs.commit-message}} Weekly Security Audit - ${{github.run_number}}" # Use the same message for the pull request title for consistency
             base: ${{github.ref_name}} # Create the pull request against the current branch
             branch: npm-audit-fixes-${{ github.run_number }}
             token: ${{ secrets.NPM_AUDIT_PUSH_PAT_CLASSIC }} # Use a personal access token with write permissions to the repository
