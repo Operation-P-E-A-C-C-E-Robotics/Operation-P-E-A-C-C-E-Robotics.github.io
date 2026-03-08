@@ -209,15 +209,15 @@ setDistrictStats();
         <th>Awards</th>
     </tr>`;
 
-    console.log(stats)
+    console.log(eventStats)
     if (length == 0) {
       tab = `<h1 class=text-center>No Events Found</h1>`
       document.getElementById("employees").innerHTML = tab;
     }
-  for (const [key, value] of Object.entries(stats)) {
+  for (const [key, value] of Object.entries(eventStats)) {
     var badge = ""
     if (value != null) {
-      switch(stats[key].event_type) {
+      switch(eventStats[key].event_type) {
         case 100:
           badge = `<span class="badge badge-pill badge-secondary">Preseason Event</span>`
           break;
