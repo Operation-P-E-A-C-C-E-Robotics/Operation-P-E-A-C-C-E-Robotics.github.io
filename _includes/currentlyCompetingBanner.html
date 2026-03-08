@@ -90,23 +90,6 @@
 <script src="/assets/js/tba.js"></script>
 <script src="/assets/js/currentlyCompetingBanner.js"></script>
 <script src="/assets/js/countdown.js"></script>
-<script>
-  // Initialize match countdown when the banner is displayed
-  const duringEventBanner = document.getElementById('duringEventBanner');
-  const observer = new MutationObserver(() => {
-    if (duringEventBanner.style.display !== 'none') {
-      const counterEl = document.getElementById('counter');
-      const timeEl = document.getElementById('time');
-      // Use the next match time from TBA data
-      // countDownDate should be set by currentlyCompetingBanner.js
-      if (window.nextMatchTime) {
-        matchCountdown(window.nextMatchTime, counterEl, timeEl);
-      }
-    }
-  });
-  
-  observer.observe(duringEventBanner, { attributes: true, attributeFilter: ['style'] });
-</script>
 <style>
     #redTeams {
       color: red;
