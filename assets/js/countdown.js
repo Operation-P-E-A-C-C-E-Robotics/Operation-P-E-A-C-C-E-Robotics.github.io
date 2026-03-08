@@ -8,10 +8,10 @@
  * @param {HTMLElement} timeEl - Element to display current time
  * @returns {number} Interval ID
  */
-function matchCountdown(countDownDate, counterEl, timeEl) {
+function matchCountdown(countDownDate, counterEl, timeEl, eventTimeZone) {
     const interval = setInterval(() => {
         const now = convertTime(new Date()).getTime();
-        const currentTime = new Date().toLocaleTimeString();
+        const currentTime = new Date().toLocaleTimeString("en-US", { timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit', second: '2-digit' });
         const distance = new Date(formatTimestamp(countDownDate)).getTime() - now;
         
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -23,8 +23,8 @@ function matchCountdown(countDownDate, counterEl, timeEl) {
             return;
         }
 
-        counterEl.innerHTML = `~${hours}h ${minutes}m ${seconds}s`;
-        timeEl.innerHTML = currentTime;
+        counterEl.innerHTML = `Next Match: ~${hours}h ${minutes}m ${seconds}s`;
+        timeEl.innerHTML = `Event Local Time: ${currentTime}`;
         counterEl.classList.remove('yellowwarning', 'redalliance');
 
         if (hours === 0 && minutes < 20) {

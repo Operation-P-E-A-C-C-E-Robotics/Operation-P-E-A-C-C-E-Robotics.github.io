@@ -112,11 +112,20 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
 <!-- <script src="/assets/js/helpers.js"></script> -->
 <script src="/assets/js/tba.js"></script>
 <script src="/assets/js/countdown.js"></script>
+
+<script>
+  //const year = getCurrentSeasonYear();
+  document.getElementById("header").innerHTML = year + " Competition Season"
+</script>
 <script id="setEventCountdown">
   async function setEventCountdown() {
     try {
       var nextEvent = await getNextEvent();
-      console.log(nextEvent);
+      var currentEvent = await getCurrentEvent();
+      if (currentEvent) {
+        return; // If we're currently at an event, we don't want to show the "Next Event" countdown
+      }
+      console.log("Next Event:", nextEvent);
       const counterEl = document.getElementById('competitionCountdown');
       eventCountdown(nextEvent, counterEl);
       counterEl.style.display = 'block';
@@ -127,11 +136,6 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
     
   }
   setEventCountdown();
-</script>
-
-<script>
-  //const year = getCurrentSeasonYear();
-  document.getElementById("header").innerHTML = year + " Competition Season"
 </script>
 
 <script id="setMedia">
@@ -334,7 +338,6 @@ show();
 
 
     try { 
-
       event_name = await getEventNameFromKey(highScore.event_key)
       document.getElementById('bestMatchEventName').innerText += event_name 
       match_name = await getMatchNameFromKey(highScore.key)
@@ -344,8 +347,8 @@ show();
     }
       // document.getElementById('bestMatchYTEmbed').src = "https://www.youtube-nocookie.com/embed/" + highScore.videos[0].key 
 
-     //document.getElementById('bestMatchRedOne').innerHTML += clearFRCfromTeamKey(highScore.alliances.red.team_keys[0])
-      //document.getElementById('bestMatchBlueOne').innerHTML += clearFRCfromTeamKey(highScore.alliances.blue.team_keys[0])
+     //document.getElementById('bestMatchRedOne').innerHTML += formatTeamKey(highScore.alliances.red.team_keys[0])
+      //document.getElementById('bestMatchBlueOne').innerHTML += formatTeamKey(highScore.alliances.blue.team_keys[0])
 
     try {
       document.getElementById('bestMatchYTEmbed').src = "https://www.youtube-nocookie.com/embed/" + highScore.videos[0].key 
@@ -353,24 +356,24 @@ show();
      console.log("failed to set youtube match link")
      document.getElementById('bestMatchYTEmbedContainer').style.display = "None";
     }
-
+    
     try {
       document.getElementById('bestMatchRedOne').innerHTML += formatTeamKey(highScore.alliances.red.team_keys[0]) //TODO verify
-      document.getElementById('bestMatchBlueOne').innerHTML += clearFRCfromTeamKey(highScore.alliances.blue.team_keys[0])
+      document.getElementById('bestMatchBlueOne').innerHTML += formatTeamKey(highScore.alliances.blue.team_keys[0])
     } catch {
       console.log("failed to get Red/Blue team one")
     }
 
     try {
-      document.getElementById('bestMatchRedTwo').innerHTML += clearFRCfromTeamKey(highScore.alliances.red.team_keys[1])
-      document.getElementById('bestMatchBlueTwo').innerHTML += clearFRCfromTeamKey(highScore.alliances.blue.team_keys[1])
+      document.getElementById('bestMatchRedTwo').innerHTML += formatTeamKey(highScore.alliances.red.team_keys[1])
+      document.getElementById('bestMatchBlueTwo').innerHTML += formatTeamKey(highScore.alliances.blue.team_keys[1])
     } catch {
       console.log("failed to get Red/Blue team two")
     }
 
     try {
-      document.getElementById('bestMatchRedThree').innerHTML += clearFRCfromTeamKey(highScore.alliances.red.team_keys[2])
-      document.getElementById('bestMatchBlueThree').innerHTML += clearFRCfromTeamKey(highScore.alliances.blue.team_keys[2])
+      document.getElementById('bestMatchRedThree').innerHTML += formatTeamKey(highScore.alliances.red.team_keys[2])
+      document.getElementById('bestMatchBlueThree').innerHTML += formatTeamKey(highScore.alliances.blue.team_keys[2])
     } catch {
       console.log("failed to get Red/Blue team three")
     }

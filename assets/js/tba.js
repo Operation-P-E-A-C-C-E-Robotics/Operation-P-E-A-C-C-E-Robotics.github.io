@@ -134,7 +134,7 @@ async function getCurrentEvent() {
     const now = new Date();
 
     return events
-        .filter(event => new Date(event.end_date + "T23:59:59-04:00") > now)
+        .filter(event => new Date(event.end_date + "T23:59:59-04:00") >= now)
         .sort((a, b) => a.week - b.week)[0] || null;
 }
 
@@ -146,7 +146,7 @@ async function getNextEvent() {
     const now = new Date();
 
     return events
-        .filter(event => new Date(event.start_date + "T09:00:00-04:00") >= now)
+        .filter(event => new Date(event.start_date + "T09:00:00-04:00") >= now && new Date(event.end_date + "T23:59:59-04:00") >= now)
         .sort((a, b) => new Date(a.start_date) - new Date(b.start_date))[0] || null;
 }
 
@@ -161,7 +161,7 @@ async function getTeamDistrictStats() {
 async function getAwards() {
     const response = await fetch(`${TBA_BASE_URL}/${year}_awards.json`);
     const awards = await response.json();
-    return awards.filter(award => award.team_key === "frc3461");
+    return awards;
 }
 
 async function getMedia() {

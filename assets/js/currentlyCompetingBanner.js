@@ -1,25 +1,24 @@
 // assets/js/currentlyCompetingBanner.js
 
-const TEAM_NUMBER = '3461';
 const API_BASE_URL = 'https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend';
 const TIMEZONE = 'America/New_York';
-const year = new Date().getFullYear();
 let countDownDate;
-let eventurl = `${API_BASE_URL}/${year}_events.json`;
-
-
-// Remove duplicate function definitions. Import from tba.js instead:
-// - getMatchNameFromKey() - exists in tba.js
-// - formatTeamKey() - exists in tba.js
-// - convertTime() - exists in tba.js (named convertTime)
-// - convertTimestamp() - exists in tba.js (named formatTimestamp)
+var year = getCurrentSeasonYear(); 
+console.log(`Current season year: ${year}`);
+const eventurl = `${API_BASE_URL}/${year}_events.json`;
+//console.log(`Event URL: ${eventurl}`);
 
 // Replace convertTimestamp calls with formatTimestamp:
-function convertTimestamp(timestamp) {
-    return formatTimestamp(timestamp);
+// convertTimestamp is an alias - use formatTimestamp directly
+
+function setMatchCountdown(predictedTime, eventTimeZone) {
+    const counterEl = document.getElementById('counter');
+    const timeEl = document.getElementById('time');
+    
+    console.log(`Setting match countdown with predicted time: ${predictedTime} and event timezone: ${eventTimeZone}`);
+    matchCountdown(predictedTime, counterEl, timeEl, eventTimeZone);
+  
 }
-
-
 
 async function populateMatchTeams(match, prefix) {
     try {
@@ -63,7 +62,7 @@ async function bannerHelper(eventTitle, nextMatchKey, stats, event, lastMatchKey
     const lastMatch = await getMatchFromKey(lastMatchKey);
 
     if (match?.predicted_time) {
-        countDownDate = match.predicted_time;
+        setMatchCountdown(match.predicted_time, event.timezone);
     }
 
     try {
@@ -105,7 +104,7 @@ async function bannerHelper(eventTitle, nextMatchKey, stats, event, lastMatchKey
     }
 
     try {
-        document.getElementById('currentRank').innerHTML = `Rank: ${stats.qual.ranking.rank}/${stats.qual.num_teams}`;
+        document.getElementById('currentRank').innerHTML = `Event Rank: ${stats.qual.ranking.rank}/${stats.qual.num_teams}`;
     } catch (error) {
         console.error('Failed to set rank:', error);
     }
@@ -119,33 +118,18 @@ async function bannerHelper(eventTitle, nextMatchKey, stats, event, lastMatchKey
     }
 }
 
-async function setBanner(eventUrl) {
+async function setBanner() {
     try {
-        const eventResponse = await fetch(eventUrl);
-        const events = await eventResponse.json();
-        const now = new Date();
-        let currentEvent = null;
-
-        for (const [, event] of Object.entries(events)) {
-            const eventStart = new Date(event.start_date + 'T09:00:00-04:00');
-            const eventEnd = new Date(event.end_date + 'T23:59:59-04:00');
-
-            if (now >= eventStart && now <= eventEnd) {
-                currentEvent = event;
-                break;
-            }
-        }
-
+        const currentEvent = await getCurrentEvent();
+        console.log("Current Event:", currentEvent);
         if (currentEvent) {
-            const statusResponse = await fetch(`${API_BASE_URL}/${year}_event_statuses.json`);
-            const statuses = await statusResponse.json();
+            const statuses = await getEventStatuses();
             const status = statuses[currentEvent.key];
-
-            if (status) {
+            console.log("Event Status:", status);
                 const nextMatchKey = status.next_match_key || null;
                 const lastMatchKey = status.last_match_key || null;
                 await bannerHelper(currentEvent.name, nextMatchKey, status, currentEvent, lastMatchKey);
-            }
+            
         }
     } catch (error) {
         console.error('Failed to set banner:', error);
@@ -153,19 +137,5 @@ async function setBanner(eventUrl) {
 }
 
 // Initialize on page load
-// Remove these functions from currentlyCompetingBanner.js:
-// - getMatchNameFromKey()
-// - formatTeamKey()
-// - convertTime()
-// - convertTimestamp()
-
-// Add at the top of currentlyCompetingBanner.js:
-// <script src="tba.js"></script>
-
-// Then rename the one call in currentlyCompetingBanner.js:
-// convertTimestamp() → formatTimestamp()
-
-// And update the initialization:
-document.addEventListener('DOMContentLoaded', () => {
-    setBanner(eventurl);
-});
+console.log("Initializing banner...");
+setBanner();
