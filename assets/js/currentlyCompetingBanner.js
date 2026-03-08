@@ -124,11 +124,11 @@ async function bannerHelper(eventTitle, nextMatchKey, stats, event, lastMatchKey
 async function setBanner() {
     try {
         const currentEvent = await getCurrentEvent();
-        console.log("Current Event:", currentEvent);
+        //console.log("Current Event:", currentEvent);
         if (currentEvent) {
             const statuses = await getEventStatuses();
             const status = statuses[currentEvent.key];
-            console.log("Event Status:", status);
+            //console.log("Event Status:", status);
                 const nextMatchKey = status.next_match_key || null;
                 const lastMatchKey = status.last_match_key || null;
                 await bannerHelper(currentEvent.name, nextMatchKey, status, currentEvent, lastMatchKey);
