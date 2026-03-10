@@ -59,7 +59,7 @@ exclude: ['Archive', 'Documentation', 'node_modules']
 
 repository: Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io
 
-baseurl: ENV['JEKYLL_BASEURL'] || "/"
+baseurl: ""
 
 
 #set alert banners to be shown on the 
