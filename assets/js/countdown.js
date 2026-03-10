@@ -41,7 +41,7 @@ function matchCountdown(countDownDate, counterEl, callBackFunction = null) {
             display = `${days.toString().padStart(2, '0') + "d"} ${hours.toString().padStart(2, '0') + "h"} ${minutes.toString().padStart(2, '0') + "m"}`;
         } else {
             if (hours === 0) {
-                display = `${minutes.toString().padStart(2, '0') + ":"} ${seconds.toString().padStart(2, '0')}`;
+                display = `${minutes.toString().padStart(2, '0') + ":"}${seconds.toString().padStart(2, '0')}`;
             } else {
                 display = `${hours.toString().padStart(2, '0') + ":"}${minutes.toString().padStart(2, '0') + ":"}${seconds.toString().padStart(2, '0')}`;
             }

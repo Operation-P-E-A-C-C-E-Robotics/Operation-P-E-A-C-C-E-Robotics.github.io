@@ -58,9 +58,13 @@ async function getEventStatuses() {
  * @returns json object with event status, or null if not found
  */
 async function getTeamStatusStr(eventKey) {
-    const eventStatuses = await getEventStatuses();
-    const status = eventStatuses.find(e => e.key === eventKey);
-    return status ? status.overall_status_str : null;
+    getEventStatuses().then(eventStatuses => {
+        const status = eventStatuses.find(e => e.key === eventKey);
+        return status ? status.overall_status_str : null;
+    }).catch(error => {
+        console.error('Failed to get team status:', error);
+        return null;
+    });
 }
 async function getTeamStatus(eventKey) {
     const eventStatuses = await getEventStatuses();

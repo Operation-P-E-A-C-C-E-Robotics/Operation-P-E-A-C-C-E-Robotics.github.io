@@ -1,8 +1,10 @@
 import *  as tba from "./tba.js";
 import * as counter from "./countdown.js";
 
+
 var currentSeasonYear = null;
 var currentEvent = null;
+var currentEventStatus = null;
 var matchUpdateInterval = null;
    
 
@@ -104,11 +106,11 @@ function setEventTitle(event) {
     const eventTitleEl = document.getElementById('currentEventName');
     eventTitleEl.innerHTML = `${event?.short_name || 'Unknown Event'}`;
 }
-async function setEventStatus(event) {
+async function setEventStatus(status) {
     const eventStatusEl = document.getElementById('currentEventStatus');
     try {
-        const rank = event ? await tba.getTeamStatusRank(event.key) : "? / ?" ;
-        const record = event ? await tba.getTeamStatusRecordStr(event.key) : "-W -L -T";
+        const rank = status ? status.rank : "? / ?" ;
+        const record = status ? `${status.qual.record.wins}W-${status.qual.record.losses}L-${status.qual.record.ties}T` : "-W -L -T";
         eventStatusEl.innerHTML = `${rank} ${record}`;
     } catch (error) {
         console.error('Failed to set event status:', error);
@@ -117,8 +119,10 @@ async function setEventStatus(event) {
 }
 
 function setMatchList(matches, eventTimeZone) {
+    document.getElementById('matchesListContainer').innerHTML = ""; // Clear match list before populating to prevent duplicates
     matches.sort((a, b) => (a.predicted_time *1000) - (b.predicted_time *1000)); // Sort matches by predicted time (multiplied by 1000 to convert from seconds to milliseconds for JavaScript Date)
-    matches.forEach(async match => await addMatchToList(match, eventTimeZone));
+    matches.filter(match => match.predicted_time * 1000 > new Date().getTime()).forEach(match => addMatchToList(match, eventTimeZone)); // Only show upcoming matches in the list to prevent it from becoming too long as the event goes on. Past matches can be seen by clicking on the last match section at the top which will show the most recent past match with details and a link to the match video if available
+    matches.forEach(async match => addMatchToList(match, eventTimeZone));
 }
 
 function setNextMatch(nextMatch)  {
@@ -131,7 +135,7 @@ function setNextMatch(nextMatch)  {
         const blueAlliance = nextMatch.alliances.blue.team_keys.map(t => t.replace("frc", "")).join(", ");
         document.getElementById('nextMatchRed').innerText = redAlliance;
         document.getElementById('nextMatchBlue').innerText = blueAlliance;
-        console.log(document.getElementById(`${nextMatch.key}`));
+        console.log(`Removing ${nextMatch.key} from match list if it exists because its now being displayed as the next match.`);
         document.getElementById(`${nextMatch.key}`).remove(); // Remove the match from the list of matches below since it's now being displayed as the next match. This prevents confusion from having the same match displayed in two places and also prevents the list of matches from becoming too long as the event goes on
         
         clearInterval(matchUpdateInterval); //reset the countdown interval to prevent multiple intervals from running simultaneously
@@ -143,6 +147,7 @@ function setNextMatch(nextMatch)  {
         document.getElementById('nextMatchBlue').innerText = "";
         if (currentEvent.start_date && new Date(currentEvent.start_date).getTime() > new Date().getTime()) { 
             // If the event hasn't started yet, show the event countdown instead of the next match countdown
+            clearInterval(matchUpdateInterval); //reset the countdown interval to prevent multiple intervals from running simultaneously
             matchUpdateInterval = counter.matchCountdown(currentEvent.start_date, document.getElementById('nextMatchCountdown'),  update);
             document.getElementById('nextMatchNumber').innerText = "Event Begins In:";
 
@@ -187,15 +192,39 @@ async function init() {
         setLiveStream(currentEvent.webcasts.length > 0 ? (currentEvent.webcasts[0].type === 'twitch' ? `https://player.twitch.tv/?autoplay=true&channel=${currentEvent.webcasts[0].channel}&parent=www.peacce.org` : `https://www.youtube.com/embed/live_stream?channel=${currentEvent.webcasts[0].channel}`) : '');
     }
    await update();
+   setInterval(update, 60000); // Refresh data every minute to keep match list and statuses up to date
 }
 
 async function update() {
-    setMatchList(await tba.getEventMatches(currentEvent.key), currentEvent.timezone);
-    await setEventStatus(currentEvent); // this must be last because event status is null until the event begins
-    setNextMatch(currentEvent.next_match_key ? await tba.getMatchFromKey(currentEvent.next_match_key) : null);
-    setLastMatch(currentEvent.last_match_key ? await tba.getMatchFromKey(currentEvent.last_match_key) : null);
-    
-    
+    console.log('Updating gameday data...');
+    document.getElementById('matchesListContainer').innerHTML = ""; // Clear match list before updating to prevent duplicates
+    tba.getEventMatches(currentEvent.key).then(matches => {
+        setMatchList(matches, currentEvent.timezone);
+    }).catch(error => {
+        console.error('Failed to get event matches:', error);
+        setMatchList([], currentEvent.timezone); // Clear match list on error
+    });
+
+    tba.getTeamStatus(currentEvent.key).then(status => {
+        setEventStatus(status);
+    }).catch(error => {
+        console.error('Failed to get team status:', error);
+        
+    });
+
+    tba.getMatchFromKey(currentEvent.next_match_key).then(nextMatch => {
+        setNextMatch(nextMatch);
+    }).catch(error => {
+        console.error('Failed to get next match:', error);
+        setNextMatch(null);
+    });
+
+    tba.getMatchFromKey(currentEvent.last_match_key).then(lastMatch => {
+        setLastMatch(lastMatch);
+    }).catch(error => {
+        console.error('Failed to get last match:', error);
+        setLastMatch(null);
+    }); 
 }
 
 init();
@@ -295,6 +324,7 @@ const testLastMatch =
 
 function generateTestMatches(matchesArray) {
     const maxMatches = 20;
+    const wasFull = matchesArray.length >= maxMatches;
     const baseTeams = ["frc10245", "frc155", "frc6333", "frc2168", "frc3461", "frc571", "frc1234", "frc5678", "frc9012", "frc3456", "frc7890", "frc1111"]; // Extended team list for variety
     while (matchesArray.length < maxMatches) {
         const original = matchesArray[Math.floor(Math.random() * matchesArray.length)];
@@ -316,6 +346,12 @@ function generateTestMatches(matchesArray) {
         duplicate.alliances.blue.team_keys = selectedTeams.slice(3, 6);
         matchesArray.push(duplicate);
     }
+    // If the array was already full, randomly modify predicted times since they change a lot in reality
+    if (wasFull) {
+        matchesArray.forEach(match => {
+            match.predicted_time = Math.floor(new Date().getTime() / 1000) + Math.floor(Math.random() * 3600);
+        });
+    }
 }
 
 function testMatches() {
@@ -323,8 +359,8 @@ function testMatches() {
     generateTestMatches(matches);
     setMatchList(matches, currentEvent.timezone);
     setTimeout(() => {
-        setLastMatch(testLastMatch);
-        setNextMatch(testNextMatch);
+        setLastMatch(matches[Math.floor(Math.random() * matches.length)]);
+        setNextMatch(matches[Math.floor(Math.random() * matches.length)]);
     }, 1000);
 }
 window.testMatches = testMatches; // Expose testMatches function to global scope for testing purposes
