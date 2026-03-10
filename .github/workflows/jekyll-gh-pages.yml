@@ -70,6 +70,10 @@ jobs:
         with:
           source: ./
           destination: ./_site
+        env:
+          JEKYLL_ENV: ${{ vars.JEKYLL_ENV}} #For Staging/Production builds
+          JEKYLL_BASEURL: ${{ vars.JEKYLL_BASEURL }} #Set to "/" for production, "/website-staging" for staging
+          JEKYLL_FUTURE: ${{ vars.JEKYLL_FUTURE }} #Set to "true" to publish future-dated posts, "false" to not publish them
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
