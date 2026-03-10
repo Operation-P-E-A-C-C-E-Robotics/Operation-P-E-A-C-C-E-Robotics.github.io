@@ -12,15 +12,15 @@ permalink: /gameday/
 </div>
 
 
-<div class="container-fluid bg-secondary fixed-bottom align-items-center pl-0 pr-0 ml-0 mr-0 pt-2 pb-2" id="gamedayNavbar" style="max-height: 8vh;">
-    <div class="row w-100 m-0 p-0 d-inline-flex">
-        <div class="col order-sm-0 d-inline-flex mr-1 pr-0" style="max-width: fit-content;">
+<div class="container-fluid bg-secondary fixed-bottom align-items-center pl-0 pr-0 ml-0 mr-0 pt-2 pb-2" id="gamedayNavbar" style="min-height: 100px; max-height: 8vh;">
+    <div class="row w-100 m-0 p-0 d-flex">
+        <div class="col-3 d-inline-flex mr-1 pr-0">
             <div class="media rounded-lg align-items-center pt-1 pr-1 mr-2" >
-                <div class="bg-primary d-flex rounded-circle" style="width: 50px; height: 50px; align-items: center; justify-content: center; margin-right: 20px;">
+                <div class="bg-primary d-inline-flex flex-nowrap rounded-circle" style="width: 50px; height: 50px; align-items: center; justify-content: center; margin-right: 20px;">
                     <img src="/assets/images/tba_lamp.svg"  class="w-75 p-2" alt="T.B.A Logo">
                 </div>
                 <div class="media-body">
-                    <h5 class="mb-0 text-light" id="currentEventName">Current Event: Not Found</h5>
+                    <h5 class="mb-0 text-light text-nowrap" id="currentEventName">Current Event: Not Found</h5>
                     <h6 class="mb-0 text-light " id="eventLocalTime"></h6>
                     <h6 class="mb-0 text-light font-weight-bold" id="currentEventStatus">Event Status: Not Found</h6>
                     <h6 id="competitionCountdown" class="text-center mt-0 mb-0" style="display:none;"> 
@@ -34,7 +34,7 @@ permalink: /gameday/
                 </div>
             </div>
             <div id="lastMatchContainer">
-                <div class="container bg-dark d-inline-flex align-items-center rounded-lg pr-0 pl-1" style="min-width: fit-content; max-width: max-content; height: 100%;">
+                <div class="container bg-dark d-inline-flex align-items-center rounded-lg pr-0 pl-1 h-100">
                     <div class="pt-2 ml-0 pl-0 mr-1 text-center">
                         <h6>Last Match: <span id="lastMatchName"></span></h6>
                         <h6><span class="text-danger font-weight-bold mb-0" id="lastMatchRedScore">0</span> - <span class="text-primary font-weight-bold" id="lastMatchBlueScore">0</span></h6>
@@ -53,7 +53,7 @@ permalink: /gameday/
             </div> 
             <br>
             <div id="nextMatchContainer" class="ml-1 d-inline-flex">
-                <div class="container bg-dark d-inline-flex align-items-center rounded-lg pr-0 pl-1" style="max-width: fit-content; height: 100%;">
+                <div class="container bg-dark d-inline-flex align-items-center rounded-lg pr-0 pl-1">
                     <div class="pt-2 ml-0 pl-0 mr-1 text-center">
                         <h6>Next Match: <span id="nextMatchNumber"></span></h6>
                         
@@ -73,17 +73,16 @@ permalink: /gameday/
             </div>
         </div>
 
-        <div class="col order-sm-1 align-left d-flex justify-content-start pl-0 ml-0" style="width: max-content;">
-            
-            <div id="matchesListContainer" class="d-inline-flex align-middle justify-content-start pl-0 ml-0 mr-1" style="width: max-content; max-width: 50vw; overflow-x: auto;"> 
+        <div class="col pl-0 ml-0 pb-0 mb-0" style="min-width:0 ;">
+            <div id="matchesListContainer" class="d-inline-flex pl-0 ml-0 mr-1" style="overflow: hidden; max-width:100%;"> 
             </div>
         </div>
 
-        <div class="col order-sm-2" style="max-width: fit-content;">
+        <div class="col col-1">
             <ul class="nav nav-pills nav-justified flex-column">
                 <li class="nav-item">
                     <div class="dropup pb-1">
-                        <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
+                        <button type="button" class="btn btn-dark dropdown-toggle w-100" data-toggle="dropdown">
                         Select Livestream
                         </button>
                         <div class="dropdown-menu" id="livestreamDropdown">

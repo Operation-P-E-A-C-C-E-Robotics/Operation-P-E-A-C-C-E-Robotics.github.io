@@ -26,23 +26,25 @@ async function addMatchToList(match) {
     const matchKey = await tba.getMatchCodeFromKey(match.key);
     const matchEl =
         `
-        <div class="container bg-dark d-inline-flex align-items-center rounded-lg pr-0 pl-1" style="max-width: fit-content; height: 100%;">
-            <div class="pt-2 ml-0 pl-0 mr-1 text-center">
-                <h6>${matchKey}</h6>
-            </div>
-            <table class="table table-sm table-borderless text-light align-items-center pt-2 mb-0 mr-0 pr-0 rounded-sm" style="max-width: fit-content;">
-                <tbody class="align-items-center text-center rounded-sm">
-                    <tr class="text-danger">
-                        <td class="small font-weight-bold">${redAlliance}</td> 
-                    </tr>
-                    <tr class="text-primary">
-                        <td class="small font-weight-bold">${blueAlliance}</td>
-                    </tr>
-                </tbody>
-            </table> 
-        </div> 
+        <div class="pt-2 ml-0 pl-0 mr-1 text-center">
+            <h6>${matchKey}</h6>
+        </div>
+        <table class="table table-sm table-borderless text-light align-items-center pt-2 pb-2 mb-1 mt-1 mr-0 pr-0 rounded-sm" style="max-width: fit-content; height: 100%;">
+            <tbody class="align-items-center text-center rounded-sm">
+                <tr class="text-danger">
+                    <td class="small font-weight-bold text-nowrap">${redAlliance}</td> 
+                </tr>
+                <tr class="text-primary">
+                    <td class="small font-weight-bold text-nowrap">${blueAlliance}</td>
+                </tr>
+            </tbody>
+        </table>  
         `
-    const matchItem = document.createElement('div');
+    const matchItem = document.createElement('div')
+    matchItem.classList.add("container", "bg-dark", "d-inline-flex", "align-items-center", "mr-1",
+                            "mb-1","h-100","rounded-lg", "pr-0", "pl-1", "h-100"); 
+    matchItem.id += match.key;
+    // matchItem.style.maxWidth = "fit-content";
     matchItem.innerHTML = matchEl;
     matchList.appendChild(matchItem);
 }
@@ -153,3 +155,5 @@ export { init, update, resizeGameday, addMatchToList, removeMatchFromList, setLi
 
 window.initGameday = init; // Expose init function to global scope for testing purposes
 window.updateGameday = update; // Expose update function for the refresh button
+window.addMatchToList = addMatchToList; // Expose addMatchToList for testing purposes
+window.removeMatchFromList = removeMatchFromList;
