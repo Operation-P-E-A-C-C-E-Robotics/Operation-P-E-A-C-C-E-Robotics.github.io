@@ -42,10 +42,21 @@ jobs:
         with:
           node-version: "latest"
 
+  install-bundler:
+    runs-on: ubuntu-latest
+    needs: [install-node]
+    steps:
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest  
+      - name: Install Gems
+        run: bundle install
+
   # Build job
   build:
     runs-on: ubuntu-latest
-    needs: [install-node]    
+    needs: [install-node, install-bundler]    
     steps:      
 
       - name: Checkout Branch
