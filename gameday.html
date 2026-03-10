@@ -12,11 +12,11 @@ permalink: /gameday/
 </div>
 
 
-<div class="container-fluid bg-secondary fixed-bottom align-items-center pl-0 pr-0 ml-0 mr-0 pt-2 pb-2" id="gamedayNavbar" style="min-height: 100px; max-height: 8vh;">
-    <div class="row w-100 m-0 p-0 d-flex">
-        <div class="col-3 d-inline-flex mr-1 pr-0">
-            <div class="media rounded-lg align-items-center pt-1 pr-1 mr-2" >
-                <div class="bg-primary d-inline-flex flex-nowrap rounded-circle" style="width: 50px; height: 50px; align-items: center; justify-content: center; margin-right: 20px;">
+<div class="container-fluid bg-secondary fixed-bottom align-content-center pl-0 pr-0 ml-0 mr-0 pt-1 pb-1" id="gamedayNavbar" style="min-height: 100px; max-height: 8vh;">
+    <div class="row w-100 h-100 mx-auto p-0 d-flex">
+        <div class="col-auto d-inline-flex mr-1 pr-0 pl-1" style="min-width:fit-content;">
+            <div class="media rounded-lg align-items-center pr-1 mr-2" >
+                <div class="bg-primary d-inline-flex flex-nowrap rounded-circle" style="width: 50px; height: 50px; align-items: center; justify-content: center; margin-right: 10px;">
                     <img src="/assets/images/tba_lamp.svg"  class="w-75 p-2" alt="T.B.A Logo">
                 </div>
                 <div class="media-body">
@@ -25,10 +25,10 @@ permalink: /gameday/
                     <h6 class="mb-0 text-light font-weight-bold" id="currentEventStatus">Event Status: Not Found</h6>
                     <h6 id="competitionCountdown" class="text-center mt-0 mb-0" style="display:none;"> 
                         <b id="competitionCountdownDays" class="text-nowrap">
-                        <span class="countdown-number countdown-days">--</span><span class="countdown-label day-label">:</span>
-                        <span class="countdown-number countdown-hours">--</span><span class="countdown-label">:</span>
-                        <span class="countdown-number countdown-minutes">--</span><span class="countdown-label">:</span>
-                        <span class="countdown-number countdown-seconds">--</span><span class="countdown-label"></span>
+                        <span class="countdown-number countdown-days">--</span><span class="countdown-label day-label">d</span>
+                        <span class="countdown-number countdown-hours">--</span><span class="countdown-label">h</span>
+                        <span class="countdown-number countdown-minutes">--</span><span class="countdown-label">m</span>
+                        <span class="countdown-number countdown-seconds invisible">--</span><span class="countdown-label"></span>
                         </b> 
                     </h6>
                 </div>
@@ -36,16 +36,16 @@ permalink: /gameday/
             <div id="lastMatchContainer">
                 <div class="container bg-dark d-inline-flex align-items-center rounded-lg pr-0 pl-1 h-100">
                     <div class="pt-2 ml-0 pl-0 mr-1 text-center">
-                        <h6>Last Match: <span id="lastMatchName"></span></h6>
-                        <h6><span class="text-danger font-weight-bold mb-0" id="lastMatchRedScore">0</span> - <span class="text-primary font-weight-bold" id="lastMatchBlueScore">0</span></h6>
+                        <h6 class="text-nowrap">Last: <span id="lastMatchCode"></span></h6>
+                        <h6 class="text-nowrap"><span class="text-danger font-weight-bold mb-0" id="lastMatchRedScore">0000</span> - <span class="text-primary font-weight-bold" id="lastMatchBlueScore">0000</span></h6>
                     </div>
                     <table class="table table-sm table-borderless text-light align-items-center pt-2 mb-0 mr-0 pr-0 rounded-sm" style="max-width: fit-content;">
                         <tbody class="align-items-center text-center rounded-sm">
                             <tr class="text-danger">
-                                <td class="small font-weight-bold" id="lastMatchRed">00000 00000 00000</td> 
+                                <td class="small font-weight-bold text-nowrap" id="lastMatchRed">00000 00000 00000</td> 
                             </tr>
                             <tr class="text-primary">
-                                <td class="small font-weight-bold" id="lastMatchBlue">00000 00000 00000</td>
+                                <td class="small font-weight-bold text-nowrap" id="lastMatchBlue">00000 00000 00000</td>
                             </tr>
                         </tbody>
                     </table> 
@@ -55,17 +55,17 @@ permalink: /gameday/
             <div id="nextMatchContainer" class="ml-1 d-inline-flex">
                 <div class="container bg-dark d-inline-flex align-items-center rounded-lg pr-0 pl-1">
                     <div class="pt-2 ml-0 pl-0 mr-1 text-center">
-                        <h6>Next Match: <span id="nextMatchNumber"></span></h6>
+                        <h6 class="text-nowrap">Next: <span id="nextMatchNumber"></span></h6>
                         
-                        <h6 class="text-light font-weight-bold" id="nextMatchCountdown">--:--:--</h6>
+                        <h6 class="text-light text-nowrap"><span id="nextMatchCountdown" class="font-weight-bold ">--:--:--</span></h6>
                     </div>
                     <table class="table table-sm table-borderless text-light align-items-center pt-2 mb-0 mr-0 pr-0 rounded-sm" style="max-width: fit-content;">
                         <tbody class="align-items-center text-center rounded-sm">
                             <tr class="text-danger">
-                                <td class="small font-weight-bold" id="nextMatchRed">00000 00000 00000</td> 
+                                <td class="small font-weight-bold text-nowrap" id="nextMatchRed">00000 00000 00000</td> 
                             </tr>
                             <tr class="text-primary">
-                                <td class="small font-weight-bold" id="nextMatchBlue">00000 00000 00000</td>
+                                <td class="small font-weight-bold text-nowrap" id="nextMatchBlue">00000 00000 00000</td>
                             </tr>
                         </tbody>
                     </table> 
@@ -74,12 +74,12 @@ permalink: /gameday/
         </div>
 
         <div class="col pl-0 ml-0 pb-0 mb-0" style="min-width:0 ;">
-            <div id="matchesListContainer" class="d-inline-flex pl-0 ml-0 mr-1" style="overflow: hidden; max-width:100%;"> 
+            <div id="matchesListContainer" class="d-inline-flex pl-0 ml-2 mr-1 h-100" style="overflow: hidden; max-width:100%;"> 
             </div>
         </div>
 
-        <div class="col col-1">
-            <ul class="nav nav-pills nav-justified flex-column">
+        <div class="col col-auto pr-1 pl-0 ml-0" style="min-width:fit-content;">
+            <ul class="nav nav-pills nav-justified flex-column h-100 pb-0 mb-0 align-content-end">
                 <li class="nav-item">
                     <div class="dropup pb-1">
                         <button type="button" class="btn btn-dark dropdown-toggle w-100" data-toggle="dropdown">
@@ -90,7 +90,7 @@ permalink: /gameday/
                     </div>
                 </li>
                 
-                <li class="nav-item">
+                <li class="nav-item mb-0 pb-0 pl-0 ml-0 h-100">
                     <button type="button" class="btn btn-dark w-100" id="refreshButton" onclick="initGameday()">Refresh Matches</button>
                 </li>
             </ul>

@@ -1,7 +1,7 @@
 // tba.js - Helper functions for parsing TBA data from GitHub repository
 
 const TBA_BASE_URL = "https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend";
-const year = getCurrentSeasonYear();
+var year = getCurrentSeasonYear();
 /**
  * Get the current FRC season year
  * Year increments after September (build season is in the fall)
@@ -145,39 +145,35 @@ async function getMatchNameFromKey(matchKey) {
  * @param {string} matchKey 
  * @returns "Formatted match key (e.g., "QM1", "SF1-1") or null if match not found
  */
-async function getMatchCodeFromKey(matchKey) {
-    const match = await getMatchFromKey(matchKey);
-    if (!match) {
-        try {
-            return matchKey.split("_")[1].toUpperCase();
-        } catch (error) {
-            console.error('Failed to format match key:', error);
-            return "UN";
-        }
-    };
-
-    let matchTitle;
-    switch (match.comp_level) {
-        case "qm":
-            matchTitle = "QM";
-            break;
-        case "ef":
-            matchTitle = `EF${match.set_number}-`;
-            break;
-        case "qf":
-            matchTitle = `QF${match.set_number}-`;
-            break;
-        case "sf":
-            matchTitle = `SF${match.set_number}-`;
-            break;
-        case "f":
-            matchTitle = `F${match.set_number}-`; //This is for if a Final gets replayed. Logically finals dont need a set number but TBA formats them with a set number so this is to match that formatting
-            break;
-        default:
-            matchTitle = "Unknown";
+function getMatchCodeFromKey(matchKey) {
+    try {
+        return matchKey.split("_")[1].toUpperCase().replace(/(?<!Q)M/g, "-"); // Insert hyphen before M if not preceded by Q (to differentiate between QM and QF)
+    } catch (error) {
+        console.error('Failed to format match key:', error);
+        return "UN";
     }
+    // let matchTitle;
+    // switch (match.comp_level) {
+    //     case "qm":
+    //         matchTitle = "QM";
+    //         break;
+    //     case "ef":
+    //         matchTitle = `EF${match.set_number}-`;
+    //         break;
+    //     case "qf":
+    //         matchTitle = `QF${match.set_number}-`;
+    //         break;
+    //     case "sf":
+    //         matchTitle = `SF${match.set_number}-`;
+    //         break;
+    //     case "f":
+    //         matchTitle = `F${match.set_number}-`; //This is for if a Final gets replayed. Logically finals dont need a set number but TBA formats them with a set number so this is to match that formatting
+    //         break;
+    //     default:
+    //         matchTitle = "Unknown";
+    // }
 
-    return `${matchTitle} ${match.match_number}`;
+    // return `${matchTitle} ${match.match_number}`;
 }
 
 /**
@@ -286,3 +282,6 @@ function getKickoffDate(year = new Date().getFullYear()) {
 }
 
 export { getEventMatches, getTeamStatusRank, getTeamStatusRecordStr, getTeamStatusStr, getCurrentSeasonYear, getEvents, getEvent, getMatches, getEventStatuses, getTeamStatusStr as getTeamStatus, getDistrictRankings, getEventNameFromKey, getShortEventNameFromKey, getMatchFromKey, getMatchNameFromKey, getMatchCodeFromKey, formatTeamKey, getCurrentEvent, getNextEvent, getTeamDistrictStats, getAwards, getMedia, formatTimestamp, getKickoffDate };
+window.getMatchCodeFromKey = getMatchCodeFromKey; // Expose getMatchCodeFromKey to global scope for testing purposes
+window.getCurrentSeasonYear = getCurrentSeasonYear; // Expose getCurrentSeasonYear to global scope for testing purposes
+window.year = year; // Expose year variable to global scope for testing purposes

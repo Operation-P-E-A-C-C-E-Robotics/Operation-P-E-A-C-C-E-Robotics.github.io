@@ -1,5 +1,5 @@
-import { getKickoffDate, getCurrentEvent, getCurrentSeasonYear, getNextEvent, getMedia, getTeamDistrictStats, getDistrictRankings, getAwards, getEvents, getEventStatuses, getMatches, formatTeamKey, getEventNameFromKey, getMatchNameFromKey } from "/assets/js/tba.js";
-import {eventCountdown, matchCountdown, kickoffCountdown} from "/assets/js/countdown.js";
+import { getKickoffDate, getCurrentEvent, getCurrentSeasonYear, getNextEvent, getMedia, getTeamDistrictStats, getDistrictRankings, getAwards, getEvents, getEventStatuses, getMatches, formatTeamKey, getEventNameFromKey, getMatchNameFromKey } from "./tba.js";
+import {eventCountdown, matchCountdown, kickoffCountdown} from "./countdown.js";
 import { Chart } from "https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm";
 
   const year = getCurrentSeasonYear();
