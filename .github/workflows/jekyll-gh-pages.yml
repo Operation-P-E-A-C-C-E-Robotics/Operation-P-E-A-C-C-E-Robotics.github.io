@@ -44,14 +44,12 @@ jobs:
 
   install-bundler:
     runs-on: ubuntu-latest
-    needs: [install-node]
     steps:
-      - name: Set up Bun
-        uses: oven-sh/setup-bun@v2
+      - name: Set up Bundler
+        uses: ruby/setup-ruby@v1
         with:
-          bun-version: latest  
-      - name: Install Gems
-        run: bundle install
+          bundler-cache: true
+          ruby-version: "latest"
 
   # Build job
   build:
