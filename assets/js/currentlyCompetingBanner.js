@@ -3,6 +3,9 @@
 const API_BASE_URL = 'https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend';
 const TIMEZONE = 'America/New_York';
 let countDownDate;
+import { getCurrentSeasonYear, getEventStatuses, getCurrentEvent, getMatchFromKey, getMatchNameFromKey } from './tba.js';
+import { matchCountdown } from './countdown.js';
+
 var year = getCurrentSeasonYear(); 
 console.log(`Current season year: ${year}`);
 const eventurl = `${API_BASE_URL}/${year}_events.json`;
@@ -16,7 +19,7 @@ function setMatchCountdown(predictedTime, eventTimeZone) {
     const timeEl = document.getElementById('time');
     
     console.log(`Setting match countdown with predicted time: ${predictedTime} and event timezone: ${eventTimeZone}`);
-    matchCountdown(predictedTime, counterEl, timeEl, eventTimeZone);
+    matchCountdown(predictedTime, counterEl, timeEl, eventTimeZone, setBanner);
   
 }
 
