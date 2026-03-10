@@ -73,5 +73,9 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Add a click event listener to the button
-  myButton.addEventListener('click', toggleDarkMode);
+  try {
+    myButton.addEventListener('click', toggleDarkMode);
+  } catch (error) {
+    console.error('Error occurred while adding event listener:', error);
+  }
 });

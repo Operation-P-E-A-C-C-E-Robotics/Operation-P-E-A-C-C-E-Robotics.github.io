@@ -1,6 +1,7 @@
 // tba.js - Helper functions for parsing TBA data from GitHub repository
 
 const TBA_BASE_URL = "https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend";
+const year = getCurrentSeasonYear();
 /**
  * Get the current FRC season year
  * Year increments after September (build season is in the fall)
@@ -30,6 +31,12 @@ async function getEvent(eventKey) {
     return events.find(e => e.key === eventKey) || null;
 }
 
+async function getEventMatches(eventKey) {
+    const response = await fetch(`${TBA_BASE_URL}/${year}_matches.json?t=${Date.now()}`);
+    const matches = await response.json();
+    return matches.filter(m => m.event_key === eventKey);
+}
+
 /**
  * Fetch and parse matches JSON for the current year
  */
@@ -50,10 +57,26 @@ async function getEventStatuses() {
  * @param {string} eventKey 
  * @returns json object with event status, or null if not found
  */
-async function getTeamStatus(eventKey) {
+async function getTeamStatusStr(eventKey) {
     const eventStatuses = await getEventStatuses();
     const status = eventStatuses.find(e => e.key === eventKey);
     return status ? status.overall_status_str : null;
+}
+async function getTeamStatus(eventKey) {
+    const eventStatuses = await getEventStatuses();
+    const status = eventStatuses.find(e => e.key === eventKey);
+    return status ? status : {};
+}
+
+async function getTeamStatusRecordStr(eventKey) {
+    const eventStatuses = await getEventStatuses();
+    const status = eventStatuses.find(e => e.key === eventKey);
+    return status ? `${status.qual.record.wins}W-${status.qual.record.losses}L-${status.qual.record.ties}T` : "-W -L -T";
+}
+async function getTeamStatusRank(eventKey) {
+    const eventStatuses = await getEventStatuses();
+    const status = eventStatuses.find(e => e.key === eventKey);
+    return status ? status.rank : "? / ?";
 }
 
 /**
@@ -110,6 +133,38 @@ async function getMatchNameFromKey(matchKey) {
             break;
         case "f":
             matchTitle = "Final";
+            break;
+        default:
+            matchTitle = "Unknown";
+    }
+
+    return `${matchTitle} ${match.match_number}`;
+}
+/**
+ * 
+ * @param {string} matchKey 
+ * @returns "Formatted match key (e.g., "QM1", "SF1-1") or null if match not found
+ */
+async function getMatchCodeFromKey(matchKey) {
+    const match = await getMatchFromKey(matchKey);
+    if (!match) return "Unknown";
+
+    let matchTitle;
+    switch (match.comp_level) {
+        case "qm":
+            matchTitle = "QM";
+            break;
+        case "ef":
+            matchTitle = `EF${match.set_number}-`;
+            break;
+        case "qf":
+            matchTitle = `QF${match.set_number}-`;
+            break;
+        case "sf":
+            matchTitle = `SF${match.set_number}-`;
+            break;
+        case "f":
+            matchTitle = `F${match.set_number}-`; //This is for if a Final gets replayed. Logically finals dont need a set number but TBA formats them with a set number so this is to match that formatting
             break;
         default:
             matchTitle = "Unknown";
@@ -222,3 +277,5 @@ function getKickoffDate(year = new Date().getFullYear()) {
     firstSaturday.setDate(jan1.getDate() + (6 - jan1.getDay()));
     return firstSaturday;
 }
+
+export { getEventMatches, getTeamStatusRank, getTeamStatusRecordStr, getTeamStatusStr, getCurrentSeasonYear, getEvents, getEvent, getMatches, getEventStatuses, getTeamStatusStr as getTeamStatus, getDistrictRankings, getEventNameFromKey, getShortEventNameFromKey, getMatchFromKey, getMatchNameFromKey, getMatchCodeFromKey, formatTeamKey, getCurrentEvent, getNextEvent, getTeamDistrictStats, getAwards, getMedia, formatTimestamp, getKickoffDate };
