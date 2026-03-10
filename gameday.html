@@ -22,7 +22,7 @@ permalink: /gameday/
                 <div class="media-body">
                     <h5 class="mb-0 text-light text-nowrap" id="currentEventName">Current Event: Not Found</h5>
                     <h6 class="mb-0 text-light " id="eventLocalTime"></h6>
-                    <h6 class="mb-0 text-light font-weight-bold" id="currentEventStatus">Event Status: Not Found</h6>
+                    <h6 class="mb-0 text-light font-weight-bold" id="currentEventStatus"></h6>
                     <h6 id="competitionCountdown" class="text-center mt-0 mb-0" style="display:none;"> 
                         <b id="competitionCountdownDays" class="text-nowrap">
                         <span class="countdown-number countdown-days">--</span><span class="countdown-label day-label">d</span>
@@ -91,7 +91,7 @@ permalink: /gameday/
                 </li>
                 
                 <li class="nav-item mb-0 pb-0 pl-0 ml-0 h-100">
-                    <button type="button" class="btn btn-dark w-100" id="refreshButton" onclick="initGameday()">Refresh Matches</button>
+                    <button type="button" class="btn btn-dark w-100" id="refreshButton" onclick="updateGameday()">Refresh Matches</button>
                 </li>
             </ul>
         </div>
