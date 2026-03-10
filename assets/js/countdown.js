@@ -1,6 +1,3 @@
-// Countdown timer functionality
-import { formatTimestamp } from "/assets/js/tba.js";
-
 /**
  * Update match countdown timer
  * @param {number} countDownDate - Unix timestamp to count down to
@@ -8,23 +5,49 @@ import { formatTimestamp } from "/assets/js/tba.js";
  * @param {HTMLElement} timeEl - Element to display current time
  * @returns {number} Interval ID
  */
-function matchCountdown(countDownDate, counterEl, timeEl, eventTimeZone, callBackFunction = null) {
+
+function eventLocalTime(eventTimeZone, timeEl) {
     const interval = setInterval(() => {
-        const now = new Date()//.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit', second: '2-digit' }).getTime();
+        const now = new Date();
         const currentTime = now.toLocaleTimeString("en-US", { timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit', second: '2-digit' });
-        const distance = new Date(formatTimestamp(countDownDate, eventTimeZone)).getTime() - now;
+        if (timeEl) {
+            timeEl.innerText = `${currentTime}`;
+            timeEl.style.display = 'block';
+        } else {
+            clearInterval(interval);
+        }
+    }, 1000);
+
+    return interval;
+}
+
+function matchCountdown(countDownDate, counterEl, callBackFunction = null) {
+    const interval = setInterval(() => {
+        const now = new Date();//.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit', second: '2-digit' }).getTime();
+        // const currentTime = now.toLocaleTimeString("en-US", { timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        const distance = new Date(countDownDate).getTime() - now.getTime();
         
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        if (!counterEl || !timeEl) {
+        if (!counterEl) {
             clearInterval(interval);
             return;
         }
-
-        counterEl.innerText = `${hours.toString().padStart(2, '0') + ":"}${minutes.toString().padStart(2, '0') + ":"}${seconds.toString().padStart(2, '0')}`;
-        timeEl.innerText = `${currentTime}`;
+        let display;
+        if (days > 0) {
+            display = `${days.toString().padStart(2, '0') + "d"} ${hours.toString().padStart(2, '0') + "h"} ${minutes.toString().padStart(2, '0') + "m"}`;
+        } else {
+            if (hours === 0) {
+                display = `${minutes.toString().padStart(2, '0') + ":"} ${seconds.toString().padStart(2, '0')}`;
+            } else {
+                display = `${hours.toString().padStart(2, '0') + ":"}${minutes.toString().padStart(2, '0') + ":"}${seconds.toString().padStart(2, '0')}`;
+            }
+            
+        }
+        counterEl.innerText = `${display}`;
         counterEl.classList.remove('yellowwarning', 'redalliance');
         if (hours === 0 && minutes <= 10) {
             counterEl.classList.add('redalliance');
@@ -36,7 +59,7 @@ function matchCountdown(countDownDate, counterEl, timeEl, eventTimeZone, callBac
             counterEl.classList.remove('yellowwarning', 'redalliance');
         }
         if (distance < 0) {
-            counterEl.innerHTML = `Next Match: On Field Soon!`;
+            counterEl.innerText = `On Field Soon!`;
             if (typeof callBackFunction === "function") {
                 callBackFunction();
             }
@@ -129,4 +152,4 @@ function eventCountdown(event, counterEl, callBackFunction = null) {
     return interval;
 }
 
-export { matchCountdown, kickoffCountdown, eventCountdown };
+export { matchCountdown, kickoffCountdown, eventCountdown, eventLocalTime };

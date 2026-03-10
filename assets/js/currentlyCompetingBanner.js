@@ -4,7 +4,7 @@ const API_BASE_URL = 'https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Ro
 const TIMEZONE = 'America/New_York';
 let countDownDate;
 import { getCurrentSeasonYear, getEventStatuses, getCurrentEvent, getMatchFromKey, getMatchNameFromKey } from './tba.js';
-import { matchCountdown } from './countdown.js';
+import { eventLocalTime, matchCountdown } from './countdown.js';
 
 var year = getCurrentSeasonYear(); 
 console.log(`Current season year: ${year}`);
@@ -19,7 +19,8 @@ function setMatchCountdown(predictedTime, eventTimeZone) {
     const timeEl = document.getElementById('time');
     
     console.log(`Setting match countdown with predicted time: ${predictedTime} and event timezone: ${eventTimeZone}`);
-    matchCountdown(predictedTime, counterEl, timeEl, eventTimeZone, setBanner);
+    matchCountdown(predictedTime, counterEl, setBanner);
+    eventLocalTime(eventTimeZone, timeEl);
   
 }
 
