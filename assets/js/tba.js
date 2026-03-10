@@ -147,7 +147,14 @@ async function getMatchNameFromKey(matchKey) {
  */
 async function getMatchCodeFromKey(matchKey) {
     const match = await getMatchFromKey(matchKey);
-    if (!match) return "Unknown";
+    if (!match) {
+        try {
+            return matchKey.split("_")[1].toUpperCase();
+        } catch (error) {
+            console.error('Failed to format match key:', error);
+            return "UN";
+        }
+    };
 
     let matchTitle;
     switch (match.comp_level) {
