@@ -110,7 +110,7 @@ function populateLiveStreamOptions(event) {
         button.addEventListener('click', () => {
             const url = webcast.type === 'twitch' 
                 ? `https://player.twitch.tv/?autoplay=true&channel=${webcast.channel}&parent=www.peacce.org`
-                : `https://www.youtube.com/embed/live_stream?channel=${webcast.channel}`;
+                : `https://www.youtube.com/embed/${webcast.channel}`;
             setLiveStream(url);
         });
         liveStreamDropdown.appendChild(button);
@@ -216,11 +216,8 @@ async function init() {
     setEventTitle(currentEvent);
     counter.eventLocalTime(currentEvent.timezone, document.getElementById('eventLocalTime'));
     populateLiveStreamOptions(currentEvent);
-    if (new Date(currentEvent.start_date).getTime() > new Date().getTime()) {
-        setLiveStream(''); // Hide live stream if event hasn't started yet
-    } else {
-        setLiveStream(currentEvent.webcasts.length > 0 ? (currentEvent.webcasts[0].type === 'twitch' ? `https://player.twitch.tv/?autoplay=true&channel=${currentEvent.webcasts[0].channel}&parent=www.peacce.org` : `https://www.youtube.com/embed/live_stream?channel=${currentEvent.webcasts[0].channel}`) : '');
-    }
+    setLiveStream(currentEvent.webcasts.length > 0 ? (currentEvent.webcasts[0].type === 'twitch' ? `https://player.twitch.tv/?autoplay=true&channel=${currentEvent.webcasts[0].channel}&parent=www.peacce.org` : `https://www.youtube.com/embed/${currentEvent.webcasts[0].channel}`) : '');
+    
    await update();
    updateInterval = setInterval(update, 60000); // Refresh data every minute to keep match list and statuses up to date
    window.updateInterval = updateInterval //allow cancelling the auto-match refresh for testing purposes
