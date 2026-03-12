@@ -223,6 +223,7 @@ async function init() {
     }
    await update();
    updateInterval = setInterval(update, 60000); // Refresh data every minute to keep match list and statuses up to date
+   window.updateInterval = updateInterval //allow cancelling the auto-match refresh for testing purposes
 }
 
 async function updateWithVisual() {
@@ -407,5 +408,6 @@ function testMatches() {
         setLastMatch(matches[Math.floor(Math.random() * matches.length)]);
         setNextMatch(matches[Math.floor(Math.random() * matches.length)]);
     }, 1000);
+    clearInterval(updateInterval);
 }
 window.testMatches = testMatches; // Expose testMatches function to global scope for testing purposes
