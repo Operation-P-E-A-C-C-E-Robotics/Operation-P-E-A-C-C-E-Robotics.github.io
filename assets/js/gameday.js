@@ -7,6 +7,8 @@ var currentEvent = null;
 var currentEventStatus = null;
 var matchUpdateInterval = null;
 var updateInterval = null;
+const matchRefreshSpinner = document.getElementById("matchRefreshSpinner");
+const streamRefreshSpinner = document.getElementById("streamRefreshSpinner");
 
 function resizeGameday() {
     const navbar = document.getElementById("gamedayNavbar");
@@ -19,6 +21,17 @@ function resizeGameday() {
 
 window.addEventListener("load", resizeGameday);
 window.addEventListener("resize", resizeGameday);
+
+function showRefreshSpinner(element) {
+    element.classList.add("spinner-grow", "spinner-grow-sm")
+}
+function hideRefreshSpinner(element) {
+    element.classList.remove("spinner-grow", "spinner-grow-sm")
+    element.classList.add("fa", "fa-check")
+    setTimeout(()=> {
+        element.classList.remove("fa", "fa-check")
+    }, 1500)
+}
 
 function addMatchToList(match, eventTimeZone) {
     const matchList = document.getElementById("matchesListContainer");
@@ -103,6 +116,19 @@ function populateLiveStreamOptions(event) {
         liveStreamDropdown.appendChild(button);
         
     });
+}
+
+function refreshLiveStreamsWithVisual() {
+    // Visual feedback to the user that the function is running (will stay on screen longer than the function actually takes to run)
+    const minDisplayTime = 500; // milliseconds (0.5s usually feels good)
+    const startTime = Date.now();
+    showRefreshSpinner(streamRefreshSpinner)
+    populateLiveStreamOptions(currentEvent)
+    const elapsed = Date.now() - startTime;
+    const remaining = Math.max(minDisplayTime - elapsed, 0);
+    setTimeout(() => {
+        hideRefreshSpinner(streamRefreshSpinner)
+    }, remaining);    
 }
 
 function setEventTitle(event) {
@@ -199,6 +225,19 @@ async function init() {
    updateInterval = setInterval(update, 60000); // Refresh data every minute to keep match list and statuses up to date
 }
 
+async function updateWithVisual() {
+    // Visual feedback to the user that the function is running (will stay on screen longer than the function actually takes to run)
+    const minDisplayTime = 500; // milliseconds (0.5s usually feels good)
+    const startTime = Date.now();
+    showRefreshSpinner(matchRefreshSpinner)
+    await update()
+    const elapsed = Date.now() - startTime;
+    const remaining = Math.max(minDisplayTime - elapsed, 0);
+    setTimeout(() => {
+        hideRefreshSpinner(matchRefreshSpinner)
+    }, remaining);
+}
+
 async function update() {
     console.log('Updating gameday data...');
     document.getElementById('matchesListContainer').innerHTML = ""; // Clear match list before updating to prevent duplicates
@@ -236,13 +275,13 @@ init();
 export { init, update, resizeGameday, addMatchToList, removeMatchFromList, setLiveStream, populateLiveStreamOptions};
 
 window.initGameday = init; // Expose init function to global scope for testing purposes
-window.updateGameday = update; // Expose update function for the refresh button
+window.updateGameday = updateWithVisual; // Expose update function for the refresh button
 window.addMatchToList = addMatchToList; // Expose addMatchToList for testing purposes
 window.removeMatchFromList = removeMatchFromList;
 window.setNextMatch = setNextMatch;
 window.setLastMatch = setLastMatch;
 window.setMatchList = setMatchList;
-window.populateLiveStreamOptions = populateLiveStreamOptions
+window.populateLiveStreamOptions = refreshLiveStreamsWithVisual
 
 const testNextMatch =
 {

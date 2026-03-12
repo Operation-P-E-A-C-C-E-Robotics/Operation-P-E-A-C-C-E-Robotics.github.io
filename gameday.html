@@ -82,8 +82,7 @@ metadesc: "Watch Operation P.E.A.C.C.E Robotics compete live at events, via live
         <div class="col col-auto pr-1 pl-0 ml-0" style="min-width:fit-content;">
             <div class="btn-group-vertical h-100 pb-0 mb-0 align-content-end">
                 <div class="dropup pb-1">
-                    <button type="button" class="btn btn-dark dropdown-toggle w-100" data-toggle="dropdown">
-                    Select Livestream
+                    <button type="button" class="btn btn-dark dropdown-toggle w-100" data-toggle="dropdown"><span class="" id="streamRefreshSpinner"></span> Select Livestream
                     </button>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" onclick="populateLiveStreamOptions(currentEvent)">Refresh Livestreams</div>
@@ -93,7 +92,7 @@ metadesc: "Watch Operation P.E.A.C.C.E Robotics compete live at events, via live
                         </span>
                     </div>
                 </div>
-                <button type="button" class="btn btn-dark w-100" id="refreshButton" onclick="updateGameday()"><span class="spinner-border spinner-border-sm"></span>Refresh Matches</button>
+                <button type="button" class="btn btn-dark w-100" id="refreshButton" onclick="updateGameday()"><span class="" id="matchRefreshSpinner"></span> Refresh Matches</button>
             </div>
         </div>
     </div>
