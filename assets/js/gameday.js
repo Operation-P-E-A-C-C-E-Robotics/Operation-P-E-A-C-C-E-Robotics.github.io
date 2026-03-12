@@ -6,7 +6,7 @@ var currentSeasonYear = null;
 var currentEvent = null;
 var currentEventStatus = null;
 var matchUpdateInterval = null;
-   
+var updateInterval = null;
 
 function resizeGameday() {
     const navbar = document.getElementById("gamedayNavbar");
@@ -88,9 +88,11 @@ function setLiveStream(streamUrl) {
 
 function populateLiveStreamOptions(event) {
     const liveStreamDropdown = document.getElementById('livestreamDropdown');
+    liveStreamDropdown.innerHTML = "" //clear the list to ensure no duplicates (we might be refreshing or populating for the first time)
     event.webcasts.forEach((webcast, index) => {
         const button = document.createElement('button');
         button.className = 'dropdown-item';
+        button.id = webcast.channel
         button.textContent = webcast?.stream_title || (webcast.type === 'twitch' ? `Twitch Stream ${index+1}` : `YouTube Stream ${index+1}`);
         button.addEventListener('click', () => {
             const url = webcast.type === 'twitch' 
@@ -99,6 +101,7 @@ function populateLiveStreamOptions(event) {
             setLiveStream(url);
         });
         liveStreamDropdown.appendChild(button);
+        
     });
 }
 
@@ -183,6 +186,7 @@ function setLastMatch(lastMatch) {
 async function init() {
     currentSeasonYear = await tba.getCurrentSeasonYear();
     currentEvent = await tba.getCurrentEvent() || await tba.getNextEvent() || null;
+    window.currentEvent = currentEvent; //expose the current event to the window so the refresh live streams button can pass it in
     setEventTitle(currentEvent);
     counter.eventLocalTime(currentEvent.timezone, document.getElementById('eventLocalTime'));
     populateLiveStreamOptions(currentEvent);
@@ -192,7 +196,7 @@ async function init() {
         setLiveStream(currentEvent.webcasts.length > 0 ? (currentEvent.webcasts[0].type === 'twitch' ? `https://player.twitch.tv/?autoplay=true&channel=${currentEvent.webcasts[0].channel}&parent=www.peacce.org` : `https://www.youtube.com/embed/live_stream?channel=${currentEvent.webcasts[0].channel}`) : '');
     }
    await update();
-   setInterval(update, 60000); // Refresh data every minute to keep match list and statuses up to date
+   updateInterval = setInterval(update, 60000); // Refresh data every minute to keep match list and statuses up to date
 }
 
 async function update() {
@@ -238,6 +242,8 @@ window.removeMatchFromList = removeMatchFromList;
 window.setNextMatch = setNextMatch;
 window.setLastMatch = setLastMatch;
 window.setMatchList = setMatchList;
+window.populateLiveStreamOptions = populateLiveStreamOptions
+
 const testNextMatch =
 {
     "actual_time": 1743267613,

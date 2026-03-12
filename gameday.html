@@ -80,21 +80,21 @@ metadesc: "Watch Operation P.E.A.C.C.E Robotics compete live at events, via live
         </div>
 
         <div class="col col-auto pr-1 pl-0 ml-0" style="min-width:fit-content;">
-            <ul class="nav nav-pills nav-justified flex-column h-100 pb-0 mb-0 align-content-end">
-                <li class="nav-item">
-                    <div class="dropup pb-1">
-                        <button type="button" class="btn btn-dark dropdown-toggle w-100" data-toggle="dropdown">
-                        Select Livestream
-                        </button>
-                        <div class="dropdown-menu" id="livestreamDropdown">
-                        </div>
+            <div class="btn-group-vertical h-100 pb-0 mb-0 align-content-end">
+                <div class="dropup pb-1">
+                    <button type="button" class="btn btn-dark dropdown-toggle w-100" data-toggle="dropdown">
+                    Select Livestream
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item" onclick="populateLiveStreamOptions(currentEvent)">Refresh Livestreams</div>
+                        <div class="dropdown-divider"></div>
+                        <span id="livestreamDropdown">
+
+                        </span>
                     </div>
-                </li>
-                
-                <li class="nav-item mb-0 pb-0 pl-0 ml-0 h-100">
-                    <button type="button" class="btn btn-dark w-100" id="refreshButton" onclick="updateGameday()">Refresh Matches</button>
-                </li>
-            </ul>
+                </div>
+                <button type="button" class="btn btn-dark w-100" id="refreshButton" onclick="updateGameday()"><span class="spinner-border spinner-border-sm"></span>Refresh Matches</button>
+            </div>
         </div>
     </div>
 </div>
