@@ -150,3 +150,5 @@ async function setBanner() {
 // Initialize on page load
 console.log("Initializing banner...");
 setBanner();
+
+window.setBanner = setBanner;
