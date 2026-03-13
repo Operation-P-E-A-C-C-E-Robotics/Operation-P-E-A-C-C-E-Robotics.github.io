@@ -275,7 +275,7 @@ window.removeMatchFromList = removeMatchFromList;
 window.setNextMatch = setNextMatch;
 window.setLastMatch = setLastMatch;
 window.setMatchList = setMatchList;
-window.populateLiveStreamOptions = refreshLiveStreamsWithVisual
+window.populateLiveStreamOptions = refreshLiveStreamsWithVisual;
 
 const testNextMatch =
 {
