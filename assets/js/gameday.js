@@ -18,6 +18,7 @@ function resizeGameday() {
     gameday.style.height = `calc(100vh - ${navbarHeight}px)`;
 }
 
+
 window.addEventListener("load", resizeGameday);
 window.addEventListener("resize", resizeGameday);
 
@@ -133,13 +134,23 @@ function refreshLiveStreamsWithVisual() {
 function setEventTitle(event) {
     const eventTitleEl = document.getElementById('currentEventName');
     eventTitleEl.innerHTML = `${event?.short_name || 'Unknown Event'}`;
+    eventTitleEl.setAttribute("title", event?.week ? "Week " + (event.week + 1) + " " + event?.event_type_string + " Event": event?.event_type_string);
+    window.jQuery(eventTitleEl).tooltip();
 }
 async function setEventStatus() {
     const eventStatusEl = document.getElementById('currentEventStatus');
     try {
+        const status = await tba.getTeamStatus();
         const rank = await tba.getTeamStatusRank(currentEvent.key)
         const record = await tba.getTeamStatusRecordStr(currentEvent.key);
         eventStatusEl.innerHTML = `${rank} ${record}`;
+        if (status?.playoff.level) {
+            eventStatusEl.setAttribute("title", currentEvent.playoff_type_string)
+            window.jQuery(eventStatusEl).tooltip()
+        } else if (status?.qual?.ranking?.record) {
+            eventStatusEl.setAttribute("title", "Qualification Ranking")
+            window.jQuery(eventStatusEl).tooltip()
+        }
     } catch (error) {
         console.error('Failed to set event status:', error);
         eventStatusEl.innerHTML = "";

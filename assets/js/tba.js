@@ -83,11 +83,11 @@ async function getTeamStatus(eventKey) {
 async function getTeamStatusRecordStr(eventKey) {
     const status = await getTeamStatus(eventKey)
     if (status?.playoff) {
-
+        return status?.playoff?.record ? `${status.playoff.record.wins}W-${status.playoff.record.losses}L-${status.playoff.record.ties}T` : "-W -L -T";
     } else if (status?.qual?.ranking) {
         return status?.qual?.ranking?.record ? `${status.qual.ranking.record.wins}W-${status.qual.ranking.record.losses}L-${status.qual.ranking.record.ties}T` : "-W -L -T";
     } else {
-        return "-W -L -T"
+        return "No Record"
     }
 }
 async function getTeamStatusRank(eventKey) {
@@ -98,7 +98,7 @@ async function getTeamStatusRank(eventKey) {
     else if (status?.qual?.ranking) {
         return status?.qual?.ranking? status.qual.ranking.rank + "/" + status.qual.num_teams : "? / ?";
     } else {
-        return "No Record"
+        return "No Rank"
     }
 }
 
