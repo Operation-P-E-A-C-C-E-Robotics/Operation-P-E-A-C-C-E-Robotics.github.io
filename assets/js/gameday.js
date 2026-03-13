@@ -221,7 +221,7 @@ async function init() {
     
    await update();
    updateInterval = setInterval(update, 60000); // Refresh data every minute to keep match list and statuses up to date
-   window.updateInterval = updateInterval //allow cancelling the auto-match refresh for testing purposes
+   window.updateInterval = updateInterval; //allow cancelling the auto-match refresh for testing purposes
 }
 
 async function updateWithVisual() {
