@@ -1,6 +1,3 @@
-// Countdown timer functionality
-
-
 /**
  * Update match countdown timer
  * @param {number} countDownDate - Unix timestamp to count down to
@@ -8,23 +5,49 @@
  * @param {HTMLElement} timeEl - Element to display current time
  * @returns {number} Interval ID
  */
-function matchCountdown(countDownDate, counterEl, timeEl, eventTimeZone) {
+
+function eventLocalTime(eventTimeZone, timeEl) {
     const interval = setInterval(() => {
-        const now = new Date().toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit', second: '2-digit' }).getTime();
-        const currentTime = new Date().toLocaleTimeString("en-US", { timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit', second: '2-digit' });
-        const distance = new Date(formatTimestamp(countDownDate, eventTimeZone)).getTime() - now;
+        const now = new Date();
+        const currentTime = now.toLocaleTimeString("en-US", { timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        if (timeEl) {
+            timeEl.innerText = `${currentTime}`;
+            timeEl.style.display = 'block';
+        } else {
+            clearInterval(interval);
+        }
+    }, 1000);
+
+    return interval;
+}
+
+function matchCountdown(countDownDate, counterEl, callBackFunction = null) {
+    const interval = setInterval(() => {
+        const now = new Date();//.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit', second: '2-digit' }).getTime();
+        // const currentTime = now.toLocaleTimeString("en-US", { timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        const distance = new Date(countDownDate).getTime() - now.getTime();
         
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        if (!counterEl || !timeEl) {
+        if (!counterEl) {
             clearInterval(interval);
             return;
         }
-
-        counterEl.innerHTML = `Next Match: ~${hours}h ${minutes}m ${seconds}s`;
-        timeEl.innerHTML = `Event Local Time: ${currentTime}`;
+        let display;
+        if (days > 0) {
+            display = `${days.toString().padStart(2, '0') + "d"} ${hours.toString().padStart(2, '0') + "h"} ${minutes.toString().padStart(2, '0') + "m"}`;
+        } else {
+            if (hours === 0) {
+                display = `${minutes.toString().padStart(2, '0') + ":"}${seconds.toString().padStart(2, '0')}`;
+            } else {
+                display = `${hours.toString().padStart(2, '0') + ":"}${minutes.toString().padStart(2, '0') + ":"}${seconds.toString().padStart(2, '0')}`;
+            }
+            
+        }
+        counterEl.innerText = `${display}`;
         counterEl.classList.remove('yellowwarning', 'redalliance');
         if (hours === 0 && minutes <= 10) {
             counterEl.classList.add('redalliance');
@@ -36,8 +59,11 @@ function matchCountdown(countDownDate, counterEl, timeEl, eventTimeZone) {
             counterEl.classList.remove('yellowwarning', 'redalliance');
         }
         if (distance < 0) {
-            counterEl.innerHTML = `Next Match: On Field Soon!`;
-            setBanner(); // Refresh banner to show match results
+            counterEl.innerText = `On Field Soon!`;
+            if (typeof callBackFunction === "function") {
+                callBackFunction();
+            }
+            //setBanner(); // Refresh banner to show match results
             clearInterval(interval);
             return;
         }
@@ -86,9 +112,10 @@ function kickoffCountdown(counterEl) {
  * Update event countdown timer
  * @param {Object} event - Event object with start_date property
  * @param {HTMLElement} counterEl - Element to display countdown
+ * @param {Function} callBackFunction - Function to call when countdown completes
  * @returns {number} Interval ID
  */
-function eventCountdown(event, counterEl) {
+function eventCountdown(event, counterEl, callBackFunction = null) {
     const eventDate = new Date(event.start_date)//.toLocaleTimeString("en-US", { timeZone: event.timezone, hour: '2-digit', minute: '2-digit', second: '2-digit' });;
     
     const interval = setInterval(() => {
@@ -109,16 +136,20 @@ function eventCountdown(event, counterEl) {
 
         if (distance < 0) {
             counterEl.style.display = 'none';
+            if (typeof callBackFunction === "function") {
+                callBackFunction();
+            }
             clearInterval(interval);
             return;
         }
 
-    $(counterEl).find('.countdown-days').text(days);
-    $(counterEl).find('.countdown-hours').text(hours);
-    $(counterEl).find('.countdown-minutes').text(minutes);
-    $(counterEl).find('.countdown-seconds').text(seconds);
+        $(counterEl).find('.countdown-days').text(String(days).padStart(2, '0'));
+        $(counterEl).find('.countdown-hours').text(String(hours).padStart(2, '0'));
+        $(counterEl).find('.countdown-minutes').text(String(minutes).padStart(2, '0'));
+        $(counterEl).find('.countdown-seconds').text(String(seconds).padStart(2, '0'));
     }, 1000);
 
     return interval;
 }
 
+export { matchCountdown, kickoffCountdown, eventCountdown, eventLocalTime };

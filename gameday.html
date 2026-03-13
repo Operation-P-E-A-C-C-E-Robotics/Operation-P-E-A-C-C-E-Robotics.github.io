@@ -1,0 +1,96 @@
+---
+layout: default-nonav
+title: "Gameday"
+permalink: /gameday/
+metadesc: "Watch Operation P.E.A.C.C.E Robotics compete live at events, via live streams, match schedules, and real-time updates on our performance."
+---
+
+
+<div id="gamedayContainer">
+    <div class="embed-responsive embed-responsive-16by9" id="streamContainer" style="object-fit:scale-down;">
+        <iframe class="embed-responsive-item" id="liveStreamFrame" src="" allow="accelerometer; autoplay; picture-in-picture;"></iframe>
+    </div>
+</div>
+
+
+<div class="container-fluid bg-secondary fixed-bottom align-content-center pl-0 pr-0 ml-0 mr-0 pt-1 pb-1 text-light" id="gamedayNavbar" style="min-height: 100px">
+    <div class="row w-100 h-100 mx-auto p-0 d-flex flex-xs-column flex-sm-column flex-md-row">
+        <div class="col-12 col-md-auto order-2 order-md-1  d-inline-flex order-first mr-1 pr-0 pl-1" style="min-width:fit-content;">
+            
+            <div class="media rounded-lg align-items-center pr-1 mr-2" >
+                <div class="bg-primary d-inline-flex flex-nowrap rounded-circle" style="width: 3.5vh; height: 3.5vh; min-width:30px; min-height:30px; align-items: center; justify-content: center; margin-right: 10px;">
+                    <img src="/assets/images/tba_lamp.svg"  class="w-75 p-2" alt="T.B.A Logo" style="min-width:30px; min-height:30px;">
+                </div>
+                <div class="media-body">
+                    <h5 class="mb-0 text-light text-nowrap" id="currentEventName">Current Event: Not Found</h5>
+                    <h6 class="mb-0 text-light " id="eventLocalTime"></h6>
+                    <h6 class="mb-0 text-light font-weight-bold" id="currentEventStatus"></h6>
+                </div>
+            </div>
+            <div class="row ml-1 mr-1">
+                <div id="lastMatchContainer" class="ml-1 pb-1">
+                    <div class="container bg-dark text-light d-inline-flex align-items-center rounded-lg pr-0 pl-1 h-100">
+                        <div class="pt-2 ml-0 pl-0 mr-1 text-center">
+                            <h6 class="text-nowrap">Last: <span id="lastMatchCode"></span></h6>
+                            <h6 class="text-nowrap"><span class="text-danger font-weight-bold mb-0" id="lastMatchRedScore">0000</span> - <span class="text-primary font-weight-bold" id="lastMatchBlueScore">0000</span></h6>
+                        </div>
+                        <table class="table table-sm table-borderless text-light align-items-center pt-2 mb-0 mr-0 pr-0 rounded-sm" style="max-width: fit-content;">
+                            <tbody class="align-items-center text-center rounded-sm">
+                                <tr class="text-danger">
+                                    <td class="small font-weight-bold text-nowrap" id="lastMatchRed">00000 00000 00000</td> 
+                                </tr>
+                                <tr class="text-primary">
+                                    <td class="small font-weight-bold text-nowrap" id="lastMatchBlue">00000 00000 00000</td>
+                                </tr>
+                            </tbody>
+                        </table> 
+                    </div>
+                </div> 
+
+                <div id="nextMatchContainer" class="ml-1 pb-1 d-inline-flex">
+                    <div class="container bg-dark d-inline-flex align-items-center rounded-lg pr-0 pl-1">
+                        <div class="pt-2 ml-0 pl-0 mr-1 text-center">
+                            <h6 class="text-nowrap text-light">Next: <span id="nextMatchNumber"></span></h6>
+                            
+                            <h6 class="text-light text-nowrap"><span id="nextMatchCountdown" class="font-weight-bold ">--:--:--</span></h6>
+                        </div>
+                        <table class="table table-sm table-borderless text-light align-items-center pt-2 mb-0 mr-0 pr-0 rounded-sm" style="max-width: fit-content;">
+                            <tbody class="align-items-center text-center rounded-sm">
+                                <tr class="text-danger">
+                                    <td class="small font-weight-bold text-nowrap" id="nextMatchRed">00000 00000 00000</td> 
+                                </tr>
+                                <tr class="text-primary">
+                                    <td class="small font-weight-bold text-nowrap" id="nextMatchBlue">00000 00000 00000</td>
+                                </tr>
+                            </tbody>
+                        </table> 
+                    </div>   
+                </div>
+            </div>
+        </div>
+
+        <div class="col col-12 col-md order-3 order-md-2 pl-0 ml-0 pb-0 mb-0 d-none d-md-block" style="min-width:0 ;">
+            <div id="matchesListContainer" class="d-inline-flex pl-0 ml-2 mr-1 h-100" style="overflow: hidden; max-width:100%;"> 
+            </div>
+        </div>
+
+        <div class="col-12 col-md-auto order-1 order-md-3 order-md-last d-none d-md-block">
+            <div class="mx-auto px-auto">
+                <div class="dropup">
+                    <button type="button" class="btn btn-dark btn-block btn-small dropdown-toggle p-auto" data-toggle="dropdown"><span class="" id="streamRefreshSpinner"></span> Select Livestream
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item" onclick="populateLiveStreamOptions(currentEvent)">Refresh Livestreams</div>
+                        <div class="dropdown-divider"></div>
+                        <span id="livestreamDropdown">
+
+                        </span>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-dark btn-block btn-small p-auto" id="refreshButton" onclick="updateGameday()"><span class="" id="matchRefreshSpinner"></span> Refresh Matches</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module" src={{ site.baseurl }}/assets/js/gameday.js></script>

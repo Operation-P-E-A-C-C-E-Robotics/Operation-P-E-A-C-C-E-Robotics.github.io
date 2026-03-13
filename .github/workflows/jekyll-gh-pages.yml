@@ -42,8 +42,11 @@ jobs:
         with:
           node-version: "latest"
 
+
   # Build job
   build:
+    environment:
+      name: github-pages
     runs-on: ubuntu-latest
     needs: [install-node]    
     steps:      
@@ -65,11 +68,15 @@ jobs:
           TINA_SEARCH: ${{secrets.TINA_SEARCH}}
         run: npx tinacms build
         
-      - name: Build Main with Jekyll
-        uses: actions/jekyll-build-pages@v1
+      - name: Set up Bundler
+        uses: ruby/setup-ruby@v1
         with:
-          source: ./
-          destination: ./_site
+          bundler-cache: true
+          ruby-version: 3.3
+          
+
+      - name: Build Main with Jekyll
+        run: bundle exec jekyll build --destination ./_site --baseurl "${{ vars.JEKYLL_BASEURL }}"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4

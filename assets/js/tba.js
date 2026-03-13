@@ -1,6 +1,7 @@
 // tba.js - Helper functions for parsing TBA data from GitHub repository
 
 const TBA_BASE_URL = "https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend";
+var year = getCurrentSeasonYear();
 /**
  * Get the current FRC season year
  * Year increments after September (build season is in the fall)
@@ -11,6 +12,17 @@ function getCurrentSeasonYear(date = new Date()) {
         season += 1;
     }
     return season;
+}
+
+function getEventLocalTimeDate(date, timezone) {
+    const [year,month,day] = date.split("-").map(Number)
+    const localTimeDate = new Date(Date.UTC(year, month-1, day));
+    return localTimeDate.toLocaleDateString('en-US', {timezone:timezone})
+}
+
+function getEventLocalTimeCurrentTime(timezone) {
+    const now = new Date(new Date().toLocaleString("en-US", { timeZone: timezone }));
+    return now
 }
 
 function viewOnTBA() {
@@ -30,6 +42,12 @@ async function getEvent(eventKey) {
     return events.find(e => e.key === eventKey) || null;
 }
 
+async function getEventMatches(eventKey) {
+    const response = await fetch(`${TBA_BASE_URL}/${year}_matches.json?t=${Date.now()}`);
+    const matches = await response.json();
+    return matches.filter(m => m.event_key === eventKey);
+}
+
 /**
  * Fetch and parse matches JSON for the current year
  */
@@ -43,6 +61,7 @@ async function getMatches() {
  */
 async function getEventStatuses() {
     const response = await fetch(`${TBA_BASE_URL}/${year}_event_statuses.json?t=${Date.now()}`);
+    // console.log(response.json());
     return await response.json();
 }
 /**
@@ -50,10 +69,37 @@ async function getEventStatuses() {
  * @param {string} eventKey 
  * @returns json object with event status, or null if not found
  */
+async function getTeamStatusStr(eventKey) {
+    const status = await getTeamStatus(eventKey)
+        return status ? status.overall_status_str : "Current Status is Unknown";
+}
 async function getTeamStatus(eventKey) {
     const eventStatuses = await getEventStatuses();
-    const status = eventStatuses.find(e => e.key === eventKey);
-    return status ? status.overall_status_str : null;
+    console.log("Event Statuses:",eventStatuses);
+    const status = eventStatuses[eventKey];
+    return status ? status : {};
+}
+
+async function getTeamStatusRecordStr(eventKey) {
+    const status = await getTeamStatus(eventKey)
+    if (status?.playoff) {
+
+    } else if (status?.qual?.ranking) {
+        return status?.qual?.ranking?.record ? `${status.qual.ranking.record.wins}W-${status.qual.ranking.record.losses}L-${status.qual.ranking.record.ties}T` : "-W -L -T";
+    } else {
+        return "-W -L -T"
+    }
+}
+async function getTeamStatusRank(eventKey) {
+    const status = await getTeamStatus(eventKey);
+    if (status?.playoff) {
+        return status?.playoff?.double_elim_round ? status.playoff.double_elim_round : String(status.playoff.level).toUpperCase();
+    }
+    else if (status?.qual?.ranking) {
+        return status?.qual?.ranking? status.qual.ranking.rank + "/" + status.qual.num_teams : "? / ?";
+    } else {
+        return "No Record"
+    }
 }
 
 /**
@@ -117,6 +163,41 @@ async function getMatchNameFromKey(matchKey) {
 
     return `${matchTitle} ${match.match_number}`;
 }
+/**
+ * 
+ * @param {string} matchKey 
+ * @returns "Formatted match key (e.g., "QM1", "SF1-1") or null if match not found
+ */
+function getMatchCodeFromKey(matchKey) {
+    try {
+        return matchKey.split("_")[1].toUpperCase().replace(/(?<!Q)M/g, "-"); // Insert hyphen before M if not preceded by Q (to differentiate between QM and QF)
+    } catch (error) {
+        console.error('Failed to format match key:', error);
+        return "UN";
+    }
+    // let matchTitle;
+    // switch (match.comp_level) {
+    //     case "qm":
+    //         matchTitle = "QM";
+    //         break;
+    //     case "ef":
+    //         matchTitle = `EF${match.set_number}-`;
+    //         break;
+    //     case "qf":
+    //         matchTitle = `QF${match.set_number}-`;
+    //         break;
+    //     case "sf":
+    //         matchTitle = `SF${match.set_number}-`;
+    //         break;
+    //     case "f":
+    //         matchTitle = `F${match.set_number}-`; //This is for if a Final gets replayed. Logically finals dont need a set number but TBA formats them with a set number so this is to match that formatting
+    //         break;
+    //     default:
+    //         matchTitle = "Unknown";
+    // }
+
+    // return `${matchTitle} ${match.match_number}`;
+}
 
 /**
  * Format team key by removing "frc" prefix and bolding team 3461
@@ -134,7 +215,7 @@ async function getCurrentEvent() {
     const now = new Date();
 
     return events
-        .filter(event => new Date(event.end_date + "T23:59:59-04:00") >= now && new Date(event.start_date + "T09:00:00-04:00") <= now)
+        .filter(event => new Date(event.end_date) >= now && new Date(event.start_date) <= now)
         .sort((a, b) => a.start_date - b.start_date)[0] || null;
 }
 
@@ -146,7 +227,7 @@ async function getNextEvent() {
     const now = new Date();
 
     return events
-        .filter(event => new Date(event.start_date + "T09:00:00-04:00") >= now && new Date(event.end_date + "T23:59:59-04:00") >= now)
+        .filter(event => new Date(event.start_date) >= now && new Date(event.end_date) >= now)
         .sort((a, b) => new Date(a.start_date) - new Date(b.start_date))[0] || null;
 }
 
@@ -222,3 +303,8 @@ function getKickoffDate(year = new Date().getFullYear()) {
     firstSaturday.setDate(jan1.getDate() + (6 - jan1.getDay()));
     return firstSaturday;
 }
+
+export { getEventLocalTimeCurrentTime, getEventLocalTimeDate, getEventMatches, getTeamStatusRank, getTeamStatusRecordStr, getTeamStatusStr, getCurrentSeasonYear, getEvents, getEvent, getMatches, getEventStatuses, getTeamStatusStr as getTeamStatus, getDistrictRankings, getEventNameFromKey, getShortEventNameFromKey, getMatchFromKey, getMatchNameFromKey, getMatchCodeFromKey, formatTeamKey, getCurrentEvent, getNextEvent, getTeamDistrictStats, getAwards, getMedia, formatTimestamp, getKickoffDate };
+window.getMatchCodeFromKey = getMatchCodeFromKey; // Expose getMatchCodeFromKey to global scope for testing purposes
+window.getCurrentSeasonYear = getCurrentSeasonYear; // Expose getCurrentSeasonYear to global scope for testing purposes
+window.year = year; // Expose year variable to global scope for testing purposes
