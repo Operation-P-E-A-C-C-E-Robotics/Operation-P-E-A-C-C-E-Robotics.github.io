@@ -280,7 +280,7 @@ show();
       document.getElementById('bestMatch').hidden = true
     }
     for (var i = 0; i < matches.length; i++) {
-      match = new Object(matches[i]);
+      var match = new Object(matches[i]);
       var redAlliance =  match.alliances.red
       var blueAlliance =  match.alliances.blue
       
