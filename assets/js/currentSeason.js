@@ -224,9 +224,9 @@ show();
 
 
     try { 
-      event_name = await getEventNameFromKey(highScore.event_key)
+      const event_name = await getEventNameFromKey(highScore.event_key)
       document.getElementById('bestMatchEventName').innerText += event_name 
-      match_name = await getMatchNameFromKey(highScore.key)
+      const match_name = await getMatchNameFromKey(highScore.key)
       document.getElementById('bestMatchMatchName').innerText += match_name
     } catch {
       console.log("failed to get event or match name")
