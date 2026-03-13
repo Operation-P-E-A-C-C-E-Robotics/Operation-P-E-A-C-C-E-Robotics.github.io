@@ -85,7 +85,7 @@
   {% when "robot" %}
     <meta property="og:title" content="{{ page.year }} {{ page.game}} Robot: {{ page.robotName }}" />
     {% assign desc = page.content %}
-    {% if page.content.size > 1%}
+    {% if page.content.size > 1 %}
       <meta property="description" content="{{desc | strip_html}}"/>
       <meta property="og:description" content="{{desc | strip_html}}"/>
     {% else %}
