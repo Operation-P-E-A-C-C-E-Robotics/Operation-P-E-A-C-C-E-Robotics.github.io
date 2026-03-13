@@ -169,10 +169,6 @@ function setNextMatch(nextMatch)  {
         clearInterval(matchUpdateInterval); //reset the countdown interval to prevent multiple intervals from running simultaneously
         matchUpdateInterval = counter.matchCountdown(nextMatchDate, document.getElementById('nextMatchCountdown'), document.getElementById('eventLocalTime'), currentEvent.timezone, update);
     } catch (error) {
-        console.error('Failed to set next match:', error);
-        document.getElementById('nextMatchNumber').innerText = "Unknown";
-        document.getElementById('nextMatchRed').innerText = "";
-        document.getElementById('nextMatchBlue').innerText = "";
         let eventStart = tba.getEventLocalTimeDate(currentEvent.start_date, currentEvent.timeZone);
         let now = tba.getEventLocalTimeCurrentTime(currentEvent.timezone);
         if (currentEvent.start_date &&  eventStart > now) { 
@@ -181,7 +177,13 @@ function setNextMatch(nextMatch)  {
             matchUpdateInterval = counter.matchCountdown(currentEvent.start_date, document.getElementById('nextMatchCountdown'),  update);
             document.getElementById('nextMatchNumber').innerText = "Event Begins In:";
 
+        } else {
+            console.error('Failed to set next match:', error);
+            document.getElementById('nextMatchNumber').innerText = "Unknown";
+            document.getElementById('nextMatchRed').innerText = "";
+            document.getElementById('nextMatchBlue').innerText = "";
         }
+
     }
 }
 
