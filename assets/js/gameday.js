@@ -4,7 +4,6 @@ import * as counter from "./countdown.js";
 
 var currentSeasonYear = null;
 var currentEvent = null;
-var currentEventStatus = null;
 var matchUpdateInterval = null;
 var updateInterval = null;
 const matchRefreshSpinner = document.getElementById("matchRefreshSpinner");
