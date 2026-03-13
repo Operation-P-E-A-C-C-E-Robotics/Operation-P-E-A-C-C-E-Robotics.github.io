@@ -76,7 +76,9 @@ jobs:
           
 
       - name: Build Main with Jekyll
-        run: bundle exec jekyll build --destination ./_site --baseurl "${{ vars.JEKYLL_BASEURL }}"
+        env:
+          BASEURL: ${{ vars.BASEURL || '' }}
+        run: bundle exec jekyll build --destination ./_site --baseurl "${{ env.BASEURL }}"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
