@@ -45,8 +45,8 @@ async function setLiveStream(event) {
     try {
         const iframe = document.getElementById('liveStreamFrame');
         if (iframe.src.includes('notFound')) {
-            const sorted = event.webcasts.filter(i => new Date(i.date) >= new Date()).sort((a,b)=> {
-                a.date - b.date
+            const sorted = event.webcasts.filter(i => new Date(i.date) >= new Date()).sort((a, b) => {
+                return a.date - b.date;
             });
             const webcast = sorted[0];
 
