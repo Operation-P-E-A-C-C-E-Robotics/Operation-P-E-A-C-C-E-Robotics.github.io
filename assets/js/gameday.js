@@ -135,15 +135,15 @@ function setEventTitle(event) {
     const eventTitleEl = document.getElementById('currentEventName');
     eventTitleEl.innerHTML = `${event?.short_name || 'Unknown Event'}`;
 }
-async function setEventStatus(status) {
+async function setEventStatus() {
     const eventStatusEl = document.getElementById('currentEventStatus');
     try {
-        const rank = status ? status.rank : "? / ?" ;
-        const record = status ? `${status.qual.record.wins}W-${status.qual.record.losses}L-${status.qual.record.ties}T` : "-W -L -T";
+        const rank = await tba.getTeamStatusRank(currentEvent.key)
+        const record = await tba.getTeamStatusRecordStr(currentEvent.key);
         eventStatusEl.innerHTML = `${rank} ${record}`;
     } catch (error) {
         console.error('Failed to set event status:', error);
-        eventStatusEl.innerHTML = ` ? / ? -W -L -T`;
+        eventStatusEl.innerHTML = "";
     }
 }
 
@@ -174,7 +174,9 @@ function setNextMatch(nextMatch)  {
         document.getElementById('nextMatchNumber').innerText = "Unknown";
         document.getElementById('nextMatchRed').innerText = "";
         document.getElementById('nextMatchBlue').innerText = "";
-        if (currentEvent.start_date && new Date(currentEvent.start_date).getTime() > new Date().getTime()) { 
+        let eventStart = tba.getEventLocalTimeDate(currentEvent.start_date, currentEvent.timeZone);
+        let now = tba.getEventLocalTimeCurrentTime(currentEvent.timezone);
+        if (currentEvent.start_date &&  eventStart > now) { 
             // If the event hasn't started yet, show the event countdown instead of the next match countdown
             clearInterval(matchUpdateInterval); //reset the countdown interval to prevent multiple intervals from running simultaneously
             matchUpdateInterval = counter.matchCountdown(currentEvent.start_date, document.getElementById('nextMatchCountdown'),  update);
@@ -246,12 +248,7 @@ async function update() {
         setMatchList([], currentEvent.timezone); // Clear match list on error
     });
 
-    tba.getTeamStatus(currentEvent.key).then(status => {
-        setEventStatus(status);
-    }).catch(error => {
-        console.error('Failed to get team status:', error);
-        
-    });
+    await setEventStatus();
 
     tba.getMatchFromKey(currentEvent.next_match_key).then(nextMatch => {
         setNextMatch(nextMatch);
