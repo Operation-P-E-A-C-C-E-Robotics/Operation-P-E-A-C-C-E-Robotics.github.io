@@ -105,7 +105,7 @@ function populateLiveStreamOptions(event) {
         const button = document.createElement('button');
         button.className = 'dropdown-item';
         button.id = webcast.channel
-        button.textContent = webcast?.stream_title || (webcast.type === 'twitch' ? `Twitch Stream ${index+1}` : `YouTube Stream ${index+1}`);
+        button.textContent = webcast?.stream_title || (webcast.type === 'twitch' ? `Twitch ${webcast.channel}` : `YouTube Stream ${index+1}`);
         button.addEventListener('click', () => {
             const url = webcast.type === 'twitch' 
                 ? `https://player.twitch.tv/?autoplay=true&channel=${webcast.channel}&parent=www.peacce.org`
