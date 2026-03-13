@@ -1,14 +1,15 @@
 // assets/js/currentlyCompetingBanner.js
 
 const API_BASE_URL = 'https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend';
-const TIMEZONE = 'America/New_York';
-let countDownDate;
 import { getCurrentSeasonYear, getEventStatuses, getCurrentEvent, getMatchFromKey, getMatchNameFromKey } from './tba.js';
 import { eventLocalTime, matchCountdown } from './countdown.js';
 
 var year = getCurrentSeasonYear(); 
 console.log(`Current season year: ${year}`);
 const eventurl = `${API_BASE_URL}/${year}_events.json`;
+
+const timeEl = document.getElementById('time');
+var updateInterval = 0;
 //console.log(`Event URL: ${eventurl}`);
 
 // Replace convertTimestamp calls with formatTimestamp:
@@ -16,11 +17,9 @@ const eventurl = `${API_BASE_URL}/${year}_events.json`;
 
 function setMatchCountdown(predictedTime, eventTimeZone) {
     const counterEl = document.getElementById('counter');
-    const timeEl = document.getElementById('time');
     
     console.log(`Setting match countdown with predicted time: ${predictedTime} and event timezone: ${eventTimeZone}`);
     matchCountdown(predictedTime, counterEl, setBanner);
-    eventLocalTime(eventTimeZone, timeEl);
   
 }
 
@@ -46,13 +45,15 @@ async function setLiveStream(event) {
     try {
         const iframe = document.getElementById('liveStreamFrame');
         if (iframe.src.includes('notFound')) {
-            const sorted = [...event.webcasts].reverse();
+            const sorted = event.webcasts.filter(i => new Date(i.date) >= new Date()).sort((a,b)=> {
+                a.date - b.date
+            });
             const webcast = sorted[0];
 
             if (webcast.type === 'twitch') {
                 iframe.src = `https://player.twitch.tv/?autoplay=true&channel=${webcast.channel}&parent=www.peacce.org`;
             } else if (webcast.type === 'youtube') {
-                iframe.src = `https://www.youtube.com/embed/live_stream?channel=${webcast.channel}`;
+                iframe.src = `https://www.youtube.com/embed/${webcast.channel}`;
             }
         }
     } catch (error) {
@@ -129,8 +130,9 @@ async function bannerHelper(eventTitle, nextMatchKey, stats, event, lastMatchKey
 async function setBanner() {
     try {
         const currentEvent = await getCurrentEvent();
-        //console.log("Current Event:", currentEvent);
+        console.log("Current Event:", currentEvent);
         if (currentEvent) {
+            updateInterval = eventLocalTime(currentEvent.timezone, timeEl);
             const statuses = await getEventStatuses();
             const status = statuses[currentEvent.key];
             //console.log("Event Status:", status);
