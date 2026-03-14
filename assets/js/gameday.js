@@ -165,7 +165,7 @@ function setMatchList(matches, eventTimeZone) {
 }
 
 function setNextMatch(nextMatch)  {
-    // console.log('Setting next match:', nextMatch);
+    console.log('Setting next match:', nextMatch);
     try{
         const nextMatchDate = new Date(nextMatch.predicted_time * 1000); // Convert from seconds to milliseconds for JavaScript Date
         const nextMatchNumberEl = document.getElementById('nextMatchNumber');
@@ -253,6 +253,8 @@ async function updateWithVisual() {
 async function update() {
     console.log('Updating gameday data...');
     document.getElementById('matchesListContainer').innerHTML = ""; // Clear match list before updating to prevent duplicates
+    const eventStatus = await tba.getTeamEventStatus(currentEvent.key);
+    console.log(eventStatus)
     tba.getEventMatches(currentEvent.key).then(matches => {
         setMatchList(matches, currentEvent.timezone);
     }).catch(error => {
@@ -262,14 +264,14 @@ async function update() {
 
     await setEventStatus();
 
-    tba.getMatchFromKey(currentEvent.next_match_key).then(nextMatch => {
+    tba.getMatchFromKey(eventStatus.next_match_key).then(nextMatch => {
         setNextMatch(nextMatch);
     }).catch(error => {
         console.error('Failed to get next match:', error);
         setNextMatch(null);
     });
 
-    tba.getMatchFromKey(currentEvent.last_match_key).then(lastMatch => {
+    tba.getMatchFromKey(eventStatus.last_match_key).then(lastMatch => {
         setLastMatch(lastMatch);
     }).catch(error => {
         console.error('Failed to get last match:', error);
