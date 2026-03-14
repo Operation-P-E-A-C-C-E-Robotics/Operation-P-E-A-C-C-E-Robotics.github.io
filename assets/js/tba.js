@@ -70,7 +70,7 @@ async function getEventStatuses() {
  * @returns json object with event status, or null if not found
  */
 async function getTeamStatusStr(eventKey) {
-    const status = await getTeamStatus(eventKey)
+    const status = await getTeamEventStatus(eventKey)
         return status ? status.overall_status_str : "Current Status is Unknown";
 }
 async function getTeamEventStatus(eventKey) {
@@ -81,7 +81,7 @@ async function getTeamEventStatus(eventKey) {
 }
 
 async function getTeamStatusRecordStr(eventKey) {
-    const status = await getTeamStatus(eventKey)
+    const status = await getTeamEventStatus(eventKey)
     if (status?.playoff) {
         return status?.playoff?.record ? `${status.playoff.record.wins}W ${status.playoff.record.losses}L ${status.playoff.record.ties}T` : "-W -L -T";
     } else if (status?.qual?.ranking) {
@@ -91,7 +91,7 @@ async function getTeamStatusRecordStr(eventKey) {
     }
 }
 async function getTeamStatusRank(eventKey) {
-    const status = await getTeamStatus(eventKey);
+    const status = await getTeamEventStatus(eventKey);
     if (status?.playoff) {
         return status?.playoff?.double_elim_round ? status.playoff.double_elim_round : String(status.playoff.level).toUpperCase();
     }
