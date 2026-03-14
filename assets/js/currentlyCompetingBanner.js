@@ -19,7 +19,7 @@ function setMatchCountdown(predictedTime, eventTimeZone) {
     const counterEl = document.getElementById('counter');
     
     console.log(`Setting match countdown with predicted time: ${predictedTime} and event timezone: ${eventTimeZone}`);
-    matchCountdown(predictedTime, counterEl, setBanner);
+    matchCountdown(predictedTime*1000, counterEl, setBanner);
   
 }
 
@@ -65,7 +65,7 @@ async function setLiveStream(event) {
 async function bannerHelper(eventTitle, nextMatchKey, stats, event, lastMatchKey) {
     const match = await getMatchFromKey(nextMatchKey);
     const lastMatch = await getMatchFromKey(lastMatchKey);
-
+    console.log("Next Match: ", match)
     if (match?.predicted_time) {
         setMatchCountdown(match.predicted_time, event.timezone);
     } else {
