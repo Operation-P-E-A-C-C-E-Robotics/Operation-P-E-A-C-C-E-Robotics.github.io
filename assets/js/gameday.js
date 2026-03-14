@@ -35,8 +35,8 @@ function hideRefreshSpinner(element) {
 
 function addMatchToList(match, eventTimeZone) {
     const matchList = document.getElementById("matchesListContainer");
-    const redAlliance = match.alliances.red.team_keys.map(t => t.replace("frc", "")).join(", ");
-    const blueAlliance = match.alliances.blue.team_keys.map(t => t.replace("frc", "")).join(", ");
+    const redAlliance = match.alliances.red.team_keys.map(t => t.replace("frc", "").replace("3461", "<abbr title='Operation PEACCE Robotics'>3461</abbr>")).join(", ");
+    const blueAlliance = match.alliances.blue.team_keys.map(t => t.replace("frc", "").replace("3461", "<abbr title='Operation PEACCE Robotics'>3461</abbr>")).join(", ");
     const matchKey = tba.getMatchCodeFromKey(match.key);
     // Check if match already exists in the list to prevent duplicates (this can happen because TBA sometimes changes match times which would cause the same match to be added multiple times instead of just updating the existing match's time)
     try { 
@@ -44,8 +44,8 @@ function addMatchToList(match, eventTimeZone) {
             console.log(`Match ${match.key} already exists in the list, updating instead of adding a duplicate.`);
             // Update existing match
             document.getElementById(`${match.key}`).querySelector('#matchCodeDisplay').innerText = matchKey; //This should not change, as it would then be a different match. Changing it makes any bugs obvious
-            document.getElementById(`${match.key}`).querySelector('#nextMatchRed').innerText = redAlliance; //These ususally dont change but just in case they do we will update them as well
-            document.getElementById(`${match.key}`).querySelector('#nextMatchBlue').innerText = blueAlliance; //These ususally dont change but just in case they do we will update them as well
+            document.getElementById(`${match.key}`).querySelector('#nextMatchRed').innerHTML = redAlliance; //These ususally dont change but just in case they do we will update them as well
+            document.getElementById(`${match.key}`).querySelector('#nextMatchBlue').innerHTML = blueAlliance; //These ususally dont change but just in case they do we will update them as well
              // Update the predicted time display
              const predictedTimeEl = document.getElementById(`${match.key}`).querySelector('#predictedTime');
              if (predictedTimeEl) {
@@ -172,10 +172,10 @@ function setNextMatch(nextMatch)  {
         const nextMatchDate = new Date(nextMatch.predicted_time * 1000); // Convert from seconds to milliseconds for JavaScript Date
         const nextMatchNumberEl = document.getElementById('nextMatchNumber');
         nextMatchNumberEl.innerText = tba.getMatchCodeFromKey(nextMatch.key);
-        const redAlliance = nextMatch.alliances.red.team_keys.map(t => t.replace("frc", "")).join(", ");
-        const blueAlliance = nextMatch.alliances.blue.team_keys.map(t => t.replace("frc", "")).join(", ");
-        document.getElementById('nextMatchRed').innerText = redAlliance;
-        document.getElementById('nextMatchBlue').innerText = blueAlliance;
+        const redAlliance = nextMatch.alliances.red.team_keys.map(t => t.replace("frc", "").replace("3461", "<abbr title='Operation PEACCE Robotics'>3461</abbr>")).join(", ");
+        const blueAlliance = nextMatch.alliances.blue.team_keys.map(t => t.replace("frc", "").replace("3461", "<abbr title='Operation PEACCE Robotics'>3461</abbr>")).join(", ");
+        document.getElementById('nextMatchRed').innerHTML = redAlliance;
+        document.getElementById('nextMatchBlue').innerHTML = blueAlliance;
         console.log(`Removing ${nextMatch.key} from match list if it exists because its now being displayed as the next match.`);
         document.getElementById(`${nextMatch.key}`).remove(); // Remove the match from the list of matches below since it's now being displayed as the next match. This prevents confusion from having the same match displayed in two places and also prevents the list of matches from becoming too long as the event goes on
         
@@ -204,19 +204,28 @@ function setLastMatch(lastMatch) {
     try {
         const lastMatchCode = document.getElementById('lastMatchCode');
         lastMatchCode.innerText = tba.getMatchCodeFromKey(lastMatch.key);
-        const redAlliance = lastMatch.alliances.red.team_keys.map(t => t.replace("frc", "")).join(", ");
-        const blueAlliance = lastMatch.alliances.blue.team_keys.map(t => t.replace("frc", "")).join(", ");
-        document.getElementById('lastMatchRed').innerText = redAlliance;
-        document.getElementById('lastMatchBlue').innerText = blueAlliance;
-        document.getElementById('lastMatchRedScore').innerText = lastMatch.alliances.red.score;
-        document.getElementById('lastMatchBlueScore').innerText = lastMatch.alliances.blue.score;
+        const redAlliance = lastMatch.alliances.red.team_keys.map(t => t.replace("frc", "").replace("3461", "<abbr title='Operation PEACCE Robotics'>3461</abbr>")).join(", ");
+        const blueAlliance = lastMatch.alliances.blue.team_keys.map(t => t.replace("frc", "").replace("3461", "<abbr title='Operation PEACCE Robotics'>3461</abbr>")).join(", ");
+        if (lastMatch.winning_alliance == "red" && redAlliance.includes("3461")) {
+            document.getElementById('lastMatchRedScore').innerHTML = `<u>${lastMatch.alliances.red.score}</u>`;
+            document.getElementById('lastMatchBlueScore').innerHTML = lastMatch.alliances.blue.score;
+        } else if (lastMatch.winning_alliance == "blue" && blueAlliance.includes("3461")) {
+            document.getElementById('lastMatchRedScore').innerHTML = lastMatch.alliances.red.score;
+            document.getElementById('lastMatchBlueScore').innerHTML = `<u>${lastMatch.alliances.blue.score}</u>`;           
+        } else {
+            document.getElementById('lastMatchRedScore').innerHTML = lastMatch.alliances.red.score;
+            document.getElementById('lastMatchBlueScore').innerHTML = lastMatch.alliances.blue.score;             
+        }
+
+        document.getElementById('lastMatchRed').innerHTML= redAlliance;
+        document.getElementById('lastMatchBlue').innerHTML = blueAlliance;
         document.getElementById("lastMatchContainer").style.display = "block";
         try {
             document.getElementById(`${lastMatch.key}`).remove(); // Remove the match from the list of matches below since it's now being displayed as the last match. This prevents confusion from having the same match displayed in two places and also prevents the list of matches from becoming too long as the event goes on
             //It should have already been removed when it was set as the next match, but in case the next match gets changed before the last match gets updated this will ensure there are no duplicates
         }
         catch (error) {
-            console.error('Failed to remove last match from list:', error);
+            console.warn('Failed to remove last match from list:', error);
         }
 
     } catch (error) {
