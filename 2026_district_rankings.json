@@ -709,40 +709,13 @@
                 "award_points": 0,
                 "district_cmp": false,
                 "elim_points": 0,
-                "event_key": "2026mabil",
-                "qual_points": 11,
-                "total": 11
-            },
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026marea",
-                "qual_points": 13,
-                "total": 13
-            }
-        ],
-        "point_total": 24,
-        "rank": 38,
-        "rookie_bonus": 0,
-        "team_key": "frc4169"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
                 "event_key": "2026nhbed",
                 "qual_points": 14,
                 "total": 14
             }
         ],
         "point_total": 24,
-        "rank": 39,
+        "rank": 38,
         "rookie_bonus": 10,
         "team_key": "frc10937"
     },
@@ -760,7 +733,7 @@
             }
         ],
         "point_total": 23,
-        "rank": 40,
+        "rank": 39,
         "rookie_bonus": 0,
         "team_key": "frc3182"
     },
@@ -778,7 +751,7 @@
             }
         ],
         "point_total": 23,
-        "rank": 41,
+        "rank": 40,
         "rookie_bonus": 0,
         "team_key": "frc4564"
     },
@@ -790,15 +763,24 @@
                 "award_points": 0,
                 "district_cmp": false,
                 "elim_points": 0,
+                "event_key": "2026mabil",
+                "qual_points": 11,
+                "total": 11
+            },
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
                 "event_key": "2026marea",
-                "qual_points": 13,
-                "total": 13
+                "qual_points": 12,
+                "total": 12
             }
         ],
         "point_total": 23,
-        "rank": 42,
-        "rookie_bonus": 10,
-        "team_key": "frc10912"
+        "rank": 41,
+        "rookie_bonus": 0,
+        "team_key": "frc4169"
     },
     {
         "adjustments": 0,
@@ -814,7 +796,7 @@
             }
         ],
         "point_total": 23,
-        "rank": 43,
+        "rank": 42,
         "rookie_bonus": 10,
         "team_key": "frc11269"
     },
@@ -832,7 +814,7 @@
             }
         ],
         "point_total": 23,
-        "rank": 44,
+        "rank": 43,
         "rookie_bonus": 10,
         "team_key": "frc10910"
     },
@@ -850,7 +832,7 @@
             }
         ],
         "point_total": 22,
-        "rank": 45,
+        "rank": 44,
         "rookie_bonus": 0,
         "team_key": "frc3464"
     },
@@ -868,7 +850,7 @@
             }
         ],
         "point_total": 22,
-        "rank": 46,
+        "rank": 45,
         "rookie_bonus": 0,
         "team_key": "frc236"
     },
@@ -886,7 +868,7 @@
             }
         ],
         "point_total": 22,
-        "rank": 47,
+        "rank": 46,
         "rookie_bonus": 0,
         "team_key": "frc133"
     },
@@ -904,9 +886,27 @@
             }
         ],
         "point_total": 22,
-        "rank": 48,
+        "rank": 47,
         "rookie_bonus": 5,
         "team_key": "frc10156"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026marea",
+                "qual_points": 12,
+                "total": 12
+            }
+        ],
+        "point_total": 22,
+        "rank": 48,
+        "rookie_bonus": 10,
+        "team_key": "frc10912"
     },
     {
         "adjustments": 0,
@@ -1734,7 +1734,7 @@
         "point_total": 14,
         "rank": 94,
         "rookie_bonus": 0,
-        "team_key": "frc2877"
+        "team_key": "frc8626"
     },
     {
         "adjustments": 0,
@@ -1834,13 +1834,49 @@
                 "award_points": 0,
                 "district_cmp": false,
                 "elim_points": 0,
+                "event_key": "2026marea",
+                "qual_points": 13,
+                "total": 13
+            }
+        ],
+        "point_total": 13,
+        "rank": 100,
+        "rookie_bonus": 0,
+        "team_key": "frc2877"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026marea",
+                "qual_points": 13,
+                "total": 13
+            }
+        ],
+        "point_total": 13,
+        "rank": 101,
+        "rookie_bonus": 0,
+        "team_key": "frc5563"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
                 "event_key": "2026nhbed",
                 "qual_points": 8,
                 "total": 8
             }
         ],
         "point_total": 13,
-        "rank": 100,
+        "rank": 102,
         "rookie_bonus": 5,
         "team_key": "frc10138"
     },
@@ -1858,7 +1894,7 @@
             }
         ],
         "point_total": 12,
-        "rank": 101,
+        "rank": 103,
         "rookie_bonus": 0,
         "team_key": "frc181"
     },
@@ -1876,7 +1912,7 @@
             }
         ],
         "point_total": 12,
-        "rank": 102,
+        "rank": 104,
         "rookie_bonus": 0,
         "team_key": "frc6620"
     },
@@ -1894,7 +1930,7 @@
             }
         ],
         "point_total": 12,
-        "rank": 103,
+        "rank": 105,
         "rookie_bonus": 0,
         "team_key": "frc9096"
     },
@@ -1912,7 +1948,7 @@
             }
         ],
         "point_total": 12,
-        "rank": 104,
+        "rank": 106,
         "rookie_bonus": 0,
         "team_key": "frc3461"
     },
@@ -1930,45 +1966,9 @@
             }
         ],
         "point_total": 12,
-        "rank": 105,
-        "rookie_bonus": 0,
-        "team_key": "frc78"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026marea",
-                "qual_points": 12,
-                "total": 12
-            }
-        ],
-        "point_total": 12,
-        "rank": 106,
-        "rookie_bonus": 0,
-        "team_key": "frc2084"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026marea",
-                "qual_points": 12,
-                "total": 12
-            }
-        ],
-        "point_total": 12,
         "rank": 107,
         "rookie_bonus": 0,
-        "team_key": "frc8626"
+        "team_key": "frc88"
     },
     {
         "adjustments": 0,
@@ -2112,7 +2112,7 @@
         "point_total": 11,
         "rank": 115,
         "rookie_bonus": 0,
-        "team_key": "frc5563"
+        "team_key": "frc9443"
     },
     {
         "adjustments": 0,
@@ -2212,7 +2212,7 @@
                 "award_points": 0,
                 "district_cmp": false,
                 "elim_points": 0,
-                "event_key": "2026nhbed",
+                "event_key": "2026marea",
                 "qual_points": 10,
                 "total": 10
             }
@@ -2220,7 +2220,7 @@
         "point_total": 10,
         "rank": 121,
         "rookie_bonus": 0,
-        "team_key": "frc509"
+        "team_key": "frc2876"
     },
     {
         "adjustments": 0,
@@ -2238,7 +2238,7 @@
         "point_total": 10,
         "rank": 122,
         "rookie_bonus": 0,
-        "team_key": "frc4925"
+        "team_key": "frc509"
     },
     {
         "adjustments": 0,
@@ -2256,7 +2256,25 @@
         "point_total": 10,
         "rank": 123,
         "rookie_bonus": 0,
-        "team_key": "frc9443"
+        "team_key": "frc2084"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026nhbed",
+                "qual_points": 10,
+                "total": 10
+            }
+        ],
+        "point_total": 10,
+        "rank": 124,
+        "rookie_bonus": 0,
+        "team_key": "frc4925"
     },
     {
         "adjustments": 0,
@@ -2272,27 +2290,9 @@
             }
         ],
         "point_total": 10,
-        "rank": 124,
-        "rookie_bonus": 0,
-        "team_key": "frc839"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026marea",
-                "qual_points": 10,
-                "total": 10
-            }
-        ],
-        "point_total": 10,
         "rank": 125,
         "rookie_bonus": 0,
-        "team_key": "frc6201"
+        "team_key": "frc839"
     },
     {
         "adjustments": 0,
@@ -2360,7 +2360,7 @@
         "point_total": 9,
         "rank": 131,
         "rookie_bonus": 0,
-        "team_key": "frc2876"
+        "team_key": "frc78"
     },
     {
         "adjustments": 0,
@@ -2468,24 +2468,6 @@
         "point_total": 8,
         "rank": 137,
         "rookie_bonus": 0,
-        "team_key": "frc88"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026marea",
-                "qual_points": 8,
-                "total": 8
-            }
-        ],
-        "point_total": 8,
-        "rank": 138,
-        "rookie_bonus": 0,
         "team_key": "frc1922"
     },
     {
@@ -2502,7 +2484,7 @@
             }
         ],
         "point_total": 8,
-        "rank": 139,
+        "rank": 138,
         "rookie_bonus": 0,
         "team_key": "frc7694"
     },
@@ -2520,9 +2502,27 @@
             }
         ],
         "point_total": 8,
-        "rank": 140,
+        "rank": 139,
         "rookie_bonus": 0,
         "team_key": "frc4176"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026marea",
+                "qual_points": 8,
+                "total": 8
+            }
+        ],
+        "point_total": 8,
+        "rank": 140,
+        "rookie_bonus": 0,
+        "team_key": "frc6201"
     },
     {
         "adjustments": 0,
