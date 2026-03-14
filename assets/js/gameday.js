@@ -140,17 +140,19 @@ function setEventTitle(event) {
 async function setEventStatus() {
     const eventStatusEl = document.getElementById('currentEventStatus');
     try {
-        const status = await tba.getTeamStatus();
+        const status = await tba.getTeamEventStatus(currentEvent.key);
         const rank = await tba.getTeamStatusRank(currentEvent.key)
         const record = await tba.getTeamStatusRecordStr(currentEvent.key);
-        eventStatusEl.innerHTML = `${rank} ${record}`;
-        if (status?.playoff.level) {
-            eventStatusEl.setAttribute("title", currentEvent.playoff_type_string)
-            window.jQuery(eventStatusEl).tooltip()
-        } else if (status?.qual?.ranking?.record) {
-            eventStatusEl.setAttribute("title", "Qualification Ranking")
-            window.jQuery(eventStatusEl).tooltip()
-        }
+        eventStatusEl.innerText = `${rank} ${record}`;
+        try {
+            if (status?.playoff) {
+                eventStatusEl.setAttribute("title", currentEvent.playoff_type_string)
+                window.jQuery(eventStatusEl).tooltip()
+            } else if (status?.qual) {
+                eventStatusEl.setAttribute("title", "Qualification Ranking")
+                window.jQuery(eventStatusEl).tooltip()
+            } else { console.warn("Status did not meet conditions for tooltips", status)}
+        } catch (error) { console.warn("Could not set ranking tooltip", error)}
     } catch (error) {
         console.error('Failed to set event status:', error);
         eventStatusEl.innerHTML = "";
