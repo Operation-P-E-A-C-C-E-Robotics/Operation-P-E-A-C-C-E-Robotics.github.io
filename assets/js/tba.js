@@ -212,11 +212,12 @@ function formatTeamKey(teamKey) {
  */
 async function getCurrentEvent() {
     const events = await getEvents();
-    const now = new Date();
+
+    const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
 
     return events
-        .filter(event => new Date(event.end_date) >= now && new Date(event.start_date) <= now)
-        .sort((a, b) => a.start_date - b.start_date)[0] || null;
+        .filter(event => event.start_date <= today && event.end_date >= today)
+        .sort((a, b) => a.start_date.localeCompare(b.start_date))[0] ?? null;
 }
 
 /**
