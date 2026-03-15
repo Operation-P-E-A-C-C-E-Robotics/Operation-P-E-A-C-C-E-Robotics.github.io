@@ -213,10 +213,10 @@ function setLastMatch(lastMatch) {
         lastMatchCode.innerText = tba.getMatchCodeFromKey(lastMatch.key);
         const redAlliance = lastMatch.alliances.red.team_keys.map(t => t.replace("frc", "").replace("3461", "<abbr title='Operation PEACCE Robotics'>3461</abbr>")).join(", ");
         const blueAlliance = lastMatch.alliances.blue.team_keys.map(t => t.replace("frc", "").replace("3461", "<abbr title='Operation PEACCE Robotics'>3461</abbr>")).join(", ");
-        if (lastMatch.winning_alliance == "red" && redAlliance.includes("3461")) {
+        if (redAlliance.includes("3461")) {
             document.getElementById('lastMatchRedScore').innerHTML = `<u>${lastMatch.alliances.red.score}</u>`;
             document.getElementById('lastMatchBlueScore').innerHTML = lastMatch.alliances.blue.score;
-        } else if (lastMatch.winning_alliance == "blue" && blueAlliance.includes("3461")) {
+        } else if (blueAlliance.includes("3461")) {
             document.getElementById('lastMatchRedScore').innerHTML = lastMatch.alliances.red.score;
             document.getElementById('lastMatchBlueScore').innerHTML = `<u>${lastMatch.alliances.blue.score}</u>`;           
         } else {
