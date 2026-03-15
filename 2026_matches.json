@@ -1188,11 +1188,11 @@
         "winning_alliance": "red"
     },
     {
-        "actual_time": null,
+        "actual_time": 1773594120,
         "alliances": {
             "blue": {
                 "dq_team_keys": [],
-                "score": -1,
+                "score": 96,
                 "surrogate_team_keys": [],
                 "team_keys": [
                     "frc4034",
@@ -1202,7 +1202,7 @@
             },
             "red": {
                 "dq_team_keys": [],
-                "score": -1,
+                "score": 40,
                 "surrogate_team_keys": [],
                 "team_keys": [
                     "frc173",
@@ -1215,13 +1215,18 @@
         "event_key": "2026mawne",
         "key": "2026mawne_qm68",
         "match_number": 68,
-        "post_result_time": null,
-        "predicted_time": 1773594602,
+        "post_result_time": 1773594318,
+        "predicted_time": 1773594648,
         "score_breakdown": null,
         "set_number": 1,
         "time": 1773587640,
-        "videos": [],
-        "winning_alliance": ""
+        "videos": [
+            {
+                "key": "MNHe0z2zN7A",
+                "type": "youtube"
+            }
+        ],
+        "winning_alliance": "blue"
     },
     {
         "actual_time": null,
@@ -1252,7 +1257,7 @@
         "key": "2026mawne_qm73",
         "match_number": 73,
         "post_result_time": null,
-        "predicted_time": 1773597282,
+        "predicted_time": 1773596825,
         "score_breakdown": null,
         "set_number": 1,
         "time": 1773590340,
