@@ -104,11 +104,16 @@ function setLiveStream(streamUrl) {
 function populateLiveStreamOptions(event) {
     const liveStreamDropdown = document.getElementById('livestreamDropdown');
     liveStreamDropdown.innerHTML = "" //clear the list to ensure no duplicates (we might be refreshing or populating for the first time)
-    event.webcasts.forEach((webcast, index) => {
+    event.webcasts.sort((a, b ) => {
+        const aDate = new Date(a.date).toISOString().slice(0, 10);
+        const bDate = new Date(b.date).toISOString().slice(0, 10);
+        console.log(aDate.localeCompare(bDate));
+        return aDate.localeCompare(bDate)
+    } ).forEach((webcast, index) => {
         const button = document.createElement('button');
         button.className = 'dropdown-item';
         button.id = webcast.channel
-        button.textContent = webcast?.stream_title || (webcast.type === 'twitch' ? `Twitch ${webcast.channel}` : `YouTube Stream ${index+1}`);
+        button.textContent = webcast?.stream_title || (webcast.type === 'twitch' ? `Twitch ${webcast.channel}` : `YouTube Stream ${index+1} (${webcast.date})`);
         button.addEventListener('click', () => {
             const url = webcast.type === 'twitch' 
                 ? `https://player.twitch.tv/?autoplay=true&channel=${webcast.channel}&parent=www.peacce.org`
