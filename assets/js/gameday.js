@@ -163,7 +163,7 @@ function setMatchList(matches, eventTimeZone) {
     document.getElementById('matchesListContainer').innerHTML = ""; // Clear match list before populating to prevent duplicates
     matches.sort((a, b) => (a.predicted_time *1000) - (b.predicted_time *1000)); // Sort matches by predicted time (multiplied by 1000 to convert from seconds to milliseconds for JavaScript Date)
     matches.filter(match => match.predicted_time * 1000 > new Date().getTime()).forEach(match => addMatchToList(match, eventTimeZone)); // Only show upcoming matches in the list to prevent it from becoming too long as the event goes on. Past matches can be seen by clicking on the last match section at the top which will show the most recent past match with details and a link to the match video if available
-    matches.forEach(async match => addMatchToList(match, eventTimeZone));
+    // matches.forEach(async match => addMatchToList(match, eventTimeZone));
 }
 
 function setNextMatch(nextMatch)  {
