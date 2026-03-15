@@ -202,6 +202,8 @@ function setNextMatch(nextMatch)  {
             document.getElementById('nextMatchNumber').innerText = "Unknown";
             document.getElementById('nextMatchRed').innerText = "";
             document.getElementById('nextMatchBlue').innerText = "";
+            clearInterval(matchUpdateInterval);
+            document.getElementById("nextMatchCountdown").innerText = "--"
         }
 
     }
