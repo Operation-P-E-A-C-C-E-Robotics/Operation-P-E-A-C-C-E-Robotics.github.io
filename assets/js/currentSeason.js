@@ -1,6 +1,16 @@
 import { getKickoffDate, getCurrentEvent, getCurrentSeasonYear, getNextEvent, getMedia, getTeamDistrictStats, getDistrictRankings, getAwards, getEvents, getEventStatuses, getMatches, formatTeamKey, getEventNameFromKey, getMatchNameFromKey } from "./tba.js";
 import {eventCountdown} from "./countdown.js";
-import { Chart } from "https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm";
+import { Chart, LineController, LineElement, PointElement, LinearScale, CategoryScale, Title, Tooltip, Legend } from "https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm";
+Chart.register(
+  LineController,
+  LineElement,
+  PointElement,
+  LinearScale,
+  CategoryScale,
+  Title,
+  Tooltip,
+  Legend
+);
 
   const year = getCurrentSeasonYear();
   document.getElementById("header").innerHTML = year + " Competition Season"
