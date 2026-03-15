@@ -83,7 +83,7 @@ async function getTeamEventStatus(eventKey) {
 async function getTeamStatusRecordStr(eventKey) {
     const status = await getTeamEventStatus(eventKey)
     if (status?.playoff) {
-        return status?.playoff?.record ? `${status.playoff.record.wins}W ${status.playoff.record.losses}L ${status.playoff.record.ties}T` : "-W -L -T";
+        return status?.playoff?.record ? `${status.playoff.record.wins}W ${status.playoff.record.losses}L ${status.playoff.record.ties.toString() > 0 ? status.playoff.record.ties + "T" : ""}` : "-W -L -T";
     } else if (status?.qual?.ranking) {
         return status?.qual?.ranking?.record ? `${status.qual.ranking.record.wins}W ${status.qual.ranking.record.losses}L ${status.qual.ranking.record.ties}T` : "-W -L -T";
     } else {
@@ -93,7 +93,11 @@ async function getTeamStatusRecordStr(eventKey) {
 async function getTeamStatusRank(eventKey) {
     const status = await getTeamEventStatus(eventKey);
     if (status?.playoff) {
-        return status?.playoff?.double_elim_round ? status.playoff.double_elim_round : String(status.playoff.level).toUpperCase();
+        if (status?.playoff.status === "eliminated") {
+            return "Eliminated"
+        } else {
+            return status?.playoff?.double_elim_round ? status.playoff.double_elim_round : String(status.playoff.level).toUpperCase();
+        }
     }
     else if (status?.qual?.ranking) {
         return status?.qual?.ranking? status.qual.ranking.rank + "/" + status.qual.num_teams : "? / ?";
