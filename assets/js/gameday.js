@@ -23,13 +23,15 @@ window.addEventListener("load", resizeGameday);
 window.addEventListener("resize", resizeGameday);
 
 function showRefreshSpinner(element) {
-    element.classList.add("spinner-grow", "spinner-grow-sm")
+    element.classList.remove("fa-refresh")
+    element.classList.add("spinner-border", "spinner-border-sm")
 }
 function hideRefreshSpinner(element) {
-    element.classList.remove("spinner-grow", "spinner-grow-sm")
-    element.classList.add("fa", "fa-check")
+    element.classList.remove("spinner-border", "spinner-border-sm")
+    element.classList.add("fa-check")
     setTimeout(()=> {
-        element.classList.remove("fa", "fa-check")
+        element.classList.remove("fa-check")
+        element.classList.add("fa-refresh")
     }, 1500)
 }
 
@@ -56,17 +58,17 @@ function addMatchToList(match, eventTimeZone) {
             // Add new match to the list
             const matchEl =
                 `
-                <div class="pt-2 ml-0 pl-0 mr-1 text-center">
-                    <h6 id="matchCodeDisplay">${matchKey}</h6>
-                    <h6 id="predictedTime" class="text-small">~${new Date(match.predicted_time * 1000).toLocaleTimeString("en-US", {timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit'}).replace(/\s?(AM|PM)/i, "")}</h6>
+                <div class="text-center">
+                    <h6 id="matchCodeDisplay" class="m-1">${matchKey}</h6>
+                    <h6 id="predictedTime" class="text-small m-1">~${new Date(match.predicted_time * 1000).toLocaleTimeString("en-US", {timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit'}).replace(/\s?(AM|PM)/i, "")}</h6>
                 </div>
-                    <table class="table table-sm table-borderless text-light align-items-center pt-2 mb-0 mr-0 pr-0 rounded-sm" style="max-width: fit-content;">
+                    <table class="table table-sm table-borderless text-light align-items-center p-1 m-1 rounded-sm" style="max-width: fit-content;">
                         <tbody class="align-items-center text-center rounded-sm">
-                            <tr class="text-danger">
-                                <td class="small font-weight-bold text-nowrap" id="nextMatchRed">${redAlliance}</td> 
+                            <tr class="text-danger p-1 m-1">
+                                <td class="small font-weight-bold text-nowrap p-0 m-0" id="nextMatchRed">${redAlliance}</td> 
                             </tr>
-                            <tr class="text-primary">
-                                <td class="small font-weight-bold text-nowrap" id="nextMatchBlue">${blueAlliance}</td>
+                            <tr class="text-primary p-1 m-1">
+                                <td class="small font-weight-bold text-nowrap p-0 m-0" id="nextMatchBlue">${blueAlliance}</td>
                             </tr>
                         </tbody>
                     </table> 
@@ -74,7 +76,7 @@ function addMatchToList(match, eventTimeZone) {
                 `
             const matchItem = document.createElement('div')
             matchItem.classList.add("container", "bg-dark", "d-inline-flex", "align-items-center", "mr-1",
-                                    "mb-1","h-100","rounded-lg", "pr-0", "pl-1", "h-100"); 
+                                    "h-100","rounded-lg", "pr-0", "pl-1", "h-100"); 
             matchItem.id += match.key;
             // matchItem.style.maxWidth = "fit-content";
             matchItem.innerHTML = matchEl;
