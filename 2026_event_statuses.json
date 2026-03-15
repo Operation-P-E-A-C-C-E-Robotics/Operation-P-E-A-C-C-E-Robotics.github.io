@@ -1,11 +1,16 @@
 {
     "2026cthar": null,
     "2026mawne": {
-        "alliance": null,
-        "alliance_status_str": "--",
+        "alliance": {
+            "backup": null,
+            "name": "Alliance 5",
+            "number": 5,
+            "pick": 2
+        },
+        "alliance_status_str": "<b>2nd Pick</b> of <b>Alliance 5</b>",
         "last_match_key": "2026mawne_qm73",
         "next_match_key": "2026mawne_sf2m1",
-        "overall_status_str": "Team 3461 is <b>0-0-0</b> in the <b>Double Elimination Bracket (Round 1)</b>.",
+        "overall_status_str": "Team 3461 is <b>0-0-0</b> in the <b>Double Elimination Bracket (Round 1)</b> as the <b>2nd Pick</b> of <b>Alliance 5</b>.",
         "playoff": {
             "current_level_record": {
                 "losses": 0,
