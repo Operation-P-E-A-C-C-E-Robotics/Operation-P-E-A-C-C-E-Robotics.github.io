@@ -49,10 +49,10 @@ function matchCountdown(countDownDate, counterEl, callBackFunction = null) {
         }
         counterEl.innerText = `${display}`;
         counterEl.classList.remove('yellowwarning', 'redalliance');
-        if (hours === 0 && minutes <= 10) {
+        if (days === 0 && hours === 0 && minutes <= 10) {
             counterEl.classList.add('redalliance');
             //counterEl.innerHTML = `~${hours}h ${minutes}m ${seconds}s`;
-        } else if (hours === 0 && minutes <= 20) {
+        } else if (days === 0 && hours === 0 && minutes <= 20) {
             counterEl.classList.add('yellowwarning');
             //counterEl.innerHTML = `~${hours}h ${minutes}m ${seconds}s`;
         } else {
