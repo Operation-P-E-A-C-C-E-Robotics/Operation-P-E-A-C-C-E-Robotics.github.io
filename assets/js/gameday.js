@@ -104,6 +104,7 @@ function setLiveStream(streamUrl) {
     const iframe = document.getElementById('liveStreamFrame');
     document.getElementById('streamContainer').style.display = 'block';
     iframe.src = streamUrl;
+    resizeGameday() //ensure the stream is sized correctly
     
 }
 
@@ -354,6 +355,8 @@ async function update() {
         console.error('Failed to get last match:', error);
         setLastMatch(null);
     }); 
+
+    resizeGameday(); //resize the stream in case the bar height changed
 }
 
 init();
