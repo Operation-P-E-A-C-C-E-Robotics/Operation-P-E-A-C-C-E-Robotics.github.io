@@ -37,6 +37,68 @@ function getFirstSaturdayInJanuary(year) {
   return "No suitable date found in January.";
 }
 
+function playOnFieldNotification() {
+  if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+
+  const now = audioCtx.currentTime;
+
+  function tone(freq, start, duration) {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = "sine";
+      osc.frequency.value = freq;
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      // louder but still smooth
+      gain.gain.setValueAtTime(0, start);
+      gain.gain.linearRampToValueAtTime(0.6, start + 0.01); // louder
+      gain.gain.exponentialRampToValueAtTime(0.001, start + duration);
+
+      osc.start(start);
+      osc.stop(start + duration);
+  }
+
+  // modern three-note "ding"
+  tone(700, now, 0.16);
+  tone(900, now + 0.14, 0.18);
+  tone(1200, now + 0.28, 0.22);
+}
+
+function playOnFieldSoondNotification() {
+  if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+
+  const now = audioCtx.currentTime;
+
+  function tone(freq, start, duration) {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = "sine";
+      osc.frequency.value = freq;
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      // louder but still smooth
+      gain.gain.setValueAtTime(0, start);
+      gain.gain.linearRampToValueAtTime(0.6, start + 0.01); // louder
+      gain.gain.exponentialRampToValueAtTime(0.001, start + duration);
+
+      osc.start(start);
+      osc.stop(start + duration);
+  }
+
+  // modern two-note "ding"
+  tone(700, now, 0.16);
+  tone(1200, now + 0.28, 0.22);
+}
 
  
 
@@ -82,3 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.classList.add("bg-light")
   }
 });
+
+export { playOnFieldNotification, playOnFieldSoondNotification }
+window.playOnFieldNotif = playOnFieldNotification
+window.playOnFieldSoonNotif = playOnFieldSoondNotification

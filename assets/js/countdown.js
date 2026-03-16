@@ -1,3 +1,5 @@
+import { playOnFieldNotification, playOnFieldSoondNotification } from "./helpers.js";
+
 /**
  * Update match countdown timer
  * @param {number} countDownDate - Unix timestamp to count down to
@@ -21,7 +23,9 @@ function eventLocalTime(eventTimeZone, timeEl) {
     return interval;
 }
 
-function matchCountdown(countDownDate, counterEl, callBackFunction = null) {
+function matchCountdown(countDownDate, counterEl, callBackFunction = null, audioNotification = false) {
+    console.log("match countdown set, audio notification:", audioNotification)
+    var hasPlayedNotif = false;
     const interval = setInterval(() => {
         const now = new Date();//.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit', second: '2-digit' }).getTime();
         // const currentTime = now.toLocaleTimeString("en-US", { timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit', second: '2-digit' });
@@ -58,6 +62,12 @@ function matchCountdown(countDownDate, counterEl, callBackFunction = null) {
         } else {
             counterEl.classList.remove('yellowwarning', 'redalliance');
         }
+        if (days === 0 && hours === 0 && minutes === 5 && seconds >= 50 && audioNotification == true) {
+            playOnFieldSoondNotification();
+        }
+        if (days === 0 && hours === 0 && minutes === 0 && seconds <= 10 && audioNotification == true) {
+            playOnFieldNotification(); //if the User toggled the audio notification to true on the gameday page
+        } 
         if (distance < 0) {
             counterEl.innerText = `On Field Soon!`;
             if (typeof callBackFunction === "function") {

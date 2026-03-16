@@ -6,6 +6,7 @@ var currentSeasonYear = null;
 var currentEvent = null;
 var matchUpdateInterval = null;
 var updateInterval = null;
+var audioNotification = false;
 const matchRefreshSpinner = document.getElementById("matchRefreshSpinner");
 const streamRefreshSpinner = document.getElementById("streamRefreshSpinner");
 
@@ -18,7 +19,8 @@ function resizeGameday() {
     gameday.style.height = `calc(100vh - ${navbarHeight}px)`;
 }
 
-
+window.addEventListener("load",  window.audioCtx = new (window.AudioContext || window.webkitAudioContext)())
+window.addEventListener("load", window.jQuery(document.getElementById("audioToggleBtn")).tooltip())
 window.addEventListener("load", resizeGameday);
 window.addEventListener("resize", resizeGameday);
 
@@ -33,6 +35,21 @@ function hideRefreshSpinner(element) {
         element.classList.remove("fa-check")
         element.classList.add("fa-refresh")
     }, 1500)
+}
+
+function toggleAudioNotification() {
+    const toggleBtn = document.getElementById("audioToggleBtn")
+    if ( audioNotification == true ) {
+        toggleBtn.classList.remove("fa-bell")
+        toggleBtn.classList.add("fa-bell-slash-o")
+        audioNotification = false;
+        return false
+    } else {
+        toggleBtn.classList.add("fa-bell")
+        toggleBtn.classList.remove("fa-bell-slash-o")
+        audioNotification = true;
+        return true
+    }
 }
 
 function addMatchToList(match, eventTimeZone) {
@@ -207,7 +224,6 @@ function setNextMatch(nextMatch) {
             document.getElementById('nextMatchBlue').innerHTML = "";
 
         } else {
-            // Event is over
             document.getElementById('nextMatchNumber').innerText = "Unknown";
             document.getElementById('nextMatchRed').innerText = "";
             document.getElementById('nextMatchBlue').innerText = "";
@@ -243,7 +259,8 @@ function setNextMatch(nextMatch) {
         matchUpdateInterval = counter.matchCountdown(
             nextMatchDate,
             document.getElementById('nextMatchCountdown'),
-            update
+            update, 
+            audioNotification
         );
 
     } catch (error) {
@@ -377,6 +394,7 @@ window.setNextMatch = setNextMatch;
 window.setLastMatch = setLastMatch;
 window.setMatchList = setMatchList;
 window.populateLiveStreamOptions = refreshLiveStreamsWithVisual;
+window.toggleAudioNotification = toggleAudioNotification;
 
 const testNextMatch =
 {
@@ -471,7 +489,7 @@ function generateTestMatches(matchesArray) {
         const duplicate = JSON.parse(JSON.stringify(original));
         duplicate.match_number += Math.floor(Math.random() * 50) + 1;
         duplicate.key = `2025cthar_qm${duplicate.match_number}`;
-        duplicate.predicted_time = Math.floor(new Date().getTime() / 1000) + Math.floor(Math.random() * 960000);
+        duplicate.predicted_time = Math.floor(new Date().getTime() / 1000) + Math.floor(Math.random() * 1000);
         duplicate.alliances.red.score = Math.floor(Math.random() * 200);
         duplicate.alliances.blue.score = Math.floor(Math.random() * 200);
         // Randomly select teams
@@ -489,7 +507,7 @@ function generateTestMatches(matchesArray) {
     // If the array was already full, randomly modify predicted times since they change a lot in reality
     if (wasFull) {
         matchesArray.forEach(match => {
-            match.predicted_time = Math.floor(new Date().getTime() / 1000) + Math.floor(Math.random() * 960000);
+            match.predicted_time = Math.floor(new Date().getTime() / 1000) + Math.floor(Math.random() * 100000);
         });
     }
 }
