@@ -47,6 +47,13 @@ defaults:
       layout: post
       bg: light
       txt: dark
+  
+  -
+    scope:
+    path: "/gameday/"
+    values:
+    bg: light
+    txt: dark
 
 page_excerpts: true
 

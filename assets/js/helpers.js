@@ -77,5 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
     myButton.addEventListener('click', toggleDarkMode);
   } catch (error) {
     console.error('Error occurred while adding event listener:', error);
+    document.body.classList.remove("bg-dark"); //Default to light mode
+    document.body.classList.remove("text-light")
+    document.body.classList.add("bg-light")
   }
 });
