@@ -173,43 +173,75 @@ function setMatchList(matches, eventTimeZone) {
     // matches.forEach(async match => addMatchToList(match, eventTimeZone));
 }
 
-function setNextMatch(nextMatch)  {
+function setNextMatch(nextMatch) {
     console.log('Setting next match:', nextMatch);
-    try{
-        const nextMatchDate = new Date(nextMatch.predicted_time * 1000); // Convert from seconds to milliseconds for JavaScript Date
-        const nextMatchNumberEl = document.getElementById('nextMatchNumber');
-        nextMatchNumberEl.innerText = tba.getMatchCodeFromKey(nextMatch.key);
-        const redAlliance = nextMatch.alliances.red.team_keys.map(t => t.replace("frc", "").replace("3461", "<abbr title='Operation PEACCE Robotics'>3461</abbr>")).join(", ");
-        const blueAlliance = nextMatch.alliances.blue.team_keys.map(t => t.replace("frc", "").replace("3461", "<abbr title='Operation PEACCE Robotics'>3461</abbr>")).join(", ");
-        document.getElementById('nextMatchRed').innerHTML = redAlliance;
-        document.getElementById('nextMatchBlue').innerHTML = blueAlliance;
-        console.log(`Removing ${nextMatch.key} from match list if it exists because its now being displayed as the next match.`);
-        document.getElementById(`${nextMatch.key}`).remove(); // Remove the match from the list of matches below since it's now being displayed as the next match. This prevents confusion from having the same match displayed in two places and also prevents the list of matches from becoming too long as the event goes on
-        
-        clearInterval(matchUpdateInterval); //reset the countdown interval to prevent multiple intervals from running simultaneously
-        matchUpdateInterval = counter.matchCountdown(nextMatchDate, document.getElementById('nextMatchCountdown'), document.getElementById('eventLocalTime'), currentEvent.timezone, update);
-    } catch (error) {
-        let eventStart = tba.getEventLocalTimeDate(currentEvent.start_date, currentEvent.timeZone);
+
+    if (!nextMatch) {
+        console.log("Match is null, Presuming Event has not begun...")
+        let eventStart = tba.getEventLocalTimeDate(currentEvent.start_date, currentEvent.timezone);
         let now = tba.getEventLocalTimeCurrentTime(currentEvent.timezone);
-        if (currentEvent.start_date &&  eventStart > now) { 
-            // If the event hasn't started yet, show the event countdown instead of the next match countdown
-            clearInterval(matchUpdateInterval); //reset the countdown interval to prevent multiple intervals from running simultaneously
-            matchUpdateInterval = counter.matchCountdown(currentEvent.start_date, document.getElementById('nextMatchCountdown'),  update);
+
+        if (eventStart > now) {
+            console.log("Setting Event Countdown", "Event Start: ", eventStart, "Current Local Time: ", now)
+            clearInterval(matchUpdateInterval);
+            matchUpdateInterval = counter.matchCountdown(
+                eventStart,
+                document.getElementById('nextMatchCountdown'),
+                update
+            );
+
             document.getElementById('nextMatchNumber').innerText = "Event Begins In:";
+            document.getElementById('nextMatchRed').innerHTML = "";
+            document.getElementById('nextMatchBlue').innerHTML = "";
 
         } else {
-            console.error('Failed to set next match:', error);
+            // Event is over
             document.getElementById('nextMatchNumber').innerText = "Unknown";
             document.getElementById('nextMatchRed').innerText = "";
             document.getElementById('nextMatchBlue').innerText = "";
             clearInterval(matchUpdateInterval);
-            document.getElementById("nextMatchCountdown").innerText = "--"
+            document.getElementById("nextMatchCountdown").innerText = "--";
         }
 
+        return;
+    }
+
+    try {
+        const nextMatchDate = new Date(nextMatch.predicted_time * 1000);
+
+        const nextMatchNumberEl = document.getElementById('nextMatchNumber');
+        nextMatchNumberEl.innerText = tba.getMatchCodeFromKey(nextMatch.key);
+
+        const redAlliance = nextMatch.alliances.red.team_keys
+            .map(t => t.replace("frc", "").replace("3461", "<abbr title='Operation PEACCE Robotics'>3461</abbr>"))
+            .join(", ");
+
+        const blueAlliance = nextMatch.alliances.blue.team_keys
+            .map(t => t.replace("frc", "").replace("3461", "<abbr title='Operation PEACCE Robotics'>3461</abbr>"))
+            .join(", ");
+
+        document.getElementById('nextMatchRed').innerHTML = redAlliance;
+        document.getElementById('nextMatchBlue').innerHTML = blueAlliance;
+
+        const el = document.getElementById(nextMatch.key);
+        if (el) el.remove();
+
+        clearInterval(matchUpdateInterval);
+
+        matchUpdateInterval = counter.matchCountdown(
+            nextMatchDate,
+            document.getElementById('nextMatchCountdown'),
+            update
+        );
+
+    } catch (error) {
+        console.error('Failed to set next match:', error);
     }
 }
 
+
 function setLastMatch(lastMatch) {
+    const lastMatchContainer = document.getElementById("lastMatchContainer");
     try {
         const lastMatchCode = document.getElementById('lastMatchCode');
         lastMatchCode.innerText = tba.getMatchCodeFromKey(lastMatch.key);
@@ -228,7 +260,8 @@ function setLastMatch(lastMatch) {
 
         document.getElementById('lastMatchRed').innerHTML= redAlliance;
         document.getElementById('lastMatchBlue').innerHTML = blueAlliance;
-        document.getElementById("lastMatchContainer").style.display = "block";
+        lastMatchContainer.classList.add("d-flex"); 
+        lastMatchContainer.classList.remove("d-none");
         try {
             document.getElementById(`${lastMatch.key}`).remove(); // Remove the match from the list of matches below since it's now being displayed as the last match. This prevents confusion from having the same match displayed in two places and also prevents the list of matches from becoming too long as the event goes on
             //It should have already been removed when it was set as the next match, but in case the next match gets changed before the last match gets updated this will ensure there are no duplicates
@@ -239,7 +272,8 @@ function setLastMatch(lastMatch) {
 
     } catch (error) {
         console.error('Failed to set last match:', error);
-        document.getElementById("lastMatchContainer").style.display = "none";
+        lastMatchContainer.classList.remove("d-flex"); 
+        lastMatchContainer.classList.add("d-none");
     }
 }
 

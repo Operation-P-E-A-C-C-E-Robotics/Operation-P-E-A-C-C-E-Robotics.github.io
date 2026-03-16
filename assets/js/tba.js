@@ -15,14 +15,19 @@ function getCurrentSeasonYear(date = new Date()) {
 }
 
 function getEventLocalTimeDate(date, timezone) {
-    const [year,month,day] = date.split("-").map(Number)
-    const localTimeDate = new Date(Date.UTC(year, month-1, day));
-    return localTimeDate.toLocaleDateString('en-US', {timezone:timezone})
+    const [year, month, day] = date.split("-").map(Number);
+
+    // Build a date string in the timezone
+    const dateTimeString = `${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}T00:00:00`;
+
+    // Parse in the target timezone using Date.toLocaleString trick
+    const localDateStr = new Date(dateTimeString).toLocaleString("en-US", { timeZone: timezone });
+
+    return new Date(localDateStr);
 }
 
 function getEventLocalTimeCurrentTime(timezone) {
-    const now = new Date(new Date().toLocaleString("en-US", { timeZone: timezone }));
-    return now
+    return new Date(new Date().toLocaleString("en-US", { timeZone: timezone }));
 }
 
 function viewOnTBA() {
