@@ -40,6 +40,14 @@ function addMatchToList(match, eventTimeZone) {
     const redAlliance = match.alliances.red.team_keys.map(t => t.replace("frc", "").replace("3461", "<abbr title='Operation PEACCE Robotics'>3461</abbr>")).join(", ");
     const blueAlliance = match.alliances.blue.team_keys.map(t => t.replace("frc", "").replace("3461", "<abbr title='Operation PEACCE Robotics'>3461</abbr>")).join(", ");
     const matchKey = tba.getMatchCodeFromKey(match.key);
+    var predictedTimeString = "";
+    const predictedStart = new Date(match.predicted_time * 1000);
+    const now = new Date()
+    if (predictedStart.toDateString() !== now.toDateString()) {
+        predictedTimeString = `~${predictedStart.toLocaleString("en-US", {timeZone: eventTimeZone, weekday: 'short',  hour: '2-digit', minute: '2-digit'}).replace(/\s?(AM|PM)/i, "")}`;
+    } else {
+        predictedTimeString = `~${predictedStart.toLocaleTimeString("en-US", {timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit'}).replace(/\s?(AM|PM)/i, "")}`;
+    }
     // Check if match already exists in the list to prevent duplicates (this can happen because TBA sometimes changes match times which would cause the same match to be added multiple times instead of just updating the existing match's time)
     try { 
         if (document.getElementById(`${match.key}`)) {
@@ -48,17 +56,9 @@ function addMatchToList(match, eventTimeZone) {
             document.getElementById(`${match.key}`).querySelector('#matchCodeDisplay').innerText = matchKey; //This should not change, as it would then be a different match. Changing it makes any bugs obvious
             document.getElementById(`${match.key}`).querySelector('#nextMatchRed').innerHTML = redAlliance; //These ususally dont change but just in case they do we will update them as well
             document.getElementById(`${match.key}`).querySelector('#nextMatchBlue').innerHTML = blueAlliance; //These ususally dont change but just in case they do we will update them as well
-             // Update the predicted time display
-             const predictedTimeEl = document.getElementById(`${match.key}`).querySelector('#predictedTime');
-             if (predictedTimeEl) {
-                const predictedStart = new Date(match.predicted_time * 1000);
-                const now = new Date()
-                if (predictedStart.toDateString() !== now.toDateString()) {
-                    predictedTimeEl.innerText = `~${predictedStart.toLocaleString("en-US", {timeZone: eventTimeZone, weekday: 'short',  hour: '2-digit', minute: '2-digit'}).replace(/\s?(AM|PM)/i, "")}`;
-                } else {
-                    predictedTimeEl.innerText = `~${predictedStart.toLocaleTimeString("en-US", {timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit'}).replace(/\s?(AM|PM)/i, "")}`;
-                }
-             }
+            // Update the predicted time display
+            const predictedTimeEl = document.getElementById(`${match.key}`).querySelector('#predictedTime');
+            predictedTimeEl.innerText = predictedTimeString
             return;
         } else {
             // Add new match to the list
@@ -66,7 +66,7 @@ function addMatchToList(match, eventTimeZone) {
                 `
                 <div class="text-center">
                     <h6 id="matchCodeDisplay" class="m-1">${matchKey}</h6>
-                    <h6 id="predictedTime" class="text-small m-1">~${new Date(match.predicted_time * 1000).toLocaleTimeString("en-US", {timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit'}).replace(/\s?(AM|PM)/i, "")}</h6>
+                    <h6 id="predictedTime" class="text-small m-1 text-nowrap">${predictedTimeString}</h6>
                 </div>
                     <table class="table table-sm table-borderless text-light align-items-center p-1 m-1 rounded-sm" style="max-width: fit-content;">
                         <tbody class="align-items-center text-center rounded-sm">
@@ -462,7 +462,7 @@ function generateTestMatches(matchesArray) {
         const duplicate = JSON.parse(JSON.stringify(original));
         duplicate.match_number += Math.floor(Math.random() * 50) + 1;
         duplicate.key = `2025cthar_qm${duplicate.match_number}`;
-        duplicate.predicted_time = Math.floor(new Date().getTime() / 1000) + Math.floor(Math.random() * 3600);
+        duplicate.predicted_time = Math.floor(new Date().getTime() / 1000) + Math.floor(Math.random() * 960000);
         duplicate.alliances.red.score = Math.floor(Math.random() * 200);
         duplicate.alliances.blue.score = Math.floor(Math.random() * 200);
         // Randomly select teams
@@ -480,7 +480,7 @@ function generateTestMatches(matchesArray) {
     // If the array was already full, randomly modify predicted times since they change a lot in reality
     if (wasFull) {
         matchesArray.forEach(match => {
-            match.predicted_time = Math.floor(new Date().getTime() / 1000) + Math.floor(Math.random() * 3600);
+            match.predicted_time = Math.floor(new Date().getTime() / 1000) + Math.floor(Math.random() * 960000);
         });
     }
 }
