@@ -100,11 +100,16 @@ function removeMatchFromList(matchKey) {
     }
 }
 
-function setLiveStream(streamUrl) {
+function setLiveStream(streamUrl, streamButtonId) {
     const iframe = document.getElementById('liveStreamFrame');
-    document.getElementById('streamContainer').style.display = 'block';
     iframe.src = streamUrl;
+    document.getElementById('streamContainer').style.display = 'block';
     resizeGameday() //ensure the stream is sized correctly
+    
+    if (streamButtonId) {
+        document.getElementById("livestreamDropdown").childNodes.forEach((node) => {node.classList.remove("active")})
+        document.getElementById(streamButtonId).classList.add("active");
+    }
     
 }
 
@@ -125,7 +130,7 @@ function populateLiveStreamOptions(event) {
             const url = webcast.type === 'twitch' 
                 ? `https://player.twitch.tv/?autoplay=true&channel=${webcast.channel}&parent=www.peacce.org`
                 : `https://www.youtube.com/embed/${webcast.channel}?autoplay=1`;
-            setLiveStream(url);
+            setLiveStream(url, button.id);
         });
         liveStreamDropdown.appendChild(button);
         
@@ -291,10 +296,11 @@ async function init() {
     setEventTitle(currentEvent);
     counter.eventLocalTime(currentEvent.timezone, document.getElementById('eventLocalTime'));
     populateLiveStreamOptions(currentEvent);
+    var nextWebcast = null;
     const liveStreamUrl = (() => {
         if (!currentEvent.webcasts || currentEvent.webcasts.length === 0) return '';
         const now = new Date();
-        const nextWebcast = currentEvent.webcasts
+        nextWebcast = currentEvent.webcasts
             .map(wc => {
                 const [y, m, d] = wc.date.split('-').map(Number);
                 const webcastDate = new Date(new Date(Date.UTC(y, m-1, d))
@@ -308,7 +314,7 @@ async function init() {
             ? `https://player.twitch.tv/?autoplay=true&channel=${nextWebcast.channel}&parent=www.peacce.org`
             : `https://www.youtube.com/embed/${nextWebcast.channel}?autoplay=1`;
     })();
-    setLiveStream(liveStreamUrl);
+    setLiveStream(liveStreamUrl, nextWebcast.channel);
     
    await update();
    updateInterval = setInterval(update, 60000); // Refresh data every minute to keep match list and statuses up to date
