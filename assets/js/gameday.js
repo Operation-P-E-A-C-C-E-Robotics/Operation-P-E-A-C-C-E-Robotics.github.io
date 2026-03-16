@@ -51,7 +51,13 @@ function addMatchToList(match, eventTimeZone) {
              // Update the predicted time display
              const predictedTimeEl = document.getElementById(`${match.key}`).querySelector('#predictedTime');
              if (predictedTimeEl) {
-                predictedTimeEl.innerText = `~${new Date(match.predicted_time * 1000).toLocaleTimeString("en-US", {timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit'}).replace(/\s?(AM|PM)/i, "")}`;
+                const predictedStart = new Date(match.predicted_time * 1000);
+                const now = new Date()
+                if (predictedStart.toDateString() !== now.toDateString()) {
+                    predictedTimeEl.innerText = `~${predictedStart.toLocaleString("en-US", {timeZone: eventTimeZone, weekday: 'short',  hour: '2-digit', minute: '2-digit'}).replace(/\s?(AM|PM)/i, "")}`;
+                } else {
+                    predictedTimeEl.innerText = `~${predictedStart.toLocaleTimeString("en-US", {timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit'}).replace(/\s?(AM|PM)/i, "")}`;
+                }
              }
             return;
         } else {
