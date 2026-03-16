@@ -271,7 +271,7 @@ function setLastMatch(lastMatch) {
         }
 
     } catch (error) {
-        console.error('Failed to set last match:', error);
+        console.warn('Failed to set last match:', error);
         lastMatchContainer.classList.remove("d-flex"); 
         lastMatchContainer.classList.add("d-none");
     }
