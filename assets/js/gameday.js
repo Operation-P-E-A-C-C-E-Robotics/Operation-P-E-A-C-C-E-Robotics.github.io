@@ -284,7 +284,24 @@ async function init() {
     setEventTitle(currentEvent);
     counter.eventLocalTime(currentEvent.timezone, document.getElementById('eventLocalTime'));
     populateLiveStreamOptions(currentEvent);
-    setLiveStream(currentEvent.webcasts.length > 0 ? (currentEvent.webcasts[0].type === 'twitch' ? `https://player.twitch.tv/?autoplay=true&channel=${currentEvent.webcasts[0].channel}&parent=www.peacce.org` : `https://www.youtube.com/embed/${currentEvent.webcasts[0].channel}?autoplay=1`) : '');
+    const liveStreamUrl = (() => {
+        if (!currentEvent.webcasts || currentEvent.webcasts.length === 0) return '';
+        const now = new Date();
+        const nextWebcast = currentEvent.webcasts
+            .map(wc => {
+                const [y, m, d] = wc.date.split('-').map(Number);
+                const webcastDate = new Date(new Date(Date.UTC(y, m-1, d))
+                    .toLocaleString('en-US', { timeZone: currentEvent.timezone }));
+                return { ...wc, webcastDate };
+            })
+            .filter(wc => wc.webcastDate >= now)
+            .sort((a, b) => a.webcastDate - b.webcastDate)[0];
+        if (!nextWebcast) return '';
+        return nextWebcast.type === 'twitch'
+            ? `https://player.twitch.tv/?autoplay=true&channel=${nextWebcast.channel}&parent=www.peacce.org`
+            : `https://www.youtube.com/embed/${nextWebcast.channel}?autoplay=1`;
+    })();
+    setLiveStream(liveStreamUrl);
     
    await update();
    updateInterval = setInterval(update, 60000); // Refresh data every minute to keep match list and statuses up to date
