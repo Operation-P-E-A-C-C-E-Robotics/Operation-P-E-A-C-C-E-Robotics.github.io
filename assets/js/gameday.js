@@ -10,9 +10,17 @@ var globalEventStatus = null;
 const matchRefreshSpinner = document.getElementById("matchRefreshSpinner");
 const streamRefreshSpinner = document.getElementById("streamRefreshSpinner");
 
+
+var pusher = new Pusher('72d88eaacede8acd7e91', {
+    cluster: 'mt1'
+});
+var channel = pusher.subscribe('my-channel');
+channel.bind('update', function(payload) {
+    console.log("Pusher update:", payload);
+});
+
 const navbar = document.getElementById("gamedayNavbar");
 const gameday = document.getElementById("streamContainer");
-
 const navbarHeight = navbar.offsetHeight;
 
 function resizeGameday() {
