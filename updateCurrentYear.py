@@ -73,7 +73,7 @@ def notify_pusher(message_type, data):
         # Only events for this team
         trimmed_data = [e for e in data if TEAM in e.get("team_keys", [TEAM])]
     elif message_type == "district":
-        trimmed_data = { next((r for r in data if r["team_key"] == TEAM), None) }
+        trimmed_data = next((r for r in data if r["team_key"] == TEAM), None)
 
     body = json.dumps({
         "name": "update",
