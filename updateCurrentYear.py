@@ -87,7 +87,11 @@ def notify_pusher(message_type, data):
     string_to_sign = f"POST\n/apps/{PUSHER_APP_ID}/events\n{query_string}"
     signature = hmac.new(PUSHER_SECRET.encode(), string_to_sign.encode(), hashlib.sha256).hexdigest()
     url = f"https://api-{PUSHER_CLUSTER}.pusher.com/apps/{PUSHER_APP_ID}/events?{query_string}&auth_signature={signature}"
-    requests.post(url, headers={"Content-Type": "application/json"}, data=body)
+    resp = requests.post(url, headers={"Content-Type": "application/json"}, data=body)
+    if not resp.ok:
+        print(f"Pusher notification failed ({resp.status_code}): {resp.text}")
+    else:
+        print(f"Pusher notification sent for {message_type}")
 
 # -------------------- DATA FETCH --------------------
 def fetch_json(endpoint):
@@ -131,11 +135,13 @@ def run():
     set_git_config(EMAIL, NAME)
     eastern = pytz.timezone("US/Eastern")
     while True:
+        notify_pusher("backend", {"message": "Polling TBA..."})
         now = datetime.datetime.now(eastern).strftime("%H:%M:%S")
         if now <= END_TIME:
             season()
             print(f"[{now}] Data fetched and notifications sent.")
         else:
+            notify_pusher("backend", {"message": "TBA Polling Runner is terminating..."})
             print(f"[{now}] Outside working hours. Exiting.")
             break
         time.sleep(POLL_INTERVAL)
