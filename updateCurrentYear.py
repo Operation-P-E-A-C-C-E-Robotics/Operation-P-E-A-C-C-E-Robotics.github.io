@@ -39,34 +39,19 @@ def git_commit(files, message):
     if not files:
         return False
     subprocess.run(["git", "add"] + files)
-    result = subprocess.run(["git", "commit", "-m", message])
+    # Run commit but capture return code
+    result = subprocess.run(["git", "commit", "-m", message], capture_output=True, text=True)
+    
     if result.returncode == 0:
+        # commit succeeded, push changes
         subprocess.run(["git", "push"])
         print("Committed files:", files)
         return True
-    return False
-
-# -------------------- HASH FUNCTIONS --------------------
-def compute_hash(data):
-    return hashlib.md5(json.dumps(data, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
-
-def load_hashes():
-    try:
-        with open(".hashes.json", "r") as f:
-            return json.load(f)
-    except FileNotFoundError:
-        return {}
-
-def save_hashes(hashes):
-    with open(".hashes.json", "w") as f:
-        json.dump(hashes, f)
-
-def has_changed(filename, new_data, hashes):
-    new_hash = compute_hash(new_data)
-    if hashes.get(filename) != new_hash:
-        hashes[filename] = new_hash
-        return True
-    return False
+    else:
+        # working tree clean
+        print("No changes to commit")
+        print(result.stdout.strip())
+        return False
 
 # -------------------- PUSHER NOTIFICATION --------------------
 def notify_pusher(message_type, data):
@@ -99,8 +84,7 @@ def fetch_json(endpoint):
     resp = requests.get(url)
     return resp.json()
 
-def write_and_notify(filename, data, message_type, hashes):
-    if has_changed(filename, data, hashes):
+def write_and_notify(filename, data, message_type):
         with open(filename, "w") as f:
             json.dump(data, f, indent=4)
         notify_pusher(message_type, data)
@@ -108,7 +92,6 @@ def write_and_notify(filename, data, message_type, hashes):
 
 # -------------------- MAIN SEASON FUNCTION --------------------
 def season():
-    hashes = load_hashes()
     DATA_FILES.clear()
 
     endpoints = [
@@ -122,20 +105,19 @@ def season():
 
     for endpoint, msg_type, filename in endpoints:
         data = fetch_json(endpoint)
-        write_and_notify(filename, data, msg_type, hashes)
+        write_and_notify(filename, data, msg_type)
 
-    save_hashes(hashes)
     # Commit all changed files at once
     if DATA_FILES:
-        DATA_FILES.append(".hashes.json")
-        git_commit(DATA_FILES, COMMIT_MESSAGE)
+        diff = git_commit(DATA_FILES, COMMIT_MESSAGE)
+        if diff:
+            notify_pusher("complete", {"files": DATA_FILES.copy()})
 
 # -------------------- MAIN LOOP --------------------
 def run():
     set_git_config(EMAIL, NAME)
     eastern = pytz.timezone("US/Eastern")
     while True:
-        notify_pusher("backend", {"message": "Polling TBA..."})
         now = datetime.datetime.now(eastern).strftime("%H:%M:%S")
         if now <= END_TIME:
             season()
