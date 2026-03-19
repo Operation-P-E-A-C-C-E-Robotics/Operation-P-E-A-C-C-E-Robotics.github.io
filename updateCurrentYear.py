@@ -1,121 +1,144 @@
-import asyncio
 import os
 import json
 import requests
 import datetime
 import subprocess
 import pytz
+import hashlib
+import hmac
+import time
+import urllib.parse
+from dotenv import load_dotenv
 
-tba_api_key = os.getenv('TBA_API_KEY')
-# start_time = datetime.datetime.now().strftime("%H:%M:%S") - timedelta(minutes=5)
-end_time = "21:00:00"
-commit_message = "Committing files via Python script"
+load_dotenv()
 
-email = "actions@github.com"
-name = "Github Actions [Bot]"
+# -------------------- CONFIG --------------------
+TBA_API_KEY = os.getenv("TBA_API_KEY")
+PUSHER_APP_ID = os.getenv("PUSHER_APP_ID")
+PUSHER_KEY = os.getenv("PUSHER_KEY")
+PUSHER_SECRET = os.getenv("PUSHER_SECRET")
+PUSHER_CLUSTER = os.getenv("PUSHER_CLUSTER")
 
+TEAM = "frc3461"
+YEAR = datetime.date.today().year
+EMAIL = "actions@github.com"
+NAME = "GitHub Actions [Bot]"
+COMMIT_MESSAGE = "Update data via Python script"
+
+# Polling interval in seconds
+POLL_INTERVAL = 10
+END_TIME = "21:00:00"  # Eastern Time cutoff
+DATA_FILES = []
+
+# -------------------- HELPERS --------------------
 def set_git_config(email, name):
-    """
-    Set global Git configuration for email and name.
-
-    Args:
-        email: Git user email.
-        name: Git user name.
-    """
-    try:
-        subprocess.run(["git", "config", "--global", "user.email", email])
-        subprocess.run(["git", "config", "--global", "user.name", name])
-        print("Git configuration set successfully.")
-    except Exception as e:
-        print("Error setting Git configuration:", str(e))
+    subprocess.run(["git", "config", "--global", "user.email", email])
+    subprocess.run(["git", "config", "--global", "user.name", name])
 
 def git_commit(files, message):
-    """
-    Commit files to Git with a commit message.
-    
-    Args:
-        files: List of files to commit.
-        message: Commit message.
-    """
+    if not files:
+        return False
+    subprocess.run(["git", "add"] + files)
+    result = subprocess.run(["git", "commit", "-m", message])
+    if result.returncode == 0:
+        subprocess.run(["git", "push"])
+        print("Committed files:", files)
+        return True
+    return False
+
+# -------------------- HASH FUNCTIONS --------------------
+def compute_hash(data):
+    return hashlib.md5(json.dumps(data, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+
+def load_hashes():
     try:
-        subprocess.run(["git", "add"] + files)
-        subprocess.run(["git", "commit", "-m", message])
-        subprocess.run(["git", "push", "--force"])
-        print("Files committed successfully.")
-    except Exception as e:
-        print("Error committing files:", str(e))
+        with open(".hashes.json", "r") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
 
+def save_hashes(hashes):
+    with open(".hashes.json", "w") as f:
+        json.dump(hashes, f)
 
-async def season(api):
-    year = datetime.date.today().year
-    events = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/events/{year}?X-TBA-Auth-Key={api}')
-    # #print(tba_api_key)
-    #print(events.text)
-    with open(f"{year}_events.json", "w") as outfile:
-        outfile.write(json.dumps(events.json(), indent=4))
-        outfile.close()
-        git_commit([f"{year}_events.json"], commit_message)
-    
-    event_status = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/events/{year}/statuses?X-TBA-Auth-Key={api}')
-    # #print(tba_api_key)
-    #print(event_status.text)
-    with open(f"{year}_event_statuses.json", "w") as outfile:
-        outfile.write(json.dumps(event_status.json(), indent=4))
-        outfile.close()
-       
-        git_commit([f"{year}_event_statuses.json"], commit_message)
-    
-    awards = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/awards/{year}?X-TBA-Auth-Key={api}')
-    # #print(tba_api_key)
-    #print(awards.text)
-    with open(f"{year}_awards.json", "w") as outfile:
-        outfile.write(json.dumps(awards.json(), indent=4))
-        outfile.close()
-        git_commit([f"{year}_awards.json"], commit_message)
-    
-    matches = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/matches/{year}?X-TBA-Auth-Key={api}')
-    # #print(tba_api_key)
-    #print(matches.text)
-    with open(f"{year}_matches.json", "w") as outfile:
-        outfile.write(json.dumps(matches.json(), indent=4))
-        outfile.close()
-        git_commit([f"{year}_matches.json"], commit_message)
-    
+def has_changed(filename, new_data, hashes):
+    new_hash = compute_hash(new_data)
+    if hashes.get(filename) != new_hash:
+        hashes[filename] = new_hash
+        return True
+    return False
 
-    media = requests.get(f'https://www.thebluealliance.com/api/v3/team/frc3461/media/{year}?X-TBA-Auth-Key={api}')
-    # #print(tba_api_key)
-    #print(media.text)
-    with open(f"{year}_media.json", "w") as outfile:
-        outfile.write(json.dumps(media.json(), indent=4))
-        outfile.close()
-        git_commit([f"{year}_media.json"], commit_message)
+# -------------------- PUSHER NOTIFICATION --------------------
+def notify_pusher(message_type, data):
+    body = json.dumps({
+        "name": "update",
+        "channels": ["my-channel"],
+        "data": json.dumps({"messageType": message_type, "data": data})
+    })
 
-    districts = requests.get(f'https://www.thebluealliance.com/api/v3/district/{year}ne/rankings?X-TBA-Auth-Key={api}')
-    #print(districts.text)
-    with open(f"{year}_district_rankings.json", "w") as outfile:
-        outfile.write(json.dumps(districts.json(), indent=4))
-        outfile.close()
-        git_commit([f"{year}_district_rankings.json"], commit_message)
+    timestamp = str(int(time.time()))
+    params = {
+        "auth_key": PUSHER_KEY,
+        "auth_timestamp": timestamp,
+        "auth_version": "1.0",
+        "body_md5": hashlib.md5(body.encode()).hexdigest()
+    }
+    query_string = urllib.parse.urlencode(sorted(params.items()))
+    string_to_sign = f"POST\n/apps/{PUSHER_APP_ID}/events\n{query_string}"
+    signature = hmac.new(PUSHER_SECRET.encode(), string_to_sign.encode(), hashlib.sha256).hexdigest()
+    url = f"https://api-{PUSHER_CLUSTER}.pusher.com/apps/{PUSHER_APP_ID}/events?{query_string}&auth_signature={signature}"
+    requests.post(url, headers={"Content-Type": "application/json"}, data=body)
 
+# -------------------- DATA FETCH --------------------
+def fetch_json(endpoint):
+    url = f"https://www.thebluealliance.com/api/v3/{endpoint}?X-TBA-Auth-Key={TBA_API_KEY}"
+    resp = requests.get(url)
+    return resp.json()
 
-# Get the current datetime in Eastern Time
-eastern = pytz.timezone('US/Eastern')
-async def run_script():
+def write_and_notify(filename, data, message_type, hashes):
+    if has_changed(filename, data, hashes):
+        with open(filename, "w") as f:
+            json.dump(data, f, indent=4)
+        notify_pusher(message_type, data)
+        DATA_FILES.append(filename)
+
+# -------------------- MAIN SEASON FUNCTION --------------------
+def season():
+    hashes = load_hashes()
+    DATA_FILES.clear()
+
+    endpoints = [
+        ("team/{}/events/{}".format(TEAM, YEAR), "events", f"{YEAR}_events.json"),
+        ("team/{}/events/{}/statuses".format(TEAM, YEAR), "eventStatus", f"{YEAR}_event_statuses.json"),
+        ("team/{}/awards/{}".format(TEAM, YEAR), "awards", f"{YEAR}_awards.json"),
+        ("team/{}/matches/{}".format(TEAM, YEAR), "matches", f"{YEAR}_matches.json"),
+        ("team/{}/media/{}".format(TEAM, YEAR), "media", f"{YEAR}_media.json"),
+        ("district/{}ne/rankings".format(YEAR), "district", f"{YEAR}_district_rankings.json")
+    ]
+
+    for endpoint, msg_type, filename in endpoints:
+        data = fetch_json(endpoint)
+        write_and_notify(filename, data, msg_type, hashes)
+
+    save_hashes(hashes)
+    # Commit all changed files at once
+    if DATA_FILES:
+        DATA_FILES.append(".hashes.json")
+        git_commit(DATA_FILES, COMMIT_MESSAGE)
+
+# -------------------- MAIN LOOP --------------------
+def run():
+    set_git_config(EMAIL, NAME)
+    eastern = pytz.timezone("US/Eastern")
     while True:
-        # Check if it's between 9am and 9pm in Eastern Time
-        eastern_now = datetime.datetime.now(eastern)
-        if eastern_now.strftime("%H:%M:%S") <= end_time:
-            await season(tba_api_key)
-            print("Data fetched and committed.")
+        now = datetime.datetime.now(eastern).strftime("%H:%M:%S")
+        if now <= END_TIME:
+            season()
+            print(f"[{now}] Data fetched and notifications sent.")
         else:
-            print("Outside of working hours. Exiting loop.")
+            print(f"[{now}] Outside working hours. Exiting.")
             break
-
-        # Wait for 30 seconds before next iteration
-        print("Waiting for 90 seconds before next update...")
-        await asyncio.sleep(90)
+        time.sleep(POLL_INTERVAL)
 
 if __name__ == "__main__":
-    set_git_config(email, name)
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(run_script())
+    run()

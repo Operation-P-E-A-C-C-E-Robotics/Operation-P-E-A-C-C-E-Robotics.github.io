@@ -29,6 +29,10 @@ jobs:
           python updateCurrentYear.py
         env:
           TBA_API_KEY: ${{ secrets.tba_api_key }} # if run.py requires passwords..etc, set it as secrets
+          PUSHER_APP_ID: ${{vars.PUSHER_APP_ID}}
+          PUSHER_KEY: ${{secrets.PUSHER_KEY}}
+          PUSHER_SECRET: ${{secrets.PUSHER_SECRET}}
+          PUSHER_CLUSTER: ${{vars.PUSHER_CLUSTER}}
   
       - name: Commit Files
         uses: stefanzweifel/git-auto-commit-action@v4
