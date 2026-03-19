@@ -25,10 +25,10 @@ EMAIL = "actions@github.com"
 NAME = "GitHub Actions [Bot]"
 COMMIT_MESSAGE = "Update data via Python script"
 
-# Polling interval in seconds
-POLL_INTERVAL = 10
-END_TIME = "21:00:00"  # Eastern Time cutoff
-HASH_STORE_FILE = ".hashes.json"
+# Intervals
+FAST_INTERVAL = 10          # seconds (matches/status)
+SLOW_INTERVAL = 300         # seconds (district, awards, event info)
+END_TIME = "21:00:00"       # Eastern Time cutoff
 
 # -------------------- HELPERS --------------------
 def set_git_config(email, name):
@@ -49,55 +49,15 @@ def git_commit(files, message):
         print("No changes to commit")
         return False
 
-# -------------------- HASH MANAGEMENT --------------------
-def load_hashes():
-    try:
-        with open(HASH_STORE_FILE) as f:
-            return json.load(f)
-    except FileNotFoundError:
-        return {}
-
-def save_hashes(hashes):
-    with open(HASH_STORE_FILE, "w") as f:
-        json.dump(hashes, f)
-
-def has_data_changed(message_type, data, hashes):
-    """Return True if data differs from last hash."""
-    # Compute hash of relevant subset of data
-    new_hash = hashlib.md5(json.dumps(data, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
-    if hashes.get(message_type) != new_hash:
-        hashes[message_type] = new_hash
-        return True
-    return False
-
-# -------------------- PUSHER NOTIFICATION --------------------
+# -------------------- PUSHER --------------------
 def notify_pusher(message_type, data):
-    """Send trimmed payload to Pusher to avoid exceeding size limits."""
-    # Keep payload small: only send relevant fields
-    trimmed_data = data
-    if message_type == "matches":
-        # Only send match keys and scores/times relevant to your team
-        trimmed_data = [
-            {
-                "key": m.get("key"),
-                "predicted_time": m.get("predicted_time"),
-                "alliances": m.get("alliances")
-            } for m in data
-        ]
-    elif message_type == "eventStatus":
-        trimmed_data = {
-            k: data[k] for k in ["next_match_key", "last_match_key", "qual", "playoff"] if k in data
-        }
-    elif message_type == "events":
-        # Only events for this team
-        trimmed_data = [e for e in data if TEAM in e.get("team_keys", [TEAM])]
-    
+    # Limit data size to avoid failures
+    max_len = 2000
     body = json.dumps({
         "name": "update",
         "channels": ["my-channel"],
-        "data": json.dumps({"messageType": message_type, "data": trimmed_data})
+        "data": json.dumps({"messageType": message_type, "data": data})[:max_len]
     })
-
     timestamp = str(int(time.time()))
     params = {
         "auth_key": PUSHER_KEY,
@@ -109,70 +69,143 @@ def notify_pusher(message_type, data):
     string_to_sign = f"POST\n/apps/{PUSHER_APP_ID}/events\n{query_string}"
     signature = hmac.new(PUSHER_SECRET.encode(), string_to_sign.encode(), hashlib.sha256).hexdigest()
     url = f"https://api-{PUSHER_CLUSTER}.pusher.com/apps/{PUSHER_APP_ID}/events?{query_string}&auth_signature={signature}"
-    
     resp = requests.post(url, headers={"Content-Type": "application/json"}, data=body)
     if not resp.ok:
         print(f"Pusher notification failed ({resp.status_code}): {resp.text}")
     else:
         print(f"Pusher notification sent for {message_type}")
 
-# -------------------- DATA FETCH --------------------
+# -------------------- TBA FETCH --------------------
 def fetch_json(endpoint):
     url = f"https://www.thebluealliance.com/api/v3/{endpoint}?X-TBA-Auth-Key={TBA_API_KEY}"
     resp = requests.get(url)
     return resp.json()
 
-def write_file(filename, data):
-    with open(filename, "w") as f:
-        json.dump(data, f, indent=4)
+# -------------------- FILE MERGE --------------------
+def merge_array_file(filename, new_data):
+    try:
+        if os.path.exists(filename):
+            with open(filename, "r") as f:
+                existing = json.load(f)
+        else:
+            existing = []
+        # Merge: add new or update existing by 'key'
+        existing_map = {item['key']: item for item in existing}
+        changed = False
+        for item in new_data:
+            key = item['key']
+            if key not in existing_map or existing_map[key] != item:
+                existing_map[key] = item
+                changed = True
+        merged = list(existing_map.values())
+        if changed:
+            with open(filename, "w") as f:
+                json.dump(merged, f, indent=4)
+        return changed
+    except Exception as e:
+        print(f"Failed to merge {filename}: {e}")
+        return False
 
-# -------------------- MAIN SEASON FUNCTION --------------------
-def season():
-    hashes = load_hashes()
-    data_files_to_commit = []
+def overwrite_file(filename, new_data):
+    try:
+        with open(filename, "w") as f:
+            json.dump(new_data, f, indent=4)
+        return True
+    except Exception as e:
+        print(f"Failed to write {filename}: {e}")
+        return False
 
-    endpoints = [
-        ("team/{}/events/{}".format(TEAM, YEAR), "events", f"{YEAR}_events.json"),
-        ("team/{}/events/{}/statuses".format(TEAM, YEAR), "eventStatus", f"{YEAR}_event_statuses.json"),
-        ("team/{}/awards/{}".format(TEAM, YEAR), "awards", f"{YEAR}_awards.json"),
-        ("team/{}/matches/{}".format(TEAM, YEAR), "matches", f"{YEAR}_matches.json"),
-        ("team/{}/media/{}".format(TEAM, YEAR), "media", f"{YEAR}_media.json"),
-        ("district/{}ne/rankings".format(YEAR), "district", f"{YEAR}_district_rankings.json")
-    ]
+# -------------------- CURRENT EVENT --------------------
+def get_current_event():
+    # Get list of team's events this year
+    events = fetch_json(f"team/{TEAM}/events/{YEAR}")
+    # Pick the one that is currently ongoing (start_date <= today <= end_date)
+    today = datetime.date.today()
+    for e in events:
+        start = datetime.datetime.strptime(e["start_date"], "%Y-%m-%d").date()
+        end = datetime.datetime.strptime(e["end_date"], "%Y-%m-%d").date()
+        if start <= today <= end:
+            return e
+    return None
 
-    for endpoint, msg_type, filename in endpoints:
-        data = fetch_json(endpoint)
+# -------------------- UPDATE FUNCTIONS --------------------
+def update_current_event_matches_and_status():
+    event = get_current_event()
+    if not event:
+        print("No current event for team.")
+        return
+    files_changed = []
 
-        # Only update file and push if data changed
-        if has_data_changed(msg_type, data, hashes):
-            write_file(filename, data)
-            notify_pusher(msg_type, data)
-            data_files_to_commit.append(filename)
+    # Matches
+    matches = fetch_json(f"team/{TEAM}/matches/{YEAR}")
+    matches = [m for m in matches if m["event_key"] == event["key"]]
+    if merge_array_file(f"{YEAR}_matches.json", matches):
+        files_changed.append(f"{YEAR}_matches.json")
+        notify_pusher("matches", matches)
 
-    # Always commit the hash file if any changes
-    if data_files_to_commit:
-        data_files_to_commit.append(HASH_STORE_FILE)
-        diff = git_commit(data_files_to_commit, COMMIT_MESSAGE)
-        if diff:
-            notify_pusher("complete", {"files": data_files_to_commit.copy()})
+    # Event Status
+    status = fetch_json(f"team/{TEAM}/events/{YEAR}/statuses")
+    if event["key"] in status and overwrite_file(f"{YEAR}_event_statuses.json", {event["key"]: status[event["key"]]}):
+        files_changed.append(f"{YEAR}_event_statuses.json")
+        notify_pusher("eventStatus", {event["key"]: status[event["key"]]})
 
-    save_hashes(hashes)
+    if files_changed:
+        git_commit(files_changed, COMMIT_MESSAGE)
+
+def update_current_event_awards_and_info():
+    event = get_current_event()
+    if not event:
+        print("No current event for team (awards/info).")
+        return
+    files_changed = []
+
+    # Awards
+    awards = fetch_json(f"team/{TEAM}/awards/{YEAR}")
+    awards = [a for a in awards if a["event_key"] == event["key"]]
+    if merge_array_file(f"{YEAR}_awards.json", awards):
+        files_changed.append(f"{YEAR}_awards.json")
+
+    # Event info
+    event_info_file = f"{YEAR}_events.json"
+    if merge_array_file(event_info_file, [event]):
+        files_changed.append(event_info_file)
+
+    if files_changed:
+        git_commit(files_changed, COMMIT_MESSAGE)
+
+def update_district_rankings():
+    rankings = fetch_json(f"district/{YEAR}ne/rankings")
+    if overwrite_file(f"{YEAR}_district_rankings.json", rankings):
+        notify_pusher("district", rankings)
+        git_commit([f"{YEAR}_district_rankings.json"], COMMIT_MESSAGE)
 
 # -------------------- MAIN LOOP --------------------
 def run():
     set_git_config(EMAIL, NAME)
     eastern = pytz.timezone("US/Eastern")
-    
+    last_fast = 0
+    last_slow = 0
+
     while True:
-        now = datetime.datetime.now(eastern).strftime("%H:%M:%S")
-        if now <= END_TIME:
-            season()
-            print(f"[{now}] Data fetched and notifications sent.")
-        else:
+        now_dt = datetime.datetime.now(eastern)
+        now_str = now_dt.strftime("%H:%M:%S")
+        now_ts = int(time.time())
+
+        if now_str > END_TIME:
             notify_pusher("backend", {"message": "TBA Polling Runner is terminating..."})
-            print(f"[{now}] Outside working hours. Exiting.")
+            print(f"[{now_str}] Outside working hours. Exiting.")
             break
-        time.sleep(POLL_INTERVAL)
+
+        if now_ts - last_fast >= FAST_INTERVAL:
+            update_current_event_matches_and_status()
+            last_fast = now_ts
+
+        if now_ts - last_slow >= SLOW_INTERVAL:
+            update_current_event_awards_and_info()
+            update_district_rankings()
+            last_slow = now_ts
+
+        time.sleep(1)  # 1s tick for interval check
 
 if __name__ == "__main__":
     run()
