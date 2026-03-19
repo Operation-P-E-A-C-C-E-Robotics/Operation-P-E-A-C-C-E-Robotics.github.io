@@ -28,7 +28,7 @@ COMMIT_MESSAGE = "Update data via Python script"
 # Polling interval in seconds
 POLL_INTERVAL = 10
 END_TIME = "21:00:00"  # Eastern Time cutoff
-DATA_FILES = []
+HASH_STORE_FILE = ".hashes.json"
 
 # -------------------- HELPERS --------------------
 def set_git_config(email, name):
@@ -39,26 +39,63 @@ def git_commit(files, message):
     if not files:
         return False
     subprocess.run(["git", "add"] + files)
-    # Run commit but capture return code
     result = subprocess.run(["git", "commit", "-m", message], capture_output=True, text=True)
     
     if result.returncode == 0:
-        # commit succeeded, push changes
         subprocess.run(["git", "push"])
         print("Committed files:", files)
         return True
     else:
-        # working tree clean
         print("No changes to commit")
-        print(result.stdout.strip())
         return False
+
+# -------------------- HASH MANAGEMENT --------------------
+def load_hashes():
+    try:
+        with open(HASH_STORE_FILE) as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
+
+def save_hashes(hashes):
+    with open(HASH_STORE_FILE, "w") as f:
+        json.dump(hashes, f)
+
+def has_data_changed(message_type, data, hashes):
+    """Return True if data differs from last hash."""
+    # Compute hash of relevant subset of data
+    new_hash = hashlib.md5(json.dumps(data, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+    if hashes.get(message_type) != new_hash:
+        hashes[message_type] = new_hash
+        return True
+    return False
 
 # -------------------- PUSHER NOTIFICATION --------------------
 def notify_pusher(message_type, data):
+    """Send trimmed payload to Pusher to avoid exceeding size limits."""
+    # Keep payload small: only send relevant fields
+    trimmed_data = data
+    if message_type == "matches":
+        # Only send match keys and scores/times relevant to your team
+        trimmed_data = [
+            {
+                "key": m.get("key"),
+                "predicted_time": m.get("predicted_time"),
+                "alliances": m.get("alliances")
+            } for m in data
+        ]
+    elif message_type == "eventStatus":
+        trimmed_data = {
+            k: data[k] for k in ["next_match_key", "last_match_key", "qual", "playoff"] if k in data
+        }
+    elif message_type == "events":
+        # Only events for this team
+        trimmed_data = [e for e in data if TEAM in e.get("team_keys", [TEAM])]
+    
     body = json.dumps({
         "name": "update",
         "channels": ["my-channel"],
-        "data": json.dumps({"messageType": message_type, "data": data})
+        "data": json.dumps({"messageType": message_type, "data": trimmed_data})
     })
 
     timestamp = str(int(time.time()))
@@ -72,6 +109,7 @@ def notify_pusher(message_type, data):
     string_to_sign = f"POST\n/apps/{PUSHER_APP_ID}/events\n{query_string}"
     signature = hmac.new(PUSHER_SECRET.encode(), string_to_sign.encode(), hashlib.sha256).hexdigest()
     url = f"https://api-{PUSHER_CLUSTER}.pusher.com/apps/{PUSHER_APP_ID}/events?{query_string}&auth_signature={signature}"
+    
     resp = requests.post(url, headers={"Content-Type": "application/json"}, data=body)
     if not resp.ok:
         print(f"Pusher notification failed ({resp.status_code}): {resp.text}")
@@ -84,15 +122,14 @@ def fetch_json(endpoint):
     resp = requests.get(url)
     return resp.json()
 
-def write_and_notify(filename, data, message_type):
-        with open(filename, "w") as f:
-            json.dump(data, f, indent=4)
-        notify_pusher(message_type, data)
-        DATA_FILES.append(filename)
+def write_file(filename, data):
+    with open(filename, "w") as f:
+        json.dump(data, f, indent=4)
 
 # -------------------- MAIN SEASON FUNCTION --------------------
 def season():
-    DATA_FILES.clear()
+    hashes = load_hashes()
+    data_files_to_commit = []
 
     endpoints = [
         ("team/{}/events/{}".format(TEAM, YEAR), "events", f"{YEAR}_events.json"),
@@ -105,18 +142,27 @@ def season():
 
     for endpoint, msg_type, filename in endpoints:
         data = fetch_json(endpoint)
-        write_and_notify(filename, data, msg_type)
 
-    # Commit all changed files at once
-    if DATA_FILES:
-        diff = git_commit(DATA_FILES, COMMIT_MESSAGE)
+        # Only update file and push if data changed
+        if has_data_changed(msg_type, data, hashes):
+            write_file(filename, data)
+            notify_pusher(msg_type, data)
+            data_files_to_commit.append(filename)
+
+    # Always commit the hash file if any changes
+    if data_files_to_commit:
+        data_files_to_commit.append(HASH_STORE_FILE)
+        diff = git_commit(data_files_to_commit, COMMIT_MESSAGE)
         if diff:
-            notify_pusher("complete", {"files": DATA_FILES.copy()})
+            notify_pusher("complete", {"files": data_files_to_commit.copy()})
+
+    save_hashes(hashes)
 
 # -------------------- MAIN LOOP --------------------
 def run():
     set_git_config(EMAIL, NAME)
     eastern = pytz.timezone("US/Eastern")
+    
     while True:
         now = datetime.datetime.now(eastern).strftime("%H:%M:%S")
         if now <= END_TIME:
