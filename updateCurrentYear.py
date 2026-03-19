@@ -53,10 +53,32 @@ def git_commit(files, message):
 def notify_pusher(message_type, data):
     # Limit data size to avoid failures
     max_len = 2000
+    """Send trimmed payload to Pusher to avoid exceeding size limits."""
+    # Keep payload small: only send relevant fields
+    trimmed_data = data
+    if message_type == "matches":
+        # Only send match keys and scores/times relevant to your team
+        trimmed_data = [
+            {
+                "key": m.get("key"),
+                "predicted_time": m.get("predicted_time"),
+                "alliances": m.get("alliances")
+            } for m in data
+        ]
+    elif message_type == "eventStatus":
+        trimmed_data = {
+            k: data[k] for k in ["next_match_key", "last_match_key", "qual", "playoff"] if k in data
+        }
+    elif message_type == "events":
+        # Only events for this team
+        trimmed_data = [e for e in data if TEAM in e.get("team_keys", [TEAM])]
+    elif message_type == "district":
+        trimmed_data = { next((r for r in data if r["team_key"] == TEAM), None) }
+
     body = json.dumps({
         "name": "update",
         "channels": ["my-channel"],
-        "data": json.dumps({"messageType": message_type, "data": data})[:max_len]
+        "data": json.dumps({"messageType": message_type, "data": trimmed_data})[:max_len]
     })
     timestamp = str(int(time.time()))
     params = {
