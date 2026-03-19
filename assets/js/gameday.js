@@ -4,11 +4,21 @@ import * as counter from "./countdown.js";
 
 var currentSeasonYear = null;
 var currentEvent = null;
+var eventStatus = null;
 var matchUpdateInterval = null;
 var updateInterval = null;
 var audioNotification = false;
 const matchRefreshSpinner = document.getElementById("matchRefreshSpinner");
 const streamRefreshSpinner = document.getElementById("streamRefreshSpinner");
+
+var pusher = new Pusher('72d88eaacede8acd7e91', {
+    cluster: 'mt1'
+});
+var channel = pusher.subscribe('my-channel');
+channel.bind('update', function(payload) {
+    console.log("Pusher update:", payload);
+});
+
 
 function resizeGameday() {
     const navbar = document.getElementById("gamedayNavbar");
@@ -354,7 +364,7 @@ async function updateWithVisual() {
 async function update() {
     console.log('Updating gameday data...');
     document.getElementById('matchesListContainer').innerHTML = ""; // Clear match list before updating to prevent duplicates
-    const eventStatus = await tba.getTeamEventStatus(currentEvent.key);
+    eventStatus = await tba.getTeamEventStatus(currentEvent.key);
     console.log(eventStatus)
     tba.getEventMatches(currentEvent.key).then(matches => {
         setMatchList(matches, currentEvent.timezone);
