@@ -188,7 +188,7 @@ def update_current_event_matches_and_status():
     files_changed = []
 
     # Matches
-    matches = fetch_json(f"team/{TEAM}/event/{event["key"]}/matches")
+    matches = fetch_json(f"team/{TEAM}/event/{event['key']}/matches")
     if merge_array_file(f"{YEAR}_matches.json", matches):
         files_changed.append(f"{YEAR}_matches.json")
         notify_pusher("matches", matches)
