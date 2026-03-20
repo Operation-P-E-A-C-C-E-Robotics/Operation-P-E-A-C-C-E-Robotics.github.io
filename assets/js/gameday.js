@@ -17,6 +17,22 @@ var pusher = new Pusher('72d88eaacede8acd7e91', {
 var channel = pusher.subscribe('my-channel');
 channel.bind('update', function(payload) {
     console.log("Pusher update:", payload);
+
+    const type = payload.messageType;
+    const data = payload.data;
+
+    if (type === "matches") {
+        update({ matches: data });
+    }
+
+    if (type === "eventStatus") {
+        update({ eventStatus: data });
+    }
+
+    if (type === "district") {
+        // update UI directly (no need to call update)
+        console.log("District update:", data);
+    }
 });
 
 const navbar = document.getElementById("gamedayNavbar");
@@ -451,7 +467,7 @@ async function update() {
         setLastMatch(null);
     }); 
 
-    resizeGameday(); //resize the stream in case the bar height changed
+    resizeGameday();
 }
 
 init();
