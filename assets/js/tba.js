@@ -85,8 +85,8 @@ async function getTeamEventStatus(eventKey) {
     return status ? status : {};
 }
 
-async function getTeamStatusRecordStr(eventKey) {
-    const status = await getTeamEventStatus(eventKey)
+async function getTeamStatusRecordStr(eventKey, override) {
+    const status = override || await getTeamEventStatus(eventKey)
     if (status?.playoff) {
         return status?.playoff?.record ? `${status.playoff.record.wins}W ${status.playoff.record.losses}L ${status.playoff.record.ties.toString() > 0 ? status.playoff.record.ties + "T" : ""}` : "-W -L -T";
     } else if (status?.qual?.ranking) {
@@ -95,8 +95,8 @@ async function getTeamStatusRecordStr(eventKey) {
         return "No Record"
     }
 }
-async function getTeamStatusRank(eventKey) {
-    const status = await getTeamEventStatus(eventKey);
+async function getTeamStatusRank(eventKey, override) {
+    const status = override || await getTeamEventStatus(eventKey);
     if (status?.playoff) {
         if (status?.playoff.status === "eliminated") {
             return "Eliminated"
