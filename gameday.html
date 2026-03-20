@@ -128,11 +128,11 @@ metadesc: "Watch Operation P.E.A.C.C.E Robotics compete live at events, via live
         </div>
 
         <div class="col col-auto order-last p-0 mr-1 d-flex" style="min-width: min-content;">
-            <div class="d-flex align-items-center flex-row flex-md-row">
-                <button type="button" class="btn btn-dark btn-block btn-small m-1" data-toggle="modal" data-target="#streamSelectModal"><span class="fa fa-video-camera m-0 p-0"></span></button>
-                <button type="button" class="btn btn-dark btn-block btn-small m-1" id="refreshButton" onclick="updateGameday()"><span class="fa fa-refresh m-0 p-0" id="matchRefreshSpinner"></span></button>
-                <a href="{{ '/' | relative_url }}" class="btn btn-dark btn-block btn-small m-1"><span class="fa fa-home"></span></a>
-            </div>
+                <div class="d-flex align-items-center flex-row flex-md-row">
+                    <button type="button" class="btn btn-dark btn-block btn-small m-1" data-toggle="modal" data-target="#streamSelectModal"><span class="fa fa-video-camera m-0 p-0"></span></button>
+                    <button type="button" class="btn btn-dark btn-block btn-small m-1" id="refreshButton" onclick="updateGameday()"><span class="fa fa-refresh m-0 p-0" id="matchRefreshSpinner" data-toggle="tooltip" data-placement="top" title="Refresh Matches"></span></button>
+                    <a href="{{ '/' | relative_url }}" class="btn btn-dark btn-block btn-small m-1"><span class="fa fa-home"></span></a>
+                </div>
         </div>
     </div>
 </div>
