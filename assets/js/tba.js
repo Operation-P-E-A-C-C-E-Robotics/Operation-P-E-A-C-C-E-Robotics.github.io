@@ -80,8 +80,8 @@ async function getTeamStatusStr(eventKey) {
 }
 async function getTeamEventStatus(eventKey) {
     const eventStatuses = await getEventStatuses();
-    console.log("Event Statuses:",eventStatuses);
     const status = eventStatuses[`${eventKey}`];
+    console.log("Current Event Status: ", status)
     return status ? status : {};
 }
 
