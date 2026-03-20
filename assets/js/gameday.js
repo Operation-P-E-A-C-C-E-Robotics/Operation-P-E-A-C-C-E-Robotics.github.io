@@ -17,6 +17,22 @@ var pusher = new Pusher('72d88eaacede8acd7e91', {
 var channel = pusher.subscribe('my-channel');
 channel.bind('update', function(payload) {
     console.log("Pusher update:", payload);
+
+    const type = payload.messageType;
+    const data = payload.data;
+
+    if (type === "matches") {
+        update({ matches: data });
+    }
+
+    if (type === "eventStatus") {
+        update({ eventStatus: data });
+    }
+
+    if (type === "district") {
+        // update UI directly (no need to call update)
+        console.log("District update:", data);
+    }
 });
 
 
@@ -361,35 +377,45 @@ async function updateWithVisual() {
     }, remaining);
 }
 
-async function update() {
-    console.log('Updating gameday data...');
-    document.getElementById('matchesListContainer').innerHTML = ""; // Clear match list before updating to prevent duplicates
-    eventStatus = await tba.getTeamEventStatus(currentEvent.key);
-    console.log(eventStatus)
-    tba.getEventMatches(currentEvent.key).then(matches => {
-        setMatchList(matches, currentEvent.timezone);
-    }).catch(error => {
-        console.error('Failed to get event matches:', error);
-        setMatchList([], currentEvent.timezone); // Clear match list on error
-    });
+async function update(override = {}) {
+    console.log('Updating gameday data...', override);
+
+    if (!override.matches) {
+        document.getElementById('matchesListContainer').innerHTML = "";
+    }
+
+    eventStatus = override.eventStatus || await tba.getTeamEventStatus(currentEvent.key);
+
+    if (override.matches) {
+        setMatchList(override.matches, currentEvent.timezone);
+    } else {
+        tba.getEventMatches(currentEvent.key)
+            .then(matches => setMatchList(matches, currentEvent.timezone))
+            .catch(error => {
+                console.error('Failed to get event matches:', error);
+                setMatchList([], currentEvent.timezone);
+            });
+    }
 
     await setEventStatus();
 
-    tba.getMatchFromKey(eventStatus.next_match_key).then(nextMatch => {
-        setNextMatch(nextMatch);
-    }).catch(error => {
-        console.error('Failed to get next match:', error);
-        setNextMatch(null);
-    });
+    if (override.nextMatch) {
+        setNextMatch(override.nextMatch);
+    } else if (eventStatus?.next_match_key) {
+        tba.getMatchFromKey(eventStatus.next_match_key)
+            .then(setNextMatch)
+            .catch(() => setNextMatch(null));
+    }
 
-    tba.getMatchFromKey(eventStatus.last_match_key).then(lastMatch => {
-        setLastMatch(lastMatch);
-    }).catch(error => {
-        console.error('Failed to get last match:', error);
-        setLastMatch(null);
-    }); 
+    if (override.lastMatch) {
+        setLastMatch(override.lastMatch);
+    } else if (eventStatus?.last_match_key) {
+        tba.getMatchFromKey(eventStatus.last_match_key)
+            .then(setLastMatch)
+            .catch(() => setLastMatch(null));
+    }
 
-    resizeGameday(); //resize the stream in case the bar height changed
+    resizeGameday();
 }
 
 init();
