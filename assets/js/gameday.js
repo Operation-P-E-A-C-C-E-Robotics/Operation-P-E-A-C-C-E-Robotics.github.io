@@ -51,6 +51,7 @@ function resizeGameday() {
 window.addEventListener("load",  () => { window.audioCtx = new (window.AudioContext || window.webkitAudioContext)(); })
 window.addEventListener("load", window.jQuery(document.getElementById("currentEventStatus")).tooltip())
 window.addEventListener("load", window.jQuery(document.getElementById("eventLocalTime")).tooltip())
+window.addEventListener("load", window.jQuery(matchRefreshSpinner).tooltip())
 window.addEventListener("load", resizeGameday);
 window.addEventListener("resize", resizeGameday);
 
