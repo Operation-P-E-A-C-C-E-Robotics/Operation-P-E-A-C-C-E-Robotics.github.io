@@ -172,6 +172,37 @@ def get_current_event():
     
     return selected
 
+def get_match_deltas(matches):
+    global MATCH_CACHE
+
+    now = int(time.time())
+    deltas = []
+
+    for m in matches:
+        key = m.get("key")
+        predicted = m.get("predicted_time")
+
+        if not key or not predicted:
+            continue
+
+        # Only future matches
+        if predicted < now:
+            continue
+
+        prev = MATCH_CACHE.get(key)
+
+        # New match OR changed predicted time
+        if prev != predicted:
+            MATCH_CACHE[key] = predicted
+
+            deltas.append({
+                "key": key,
+                "predicted_time": predicted,
+                "alliances": m.get("alliances")
+            })
+
+    return deltas
+
 # -------------------- UPDATE FUNCTIONS --------------------
 def update_current_event_matches_and_status():
     event = get_current_event()
@@ -191,7 +222,11 @@ def update_current_event_matches_and_status():
     matches = fetch_json(f"team/{TEAM}/event/{event['key']}/matches")
     if merge_array_file(f"{YEAR}_matches.json", matches):
         files_changed.append(f"{YEAR}_matches.json")
-        notify_pusher("matches", matches)
+    
+    deltas = get_match_deltas(matches)
+    
+    if deltas:
+        notify_pusher("matches", deltas)
 
     # Event Status
     status = fetch_json(f"team/{TEAM}/events/{YEAR}/statuses")
