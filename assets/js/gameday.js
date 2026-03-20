@@ -22,16 +22,21 @@ channel.bind('update', function(payload) {
     const data = payload.data;
 
     if (type === "matches") {
-        update({ matches: data });
+        data.forEach(match => addMatchToList(match, currentEvent.timezone));
     }
 
-    if (type === "eventStatus") {
+    else if (type === "eventStatus") {
         update({ eventStatus: data });
+
     }
 
-    if (type === "district") {
+    else if (type === "district") {
         // update UI directly (no need to call update)
         console.log("District update:", data);
+    }
+
+    else {
+        updateWithVisual(); //if the notification source is not one of the above with particular handling, reset the UI with visual notification to the user.
     }
 });
 
@@ -47,6 +52,7 @@ function resizeGameday() {
 
 window.addEventListener("load",  window.audioCtx = new (window.AudioContext || window.webkitAudioContext)())
 window.addEventListener("load", window.jQuery(document.getElementById("audioToggleBtn")).tooltip())
+window.addEventListener("load", window.jQuery(matchRefreshSpinner).tooltip())
 window.addEventListener("load", resizeGameday);
 window.addEventListener("resize", resizeGameday);
 
@@ -126,7 +132,7 @@ function addMatchToList(match, eventTimeZone) {
             const matchItem = document.createElement('div')
             matchItem.classList.add("container", "bg-dark", "d-inline-flex", "align-items-center", "mr-1",
                                     "h-100","rounded-lg", "pr-0", "pl-1", "h-100"); 
-            matchItem.id += match.key;
+            matchItem.id = match.key;
             // matchItem.style.maxWidth = "fit-content";
             matchItem.innerHTML = matchEl;
             matchList.appendChild(matchItem);
@@ -199,12 +205,12 @@ function setEventTitle(event) {
     eventTitleEl.setAttribute("title", event?.week ? "Week " + (event.week + 1) + " " + event?.event_type_string + " Event": event?.event_type_string);
     window.jQuery(eventTitleEl).tooltip();
 }
-async function setEventStatus() {
+async function setEventStatus(override) {
     const eventStatusEl = document.getElementById('currentEventStatus');
     try {
-        const status = await tba.getTeamEventStatus(currentEvent.key);
-        const rank = await tba.getTeamStatusRank(currentEvent.key)
-        const record = await tba.getTeamStatusRecordStr(currentEvent.key);
+        const status = override || await tba.getTeamEventStatus(currentEvent.key);
+        const rank = await tba.getTeamStatusRank(currentEvent.key, override)
+        const record = await tba.getTeamStatusRecordStr(currentEvent.key, override);
         eventStatusEl.innerText = `${rank} ${record}`;
         try {
             if (status?.playoff) {
@@ -397,30 +403,21 @@ async function update(override = {}) {
             });
     }
 
-    await setEventStatus();
+    await setEventStatus(eventStatus);
 
-    if (override.nextMatch !== undefined) {
-        setNextMatch(override.nextMatch);
-    } else if (eventStatus?.next_match_key) {
-        tba.getMatchFromKey(eventStatus.next_match_key)
-            .then(setNextMatch)
-            .catch(() => setNextMatch(null));
-    } else {
-        // 👈 THIS IS THE MISSING PIECE
-        setNextMatch(null);
-    }
+    tba.getMatchFromKey(eventStatus.next_match_key)
+        .then(setNextMatch)
+        .catch(() => setNextMatch(null));
 
-    if (override.lastMatch !== undefined) {
-        setLastMatch(override.lastMatch);
-    } else if (eventStatus?.last_match_key) {
-        tba.getMatchFromKey(eventStatus.last_match_key)
-            .then(setLastMatch)
-            .catch(() => setLastMatch(null));
-    } else {
-        setLastMatch(null);
-    }
+    tba.getMatchFromKey(eventStatus.last_match_key)
+        .then(setLastMatch)
+        .catch(() => setLastMatch(null));
+
 
     resizeGameday();
+    matchRefreshSpinner.setAttribute('data-original-title', 
+        `Refresh Matches (Last Refresh: ${new Date().toLocaleTimeString()})`
+    );
 }
 
 init();
