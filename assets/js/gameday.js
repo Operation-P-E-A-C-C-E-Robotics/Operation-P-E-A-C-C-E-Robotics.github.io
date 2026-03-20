@@ -22,16 +22,21 @@ channel.bind('update', function(payload) {
     const data = payload.data;
 
     if (type === "matches") {
-        update({ matches: data });
+        data.forEach(match => addMatchToList(match, currentEvent.timezone));
     }
 
-    if (type === "eventStatus") {
+    else if (type === "eventStatus") {
         update({ eventStatus: data });
+
     }
 
-    if (type === "district") {
+    else if (type === "district") {
         // update UI directly (no need to call update)
         console.log("District update:", data);
+    }
+
+    else {
+        updateWithVisual(); //if the notification source is not one of the above with particular handling, reset the UI with visual notification to the user.
     }
 });
 
@@ -468,6 +473,9 @@ async function update() {
     }); 
 
     resizeGameday();
+    matchRefreshSpinner.setAttribute('data-original-title', 
+        `Refresh Matches (Last Refresh: ${new Date().toLocaleTimeString()})`
+    );
 }
 
 init();
