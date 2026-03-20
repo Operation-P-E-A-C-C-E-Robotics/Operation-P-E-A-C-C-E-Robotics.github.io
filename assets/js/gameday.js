@@ -386,7 +386,7 @@ async function update(override = {}) {
 
     eventStatus = override.eventStatus || await tba.getTeamEventStatus(currentEvent.key);
 
-    if (override.matches) {
+    if (override?.matches !== undefined) {
         setMatchList(override.matches, currentEvent.timezone);
     } else {
         tba.getEventMatches(currentEvent.key)
@@ -399,20 +399,25 @@ async function update(override = {}) {
 
     await setEventStatus();
 
-    if (override.nextMatch) {
+    if (override.nextMatch !== undefined) {
         setNextMatch(override.nextMatch);
     } else if (eventStatus?.next_match_key) {
         tba.getMatchFromKey(eventStatus.next_match_key)
             .then(setNextMatch)
             .catch(() => setNextMatch(null));
+    } else {
+        // 👈 THIS IS THE MISSING PIECE
+        setNextMatch(null);
     }
 
-    if (override.lastMatch) {
+    if (override.lastMatch !== undefined) {
         setLastMatch(override.lastMatch);
     } else if (eventStatus?.last_match_key) {
         tba.getMatchFromKey(eventStatus.last_match_key)
             .then(setLastMatch)
             .catch(() => setLastMatch(null));
+    } else {
+        setLastMatch(null);
     }
 
     resizeGameday();
