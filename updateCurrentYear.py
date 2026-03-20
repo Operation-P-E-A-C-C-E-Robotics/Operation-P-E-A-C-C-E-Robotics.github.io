@@ -70,8 +70,16 @@ def notify_pusher(message_type, data):
             k: data[k] for k in ["next_match_key", "last_match_key", "qual", "playoff"] if k in data
         }
     elif message_type == "events":
-        # Only events for this team
-        trimmed_data = [e for e in data if TEAM in e.get("team_keys", [TEAM])]
+        trimmed_data = [
+            {
+                "key": e.get("key"),
+                "name": e.get("name"),
+                "start_date": e.get("start_date"),
+                "end_date": e.get("end_date"),
+                "timezone": e.get("timezone"),
+                "webcasts": e.get("webcasts")
+            } for e in data
+        ]
     elif message_type == "district":
         trimmed_data = next((r for r in data if r["team_key"] == TEAM), None)
 
@@ -139,28 +147,48 @@ def overwrite_file(filename, new_data):
 
 # -------------------- CURRENT EVENT --------------------
 def get_current_event():
-    # Get list of team's events this year
     events = fetch_json(f"team/{TEAM}/events/{YEAR}")
-    # Pick the one that is currently ongoing (start_date <= today <= end_date)
     today = datetime.date.today()
+
+    current_event = None
+    next_event = None
+
+    # Sort events by start date
+    events.sort(key=lambda e: e["start_date"])
+
     for e in events:
         start = datetime.datetime.strptime(e["start_date"], "%Y-%m-%d").date()
         end = datetime.datetime.strptime(e["end_date"], "%Y-%m-%d").date()
+
         if start <= today <= end:
-            return e
-    return None
+            current_event = e
+            break
+        elif start > today and not next_event:
+            next_event = e
+    
+    selected = current_event if current_event else next_event
+    if selected:
+        print(f"Using event: {selected['key']} ({selected['name']})")
+    
+    return selected
 
 # -------------------- UPDATE FUNCTIONS --------------------
 def update_current_event_matches_and_status():
     event = get_current_event()
     if not event:
-        print("No current event for team.")
+        return
+
+    today = datetime.date.today()
+    start = datetime.datetime.strptime(event["start_date"], "%Y-%m-%d").date()
+    end = datetime.datetime.strptime(event["end_date"], "%Y-%m-%d").date()
+
+    if not (start <= today <= end):
+        print(f"Event {event['key']} {event['name']} is in the future, skipping fast polling... ({event['start_date']})")
         return
     files_changed = []
 
     # Matches
-    matches = fetch_json(f"team/{TEAM}/matches/{YEAR}")
-    matches = [m for m in matches if m["event_key"] == event["key"]]
+    matches = fetch_json(f"team/{TEAM}/event/{event["key"]}/matches")
     if merge_array_file(f"{YEAR}_matches.json", matches):
         files_changed.append(f"{YEAR}_matches.json")
         notify_pusher("matches", matches)
@@ -169,7 +197,7 @@ def update_current_event_matches_and_status():
     status = fetch_json(f"team/{TEAM}/events/{YEAR}/statuses")
     if event["key"] in status and overwrite_file(f"{YEAR}_event_statuses.json", {event["key"]: status[event["key"]]}):
         files_changed.append(f"{YEAR}_event_statuses.json")
-        notify_pusher("eventStatus", {event["key"]: status[event["key"]]})
+        notify_pusher("eventStatus", status[event["key"]])
 
     if files_changed:
         git_commit(files_changed, COMMIT_MESSAGE)
@@ -177,7 +205,7 @@ def update_current_event_matches_and_status():
 def update_current_event_awards_and_info():
     event = get_current_event()
     if not event:
-        print("No current event for team (awards/info).")
+        print("No current or upcoming event for team (awards/info).")
         return
     files_changed = []
 
