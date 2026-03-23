@@ -11,7 +11,7 @@ import { playOnFieldNotification, playOnFieldSoondNotification } from "./helpers
 function eventLocalTime(eventTimeZone, timeEl) {
     const interval = setInterval(() => {
         const now = new Date();
-        const currentTime = now.toLocaleTimeString("en-US", { timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short });
+        const currentTime = now.toLocaleTimeString("en-US", { timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' });
         if (timeEl) {
             timeEl.innerText = `${currentTime}`;
             timeEl.style.display = 'block';
