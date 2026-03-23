@@ -31,7 +31,7 @@ import { date } from "zod";
   //   });
   // }
 
-  console.log(yearOptions)
+  // console.log(yearOptions)
 
 export default defineConfig({
   branch,
