@@ -26,7 +26,15 @@ channel.bind('update', function(payload) {
     }
 
     else if (type === "eventStatus") {
-        update({ eventStatus: data });
+        setEventStatus(data);
+        tba.getMatchFromKey(data.next_match_key).then((match) => {
+            setNextMatch(match)
+        });
+        tba.getMatchFromKey(data.last_match_key).then( (match) => {
+            setLastMatch(match);
+        });
+        
+        
 
     }
 
