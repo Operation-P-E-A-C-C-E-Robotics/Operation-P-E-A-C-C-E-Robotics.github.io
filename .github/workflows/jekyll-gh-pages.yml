@@ -75,10 +75,8 @@ jobs:
           ruby-version: 3.3
           
 
-      - name: Build Main with Jekyll
-        env:
-          BASEURL: ${{ vars.JEKYLL_BASEURL || '' }}
-        run: bundle exec jekyll build --destination ./_site --baseurl "${{ env.BASEURL }}"
+      - name: Build Branch with Jekyll
+        run: bundle exec jekyll build --destination ./_site --baseurl "${{vars.JEKYLL_BASEURL}}"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
