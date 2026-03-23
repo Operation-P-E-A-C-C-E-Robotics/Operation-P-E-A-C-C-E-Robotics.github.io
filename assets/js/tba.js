@@ -88,9 +88,9 @@ async function getTeamEventStatus(eventKey) {
 async function getTeamStatusRecordStr(eventKey) {
     const status = await getTeamEventStatus(eventKey)
     if (status?.playoff) {
-        return status?.playoff?.record ? `<span class="text-success">${status.playoff.record.wins}W</span> <span class="text-danger">${status.playoff.record.losses}L</span> <span class="text-secondary">${status.playoff.record.ties > 0 ? status.playoff.record.ties + "T" : ""}</span>` : "-W -L -T";
+        return status?.playoff?.record ? `<span class="text-success font-weight-bold">${status.playoff.record.wins}W</span> <span class="text-danger font-weight-bold">${status.playoff.record.losses}L</span> <span class="font-weight-bold text-info">${status.playoff.record.ties > 0 ? status.playoff.record.ties + "T" : ""}</span>` : "-W -L -T";
     } else if (status?.qual?.ranking) {
-        return status?.qual?.ranking?.record ? `<span class="text-success">${status.qual.ranking.record.wins}W</span> <span class="text-danger">${status.qual.ranking.record.losses}L</span> <span class="text-secondary">${status.qual.ranking.ties > 0 ? status.qual.ranking.ties + "T" : ""}</span>` : "-W -L -T";
+        return status?.qual?.ranking?.record ? `<span class="text-success font-weight-bold">${status.qual.ranking.record.wins}W</span> <span class="text-danger font-weight-bold">${status.qual.ranking.record.losses}L</span> <span class="font-weight-bold text-info">${status.qual.ranking.record.ties > 0 ? status.qual.ranking.record.ties + "T" : ""}</span>` : "-W -L -T";
     } else {
         return "No Record"
     }
