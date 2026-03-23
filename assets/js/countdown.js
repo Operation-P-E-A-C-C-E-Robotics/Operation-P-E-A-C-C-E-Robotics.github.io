@@ -1,4 +1,4 @@
-import { playOnFieldNotification, playOnFieldSoondNotification } from "./helpers.js";
+import { playOnFieldNotification, playOnFieldSoonNotification } from "./helpers.js";
 
 /**
  * Update match countdown timer
@@ -25,12 +25,9 @@ function eventLocalTime(eventTimeZone, timeEl) {
 
 function matchCountdown(countDownDate, counterEl, callBackFunction = null, audioNotification = false) {
     console.log("match countdown set, audio notification:", audioNotification)
-    var hasPlayedNotif = false;
     const interval = setInterval(() => {
-        const now = new Date();//.toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit', second: '2-digit' }).getTime();
-        // const currentTime = now.toLocaleTimeString("en-US", { timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        const now = new Date();
         const distance = new Date(countDownDate).getTime() - now.getTime();
-        
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -62,10 +59,10 @@ function matchCountdown(countDownDate, counterEl, callBackFunction = null, audio
         } else {
             counterEl.classList.remove('yellowwarning', 'redalliance');
         }
-        if (days === 0 && hours === 0 && minutes === 5 && seconds >= 50 && audioNotification == true) {
+        if (days === 0 && hours === 0 && minutes === 5 && seconds >= 50 && audioNotification === true) {
             playOnFieldSoondNotification();
         }
-        if (days === 0 && hours === 0 && minutes === 0 && seconds <= 10 && audioNotification == true) {
+        if (days === 0 && hours === 0 && minutes === 0 && seconds <= 10 && audioNotification === true) {
             playOnFieldNotification(); //if the User toggled the audio notification to true on the gameday page
         } 
         if (distance < 0) {

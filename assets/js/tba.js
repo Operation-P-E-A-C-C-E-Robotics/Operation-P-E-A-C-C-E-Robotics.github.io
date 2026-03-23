@@ -76,7 +76,7 @@ async function getEventStatuses() {
  */
 async function getTeamStatusStr(eventKey) {
     const status = await getTeamEventStatus(eventKey)
-        return status ? status.overall_status_str : "Current Status is Unknown";
+    return status ? status.overall_status_str : "Current Status is Unknown";
 }
 async function getTeamEventStatus(eventKey) {
     const eventStatuses = await getEventStatuses();
@@ -105,7 +105,7 @@ async function getTeamStatusRank(eventKey) {
         }
     }
     else if (status?.qual?.ranking) {
-        return status?.qual?.ranking? status.qual.ranking.rank + "/" + status.qual.num_teams : "? / ?";
+        return status?.qual?.ranking ? status.qual.ranking.rank + "/" + status.qual.num_teams : "? / ?";
     } else {
         return "No Rank"
     }
@@ -261,23 +261,6 @@ async function getMedia() {
     return media.filter(m => m.team_key === "frc3461");
 }
 
-function sortCompLevel(a, b) {
-if (a == "qm" && b == "qm" && a < b) {
-    return 1;
-} else if (b == "qm" && a == "qm" && b < a) {
-    return -1;
-} else if (a == "qm" && b == "qf" && a < b){
-    return 1;
-} else if (b == "qm" && a == "qf" && b < a){
-    return -1;
-}else if (a == "qf" && b == "sf" && a < b){
-    return 1;
-} else if (b == "qf" && a == "sf" && b < a){
-    return -1;
-}else if (b == "qf" && a != "sf" && b < a) {
-    return 1;
-}
-}
 
 
 /**
@@ -314,7 +297,7 @@ function getKickoffDate(year = new Date().getFullYear()) {
     return firstSaturday;
 }
 
-export { getEventLocalTimeCurrentTime, getEventLocalTimeDate, getEventMatches, getTeamEventStatus, getTeamStatusRank, getTeamStatusRecordStr, getTeamStatusStr, getCurrentSeasonYear, getEvents, getEvent, getMatches, getEventStatuses, getTeamStatusStr as getTeamStatus, getDistrictRankings, getEventNameFromKey, getShortEventNameFromKey, getMatchFromKey, getMatchNameFromKey, getMatchCodeFromKey, formatTeamKey, getCurrentEvent, getNextEvent, getTeamDistrictStats, getAwards, getMedia, formatTimestamp, getKickoffDate };
+export { getEventLocalTimeCurrentTime, getEventLocalTimeDate, getEventMatches, getTeamEventStatus, getTeamStatusRank, getTeamStatusRecordStr, getCurrentSeasonYear, getEvents, getEvent, getMatches, getEventStatuses, getTeamStatusStr, getDistrictRankings, getEventNameFromKey, getShortEventNameFromKey, getMatchFromKey, getMatchNameFromKey, getMatchCodeFromKey, formatTeamKey, getCurrentEvent, getNextEvent, getTeamDistrictStats, getAwards, getMedia, formatTimestamp, getKickoffDate };
 window.getMatchCodeFromKey = getMatchCodeFromKey; // Expose getMatchCodeFromKey to global scope for testing purposes
 window.getCurrentSeasonYear = getCurrentSeasonYear; // Expose getCurrentSeasonYear to global scope for testing purposes
 window.year = year; // Expose year variable to global scope for testing purposes

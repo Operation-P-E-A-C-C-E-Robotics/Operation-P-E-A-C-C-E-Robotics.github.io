@@ -19,7 +19,7 @@ function resizeGameday() {
     gameday.style.height = `calc(100vh - ${navbarHeight}px)`;
 }
 
-window.addEventListener("load",  window.audioCtx = new (window.AudioContext || window.webkitAudioContext)())
+window.addEventListener("load",  () => { window.audioCtx = new (window.AudioContext || window.webkitAudioContext)(); })
 window.addEventListener("load", window.jQuery(document.getElementById("audioToggleBtn")).tooltip())
 window.addEventListener("load", window.jQuery(document.getElementById("currentEventStatus")).tooltip())
 window.addEventListener("load", window.jQuery(document.getElementById("eventLocalTime")).tooltip())
@@ -73,8 +73,8 @@ function addMatchToList(match, eventTimeZone) {
             console.log(`Match ${match.key} already exists in the list, updating instead of adding a duplicate.`);
             // Update existing match
             document.getElementById(`${match.key}`).querySelector('#matchCodeDisplay').innerText = matchKey; //This should not change, as it would then be a different match. Changing it makes any bugs obvious
-            document.getElementById(`${match.key}`).querySelector('#nextMatchRed').innerHTML = redAlliance; //These ususally dont change but just in case they do we will update them as well
-            document.getElementById(`${match.key}`).querySelector('#nextMatchBlue').innerHTML = blueAlliance; //These ususally dont change but just in case they do we will update them as well
+            document.getElementById(`${match.key}`).querySelector('#nextMatchRed').innerHTML = redAlliance; //These usually dont change but just in case they do we will update them as well
+            document.getElementById(`${match.key}`).querySelector('#nextMatchBlue').innerHTML = blueAlliance; //These usually dont change but just in case they do we will update them as well
             // Update the predicted time display
             const predictedTimeEl = document.getElementById(`${match.key}`).querySelector('#predictedTime');
             predictedTimeEl.innerText = predictedTimeString
@@ -96,8 +96,7 @@ function addMatchToList(match, eventTimeZone) {
                                 <td class="small font-weight-bold text-nowrap p-0 m-0" id="nextMatchBlue">${blueAlliance}</td>
                             </tr>
                         </tbody>
-                    </table> 
-                </table>  
+                    </table>   
                 `
             const matchItem = document.createElement('div')
             matchItem.classList.add("container", "bg-dark", "d-inline-flex", "align-items-center", "mr-1",
@@ -190,7 +189,7 @@ async function setEventStatus() {
                 window.jQuery(eventRankEl).tooltip()
             } else if (status?.qual) {
                 eventRankEl.setAttribute("title", "Qualification Ranking")
-                window.jQuery(eventStatusEl).tooltip()
+                window.jQuery(eventRankEl).tooltip()
             } else { console.warn("Status did not meet conditions for tooltips", status)}
         } catch (error) { console.warn("Could not set ranking tooltip", error)}
     } catch (error) {
@@ -336,7 +335,7 @@ async function init() {
             ? `https://player.twitch.tv/?autoplay=true&channel=${nextWebcast.channel}&parent=www.peacce.org`
             : `https://www.youtube.com/embed/${nextWebcast.channel}?autoplay=1`;
     })();
-    setLiveStream(liveStreamUrl, nextWebcast.channel);
+    setLiveStream(liveStreamUrl, nextWebcast ? nextWebcast.channel : null);
     
    await update();
    updateInterval = setInterval(update, 60000); // Refresh data every minute to keep match list and statuses up to date

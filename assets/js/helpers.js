@@ -69,7 +69,7 @@ function playOnFieldNotification() {
   tone(1200, now + 0.28, 0.22);
 }
 
-function playOnFieldSoondNotification() {
+function playOnFieldSoonNotification() {
   if (!audioCtx) {
       audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   }
@@ -145,6 +145,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-export { playOnFieldNotification, playOnFieldSoondNotification }
+export { playOnFieldNotification, playOnFieldSoonNotification as playOnFieldSoondNotification }
 window.playOnFieldNotif = playOnFieldNotification
-window.playOnFieldSoonNotif = playOnFieldSoondNotification
+window.playOnFieldSoonNotif = playOnFieldSoonNotification
