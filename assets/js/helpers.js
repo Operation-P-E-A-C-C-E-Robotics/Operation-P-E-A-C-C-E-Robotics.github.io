@@ -145,6 +145,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-export { playOnFieldNotification, playOnFieldSoonNotification as playOnFieldSoondNotification }
+export { playOnFieldNotification, playOnFieldSoonNotification as playOnFieldSoondNotification, playOnFieldSoonNotification}
 window.playOnFieldNotif = playOnFieldNotification
 window.playOnFieldSoonNotif = playOnFieldSoonNotification
