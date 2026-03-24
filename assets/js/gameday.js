@@ -7,6 +7,8 @@ var currentEvent = null;
 var matchCountdownInterval = null;
 var updateInterval = null;
 var globalEventStatus = null;
+var globalEventStatusSource = null;
+
 const matchRefreshSpinner = document.getElementById("matchRefreshSpinner");
 const streamRefreshSpinner = document.getElementById("streamRefreshSpinner");
 
@@ -26,7 +28,15 @@ channel.bind('update', function(payload) {
     }
 
     else if (type === "eventStatus") {
+        globalEventStatus = data;
+        globalEventStatusSource = "pusher";
         setEventStatus(data);
+        tba.getEventMatches(currentEvent.key).then(matches => {
+            setMatchList(matches, currentEvent.timezone);
+        }).catch(error => {
+            console.error('Failed to get event matches:', error);
+            setMatchList([], currentEvent.timezone); // Clear match list on error
+        });
         tba.getMatchFromKey(data.next_match_key).then((match) => {
             setNextMatch(match)
         });
@@ -262,8 +272,8 @@ async function setEventStatus(override) {
         const status = override || globalEventStatus || await tba.getTeamEventStatus(currentEvent.key);
         const rank = await tba.getTeamStatusRank(currentEvent.key, status)
         const record = await tba.getTeamStatusRecordStr(currentEvent.key, status);
-        eventStatusEl.innerText = `${record}`;
-        eventRankEl.innerText = `${rank}`;
+        eventStatusEl.innerHTML = `${record}`;
+        eventRankEl.innerHTML = `${rank}`;
         try {
             if (status?.playoff) {
                 eventRankIcon.classList.remove("fa-bar-chart")
@@ -458,7 +468,7 @@ async function updateWithVisual() {
 async function update() {
     console.log('Updating gameday data...');
     document.getElementById('matchesListContainer').innerHTML = ""; // Clear match list before updating to prevent duplicates
-    globalEventStatus = await tba.getTeamEventStatus(currentEvent.key);
+    globalEventStatus = comparePusherToGithub();
     await setEventStatus(globalEventStatus);
     console.log("Global Event Status", globalEventStatus)
     tba.getEventMatches(currentEvent.key).then(matches => {
@@ -485,6 +495,32 @@ async function update() {
     matchRefreshSpinner.setAttribute('data-original-title', 
         `Refresh Matches (Last Refresh: ${new Date().toLocaleTimeString()})`
     );
+}
+
+async function comparePusherToGithub() {
+    const newStatus = await tba.getTeamEventStatus(currentEvent.key);
+
+    if (!globalEventStatus) {
+        globalEventStatus = newStatus;
+        globalEventStatusSource = "api";
+    } else if (globalEventStatusSource === "api") {
+        // Safe to overwrite (same source)
+        globalEventStatus = newStatus;
+    } else {
+        // Current data is from PUSHER → be careful
+
+        const isAhead =
+            newStatus?.next_match_key !== globalEventStatus?.next_match_key ||
+            newStatus?.qual?.status !== globalEventStatus?.qual?.status ||
+            newStatus?.playoff?.status !== globalEventStatus?.playoff?.status;
+
+        if (isAhead) {
+            globalEventStatus = newStatus;
+            globalEventStatusSource = "api";
+        }
+    }
+
+    return globalEventStatus;
 }
 
 init();
