@@ -65,7 +65,6 @@ jobs:
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
           HEAD: ${{ github.ref_name}}
           TINA_SEARCH: ${{secrets.TINA_SEARCH}}
-          BASEURL: ${{vars.JEKYLL_BASEURL}}
         run: |                            
           npx tinacms build
       
