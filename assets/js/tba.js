@@ -302,7 +302,8 @@ function getKickoffDate(year = new Date().getFullYear()) {
     return firstSaturday;
 }
 
-export { getEventLocalTimeCurrentTime, getEventLocalTimeDate, getEventMatches, getTeamEventStatus, getTeamStatusRank, getTeamStatusRecordStr, getCurrentSeasonYear, getEvents, getEvent, getMatches, getEventStatuses, getTeamStatusStr, getDistrictRankings, getEventNameFromKey, getShortEventNameFromKey, getMatchFromKey, getMatchNameFromKey, getMatchCodeFromKey, formatTeamKey, getCurrentEvent, getNextEvent, getTeamDistrictStats, getAwards, getMedia, formatTimestamp, getKickoffDate };
+export { getEventLocalTimeCurrentTime, getEventLocalTimeDate, getEventMatches, getTeamEventStatus, getTeamStatusRank, getTeamStatusRecordStr, getCurrentSeasonYear, getEvents, getEvent, getMatches, getEventStatuses, getTeamStatusStr, getDistrictRankings, getEventNameFromKey, getShortEventNameFromKey, getMatchFromKey, getMatchNameFromKey, getMatchCodeFromKey, formatTeamKey, getCurrentEvent, getNextEvent, getTeamDistrictStats, getAwards, getMedia, formatTimestamp, getKickoffDate, viewOnTBA };
 window.getMatchCodeFromKey = getMatchCodeFromKey; // Expose getMatchCodeFromKey to global scope for testing purposes
 window.getCurrentSeasonYear = getCurrentSeasonYear; // Expose getCurrentSeasonYear to global scope for testing purposes
 window.year = year; // Expose year variable to global scope for testing purposes
+window.viewOnTBA = viewOnTBA;
