@@ -142,9 +142,9 @@ function populateLiveStreamOptions(event) {
         return aDate.localeCompare(bDate)
     } ).forEach((webcast, index) => {
         const button = document.createElement('button');
-        button.className = 'dropdown-item';
+        button.className = 'btn btn-outline-danger btn-block';
         button.id = webcast.channel
-        button.textContent = webcast?.stream_title || (webcast.type === 'twitch' ? `Twitch ${webcast.channel}` : `YouTube Stream ${index+1} (${webcast.date})`);
+        button.innerHTML = `<span style="color:currentColor;" class="fa ${webcast.type === "twitch" ? "fa-twitch" : "fa-youtube-play"}"></span> ${webcast?.stream_title || (webcast.type === 'twitch' ? `Twitch ${webcast.channel}` : `YouTube Stream ${index+1} (${webcast.date})`)}`;
         button.addEventListener('click', () => {
             const url = webcast.type === 'twitch' 
                 ? `https://player.twitch.tv/?autoplay=true&channel=${webcast.channel}&parent=www.peacce.org`
