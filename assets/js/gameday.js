@@ -446,7 +446,7 @@ async function init() {
             : `https://www.youtube.com/embed/${nextWebcast.channel}?autoplay=1`;
     })();
     setLiveStream(liveStreamUrl, nextWebcast ? nextWebcast.channel : null, nextWebcast.type);
-    
+    globalEventStatus = await tba.getTeamEventStatus(currentEvent.key); //populate the status without using comparison logic against pusher so there is a clean first ref to start with.
    await update();
    updateInterval = setInterval(update, 60000); // Refresh data every minute to keep match list and statuses up to date
    window.updateInterval = updateInterval; //allow cancelling the auto-match refresh for testing purposes
@@ -468,7 +468,7 @@ async function updateWithVisual() {
 async function update() {
     console.log('Updating gameday data...');
     document.getElementById('matchesListContainer').innerHTML = ""; // Clear match list before updating to prevent duplicates
-    globalEventStatus = comparePusherToGithub();
+    globalEventStatus = await comparePusherToGithub();
     await setEventStatus(globalEventStatus);
     console.log("Global Event Status", globalEventStatus)
     tba.getEventMatches(currentEvent.key).then(matches => {
@@ -499,28 +499,34 @@ async function update() {
 
 async function comparePusherToGithub() {
     const newStatus = await tba.getTeamEventStatus(currentEvent.key);
-
+    if (!newStatus || Object.keys(newStatus).length === 0 || !newStatus.overall_status_str) {
+        console.log("API Value was empty, ignoring...");
+        return globalEventStatus; // don't overwrite
+    }
     if (!globalEventStatus) {
         globalEventStatus = newStatus;
         globalEventStatusSource = "api";
+        console.log("No Global Status found, defaulting to API")
     } else if (globalEventStatusSource === "api") {
         // Safe to overwrite (same source)
         globalEventStatus = newStatus;
     } else {
         // Current data is from PUSHER → be careful
-
-        const isAhead =
-            newStatus?.next_match_key !== globalEventStatus?.next_match_key ||
-            newStatus?.qual?.status !== globalEventStatus?.qual?.status ||
-            newStatus?.playoff?.status !== globalEventStatus?.playoff?.status;
+        const isAhead = normalizeStatus(globalEventStatus?.overall_status_str) !== normalizeStatus(newStatus?.overall_status_str);
 
         if (isAhead) {
             globalEventStatus = newStatus;
             globalEventStatusSource = "api";
         }
+        console.log("Pusher is behind Github? ", isAhead);
     }
-
     return globalEventStatus;
+}
+
+
+function normalizeStatus(str) {
+    if (!str) return ""; // treat missing as empty string
+    return str?.replace(/<[^>]+>/g, '').trim();
 }
 
 init();
