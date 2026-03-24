@@ -66,8 +66,9 @@ jobs:
           HEAD: ${{ github.ref_name}}
           TINA_SEARCH: ${{secrets.TINA_SEARCH}}
         run: |
+          export BASEURL="${{vars.JEKYLL_BASEURL}}"
           npx tinacms build &                              
-          bundle exec jekyll build  --baseurl "${{vars.JEKYLL_BASEURL}}" & 
+          bundle exec jekyll build  --baseurl "$BASEURL" & 
           wait                                            
 
       - name: Upload site artifact
