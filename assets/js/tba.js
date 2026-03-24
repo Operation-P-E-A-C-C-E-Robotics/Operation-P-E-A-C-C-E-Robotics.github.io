@@ -88,9 +88,9 @@ async function getTeamEventStatus(eventKey) {
 async function getTeamStatusRecordStr(eventKey, override) {
     const status = override || await getTeamEventStatus(eventKey)
     if (status?.playoff) {
-        return status?.playoff?.record ? `<span class="green-text font-weight-bold">${status.playoff.record.wins}W</span> <span class="text-danger font-weight-bold">${status.playoff.record.losses}L</span> <span class="font-weight-bold text-info">${status.playoff.record.ties > 0 ? status.playoff.record.ties + "T" : ""}</span>` : "-W -L -T";
+        return status?.playoff?.record ? `<span class="badge badge-success  align-middle font-weight-bold">${status.playoff.record.wins}W</span> <span class="badge badge-danger align-middle font-weight-bold">${status.playoff.record.losses}L</span> <span class="font-weight-bold badge badge-dark align-middle">${status.playoff.record.ties > 0 ? status.playoff.record.ties + "T" : ""}</span>` : "-W -L -T";
     } else if (status?.qual?.ranking) {
-        return status?.qual?.ranking?.record ? `<span class="green-text font-weight-bold">${status.qual.ranking.record.wins}W</span> <span class="text-danger font-weight-bold">${status.qual.ranking.record.losses}L</span> <span class="font-weight-bold text-info">${status.qual.ranking.record.ties > 0 ? status.qual.ranking.record.ties + "T" : ""}</span>` : "-W -L -T";
+        return status?.qual?.ranking?.record ? `<span class="badge badge-success align-middle font-weight-bold">${status.qual.ranking.record.wins}W</span> <span class="badge badge-danger align-middle font-weight-bold">${status.qual.ranking.record.losses}L</span> <span class="font-weight-bold badge badge-dark align-middle">${status.qual.ranking.record.ties > 0 ? status.qual.ranking.record.ties + "T" : ""}</span>` : "-W -L -T";
     } else {
         return "No Record"
     }
@@ -98,11 +98,11 @@ async function getTeamStatusRecordStr(eventKey, override) {
 async function getTeamStatusRank(eventKey, override) {
     const status = override || await getTeamEventStatus(eventKey);
     if (status?.playoff) {
-        const allianceDisplayName = status?.alliance?.name ? status.alliance.name.replace("Alliance", "A") + " " : ""; 
+        const allianceDisplayName = `${status?.alliance?.name ? status.alliance.name.replace("Alliance", "A").replace(" ", "") : ""}`; 
         if (status?.playoff.status === "eliminated") {
-            return allianceDisplayName + "Eliminated from Playoffs"
+            return allianceDisplayName + " | Eliminated"
         } else {
-            return allianceDisplayName + status?.playoff?.double_elim_round ? status.playoff.double_elim_round : String(status.playoff.level).toUpperCase();
+            return `${allianceDisplayName} | ${status?.playoff?.double_elim_round ? status.playoff.double_elim_round : String(status.playoff.level).toUpperCase()}`;
         }
     }
     else if (status?.qual?.ranking) {
