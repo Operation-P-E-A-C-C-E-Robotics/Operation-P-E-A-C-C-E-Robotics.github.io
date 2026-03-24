@@ -59,7 +59,7 @@ jobs:
           bundle install
           wait
 
-      - name: Build TinaCMS and Jekyll concurrently
+      - name: Build TinaCMS
         env:
           TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
@@ -67,9 +67,11 @@ jobs:
           TINA_SEARCH: ${{secrets.TINA_SEARCH}}
           BASEURL: ${{vars.JEKYLL_BASEURL}}
         run: |                            
-          bundle exec jekyll build  --baseurl "${{vars.JEKYLL_BASEURL}}" & 
-          npx tinacms build &  
-          wait                                            
+          npx tinacms build
+      
+      - name: Build Jekyll
+        run: | 
+          bundle exec jekyll build  --baseurl "${{vars.JEKYLL_BASEURL}}" 
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v4
