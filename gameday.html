@@ -4,7 +4,21 @@ title: "Gameday"
 permalink: /gameday/
 metadesc: "Watch Operation P.E.A.C.C.E Robotics compete live at events, via live streams, match schedules, and real-time updates on our performance."
 ---
+<style>
+    .btn-outline-twitch {
+        color: #9146FF; /* border & text color */
+        border-color: #9146FF;
+    }
 
+    .btn-outline-twitch.active,
+    .btn-outline-twitch:active,
+    .btn-outline-twitch:focus,
+    .btn-outline-twitch:hover {
+        color: white;            /* text color when selected */
+        background-color: #9146FF; /* fill background on active */
+        border-color: #9146FF;
+    }
+</style>
 <div class="container">
   <!-- The Modal -->
   <div class="modal" id="streamSelectModal">
@@ -26,7 +40,7 @@ metadesc: "Watch Operation P.E.A.C.C.E Robotics compete live at events, via live
         
         <!-- Modal footer -->
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary" id="refreshButton" onclick="populateLiveStreamOptions(currentEvent)"><span class="fa fa-refresh" id="streamRefreshSpinner"></span> Refresh Livestreams</button>
+            <button type="button" class="btn btn-primary" id="refreshButton" onclick="refreshLiveStreamsWithVisual(window.currentEvent)"><span class="fa fa-refresh" id="streamRefreshSpinner"></span> Refresh Livestreams</button>
             <button type="button" class="btn btn-info" onclick="toggleChat()" id="streamChatToggle"><i class="fa fa-comments"></i> Toggle Chat</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>

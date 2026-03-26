@@ -139,14 +139,17 @@ window.showChat = showChat
 window.hideChat = hideChat
 
 function setLiveStream(streamUrl, streamButtonId, streamType) {
-    const streamFrame = document.getElementById('liveStreamFrame');
+    const container = document.getElementById('streamContainer');
+    var streamFrame = document.getElementById('liveStreamFrame');
     const chatFrame = document.getElementById('streamChat');
-    streamFrame.src = streamUrl;
     if (streamType == "youtube") {
+        streamFrame.src = streamUrl;
         chatFrame.src =`https://www.youtube.com/live_chat?v=${streamButtonId}&embed_domain=${window.location.hostname}`
         document.getElementById("streamChatToggle").classList.remove("disabled");
-    } else if (streamType == "twitch") {
-        chatFrame.src = `https://www.twitch.tv/embed/${streamButtonId}/chat?parent=${window.location.hostname}`
+    } else if (streamType === "twitch") {
+        
+        streamFrame.src = streamUrl
+        chatFrame.src = `https://www.twitch.tv/embed/${streamButtonId}/chat?parent=${window.location.hostname}`;
         document.getElementById("streamChatToggle").classList.remove("disabled");
     } else {
         hideChat(); //if its not one of the two media types we support, hide the chat and disable showing it. (realistically what platforms aside from twitch and youtube have chats anyway)
@@ -182,12 +185,16 @@ function populateLiveStreamOptions(event) {
                 button.classList.add("btn-outline-danger");
                 button.innerHTML = `<span class="fa fa-user-circle-o"></span> ${meta ? meta.author_name : ""} <br> <span style="color:currentColor;" class="fa fa-youtube-play"}"></span> ${meta ? meta.title : `YouTube Stream ${index+1} (${webcast.date})`}`;
             })
+        } else if (webcast.type === "twitch"){
+            button.classList.remove("btn-outline-primary");
+            button.classList.add("btn-outline-twitch");
+            button.innerHTML = `<span style="color:currentColor;" class="fa fa-twitch"></span> ${webcast?.stream_title || webcast.channel || `Twitch Stream ${index+1} (${webcast.date})`}`;
         } else {
-            button.innerHTML = `<span style="color:currentColor;" class="fa ${webcast.type === "twitch" ? "fa-twitch" : "fa-film"}"></span> ${webcast?.stream_title || (webcast.type === 'twitch' ? `${webcast.channel}` : `Live Stream ${index+1} (${webcast.date})`)}`;
+            button.innerHTML = `<span style="color:currentColor;" class="fa fa-film"></span> ${webcast?.stream_title ||  `${webcast.type} Live Stream ${index+1} (${webcast.date})`}`;
         }
         button.addEventListener('click', () => {
             const url = webcast.type === 'twitch' 
-                ? `https://player.twitch.tv/?autoplay=true&channel=${webcast.channel}&parent=www.peacce.org`
+                ? `https://player.twitch.tv/?autoplay=true&channel=${webcast.channel}&parent=${window.location.hostname}&muted=true`
                 : `https://www.youtube.com/embed/${webcast.channel}?autoplay=1`;
             setLiveStream(url, button.id, webcast.type);
         });
@@ -465,7 +472,8 @@ window.removeMatchFromList = removeMatchFromList;
 window.setNextMatch = setNextMatch;
 window.setLastMatch = setLastMatch;
 window.setMatchList = setMatchList;
-window.populateLiveStreamOptions = refreshLiveStreamsWithVisual;
+window.refreshLiveStreamsWithVisual = refreshLiveStreamsWithVisual;
+window.populateLiveStreamOptions = populateLiveStreamOptions;
 window.toggleAudioNotification = toggleAudioNotification;
 
 const testNextMatch =
