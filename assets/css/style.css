@@ -78,7 +78,17 @@ body.bg-dark .text-dark {
 }
 
 
-
+/* google icons sizing */
+*:has(> .material-icons) {
+	display: inline-flex;
+	align-content: center!important;
+	align-items: center!important;
+}
+.material-icons {
+	font-size: 1.2rem;
+	line-height: inherit;
+	align-self: center;
+}
 
 /* Social Media Icon CSS */
 
