@@ -60,7 +60,7 @@ channel.bind('update', function(payload) {
 
 const navbar = document.getElementById("gamedayNavbar");
 const gameday = document.getElementById("streamContainer");
-const navbarHeight = navbar.offsetHeight;
+var navbarHeight = navbar.offsetHeight;
 
 function resizeGameday() {
     gameday.style.height = `calc(100vh - ${navbarHeight}px)`;
