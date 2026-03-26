@@ -10,12 +10,12 @@ var globalEventStatus = null;
 const matchRefreshSpinner = document.getElementById("matchRefreshSpinner");
 const streamRefreshSpinner = document.getElementById("streamRefreshSpinner");
 
+const navbar = document.getElementById("gamedayNavbar");
+const gameday = document.getElementById("streamContainer");
+
+const navbarHeight = navbar.offsetHeight;
+
 function resizeGameday() {
-    const navbar = document.getElementById("gamedayNavbar");
-    const gameday = document.getElementById("streamContainer");
-
-    const navbarHeight = navbar.offsetHeight;
-
     gameday.style.height = `calc(100vh - ${navbarHeight}px)`;
 }
 
@@ -263,7 +263,7 @@ function setMatchList(matches, eventTimeZone) {
             globalEventStatus.playoff.status !== "playing"
         )
     ) {
-        document.getElementById('matchesListContainer').innerHTML = `<h5 class=" mt-1 mb-1">${globalEventStatus?.overall_status_str ?? ""}</h5>`
+        document.getElementById('matchesListContainer').innerHTML = `<h5 class=" mt-1 mb-1 d-none d-lg-block" style="max-height:60px; font-size: clamp(0.75rem, 1.05rem, 1.25rem);">${globalEventStatus?.overall_status_str ?? ""}</h5>`
     }
     
 }
