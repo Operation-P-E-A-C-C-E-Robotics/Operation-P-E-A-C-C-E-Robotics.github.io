@@ -147,8 +147,16 @@ function setLiveStream(streamUrl, streamButtonId, streamType) {
         chatFrame.src =`https://www.youtube.com/live_chat?v=${streamButtonId}&embed_domain=${window.location.hostname}`
         document.getElementById("streamChatToggle").classList.remove("disabled");
     } else if (streamType === "twitch") {
-        
-        streamFrame.src = streamUrl
+        container.innerHTML = `
+            <iframe class="embed-responsive-item" id="liveStreamFrame" allow="accelerometer; autoplay; picture-in-picture; fullscreen;"
+            src="https://player.twitch.tv/?channel=${streamButtonId}&parent=${window.location.hostname}&muted=true&autoplay=true"
+            frameborder="0"
+            allowfullscreen="true"
+            scrolling="no"
+            height="100%"
+            width="100%">
+            </iframe>
+        `;
         chatFrame.src = `https://www.twitch.tv/embed/${streamButtonId}/chat?parent=${window.location.hostname}`;
         document.getElementById("streamChatToggle").classList.remove("disabled");
     } else {
