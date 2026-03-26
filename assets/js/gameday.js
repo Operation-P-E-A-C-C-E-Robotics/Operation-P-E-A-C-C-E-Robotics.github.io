@@ -142,10 +142,10 @@ function setLiveStream(streamUrl, streamButtonId, streamType) {
     const streamFrame = document.getElementById('liveStreamFrame');
     const chatFrame = document.getElementById('streamChat');
     streamFrame.src = streamUrl;
-    if (streamType === "youtube") {
+    if (streamType == "youtube") {
         chatFrame.src =`https://www.youtube.com/live_chat?v=${streamButtonId}&embed_domain=${window.location.hostname}`
         document.getElementById("streamChatToggle").classList.remove("disabled");
-    } else if (streamType === "twitch") {
+    } else if (streamType == "twitch") {
         chatFrame.src = `https://www.twitch.tv/embed/${streamButtonId}/chat?parent=${window.location.hostname}`
         document.getElementById("streamChatToggle").classList.remove("disabled");
     } else {
@@ -405,7 +405,7 @@ async function init() {
             ? `https://player.twitch.tv/?autoplay=true&channel=${nextWebcast.channel}&parent=www.peacce.org`
             : `https://www.youtube.com/embed/${nextWebcast.channel}?autoplay=1`;
     })();
-    setLiveStream(liveStreamUrl, nextWebcast ? nextWebcast.channel : null);
+    setLiveStream(liveStreamUrl, nextWebcast ? nextWebcast.channel : null, nextWebcast.type);
     
    await update();
    updateInterval = setInterval(update, 60000); // Refresh data every minute to keep match list and statuses up to date
