@@ -124,9 +124,25 @@ function removeMatchFromList(matchKey) {
     }
 }
 
+function toggleChat() {
+    console.log("Toggling Chat...")
+    document.getElementById('streamChatCol').classList.toggle('d-none');
+}
+function showChat() {
+    document.getElementById('streamChatCol').classList.remove('d-none');
+}
+function hideChat() {
+    document.getElementById('streamChatCol').classList.add('d-none')
+}
+window.toggleChat = toggleChat
+window.showChat = showChat
+window.hideChat = hideChat
+
 function setLiveStream(streamUrl, streamButtonId) {
-    const iframe = document.getElementById('liveStreamFrame');
-    iframe.src = streamUrl;
+    const streamFrame = document.getElementById('liveStreamFrame');
+    const chatFrame = document.getElementById('streamChat');
+    streamFrame.src = streamUrl;
+    chatFrame.src =`https://www.youtube.com/live_chat?v=${streamButtonId}&embed_domain=peacce.org`
     document.getElementById('streamContainer').style.display = 'block';
     resizeGameday() //ensure the stream is sized correctly
     
