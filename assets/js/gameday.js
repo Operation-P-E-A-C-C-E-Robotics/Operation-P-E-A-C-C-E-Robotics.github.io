@@ -4,7 +4,7 @@ import * as counter from "./countdown.js";
 
 var currentSeasonYear = null;
 var currentEvent = null;
-var matchUpdateInterval = null;
+var matchCountdownInterval = null;
 var updateInterval = null;
 var globalEventStatus = null;
 const matchRefreshSpinner = document.getElementById("matchRefreshSpinner");
@@ -278,7 +278,7 @@ function setNextMatch(nextMatch) {
 
         if (eventStart > now) {
             console.log("Event Start is in future", "Event Start: ", eventStart, "Current Local Time: ", now)
-            // clearInterval(matchUpdateInterval);
+            clearInterval(matchCountdownInterval);
             // matchUpdateInterval = counter.matchCountdown(
             //     eventStart,
             //     document.getElementById('nextMatchCountdown'),
@@ -293,7 +293,7 @@ function setNextMatch(nextMatch) {
             document.getElementById('nextMatchNumber').innerText = "Unknown";
             document.getElementById('nextMatchRed').innerText = "";
             document.getElementById('nextMatchBlue').innerText = "";
-            clearInterval(matchUpdateInterval);
+            clearInterval(matchCountdownInterval);
             document.getElementById("nextMatchCountdown").innerText = "--";
         }
 
@@ -321,9 +321,9 @@ function setNextMatch(nextMatch) {
         const el = document.getElementById(nextMatch.key);
         if (el) el.remove();
 
-        clearInterval(matchUpdateInterval);
+        clearInterval(matchCountdownInterval);
 
-        matchUpdateInterval = counter.matchCountdown(
+        matchCountdownInterval = counter.matchCountdown(
             nextMatchDate,
             document.getElementById('nextMatchCountdown'),
             update, 
