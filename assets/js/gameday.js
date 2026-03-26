@@ -142,7 +142,7 @@ function setLiveStream(streamUrl, streamButtonId) {
     const streamFrame = document.getElementById('liveStreamFrame');
     const chatFrame = document.getElementById('streamChat');
     streamFrame.src = streamUrl;
-    chatFrame.src =`https://www.youtube.com/live_chat?v=${streamButtonId}&embed_domain=peacce.org`
+    chatFrame.src =`https://www.youtube.com/live_chat?v=${streamButtonId}&embed_domain=${window.location.hostname}`
     document.getElementById('streamContainer').style.display = 'block';
     resizeGameday() //ensure the stream is sized correctly
     
