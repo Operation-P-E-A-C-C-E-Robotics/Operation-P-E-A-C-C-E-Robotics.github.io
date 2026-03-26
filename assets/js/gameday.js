@@ -183,11 +183,11 @@ function populateLiveStreamOptions(event) {
                 // console.log(meta);
                 button.classList.remove("btn-outline-primary");
                 button.classList.add("btn-outline-danger");
-                button.innerHTML = `<span class="fa fa-user-circle-o"></span> ${meta ? meta.author_name : ""} <br> <span style="color:currentColor;" class="fa fa-youtube-play"}"></span> ${meta ? meta.title : `YouTube Stream ${index+1} (${webcast.date})`}`;
+                button.innerHTML = `<span class="fa fa-user-circle-o"></span> ${meta ? meta.author_name : ""} <br> <span style="color:currentColor;" class="fa fa-youtube-play"></span> ${meta ? meta.title : `YouTube Stream ${index+1} (${webcast.date})`}`;
             }).catch( (e) => {
                 button.classList.remove("btn-outline-primary");
                 button.classList.add("btn-outline-danger");
-                button.innerHTML = `<span style="color:currentColor;" class="fa fa-youtube-play"}"></span> YouTube Stream ${index+1} (${webcast.date})`;
+                button.innerHTML = `<span style="color:currentColor;" class="fa fa-youtube-play"></span> YouTube Stream ${index+1} (${webcast.date})`;
             });
         } else if (webcast.type === "twitch"){
             button.classList.remove("btn-outline-primary");
