@@ -294,8 +294,7 @@ function setMatchList(matches, eventTimeZone) {
             globalEventStatus.playoff.status !== "playing"
         )
     ) {
-        document.getElementById('matchesListContainer').innerHTML =
-            globalEventStatus?.overall_status_str ?? "";
+        document.getElementById('matchesListContainer').innerHTML = `<div class="bg-dark w-75 align-items-center mr-1 p-1 h-100 rounded-lg pr-0 h-100">${globalEventStatus?.overall_status_str ?? ""}</div>`
     }
     
 }
