@@ -263,7 +263,7 @@ function setMatchList(matches, eventTimeZone) {
             globalEventStatus.playoff.status !== "playing"
         )
     ) {
-        document.getElementById('matchesListContainer').innerHTML = `<div class="bg-dark w-75 align-items-center mr-1 p-1 h-100 rounded-lg pr-0 h-100">${globalEventStatus?.overall_status_str ?? ""}</div>`
+        document.getElementById('matchesListContainer').innerHTML = `<div class="container bg-dark d-inline-flex mr-1 h-100 rounded-lg pr-0 pl-1"> <h6 class="mt-3 mb-3 ml-1 mr-1">${globalEventStatus?.overall_status_str ?? ""}</h6> </div>`
     }
     
 }
