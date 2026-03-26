@@ -138,11 +138,21 @@ window.toggleChat = toggleChat
 window.showChat = showChat
 window.hideChat = hideChat
 
-function setLiveStream(streamUrl, streamButtonId) {
+function setLiveStream(streamUrl, streamButtonId, streamType) {
     const streamFrame = document.getElementById('liveStreamFrame');
     const chatFrame = document.getElementById('streamChat');
     streamFrame.src = streamUrl;
-    chatFrame.src =`https://www.youtube.com/live_chat?v=${streamButtonId}&embed_domain=${window.location.hostname}`
+    if (streamType === "youtube") {
+        chatFrame.src =`https://www.youtube.com/live_chat?v=${streamButtonId}&embed_domain=${window.location.hostname}`
+        document.getElementById("streamChatToggle").classList.remove("disabled");
+    } else if (streamType === "twitch") {
+        chatFrame.src = `https://www.twitch.tv/embed/${streamButtonId}/chat?parent=${window.location.hostname}`
+        document.getElementById("streamChatToggle").classList.remove("disabled");
+    } else {
+        hideChat(); //if its not one of the two media types we support, hide the chat and disable showing it. (realistically what platforms aside from twitch and youtube have chats anyway)
+        chatFrame.src = "/assets/images/notFound.png" //something nicer than the default browser "failed to connect" screen; Disabling the button should make it impossible for this to appear.
+        document.getElementById("streamChatToggle").classList.add("disabled");
+    }
     document.getElementById('streamContainer').style.display = 'block';
     resizeGameday() //ensure the stream is sized correctly
     
@@ -179,7 +189,7 @@ function populateLiveStreamOptions(event) {
             const url = webcast.type === 'twitch' 
                 ? `https://player.twitch.tv/?autoplay=true&channel=${webcast.channel}&parent=www.peacce.org`
                 : `https://www.youtube.com/embed/${webcast.channel}?autoplay=1`;
-            setLiveStream(url, button.id);
+            setLiveStream(url, button.id, webcast.type);
         });
         liveStreamDropdown.appendChild(button);
         
