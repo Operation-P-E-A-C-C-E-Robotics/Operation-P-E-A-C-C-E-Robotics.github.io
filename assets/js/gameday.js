@@ -164,7 +164,7 @@ function setLiveStream(streamUrl, streamButtonId, streamType) {
             </iframe>
             
         `;
-        // chatFrame.src = `https://www.twitch.tv/embed/${streamButtonId}/chat?parent=${window.location.hostname}`;
+        chatFrame.src = `https://www.twitch.tv/embed/${streamButtonId}/chat?parent=${window.location.hostname}`;
         document.getElementById("streamChatToggle").classList.remove("disabled");
     } else {
         hideChat(); //if its not one of the two media types we support, hide the chat and disable showing it. (realistically what platforms aside from twitch and youtube have chats anyway)
