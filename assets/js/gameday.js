@@ -167,7 +167,7 @@ function populateLiveStreamOptions(event) {
         button.id = webcast.channel
         if (webcast.type === "youtube") {
             getYouTubeMeta(webcast.channel).then((meta)=> {
-                console.log(meta);
+                // console.log(meta);
                 button.classList.remove("btn-outline-primary");
                 button.classList.add("btn-outline-danger");
                 button.innerHTML = `<span class="fa fa-user-circle-o"></span> ${meta ? meta.author_name : ""} <br> <span style="color:currentColor;" class="fa fa-youtube-play"}"></span> ${meta ? meta.title : `YouTube Stream ${index+1} (${webcast.date})`}`;
