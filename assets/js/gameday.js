@@ -142,22 +142,29 @@ function setLiveStream(streamUrl, streamButtonId, streamType) {
     const container = document.getElementById('streamContainer');
     var streamFrame = document.getElementById('liveStreamFrame');
     const chatFrame = document.getElementById('streamChat');
+    const streamSelectModal = $('#streamSelectModal');
     if (streamType == "youtube") {
         streamFrame.src = streamUrl;
         chatFrame.src =`https://www.youtube.com/live_chat?v=${streamButtonId}&embed_domain=${window.location.hostname}`
+        resizeGameday() //ensure the stream is sized correctly
         document.getElementById("streamChatToggle").classList.remove("disabled");
     } else if (streamType === "twitch") {
+        resizeGameday() //ensure the stream is sized correctly
+        streamFrame.remove();
+        window.jQuery(streamSelectModal).modal('hide'); //hide the modal if we select a twitch stream because bootstraps modal makes the twitch visibility check fail :(
+        setTimeout(200)
         container.innerHTML = `
             <iframe class="embed-responsive-item" id="liveStreamFrame" allow="accelerometer; autoplay; picture-in-picture; fullscreen;"
             src="https://player.twitch.tv/?channel=${streamButtonId}&parent=${window.location.hostname}&muted=true&autoplay=true"
             frameborder="0"
             allowfullscreen="true"
             scrolling="no"
-            height="100%"
-            width="100%">
+            height="1920"
+            width="1080">
             </iframe>
+            
         `;
-        chatFrame.src = `https://www.twitch.tv/embed/${streamButtonId}/chat?parent=${window.location.hostname}`;
+        // chatFrame.src = `https://www.twitch.tv/embed/${streamButtonId}/chat?parent=${window.location.hostname}`;
         document.getElementById("streamChatToggle").classList.remove("disabled");
     } else {
         hideChat(); //if its not one of the two media types we support, hide the chat and disable showing it. (realistically what platforms aside from twitch and youtube have chats anyway)
@@ -165,7 +172,6 @@ function setLiveStream(streamUrl, streamButtonId, streamType) {
         document.getElementById("streamChatToggle").classList.add("disabled");
     }
     document.getElementById('streamContainer').style.display = 'block';
-    resizeGameday() //ensure the stream is sized correctly
     
     if (streamButtonId) {
         document.getElementById("livestreamDropdown").childNodes.forEach((node) => {node.classList.remove("active")})
@@ -272,26 +278,26 @@ async function setEventStatus(override) {
 }
 
 function setMatchList(matches, eventTimeZone) {
+    
     const now = tba.getEventLocalTimeCurrentTime(currentEvent.timezone);
     document.getElementById('matchesListContainer').innerHTML = ""; // Clear match list before populating to prevent duplicates
     matches.sort((a, b) => (a.predicted_time ) - (b.predicted_time )); // Sort matches by predicted time (multiplied by 1000 to convert from seconds to milliseconds for JavaScript Date)
     const futureMatches = matches.filter(match => match.predicted_time * 1000 > now)
     
     futureMatches.forEach(match => addMatchToList(match, eventTimeZone)); // Only show upcoming matches in the list to prevent it from becoming too long as the event goes on. Past matches can be seen by clicking on the last match section at the top which will show the most recent past match with details and a link to the match video if available
-    
     if (
         futureMatches.length === 0 &&
         globalEventStatus?.next_match_key === null &&
-        globalEventStatus?.qual?.status === "completed" &&
+        (globalEventStatus?.qual === null ||  globalEventStatus?.qual?.status === "completed" ) &&
         (
-            globalEventStatus?.playoff == null ||
+            globalEventStatus?.playoff === null ||
             globalEventStatus.playoff.status !== "playing"
         )
     ) {
         document.getElementById('matchesListContainer').innerHTML =
             globalEventStatus?.overall_status_str ?? "";
     }
-
+    
 }
 
 function setNextMatch(nextMatch) {
@@ -487,6 +493,7 @@ window.setMatchList = setMatchList;
 window.refreshLiveStreamsWithVisual = refreshLiveStreamsWithVisual;
 window.populateLiveStreamOptions = populateLiveStreamOptions;
 window.toggleAudioNotification = toggleAudioNotification;
+// window.setLiveStream = setLiveStream;
 
 const testNextMatch =
 {
