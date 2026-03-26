@@ -5,7 +5,7 @@ import * as counter from "./countdown.js";
 var currentSeasonYear = null;
 var currentEvent = null;
 var eventStatus = null;
-var matchUpdateInterval = null;
+var matchCountdownInterval = null;
 var updateInterval = null;
 var globalEventStatus = null;
 var globalEventStatusSource = null;
