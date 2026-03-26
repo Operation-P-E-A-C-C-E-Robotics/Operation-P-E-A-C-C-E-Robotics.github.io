@@ -55,19 +55,24 @@ function toggleAudioNotification() {
     }
 }
 
-function addMatchToList(match, eventTimeZone) {
-    const matchList = document.getElementById("matchesListContainer");
-    const redAlliance = match.alliances.red.team_keys.map(t => t.replace("frc", "").replace("3461", "<abbr title='Operation PEACCE Robotics'>3461</abbr>")).join(", ");
-    const blueAlliance = match.alliances.blue.team_keys.map(t => t.replace("frc", "").replace("3461", "<abbr title='Operation PEACCE Robotics'>3461</abbr>")).join(", ");
-    const matchKey = tba.getMatchCodeFromKey(match.key);
+function getPredictedTimeString(predictedTime, eventTimeZone) {
     var predictedTimeString = "";
-    const predictedStart = new Date(match.predicted_time * 1000);
+    const predictedStart = new Date(predictedTime * 1000);
     const now = new Date()
     if (predictedStart.toDateString() !== now.toDateString()) {
         predictedTimeString = `~${predictedStart.toLocaleString("en-US", {timeZone: eventTimeZone, weekday: 'short',  hour: '2-digit', minute: '2-digit'}).replace(/\s?(AM|PM)/i, "")}`;
     } else {
         predictedTimeString = `~${predictedStart.toLocaleTimeString("en-US", {timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit'}).replace(/\s?(AM|PM)/i, "")}`;
     }
+    return predictedTimeString;
+}
+
+function addMatchToList(match, eventTimeZone) {
+    const matchList = document.getElementById("matchesListContainer");
+    const redAlliance = match.alliances.red.team_keys.map(t => t.replace("frc", "").replace("3461", "<abbr title='Operation PEACCE Robotics'>3461</abbr>")).join(", ");
+    const blueAlliance = match.alliances.blue.team_keys.map(t => t.replace("frc", "").replace("3461", "<abbr title='Operation PEACCE Robotics'>3461</abbr>")).join(", ");
+    const matchKey = tba.getMatchCodeFromKey(match.key);
+    const predictedTimeString = getPredictedTimeString(match.predicted_time, eventTimeZone);
     // Check if match already exists in the list to prevent duplicates (this can happen because TBA sometimes changes match times which would cause the same match to be added multiple times instead of just updating the existing match's time)
     try { 
         if (document.getElementById(`${match.key}`)) {
@@ -138,13 +143,22 @@ function populateLiveStreamOptions(event) {
     event.webcasts.sort((a, b ) => {
         const aDate = new Date(a.date).toISOString().slice(0, 10);
         const bDate = new Date(b.date).toISOString().slice(0, 10);
-        console.log("Comparing Livestream Dates: ", aDate.localeCompare(bDate));
+        // console.log("Comparing Livestream Dates: ", aDate.localeCompare(bDate));
         return aDate.localeCompare(bDate)
     } ).forEach((webcast, index) => {
         const button = document.createElement('button');
-        button.className = 'btn btn-outline-danger btn-block';
+        button.className = 'btn btn-outline-primary btn-block text-left';
         button.id = webcast.channel
-        button.innerHTML = `<span style="color:currentColor;" class="fa ${webcast.type === "twitch" ? "fa-twitch" : "fa-youtube-play"}"></span> ${webcast?.stream_title || (webcast.type === 'twitch' ? `Twitch ${webcast.channel}` : `YouTube Stream ${index+1} (${webcast.date})`)}`;
+        if (webcast.type === "youtube") {
+            getYouTubeMeta(webcast.channel).then((meta)=> {
+                console.log(meta);
+                button.classList.remove("btn-outline-primary");
+                button.classList.add("btn-outline-danger");
+                button.innerHTML = `<span class="fa fa-user-circle-o"></span> ${meta ? meta.author_name : ""} <br> <span style="color:currentColor;" class="fa fa-youtube-play"}"></span> ${meta ? meta.title : `YouTube Stream ${index+1} (${webcast.date})`}`;
+            })
+        } else {
+            button.innerHTML = `<span style="color:currentColor;" class="fa ${webcast.type === "twitch" ? "fa-twitch" : "fa-film"}"></span> ${webcast?.stream_title || (webcast.type === 'twitch' ? `${webcast.channel}` : `Live Stream ${index+1} (${webcast.date})`)}`;
+        }
         button.addEventListener('click', () => {
             const url = webcast.type === 'twitch' 
                 ? `https://player.twitch.tv/?autoplay=true&channel=${webcast.channel}&parent=www.peacce.org`
@@ -154,6 +168,13 @@ function populateLiveStreamOptions(event) {
         liveStreamDropdown.appendChild(button);
         
     });
+}
+
+async function getYouTubeMeta(videoId) {
+  const res = await fetch(
+    `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`
+  );
+  return await res.json();
 }
 
 function refreshLiveStreamsWithVisual() {
@@ -230,7 +251,7 @@ function setMatchList(matches, eventTimeZone) {
 
 function setNextMatch(nextMatch) {
     console.log('Setting next match:', nextMatch);
-
+    const nextMatchPredictedTimeEl = document.getElementById("nextMatchPredictedTime");
     if (!nextMatch) {
         console.log("Next Match is null")
         let eventStart = tba.getEventLocalTimeDate(currentEvent.start_date, currentEvent.timezone);
@@ -238,17 +259,17 @@ function setNextMatch(nextMatch) {
 
         if (eventStart > now) {
             console.log("Event Start is in future", "Event Start: ", eventStart, "Current Local Time: ", now)
-            clearInterval(matchUpdateInterval);
-            matchUpdateInterval = counter.matchCountdown(
-                eventStart,
-                document.getElementById('nextMatchCountdown'),
-                update
-            );
-
-            document.getElementById('nextMatchNumber').innerText = "Event Begins In:";
+            // clearInterval(matchUpdateInterval);
+            // matchUpdateInterval = counter.matchCountdown(
+            //     eventStart,
+            //     document.getElementById('nextMatchCountdown'),
+            //     update
+            // );
+            nextMatchPredictedTimeEl.innerText = eventStart.toLocaleString('en-US', {weekday:"long", month:"long", day:"2-digit"})
+            document.getElementById('nextMatchNumber').innerText = "Event Begins On:";
             document.getElementById('nextMatchRed').innerHTML = "";
             document.getElementById('nextMatchBlue').innerHTML = "";
-
+            document.getElementById("nextMatchCountdown").innerText = ""
         } else {
             document.getElementById('nextMatchNumber').innerText = "Unknown";
             document.getElementById('nextMatchRed').innerText = "";
@@ -265,6 +286,7 @@ function setNextMatch(nextMatch) {
 
         const nextMatchNumberEl = document.getElementById('nextMatchNumber');
         nextMatchNumberEl.innerText = tba.getMatchCodeFromKey(nextMatch.key);
+        nextMatchPredictedTimeEl.innerText = getPredictedTimeString(nextMatch.predicted_time, currentEvent.timezone);
 
         const redAlliance = nextMatch.alliances.red.team_keys
             .map(t => t.replace("frc", "").replace("3461", "<abbr title='Operation PEACCE Robotics'>3461</abbr>"))
