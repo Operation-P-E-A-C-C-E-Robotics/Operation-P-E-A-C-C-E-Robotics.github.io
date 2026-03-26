@@ -132,20 +132,7 @@ function setLiveStream(streamUrl, streamButtonId, streamType) {
         document.getElementById("streamChatToggle").classList.remove("disabled");
     } else if (streamType === "twitch") {
         resizeGameday() //ensure the stream is sized correctly
-        streamFrame.remove();
-        window.jQuery(streamSelectModal).modal('hide'); //hide the modal if we select a twitch stream because bootstraps modal makes the twitch visibility check fail :(
-        setTimeout(200)
-        container.innerHTML = `
-            <iframe class="embed-responsive-item" id="liveStreamFrame" allow="accelerometer; autoplay; picture-in-picture; fullscreen;"
-            src="https://player.twitch.tv/?channel=${streamButtonId}&parent=${window.location.hostname}&muted=true&autoplay=true"
-            frameborder="0"
-            allowfullscreen="true"
-            scrolling="no"
-            height="1920"
-            width="1080">
-            </iframe>
-            
-        `;
+        streamFrame.src=`https://player.twitch.tv/?channel=${streamButtonId}&parent=${window.location.hostname}&muted=true&autoplay=true`
         chatFrame.src = `https://www.twitch.tv/embed/${streamButtonId}/chat?parent=${window.location.hostname}`;
         document.getElementById("streamChatToggle").classList.remove("disabled");
     } else {
