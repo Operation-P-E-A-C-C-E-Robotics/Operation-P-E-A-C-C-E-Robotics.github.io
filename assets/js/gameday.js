@@ -172,7 +172,6 @@ function setLiveStream(streamUrl, streamButtonId, streamType) {
     const container = document.getElementById('streamContainer');
     var streamFrame = document.getElementById('liveStreamFrame');
     const chatFrame = document.getElementById('streamChat');
-    const streamSelectModal = $('#streamSelectModal');
     if (streamType == "youtube") {
         streamFrame.src = streamUrl;
         chatFrame.src =`https://www.youtube.com/live_chat?v=${streamButtonId}&embed_domain=${window.location.hostname}`
