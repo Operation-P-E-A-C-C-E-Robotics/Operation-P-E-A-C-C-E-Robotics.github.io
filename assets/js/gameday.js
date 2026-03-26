@@ -6,7 +6,6 @@ var currentSeasonYear = null;
 var currentEvent = null;
 var matchUpdateInterval = null;
 var updateInterval = null;
-var audioNotification = false;
 var globalEventStatus = null;
 const matchRefreshSpinner = document.getElementById("matchRefreshSpinner");
 const streamRefreshSpinner = document.getElementById("streamRefreshSpinner");
@@ -21,7 +20,6 @@ function resizeGameday() {
 }
 
 window.addEventListener("load",  () => { window.audioCtx = new (window.AudioContext || window.webkitAudioContext)(); })
-window.addEventListener("load", window.jQuery(document.getElementById("audioToggleBtn")).tooltip())
 window.addEventListener("load", window.jQuery(document.getElementById("currentEventStatus")).tooltip())
 window.addEventListener("load", window.jQuery(document.getElementById("eventLocalTime")).tooltip())
 window.addEventListener("load", resizeGameday);
@@ -40,29 +38,14 @@ function hideRefreshSpinner(element) {
     }, 1500)
 }
 
-function toggleAudioNotification() {
-    const toggleBtn = document.getElementById("audioToggleBtn")
-    if ( audioNotification == true ) {
-        toggleBtn.classList.remove("fa-bell")
-        toggleBtn.classList.add("fa-bell-slash-o")
-        audioNotification = false;
-        return false
-    } else {
-        toggleBtn.classList.add("fa-bell")
-        toggleBtn.classList.remove("fa-bell-slash-o")
-        audioNotification = true;
-        return true
-    }
-}
-
 function getPredictedTimeString(predictedTime, eventTimeZone) {
     var predictedTimeString = "";
     const predictedStart = new Date(predictedTime * 1000);
     const now = new Date()
     if (predictedStart.toDateString() !== now.toDateString()) {
-        predictedTimeString = `~${predictedStart.toLocaleString("en-US", {timeZone: eventTimeZone, weekday: 'short',  hour: '2-digit', minute: '2-digit'}).replace(/\s?(AM|PM)/i, "")}`;
+        predictedTimeString = `~${predictedStart.toLocaleString("en-US", {timeZone: eventTimeZone, weekday: 'short',  hour: '2-digit', minute: '2-digit'}).replace(/\s?(AM|PM)/i, (_, p1) => p1[0].toLowerCase())}`;
     } else {
-        predictedTimeString = `~${predictedStart.toLocaleTimeString("en-US", {timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit'}).replace(/\s?(AM|PM)/i, "")}`;
+        predictedTimeString = `~${predictedStart.toLocaleTimeString("en-US", {timeZone: eventTimeZone, hour: '2-digit', minute: '2-digit'}).replace(/\s?(AM|PM)/i, (_, p1) => p1[0].toLowerCase())}`;
     }
     return predictedTimeString;
 }
@@ -125,7 +108,6 @@ function removeMatchFromList(matchKey) {
 }
 
 function toggleChat() {
-    console.log("Toggling Chat...")
     document.getElementById('streamChatCol').classList.toggle('d-none');
 }
 function showChat() {
@@ -358,7 +340,6 @@ function setNextMatch(nextMatch) {
             nextMatchDate,
             document.getElementById('nextMatchCountdown'),
             update, 
-            audioNotification
         );
 
     } catch (error) {
@@ -491,7 +472,6 @@ window.setLastMatch = setLastMatch;
 window.setMatchList = setMatchList;
 window.refreshLiveStreamsWithVisual = refreshLiveStreamsWithVisual;
 window.populateLiveStreamOptions = populateLiveStreamOptions;
-window.toggleAudioNotification = toggleAudioNotification;
 // window.setLiveStream = setLiveStream;
 
 const testNextMatch =
