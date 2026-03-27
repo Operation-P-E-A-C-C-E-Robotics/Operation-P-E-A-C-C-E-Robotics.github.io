@@ -19,7 +19,6 @@ function resizeGameday() {
     gameday.style.height = `calc(100vh - ${navbarHeight}px)`;
 }
 
-window.addEventListener("load",  () => { window.audioCtx = new (window.AudioContext || window.webkitAudioContext)(); })
 window.addEventListener("load", window.jQuery(document.getElementById("currentEventStatus")).tooltip())
 window.addEventListener("load", window.jQuery(document.getElementById("eventLocalTime")).tooltip())
 window.addEventListener("load", resizeGameday);
@@ -289,12 +288,14 @@ function setNextMatch(nextMatch) {
             document.getElementById('nextMatchRed').innerHTML = "";
             document.getElementById('nextMatchBlue').innerHTML = "";
             document.getElementById("nextMatchCountdown").innerText = ""
+            document.getElementById('nextMatchContainer').classList.remove("d-none");
         } else {
+            document.getElementById('nextMatchContainer').classList.add("d-none");
             document.getElementById('nextMatchNumber').innerText = "Unknown";
             document.getElementById('nextMatchRed').innerText = "";
             document.getElementById('nextMatchBlue').innerText = "";
-            clearInterval(matchCountdownInterval);
             document.getElementById("nextMatchCountdown").innerText = "--";
+            clearInterval(matchCountdownInterval);
         }
 
         return;
@@ -328,7 +329,7 @@ function setNextMatch(nextMatch) {
             document.getElementById('nextMatchCountdown'),
             update, 
         );
-
+        document.getElementById('nextMatchContainer').classList.remove("d-none");
     } catch (error) {
         console.error('Failed to set next match:', error);
     }
@@ -400,8 +401,40 @@ async function init() {
     setLiveStream(liveStreamUrl, nextWebcast ? nextWebcast.channel : null, nextWebcast.type);
     
    await update();
-   updateInterval = setInterval(update, 60000); // Refresh data every minute to keep match list and statuses up to date
+   updateInterval = scheduleNextUpdate(); // Refresh data every minute to keep match list and statuses up to date
    window.updateInterval = updateInterval; //allow cancelling the auto-match refresh for testing purposes
+}
+
+
+function getAdaptiveInterval() {
+    const now = Date.now() / 1000;
+    const nextMatchTime = tba.getMatchFromKey(globalEventStatus?.next_match_key).then((match)=> {
+        return match.predicted_time;
+    }).catch((e) => { console.warn("Adaptive Refresh Interval Failed to get Next Match Predicted Time... Falling Back", e)});
+
+    if (!nextMatchTime) return 180000; //3 minutes
+
+    const secondsUntilMatch = nextMatchTime - now;
+
+    if (secondsUntilMatch < 120) {
+        // < 2 minutes → match about to start
+        return 60000; // 1 min
+    } else if (secondsUntilMatch < 300) {
+        // < 5 minutes → mid-cycle
+        return 120000; // 2 min
+    } else {
+        return 180000; // default 3 min
+    }
+}
+
+function scheduleNextUpdate() {
+    const delay = getAdaptiveInterval();
+    setTimeout(async () => {
+        await update();
+        scheduleNextUpdate();
+    }, delay);
+    console.log("Next UI rebuild: ", delay)
+    return delay;
 }
 
 async function updateWithVisual() {
