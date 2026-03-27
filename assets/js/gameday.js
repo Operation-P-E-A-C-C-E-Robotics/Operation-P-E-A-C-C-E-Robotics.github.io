@@ -447,7 +447,7 @@ async function init() {
     setLiveStream(liveStreamUrl, nextWebcast ? nextWebcast.channel : null, nextWebcast.type);
     globalEventStatus = await tba.getTeamEventStatus(currentEvent.key); //populate the status without using comparison logic against pusher so there is a clean first ref to start with.
    await update();
-   updateInterval = setInterval(update, 60000); // Refresh data every minute to keep match list and statuses up to date
+   updateInterval = setInterval(update, 180000); // Refresh data every 3 minutes to keep match list and statuses up to date
    window.updateInterval = updateInterval; //allow cancelling the auto-match refresh for testing purposes
 }
 
@@ -466,7 +466,7 @@ async function updateWithVisual() {
 
 async function update() {
     console.log('Updating gameday data...');
-    document.getElementById('matchesListContainer').innerHTML = ""; // Clear match list before updating to prevent duplicates
+    //document.getElementById('matchesListContainer').innerHTML = ""; // Clear match list before updating to prevent duplicates
     globalEventStatus = await comparePusherToGithub();
     await setEventStatus(globalEventStatus);
     console.log("Global Event Status", globalEventStatus)
