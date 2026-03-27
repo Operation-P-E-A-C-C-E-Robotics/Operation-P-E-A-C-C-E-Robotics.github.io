@@ -447,8 +447,40 @@ async function init() {
     setLiveStream(liveStreamUrl, nextWebcast ? nextWebcast.channel : null, nextWebcast.type);
     globalEventStatus = await tba.getTeamEventStatus(currentEvent.key); //populate the status without using comparison logic against pusher so there is a clean first ref to start with.
    await update();
-   updateInterval = setInterval(update, 180000); // Refresh data every 3 minutes to keep match list and statuses up to date
+   updateInterval = scheduleNextUpdate() // Refresh data every 3 minutes to keep match list and statuses up to date
    window.updateInterval = updateInterval; //allow cancelling the auto-match refresh for testing purposes
+}
+
+
+function getAdaptiveInterval() {
+    const now = Date.now() / 1000;
+    const nextMatchTime = tba.getMatchFromKey(globalEventStatus?.next_match_key).then((match)=> {
+        return match.predicted_time;
+    });
+
+    if (!nextMatchTime) return 180000; //3 minutes
+
+    const secondsUntilMatch = nextMatchTime - now;
+
+    if (secondsUntilMatch < 120) {
+        // < 2 minutes → match about to start
+        return 60000; // 1 min
+    } else if (secondsUntilMatch < 300) {
+        // < 5 minutes → mid-cycle
+        return 120000; // 2 min
+    } else {
+        return 180000; // default 3 min
+    }
+}
+
+function scheduleNextUpdate() {
+    const delay = getAdaptiveInterval();
+    setTimeout(async () => {
+        await update();
+        scheduleNextUpdate();
+    }, delay);
+    console.log("Next DOM rebuild: ", delay)
+    return delay;
 }
 
 async function updateWithVisual() {
@@ -465,11 +497,10 @@ async function updateWithVisual() {
 }
 
 async function update() {
-    console.log('Updating gameday data...');
     //document.getElementById('matchesListContainer').innerHTML = ""; // Clear match list before updating to prevent duplicates
     globalEventStatus = await comparePusherToGithub();
     await setEventStatus(globalEventStatus);
-    console.log("Global Event Status", globalEventStatus)
+    //console.log("Global Event Status", globalEventStatus)
     tba.getEventMatches(currentEvent.key).then(matches => {
         setMatchList(matches, currentEvent.timezone);
     }).catch(error => {
