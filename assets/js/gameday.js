@@ -456,7 +456,7 @@ function getAdaptiveInterval() {
     const now = Date.now() / 1000;
     const nextMatchTime = tba.getMatchFromKey(globalEventStatus?.next_match_key).then((match)=> {
         return match.predicted_time;
-    });
+    }).catch((e) => { console.warn("Adaptive Refresh Interval Failed to get Next Match Predicted Time... Falling Back", e)});
 
     if (!nextMatchTime) return 180000; //3 minutes
 
