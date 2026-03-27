@@ -43,16 +43,10 @@ channel.bind('update', function(payload) {
         tba.getMatchFromKey(data.last_match_key).then( (match) => {
             setLastMatch(match);
         });
-        
-        
-
     }
-
     else if (type === "district") {
-        // update UI directly (no need to call update)
         console.log("District update:", data);
     }
-
     else {
         updateWithVisual(); //if the notification source is not one of the above with particular handling, reset the UI with visual notification to the user.
     }
@@ -66,7 +60,6 @@ function resizeGameday() {
     gameday.style.height = `calc(100vh - ${navbarHeight}px)`;
 }
 
-window.addEventListener("load",  () => { window.audioCtx = new (window.AudioContext || window.webkitAudioContext)(); })
 window.addEventListener("load", window.jQuery(document.getElementById("currentEventStatus")).tooltip())
 window.addEventListener("load", window.jQuery(document.getElementById("eventLocalTime")).tooltip())
 window.addEventListener("load", window.jQuery(matchRefreshSpinner).tooltip())
@@ -336,12 +329,14 @@ function setNextMatch(nextMatch) {
             document.getElementById('nextMatchRed').innerHTML = "";
             document.getElementById('nextMatchBlue').innerHTML = "";
             document.getElementById("nextMatchCountdown").innerText = ""
+            document.getElementById('nextMatchContainer').classList.remove("d-none");
         } else {
+            document.getElementById('nextMatchContainer').classList.add("d-none");
             document.getElementById('nextMatchNumber').innerText = "Unknown";
             document.getElementById('nextMatchRed').innerText = "";
             document.getElementById('nextMatchBlue').innerText = "";
-            clearInterval(matchCountdownInterval);
             document.getElementById("nextMatchCountdown").innerText = "--";
+            clearInterval(matchCountdownInterval);
         }
 
         return;
@@ -375,7 +370,7 @@ function setNextMatch(nextMatch) {
             document.getElementById('nextMatchCountdown'),
             update, 
         );
-
+        document.getElementById('nextMatchContainer').classList.remove("d-none");
     } catch (error) {
         console.error('Failed to set next match:', error);
     }
@@ -479,7 +474,7 @@ function scheduleNextUpdate() {
         await update();
         scheduleNextUpdate();
     }, delay);
-    console.log("Next DOM rebuild: ", delay)
+    console.log("Next UI rebuild: ", delay)
     return delay;
 }
 
