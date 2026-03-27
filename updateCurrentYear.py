@@ -136,6 +136,28 @@ def merge_array_file(filename, new_data):
         print(f"Failed to merge {filename}: {e}")
         return False
 
+def merge_object_file(filename, new_data):
+    try:
+        if os.path.exists(filename):
+            with open(filename, "r") as f:
+                existing = json.load(f)
+        else:
+            existing = {}
+
+        changed = False
+        for key, value in new_data.items():
+            if key not in existing or existing[key] != value:
+                existing[key] = value
+                changed = True
+        
+        if changed:
+            with open(filename, "w") as f:
+                json.dump(existing, f, indent=4)
+        return changed            
+    except Exception as e:
+        print(f"Failed to merge {filename}: {e}")
+        return False
+    
 def overwrite_file(filename, new_data):
     try:
         with open(filename, "w") as f:
@@ -230,7 +252,7 @@ def update_current_event_matches_and_status():
 
     # Event Status
     status = fetch_json(f"team/{TEAM}/events/{YEAR}/statuses")
-    if event["key"] in status and overwrite_file(f"{YEAR}_event_statuses.json", {event["key"]: status[event["key"]]}):
+    if event["key"] in status and merge_object_file(f"{YEAR}_event_statuses.json", {event["key"]: status[event["key"]]}):
         files_changed.append(f"{YEAR}_event_statuses.json")
         notify_pusher("eventStatus", status[event["key"]])
 
