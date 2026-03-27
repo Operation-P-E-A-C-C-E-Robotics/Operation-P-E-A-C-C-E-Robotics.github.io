@@ -67,7 +67,7 @@ def notify_pusher(message_type, data):
         ]
     elif message_type == "eventStatus":
         trimmed_data = {
-            k: data[k] for k in ["next_match_key", "last_match_key", "qual", "playoff"] if k in data
+            k: data[k] for k in ["next_match_key", "last_match_key", "qual", "playoff", "overall_status_str"] if k in data
         }
     elif message_type == "events":
         trimmed_data = [
