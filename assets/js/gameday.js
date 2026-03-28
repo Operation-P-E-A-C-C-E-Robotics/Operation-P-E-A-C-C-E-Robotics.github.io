@@ -451,7 +451,9 @@ async function init() {
     
    await update();
    updateInterval = scheduleNextUpdate(); // Refresh data every minute to keep match list and statuses up to date
-   window.updateInterval = updateInterval; //allow cancelling the auto-match refresh for testing purposes
+   if (typeof window !== 'undefined' && window && window.__GAMEDAY_EXPOSE_INTERVAL__) {
+       window.updateInterval = updateInterval; // allow cancelling the auto-match refresh for testing purposes when explicitly enabled
+   }
 }
 
 
