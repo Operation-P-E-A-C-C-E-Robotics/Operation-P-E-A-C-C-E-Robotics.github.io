@@ -423,7 +423,6 @@ async function init() {
     counter.eventLocalTime(currentEvent.timezone, document.getElementById('eventLocalTime'));
     populateLiveStreamOptions(currentEvent);
     var nextWebcast = null;
-    var nextWebcast = null;
 
     const liveStreamUrl = (() => {
         if (!currentEvent.webcasts || currentEvent.webcasts.length === 0) return '';
