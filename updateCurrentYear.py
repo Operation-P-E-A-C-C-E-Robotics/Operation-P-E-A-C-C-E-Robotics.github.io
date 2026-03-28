@@ -42,7 +42,7 @@ def git_commit(files, message):
     result = subprocess.run(["git", "commit", "-m", message], capture_output=True, text=True)
     
     if result.returncode == 0:
-        subprocess.run(["git", "push"])
+        subprocess.run(["git", "push", "--force"])
         print("Committed files:", files)
         return True
     else:
