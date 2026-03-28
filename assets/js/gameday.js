@@ -478,12 +478,12 @@ function getAdaptiveInterval() {
 
 function scheduleNextUpdate() {
     const delay = getAdaptiveInterval();
-    setTimeout(async () => {
+    const timeoutId = setTimeout(async () => {
         await update();
         scheduleNextUpdate();
     }, delay);
     console.log("Next UI rebuild: ", delay)
-    return delay;
+    return timeoutId;
 }
 
 async function updateWithVisual() {
