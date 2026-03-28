@@ -289,7 +289,7 @@ async function setEventStatus(override) {
 function setMatchList(matches, eventTimeZone) {
     
     const now = tba.getEventLocalTimeCurrentTime(currentEvent.timezone);
-    document.getElementById('matchesListContainer').innerHTML = ""; // Clear match list before populating to prevent duplicates
+    // document.getElementById('matchesListContainer').innerHTML = ""; // Clear match list before populating to prevent duplicates
     matches.sort((a, b) => (a.predicted_time ) - (b.predicted_time )); // Sort matches by predicted time (multiplied by 1000 to convert from seconds to milliseconds for JavaScript Date)
     const futureMatches = matches.filter(match => match.predicted_time * 1000 > now || match.key === globalEventStatus?.next_match_key); // Filter to only include matches that are in the future or the current next match (sometimes the next match can be in the past if TBA has not updated the match times yet, this ensures it still shows up in the list until it actually starts)
     
