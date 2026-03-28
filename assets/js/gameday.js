@@ -24,7 +24,7 @@ channel.bind('update', function(payload) {
     const data = payload.data;
 
     if (type === "matches") {
-        data.forEach(match => addMatchToList(match, currentEvent.timezone));
+        setMatchList(data, currentEvent.timezone);
     }
 
     else if (type === "eventStatus") {
