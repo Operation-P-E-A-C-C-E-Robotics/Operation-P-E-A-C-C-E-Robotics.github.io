@@ -223,8 +223,8 @@ async function setEventStatus(override) {
         const status = override || globalEventStatus || await tba.getTeamEventStatus(currentEvent.key);
         const rank = await tba.getTeamStatusRank(currentEvent.key, status)
         const record = await tba.getTeamStatusRecordStr(currentEvent.key, status);
-        eventStatusEl.innerText = `${record}`;
-        eventRankEl.innerText = `${rank}`;
+        eventStatusEl.innerHTML = `${record}`;
+        eventRankEl.innerHTML = `${rank}`;
         try {
             if (status?.playoff) {
                 eventRankIcon.classList.remove("fa-bar-chart")
