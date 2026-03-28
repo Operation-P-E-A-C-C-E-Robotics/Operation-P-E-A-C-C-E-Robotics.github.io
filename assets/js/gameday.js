@@ -58,7 +58,7 @@ function addMatchToList(match, eventTimeZone) {
     // Check if match already exists in the list to prevent duplicates (this can happen because TBA sometimes changes match times which would cause the same match to be added multiple times instead of just updating the existing match's time)
     try { 
         if (document.getElementById(`${match.key}`)) {
-            console.log(`Match ${match.key} already exists in the list, updating instead of adding a duplicate.`);
+            // console.log(`Match ${match.key} already exists in the list, updating instead of adding a duplicate.`);
             // Update existing match
             document.getElementById(`${match.key}`).querySelector('#matchCodeDisplay').innerText = matchKey; //This should not change, as it would then be a different match. Changing it makes any bugs obvious
             document.getElementById(`${match.key}`).querySelector('#nextMatchRed').innerHTML = redAlliance; //These usually dont change but just in case they do we will update them as well
