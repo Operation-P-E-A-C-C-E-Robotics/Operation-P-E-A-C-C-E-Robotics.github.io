@@ -291,7 +291,8 @@ function setMatchList(matches, eventTimeZone) {
     const now = tba.getEventLocalTimeCurrentTime(currentEvent.timezone);
     // document.getElementById('matchesListContainer').innerHTML = ""; // Clear match list before populating to prevent duplicates
     matches.sort((a, b) => (a.predicted_time ) - (b.predicted_time )); // Sort matches by predicted time (multiplied by 1000 to convert from seconds to milliseconds for JavaScript Date)
-    const futureMatches = matches.filter(match => match.predicted_time * 1000 > now && match.key !== globalEventStatus?.next_match_key); // Filter to only include matches that are in the future or the current next match (sometimes the next match can be in the past if TBA has not updated the match times yet, this ensures it still shows up in the list until it actually starts)
+    const nowTime = now.getTime();
+    const futureMatches = matches.filter(match => match.predicted_time * 1000 > nowTime && match.key !== globalEventStatus?.next_match_key); // Filter to only include matches that are in the future or the current next match (sometimes the next match can be in the past if TBA has not updated the match times yet, this ensures it still shows up in the list until it actually starts)
     
     futureMatches.forEach(match => addMatchToList(match, eventTimeZone)); // Only show upcoming matches in the list to prevent it from becoming too long as the event goes on. Past matches can be seen by clicking on the last match section at the top which will show the most recent past match with details and a link to the match video if available
     if (
