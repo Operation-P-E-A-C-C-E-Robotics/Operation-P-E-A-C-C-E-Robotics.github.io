@@ -422,25 +422,32 @@ async function init() {
     counter.eventLocalTime(currentEvent.timezone, document.getElementById('eventLocalTime'));
     populateLiveStreamOptions(currentEvent);
     var nextWebcast = null;
+    var nextWebcast = null;
+
     const liveStreamUrl = (() => {
         if (!currentEvent.webcasts || currentEvent.webcasts.length === 0) return '';
-        const now = new Date();
+
+        const todayStr = new Date().toLocaleDateString('en-CA', {
+            timeZone: currentEvent.timezone
+        });
+
         nextWebcast = currentEvent.webcasts
-            .map(wc => {
-                const [y, m, d] = wc.date.split('-').map(Number);
-                const webcastDate = new Date(new Date(Date.UTC(y, m-1, d))
-                    .toLocaleString('en-US', { timeZone: currentEvent.timezone }));
-                return { ...wc, webcastDate };
-            })
-            .filter(wc => wc.webcastDate >= now)
-            .sort((a, b) => a.webcastDate - b.webcastDate)[0];
+            .filter(wc => wc.date >= todayStr)
+            .sort((a, b) => a.date.localeCompare(b.date))[0];
+
         if (!nextWebcast) return '';
+
         return nextWebcast.type === 'twitch'
             ? `https://player.twitch.tv/?autoplay=true&channel=${nextWebcast.channel}&parent=www.peacce.org`
             : `https://www.youtube.com/embed/${nextWebcast.channel}?autoplay=1`;
     })();
-    setLiveStream(liveStreamUrl, nextWebcast ? nextWebcast.channel : null, nextWebcast.type);
-    globalEventStatus = await tba.getTeamEventStatus(currentEvent.key); //populate the status without using comparison logic against pusher so there is a clean first ref to start with.
+
+    setLiveStream(
+        liveStreamUrl,
+        nextWebcast ? nextWebcast.channel : null,
+        nextWebcast ? nextWebcast.type : null
+    );
+    
    await update();
    updateInterval = scheduleNextUpdate() // Refresh data every 3 minutes to keep match list and statuses up to date
    window.updateInterval = updateInterval; //allow cancelling the auto-match refresh for testing purposes
