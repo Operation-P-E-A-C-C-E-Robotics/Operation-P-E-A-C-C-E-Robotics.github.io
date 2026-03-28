@@ -400,7 +400,8 @@ function setLastMatch(lastMatch) {
         lastMatchContainer.classList.add("d-flex"); 
         lastMatchContainer.classList.remove("d-none");
         try {
-            document.getElementById(`${lastMatch.key}`).remove(); // Remove the match from the list of matches below since it's now being displayed as the last match. This prevents confusion from having the same match displayed in two places and also prevents the list of matches from becoming too long as the event goes on
+            const el = document.getElementById(`${lastMatch.key}`);
+            if (el) el.remove(); // Remove the match from the list of matches below since it's now being displayed as the last match. This prevents confusion from having the same match displayed in two places and also prevents the list of matches from becoming too long as the event goes on
             //It should have already been removed when it was set as the next match, but in case the next match gets changed before the last match gets updated this will ensure there are no duplicates
         }
         catch (error) {
