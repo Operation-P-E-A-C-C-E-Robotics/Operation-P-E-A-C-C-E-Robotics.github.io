@@ -106,6 +106,8 @@ def notify_pusher(message_type, data):
         print(f"Pusher notification sent for {message_type}")
 
 # -------------------- TBA FETCH --------------------
+MATCH_CACHE = {}
+
 def fetch_json(endpoint):
     url = f"https://www.thebluealliance.com/api/v3/{endpoint}?X-TBA-Auth-Key={TBA_API_KEY}"
     resp = requests.get(url)
