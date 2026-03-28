@@ -7,13 +7,54 @@ var currentEvent = null;
 var matchCountdownInterval = null;
 var updateInterval = null;
 var globalEventStatus = null;
+var globalEventStatusSource = null;
+
 const matchRefreshSpinner = document.getElementById("matchRefreshSpinner");
 const streamRefreshSpinner = document.getElementById("streamRefreshSpinner");
 
+
+var pusher = new Pusher('72d88eaacede8acd7e91', {
+    cluster: 'mt1'
+});
+var channel = pusher.subscribe('my-channel');
+channel.bind('update', function(payload) {
+    console.log("Pusher update:", payload);
+
+    const type = payload.messageType;
+    const data = payload.data;
+
+    if (type === "matches") {
+        setMatchList(data, currentEvent.timezone);
+    }
+
+    else if (type === "eventStatus") {
+        globalEventStatus = data;
+        globalEventStatusSource = "pusher";
+        setEventStatus(data);
+        tba.getEventMatches(currentEvent.key).then(matches => {
+            setMatchList(matches, currentEvent.timezone);
+        }).catch(error => {
+            console.error('Failed to get event matches:', error);
+            setMatchList([], currentEvent.timezone); // Clear match list on error
+        });
+        tba.getMatchFromKey(data.next_match_key).then((match) => {
+            setNextMatch(match)
+        });
+        tba.getMatchFromKey(data.last_match_key).then( (match) => {
+            setLastMatch(match);
+        });
+    }
+    else if (type === "district") {
+        console.log("District update:", data);
+    }
+    else {
+        updateWithVisual(); //if the notification source is not one of the above with particular handling, reset the UI with visual notification to the user.
+    }
+});
+
 const navbar = document.getElementById("gamedayNavbar");
 const gameday = document.getElementById("streamContainer");
-
-const navbarHeight = navbar.offsetHeight;
+var navbarHeight = navbar.offsetHeight;
 
 function resizeGameday() {
     gameday.style.height = `calc(100vh - ${navbarHeight}px)`;
@@ -21,6 +62,7 @@ function resizeGameday() {
 
 window.addEventListener("load", window.jQuery(document.getElementById("currentEventStatus")).tooltip())
 window.addEventListener("load", window.jQuery(document.getElementById("eventLocalTime")).tooltip())
+window.addEventListener("load", window.jQuery(matchRefreshSpinner).tooltip())
 window.addEventListener("load", resizeGameday);
 window.addEventListener("resize", resizeGameday);
 
@@ -123,7 +165,6 @@ function setLiveStream(streamUrl, streamButtonId, streamType) {
     const container = document.getElementById('streamContainer');
     var streamFrame = document.getElementById('liveStreamFrame');
     const chatFrame = document.getElementById('streamChat');
-    const streamSelectModal = $('#streamSelectModal');
     if (streamType == "youtube") {
         streamFrame.src = streamUrl;
         chatFrame.src =`https://www.youtube.com/live_chat?v=${streamButtonId}&embed_domain=${window.location.hostname}`
@@ -248,9 +289,9 @@ async function setEventStatus(override) {
 function setMatchList(matches, eventTimeZone) {
     
     const now = tba.getEventLocalTimeCurrentTime(currentEvent.timezone);
-    document.getElementById('matchesListContainer').innerHTML = ""; // Clear match list before populating to prevent duplicates
+    // document.getElementById('matchesListContainer').innerHTML = ""; // Clear match list before populating to prevent duplicates
     matches.sort((a, b) => (a.predicted_time ) - (b.predicted_time )); // Sort matches by predicted time (multiplied by 1000 to convert from seconds to milliseconds for JavaScript Date)
-    const futureMatches = matches.filter(match => match.predicted_time * 1000 > now || match.key === globalEventStatus?.next_match_key); // Filter to only include matches that are in the future or the current next match (sometimes the next match can be in the past if TBA has not updated the match times yet, this ensures it still shows up in the list until it actually starts)
+    const futureMatches = matches.filter(match => match.predicted_time * 1000 > now && match.key !== globalEventStatus?.next_match_key); // Filter to only include matches that are in the future or the current next match (sometimes the next match can be in the past if TBA has not updated the match times yet, this ensures it still shows up in the list until it actually starts)
     
     futureMatches.forEach(match => addMatchToList(match, eventTimeZone)); // Only show upcoming matches in the list to prevent it from becoming too long as the event goes on. Past matches can be seen by clicking on the last match section at the top which will show the most recent past match with details and a link to the match video if available
     if (
@@ -459,11 +500,10 @@ async function updateWithVisual() {
 }
 
 async function update() {
-    console.log('Updating gameday data...');
-    document.getElementById('matchesListContainer').innerHTML = ""; // Clear match list before updating to prevent duplicates
-    globalEventStatus = await tba.getTeamEventStatus(currentEvent.key);
+    //document.getElementById('matchesListContainer').innerHTML = ""; // Clear match list before updating to prevent duplicates
+    globalEventStatus = await comparePusherToGithub();
     await setEventStatus(globalEventStatus);
-    console.log("Global Event Status", globalEventStatus)
+    //console.log("Global Event Status", globalEventStatus)
     tba.getEventMatches(currentEvent.key).then(matches => {
         setMatchList(matches, currentEvent.timezone);
     }).catch(error => {
@@ -484,7 +524,42 @@ async function update() {
         setLastMatch(null);
     }); 
 
-    resizeGameday(); //resize the stream in case the bar height changed
+    resizeGameday();
+    matchRefreshSpinner.setAttribute('data-original-title', 
+        `Refresh Matches (Last Refresh: ${new Date().toLocaleTimeString()})`
+    );
+}
+
+async function comparePusherToGithub() {
+    const newStatus = await tba.getTeamEventStatus(currentEvent.key);
+    if (!newStatus || Object.keys(newStatus).length === 0 || !newStatus.overall_status_str) {
+        console.log("API Value was empty, ignoring...");
+        return globalEventStatus; // don't overwrite
+    }
+    if (!globalEventStatus) {
+        globalEventStatus = newStatus;
+        globalEventStatusSource = "api";
+        console.log("No Global Status found, defaulting to API")
+    } else if (globalEventStatusSource === "api") {
+        // Safe to overwrite (same source)
+        globalEventStatus = newStatus;
+    } else {
+        // Current data is from PUSHER → be careful
+        const isAhead = normalizeStatus(globalEventStatus?.overall_status_str) !== normalizeStatus(newStatus?.overall_status_str);
+
+        if (isAhead) {
+            globalEventStatus = newStatus;
+            globalEventStatusSource = "api";
+        }
+        console.log("Pusher is behind Github? ", isAhead);
+    }
+    return globalEventStatus;
+}
+
+
+function normalizeStatus(str) {
+    if (!str) return ""; // treat missing as empty string
+    return str?.replace(/<[^>]+>/g, '').trim();
 }
 
 init();

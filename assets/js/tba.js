@@ -106,11 +106,7 @@ async function getTeamStatusRank(eventKey, override) {
         }
     }
     else if (status?.qual?.ranking) {
-        if (status?.qual?.status === "completed" && status?.next_match_key === null) {
-            return "Qualification Matches Completed"
-        } else {
             return status?.qual?.ranking ? status.qual.ranking.rank + "/" + status.qual.num_teams : "? / ?";
-        }
     } else {
         return "No Rank"
     }
