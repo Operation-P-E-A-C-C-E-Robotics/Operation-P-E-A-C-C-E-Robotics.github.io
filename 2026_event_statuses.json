@@ -1,10 +1,15 @@
 {
     "2026cthar": {
-        "alliance": null,
-        "alliance_status_str": "--",
+        "alliance": {
+            "backup": null,
+            "name": "Alliance 8",
+            "number": 8,
+            "pick": 0
+        },
+        "alliance_status_str": "<b>Captain</b> of <b>Alliance 8</b>",
         "last_match_key": "2026cthar_qm70",
         "next_match_key": "2026cthar_sf1m1",
-        "overall_status_str": "Team 3461 is <b>0-0-0</b> in the <b>Double Elimination Bracket (Round 1)</b>.",
+        "overall_status_str": "Team 3461 is <b>0-0-0</b> in the <b>Double Elimination Bracket (Round 1)</b> as the <b>Captain</b> of <b>Alliance 8</b>.",
         "pit_location": "C10",
         "playoff": {
             "current_level_record": {
