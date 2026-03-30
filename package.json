@@ -1,14 +1,14 @@
 {
   "dependencies": {
-    "@tinacms/app": "^2.3.25",
-    "@tinacms/cli": "^2.1.6",
-    "@tinacms/graphql": "^2.1.2",
+    "@tinacms/app": "^2.4.1",
+    "@tinacms/cli": "^2.2.1",
+    "@tinacms/graphql": "^2.2.2",
     "chart.js": "^4.5.1",
     "node": ">=25.8.2",
     "pusher-js": "^8.4.3",
     "simple-git": "^3.33.0",
     "tina": "^0.3.23",
-    "tinacms": "^3.5.0"
+    "tinacms": "^3.7.1"
   },
   "overrides": {
     "dompurify": "^3.2.4",
