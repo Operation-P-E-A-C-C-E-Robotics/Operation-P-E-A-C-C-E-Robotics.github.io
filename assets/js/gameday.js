@@ -176,6 +176,7 @@ function setLiveStream(streamUrl, streamButtonId, streamType) {
         chatFrame.src = `https://www.twitch.tv/embed/${streamButtonId}/chat?parent=${window.location.hostname}`;
         document.getElementById("streamChatToggle").classList.remove("disabled");
     } else {
+        streamFrame.src = streamUrl;
         hideChat(); //if its not one of the two media types we support, hide the chat and disable showing it. (realistically what platforms aside from twitch and youtube have chats anyway)
         chatFrame.src = "/assets/images/notFound.png" //something nicer than the default browser "failed to connect" screen; Disabling the button should make it impossible for this to appear.
         document.getElementById("streamChatToggle").classList.add("disabled");
@@ -253,7 +254,7 @@ function refreshLiveStreamsWithVisual() {
 function setEventTitle(event) {
     const eventTitleEl = document.getElementById('currentEventName');
     eventTitleEl.innerHTML = `${event?.short_name || 'Unknown Event'}`;
-    eventTitleEl.setAttribute("title", event?.week ? "Week " + (event.week + 1) + " " + event?.event_type_string + " Event": event?.event_type_string);
+    eventTitleEl.setAttribute("title", event?.week ? "Week " + (event.week + 1) + " " + event?.event_type_string + " Event" : event? event.event_type_string : "");
     window.jQuery(eventTitleEl).tooltip();
 }
 async function setEventStatus(override) {
@@ -418,8 +419,18 @@ function setLastMatch(lastMatch) {
 async function init() {
     currentSeasonYear = await tba.getCurrentSeasonYear();
     currentEvent = await tba.getCurrentEvent() || await tba.getNextEvent() || null;
+
     window.currentEvent = currentEvent; //expose the current event to the window so the refresh live streams button can pass it in
     setEventTitle(currentEvent);
+    if (currentEvent === null) {
+        console.error("No current or upcoming event found for the current season.");
+        document.getElementById("lastMatchContainer").classList.add("d-none");
+        document.getElementById("lastMatchContainer").classList.remove("d-flex");
+        document.getElementById("nextMatchContainer").classList.add("d-none");
+        document.getElementById('matchesListContainer').innerHTML = `<h5 class=" mt-1 mb-1 d-none d-lg-block" style="max-height:60px; font-size: clamp(0.75rem, 1.05rem, 1.25rem);">No Current or Upcoming Event Found</h5>`
+        setLiveStream("https://www.peacce.org/robots/current"); //set to a default page with information about our current status and links to our social media in case there is no event data available
+        return;
+    }
     counter.eventLocalTime(currentEvent.timezone, document.getElementById('eventLocalTime'));
     populateLiveStreamOptions(currentEvent);
     var nextWebcast = null;
