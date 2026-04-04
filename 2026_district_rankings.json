@@ -975,6 +975,33 @@
         "adjustments": 0,
         "event_points": [
             {
+                "alliance_points": 13,
+                "award_points": 5,
+                "district_cmp": false,
+                "elim_points": 20,
+                "event_key": "2026rikin",
+                "qual_points": 18,
+                "total": 56
+            },
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026mawor",
+                "qual_points": 13,
+                "total": 13
+            }
+        ],
+        "point_total": 74,
+        "rank": 37,
+        "rookie_bonus": 5,
+        "team_key": "frc10254"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
                 "alliance_points": 14,
                 "award_points": 5,
                 "district_cmp": false,
@@ -994,7 +1021,7 @@
             }
         ],
         "point_total": 74,
-        "rank": 37,
+        "rank": 38,
         "rookie_bonus": 0,
         "team_key": "frc1119"
     },
@@ -1021,36 +1048,9 @@
             }
         ],
         "point_total": 73,
-        "rank": 38,
-        "rookie_bonus": 5,
-        "team_key": "frc10063"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
-                "alliance_points": 13,
-                "award_points": 5,
-                "district_cmp": false,
-                "elim_points": 20,
-                "event_key": "2026rikin",
-                "qual_points": 18,
-                "total": 56
-            },
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026mawor",
-                "qual_points": 12,
-                "total": 12
-            }
-        ],
-        "point_total": 73,
         "rank": 39,
         "rookie_bonus": 5,
-        "team_key": "frc10254"
+        "team_key": "frc10063"
     },
     {
         "adjustments": 0,
@@ -3054,60 +3054,6 @@
         "adjustments": 0,
         "event_points": [
             {
-                "alliance_points": 9,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026mabil",
-                "qual_points": 14,
-                "total": 23
-            },
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026mawor",
-                "qual_points": 14,
-                "total": 14
-            }
-        ],
-        "point_total": 42,
-        "rank": 114,
-        "rookie_bonus": 5,
-        "team_key": "frc10393"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
-                "alliance_points": 9,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026marea",
-                "qual_points": 15,
-                "total": 24
-            },
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026mawor",
-                "qual_points": 8,
-                "total": 8
-            }
-        ],
-        "point_total": 42,
-        "rank": 115,
-        "rookie_bonus": 10,
-        "team_key": "frc11483"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
                 "alliance_points": 4,
                 "award_points": 5,
                 "district_cmp": false,
@@ -3127,9 +3073,36 @@
             }
         ],
         "point_total": 41,
-        "rank": 116,
+        "rank": 114,
         "rookie_bonus": 0,
         "team_key": "frc246"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
+                "alliance_points": 9,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026marea",
+                "qual_points": 15,
+                "total": 24
+            },
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026mawor",
+                "qual_points": 7,
+                "total": 7
+            }
+        ],
+        "point_total": 41,
+        "rank": 115,
+        "rookie_bonus": 10,
+        "team_key": "frc11483"
     },
     {
         "adjustments": 0,
@@ -3154,7 +3127,7 @@
             }
         ],
         "point_total": 41,
-        "rank": 117,
+        "rank": 116,
         "rookie_bonus": 0,
         "team_key": "frc1350"
     },
@@ -3181,7 +3154,7 @@
             }
         ],
         "point_total": 40,
-        "rank": 118,
+        "rank": 117,
         "rookie_bonus": 0,
         "team_key": "frc5902"
     },
@@ -3208,7 +3181,7 @@
             }
         ],
         "point_total": 40,
-        "rank": 119,
+        "rank": 118,
         "rookie_bonus": 0,
         "team_key": "frc6731"
     },
@@ -3235,7 +3208,7 @@
             }
         ],
         "point_total": 40,
-        "rank": 120,
+        "rank": 119,
         "rookie_bonus": 5,
         "team_key": "frc10592"
     },
@@ -3262,7 +3235,7 @@
             }
         ],
         "point_total": 40,
-        "rank": 121,
+        "rank": 120,
         "rookie_bonus": 5,
         "team_key": "frc10133"
     },
@@ -3289,7 +3262,7 @@
             }
         ],
         "point_total": 40,
-        "rank": 122,
+        "rank": 121,
         "rookie_bonus": 10,
         "team_key": "frc11269"
     },
@@ -3316,7 +3289,7 @@
             }
         ],
         "point_total": 40,
-        "rank": 123,
+        "rank": 122,
         "rookie_bonus": 10,
         "team_key": "frc11464"
     },
@@ -3343,7 +3316,7 @@
             }
         ],
         "point_total": 39,
-        "rank": 124,
+        "rank": 123,
         "rookie_bonus": 5,
         "team_key": "frc10066"
     },
@@ -3370,7 +3343,7 @@
             }
         ],
         "point_total": 39,
-        "rank": 125,
+        "rank": 124,
         "rookie_bonus": 0,
         "team_key": "frc5735"
     },
@@ -3397,36 +3370,9 @@
             }
         ],
         "point_total": 38,
-        "rank": 126,
+        "rank": 125,
         "rookie_bonus": 0,
         "team_key": "frc3461"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
-                "alliance_points": 10,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026mawne",
-                "qual_points": 14,
-                "total": 24
-            },
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026mawor",
-                "qual_points": 14,
-                "total": 14
-            }
-        ],
-        "point_total": 38,
-        "rank": 127,
-        "rookie_bonus": 0,
-        "team_key": "frc237"
     },
     {
         "adjustments": 0,
@@ -3451,9 +3397,36 @@
             }
         ],
         "point_total": 38,
-        "rank": 128,
+        "rank": 126,
         "rookie_bonus": 0,
         "team_key": "frc5459"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
+                "alliance_points": 6,
+                "award_points": 8,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026ctwat",
+                "qual_points": 12,
+                "total": 26
+            },
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026mawor",
+                "qual_points": 12,
+                "total": 12
+            }
+        ],
+        "point_total": 38,
+        "rank": 127,
+        "rookie_bonus": 0,
+        "team_key": "frc999"
     },
     {
         "adjustments": 0,
@@ -3478,7 +3451,7 @@
             }
         ],
         "point_total": 37,
-        "rank": 129,
+        "rank": 128,
         "rookie_bonus": 0,
         "team_key": "frc6620"
     },
@@ -3505,7 +3478,7 @@
             }
         ],
         "point_total": 37,
-        "rank": 130,
+        "rank": 129,
         "rookie_bonus": 0,
         "team_key": "frc1757"
     },
@@ -3513,13 +3486,13 @@
         "adjustments": 0,
         "event_points": [
             {
-                "alliance_points": 6,
-                "award_points": 8,
+                "alliance_points": 9,
+                "award_points": 0,
                 "district_cmp": false,
                 "elim_points": 0,
-                "event_key": "2026ctwat",
-                "qual_points": 12,
-                "total": 26
+                "event_key": "2026mabil",
+                "qual_points": 14,
+                "total": 23
             },
             {
                 "alliance_points": 0,
@@ -3527,14 +3500,14 @@
                 "district_cmp": false,
                 "elim_points": 0,
                 "event_key": "2026mawor",
-                "qual_points": 11,
-                "total": 11
+                "qual_points": 9,
+                "total": 9
             }
         ],
         "point_total": 37,
-        "rank": 131,
-        "rookie_bonus": 0,
-        "team_key": "frc999"
+        "rank": 130,
+        "rookie_bonus": 5,
+        "team_key": "frc10393"
     },
     {
         "adjustments": 0,
@@ -3559,9 +3532,36 @@
             }
         ],
         "point_total": 36,
-        "rank": 132,
+        "rank": 131,
         "rookie_bonus": 0,
         "team_key": "frc2342"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
+                "alliance_points": 13,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026mabil",
+                "qual_points": 15,
+                "total": 28
+            },
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026mawor",
+                "qual_points": 8,
+                "total": 8
+            }
+        ],
+        "point_total": 36,
+        "rank": 132,
+        "rookie_bonus": 0,
+        "team_key": "frc157"
     },
     {
         "adjustments": 0,
@@ -3675,33 +3675,6 @@
         "adjustments": 0,
         "event_points": [
             {
-                "alliance_points": 11,
-                "award_points": 5,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026rikin",
-                "qual_points": 12,
-                "total": 28
-            },
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026mawor",
-                "qual_points": 7,
-                "total": 7
-            }
-        ],
-        "point_total": 35,
-        "rank": 137,
-        "rookie_bonus": 0,
-        "team_key": "frc5112"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
                 "alliance_points": 8,
                 "award_points": 0,
                 "district_cmp": false,
@@ -3721,9 +3694,36 @@
             }
         ],
         "point_total": 35,
-        "rank": 138,
+        "rank": 137,
         "rookie_bonus": 0,
         "team_key": "frc138"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
+                "alliance_points": 10,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026mabil",
+                "qual_points": 14,
+                "total": 24
+            },
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026mawor",
+                "qual_points": 11,
+                "total": 11
+            }
+        ],
+        "point_total": 35,
+        "rank": 138,
+        "rookie_bonus": 0,
+        "team_key": "frc5347"
     },
     {
         "adjustments": 0,
@@ -3810,11 +3810,38 @@
         "adjustments": 0,
         "event_points": [
             {
+                "alliance_points": 11,
+                "award_points": 5,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026rikin",
+                "qual_points": 12,
+                "total": 28
+            },
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026mawor",
+                "qual_points": 6,
+                "total": 6
+            }
+        ],
+        "point_total": 34,
+        "rank": 142,
+        "rookie_bonus": 0,
+        "team_key": "frc5112"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
                 "alliance_points": 10,
                 "award_points": 0,
                 "district_cmp": false,
                 "elim_points": 0,
-                "event_key": "2026mabil",
+                "event_key": "2026mawne",
                 "qual_points": 14,
                 "total": 24
             },
@@ -3829,9 +3856,9 @@
             }
         ],
         "point_total": 34,
-        "rank": 142,
+        "rank": 143,
         "rookie_bonus": 0,
-        "team_key": "frc5347"
+        "team_key": "frc237"
     },
     {
         "adjustments": 0,
@@ -3856,7 +3883,7 @@
             }
         ],
         "point_total": 33,
-        "rank": 143,
+        "rank": 144,
         "rookie_bonus": 0,
         "team_key": "frc2064"
     },
@@ -3883,7 +3910,7 @@
             }
         ],
         "point_total": 33,
-        "rank": 144,
+        "rank": 145,
         "rookie_bonus": 0,
         "team_key": "frc6346"
     },
@@ -3910,7 +3937,7 @@
             }
         ],
         "point_total": 32,
-        "rank": 145,
+        "rank": 146,
         "rookie_bonus": 0,
         "team_key": "frc7760"
     },
@@ -3918,13 +3945,13 @@
         "adjustments": 0,
         "event_points": [
             {
-                "alliance_points": 13,
+                "alliance_points": 8,
                 "award_points": 0,
                 "district_cmp": false,
                 "elim_points": 0,
-                "event_key": "2026mabil",
-                "qual_points": 15,
-                "total": 28
+                "event_key": "2026rikin",
+                "qual_points": 10,
+                "total": 18
             },
             {
                 "alliance_points": 0,
@@ -3932,14 +3959,14 @@
                 "district_cmp": false,
                 "elim_points": 0,
                 "event_key": "2026mawor",
-                "qual_points": 4,
-                "total": 4
+                "qual_points": 14,
+                "total": 14
             }
         ],
         "point_total": 32,
-        "rank": 146,
+        "rank": 147,
         "rookie_bonus": 0,
-        "team_key": "frc157"
+        "team_key": "frc6333"
     },
     {
         "adjustments": 0,
@@ -3964,7 +3991,7 @@
             }
         ],
         "point_total": 32,
-        "rank": 147,
+        "rank": 148,
         "rookie_bonus": 0,
         "team_key": "frc8567"
     },
@@ -3991,36 +4018,9 @@
             }
         ],
         "point_total": 31,
-        "rank": 148,
-        "rookie_bonus": 0,
-        "team_key": "frc9101"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
-                "alliance_points": 8,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026rikin",
-                "qual_points": 10,
-                "total": 18
-            },
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026mawor",
-                "qual_points": 13,
-                "total": 13
-            }
-        ],
-        "point_total": 31,
         "rank": 149,
         "rookie_bonus": 0,
-        "team_key": "frc6333"
+        "team_key": "frc9101"
     },
     {
         "adjustments": 0,
@@ -4337,11 +4337,11 @@
                 "district_cmp": false,
                 "elim_points": 0,
                 "event_key": "2026mawor",
-                "qual_points": 13,
-                "total": 13
+                "qual_points": 14,
+                "total": 14
             }
         ],
-        "point_total": 25,
+        "point_total": 26,
         "rank": 161,
         "rookie_bonus": 0,
         "team_key": "frc1740"
@@ -4408,6 +4408,33 @@
                 "award_points": 0,
                 "district_cmp": false,
                 "elim_points": 0,
+                "event_key": "2026cthar",
+                "qual_points": 11,
+                "total": 11
+            },
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026mawor",
+                "qual_points": 13,
+                "total": 13
+            }
+        ],
+        "point_total": 24,
+        "rank": 164,
+        "rookie_bonus": 0,
+        "team_key": "frc4628"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
                 "event_key": "2026mawne",
                 "qual_points": 9,
                 "total": 9
@@ -4423,7 +4450,7 @@
             }
         ],
         "point_total": 24,
-        "rank": 164,
+        "rank": 165,
         "rookie_bonus": 0,
         "team_key": "frc6895"
     },
@@ -4431,13 +4458,13 @@
         "adjustments": 0,
         "event_points": [
             {
-                "alliance_points": 0,
+                "alliance_points": 5,
                 "award_points": 0,
                 "district_cmp": false,
                 "elim_points": 0,
-                "event_key": "2026cthar",
-                "qual_points": 11,
-                "total": 11
+                "event_key": "2026rikin",
+                "qual_points": 8,
+                "total": 13
             },
             {
                 "alliance_points": 0,
@@ -4445,14 +4472,14 @@
                 "district_cmp": false,
                 "elim_points": 0,
                 "event_key": "2026mawor",
-                "qual_points": 12,
-                "total": 12
+                "qual_points": 10,
+                "total": 10
             }
         ],
         "point_total": 23,
-        "rank": 165,
+        "rank": 166,
         "rookie_bonus": 0,
-        "team_key": "frc4628"
+        "team_key": "frc2168"
     },
     {
         "adjustments": 0,
@@ -4477,7 +4504,7 @@
             }
         ],
         "point_total": 23,
-        "rank": 166,
+        "rank": 167,
         "rookie_bonus": 0,
         "team_key": "frc9056"
     },
@@ -4504,7 +4531,7 @@
             }
         ],
         "point_total": 23,
-        "rank": 167,
+        "rank": 168,
         "rookie_bonus": 0,
         "team_key": "frc4169"
     },
@@ -4531,9 +4558,63 @@
             }
         ],
         "point_total": 23,
-        "rank": 168,
+        "rank": 169,
         "rookie_bonus": 5,
         "team_key": "frc10156"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026rikin",
+                "qual_points": 11,
+                "total": 11
+            },
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026mawor",
+                "qual_points": 11,
+                "total": 11
+            }
+        ],
+        "point_total": 22,
+        "rank": 170,
+        "rookie_bonus": 0,
+        "team_key": "frc5494"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026mabos",
+                "qual_points": 10,
+                "total": 10
+            },
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026mawor",
+                "qual_points": 12,
+                "total": 12
+            }
+        ],
+        "point_total": 22,
+        "rank": 171,
+        "rookie_bonus": 0,
+        "team_key": "frc4048"
     },
     {
         "adjustments": 0,
@@ -4558,63 +4639,9 @@
             }
         ],
         "point_total": 22,
-        "rank": 169,
+        "rank": 172,
         "rookie_bonus": 0,
         "team_key": "frc4034"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026rikin",
-                "qual_points": 11,
-                "total": 11
-            },
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026mawor",
-                "qual_points": 10,
-                "total": 10
-            }
-        ],
-        "point_total": 21,
-        "rank": 170,
-        "rookie_bonus": 0,
-        "team_key": "frc5494"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026mabos",
-                "qual_points": 10,
-                "total": 10
-            },
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026mawor",
-                "qual_points": 11,
-                "total": 11
-            }
-        ],
-        "point_total": 21,
-        "rank": 171,
-        "rookie_bonus": 0,
-        "team_key": "frc4048"
     },
     {
         "adjustments": 0,
@@ -4630,7 +4657,7 @@
             }
         ],
         "point_total": 21,
-        "rank": 172,
+        "rank": 173,
         "rookie_bonus": 10,
         "team_key": "frc11468"
     },
@@ -4657,7 +4684,7 @@
             }
         ],
         "point_total": 21,
-        "rank": 173,
+        "rank": 174,
         "rookie_bonus": 10,
         "team_key": "frc10945"
     },
@@ -4684,63 +4711,9 @@
             }
         ],
         "point_total": 21,
-        "rank": 174,
+        "rank": 175,
         "rookie_bonus": 10,
         "team_key": "frc10937"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
-                "alliance_points": 5,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026rikin",
-                "qual_points": 8,
-                "total": 13
-            },
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026mawor",
-                "qual_points": 7,
-                "total": 7
-            }
-        ],
-        "point_total": 20,
-        "rank": 175,
-        "rookie_bonus": 0,
-        "team_key": "frc2168"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026mawne",
-                "qual_points": 7,
-                "total": 7
-            },
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026mawor",
-                "qual_points": 13,
-                "total": 13
-            }
-        ],
-        "point_total": 20,
-        "rank": 176,
-        "rookie_bonus": 0,
-        "team_key": "frc1027"
     },
     {
         "adjustments": 0,
@@ -4760,6 +4733,33 @@
                 "district_cmp": false,
                 "elim_points": 0,
                 "event_key": "2026mawor",
+                "qual_points": 11,
+                "total": 11
+            }
+        ],
+        "point_total": 20,
+        "rank": 176,
+        "rookie_bonus": 0,
+        "team_key": "frc2262"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026ctwat",
+                "qual_points": 9,
+                "total": 9
+            },
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026mawor",
                 "qual_points": 10,
                 "total": 10
             }
@@ -4767,7 +4767,7 @@
         "point_total": 19,
         "rank": 177,
         "rookie_bonus": 0,
-        "team_key": "frc2262"
+        "team_key": "frc716"
     },
     {
         "adjustments": 0,
@@ -4801,60 +4801,6 @@
         "event_points": [
             {
                 "alliance_points": 0,
-                "award_points": 5,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026marea",
-                "qual_points": 5,
-                "total": 10
-            },
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026mawor",
-                "qual_points": 9,
-                "total": 9
-            }
-        ],
-        "point_total": 19,
-        "rank": 179,
-        "rookie_bonus": 0,
-        "team_key": "frc97"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026ctwat",
-                "qual_points": 9,
-                "total": 9
-            },
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026mawor",
-                "qual_points": 9,
-                "total": 9
-            }
-        ],
-        "point_total": 18,
-        "rank": 180,
-        "rookie_bonus": 0,
-        "team_key": "frc716"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
-                "alliance_points": 0,
                 "award_points": 0,
                 "district_cmp": false,
                 "elim_points": 0,
@@ -4873,7 +4819,7 @@
             }
         ],
         "point_total": 18,
-        "rank": 181,
+        "rank": 179,
         "rookie_bonus": 0,
         "team_key": "frc7314"
     },
@@ -4900,36 +4846,9 @@
             }
         ],
         "point_total": 18,
-        "rank": 182,
+        "rank": 180,
         "rookie_bonus": 0,
         "team_key": "frc9193"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
-                "alliance_points": 0,
-                "award_points": 5,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026mabos",
-                "qual_points": 7,
-                "total": 12
-            },
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026mawor",
-                "qual_points": 6,
-                "total": 6
-            }
-        ],
-        "point_total": 18,
-        "rank": 183,
-        "rookie_bonus": 0,
-        "team_key": "frc5491"
     },
     {
         "adjustments": 0,
@@ -4954,7 +4873,7 @@
             }
         ],
         "point_total": 18,
-        "rank": 184,
+        "rank": 181,
         "rookie_bonus": 5,
         "team_key": "frc10138"
     },
@@ -4981,9 +4900,117 @@
             }
         ],
         "point_total": 18,
-        "rank": 185,
+        "rank": 182,
         "rookie_bonus": 5,
         "team_key": "frc10266"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
+                "alliance_points": 0,
+                "award_points": 5,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026marea",
+                "qual_points": 5,
+                "total": 10
+            },
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026mawor",
+                "qual_points": 8,
+                "total": 8
+            }
+        ],
+        "point_total": 18,
+        "rank": 183,
+        "rookie_bonus": 0,
+        "team_key": "frc97"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026nhdur",
+                "qual_points": 5,
+                "total": 5
+            },
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026mawor",
+                "qual_points": 12,
+                "total": 12
+            }
+        ],
+        "point_total": 17,
+        "rank": 184,
+        "rookie_bonus": 0,
+        "team_key": "frc6762"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026rikin",
+                "qual_points": 4,
+                "total": 4
+            },
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026mawor",
+                "qual_points": 13,
+                "total": 13
+            }
+        ],
+        "point_total": 17,
+        "rank": 185,
+        "rookie_bonus": 0,
+        "team_key": "frc1474"
+    },
+    {
+        "adjustments": 0,
+        "event_points": [
+            {
+                "alliance_points": 0,
+                "award_points": 5,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026mabos",
+                "qual_points": 7,
+                "total": 12
+            },
+            {
+                "alliance_points": 0,
+                "award_points": 0,
+                "district_cmp": false,
+                "elim_points": 0,
+                "event_key": "2026mawor",
+                "qual_points": 5,
+                "total": 5
+            }
+        ],
+        "point_total": 17,
+        "rank": 186,
+        "rookie_bonus": 0,
+        "team_key": "frc5491"
     },
     {
         "adjustments": 0,
@@ -5008,7 +5035,7 @@
             }
         ],
         "point_total": 16,
-        "rank": 186,
+        "rank": 187,
         "rookie_bonus": 0,
         "team_key": "frc6690"
     },
@@ -5020,9 +5047,9 @@
                 "award_points": 0,
                 "district_cmp": false,
                 "elim_points": 0,
-                "event_key": "2026nhdur",
-                "qual_points": 5,
-                "total": 5
+                "event_key": "2026mawne",
+                "qual_points": 7,
+                "total": 7
             },
             {
                 "alliance_points": 0,
@@ -5030,41 +5057,14 @@
                 "district_cmp": false,
                 "elim_points": 0,
                 "event_key": "2026mawor",
-                "qual_points": 11,
-                "total": 11
-            }
-        ],
-        "point_total": 16,
-        "rank": 187,
-        "rookie_bonus": 0,
-        "team_key": "frc6762"
-    },
-    {
-        "adjustments": 0,
-        "event_points": [
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026rikin",
-                "qual_points": 4,
-                "total": 4
-            },
-            {
-                "alliance_points": 0,
-                "award_points": 0,
-                "district_cmp": false,
-                "elim_points": 0,
-                "event_key": "2026mawor",
-                "qual_points": 12,
-                "total": 12
+                "qual_points": 9,
+                "total": 9
             }
         ],
         "point_total": 16,
         "rank": 188,
         "rookie_bonus": 0,
-        "team_key": "frc1474"
+        "team_key": "frc1027"
     },
     {
         "adjustments": 0,
@@ -5336,11 +5336,11 @@
                 "district_cmp": false,
                 "elim_points": 0,
                 "event_key": "2026mawor",
-                "qual_points": 8,
-                "total": 8
+                "qual_points": 7,
+                "total": 7
             }
         ],
-        "point_total": 12,
+        "point_total": 11,
         "rank": 199,
         "rookie_bonus": 0,
         "team_key": "frc3205"
@@ -5363,11 +5363,11 @@
                 "district_cmp": false,
                 "elim_points": 0,
                 "event_key": "2026mawor",
-                "qual_points": 5,
-                "total": 5
+                "qual_points": 4,
+                "total": 4
             }
         ],
-        "point_total": 10,
+        "point_total": 9,
         "rank": 200,
         "rookie_bonus": 0,
         "team_key": "frc3634"
