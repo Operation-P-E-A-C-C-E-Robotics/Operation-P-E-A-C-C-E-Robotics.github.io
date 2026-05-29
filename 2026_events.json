@@ -1,5 +1,44 @@
 [
     {
+        "address": "100 Institute Road",
+        "city": "Worcester",
+        "country": "USA",
+        "district": null,
+        "division_keys": [],
+        "end_date": "2026-05-31",
+        "event_code": "bc",
+        "event_type": 99,
+        "event_type_string": "Offseason",
+        "first_event_code": "mawor1",
+        "first_event_id": null,
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "key": "2026bc",
+        "lat": null,
+        "lng": null,
+        "location_name": "WPI - Harrington Auditorium",
+        "name": "BattleCry at WPI",
+        "parent_event_key": null,
+        "playoff_type": 10,
+        "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
+        "postal_code": null,
+        "remap_teams": null,
+        "short_name": "BattleCry at WPI",
+        "start_date": "2026-05-29",
+        "state_prov": "MA",
+        "timezone": "America/New_York",
+        "webcasts": [
+            {
+                "channel": "dctB35TfOUQ",
+                "date": "2026-05-29",
+                "type": "youtube"
+            }
+        ],
+        "website": "https://wp.wpi.edu/battlecry/",
+        "week": null,
+        "year": 2026
+    },
+    {
         "address": "55 Forest Street",
         "city": "Hartford",
         "country": "USA",
