@@ -2,27 +2,51 @@
     "2026bc": {
         "alliance": null,
         "alliance_status_str": "--",
-        "last_match_key": null,
-        "next_match_key": "2026bc_qm8",
-        "overall_status_str": "Team 3461 has a record of <b>0-0-0</b> in quals.",
+        "last_match_key": "2026bc_qm51",
+        "next_match_key": "2026bc_qm60",
+        "overall_status_str": "Team 3461 is <b>Rank 39/48</b> with a record of <b>3-4-0</b> in quals.",
         "playoff": null,
         "playoff_status_str": "--",
         "qual": {
             "num_teams": 48,
             "ranking": {
-                "dq": null,
-                "matches_played": 0,
+                "dq": 0,
+                "matches_played": 7,
                 "qual_average": null,
-                "rank": null,
+                "rank": 39,
                 "record": {
-                    "losses": 0,
+                    "losses": 4,
                     "ties": 0,
-                    "wins": 0
+                    "wins": 3
                 },
-                "sort_orders": null,
+                "sort_orders": [
+                    1.57,
+                    107.43,
+                    15.29,
+                    10.71,
+                    0.0,
+                    0.0
+                ],
                 "team_key": "frc3461"
             },
-            "sort_order_info": null,
+            "sort_order_info": [
+                {
+                    "name": "Ranking Score",
+                    "precision": 2
+                },
+                {
+                    "name": "Avg Match",
+                    "precision": 2
+                },
+                {
+                    "name": "Avg Auto Fuel",
+                    "precision": 2
+                },
+                {
+                    "name": "Avg Tower",
+                    "precision": 2
+                }
+            ],
             "status": "playing"
         }
     },
