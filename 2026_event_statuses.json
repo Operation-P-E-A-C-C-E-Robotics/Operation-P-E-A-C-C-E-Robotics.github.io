@@ -1,29 +1,49 @@
 {
     "2026bc": {
-        "alliance": null,
-        "alliance_status_str": "--",
-        "last_match_key": "2026bc_qm51",
-        "next_match_key": "2026bc_qm60",
-        "overall_status_str": "Team 3461 is <b>Rank 39/48</b> with a record of <b>3-4-0</b> in quals.",
-        "playoff": null,
-        "playoff_status_str": "--",
+        "alliance": {
+            "backup": null,
+            "name": "Alliance 1",
+            "number": 1,
+            "pick": 3
+        },
+        "alliance_status_str": "<b>3rd Pick</b> of <b>Alliance 1</b>",
+        "last_match_key": "2026bc_sf13m1",
+        "next_match_key": "2026bc_f1m2",
+        "overall_status_str": "Team 3461 is <b>1-0-0</b> in the <b>Finals</b> as the <b>3rd Pick</b> of <b>Alliance 1</b>.",
+        "playoff": {
+            "current_level_record": {
+                "losses": 0,
+                "ties": 0,
+                "wins": 1
+            },
+            "level": "f",
+            "playoff_average": null,
+            "playoff_type": 8,
+            "record": {
+                "losses": 0,
+                "ties": 0,
+                "wins": 4
+            },
+            "status": "playing"
+        },
+        "playoff_status_str": "Currently <b>1-0-0</b> in the <b>Finals</b>",
         "qual": {
             "num_teams": 48,
             "ranking": {
                 "dq": 0,
-                "matches_played": 7,
+                "matches_played": 9,
                 "qual_average": null,
-                "rank": 39,
+                "rank": 40,
                 "record": {
-                    "losses": 4,
+                    "losses": 6,
                     "ties": 0,
                     "wins": 3
                 },
                 "sort_orders": [
-                    1.57,
-                    107.43,
-                    15.29,
-                    10.71,
+                    1.44,
+                    134.67,
+                    19.78,
+                    16.11,
                     0.0,
                     0.0
                 ],
@@ -47,7 +67,7 @@
                     "precision": 2
                 }
             ],
-            "status": "playing"
+            "status": "completed"
         }
     },
     "2026cthar": {
