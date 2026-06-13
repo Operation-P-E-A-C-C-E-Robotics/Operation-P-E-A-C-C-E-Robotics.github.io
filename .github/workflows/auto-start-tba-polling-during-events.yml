@@ -1,0 +1,31 @@
+name: Auto-start TBA polling during events
+
+on:
+    schedule:
+        - cron: '0 11 * * *'  # 6 AM ET (11 AM UTC)
+    workflow_dispatch:
+
+jobs:
+    check-tba-event:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check The Blue Alliance API for Team 3461
+              id: check-event
+              run: |
+                    RESPONSE=$(curl -s "https://www.thebluealliance.com/api/v3/team/frc3461/events?year=$(date +%Y)" \
+                        -H "X-TBA-Auth-Key: ${{ secrets.TBA_AUTH_KEY }}")
+                    
+                    # Check if team is playing today
+                    TODAY=$(date +%Y-%m-%d)
+                    PLAYING_TODAY=$(echo "$RESPONSE" | jq "[.[] | select(.start_date == \"$TODAY\" or (.start_date < \"$TODAY\" and .end_date >= \"$TODAY\"))] | length > 0")
+                    
+                    echo "playing_today=$PLAYING_TODAY" >> $GITHUB_OUTPUT
+
+            - name: Trigger TBA backend workflow
+              if: steps.check-event.outputs.playing_today == 'true'
+              run: |
+                curl -X POST \
+                        -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                        -H "Accept: application/vnd.github.v3+json" \
+                        "https://api.github.com/repos/${{ github.repository }}/actions/workflows/updateCurrentYear.yml/dispatches" \
+                        -d '{"ref":"gh-actions-tba-backend"}'
