@@ -17,7 +17,7 @@ jobs:
                     
                     # Check if team is playing today
                     TODAY=$(date +%Y-%m-%d)
-                    PLAYING_TODAY=$(echo "$RESPONSE" | jq "[.[] | select(.start_date == \"$TODAY\" or (.start_date < \"$TODAY\" and .end_date >= \"$TODAY\"))] | length > 0")
+                    PLAYING_TODAY=$(echo "$RESPONSE" | jq --arg today "$TODAY" "[.[] | select(.start_date <= $today and .end_date >= $today)] | length > 0")
                     
                     echo "playing_today=$PLAYING_TODAY" >> $GITHUB_OUTPUT
 
