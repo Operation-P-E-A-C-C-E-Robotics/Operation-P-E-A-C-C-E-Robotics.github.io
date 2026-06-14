@@ -11,9 +11,11 @@ jobs:
         steps:
             - name: Check The Blue Alliance API for Team 3461
               id: check-event
+              env:
+                TBA_KEY: ${{ secrets.TBA_AUTH_KEY }}
               run: |
                     RESPONSE=$(curl -s "https://www.thebluealliance.com/api/v3/team/frc3461/events?year=$(date +%Y)" \
-                        -H "X-TBA-Auth-Key: ${{ secrets.TBA_AUTH_KEY }}")
+                        -H "X-TBA-Auth-Key: $TBA_KEY")
                     
                     # Check if team is playing today
                     TODAY=$(date +%Y-%m-%d)
