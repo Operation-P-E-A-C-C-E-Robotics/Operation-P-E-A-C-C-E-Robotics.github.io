@@ -163,5 +163,44 @@
         "website": "https://nefirst.org/",
         "week": 1,
         "year": 2026
+    },
+    {
+        "address": "457 Bound Line Rd",
+        "city": "Wolcott",
+        "country": "USA",
+        "district": null,
+        "division_keys": [],
+        "end_date": "2026-06-13",
+        "event_code": "wiwi",
+        "event_type": 99,
+        "event_type_string": "Offseason",
+        "first_event_code": "ctwol",
+        "first_event_id": null,
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "key": "2026wiwi",
+        "lat": null,
+        "lng": null,
+        "location_name": "Wolcott High School",
+        "name": "Where is Wolcott Invitational",
+        "parent_event_key": null,
+        "playoff_type": 10,
+        "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
+        "postal_code": null,
+        "remap_teams": null,
+        "short_name": "Where is Wolcott Invitational",
+        "start_date": "2026-06-12",
+        "state_prov": "CT",
+        "timezone": "America/New_York",
+        "webcasts": [
+            {
+                "channel": "igx49q63nAI",
+                "date": "2026-06-13",
+                "type": "youtube"
+            }
+        ],
+        "website": "https://www.max1071.org/wiwi",
+        "week": null,
+        "year": 2026
     }
 ]

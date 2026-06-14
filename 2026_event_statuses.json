@@ -212,5 +212,76 @@
             ],
             "status": "completed"
         }
+    },
+    "2026wiwi": {
+        "alliance": {
+            "backup": null,
+            "name": "Alliance 3",
+            "number": 3,
+            "pick": 2
+        },
+        "alliance_status_str": "<b>2nd Pick</b> of <b>Alliance 3</b>",
+        "last_match_key": "2026wiwi_sf13m1",
+        "next_match_key": null,
+        "overall_status_str": "Team 3461 was <b>Rank 14/20</b> with a record of <b>2-4-0</b> in quals, competed in the playoffs as the <b>2nd Pick</b> of <b>Alliance 3</b>, and was eliminated in the <b>Double Elimination Bracket (Round 5)</b> with a playoff record of <b>3-2-0</b>.",
+        "playoff": {
+            "current_level_record": {
+                "losses": 2,
+                "ties": 0,
+                "wins": 3
+            },
+            "double_elim_round": "Round 5",
+            "level": "sf",
+            "playoff_type": 10,
+            "record": {
+                "losses": 2,
+                "ties": 0,
+                "wins": 3
+            },
+            "status": "eliminated"
+        },
+        "playoff_status_str": "<b>Eliminated in the Double Elimination Bracket (Round 5)</b> with a playoff record of <b>3-2-0</b>",
+        "qual": {
+            "num_teams": 20,
+            "ranking": {
+                "dq": 0,
+                "matches_played": 6,
+                "qual_average": null,
+                "rank": 14,
+                "record": {
+                    "losses": 4,
+                    "ties": 0,
+                    "wins": 2
+                },
+                "sort_orders": [
+                    1.33,
+                    125.5,
+                    17.67,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "team_key": "frc3461"
+            },
+            "sort_order_info": [
+                {
+                    "name": "Ranking Score",
+                    "precision": 2
+                },
+                {
+                    "name": "Avg Match",
+                    "precision": 2
+                },
+                {
+                    "name": "Avg Auto Fuel",
+                    "precision": 2
+                },
+                {
+                    "name": "Avg Tower",
+                    "precision": 2
+                }
+            ],
+            "status": "completed"
+        }
     }
 }
