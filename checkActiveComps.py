@@ -7,7 +7,7 @@ import requests
 TEAM_KEY = "frc3461"
 
 headers = {
-    "X-TBA-Auth-Key": os.environ["TBA_AUTH_KEY"],
+    "X-TBA-Auth-Key": os.environ["TBA_API_KEY"],
     "Accept": "application/json"
 }
 
