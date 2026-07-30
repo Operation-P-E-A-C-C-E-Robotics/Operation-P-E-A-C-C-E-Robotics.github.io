@@ -1,6 +1,36 @@
 [
     {
         "kind": "calendar#event",
+        "etag": "\"3530647815103550\"",
+        "id": "7obeqe9i1sjbcj74sa1fpsp0k2",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=N29iZXFlOWkxc2piY2o3NHNhMWZwc3AwazIgdGVhbUBwZWFjY2Uub3Jn",
+        "created": "2025-12-09T23:44:29.000Z",
+        "updated": "2025-12-09T23:45:07.551Z",
+        "summary": "Hartford County 4-H Fair",
+        "description": "<a href=\"https://www.hartfordcounty4hfair.org/schedule-1\">https://www.hartfordcounty4hfair.org/schedule-1</a>",
+        "location": "56 Egypt Rd. Somers CT 06071",
+        "creator": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "organizer": {
+            "email": "team@peacce.org",
+            "self": true
+        },
+        "start": {
+            "date": "2026-08-14"
+        },
+        "end": {
+            "date": "2026-08-17"
+        },
+        "transparency": "transparent",
+        "iCalUID": "7obeqe9i1sjbcj74sa1fpsp0k2@google.com",
+        "sequence": 0,
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
         "etag": "\"3530647886656286\"",
         "id": "5sb532uvm9r7hu0c8r4du0hr3r",
         "status": "confirmed",
