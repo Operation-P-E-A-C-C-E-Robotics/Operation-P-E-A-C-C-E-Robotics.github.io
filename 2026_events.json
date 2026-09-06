@@ -1,206 +1,206 @@
 [
     {
-        "address": "100 Institute Road",
-        "city": "Worcester",
-        "country": "USA",
-        "district": null,
-        "division_keys": [],
-        "end_date": "2026-05-31",
+        "key": "2026bc",
+        "name": "BattleCry at WPI (May)",
+        "short_name": "BattleCry (May)",
         "event_code": "bc",
         "event_type": 99,
         "event_type_string": "Offseason",
-        "first_event_code": "MAWOR1",
-        "first_event_id": null,
-        "gmaps_place_id": null,
-        "gmaps_url": null,
-        "key": "2026bc",
-        "lat": null,
-        "lng": null,
-        "location_name": "WPI - Harrington Auditorium",
-        "name": "BattleCry at WPI (May)",
         "parent_event_key": null,
         "playoff_type": 8,
         "playoff_type_string": "Custom",
-        "postal_code": null,
-        "remap_teams": null,
-        "short_name": "BattleCry (May)",
-        "start_date": "2026-05-29",
-        "state_prov": "MA",
+        "district": null,
+        "division_keys": [],
+        "first_event_id": null,
+        "first_event_code": "MAWOR1",
+        "year": 2026,
         "timezone": "America/New_York",
+        "week": null,
+        "website": "https://wp.wpi.edu/battlecry/",
+        "remap_teams": null,
+        "city": "Worcester",
+        "state_prov": "MA",
+        "country": "USA",
+        "postal_code": null,
+        "lat": null,
+        "lng": null,
+        "location_name": "WPI - Harrington Auditorium",
+        "address": "100 Institute Road",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "start_date": "2026-05-29",
+        "end_date": "2026-05-31",
         "webcasts": [
             {
+                "type": "youtube",
                 "channel": "dctB35TfOUQ",
-                "date": "2026-05-29",
-                "type": "youtube"
+                "date": "2026-05-29"
             },
             {
+                "type": "youtube",
                 "channel": "Y8zxi14Xbwg",
-                "date": "2026-05-30",
-                "type": "youtube"
+                "date": "2026-05-30"
             },
             {
+                "type": "youtube",
                 "channel": "c4hcoGBOCRY",
-                "date": "2026-05-31",
-                "type": "youtube"
+                "date": "2026-05-31"
             }
-        ],
-        "website": "https://wp.wpi.edu/battlecry/",
-        "week": null,
-        "year": 2026
+        ]
     },
     {
-        "address": "55 Forest Street",
-        "city": "Hartford",
-        "country": "USA",
-        "district": {
-            "abbreviation": "ne",
-            "display_name": "New England",
-            "key": "2026ne",
-            "official_advancement_counts": {
-                "cmp": 32,
-                "dcmp": 100
-            },
-            "year": 2026
-        },
-        "division_keys": [],
-        "end_date": "2026-03-29",
+        "key": "2026cthar",
+        "name": "NE District Hartford Event",
+        "short_name": "Hartford",
         "event_code": "cthar",
         "event_type": 1,
         "event_type_string": "District",
-        "first_event_code": "cthar",
+        "parent_event_key": null,
+        "playoff_type": 10,
+        "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
+        "district": {
+            "key": "2026ne",
+            "year": 2026,
+            "abbreviation": "ne",
+            "display_name": "New England",
+            "official_advancement_counts": {
+                "dcmp": 100,
+                "cmp": 32
+            }
+        },
+        "division_keys": [],
         "first_event_id": null,
-        "gmaps_place_id": null,
-        "gmaps_url": null,
-        "key": "2026cthar",
+        "first_event_code": "cthar",
+        "year": 2026,
+        "timezone": "America/New_York",
+        "week": 3,
+        "website": "http://www.nefirst.org/",
+        "remap_teams": null,
+        "city": "Hartford",
+        "state_prov": "CT",
+        "country": "USA",
+        "postal_code": "06105",
         "lat": null,
         "lng": null,
         "location_name": "Hartford Public High School",
-        "name": "NE District Hartford Event",
-        "parent_event_key": null,
-        "playoff_type": 10,
-        "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
-        "postal_code": "06105",
-        "remap_teams": null,
-        "short_name": "Hartford",
+        "address": "55 Forest Street",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
         "start_date": "2026-03-27",
-        "state_prov": "CT",
-        "timezone": "America/New_York",
+        "end_date": "2026-03-29",
         "webcasts": [
             {
+                "type": "youtube",
                 "channel": "TlsCVBI_cgg",
-                "date": "2026-03-28",
-                "type": "youtube"
+                "date": "2026-03-28"
             },
             {
+                "type": "youtube",
                 "channel": "jo9u4TP6qXA",
-                "date": "2026-03-29",
-                "type": "youtube"
+                "date": "2026-03-29"
             }
-        ],
-        "website": "http://www.nefirst.org/",
-        "week": 3,
-        "year": 2026
+        ]
     },
     {
-        "address": "1215 Wilbraham Road",
-        "city": "Springfield",
-        "country": "USA",
-        "district": {
-            "abbreviation": "ne",
-            "display_name": "New England",
-            "key": "2026ne",
-            "official_advancement_counts": {
-                "cmp": 32,
-                "dcmp": 100
-            },
-            "year": 2026
-        },
-        "division_keys": [],
-        "end_date": "2026-03-15",
+        "key": "2026mawne",
+        "name": "NE District Western NE Event",
+        "short_name": "Western NE",
         "event_code": "mawne",
         "event_type": 1,
         "event_type_string": "District",
-        "first_event_code": "mawne",
+        "parent_event_key": null,
+        "playoff_type": 10,
+        "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
+        "district": {
+            "key": "2026ne",
+            "year": 2026,
+            "abbreviation": "ne",
+            "display_name": "New England",
+            "official_advancement_counts": {
+                "dcmp": 100,
+                "cmp": 32
+            }
+        },
+        "division_keys": [],
         "first_event_id": null,
-        "gmaps_place_id": null,
-        "gmaps_url": null,
-        "key": "2026mawne",
+        "first_event_code": "mawne",
+        "year": 2026,
+        "timezone": "America/New_York",
+        "week": 1,
+        "website": "https://nefirst.org/",
+        "remap_teams": null,
+        "city": "Springfield",
+        "state_prov": "MA",
+        "country": "USA",
+        "postal_code": "01119",
         "lat": null,
         "lng": null,
         "location_name": "Western New England University",
-        "name": "NE District Western NE Event",
-        "parent_event_key": null,
-        "playoff_type": 10,
-        "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
-        "postal_code": "01119",
-        "remap_teams": null,
-        "short_name": "Western NE",
+        "address": "1215 Wilbraham Road",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
         "start_date": "2026-03-13",
-        "state_prov": "MA",
-        "timezone": "America/New_York",
+        "end_date": "2026-03-15",
         "webcasts": [
             {
+                "type": "youtube",
                 "channel": "L30d3v5dfKM",
-                "date": "2026-03-14",
-                "type": "youtube"
+                "date": "2026-03-14"
             },
             {
+                "type": "youtube",
                 "channel": "HC5HxlNa40g",
-                "date": "2026-03-14",
-                "type": "youtube"
+                "date": "2026-03-14"
             },
             {
+                "type": "youtube",
                 "channel": "Q5cNV2sD31U",
-                "date": "2026-03-15",
-                "type": "youtube"
+                "date": "2026-03-15"
             },
             {
+                "type": "youtube",
                 "channel": "nQkfIGB5Msc",
-                "date": "2026-03-15",
-                "type": "youtube"
+                "date": "2026-03-15"
             }
-        ],
-        "website": "https://nefirst.org/",
-        "week": 1,
-        "year": 2026
+        ]
     },
     {
-        "address": "457 Bound Line Rd",
-        "city": "Wolcott",
-        "country": "USA",
-        "district": null,
-        "division_keys": [],
-        "end_date": "2026-06-13",
+        "key": "2026wiwi",
+        "name": "Where is Wolcott Invitational",
+        "short_name": "Where is Wolcott Invitational",
         "event_code": "wiwi",
         "event_type": 99,
         "event_type_string": "Offseason",
-        "first_event_code": "ctwol",
-        "first_event_id": null,
-        "gmaps_place_id": null,
-        "gmaps_url": null,
-        "key": "2026wiwi",
-        "lat": null,
-        "lng": null,
-        "location_name": "Wolcott High School",
-        "name": "Where is Wolcott Invitational",
         "parent_event_key": null,
         "playoff_type": 10,
         "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
-        "postal_code": null,
-        "remap_teams": null,
-        "short_name": "Where is Wolcott Invitational",
-        "start_date": "2026-06-12",
-        "state_prov": "CT",
+        "district": null,
+        "division_keys": [],
+        "first_event_id": null,
+        "first_event_code": "ctwol",
+        "year": 2026,
         "timezone": "America/New_York",
+        "week": null,
+        "website": "https://www.max1071.org/wiwi",
+        "remap_teams": null,
+        "city": "Wolcott",
+        "state_prov": "CT",
+        "country": "USA",
+        "postal_code": null,
+        "lat": null,
+        "lng": null,
+        "location_name": "Wolcott High School",
+        "address": "457 Bound Line Rd",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "start_date": "2026-06-12",
+        "end_date": "2026-06-13",
         "webcasts": [
             {
+                "type": "youtube",
                 "channel": "igx49q63nAI",
-                "date": "2026-06-13",
-                "type": "youtube"
+                "date": "2026-06-13"
             }
-        ],
-        "website": "https://www.max1071.org/wiwi",
-        "week": null,
-        "year": 2026
+        ]
     }
 ]

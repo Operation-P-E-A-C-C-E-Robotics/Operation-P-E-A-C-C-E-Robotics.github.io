@@ -1,8 +1,9 @@
 [
     {
-        "award_type": 1,
-        "event_key": "2016cthar",
         "name": "District Event Winner",
+        "award_type": 1,
+        "year": 2016,
+        "event_key": "2016cthar",
         "recipient_list": [
             {
                 "awardee": null,
@@ -16,13 +17,13 @@
                 "awardee": null,
                 "team_key": "frc3461"
             }
-        ],
-        "year": 2016
+        ]
     },
     {
-        "award_type": 1,
-        "event_key": "2016manda",
         "name": "District Event Winner",
+        "award_type": 1,
+        "year": 2016,
+        "event_key": "2016manda",
         "recipient_list": [
             {
                 "awardee": null,
@@ -36,13 +37,13 @@
                 "awardee": null,
                 "team_key": "frc3461"
             }
-        ],
-        "year": 2016
+        ]
     },
     {
-        "award_type": 4,
-        "event_key": "2016necmp",
         "name": "FIRST Dean's List Finalist Award",
+        "award_type": 4,
+        "year": 2016,
+        "event_key": "2016necmp",
         "recipient_list": [
             {
                 "awardee": "Carina Savukinas",
@@ -68,7 +69,6 @@
                 "awardee": "Johnny Chea",
                 "team_key": "frc3461"
             }
-        ],
-        "year": 2016
+        ]
     }
 ]

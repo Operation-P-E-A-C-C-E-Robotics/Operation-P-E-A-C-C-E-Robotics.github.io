@@ -1,192 +1,192 @@
 [
     {
-        "address": "330 Hubbard St",
-        "city": "Glastonbury",
-        "country": "USA",
-        "district": null,
-        "division_keys": [],
-        "end_date": "2024-05-19",
+        "key": "2024ctgla",
+        "name": "CT State Championships",
+        "short_name": "CT",
         "event_code": "ctgla",
         "event_type": 99,
         "event_type_string": "Offseason",
-        "first_event_code": "ctgla",
+        "parent_event_key": null,
+        "playoff_type": 10,
+        "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
+        "district": null,
+        "division_keys": [],
         "first_event_id": null,
-        "gmaps_place_id": null,
-        "gmaps_url": null,
-        "key": "2024ctgla",
+        "first_event_code": "ctgla",
+        "year": 2024,
+        "timezone": "America/New_York",
+        "week": null,
+        "website": null,
+        "remap_teams": null,
+        "city": "Glastonbury",
+        "state_prov": "CT",
+        "country": "USA",
+        "postal_code": "06033",
         "lat": null,
         "lng": null,
         "location_name": "Glastonbury High School",
-        "name": "CT State Championships",
-        "parent_event_key": null,
-        "playoff_type": 10,
-        "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
-        "postal_code": "06033",
-        "remap_teams": null,
-        "short_name": "CT",
+        "address": "330 Hubbard St",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
         "start_date": "2024-05-18",
-        "state_prov": "CT",
-        "timezone": "America/New_York",
-        "webcasts": [],
-        "website": null,
-        "week": null,
-        "year": 2024
+        "end_date": "2024-05-19",
+        "webcasts": []
     },
     {
-        "address": "568 Bucks Hill Road",
-        "city": "Waterbury",
-        "country": "USA",
-        "district": {
-            "abbreviation": "ne",
-            "display_name": "New England",
-            "key": "2024ne",
-            "official_advancement_counts": {
-                "cmp": 31,
-                "dcmp": 96
-            },
-            "year": 2024
-        },
-        "division_keys": [],
-        "end_date": "2024-03-10",
+        "key": "2024ctwat",
+        "name": "NE District Waterbury Event",
+        "short_name": "Waterbury",
         "event_code": "ctwat",
         "event_type": 1,
         "event_type_string": "District",
-        "first_event_code": "ctwat",
+        "parent_event_key": null,
+        "playoff_type": 10,
+        "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
+        "district": {
+            "key": "2024ne",
+            "year": 2024,
+            "abbreviation": "ne",
+            "display_name": "New England",
+            "official_advancement_counts": {
+                "dcmp": 96,
+                "cmp": 31
+            }
+        },
+        "division_keys": [],
         "first_event_id": null,
-        "gmaps_place_id": null,
-        "gmaps_url": null,
-        "key": "2024ctwat",
+        "first_event_code": "ctwat",
+        "year": 2024,
+        "timezone": "America/New_York",
+        "week": 1,
+        "website": "http://www.nefirst.org/",
+        "remap_teams": null,
+        "city": "Waterbury",
+        "state_prov": "CT",
+        "country": "USA",
+        "postal_code": "06704",
         "lat": null,
         "lng": null,
         "location_name": "Wilby High School",
-        "name": "NE District Waterbury Event",
-        "parent_event_key": null,
-        "playoff_type": 10,
-        "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
-        "postal_code": "06704",
-        "remap_teams": null,
-        "short_name": "Waterbury",
+        "address": "568 Bucks Hill Road",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
         "start_date": "2024-03-08",
-        "state_prov": "CT",
-        "timezone": "America/New_York",
+        "end_date": "2024-03-10",
         "webcasts": [
             {
-                "channel": "firstinspires19",
-                "type": "twitch"
+                "type": "twitch",
+                "channel": "firstinspires19"
             },
             {
-                "channel": "nefirst_red",
-                "type": "twitch"
+                "type": "twitch",
+                "channel": "nefirst_red"
             },
             {
-                "channel": "nefirst_green",
-                "type": "twitch"
+                "type": "twitch",
+                "channel": "nefirst_green"
             }
-        ],
-        "website": "http://www.nefirst.org/",
-        "week": 1,
-        "year": 2024
+        ]
     },
     {
-        "address": "1215 Wilbraham Road",
-        "city": "Springfield",
-        "country": "USA",
-        "district": {
-            "abbreviation": "ne",
-            "display_name": "New England",
-            "key": "2024ne",
-            "official_advancement_counts": {
-                "cmp": 31,
-                "dcmp": 96
-            },
-            "year": 2024
-        },
-        "division_keys": [],
-        "end_date": "2024-03-24",
+        "key": "2024mawne",
+        "name": "NE District Western NE Event",
+        "short_name": "Western NE",
         "event_code": "mawne",
         "event_type": 1,
         "event_type_string": "District",
-        "first_event_code": "mawne",
-        "first_event_id": null,
-        "gmaps_place_id": null,
-        "gmaps_url": null,
-        "key": "2024mawne",
-        "lat": null,
-        "lng": null,
-        "location_name": "Western New England University",
-        "name": "NE District Western NE Event",
         "parent_event_key": null,
         "playoff_type": 10,
         "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
-        "postal_code": "01119",
-        "remap_teams": null,
-        "short_name": "Western NE",
-        "start_date": "2024-03-22",
-        "state_prov": "MA",
-        "timezone": "America/New_York",
-        "webcasts": [
-            {
-                "channel": "nefirst_green",
-                "type": "twitch"
-            }
-        ],
-        "website": "https://nefirst.org/",
-        "week": 3,
-        "year": 2024
-    },
-    {
-        "address": "1305 Memorial Ave",
-        "city": "West Springfield",
-        "country": "USA",
         "district": {
+            "key": "2024ne",
+            "year": 2024,
             "abbreviation": "ne",
             "display_name": "New England",
-            "key": "2024ne",
             "official_advancement_counts": {
-                "cmp": 31,
-                "dcmp": 96
-            },
-            "year": 2024
+                "dcmp": 96,
+                "cmp": 31
+            }
         },
         "division_keys": [],
-        "end_date": "2024-04-06",
+        "first_event_id": null,
+        "first_event_code": "mawne",
+        "year": 2024,
+        "timezone": "America/New_York",
+        "week": 3,
+        "website": "https://nefirst.org/",
+        "remap_teams": null,
+        "city": "Springfield",
+        "state_prov": "MA",
+        "country": "USA",
+        "postal_code": "01119",
+        "lat": null,
+        "lng": null,
+        "location_name": "Western New England University",
+        "address": "1215 Wilbraham Road",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "start_date": "2024-03-22",
+        "end_date": "2024-03-24",
+        "webcasts": [
+            {
+                "type": "twitch",
+                "channel": "nefirst_green"
+            }
+        ]
+    },
+    {
+        "key": "2024necmp1",
+        "name": "New England FIRST District Championship - Ganson Division",
+        "short_name": "NEDC - Ganson",
         "event_code": "necmp1",
         "event_type": 5,
         "event_type_string": "District Championship Division",
-        "first_event_code": "necmp1",
-        "first_event_id": null,
-        "gmaps_place_id": null,
-        "gmaps_url": null,
-        "key": "2024necmp1",
-        "lat": null,
-        "lng": null,
-        "location_name": "Eastern States Exposition",
-        "name": "New England FIRST District Championship - Ganson Division",
         "parent_event_key": "2024necmp",
         "playoff_type": 10,
         "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
-        "postal_code": "01089",
-        "remap_teams": null,
-        "short_name": "NEDC - Ganson",
-        "start_date": "2024-04-03",
-        "state_prov": "MA",
+        "district": {
+            "key": "2024ne",
+            "year": 2024,
+            "abbreviation": "ne",
+            "display_name": "New England",
+            "official_advancement_counts": {
+                "dcmp": 96,
+                "cmp": 31
+            }
+        },
+        "division_keys": [],
+        "first_event_id": null,
+        "first_event_code": "necmp1",
+        "year": 2024,
         "timezone": "America/New_York",
+        "week": 5,
+        "website": "https://nefirst.org/",
+        "remap_teams": null,
+        "city": "West Springfield",
+        "state_prov": "MA",
+        "country": "USA",
+        "postal_code": "01089",
+        "lat": null,
+        "lng": null,
+        "location_name": "Eastern States Exposition",
+        "address": "1305 Memorial Ave",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "start_date": "2024-04-03",
+        "end_date": "2024-04-06",
         "webcasts": [
             {
-                "channel": "firstinspires18",
-                "type": "twitch"
+                "type": "twitch",
+                "channel": "firstinspires18"
             },
             {
-                "channel": "nefirst_red",
-                "type": "twitch"
+                "type": "twitch",
+                "channel": "nefirst_red"
             },
             {
-                "channel": "nefirst_orange",
-                "type": "twitch"
+                "type": "twitch",
+                "channel": "nefirst_orange"
             }
-        ],
-        "website": "https://nefirst.org/",
-        "week": 5,
-        "year": 2024
+        ]
     }
 ]

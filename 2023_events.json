@@ -1,189 +1,189 @@
 [
     {
-        "address": "460 Buck Hill Road",
-        "city": "Waterbury",
-        "country": "USA",
-        "district": {
-            "abbreviation": "ne",
-            "display_name": "New England",
-            "key": "2023ne",
-            "official_advancement_counts": {
-                "cmp": 32,
-                "dcmp": 90
-            },
-            "year": 2023
-        },
-        "division_keys": [],
-        "end_date": "2023-03-12",
+        "key": "2023ctwat",
+        "name": "NE District Waterbury Event",
+        "short_name": "Waterbury",
         "event_code": "ctwat",
         "event_type": 1,
         "event_type_string": "District",
-        "first_event_code": "ctwat",
+        "parent_event_key": null,
+        "playoff_type": 10,
+        "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
+        "district": {
+            "key": "2023ne",
+            "year": 2023,
+            "abbreviation": "ne",
+            "display_name": "New England",
+            "official_advancement_counts": {
+                "dcmp": 90,
+                "cmp": 32
+            }
+        },
+        "division_keys": [],
         "first_event_id": null,
-        "gmaps_place_id": null,
-        "gmaps_url": null,
-        "key": "2023ctwat",
+        "first_event_code": "ctwat",
+        "year": 2023,
+        "timezone": "America/New_York",
+        "week": 1,
+        "website": "http://www.nefirst.org/",
+        "remap_teams": null,
+        "city": "Waterbury",
+        "state_prov": "CT",
+        "country": "USA",
+        "postal_code": "06704",
         "lat": null,
         "lng": null,
         "location_name": "Wilby High School",
-        "name": "NE District Waterbury Event",
-        "parent_event_key": null,
-        "playoff_type": 10,
-        "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
-        "postal_code": "06704",
-        "remap_teams": null,
-        "short_name": "Waterbury",
+        "address": "460 Buck Hill Road",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
         "start_date": "2023-03-10",
-        "state_prov": "CT",
-        "timezone": "America/New_York",
+        "end_date": "2023-03-12",
         "webcasts": [
             {
-                "channel": "nefirst_red",
-                "type": "twitch"
+                "type": "twitch",
+                "channel": "nefirst_red"
             }
-        ],
-        "website": "http://www.nefirst.org/",
-        "week": 1,
-        "year": 2023
+        ]
     },
     {
-        "address": "101 School Street",
-        "city": "Revere",
-        "country": "USA",
-        "district": {
-            "abbreviation": "ne",
-            "display_name": "New England",
-            "key": "2023ne",
-            "official_advancement_counts": {
-                "cmp": 32,
-                "dcmp": 90
-            },
-            "year": 2023
-        },
-        "division_keys": [],
-        "end_date": "2023-03-26",
+        "key": "2023mabos",
+        "name": "NE District Greater Boston Event",
+        "short_name": "Greater Boston",
         "event_code": "mabos",
         "event_type": 1,
         "event_type_string": "District",
-        "first_event_code": "mabos",
+        "parent_event_key": null,
+        "playoff_type": 10,
+        "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
+        "district": {
+            "key": "2023ne",
+            "year": 2023,
+            "abbreviation": "ne",
+            "display_name": "New England",
+            "official_advancement_counts": {
+                "dcmp": 90,
+                "cmp": 32
+            }
+        },
+        "division_keys": [],
         "first_event_id": null,
-        "gmaps_place_id": null,
-        "gmaps_url": null,
-        "key": "2023mabos",
+        "first_event_code": "mabos",
+        "year": 2023,
+        "timezone": "America/New_York",
+        "week": 3,
+        "website": "http://www.nefirst.org/",
+        "remap_teams": null,
+        "city": "Revere",
+        "state_prov": "MA",
+        "country": "USA",
+        "postal_code": "02151",
         "lat": null,
         "lng": null,
         "location_name": "Revere High School",
-        "name": "NE District Greater Boston Event",
-        "parent_event_key": null,
-        "playoff_type": 10,
-        "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
-        "postal_code": "02151",
-        "remap_teams": null,
-        "short_name": "Greater Boston",
+        "address": "101 School Street",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
         "start_date": "2023-03-24",
-        "state_prov": "MA",
-        "timezone": "America/New_York",
+        "end_date": "2023-03-26",
         "webcasts": [
             {
+                "type": "livestream",
                 "channel": "",
-                "date": "2023-03-25",
-                "type": "livestream"
+                "date": "2023-03-25"
             },
             {
-                "channel": "nefirst_green",
-                "type": "twitch"
+                "type": "twitch",
+                "channel": "nefirst_green"
             },
             {
-                "channel": "nefirst_blue",
-                "type": "twitch"
+                "type": "twitch",
+                "channel": "nefirst_blue"
             },
             {
-                "channel": "nefirst_red",
-                "type": "twitch"
+                "type": "twitch",
+                "channel": "nefirst_red"
             }
-        ],
-        "website": "http://www.nefirst.org/",
-        "week": 3,
-        "year": 2023
+        ]
     },
     {
-        "address": "1305 Memorial Ave",
-        "city": "West Springfield",
-        "country": "USA",
-        "district": {
-            "abbreviation": "ne",
-            "display_name": "New England",
-            "key": "2023ne",
-            "official_advancement_counts": {
-                "cmp": 32,
-                "dcmp": 90
-            },
-            "year": 2023
-        },
-        "division_keys": [],
-        "end_date": "2023-04-08",
+        "key": "2023necmp1",
+        "name": "New England FIRST District Championship - MEIR Division",
+        "short_name": "NEDC - MEIR",
         "event_code": "necmp1",
         "event_type": 5,
         "event_type_string": "District Championship Division",
-        "first_event_code": "necmp1",
-        "first_event_id": null,
-        "gmaps_place_id": null,
-        "gmaps_url": null,
-        "key": "2023necmp1",
-        "lat": null,
-        "lng": null,
-        "location_name": "Eastern States Exposition",
-        "name": "New England FIRST District Championship - MEIR Division",
         "parent_event_key": "2023necmp",
         "playoff_type": 10,
         "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
-        "postal_code": "01089",
-        "remap_teams": null,
-        "short_name": "NEDC - MEIR",
-        "start_date": "2023-04-05",
-        "state_prov": "MA",
+        "district": {
+            "key": "2023ne",
+            "year": 2023,
+            "abbreviation": "ne",
+            "display_name": "New England",
+            "official_advancement_counts": {
+                "dcmp": 90,
+                "cmp": 32
+            }
+        },
+        "division_keys": [],
+        "first_event_id": null,
+        "first_event_code": "necmp1",
+        "year": 2023,
         "timezone": "America/New_York",
+        "week": 5,
+        "website": "https://nefirst.org/",
+        "remap_teams": null,
+        "city": "West Springfield",
+        "state_prov": "MA",
+        "country": "USA",
+        "postal_code": "01089",
+        "lat": null,
+        "lng": null,
+        "location_name": "Eastern States Exposition",
+        "address": "1305 Memorial Ave",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "start_date": "2023-04-05",
+        "end_date": "2023-04-08",
         "webcasts": [
             {
-                "channel": "nefirst_red",
-                "type": "twitch"
+                "type": "twitch",
+                "channel": "nefirst_red"
             }
-        ],
-        "website": "https://nefirst.org/",
-        "week": 5,
-        "year": 2023
+        ]
     },
     {
-        "address": "Wolcott High School\r\n457 Bound Line Road\r\nWolcott, CT, USA",
-        "city": "Wolcott",
-        "country": "USA",
-        "district": null,
-        "division_keys": [],
-        "end_date": "2023-06-10",
+        "key": "2023wiwi",
+        "name": "Where is Wolcott? Invitational",
+        "short_name": "",
         "event_code": "wiwi",
         "event_type": 99,
         "event_type_string": "Offseason",
-        "first_event_code": null,
-        "first_event_id": null,
-        "gmaps_place_id": null,
-        "gmaps_url": null,
-        "key": "2023wiwi",
-        "lat": null,
-        "lng": null,
-        "location_name": "Wolcott High School",
-        "name": "Where is Wolcott? Invitational",
         "parent_event_key": null,
         "playoff_type": 8,
         "playoff_type_string": "Custom",
-        "postal_code": "06716",
-        "remap_teams": null,
-        "short_name": "",
-        "start_date": "2023-06-10",
-        "state_prov": "CT",
+        "district": null,
+        "division_keys": [],
+        "first_event_id": null,
+        "first_event_code": null,
+        "year": 2023,
         "timezone": "America/New_York",
-        "webcasts": [],
-        "website": "https://www.chiefdelphi.com/t/wiwi-2023-is-open-for-registration-wolcott-connecticut/435950",
         "week": null,
-        "year": 2023
+        "website": "https://www.chiefdelphi.com/t/wiwi-2023-is-open-for-registration-wolcott-connecticut/435950",
+        "remap_teams": null,
+        "city": "Wolcott",
+        "state_prov": "CT",
+        "country": "USA",
+        "postal_code": "06716",
+        "lat": null,
+        "lng": null,
+        "location_name": "Wolcott High School",
+        "address": "Wolcott High School\r\n457 Bound Line Road\r\nWolcott, CT, USA",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "start_date": "2023-06-10",
+        "end_date": "2023-06-10",
+        "webcasts": []
     }
 ]
