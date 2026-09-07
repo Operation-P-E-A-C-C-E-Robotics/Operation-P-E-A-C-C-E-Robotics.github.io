@@ -1,43 +1,14 @@
 {
     "2017cthar": {
-        "alliance": {
-            "backup": null,
-            "name": "Alliance 2",
-            "number": 2,
-            "pick": 2
-        },
-        "alliance_status_str": "<b>2nd Pick</b> of <b>Alliance 2</b>",
-        "last_match_key": "2017cthar_f1m2",
-        "next_match_key": null,
-        "overall_status_str": "Team 3461 was <b>Rank 14/42</b> with a record of <b>7-5-0</b> in quals, competed in the playoffs as the <b>2nd Pick</b> of <b>Alliance 2</b>, and was eliminated in the <b>Finals</b> with a playoff record of <b>4-2-0</b>.",
-        "playoff": {
-            "current_level_record": {
-                "losses": 2,
-                "ties": 0,
-                "wins": 0
-            },
-            "level": "f",
-            "playoff_average": null,
-            "playoff_type": null,
-            "record": {
-                "losses": 2,
-                "ties": 0,
-                "wins": 4
-            },
-            "status": "eliminated"
-        },
-        "playoff_status_str": "<b>Eliminated in the Finals</b> with a playoff record of <b>4-2-0</b>",
         "qual": {
-            "num_teams": 42,
+            "status": "completed",
             "ranking": {
-                "dq": 0,
-                "matches_played": 12,
                 "qual_average": null,
                 "rank": 14,
                 "record": {
+                    "wins": 7,
                     "losses": 5,
-                    "ties": 0,
-                    "wins": 7
+                    "ties": 0
                 },
                 "sort_orders": [
                     1.25,
@@ -47,8 +18,11 @@
                     1200.0,
                     15.0
                 ],
-                "team_key": "frc3461"
+                "team_key": "frc3461",
+                "matches_played": 12,
+                "dq": 0
             },
+            "num_teams": 42,
             "sort_order_info": [
                 {
                     "name": "Ranking Score",
@@ -74,49 +48,46 @@
                     "name": "Pressure",
                     "precision": 0
                 }
-            ],
-            "status": "completed"
-        }
+            ]
+        },
+        "alliance": {
+            "pick": 2,
+            "name": "Alliance 2",
+            "number": 2,
+            "backup": null
+        },
+        "playoff": {
+            "playoff_type": null,
+            "status": "eliminated",
+            "level": "f",
+            "current_level_record": {
+                "wins": 0,
+                "losses": 2,
+                "ties": 0
+            },
+            "record": {
+                "wins": 4,
+                "losses": 2,
+                "ties": 0
+            },
+            "playoff_average": null
+        },
+        "last_match_key": "2017cthar_f1m2",
+        "next_match_key": null,
+        "alliance_status_str": "<b>2nd Pick</b> of <b>Alliance 2</b>",
+        "playoff_status_str": "<b>Eliminated in the Finals</b> with a playoff record of <b>4-2-0</b>",
+        "overall_status_str": "Team 3461 was <b>Rank 14/42</b> with a record of <b>7-5-0</b> in quals, competed in the playoffs as the <b>2nd Pick</b> of <b>Alliance 2</b>, and was eliminated in the <b>Finals</b> with a playoff record of <b>4-2-0</b>."
     },
     "2017ctsc": {
-        "alliance": {
-            "backup": null,
-            "name": "Alliance 3",
-            "number": 3,
-            "pick": 0
-        },
-        "alliance_status_str": "<b>Captain</b> of <b>Alliance 3</b>",
-        "last_match_key": "2017ctsc_qf4m2",
-        "next_match_key": null,
-        "overall_status_str": "Team 3461 was <b>Rank 4/35</b> with a record of <b>4-0-0</b> in quals, competed in the playoffs as the <b>Captain</b> of <b>Alliance 3</b>, and was eliminated in the <b>Quarterfinals</b> with a playoff record of <b>0-2-0</b>.",
-        "playoff": {
-            "current_level_record": {
-                "losses": 2,
-                "ties": 0,
-                "wins": 0
-            },
-            "level": "qf",
-            "playoff_average": null,
-            "playoff_type": 0,
-            "record": {
-                "losses": 2,
-                "ties": 0,
-                "wins": 0
-            },
-            "status": "eliminated"
-        },
-        "playoff_status_str": "<b>Eliminated in the Quarterfinals</b> with a playoff record of <b>0-2-0</b>",
         "qual": {
-            "num_teams": 35,
+            "status": "completed",
             "ranking": {
-                "dq": 0,
-                "matches_played": 4,
                 "qual_average": null,
                 "rank": 4,
                 "record": {
+                    "wins": 4,
                     "losses": 0,
-                    "ties": 0,
-                    "wins": 4
+                    "ties": 0
                 },
                 "sort_orders": [
                     2.25,
@@ -126,8 +97,11 @@
                     500.0,
                     5.0
                 ],
-                "team_key": "frc3461"
+                "team_key": "frc3461",
+                "matches_played": 4,
+                "dq": 0
             },
+            "num_teams": 35,
             "sort_order_info": [
                 {
                     "name": "Ranking Score",
@@ -153,39 +127,57 @@
                     "name": "Pressure",
                     "precision": 0
                 }
-            ],
-            "status": "completed"
-        }
+            ]
+        },
+        "alliance": {
+            "pick": 0,
+            "name": "Alliance 3",
+            "number": 3,
+            "backup": null
+        },
+        "playoff": {
+            "playoff_type": 0,
+            "status": "eliminated",
+            "level": "qf",
+            "current_level_record": {
+                "wins": 0,
+                "losses": 2,
+                "ties": 0
+            },
+            "record": {
+                "wins": 0,
+                "losses": 2,
+                "ties": 0
+            },
+            "playoff_average": null
+        },
+        "last_match_key": "2017ctsc_qf4m2",
+        "next_match_key": null,
+        "alliance_status_str": "<b>Captain</b> of <b>Alliance 3</b>",
+        "playoff_status_str": "<b>Eliminated in the Quarterfinals</b> with a playoff record of <b>0-2-0</b>",
+        "overall_status_str": "Team 3461 was <b>Rank 4/35</b> with a record of <b>4-0-0</b> in quals, competed in the playoffs as the <b>Captain</b> of <b>Alliance 3</b>, and was eliminated in the <b>Quarterfinals</b> with a playoff record of <b>0-2-0</b>."
     },
     "2017ctss": {
+        "qual": null,
         "alliance": null,
-        "alliance_status_str": "--",
+        "playoff": null,
         "last_match_key": null,
         "next_match_key": null,
-        "overall_status_str": "Team 3461 is waiting for the event to begin.",
-        "playoff": null,
+        "alliance_status_str": "--",
         "playoff_status_str": "--",
-        "qual": null
+        "overall_status_str": "Team 3461 is waiting for the event to begin."
     },
     "2017mabri": {
-        "alliance": null,
-        "alliance_status_str": "--",
         "last_match_key": "2017mabri_qm78",
-        "next_match_key": null,
-        "overall_status_str": "Team 3461 was <b>Rank 21/42</b> with a record of <b>6-6-0</b> in quals.",
-        "playoff": null,
-        "playoff_status_str": "--",
         "qual": {
-            "num_teams": 42,
+            "status": "completed",
             "ranking": {
-                "dq": 0,
-                "matches_played": 12,
                 "qual_average": null,
                 "rank": 21,
                 "record": {
+                    "wins": 6,
                     "losses": 6,
-                    "ties": 0,
-                    "wins": 6
+                    "ties": 0
                 },
                 "sort_orders": [
                     1.0,
@@ -195,8 +187,11 @@
                     650.0,
                     22.0
                 ],
-                "team_key": "frc3461"
+                "team_key": "frc3461",
+                "matches_played": 12,
+                "dq": 0
             },
+            "num_teams": 42,
             "sort_order_info": [
                 {
                     "name": "Ranking Score",
@@ -222,49 +217,25 @@
                     "name": "Pressure",
                     "precision": 0
                 }
-            ],
-            "status": "completed"
-        }
+            ]
+        },
+        "playoff": null,
+        "alliance": null,
+        "next_match_key": null,
+        "alliance_status_str": "--",
+        "playoff_status_str": "--",
+        "overall_status_str": "Team 3461 was <b>Rank 21/42</b> with a record of <b>6-6-0</b> in quals."
     },
     "2017wiwi": {
-        "alliance": {
-            "backup": null,
-            "name": "Alliance 2",
-            "number": 2,
-            "pick": 0
-        },
-        "alliance_status_str": "<b>Captain</b> of <b>Alliance 2</b>",
-        "last_match_key": "2017wiwi_f1m1",
-        "next_match_key": null,
-        "overall_status_str": "Team 3461 is <b>0-1-0</b> in the <b>Finals</b> as the <b>Captain</b> of <b>Alliance 2</b>.",
-        "playoff": {
-            "current_level_record": {
-                "losses": 1,
-                "ties": 0,
-                "wins": 0
-            },
-            "level": "f",
-            "playoff_average": null,
-            "playoff_type": 5,
-            "record": {
-                "losses": 2,
-                "ties": 0,
-                "wins": 2
-            },
-            "status": "playing"
-        },
-        "playoff_status_str": "Currently <b>0-1-0</b> in the <b>Finals</b>",
         "qual": {
-            "num_teams": 24,
+            "status": "completed",
             "ranking": {
-                "dq": 0,
-                "matches_played": 7,
                 "qual_average": null,
                 "rank": 2,
                 "record": {
+                    "wins": 6,
                     "losses": 1,
-                    "ties": 0,
-                    "wins": 6
+                    "ties": 0
                 },
                 "sort_orders": [
                     1.85,
@@ -274,8 +245,11 @@
                     550.0,
                     57.0
                 ],
-                "team_key": "frc3461"
+                "team_key": "frc3461",
+                "matches_played": 7,
+                "dq": 0
             },
+            "num_teams": 24,
             "sort_order_info": [
                 {
                     "name": "Ranking Score",
@@ -301,8 +275,34 @@
                     "name": "Pressure",
                     "precision": 0
                 }
-            ],
-            "status": "completed"
-        }
+            ]
+        },
+        "alliance": {
+            "pick": 0,
+            "name": "Alliance 2",
+            "number": 2,
+            "backup": null
+        },
+        "playoff": {
+            "playoff_type": 5,
+            "status": "playing",
+            "level": "f",
+            "current_level_record": {
+                "wins": 0,
+                "losses": 1,
+                "ties": 0
+            },
+            "record": {
+                "wins": 2,
+                "losses": 2,
+                "ties": 0
+            },
+            "playoff_average": null
+        },
+        "last_match_key": "2017wiwi_f1m1",
+        "next_match_key": null,
+        "alliance_status_str": "<b>Captain</b> of <b>Alliance 2</b>",
+        "playoff_status_str": "Currently <b>0-1-0</b> in the <b>Finals</b>",
+        "overall_status_str": "Team 3461 is <b>0-1-0</b> in the <b>Finals</b> as the <b>Captain</b> of <b>Alliance 2</b>."
     }
 }

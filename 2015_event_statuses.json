@@ -1,27 +1,19 @@
 {
     "2015ctss": {
+        "qual": null,
         "alliance": null,
-        "alliance_status_str": "--",
+        "playoff": null,
         "last_match_key": null,
         "next_match_key": null,
-        "overall_status_str": "Team 3461 is waiting for the event to begin.",
-        "playoff": null,
+        "alliance_status_str": "--",
         "playoff_status_str": "--",
-        "qual": null
+        "overall_status_str": "Team 3461 is waiting for the event to begin."
     },
     "2015ctwat": {
-        "alliance": null,
-        "alliance_status_str": "--",
         "last_match_key": "2015ctwat_qm68",
-        "next_match_key": null,
-        "overall_status_str": "Team 3461 was <b>Rank 27/34</b> with an average score of <b>37.4</b> in quals.",
-        "playoff": null,
-        "playoff_status_str": "--",
         "qual": {
-            "num_teams": 34,
+            "status": "completed",
             "ranking": {
-                "dq": 0,
-                "matches_played": 12,
                 "qual_average": 37.41,
                 "rank": 27,
                 "record": null,
@@ -33,8 +25,11 @@
                     166.0,
                     11.0
                 ],
-                "team_key": "frc3461"
+                "team_key": "frc3461",
+                "matches_played": 12,
+                "dq": 0
             },
+            "num_teams": 34,
             "sort_order_info": [
                 {
                     "name": "Qual Avg.",
@@ -60,23 +55,20 @@
                     "name": "Litter",
                     "precision": 0
                 }
-            ],
-            "status": "completed"
-        }
+            ]
+        },
+        "playoff": null,
+        "alliance": null,
+        "next_match_key": null,
+        "alliance_status_str": "--",
+        "playoff_status_str": "--",
+        "overall_status_str": "Team 3461 was <b>Rank 27/34</b> with an average score of <b>37.4</b> in quals."
     },
     "2015melew": {
-        "alliance": null,
-        "alliance_status_str": "--",
         "last_match_key": "2015melew_qm61",
-        "next_match_key": null,
-        "overall_status_str": "Team 3461 was <b>Rank 29/31</b> with an average score of <b>48.7</b> in quals.",
-        "playoff": null,
-        "playoff_status_str": "--",
         "qual": {
-            "num_teams": 31,
+            "status": "completed",
             "ranking": {
-                "dq": 0,
-                "matches_played": 12,
                 "qual_average": 48.66,
                 "rank": 29,
                 "record": null,
@@ -88,8 +80,11 @@
                     162.0,
                     96.0
                 ],
-                "team_key": "frc3461"
+                "team_key": "frc3461",
+                "matches_played": 12,
+                "dq": 0
             },
+            "num_teams": 31,
             "sort_order_info": [
                 {
                     "name": "Qual Avg.",
@@ -115,8 +110,13 @@
                     "name": "Litter",
                     "precision": 0
                 }
-            ],
-            "status": "completed"
-        }
+            ]
+        },
+        "playoff": null,
+        "alliance": null,
+        "next_match_key": null,
+        "alliance_status_str": "--",
+        "playoff_status_str": "--",
+        "overall_status_str": "Team 3461 was <b>Rank 29/31</b> with an average score of <b>48.7</b> in quals."
     }
 }

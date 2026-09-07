@@ -1,44 +1,18 @@
 {
     "2025cthar": {
-        "alliance": {
-            "backup": null,
-            "name": "Alliance 7",
-            "number": 7,
-            "pick": 2
-        },
-        "alliance_status_str": "<b>2nd Pick</b> of <b>Alliance 7</b>",
-        "last_match_key": "2025cthar_sf12m1",
-        "next_match_key": null,
-        "overall_status_str": "Team 3461 was <b>Rank 20/39</b> with a record of <b>5-7-0</b> in quals, competed in the playoffs as the <b>2nd Pick</b> of <b>Alliance 7</b>, and was eliminated in the <b>Double Elimination Bracket (Round 4)</b> with a playoff record of <b>2-2-0</b>.",
-        "playoff": {
-            "current_level_record": {
-                "losses": 2,
-                "ties": 0,
-                "wins": 2
-            },
-            "double_elim_round": "Round 4",
-            "level": "sf",
-            "playoff_type": 10,
-            "record": {
-                "losses": 2,
-                "ties": 0,
-                "wins": 2
-            },
-            "status": "eliminated"
-        },
-        "playoff_status_str": "<b>Eliminated in the Double Elimination Bracket (Round 4)</b> with a playoff record of <b>2-2-0</b>",
         "qual": {
-            "num_teams": 39,
+            "status": "completed",
             "ranking": {
-                "dq": 0,
-                "matches_played": 12,
-                "qual_average": null,
                 "rank": 20,
+                "team_key": "frc3461",
                 "record": {
+                    "wins": 5,
                     "losses": 7,
-                    "ties": 0,
-                    "wins": 5
+                    "ties": 0
                 },
+                "qual_average": null,
+                "matches_played": 12,
+                "dq": 0,
                 "sort_orders": [
                     2.67,
                     0.17,
@@ -46,9 +20,9 @@
                     16.5,
                     11.5,
                     0.0
-                ],
-                "team_key": "frc3461"
+                ]
             },
+            "num_teams": 39,
             "sort_order_info": [
                 {
                     "name": "Ranking Score",
@@ -70,30 +44,50 @@
                     "name": "Avg Barge",
                     "precision": 2
                 }
-            ],
-            "status": "completed"
-        }
+            ]
+        },
+        "alliance": {
+            "pick": 2,
+            "name": "Alliance 7",
+            "number": 7,
+            "backup": null
+        },
+        "playoff": {
+            "playoff_type": 10,
+            "status": "eliminated",
+            "level": "sf",
+            "double_elim_round": "Round 4",
+            "current_level_record": {
+                "wins": 2,
+                "losses": 2,
+                "ties": 0
+            },
+            "record": {
+                "wins": 2,
+                "losses": 2,
+                "ties": 0
+            }
+        },
+        "last_match_key": "2025cthar_sf12m1",
+        "next_match_key": null,
+        "alliance_status_str": "<b>2nd Pick</b> of <b>Alliance 7</b>",
+        "playoff_status_str": "<b>Eliminated in the Double Elimination Bracket (Round 4)</b> with a playoff record of <b>2-2-0</b>",
+        "overall_status_str": "Team 3461 was <b>Rank 20/39</b> with a record of <b>5-7-0</b> in quals, competed in the playoffs as the <b>2nd Pick</b> of <b>Alliance 7</b>, and was eliminated in the <b>Double Elimination Bracket (Round 4)</b> with a playoff record of <b>2-2-0</b>."
     },
     "2025mawne": {
-        "alliance": null,
-        "alliance_status_str": "--",
-        "last_match_key": "2025mawne_qm66",
-        "next_match_key": null,
-        "overall_status_str": "Team 3461 was <b>Rank 17/35</b> with a record of <b>7-5-0</b> in quals.",
-        "playoff": null,
-        "playoff_status_str": "--",
         "qual": {
-            "num_teams": 35,
+            "status": "completed",
             "ranking": {
-                "dq": 0,
-                "matches_played": 12,
-                "qual_average": null,
                 "rank": 17,
+                "team_key": "frc3461",
                 "record": {
+                    "wins": 7,
                     "losses": 5,
-                    "ties": 0,
-                    "wins": 7
+                    "ties": 0
                 },
+                "qual_average": null,
+                "matches_played": 12,
+                "dq": 0,
                 "sort_orders": [
                     2.75,
                     0.0,
@@ -101,9 +95,9 @@
                     14.58,
                     10.0,
                     0.0
-                ],
-                "team_key": "frc3461"
+                ]
             },
+            "num_teams": 35,
             "sort_order_info": [
                 {
                     "name": "Ranking Score",
@@ -125,50 +119,30 @@
                     "name": "Avg Barge",
                     "precision": 2
                 }
-            ],
-            "status": "completed"
-        }
+            ]
+        },
+        "alliance": null,
+        "playoff": null,
+        "last_match_key": "2025mawne_qm66",
+        "next_match_key": null,
+        "alliance_status_str": "--",
+        "playoff_status_str": "--",
+        "overall_status_str": "Team 3461 was <b>Rank 17/35</b> with a record of <b>7-5-0</b> in quals."
     },
     "2025wiwi": {
-        "alliance": {
-            "backup": null,
-            "name": "Alliance 7",
-            "number": 7,
-            "pick": 2
-        },
-        "alliance_status_str": "<b>2nd Pick</b> of <b>Alliance 7</b>",
-        "last_match_key": "2025wiwi_sf6m1",
-        "next_match_key": null,
-        "overall_status_str": "Team 3461 was <b>Rank 19/22</b> with a record of <b>2-5-0</b> in quals, competed in the playoffs as the <b>2nd Pick</b> of <b>Alliance 7</b>, and was eliminated in the <b>Double Elimination Bracket (Round 2)</b> with a playoff record of <b>0-2-0</b>.",
-        "playoff": {
-            "current_level_record": {
-                "losses": 2,
-                "ties": 0,
-                "wins": 0
-            },
-            "double_elim_round": "Round 2",
-            "level": "sf",
-            "playoff_type": 10,
-            "record": {
-                "losses": 2,
-                "ties": 0,
-                "wins": 0
-            },
-            "status": "eliminated"
-        },
-        "playoff_status_str": "<b>Eliminated in the Double Elimination Bracket (Round 2)</b> with a playoff record of <b>0-2-0</b>",
         "qual": {
-            "num_teams": 22,
+            "status": "completed",
             "ranking": {
-                "dq": 0,
-                "matches_played": 7,
-                "qual_average": null,
                 "rank": 19,
+                "team_key": "frc3461",
                 "record": {
+                    "wins": 2,
                     "losses": 5,
-                    "ties": 0,
-                    "wins": 2
+                    "ties": 0
                 },
+                "qual_average": null,
+                "matches_played": 7,
+                "dq": 0,
                 "sort_orders": [
                     1.57,
                     0.29,
@@ -176,9 +150,9 @@
                     11.43,
                     3.43,
                     0.0
-                ],
-                "team_key": "frc3461"
+                ]
             },
+            "num_teams": 22,
             "sort_order_info": [
                 {
                     "name": "Ranking Score",
@@ -200,8 +174,34 @@
                     "name": "Avg Barge",
                     "precision": 2
                 }
-            ],
-            "status": "completed"
-        }
+            ]
+        },
+        "alliance": {
+            "pick": 2,
+            "name": "Alliance 7",
+            "number": 7,
+            "backup": null
+        },
+        "playoff": {
+            "playoff_type": 10,
+            "status": "eliminated",
+            "level": "sf",
+            "double_elim_round": "Round 2",
+            "current_level_record": {
+                "wins": 0,
+                "losses": 2,
+                "ties": 0
+            },
+            "record": {
+                "wins": 0,
+                "losses": 2,
+                "ties": 0
+            }
+        },
+        "last_match_key": "2025wiwi_sf6m1",
+        "next_match_key": null,
+        "alliance_status_str": "<b>2nd Pick</b> of <b>Alliance 7</b>",
+        "playoff_status_str": "<b>Eliminated in the Double Elimination Bracket (Round 2)</b> with a playoff record of <b>0-2-0</b>",
+        "overall_status_str": "Team 3461 was <b>Rank 19/22</b> with a record of <b>2-5-0</b> in quals, competed in the playoffs as the <b>2nd Pick</b> of <b>Alliance 7</b>, and was eliminated in the <b>Double Elimination Bracket (Round 2)</b> with a playoff record of <b>0-2-0</b>."
     }
 }

@@ -1,23 +1,15 @@
 {
     "2013ctha": {
-        "alliance": null,
-        "alliance_status_str": "--",
         "last_match_key": "2013ctha_qm76",
-        "next_match_key": null,
-        "overall_status_str": "Team 3461 was <b>Rank 38/56</b> with a record of <b>3-6-0</b> in quals.",
-        "playoff": null,
-        "playoff_status_str": "--",
         "qual": {
-            "num_teams": 56,
+            "status": "completed",
             "ranking": {
-                "dq": 0,
-                "matches_played": 9,
                 "qual_average": null,
                 "rank": 38,
                 "record": {
+                    "wins": 3,
                     "losses": 6,
-                    "ties": 0,
-                    "wins": 3
+                    "ties": 0
                 },
                 "sort_orders": [
                     6.0,
@@ -25,8 +17,11 @@
                     170.0,
                     137.0
                 ],
-                "team_key": "frc3461"
+                "team_key": "frc3461",
+                "matches_played": 9,
+                "dq": 0
             },
+            "num_teams": 56,
             "sort_order_info": [
                 {
                     "name": "Qual Score",
@@ -44,45 +39,50 @@
                     "name": "Teleop",
                     "precision": 0
                 }
-            ],
-            "status": "completed"
-        }
+            ]
+        },
+        "playoff": null,
+        "alliance": null,
+        "next_match_key": null,
+        "alliance_status_str": "--",
+        "playoff_status_str": "--",
+        "overall_status_str": "Team 3461 was <b>Rank 38/56</b> with a record of <b>3-6-0</b> in quals."
     },
     "2013ctsc": {
+        "qual": null,
         "alliance": null,
-        "alliance_status_str": "--",
+        "playoff": null,
         "last_match_key": null,
         "next_match_key": null,
-        "overall_status_str": "Team 3461 is waiting for the event to begin.",
-        "playoff": null,
+        "alliance_status_str": "--",
         "playoff_status_str": "--",
-        "qual": null
+        "overall_status_str": "Team 3461 is waiting for the event to begin."
     },
     "2013wiwi": {
-        "alliance": null,
-        "alliance_status_str": "--",
-        "last_match_key": "2013wiwi_qm28",
-        "next_match_key": null,
-        "overall_status_str": "Team 3461 had a record of <b>3-4-0</b> in quals.",
-        "playoff": null,
-        "playoff_status_str": "--",
         "qual": {
-            "num_teams": 26,
+            "status": "completed",
             "ranking": {
-                "dq": null,
-                "matches_played": 7,
-                "qual_average": null,
                 "rank": null,
+                "matches_played": 7,
+                "dq": null,
                 "record": {
+                    "wins": 3,
                     "losses": 4,
-                    "ties": 0,
-                    "wins": 3
+                    "ties": 0
                 },
+                "qual_average": null,
                 "sort_orders": null,
                 "team_key": "frc3461"
             },
-            "sort_order_info": null,
-            "status": "completed"
-        }
+            "num_teams": 26,
+            "sort_order_info": null
+        },
+        "alliance": null,
+        "playoff": null,
+        "last_match_key": "2013wiwi_qm28",
+        "next_match_key": null,
+        "alliance_status_str": "--",
+        "playoff_status_str": "--",
+        "overall_status_str": "Team 3461 had a record of <b>3-4-0</b> in quals."
     }
 }

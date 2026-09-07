@@ -1,47 +1,18 @@
 {
     "202121ned": {
-        "alliance": null,
-        "alliance_status_str": "--",
         "last_match_key": null,
-        "next_match_key": null,
-        "overall_status_str": "Team 3461 is waiting for the event to begin.",
+        "qual": null,
         "playoff": null,
+        "alliance": null,
+        "next_match_key": null,
+        "alliance_status_str": "--",
         "playoff_status_str": "--",
-        "qual": null
+        "overall_status_str": "Team 3461 is waiting for the event to begin."
     },
     "2021bc1": {
-        "alliance": {
-            "backup": null,
-            "name": "Alliance 2",
-            "number": 2,
-            "pick": 3
-        },
-        "alliance_status_str": "<b>3rd Pick</b> of <b>Alliance 2</b>",
-        "last_match_key": "2021bc1_sf1m12",
-        "next_match_key": null,
-        "overall_status_str": "Team 3461 is <b>1-4-0</b> in the <b>Semifinals</b> as the <b>3rd Pick</b> of <b>Alliance 2</b>.",
-        "playoff": {
-            "current_level_record": {
-                "losses": 4,
-                "ties": 0,
-                "wins": 1
-            },
-            "level": "sf",
-            "playoff_average": null,
-            "playoff_type": 8,
-            "record": {
-                "losses": 4,
-                "ties": 0,
-                "wins": 1
-            },
-            "status": "playing"
-        },
-        "playoff_status_str": "Currently <b>1-4-0</b> in the <b>Semifinals</b>",
         "qual": {
-            "num_teams": 24,
+            "status": "completed",
             "ranking": {
-                "dq": 0,
-                "matches_played": 7,
                 "qual_average": null,
                 "rank": 24,
                 "record": null,
@@ -52,8 +23,11 @@
                     158.0,
                     0.0
                 ],
-                "team_key": "frc3461"
+                "team_key": "frc3461",
+                "matches_played": 7,
+                "dq": 0
             },
+            "num_teams": 24,
             "sort_order_info": [
                 {
                     "name": "Ranking Score",
@@ -71,38 +45,64 @@
                     "name": "Teleop Cell + CPanel",
                     "precision": 0
                 }
-            ],
-            "status": "completed"
-        }
+            ]
+        },
+        "alliance": {
+            "pick": 3,
+            "name": "Alliance 2",
+            "number": 2,
+            "backup": null
+        },
+        "playoff": {
+            "playoff_type": 8,
+            "status": "playing",
+            "level": "sf",
+            "current_level_record": {
+                "wins": 1,
+                "losses": 4,
+                "ties": 0
+            },
+            "record": {
+                "wins": 1,
+                "losses": 4,
+                "ties": 0
+            },
+            "playoff_average": null
+        },
+        "last_match_key": "2021bc1_sf1m12",
+        "next_match_key": null,
+        "alliance_status_str": "<b>3rd Pick</b> of <b>Alliance 2</b>",
+        "playoff_status_str": "Currently <b>1-4-0</b> in the <b>Semifinals</b>",
+        "overall_status_str": "Team 3461 is <b>1-4-0</b> in the <b>Semifinals</b> as the <b>3rd Pick</b> of <b>Alliance 2</b>."
     },
     "2021irhce": {
-        "alliance": null,
-        "alliance_status_str": "--",
         "last_match_key": null,
-        "next_match_key": null,
-        "overall_status_str": "Team 3461 is waiting for the event to begin.",
+        "qual": null,
         "playoff": null,
+        "alliance": null,
+        "next_match_key": null,
+        "alliance_status_str": "--",
         "playoff_status_str": "--",
-        "qual": null
+        "overall_status_str": "Team 3461 is waiting for the event to begin."
     },
     "2021irhnb": {
-        "alliance": null,
-        "alliance_status_str": "--",
         "last_match_key": null,
-        "next_match_key": null,
-        "overall_status_str": "Team 3461 is waiting for the event to begin.",
+        "qual": null,
         "playoff": null,
+        "alliance": null,
+        "next_match_key": null,
+        "alliance_status_str": "--",
         "playoff_status_str": "--",
-        "qual": null
+        "overall_status_str": "Team 3461 is waiting for the event to begin."
     },
     "2021nefaw": {
-        "alliance": null,
-        "alliance_status_str": "--",
         "last_match_key": null,
-        "next_match_key": null,
-        "overall_status_str": "Team 3461 is waiting for the event to begin.",
+        "qual": null,
         "playoff": null,
+        "alliance": null,
+        "next_match_key": null,
+        "alliance_status_str": "--",
         "playoff_status_str": "--",
-        "qual": null
+        "overall_status_str": "Team 3461 is waiting for the event to begin."
     }
 }
