@@ -1,6 +1,6 @@
 on:  
   schedule:
-    - cron: '*/5 * * 3-4 *'
+    - cron: 0 0 * */1 1 #Run at 00:00 on day-of-month 1 in every month.
   workflow_dispatch:
 
 name: Update data from The Blue Alliance for current season every 5 minutes during competition hours
@@ -38,7 +38,7 @@ jobs:
       - name: Commit Files
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Periodic TBA data update
+          commit_message: Weekly TBA data update (current season)
           file_pattern: data/tba/*.json
 
 

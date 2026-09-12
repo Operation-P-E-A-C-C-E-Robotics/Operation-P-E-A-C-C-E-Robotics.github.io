@@ -1,6 +1,6 @@
 on:  
   schedule:
-    - cron: '35 15 * * *' #run At 15:35hrs UTC (10:35hrs EST) 
+    - cron: '0 0 1 */6 *' #Run at 00:00 on day-of-month 1 in every 6th month.
   workflow_dispatch:
 
 name: Update data from The Blue Alliance once a week
@@ -35,6 +35,6 @@ jobs:
       - name: Commit Files
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Weekly Blue Alliance Data Update
+          commit_message: Update All Data from The Blue Alliance
 
 
