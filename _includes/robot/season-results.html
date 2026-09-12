@@ -1,4 +1,6 @@
 <section class="robot-season-results mb-5" data-year="{{ include.year }}" data-team="{{ include.team }}">
+  {% include robot/match-table.html %}
+
   <style>
     /* ============================================================
        Event cards
@@ -170,7 +172,7 @@
       margin-bottom: 0.5rem;
       grid-template-columns:
         2.5em
-        7em
+        9em
         repeat(8, minmax(0, 1fr));
 
       grid-template-rows:
@@ -235,8 +237,9 @@
       justify-content: center;
 
       min-width: 0;
+      box-sizing: border-box;
 
-      padding: .375rem;
+      padding: .375rem .75rem .375rem .375rem;
 
       background: var(--robot-neutral-50);
 
@@ -244,9 +247,13 @@
     }
 
     .robot-season-results__match-name a {
+      display: block;
+      min-width: 0;
+      max-width: 100%;
       color: var(--robot-foreground);
       text-decoration: none;
-      white-space: nowrap;
+      white-space: normal;
+      overflow-wrap: anywhere;
     }
 
     .robot-season-results__match-name a:hover {
@@ -479,7 +486,7 @@
       .robot-season-results__match {
         grid-template-columns:
           2.5em
-          7em
+          9em
           repeat(4, minmax(0, 1fr));
 
         grid-template-rows:
@@ -588,7 +595,7 @@
       .robot-season-results__match {
         grid-template-columns:
           2.5em
-          5.5em
+          7em
           repeat(4, minmax(0, 1fr));
 
         font-size: .8rem;
@@ -735,7 +742,7 @@
 
     function highestScoringMatch(matches) {
       return matches.reduce((best, match) => {
-        const side = teamSide(match);
+        const side = robotMatchTable.teamSide(match, team);
         const score = Number(side?.own?.score);
 
         return side && Number.isFinite(score) && (!best || score > best.score)
@@ -1249,7 +1256,7 @@
             <div class="row">
               <div class="col-md-8 mb-3 mb-md-0">
                 <div class="robot-season-results__matches">
-                  ${matchRows(matches) || `
+                  ${robotMatchTable.rows(matches, team, year) || `
                     <div class="robot-season-results__empty">
                       No match data available.
                     </div>
@@ -1288,9 +1295,9 @@
         events.filter(event =>
           statusMap[event.key] != null ||
           matches.some(
-            m =>
+              m =>
               m.event_key === event.key &&
-              teamSide(m)
+              robotMatchTable.teamSide(m, team)
           )
         );
 
@@ -1327,7 +1334,7 @@
                 )
                 .filter(
                   m =>
-                    teamSide(m)
+                    robotMatchTable.teamSide(m, team)
                 )
                 .sort(
                   (a, b) =>
