@@ -12,12 +12,7 @@ layout: default
       </div>
 
       <div class="pl-3 col-sm-12 col-md-9">
-        {% if page.gameLogo %}
-          <img src="{{ page.gameLogo }}" alt="{{ page.game }}" style="height: 5rem; margin-bottom: 1rem;">
-          {% else %}
-          <h1 style="margin-bottom: 1rem;">{{page.year}} - {{ page.game }}</h1>
-        {% endif %}
-        <h1>{{ page.robotName }}</h1>
+        <h1>{{page.year}} - {{ page.robotName }}</h1>
         <h3 id="districtRank">District Rank: --</h3>
         <h3 id="districtPoints">Total District Points: --</h3>
         <p class="small">
@@ -42,6 +37,11 @@ layout: default
             View On The Blue Alliance
             <span><img src="{{ '/assets/images/tba_lamp.svg' | relative_url }}" alt="" style="height:25px"></span>
           </a>
+        </div>
+        <div>
+          {% if page.gameLogo %}
+            <img src="{{ page.gameLogo }}" alt="{{ page.game }}" style="height: 5rem; margin-bottom: 1rem;">
+          {% endif %}
         </div>
       </div>
     </div>
