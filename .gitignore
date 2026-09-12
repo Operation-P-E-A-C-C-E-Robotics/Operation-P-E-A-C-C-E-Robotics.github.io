@@ -8,8 +8,6 @@ node_modules
 vendor/
 .prettierrc
 .vscode/
-
-.env
 _site
 ._site
 admin
@@ -18,5 +16,3 @@ tina
 .jekyll-cache
 .env
 .env.local
-tina/tina-lock.json
-tina/*
