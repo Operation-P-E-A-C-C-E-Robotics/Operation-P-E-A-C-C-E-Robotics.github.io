@@ -1,0 +1,261 @@
+[
+    {
+        "key": "2019bc",
+        "name": "BattleCry 20",
+        "short_name": "BattleCry 20",
+        "event_code": "bc",
+        "event_type": 99,
+        "event_type_string": "Offseason",
+        "parent_event_key": null,
+        "playoff_type": 8,
+        "playoff_type_string": "Custom",
+        "district": null,
+        "division_keys": [],
+        "first_event_id": null,
+        "first_event_code": "bc20",
+        "year": 2019,
+        "timezone": "America/New_York",
+        "week": null,
+        "website": "https://wp.wpi.edu/battlecry/",
+        "remap_teams": null,
+        "city": "Worcester",
+        "state_prov": "MA",
+        "country": "USA",
+        "postal_code": "01609",
+        "lat": null,
+        "lng": null,
+        "location_name": "Worcester Polytechnic Institute",
+        "address": "Worcester Polytechnic Institute\r\n100 Institute Rd.\r\nWorcester, MA, USA",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "start_date": "2019-06-08",
+        "end_date": "2019-06-09",
+        "webcasts": [
+            {
+                "type": "twitch",
+                "channel": "wpirobotics"
+            }
+        ]
+    },
+    {
+        "key": "2019ctsc",
+        "name": "CT State Robotics Championship",
+        "short_name": "",
+        "event_code": "ctsc",
+        "event_type": 99,
+        "event_type_string": "Offseason",
+        "parent_event_key": null,
+        "playoff_type": null,
+        "playoff_type_string": null,
+        "district": null,
+        "division_keys": [],
+        "first_event_id": null,
+        "first_event_code": null,
+        "year": 2019,
+        "timezone": "America/New_York",
+        "week": null,
+        "website": "https://www.casciac.org/scripts/registerwpcas.cgi?confid=ROBOTICS1611",
+        "remap_teams": null,
+        "city": "Hartford",
+        "state_prov": "CT",
+        "country": "USA",
+        "postal_code": "06106",
+        "lat": null,
+        "lng": null,
+        "location_name": "Hartford State Armory",
+        "address": "Hartford State Armory\r\n360 Broad St\r\nHartford, CT, USA",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "start_date": "2019-05-11",
+        "end_date": "2019-05-11",
+        "webcasts": [
+            {
+                "type": "twitch",
+                "channel": "nefirst_red"
+            },
+            {
+                "type": "twitch",
+                "channel": "nefirst_blue"
+            }
+        ]
+    },
+    {
+        "key": "2019ctwat",
+        "name": "NE District Waterbury Event",
+        "short_name": "Waterbury",
+        "event_code": "ctwat",
+        "event_type": 1,
+        "event_type_string": "District",
+        "parent_event_key": null,
+        "playoff_type": null,
+        "playoff_type_string": null,
+        "district": {
+            "key": "2019ne",
+            "year": 2019,
+            "abbreviation": "ne",
+            "display_name": "New England",
+            "official_advancement_counts": {
+                "dcmp": 64,
+                "cmp": 33
+            }
+        },
+        "division_keys": [],
+        "first_event_id": "37474",
+        "first_event_code": "ctwat",
+        "year": 2019,
+        "timezone": "America/New_York",
+        "week": 1,
+        "website": "http://www.nefirst.org/",
+        "remap_teams": null,
+        "city": "Waterbury",
+        "state_prov": "CT",
+        "country": "USA",
+        "postal_code": "06704",
+        "lat": null,
+        "lng": null,
+        "location_name": "Wilby High School",
+        "address": "Wilby High School\n460 Buck Hill Road\nWaterbury, CT 06704\nUSA",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "start_date": "2019-03-08",
+        "end_date": "2019-03-10",
+        "webcasts": [
+            {
+                "type": "twitch",
+                "channel": "nefirst_red"
+            }
+        ]
+    },
+    {
+        "key": "2019mawne",
+        "name": "NE District Western NE Event",
+        "short_name": "Western NE",
+        "event_code": "mawne",
+        "event_type": 1,
+        "event_type_string": "District",
+        "parent_event_key": null,
+        "playoff_type": null,
+        "playoff_type_string": null,
+        "district": {
+            "key": "2019ne",
+            "year": 2019,
+            "abbreviation": "ne",
+            "display_name": "New England",
+            "official_advancement_counts": {
+                "dcmp": 64,
+                "cmp": 33
+            }
+        },
+        "division_keys": [],
+        "first_event_id": "39197",
+        "first_event_code": "mawne",
+        "year": 2019,
+        "timezone": "America/New_York",
+        "week": 3,
+        "website": "https://nefirst.org/",
+        "remap_teams": null,
+        "city": "Springfield",
+        "state_prov": "MA",
+        "country": "USA",
+        "postal_code": "01119",
+        "lat": null,
+        "lng": null,
+        "location_name": "Alumni Healthful Living Center at WNE",
+        "address": "Alumni Healthful Living Center at WNE\n1215 Wilbraham Road\nSpringfield, MA 01119\nUSA",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "start_date": "2019-03-22",
+        "end_date": "2019-03-24",
+        "webcasts": [
+            {
+                "type": "twitch",
+                "channel": "nefirst_green"
+            },
+            {
+                "type": "twitch",
+                "channel": "NEFIRST_GREEN"
+            }
+        ]
+    },
+    {
+        "key": "2019mesh",
+        "name": "Summer Heat",
+        "short_name": "Summer Heat",
+        "event_code": "mesh",
+        "event_type": 99,
+        "event_type_string": "Offseason",
+        "parent_event_key": null,
+        "playoff_type": 0,
+        "playoff_type_string": null,
+        "district": null,
+        "division_keys": [],
+        "first_event_id": null,
+        "first_event_code": "mesou",
+        "year": 2019,
+        "timezone": "America/New_York",
+        "week": null,
+        "website": "",
+        "remap_teams": {
+            "frc9998": "frc7127B",
+            "frc9993": "frc5687B",
+            "frc9995": "frc6328B",
+            "frc9997": "frc4564B"
+        },
+        "city": "South Portland",
+        "state_prov": "ME",
+        "country": "USA",
+        "postal_code": "04106",
+        "lat": null,
+        "lng": null,
+        "location_name": "South Portland High School",
+        "address": "South Portland High School\r\n637 Highland Ave\r\nSouth Portland, ME, United States",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "start_date": "2019-06-29",
+        "end_date": "2019-06-29",
+        "webcasts": [
+            {
+                "type": "twitch",
+                "channel": "frcteam58"
+            }
+        ]
+    },
+    {
+        "key": "2019wiwi",
+        "name": "Where is Wolcott Invitational",
+        "short_name": "",
+        "event_code": "wiwi",
+        "event_type": 99,
+        "event_type_string": "Offseason",
+        "parent_event_key": null,
+        "playoff_type": 5,
+        "playoff_type_string": "Legacy Double Elimination Bracket (8 Alliances)",
+        "district": null,
+        "division_keys": [],
+        "first_event_id": null,
+        "first_event_code": null,
+        "year": 2019,
+        "timezone": "America/New_York",
+        "week": null,
+        "website": "https://max1071.com/wiwi/",
+        "remap_teams": null,
+        "city": "Wolcott",
+        "state_prov": "CT",
+        "country": "USA",
+        "postal_code": "06716",
+        "lat": null,
+        "lng": null,
+        "location_name": "Wolcott High School",
+        "address": "Wolcott High School\r\n457 Boundline Rd\r\nWolcott, CT, USA",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "start_date": "2019-06-01",
+        "end_date": "2019-06-01",
+        "webcasts": [
+            {
+                "type": "twitch",
+                "channel": "firstupdatesnow"
+            }
+        ]
+    }
+]

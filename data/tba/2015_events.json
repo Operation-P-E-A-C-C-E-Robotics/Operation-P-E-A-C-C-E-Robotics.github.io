@@ -1,0 +1,135 @@
+[
+    {
+        "key": "2015ctss",
+        "name": "Suffield Shakedown",
+        "short_name": "Suffield Shakedown",
+        "event_code": "ctss",
+        "event_type": 100,
+        "event_type_string": "Preseason",
+        "parent_event_key": null,
+        "playoff_type": 3,
+        "playoff_type_string": "Average Score (8 Alliances)",
+        "district": null,
+        "division_keys": [],
+        "first_event_id": null,
+        "first_event_code": null,
+        "year": 2015,
+        "timezone": "America/New_York",
+        "week": null,
+        "website": "http://www.aceshigh176.org/ss-scrimmage",
+        "remap_teams": null,
+        "city": "West Suffield",
+        "state_prov": "CT",
+        "country": "USA",
+        "postal_code": "06093",
+        "lat": null,
+        "lng": null,
+        "location_name": "Suffield High School",
+        "address": "Suffield High School\r\n1060 Sheldon Street\r\nWest Suffield, CT",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "start_date": "2015-02-14",
+        "end_date": "2015-02-14",
+        "webcasts": [
+            {
+                "type": "livestream",
+                "file": "3809589",
+                "channel": "8708995"
+            }
+        ]
+    },
+    {
+        "key": "2015ctwat",
+        "name": "NE District - Waterbury Event",
+        "short_name": "Waterbury",
+        "event_code": "ctwat",
+        "event_type": 1,
+        "event_type_string": "District",
+        "parent_event_key": null,
+        "playoff_type": 3,
+        "playoff_type_string": "Average Score (8 Alliances)",
+        "district": {
+            "key": "2015ne",
+            "year": 2015,
+            "abbreviation": "ne",
+            "display_name": "New England",
+            "official_advancement_counts": {
+                "dcmp": 60,
+                "cmp": 35
+            }
+        },
+        "division_keys": [],
+        "first_event_id": "13461",
+        "first_event_code": "ctwat",
+        "year": 2015,
+        "timezone": "America/New_York",
+        "week": 0,
+        "website": "http://www.nefirst.org/",
+        "remap_teams": null,
+        "city": "Waterbury",
+        "state_prov": "CT",
+        "country": "USA",
+        "postal_code": "06704",
+        "lat": null,
+        "lng": null,
+        "location_name": "Wilby High School",
+        "address": "Wilby High School\r\n460 Bucks Hill Road\r\nWaterbury, CT 06704\r\nUSA",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "start_date": "2015-02-27",
+        "end_date": "2015-03-01",
+        "webcasts": [
+            {
+                "type": "twitch",
+                "channel": "nefirst_red"
+            }
+        ]
+    },
+    {
+        "key": "2015melew",
+        "name": "NE District - Pine Tree Event",
+        "short_name": "Pine Tree",
+        "event_code": "melew",
+        "event_type": 1,
+        "event_type_string": "District",
+        "parent_event_key": null,
+        "playoff_type": 3,
+        "playoff_type_string": "Average Score (8 Alliances)",
+        "district": {
+            "key": "2015ne",
+            "year": 2015,
+            "abbreviation": "ne",
+            "display_name": "New England",
+            "official_advancement_counts": {
+                "dcmp": 60,
+                "cmp": 35
+            }
+        },
+        "division_keys": [],
+        "first_event_id": "13377",
+        "first_event_code": "melew",
+        "year": 2015,
+        "timezone": "America/New_York",
+        "week": 2,
+        "website": "http://www.nefirst.org/",
+        "remap_teams": null,
+        "city": "Lewiston",
+        "state_prov": "ME",
+        "country": "USA",
+        "postal_code": "04240",
+        "lat": null,
+        "lng": null,
+        "location_name": "Androscoggin Bank Colisee",
+        "address": "Androscoggin Bank Colisee\r\n190 Birch Street\r\nLewiston, ME 04240\r\nUSA",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "start_date": "2015-03-12",
+        "end_date": "2015-03-14",
+        "webcasts": [
+            {
+                "type": "twitch",
+                "channel": "nefirst_red"
+            }
+        ]
+    }
+]

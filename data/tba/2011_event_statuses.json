@@ -1,0 +1,41 @@
+{
+    "2011ct": {
+        "qual": {
+            "status": "completed",
+            "ranking": {
+                "qual_average": null,
+                "rank": 20,
+                "record": {
+                    "wins": 6,
+                    "losses": 4,
+                    "ties": 0
+                },
+                "sort_orders": [
+                    12.0,
+                    17.7
+                ],
+                "team_key": "frc3461",
+                "matches_played": 10,
+                "dq": 0
+            },
+            "num_teams": 58,
+            "sort_order_info": [
+                {
+                    "name": "Qual Score",
+                    "precision": 0
+                },
+                {
+                    "name": "Ranking Score",
+                    "precision": 2
+                }
+            ]
+        },
+        "alliance": null,
+        "playoff": null,
+        "last_match_key": "2011ct_qm88",
+        "next_match_key": null,
+        "alliance_status_str": "--",
+        "playoff_status_str": "--",
+        "overall_status_str": "Team 3461 was <b>Rank 20/58</b> with a record of <b>6-4-0</b> in quals."
+    }
+}

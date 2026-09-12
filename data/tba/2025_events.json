@@ -1,0 +1,150 @@
+[
+    {
+        "key": "2025cthar",
+        "name": "NE District Hartford Event",
+        "short_name": "Hartford",
+        "event_code": "cthar",
+        "event_type": 1,
+        "event_type_string": "District",
+        "parent_event_key": null,
+        "playoff_type": 10,
+        "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
+        "district": {
+            "key": "2025ne",
+            "year": 2025,
+            "abbreviation": "ne",
+            "display_name": "New England",
+            "official_advancement_counts": {
+                "dcmp": 96,
+                "cmp": 31
+            }
+        },
+        "division_keys": [],
+        "first_event_id": null,
+        "first_event_code": "cthar",
+        "year": 2025,
+        "timezone": "America/New_York",
+        "week": 4,
+        "website": "http://www.nefirst.org/",
+        "remap_teams": null,
+        "city": "Hartford",
+        "state_prov": "CT",
+        "country": "USA",
+        "postal_code": "06105",
+        "lat": null,
+        "lng": null,
+        "location_name": "Hartford Public High School",
+        "address": "55 Forest St",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "start_date": "2025-03-28",
+        "end_date": "2025-03-30",
+        "webcasts": [
+            {
+                "type": "twitch",
+                "channel": "firstinspires19"
+            },
+            {
+                "type": "twitch",
+                "channel": "nefirst_green"
+            },
+            {
+                "type": "twitch",
+                "channel": "nefirst_red"
+            }
+        ]
+    },
+    {
+        "key": "2025mawne",
+        "name": "NE District Western NE Event",
+        "short_name": "Western NE",
+        "event_code": "mawne",
+        "event_type": 1,
+        "event_type_string": "District",
+        "parent_event_key": null,
+        "playoff_type": 10,
+        "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
+        "district": {
+            "key": "2025ne",
+            "year": 2025,
+            "abbreviation": "ne",
+            "display_name": "New England",
+            "official_advancement_counts": {
+                "dcmp": 96,
+                "cmp": 31
+            }
+        },
+        "division_keys": [],
+        "first_event_id": null,
+        "first_event_code": "mawne",
+        "year": 2025,
+        "timezone": "America/New_York",
+        "week": 2,
+        "website": "https://nefirst.org/",
+        "remap_teams": null,
+        "city": "Springfield",
+        "state_prov": "MA",
+        "country": "USA",
+        "postal_code": "01119",
+        "lat": null,
+        "lng": null,
+        "location_name": "Western New England University",
+        "address": "1215 Wilbraham Rd",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "start_date": "2025-03-14",
+        "end_date": "2025-03-16",
+        "webcasts": [
+            {
+                "type": "twitch",
+                "channel": "firstinspires19"
+            },
+            {
+                "type": "twitch",
+                "channel": "nefirst_green"
+            },
+            {
+                "type": "twitch",
+                "channel": "nefirst_red"
+            }
+        ]
+    },
+    {
+        "key": "2025wiwi",
+        "name": "WIWI",
+        "short_name": "WIWI",
+        "event_code": "wiwi",
+        "event_type": 99,
+        "event_type_string": "Offseason",
+        "parent_event_key": null,
+        "playoff_type": 10,
+        "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
+        "district": null,
+        "division_keys": [],
+        "first_event_id": null,
+        "first_event_code": "ctwol",
+        "year": 2025,
+        "timezone": "America/New_York",
+        "week": null,
+        "website": "https://www.max1071.org/wiwi",
+        "remap_teams": null,
+        "city": "Wolcott",
+        "state_prov": "CT",
+        "country": "USA",
+        "postal_code": "06716",
+        "lat": null,
+        "lng": null,
+        "location_name": "Wolcott High School",
+        "address": "457 Bound Line Rd",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "start_date": "2025-06-13",
+        "end_date": "2025-06-14",
+        "webcasts": [
+            {
+                "type": "youtube",
+                "channel": "xLg-BE_CNFw"
+            }
+        ]
+    }
+]
