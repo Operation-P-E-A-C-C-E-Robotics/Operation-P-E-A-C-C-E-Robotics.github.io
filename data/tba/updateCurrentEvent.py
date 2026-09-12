@@ -35,19 +35,24 @@ def build_session() -> requests.Session:
 SESSION = build_session()
 
 
-def fetch_json(path: str):
+def fetch_json(path: str, expected_type):
     if not TBA_API_KEY:
         raise RuntimeError("TBA_API_KEY is required. Set it in the environment or GitHub Actions secrets.")
 
     url = f"https://www.thebluealliance.com/api/v3/{path}"
     response = SESSION.get(url, headers={"X-TBA-Auth-Key": TBA_API_KEY}, timeout=30)
 
-    if response.status_code == 404:
-        return None
-    if response.status_code == 304:
-        return None
     response.raise_for_status()
-    return response.json()
+    try:
+        payload = response.json()
+    except ValueError as exc:
+        raise RuntimeError(f"TBA returned invalid JSON for {path}") from exc
+    if not isinstance(payload, expected_type):
+        raise RuntimeError(
+            f"TBA returned {type(payload).__name__} for {path}; "
+            f"expected {expected_type.__name__}"
+        )
+    return payload
 
 
 def parse_date(value):
@@ -131,7 +136,7 @@ def pick_event(events):
 
 
 def build_snapshot():
-    team_events = fetch_json(f"team/{TEAM}/events/{YEAR}") or []
+    team_events = fetch_json(f"team/{TEAM}/events/{YEAR}", list)
     event = pick_event(team_events)
 
     snapshot = {
@@ -150,6 +155,8 @@ def build_snapshot():
         return snapshot
 
     event_key = event.get("key")
+    if not event_key or not event.get("start_date") or not event.get("end_date"):
+        raise RuntimeError("TBA returned an incomplete event payload")
     snapshot["event"] = {
         "key": event.get("key"),
         "name": event.get("name"),
@@ -170,11 +177,12 @@ def build_snapshot():
     snapshot["event_key"] = event_key
     snapshot["state"] = event_status(event)
 
-    team_status = fetch_json(f"team/{TEAM}/event/{event_key}/status")
-    if team_status:
-        snapshot["team_status"] = team_status
+    team_status = fetch_json(f"team/{TEAM}/event/{event_key}/status", dict)
+    snapshot["team_status"] = team_status
 
-    matches = fetch_json(f"team/{TEAM}/event/{event_key}/matches") or []
+    matches = fetch_json(f"team/{TEAM}/event/{event_key}/matches", list)
+    if any(not isinstance(match, dict) or not match.get("key") for match in matches):
+        raise RuntimeError("TBA returned an invalid matches payload")
     snapshot["matches"] = [normalize_match(match) for match in matches]
 
     return snapshot
@@ -182,9 +190,28 @@ def build_snapshot():
 
 def write_snapshot(snapshot):
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with OUTPUT_PATH.open("w", encoding="utf-8") as handle:
+    existing = None
+    if OUTPUT_PATH.exists():
+        try:
+            with OUTPUT_PATH.open(encoding="utf-8") as handle:
+                existing = json.load(handle)
+        except (OSError, ValueError) as exc:
+            raise RuntimeError(f"Existing snapshot is invalid: {OUTPUT_PATH}") from exc
+
+    comparable = dict(snapshot)
+    comparable.pop("generated_at", None)
+    if isinstance(existing, dict):
+        existing_comparable = dict(existing)
+        existing_comparable.pop("generated_at", None)
+        if existing_comparable == comparable:
+            print(f"No changes for {OUTPUT_PATH}")
+            return
+
+    temporary_path = OUTPUT_PATH.with_suffix(f"{OUTPUT_PATH.suffix}.tmp")
+    with temporary_path.open("w", encoding="utf-8") as handle:
         json.dump(snapshot, handle, indent=2, sort_keys=True)
         handle.write("\n")
+    temporary_path.replace(OUTPUT_PATH)
 
     print(f"Wrote {OUTPUT_PATH} for event {snapshot.get('event_key') or 'unknown'}")
 

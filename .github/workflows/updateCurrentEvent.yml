@@ -5,6 +5,10 @@ on:
     - cron: '*/5 * * * *' # Runs every five minutes.
   workflow_dispatch:
 
+concurrency:
+  group: tba-data-writers
+  cancel-in-progress: false
+
 jobs:
   update-current-event:
     runs-on: ubuntu-latest

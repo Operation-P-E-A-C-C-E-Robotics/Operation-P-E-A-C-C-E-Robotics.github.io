@@ -3,6 +3,10 @@ on:
     - cron: '0 0 1 */6 *' # Runs at 00:00 UTC on the first day of January and July.
   workflow_dispatch:
 
+concurrency:
+  group: tba-data-writers
+  cancel-in-progress: false
+
 name: Update historical TBA data twice yearly
 
 jobs:  

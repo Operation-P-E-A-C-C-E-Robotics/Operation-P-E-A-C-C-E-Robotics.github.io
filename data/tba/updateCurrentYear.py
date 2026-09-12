@@ -8,6 +8,7 @@ import hashlib
 import hmac
 import time
 import urllib.parse
+from pathlib import Path
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -20,7 +21,7 @@ PUSHER_SECRET = os.getenv("PUSHER_SECRET")
 PUSHER_CLUSTER = os.getenv("PUSHER_CLUSTER")
 
 TEAM = "frc3461"
-YEAR = datetime.date.today().year
+YEAR = datetime.date.today().year + (1 if datetime.date.today().month >= 9 else 0)
 EMAIL = "actions@github.com"
 NAME = "GitHub Actions [Bot]"
 COMMIT_MESSAGE = "Update data via Python script"
@@ -38,16 +39,8 @@ def set_git_config(email, name):
 def git_commit(files, message):
     if not files:
         return False
-    subprocess.run(["git", "add"] + files)
-    result = subprocess.run(["git", "commit", "-m", message], capture_output=True, text=True)
-    
-    if result.returncode == 0:
-        subprocess.run(["git", "push", "--force"])
-        print("Committed files:", files)
-        return True
-    else:
-        print("No changes to commit")
-        return False
+    print("Files ready for workflow commit:", files)
+    return True
 
 # -------------------- PUSHER --------------------
 def notify_pusher(message_type, data):
@@ -99,7 +92,7 @@ def notify_pusher(message_type, data):
     string_to_sign = f"POST\n/apps/{PUSHER_APP_ID}/events\n{query_string}"
     signature = hmac.new(PUSHER_SECRET.encode(), string_to_sign.encode(), hashlib.sha256).hexdigest()
     url = f"https://api-{PUSHER_CLUSTER}.pusher.com/apps/{PUSHER_APP_ID}/events?{query_string}&auth_signature={signature}"
-    resp = requests.post(url, headers={"Content-Type": "application/json"}, data=body)
+    resp = requests.post(url, headers={"Content-Type": "application/json"}, data=body, timeout=30)
     if not resp.ok:
         print(f"Pusher notification failed ({resp.status_code}): {resp.text}")
     else:
@@ -108,16 +101,33 @@ def notify_pusher(message_type, data):
 # -------------------- TBA FETCH --------------------
 MATCH_CACHE = {}
 
-def fetch_json(endpoint):
+def fetch_json(endpoint, expected_type):
+    if not TBA_API_KEY:
+        raise RuntimeError("TBA_API_KEY is required")
     url = f"https://www.thebluealliance.com/api/v3/{endpoint}?X-TBA-Auth-Key={TBA_API_KEY}"
-    resp = requests.get(url)
-    return resp.json()
+    resp = requests.get(url, timeout=30)
+    resp.raise_for_status()
+    try:
+        payload = resp.json()
+    except ValueError as exc:
+        raise RuntimeError(f"TBA returned invalid JSON for {endpoint}") from exc
+    if not isinstance(payload, expected_type):
+        raise RuntimeError(
+            f"TBA returned {type(payload).__name__} for {endpoint}; "
+            f"expected {expected_type.__name__}"
+        )
+    return payload
+
+def validate_records(records, name, required_keys):
+    for record in records:
+        if not isinstance(record, dict) or any(not record.get(key) for key in required_keys):
+            raise RuntimeError(f"TBA returned an invalid {name} record")
 
 # -------------------- FILE MERGE --------------------
 def merge_array_file(filename, new_data):
     try:
         if os.path.exists(filename):
-            with open(filename, "r") as f:
+            with open(filename, "r", encoding="utf-8") as f:
                 existing = json.load(f)
         else:
             existing = []
@@ -131,8 +141,7 @@ def merge_array_file(filename, new_data):
                 changed = True
         merged = list(existing_map.values())
         if changed:
-            with open(filename, "w") as f:
-                json.dump(merged, f, indent=4)
+            write_json_atomically(filename, merged)
         return changed
     except Exception as e:
         print(f"Failed to merge {filename}: {e}")
@@ -153,25 +162,38 @@ def merge_object_file(filename, new_data):
                 changed = True
         
         if changed:
-            with open(filename, "w") as f:
-                json.dump(existing, f, indent=4)
+            write_json_atomically(filename, existing)
         return changed            
     except Exception as e:
         print(f"Failed to merge {filename}: {e}")
         return False
     
 def overwrite_file(filename, new_data):
+    existing = None
     try:
-        with open(filename, "w") as f:
-            json.dump(new_data, f, indent=4)
-        return True
-    except Exception as e:
-        print(f"Failed to write {filename}: {e}")
-        return False
+        with open(filename, "r", encoding="utf-8") as f:
+            existing = json.load(f)
+        if existing == new_data:
+            return False
+    except FileNotFoundError:
+        pass
+    except (OSError, ValueError) as exc:
+        raise RuntimeError(f"Existing JSON is invalid: {filename}") from exc
+    write_json_atomically(filename, new_data)
+    return True
+
+def write_json_atomically(filename, data):
+    path = Path(filename)
+    temporary_path = path.with_suffix(f"{path.suffix}.tmp")
+    with temporary_path.open("w", encoding="utf-8") as f:
+        json.dump(data, f, indent=4)
+        f.write("\n")
+    temporary_path.replace(path)
 
 # -------------------- CURRENT EVENT --------------------
 def get_current_event():
-    events = fetch_json(f"team/{TEAM}/events/{YEAR}")
+    events = fetch_json(f"team/{TEAM}/events/{YEAR}", list)
+    validate_records(events, "event", ("key", "start_date", "end_date"))
     today = datetime.date.today()
 
     current_event = None
@@ -243,7 +265,8 @@ def update_current_event_matches_and_status():
     files_changed = []
 
     # Matches
-    matches = fetch_json(f"team/{TEAM}/event/{event['key']}/matches")
+    matches = fetch_json(f"team/{TEAM}/event/{event['key']}/matches", list)
+    validate_records(matches, "match", ("key", "event_key"))
     if merge_array_file(f"{YEAR}_matches.json", matches):
         files_changed.append(f"{YEAR}_matches.json")
     
@@ -253,7 +276,7 @@ def update_current_event_matches_and_status():
         notify_pusher("matches", deltas)
 
     # Event Status
-    status = fetch_json(f"team/{TEAM}/events/{YEAR}/statuses")
+    status = fetch_json(f"team/{TEAM}/events/{YEAR}/statuses", dict)
     if event["key"] in status and merge_object_file(f"{YEAR}_event_statuses.json", {event["key"]: status[event["key"]]}):
         files_changed.append(f"{YEAR}_event_statuses.json")
         notify_pusher("eventStatus", status[event["key"]])
@@ -269,7 +292,8 @@ def update_current_event_awards_and_info():
     files_changed = []
 
     # Awards
-    awards = fetch_json(f"team/{TEAM}/awards/{YEAR}")
+    awards = fetch_json(f"team/{TEAM}/awards/{YEAR}", list)
+    validate_records(awards, "award", ("event_key",))
     awards = [a for a in awards if a["event_key"] == event["key"]]
     if merge_array_file(f"{YEAR}_awards.json", awards):
         files_changed.append(f"{YEAR}_awards.json")
@@ -283,7 +307,8 @@ def update_current_event_awards_and_info():
         git_commit(files_changed, COMMIT_MESSAGE)
 
 def update_district_rankings():
-    rankings = fetch_json(f"district/{YEAR}ne/rankings")
+    rankings = fetch_json(f"district/{YEAR}ne/rankings", list)
+    validate_records(rankings, "district ranking", ("team_key",))
     if overwrite_file(f"{YEAR}_district_rankings.json", rankings):
         notify_pusher("district", rankings)
         git_commit([f"{YEAR}_district_rankings.json"], COMMIT_MESSAGE)

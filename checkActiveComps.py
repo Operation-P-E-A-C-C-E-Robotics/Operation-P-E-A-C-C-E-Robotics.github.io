@@ -5,9 +5,13 @@ import os
 import requests
 
 TEAM_KEY = "frc3461"
+TBA_API_KEY = os.environ.get("TBA_API_KEY")
+
+if not TBA_API_KEY:
+    raise RuntimeError("TBA_API_KEY is required")
 
 headers = {
-    "X-TBA-Auth-Key": os.environ["TBA_API_KEY"],
+    "X-TBA-Auth-Key": TBA_API_KEY,
     "Accept": "application/json"
 }
 
@@ -15,12 +19,19 @@ year = datetime.datetime.now().year
 
 eventsRequest = requests.get(
     f"https://www.thebluealliance.com/api/v3/team/{TEAM_KEY}/events/{year}",
-    headers=headers
+    headers=headers,
+    timeout=30
 )
+eventsRequest.raise_for_status()
+try:
+    events = eventsRequest.json()
+except ValueError as exc:
+    raise RuntimeError("TBA returned invalid JSON for active-event check") from exc
+if not isinstance(events, list):
+    raise RuntimeError("TBA returned an invalid events payload")
 eTag = eventsRequest.headers.get("ETag", "")
 print(f"eTag={eTag}")
 headers["If-None-Match"] = eTag
-events = eventsRequest.json()
 
 today = datetime.date.today()
 
@@ -32,7 +43,9 @@ playing_today = any(
 print(f"playing_today={playing_today}")
 
 if playing_today:
-    token = os.environ["GITHUB_TOKEN"]
+    token = os.environ.get("GITHUB_TOKEN")
+    if not token:
+        raise RuntimeError("GITHUB_TOKEN is required to dispatch the event runner")
 
     owner = "Operation-P-E-A-C-C-E-Robotics"
     repo = "Operation-P-E-A-C-C-E-Robotics.github.io"
@@ -64,5 +77,4 @@ if playing_today:
     if response.status_code == 204:
         print("Workflow dispatched successfully")
     else:
-        print(response.text)
-    pass
+        response.raise_for_status()
