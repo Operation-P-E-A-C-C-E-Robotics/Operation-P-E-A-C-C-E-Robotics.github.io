@@ -92,11 +92,38 @@
         return key === team ? `<strong>${esc(number)}</strong>` : esc(number);
       }).join(" · ");
 
+    const firstValue = (details, paths) => {
+      for (const path of paths) {
+        const value = path.reduce((current, key) => current?.[key], details);
+        if (value !== undefined && value !== null) return value;
+      }
+      return "—";
+    };
+
     const breakdown = (alliance, details, height) => {
       const values = [
-        `Auto: ${esc(details?.totalAutoPoints ?? "—")}`,
-        `Teleop: ${esc(details?.totalTeleopPoints ?? "—")}`,
-        `Penalty: ${esc(details?.foulPoints ?? "—")}`
+        `Auto: ${esc(firstValue(details, [
+          ["totalAutoPoints"],
+          ["autoPoints"],
+          ["totalAutonomousPoints"],
+          ["autonomousPoints"],
+          ["auto", "totalPoints"],
+          ["autonomous", "totalPoints"]
+        ]))}`,
+        `Teleop: ${esc(firstValue(details, [
+          ["totalTeleopPoints"],
+          ["teleopPoints"],
+          ["totalTeleoperatedPoints"],
+          ["teleoperatedPoints"],
+          ["teleop", "totalPoints"],
+          ["teleoperated", "totalPoints"]
+        ]))}`,
+        `Penalty: ${esc(firstValue(details, [
+          ["foulPoints"],
+          ["penaltyPoints"],
+          ["totalPenaltyPoints"],
+          ["penalties", "totalPoints"]
+        ]))}`
       ];
 
       return `<div class="robot-high-score__breakdown${height === "tall" ? " robot-high-score__breakdown--tall" : ""}">${values.map(value => `<span>${value}</span>`).join(height === "short" ? " · " : "")}</div>`;
