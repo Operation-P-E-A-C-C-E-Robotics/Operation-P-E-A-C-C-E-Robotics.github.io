@@ -39,7 +39,7 @@ if playing_today:
 
     url = (
         f"https://api.github.com/repos/"
-        f"{owner}/{repo}/actions/workflows/updateCurrentYear.yml/dispatches"
+        f"{owner}/{repo}/actions/workflows/updateCurrentEvent.yml/dispatches"
     )
 
     headers = {

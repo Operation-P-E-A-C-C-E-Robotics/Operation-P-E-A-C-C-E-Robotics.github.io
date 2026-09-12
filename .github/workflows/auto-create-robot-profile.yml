@@ -1,7 +1,7 @@
-name: Autocreate robot profile if none exists
+name: Create robot profile annually after the season
 on: 
   schedule: 
-   - cron: '0 5 1 4 *'  # runs at 05:00 on the first day of April, right after the Season ends
+  - cron: '0 5 1 4 *'  # Runs annually at 05:00 UTC on April 1.
 
   workflow_dispatch:
 

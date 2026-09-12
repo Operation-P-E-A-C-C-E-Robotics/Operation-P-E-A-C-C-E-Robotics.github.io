@@ -1,4 +1,4 @@
-name: Run NPM Audit Weekly and commit fixes
+name: Run npm audit every Sunday and propose fixes
 on:
   schedule:
     - cron: '0 0 * * 0' # Runs every Sunday at midnight

@@ -1,9 +1,9 @@
 on:  
   schedule:
-    - cron: '0 0 1 */6 *' #Run at 00:00 on day-of-month 1 in every 6th month.
+    - cron: '0 0 1 */6 *' # Runs at 00:00 UTC on the first day of January and July.
   workflow_dispatch:
 
-name: Update data from The Blue Alliance once a week
+name: Update historical TBA data twice yearly
 
 jobs:  
   Execute-Python-Script:

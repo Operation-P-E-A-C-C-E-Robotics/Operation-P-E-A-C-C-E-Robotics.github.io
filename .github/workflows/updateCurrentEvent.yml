@@ -1,8 +1,8 @@
-name: Update current event snapshot
+name: Update current event snapshot every five minutes
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/5 * * * *' # Runs every five minutes.
   workflow_dispatch:
 
 jobs:

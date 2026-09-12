@@ -26,9 +26,9 @@ Documentation is kept in the [Documentation Folder](https://github.com/Operation
 
 ### Blue Alliance
 
-[![Update data from The Blue Alliance once a week](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/actions/workflows/updateAllYears.yml/badge.svg)](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/actions/workflows/updateAllYears.yml)
+[![Update historical TBA data twice yearly](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/actions/workflows/updateAllYears.yml/badge.svg)](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/actions/workflows/updateAllYears.yml)
 
-[![Update data from The Blue Alliance for current season every 5 minutes during competition hours](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/actions/workflows/updateCurrentYear.yml/badge.svg)](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/actions/workflows/updateCurrentYear.yml)
+[![Update current-season TBA data weekly](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/actions/workflows/updateCurrentYear.yml/badge.svg)](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/actions/workflows/updateCurrentYear.yml)
 
 ### Google Calendar
 
