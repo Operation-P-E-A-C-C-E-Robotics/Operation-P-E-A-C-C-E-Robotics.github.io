@@ -29,7 +29,7 @@ def build_session():
 SESSION = build_session()
 
 
-def fetch_json(path, expected_type):
+def fetch_json(path, expected_type, allow_not_found=False):
     if not API_KEY:
         raise RuntimeError("TBA_API_KEY is required")
 
@@ -38,6 +38,8 @@ def fetch_json(path, expected_type):
         headers={"X-TBA-Auth-Key": API_KEY},
         timeout=30,
     )
+    if response.status_code == 404 and allow_not_found:
+        return None
     response.raise_for_status()
     try:
         payload = response.json()
@@ -79,7 +81,7 @@ def collect_season(year):
     awards = fetch_json(f"team/{TEAM}/awards/{year}", list)
     matches = fetch_json(f"team/{TEAM}/matches/{year}", list)
     media = fetch_json(f"team/{TEAM}/media/{year}", list)
-    districts = fetch_json(f"district/{year}ne/rankings", list)
+    districts = fetch_json(f"district/{year}ne/rankings", list, allow_not_found=True)
 
     validate_events(events, year)
     validate_keyed_records(matches, "matches", year)
@@ -87,7 +89,7 @@ def collect_season(year):
         raise RuntimeError(f"Invalid media payload for {year}")
     if not all(isinstance(item, dict) for item in awards):
         raise RuntimeError(f"Invalid awards payload for {year}")
-    if not all(isinstance(item, dict) for item in districts):
+    if districts is not None and not all(isinstance(item, dict) for item in districts):
         raise RuntimeError(f"Invalid district rankings payload for {year}")
 
     payloads = {
@@ -96,8 +98,9 @@ def collect_season(year):
         f"{year}_awards.json": awards,
         f"{year}_matches.json": matches,
         f"{year}_media.json": media,
-        f"{year}_district_rankings.json": districts,
     }
+    if districts is not None:
+        payloads[f"{year}_district_rankings.json"] = districts
     for filename, payload in payloads.items():
         write_json(DATA_DIR / filename, payload)
 

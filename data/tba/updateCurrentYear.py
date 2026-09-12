@@ -101,11 +101,13 @@ def notify_pusher(message_type, data):
 # -------------------- TBA FETCH --------------------
 MATCH_CACHE = {}
 
-def fetch_json(endpoint, expected_type):
+def fetch_json(endpoint, expected_type, allow_not_found=False):
     if not TBA_API_KEY:
         raise RuntimeError("TBA_API_KEY is required")
     url = f"https://www.thebluealliance.com/api/v3/{endpoint}?X-TBA-Auth-Key={TBA_API_KEY}"
     resp = requests.get(url, timeout=30)
+    if resp.status_code == 404 and allow_not_found:
+        return None
     resp.raise_for_status()
     try:
         payload = resp.json()
@@ -307,7 +309,10 @@ def update_current_event_awards_and_info():
         git_commit(files_changed, COMMIT_MESSAGE)
 
 def update_district_rankings():
-    rankings = fetch_json(f"district/{YEAR}ne/rankings", list)
+    rankings = fetch_json(f"district/{YEAR}ne/rankings", list, allow_not_found=True)
+    if rankings is None:
+        print(f"No district exists for {YEAR}; retaining existing rankings file.")
+        return
     validate_records(rankings, "district ranking", ("team_key",))
     if overwrite_file(f"{YEAR}_district_rankings.json", rankings):
         notify_pusher("district", rankings)
