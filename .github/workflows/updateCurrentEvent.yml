@@ -23,7 +23,7 @@ jobs:
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r data/tba/tba-requirements.txt
 
       - name: Update current event data
         env:
@@ -32,9 +32,10 @@ jobs:
         run: |
           export YEAR=$(date +%Y)
           python updateCurrentEvent.py
+        working-directory: data/tba
 
       - name: Commit updated current event snapshot
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Update current event snapshot"
-          file_pattern: current_event.json
+          file_pattern: data/tba/current_event.json

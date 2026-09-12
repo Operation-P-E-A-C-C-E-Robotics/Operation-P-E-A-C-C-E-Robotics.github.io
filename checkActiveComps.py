@@ -49,7 +49,7 @@ if playing_today:
     }
 
     payload = {
-        "ref": "gh-actions-tba-backend"
+        "ref": "main"
     }
 
     response = requests.post(

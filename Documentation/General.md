@@ -103,7 +103,7 @@
 
     The Blue Alliance API integration retrieves match data from The Blue Alliance API and incorporates it into the website. The following outlines the process:
 
-    5. The GitHub Action runner on the [designated branch](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/tree/gh-actions-tba-data-backend) runs at defined intervals or events.
+    5. The GitHub Action runner updates the TBA snapshots under [`data/tba`](../data/tba) at defined intervals or events.
     6. The runner authenticates with The Blue Alliance API using the provided credentials stored in GitHub Secrets.
     7. The runner retrieves the desired match data from the API and saves it as a JSON file in the repository.
     8. Client-side JavaScript on the website fetches the JSON file and processes the data to present match details and relevant information.

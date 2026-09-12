@@ -5,15 +5,9 @@ layout: default
 {% capture robot_story %}{{ content }}{% endcapture %}
 
 <main class="robot-page container-fluid py-3">
-  {% include robot/hero.html
-      year=page.year
-      game=page.game
-      robotName=page.robotName
-      thumbnail=page.thumbnail
-      slideshow=page.slideshow
-  %}
-
-  {% include robot/story.html content=robot_story %}
+    <section class="robot-story">
+        {{ robot_story }}
+    </section>
 
   {% include robot/season-results.html
       year=page.year
@@ -25,22 +19,6 @@ layout: default
       team="frc3461"
   %}
 
-  {% include robot/awards.html
-      year=page.year
-      team="frc3461"
-  %}
-
-  {% include robot/match-footage.html
-      playlist=page.matchVideoPlaylist
-  %}
-
-  {% include robot/resources.html
-      year=page.year
-      techBinder=page.techBinder
-      buizBinder=page.buizBinder
-  %}
-
-  {% include robot/sponsors.html year=page.year %}
 </main>
 
 <script>

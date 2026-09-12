@@ -1,6 +1,6 @@
 // assets/js/currentlyCompetingBanner.js
 
-const API_BASE_URL = 'https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend';
+const API_BASE_URL = '/data/tba';
 import { getCurrentSeasonYear, getEventStatuses, getCurrentEvent, getMatchFromKey, getMatchNameFromKey, formatTeamKey } from './tba.js';
 import { eventLocalTime, matchCountdown } from './countdown.js';
 

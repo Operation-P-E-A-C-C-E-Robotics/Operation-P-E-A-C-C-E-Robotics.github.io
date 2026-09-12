@@ -23,10 +23,11 @@ jobs:
           pip install --upgrade pip
       - name: install python dependencies
         run: |
-          pip install -r requirements.txt
+          pip install -r data/tba/tba-requirements.txt
       - name: execute python script # run the run.py to get the latest data
         run: |
           python updateCurrentYear.py
+        working-directory: data/tba
         env:
           TBA_API_KEY: ${{ secrets.tba_api_key }} # if run.py requires passwords..etc, set it as secrets
           PUSHER_APP_ID: ${{vars.PUSHER_APP_ID}}
@@ -38,5 +39,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Periodic TBA data update
+          file_pattern: data/tba/*.json
 
 

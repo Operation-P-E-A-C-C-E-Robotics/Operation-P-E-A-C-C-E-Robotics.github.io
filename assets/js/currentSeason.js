@@ -71,7 +71,7 @@ Chart.register(
 
 
   async function setGitCommitDate() {
-    const gitCommits = await fetch("https://api.github.com/repos/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/commits/gh-actions-tba-data-backend");
+    const gitCommits = await fetch("https://api.github.com/repos/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/commits/main");
     var gitCommitJSON = await gitCommits.json()
     var gitLastUpdatedDate = new Date(gitCommitJSON.commit.committer.date)
     document.getElementById("dataLastUpdated").innerText = gitLastUpdatedDate.toLocaleDateString() + " at " + gitLastUpdatedDate.toLocaleTimeString()

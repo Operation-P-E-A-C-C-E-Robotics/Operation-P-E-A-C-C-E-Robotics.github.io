@@ -75,7 +75,7 @@
   (() => {
     const year = "{{ include.year}}";
     const team = "{{ include.team}}";
-    const base = "https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend/";
+    const base = "{{ '/data/tba/' | relative_url }}";
     const output = document.getElementById(`robotHighScore-${year}`);
 
     const matchName = match => {

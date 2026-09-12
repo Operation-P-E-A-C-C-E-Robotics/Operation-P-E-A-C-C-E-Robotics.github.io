@@ -1,6 +1,6 @@
 // tba.js - Helper functions for parsing TBA data from GitHub repository
 
-const TBA_BASE_URL = "https://raw.githubusercontent.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/gh-actions-tba-data-backend";
+const TBA_BASE_URL = "/data/tba";
 var year = getCurrentSeasonYear();
 /**
  * Get the current FRC season year
