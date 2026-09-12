@@ -1,0 +1,58 @@
+<section class="robot-hero container-fluid">
+  <div class="d-flex flex-md-row flex-sm-column row">
+    <div class="w-md-25 w-sm-20 pr-3 col-sm-12 col-md-6 col-lg-3 pb-3" style="max-width: 25rem; height: 30rem;">
+      <div id="demo" class="carousel slide" data-ride="carousel" style="width:100%; height: 30rem; background-color: white; border-radius: 5px; border: 1px solid rgba(0,0,0,.125);">
+        <img src="{{ include.thumbnail }}" id="robotImagePlaceholder" class="carousel-item active img-thumbnail" alt="{{ include.year }} robot" style="width:100%; height:30rem; object-fit: cover;">
+        <div class="carousel-inner" id="robotCarousel">
+          {% for img in include.slideshow %}
+          <img src="{{ img.src }}" class="carousel-item img-thumbnail" alt="{{ include.year }} robot" style="width:100%; height:30rem; object-fit: cover;">
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="pl-3 col-sm-12 col-md-9">
+      <h1>{{ include.year }} - {{ include.game }}</h1>
+      <h1>{{ include.robotName }}</h1>
+      <h3 id="districtRank">District Rank: --</h3>
+      <h3 id="districtPoints">Total District Points: --</h3>
+      <p class="small">
+        All data provided by The Blue Alliance
+        <img src="{{ '/assets/images/tba_lamp.svg' | relative_url }}" alt="The Blue Alliance" style="height:3.5vh; color:#0f4bcb">
+      </p>
+
+      <div id="buttons" class="pb-3">
+        {% if include.techBinder and include.techBinder != '' %}
+        <a class="btn btn-danger align-middle" href="{{ include.techBinder | relative_url }}">View Technical Binder <i class="fa fa-book align-middle" style="font-size:25px"></i></a>
+        {% else %}
+        <button type="button" class="btn btn-danger disabled align-middle" id="techBinder">View Technical Binder <i class="fa fa-book align-middle" style="font-size:25px"></i></button>
+        {% endif %}
+
+        {% if include.buizBinder and include.buizBinder != '' %}
+        <a class="btn btn-success align-middle" href="{{ include.buizBinder | relative_url }}">View Business Binder <i class="fa fa-book align-middle" style="font-size:25px"></i></a>
+        {% else %}
+        <button type="button" class="btn btn-success disabled align-middle" id="buizBinder">View Business Binder <i class="fa fa-book align-middle" style="font-size:25px"></i></button>
+        {% endif %}
+
+        <a class="btn btn-primary align-middle" href="https://www.thebluealliance.com/team/3461/{{ include.year }}">
+          View On The Blue Alliance
+          <span><img src="{{ '/assets/images/tba_lamp.svg' | relative_url }}" alt="" style="height:25px"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  fetch("{{ '/data/tba/' | relative_url }}{{ include.year }}_district_rankings.json")
+    .then(response => response.json())
+    .then(rankings => {
+      const team = rankings.find(item => item.team_key === "frc3461");
+      const rankedTeams = rankings.filter(item => item.point_total !== 0);
+      if (!team) return;
+
+      document.getElementById("districtRank").innerText = `District Rank: ${team.rank}/${rankedTeams.length}`;
+      document.getElementById("districtPoints").innerText = `Total District Points: ${team.point_total}`;
+    })
+    .catch(error => console.error("Robot district rankings:", error));
+</script>

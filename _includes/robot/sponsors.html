@@ -1,0 +1,69 @@
+<section class="robot-sponsors container mx-auto pt-5" id="sponsors">
+  <style>
+    .robot-sponsors .logo {
+      height: 15vh;
+      max-width: 75%;
+      object-fit: contain;
+      width: 100%;
+    }
+  </style>
+
+  <h1 class="text-center"><strong>Thank you to this year's Sponsors</strong></h1>
+  <br>
+
+  {% assign page_year = include.year | smartify %}
+  {% assign sponsors = site.data.sponsors.sponsors %}
+  {% assign yearly_sponsors = "" | split: "" %}
+  {% for sponsor in sponsors %}
+    {% assign matching_years = sponsor.years | where_exp: "year", "year.year == page_year" %}
+    {% if matching_years.size > 0 %}
+      {% assign yearly_sponsors = yearly_sponsors | push: sponsor %}
+    {% endif %}
+  {% endfor %}
+  {% assign perpetual_sponsors = sponsors | where_exp: "sponsor", "sponsor.isPerpetual == true" %}
+  {% assign current_sponsors = yearly_sponsors | concat: perpetual_sponsors | uniq %}
+
+  <h2><strong>Title Sponsors</strong></h2>
+  {% for sponsor in current_sponsors %}
+    {% if sponsor.sponsortier == "Title" %}
+    <div class="row text-dark mt-3 pt-3 bg-light rounded">
+      <div class="col-sm-4">
+        <img src="{{ sponsor.image | default: '/assets/sponsors/noLogo.png' }}" class="logo p-2 mx-auto d-block" alt="{{ sponsor.name }} logo">
+        <h1 class="text-center">{{ sponsor.name }}</h1>
+      </div>
+      <div class="col-sm-8 text-left">
+        <h5 class="mb-4">{{ sponsor.summary }}</h5>
+        {% if sponsor.website and sponsor.website != "" %}
+        <a class="btn btn-outline-primary" href="{{ sponsor.website }}">Learn More</a>
+        {% else %}
+        <span class="btn btn-outline-primary disabled">Learn More</span>
+        {% endif %}
+      </div>
+    </div>
+    <br>
+    {% endif %}
+  {% endfor %}
+
+  {% assign sponsor_tiers = "Platinum,Gold,Silver" | split: "," %}
+  {% for tier in sponsor_tiers %}
+    <h2><strong>{{ tier }} Sponsors</strong></h2>
+    <div class="row text-dark mt-3 bg-light rounded pt-3">
+      {% for sponsor in current_sponsors %}
+        {% if sponsor.sponsortier == tier %}
+        <div class="col-sm-3 p-4">
+          <img src="{{ sponsor.image | default: '/assets/sponsors/noLogo.png' }}" class="logo p-2 mx-auto d-block" alt="{{ sponsor.name }} logo">
+          <h2 class="text-center">{{ sponsor.name }}</h2>
+          <div class="d-flex justify-content-center align-items-center">
+            {% if sponsor.website and sponsor.website != "" %}
+            <a class="btn btn-outline-primary" href="{{ sponsor.website }}">Learn More</a>
+            {% else %}
+            <span class="btn btn-outline-primary disabled">Learn More</span>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <br>
+  {% endfor %}
+</section>
