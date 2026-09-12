@@ -14,6 +14,11 @@ jobs:
         steps:
             - name: Checkout Repo
               uses: actions/checkout@v7
+              with:
+                sparse-checkout: |
+                  checkActiveComps.py
+                  data/tba
+                sparse-checkout-cone-mode: true
 
             - name: Set up Python
               uses: actions/setup-python@v7
