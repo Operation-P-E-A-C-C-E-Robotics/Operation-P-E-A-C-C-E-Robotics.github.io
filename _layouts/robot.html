@@ -8,18 +8,15 @@ layout: default
   <section class="robot-hero container-fluid">
     <div class="d-flex flex-md-row flex-sm-column row">
       <div class="w-md-25 w-sm-20 pr-3 col-sm-12 col-md-6 col-lg-3 pb-3" style="max-width: 25rem; height: 30rem;">
-        <div id="demo" class="carousel slide" data-ride="carousel" style="width:100%; height: 30rem; background-color: white; border-radius: 5px; border: 1px solid rgba(0,0,0,.125);">
-          <img src="{{ page.thumbnail }}" id="robotImagePlaceholder" class="carousel-item active img-thumbnail" alt="{{ page.year }} robot" style="width:100%; height:30rem; object-fit: cover;">
-          <div class="carousel-inner" id="robotCarousel">
-            {% for img in page.slideshow %}
-            <img src="{{ img.src }}" class="carousel-item img-thumbnail" alt="{{ page.year }} robot" style="width:100%; height:30rem; object-fit: cover;">
-            {% endfor %}
-          </div>
-        </div>
+        <img src="{{ page.thumbnail }}" id="robotImagePlaceholder" class="carousel-item active img-thumbnail" alt="{{ page.robotName }} robot" style="width:100%; height:30rem; object-fit: cover;">
       </div>
 
       <div class="pl-3 col-sm-12 col-md-9">
-        <h1>{{ page.year }} - {{ page.game }}</h1>
+        {% if page.gameLogo %}
+          <img src="{{ page.gameLogo }}" alt="{{ page.game }}" style="height: 5rem; margin-bottom: 1rem;">
+          {% else %}
+          <h1 style="margin-bottom: 1rem;">{{page.year}} - {{ page.game }}</h1>
+        {% endif %}
         <h1>{{ page.robotName }}</h1>
         <h3 id="districtRank">District Rank: --</h3>
         <h3 id="districtPoints">Total District Points: --</h3>
