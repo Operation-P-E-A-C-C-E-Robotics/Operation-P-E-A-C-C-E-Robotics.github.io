@@ -17,14 +17,14 @@
     }
 
     .robot-season-results__summary {
+      position: relative;
       display: grid;
       grid-template-columns:
         minmax(220px, 2fr)
-        repeat(4, minmax(110px, 1fr))
-        42px;
+        repeat(4, minmax(110px, 1fr));
       gap: .75rem;
       align-items: center;
-      padding: 1rem;
+      padding: 1rem 2.5rem 1rem 1rem;
       cursor: pointer;
     }
 
@@ -62,11 +62,15 @@
     }
 
     .robot-season-results__chevron {
+      position: absolute;
+      top: 50%;
+      right: 1rem;
+      transform: translateY(-50%);
       transition: transform .15s ease;
     }
 
     .robot-season-results__event.is-open .robot-season-results__chevron {
-      transform: rotate(180deg);
+      transform: translateY(-50%) rotate(180deg);
     }
 
     .robot-season-results__detail-grid {
@@ -472,9 +476,7 @@
       }
 
       .robot-season-results__summary > :last-child {
-        grid-column: 2;
-        grid-row: 1;
-        justify-self: end;
+        position: absolute;
       }
 
       .robot-season-results__detail-grid {
@@ -1246,9 +1248,7 @@
               </strong>
             </div>
 
-            <div class="robot-season-results__chevron">
-              ▼
-            </div>
+            <i class="robot-season-results__chevron fa fa-chevron-down" aria-hidden="true"></i>
 
           </div>
 
