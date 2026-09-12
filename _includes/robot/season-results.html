@@ -1,5 +1,6 @@
 <section class="robot-season-results mb-5" data-year="{{ include.year }}" data-team="{{ include.team }}">
   {% include robot/match-table.html %}
+  {% include robot/match-breakdown.html %}
 
   <style>
     /* ============================================================
@@ -103,6 +104,21 @@
 
     .robot-season-results__high-score iframe {
       border: 0;
+    }
+
+    .robot-season-results__high-score > .embed-responsive {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%;
+      overflow: hidden;
+    }
+
+    .robot-season-results__high-score > .embed-responsive iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
     }
 
     .robot-season-results__event-card,
@@ -752,7 +768,7 @@
     }
 
 
-    function highScoreCard(matches) {
+    function highScoreCard(matches, event) {
       const highest = highestScoringMatch(matches);
 
       if (!highest) {
@@ -770,8 +786,13 @@
       return `
         <div class="robot-season-results__high-score">
           <span class="robot-season-results__label">Highest Scoring Match</span>
-          <h5 class="mb-1">${esc(matchLabel(highest.match))}: ${esc(highest.score)}</h5>
-          <p class="mb-0">${esc(highest.side.own.team_keys.join(" · "))}</p>
+          <h5 class="mb-1">${esc(matchLabel(highest.match))}</h5>
+          ${robotMatchBreakdown.render(highest.match, team, {
+            eventName: event?.name || event?.key,
+            matchName: matchLabel(highest.match),
+            height: "short",
+            info: false
+          })}
           ${video ? `
             <div class="embed-responsive embed-responsive-16by9">
               <iframe class="embed-responsive-item"
@@ -1264,7 +1285,7 @@
                 </div>
               </div>
               <div class="col-md-4">
-                ${highScoreCard(matches)}
+                ${highScoreCard(matches, event)}
               </div>
             </div>
 
