@@ -806,23 +806,28 @@
     }
 
 
-    function eventTypeBadge(status) {
+    function eventTypeBadge(event) {
       const type =
-        status?.event_type;
+        event?.event_type;
 
-      const labels = {
-        100: "Preseason",
-        99: "Offseason",
-        0: "Regional",
-        1: "District",
-        2: "DCMP",
-        3: "CMP Division",
-        4: "CMP Einstein",
-        5: "DCMP Division",
-        7: "Remote"
+      const week =
+        Number.isFinite(Number(event?.week))
+          ? `Week ${Number(event.week) + 1} `
+          : "";
+
+      const badges = {
+        100: { label: "Preseason Event", className: "badge-secondary" },
+        99: { label: "Offseason Event", className: "badge-secondary" },
+        0: { label: `${week}Regional Event`, className: "badge-primary" },
+        1: { label: `${week}District Event`, className: "badge-primary" },
+        2: { label: "District Championship", className: "badge-info" },
+        3: { label: "FIRST Championship Division", className: "badge-success" },
+        4: { label: "FIRST Championship Playoffs", className: "badge-success" },
+        5: { label: "District Championship Division", className: "badge-info" },
+        7: { label: "2020/21 Remote Event", className: "badge-danger" }
       };
 
-      return labels[type] || "";
+      return badges[type] || null;
     }
 
 
@@ -1169,7 +1174,7 @@
         .join(", ");
 
       const badge =
-        eventTypeBadge(status);
+        eventTypeBadge(event);
 
       const awardsWon =
         eventAwards(awards, event?.key);
@@ -1187,19 +1192,18 @@
             <div>
               <div class="robot-season-results__name">
                 ${esc(event?.name || event?.key)}
-              </div>
 
+                ${
+                  badge
+                      ? `<span class="badge badge-pill ${badge.className} mt-1 ml-1">
+                        ${esc(badge.label)}
+                      </span>`
+                    : ""
+                }
+              </div>
               <div class="robot-season-results__meta">
                 ${esc(location)} · ${esc(startDate)} - ${esc(endDate)}
               </div>
-
-              ${
-                badge
-                  ? `<span class="badge badge-secondary mt-1">
-                       ${esc(badge)}
-                     </span>`
-                  : ""
-              }
             </div>
 
             <div>
