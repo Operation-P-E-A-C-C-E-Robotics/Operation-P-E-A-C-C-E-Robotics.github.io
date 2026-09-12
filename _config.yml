@@ -56,7 +56,7 @@ plugins:
   - "jekyll-env"
   - jekyll-include-cache
 
-exclude: ['Archive', 'Documentation', 'node_modules']
+exclude: ['Archive', 'Documentation', 'node_modules', 'data']
 
 repository: Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io
 
