@@ -1256,13 +1256,7 @@
           <div class="robot-season-results__body">
 
             <div class="row mb-3">
-              <div class="col-md-4 mb-3 mb-md-0">
-                <div class="robot-season-results__event-card">
-                  <span class="robot-season-results__label">Playoff Alliance</span>
-                  <div>${allianceText(status)}</div>
-                </div>
-              </div>
-              <div class="col-md-4 mb-3 mb-md-0">
+              <div class="col-md-6 mb-3 mb-md-0">
                 <div class="robot-season-results__event-card">
                   <span class="robot-season-results__label">Event Result</span>
                   <div>${result}</div>
@@ -1279,7 +1273,7 @@
             </div>
 
             <div class="row">
-              <div class="col-md-8 mb-3 mb-md-0">
+              <div class="col-md-6 mb-3 mb-md-0">
                 <div class="robot-season-results__matches">
                   ${robotMatchTable.rows(matches, team, year) || `
                     <div class="robot-season-results__empty">
@@ -1288,7 +1282,7 @@
                   `}
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 ${highScoreCard(matches, event)}
               </div>
             </div>
