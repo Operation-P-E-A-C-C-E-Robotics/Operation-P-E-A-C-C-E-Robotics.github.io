@@ -1,0 +1,278 @@
+{
+    "event_key": "2017wiwi",
+    "oprs": {
+        "oprs": {
+            "frc1071": 40.26518657808094,
+            "frc3654": 58.0027357772735,
+            "frc3461": 81.8432309195649,
+            "frc3525": 25.688861096639187,
+            "frc2067": 39.41444201578348,
+            "frc2064": 26.49289490876569,
+            "frc155": 60.5613422260347,
+            "frc5421": 18.506357800450672,
+            "frc58": 80.26763171477697,
+            "frc558": 61.15692994862064,
+            "frc4557": 66.26033175146848,
+            "frc178": 74.95108337185383,
+            "frc3146": 56.763187482044515,
+            "frc181": 135.34118490530855,
+            "frc195": 152.1373957099525,
+            "frc237": 26.658679134074987,
+            "frc230": 73.37494958121786,
+            "frc4055": 92.81451011862231,
+            "frc666": 50.90034709751407,
+            "frc173": 60.01943434426621,
+            "frc1124": 72.78390243332792,
+            "frc1099": 47.49314974700346,
+            "frc716": 93.93534160159774,
+            "frc228": 104.224032592899
+        },
+        "dprs": {
+            "frc1071": 21.124320324965083,
+            "frc3654": 38.81440124154451,
+            "frc3461": 59.826930132953194,
+            "frc3525": 84.20081126487744,
+            "frc2067": 66.3698938196032,
+            "frc2064": 56.12073431845609,
+            "frc155": 77.02873730865586,
+            "frc5421": 145.0714037093521,
+            "frc58": 10.84163232865049,
+            "frc558": 106.62828935186018,
+            "frc4557": 60.93486920594479,
+            "frc178": 65.19807312107781,
+            "frc3146": 53.581850159570024,
+            "frc181": 69.65897054758885,
+            "frc195": 49.15177392446097,
+            "frc237": 104.11061729890943,
+            "frc230": 68.63869257662859,
+            "frc4055": 40.747663789245465,
+            "frc666": 93.04028285543268,
+            "frc173": 73.47994648485292,
+            "frc1124": 53.913212483157665,
+            "frc1099": 70.59371654529585,
+            "frc716": 58.79626220218165,
+            "frc228": 71.98405786187783
+        },
+        "ccwms": {
+            "frc1071": 19.140866253115856,
+            "frc3654": 19.188334535729012,
+            "frc3461": 22.016300786611737,
+            "frc3525": -58.5119501682382,
+            "frc2067": -26.95545180381967,
+            "frc2064": -29.627839409690377,
+            "frc155": -16.467395082621177,
+            "frc5421": -126.56504590890144,
+            "frc58": 69.42599938612648,
+            "frc558": -45.47135940323953,
+            "frc4557": 5.325462545523722,
+            "frc178": 9.75301025077601,
+            "frc3146": 3.1813373224744605,
+            "frc181": 65.68221435771969,
+            "frc195": 102.98562178549156,
+            "frc237": -77.45193816483442,
+            "frc230": 4.7362570045892465,
+            "frc4055": 52.0668463293769,
+            "frc666": -42.13993575791859,
+            "frc173": -13.460512140586733,
+            "frc1124": 18.870689950170263,
+            "frc1099": -23.100566798292448,
+            "frc716": 35.139079399416126,
+            "frc228": 32.23997473102119
+        }
+    },
+    "coprs": {},
+    "alliances": [
+        {
+            "declines": [],
+            "picks": [
+                "frc195",
+                "frc230",
+                "frc5421"
+            ],
+            "status": {
+                "playoff_type": 5,
+                "status": "playing",
+                "level": "f",
+                "current_level_record": {
+                    "wins": 1,
+                    "losses": 1,
+                    "ties": 0
+                },
+                "record": {
+                    "wins": 4,
+                    "losses": 1,
+                    "ties": 0
+                },
+                "playoff_average": null
+            }
+        },
+        {
+            "declines": [],
+            "picks": [
+                "frc3461",
+                "frc178",
+                "frc3525"
+            ],
+            "status": {
+                "playoff_type": 5,
+                "status": "playing",
+                "level": "f",
+                "current_level_record": {
+                    "wins": 0,
+                    "losses": 1,
+                    "ties": 0
+                },
+                "record": {
+                    "wins": 2,
+                    "losses": 2,
+                    "ties": 0
+                },
+                "playoff_average": null
+            }
+        },
+        {
+            "declines": [],
+            "picks": [
+                "frc58",
+                "frc558",
+                "frc237"
+            ],
+            "status": {
+                "playoff_type": 5,
+                "status": "won",
+                "level": "f",
+                "current_level_record": {
+                    "wins": 2,
+                    "losses": 1,
+                    "ties": 0
+                },
+                "record": {
+                    "wins": 5,
+                    "losses": 2,
+                    "ties": 0
+                },
+                "playoff_average": null
+            }
+        },
+        {
+            "declines": [],
+            "picks": [
+                "frc3654",
+                "frc2067",
+                "frc155"
+            ],
+            "status": {
+                "playoff_type": 5,
+                "status": "eliminated",
+                "level": "qf",
+                "current_level_record": {
+                    "wins": 0,
+                    "losses": 2,
+                    "ties": 0
+                },
+                "record": {
+                    "wins": 1,
+                    "losses": 2,
+                    "ties": 0
+                },
+                "playoff_average": null
+            }
+        },
+        {
+            "declines": [],
+            "picks": [
+                "frc181",
+                "frc3146",
+                "frc1099"
+            ],
+            "status": {
+                "playoff_type": 5,
+                "status": "playing",
+                "level": "qf",
+                "current_level_record": {
+                    "wins": 0,
+                    "losses": 1,
+                    "ties": 0
+                },
+                "record": {
+                    "wins": 1,
+                    "losses": 2,
+                    "ties": 0
+                },
+                "playoff_average": null
+            }
+        },
+        {
+            "declines": [],
+            "picks": [
+                "frc228",
+                "frc716",
+                "frc1124"
+            ],
+            "status": {
+                "playoff_type": 5,
+                "status": "playing",
+                "level": "sf",
+                "current_level_record": {
+                    "wins": 0,
+                    "losses": 1,
+                    "ties": 0
+                },
+                "record": {
+                    "wins": 2,
+                    "losses": 2,
+                    "ties": 2
+                },
+                "playoff_average": null
+            }
+        },
+        {
+            "declines": [],
+            "picks": [
+                "frc4055",
+                "frc173",
+                "frc1071"
+            ],
+            "status": {
+                "playoff_type": 5,
+                "status": "eliminated",
+                "level": "ef",
+                "current_level_record": {
+                    "wins": 0,
+                    "losses": 2,
+                    "ties": 2
+                },
+                "record": {
+                    "wins": 0,
+                    "losses": 2,
+                    "ties": 2
+                },
+                "playoff_average": null
+            }
+        },
+        {
+            "declines": [],
+            "picks": [
+                "frc4557",
+                "frc666",
+                "frc2064"
+            ],
+            "status": {
+                "playoff_type": 5,
+                "status": "eliminated",
+                "level": "ef",
+                "current_level_record": {
+                    "wins": 0,
+                    "losses": 2,
+                    "ties": 0
+                },
+                "record": {
+                    "wins": 0,
+                    "losses": 2,
+                    "ties": 0
+                },
+                "playoff_average": null
+            }
+        }
+    ]
+}
