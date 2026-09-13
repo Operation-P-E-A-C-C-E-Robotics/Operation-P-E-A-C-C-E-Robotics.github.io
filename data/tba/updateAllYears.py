@@ -75,6 +75,18 @@ def validate_keyed_records(records, name, year):
             raise RuntimeError(f"Invalid {name} payload for {year}")
 
 
+def collect_event_statistics(event_key):
+    statistics = {
+        "event_key": event_key,
+        "oprs": fetch_json(f"event/{event_key}/oprs", dict),
+        "coprs": fetch_json(f"event/{event_key}/coprs", dict),
+        "alliances": fetch_json(f"event/{event_key}/alliances", list),
+    }
+    if any(not isinstance(value, (dict, list)) for key, value in statistics.items() if key != "event_key"):
+        raise RuntimeError(f"Invalid statistics payload for {event_key}")
+    return statistics
+
+
 def collect_season(year):
     events = fetch_json(f"team/{TEAM}/events/{year}", list)
     statuses = fetch_json(f"team/{TEAM}/events/{year}/statuses", dict)
@@ -103,6 +115,9 @@ def collect_season(year):
         payloads[f"{year}_district_rankings.json"] = districts
     for filename, payload in payloads.items():
         write_json(DATA_DIR / filename, payload)
+    for event in events:
+        statistics = collect_event_statistics(event["key"])
+        write_json(DATA_DIR / f"{event['key']}_statistics.json", statistics)
 
 
 def main():

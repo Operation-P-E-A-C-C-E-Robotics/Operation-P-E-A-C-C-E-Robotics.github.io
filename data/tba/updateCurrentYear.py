@@ -125,6 +125,15 @@ def validate_records(records, name, required_keys):
         if not isinstance(record, dict) or any(not record.get(key) for key in required_keys):
             raise RuntimeError(f"TBA returned an invalid {name} record")
 
+def collect_event_statistics(event_key):
+    statistics = {
+        "event_key": event_key,
+        "oprs": fetch_json(f"event/{event_key}/oprs", dict),
+        "coprs": fetch_json(f"event/{event_key}/coprs", dict),
+        "alliances": fetch_json(f"event/{event_key}/alliances", list),
+    }
+    return statistics
+
 # -------------------- FILE MERGE --------------------
 def merge_array_file(filename, new_data):
     try:
@@ -285,6 +294,9 @@ def update_current_event_matches_and_status():
 
     if files_changed:
         git_commit(files_changed, COMMIT_MESSAGE)
+
+    statistics = collect_event_statistics(event["key"])
+    write_json_atomically(f"{event['key']}_statistics.json", statistics)
 
 def update_current_event_awards_and_info():
     event = get_current_event()
