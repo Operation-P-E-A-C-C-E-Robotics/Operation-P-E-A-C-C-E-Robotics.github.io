@@ -1,7 +1,6 @@
 import json
 import os
 from pathlib import Path
-from types import NoneType
 
 import requests
 from requests.adapters import HTTPAdapter
