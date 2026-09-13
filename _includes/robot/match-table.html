@@ -201,7 +201,7 @@
 
     const teamLink = (number, team, year) => {
       const cleanNumber = String(number).replace(/^frc/, "");
-      return `<a href="/team/${esc(cleanNumber)}/${esc(year)}" ${cleanNumber === team.replace(/^frc/, "") ? 'aria-current="page"' : ""}>${cleanNumber === team.replace(/^frc/, "") ? `<strong>${esc(cleanNumber)}</strong>` : esc(cleanNumber)}</a>`;
+      return `<a href="https://www.thebluealliance.com/team/${esc(cleanNumber)}/${esc(year)}" target="_blank" rel="noopener noreferrer"${cleanNumber === team.replace(/^frc/, "") ? 'aria-current="page"' : ""}>${cleanNumber === team.replace(/^frc/, "") ? `<strong>${esc(cleanNumber)}</strong>` : esc(cleanNumber)}</a>`;
     };
 
     const teamCells = (teamKeys, alliance, winner, team, year) => {
