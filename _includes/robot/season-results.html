@@ -753,18 +753,18 @@
           <div class="robot-season-results__body">
 
             <div class="row mb-3">
-              <div class="col-5">
+              <div class="col-xs-12 col-md-5 p-sm-10">
                 <div class="robot-season-results__event-card">
                   <span class="robot-season-results__label">Event Result</span>
                   <div>${result}</div>
                 </div>
               </div>
 
-              <div class="col-2">
+              <div class="col-sm-auto col-md-2">
                 ${playoffAllianceCard(statistics)}
               </div>
 
-              <div class="col-2">
+              <div class="col-sm-auto col-md-2">
                 <div class="robot-season-results__event-card">
                   <span class="robot-season-results__label">Awards Won</span>
                   ${awardsWon.length
@@ -773,21 +773,21 @@
                 </div>
               </div>
 
-              <div class="col-1">
+              <div class="col-sm-auto col-md-1">
                 <div class="robot-season-results__event-card">
                   <span class="robot-season-results__label">OPR</span>
                   <strong>${esc(formatStatistic(opr))}</strong>
                 </div>
               </div>
 
-              <div class="col-1">
+              <div class="col-sm-auto col-md-1">
                 <div class="robot-season-results__event-card">
                   <span class="robot-season-results__label">DPR</span>
                   <strong>${esc(formatStatistic(dpr))}</strong>
                 </div>
               </div>
 
-              <div class="col-1">
+              <div class="col-sm-auto col-md-1">
                 <div class="robot-season-results__event-card">
                   <span class="robot-season-results__label">CCWM</span>
                   <strong>${esc(formatStatistic(ccwm))}</strong>
