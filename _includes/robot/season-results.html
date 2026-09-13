@@ -87,6 +87,31 @@
       padding: .75rem;
     }
 
+    .robot-season-results__copr-list {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0 .75rem;
+      margin-top: .5rem;
+      border-top: 1px solid rgba(0, 0, 0, .08);
+    }
+
+    .robot-season-results__copr-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .35rem .5rem;
+      border-bottom: 1px solid rgba(0, 0, 0, .08);
+    }
+
+    .robot-season-results__copr-row:last-child {
+      border-bottom: 0;
+    }
+
+    .robot-season-results__copr-row strong {
+      white-space: nowrap;
+    }
+
+
     .robot-season-results__event-card,
     .robot-season-results__high-score {
       height: 100%;
@@ -141,333 +166,37 @@
       border-left-color: #0f4bcb;
     }
 
+    .robot-season-results__alliance-teams {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: .5rem;
+    }
+
+    .robot-season-results__alliance-team {
+      display: inline-block;
+      padding: .25rem .5rem;
+      border-radius: .25rem;
+      background: #f8f9fa;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .robot-season-results__alliance-team:hover {
+      text-decoration: underline;
+    }
+
+    .robot-season-results__alliance-team.is-team {
+      font-weight: 700;
+      background: #e9ecef;
+    }
+
     .robot-season-results__empty {
       padding: 2rem;
       text-align: center;
       color: #6c757d;
     }
 
-
-    /* ============================================================
-       TBA-style match history
-       ============================================================ */
-
-    .robot-season-results__matches {
-      width: 100%;
-      max-width: 72rem;
-      margin-inline: auto;
-
-      /*
-       * TBA uses:
-       *   max-w-6xl = 72rem
-       *   text-sm   = .875rem
-       *   numeric-data = lining-nums tabular-nums
-       */
-      font-family: "Roboto Variable", sans-serif;
-      font-size: .875rem;
-      line-height: calc(1.25 / .875);
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-
-
-    /*
-     * Exact TBA desktop grid:
-     *
-     * 2.5em  = video
-     * 7em    = match name
-     * 3 cols = red teams
-     * 1 col  = red score
-     * 1 col  = blue score
-     * 3 cols = blue teams
-     */
-    .robot-season-results__match {
-      --robot-foreground: oklch(23.93% 0 0);
-      --robot-neutral-50: oklch(98.5% 0 0);
-      --robot-red-winner: oklch(83.2852% .085938 29);
-      --robot-red-loser: oklch(91.0855% .04375 29);
-      --robot-blue-winner: oklch(82.4681% .085938 264);
-      --robot-blue-loser: oklch(90.6397% .04375 264);
-
-      display: grid;
-      margin-bottom: 0.5rem;
-      grid-template-columns:
-        2.5em
-        9em
-        repeat(8, minmax(0, 1fr));
-
-      grid-template-rows:
-        minmax(0, 1fr);
-
-      gap: 2px;
-
-      width: 100%;
-
-      background: var(--robot-neutral-50);
-      color: var(--robot-foreground);
-
-      font-family: "Roboto Variable", sans-serif;
-      font-size: .875rem;
-      line-height: calc(1.25 / .875);
-      font-variant-numeric: lining-nums tabular-nums;
-
-      box-sizing: border-box;
-    }
-
-
-    /* ============================================================
-       Video
-       ============================================================ */
-
-    .robot-season-results__match-video {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      min-width: 0;
-
-      background: var(--robot-neutral-50);
-
-      border-radius: .625rem 0 0 .625rem;
-    }
-
-    .robot-season-results__match-video a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      margin-inline: .5rem;
-
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .robot-season-results__match-video svg {
-      width: 1.2em;
-      height: 1.2em;
-    }
-
-
-    /* ============================================================
-       Match name
-       ============================================================ */
-
-    .robot-season-results__match-name {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      min-width: 0;
-      box-sizing: border-box;
-
-      padding: .375rem .75rem .375rem .375rem;
-
-      background: var(--robot-neutral-50);
-
-      text-align: center;
-    }
-
-    .robot-season-results__match-name a {
-      display: block;
-      min-width: 0;
-      max-width: 100%;
-      color: var(--robot-foreground);
-      text-decoration: none;
-      white-space: normal;
-      overflow-wrap: anywhere;
-    }
-
-    .robot-season-results__match-name a:hover {
-      text-decoration: underline;
-    }
-
-
-    /* ============================================================
-       Alliance containers
-       ============================================================ */
-
-      .robot-season-results__red-teams,
-      .robot-season-results__blue-teams {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-
-        min-width: 0;
-
-        grid-column: span 3;
-      }
-
-
-    /* ============================================================
-       Team cells
-       ============================================================ */
-
-    .robot-season-results__team {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      min-width: 0;
-
-      padding: .375rem;
-
-      text-align: center;
-
-      box-sizing: border-box;
-    }
-
-    .robot-season-results__team a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      width: 100%;
-
-      color: var(--robot-foreground);
-      text-decoration: none;
-    }
-
-    .robot-season-results__team a:hover {
-      text-decoration: underline;
-    }
-
-    .robot-season-results__team--3461 a {
-      font-weight: 700;
-    }
-
-
-    /* ============================================================
-       Exact TBA alliance colors
-       ============================================================ */
-
-    .robot-season-results__red-winner {
-      background-color: oklch(83.2852% .085938 29);
-    }
-
-    .robot-season-results__red-loser {
-      background-color: oklch(91.0855% .04375 29);
-    }
-
-    .robot-season-results__blue-winner {
-      background-color: oklch(82.4681% .085938 264);
-    }
-
-    .robot-season-results__blue-loser {
-      background-color: oklch(90.6397% .04375 264);
-    }
-
-
-    /* ============================================================
-       Scores
-       ============================================================ */
-
-    .robot-season-results__score {
-      position: relative;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      min-width: 0;
-
-      padding: .375rem;
-
-      font-variant-numeric: lining-nums tabular-nums;
-
-      box-sizing: border-box;
-    }
-
-    /*
-     * Scores use the exact same alliance background as the
-     * corresponding alliance team cells.
-     */
-    .robot-season-results__score.robot-season-results__red-winner {
-      background-color: oklch(83.2852% .085938 29);
-    }
-
-    .robot-season-results__score.robot-season-results__red-loser {
-      background-color: oklch(91.0855% .04375 29);
-    }
-
-    .robot-season-results__score.robot-season-results__blue-winner {
-      background-color: oklch(82.4681% .085938 264);
-    }
-
-    .robot-season-results__score.robot-season-results__blue-loser {
-      background-color: oklch(90.6397% .04375 264);
-    }
-
-    .robot-season-results__score--red {
-      color: oklch(44.4% .177 26.899);
-    }
-
-    .robot-season-results__score--blue {
-      color: oklch(42.4% .199 265.638);
-    }
-
-    .robot-season-results__score.is-winner {
-      font-weight: 700;
-    }
-
-    .robot-season-results__red-score {
-      grid-column: 9;
-      grid-row: 1;
-      border-radius: .5rem 0 0 .5rem;
-    }
-
-    .robot-season-results__blue-score {
-      grid-column: 10;
-      grid-row: 1;
-      border-radius: 0 .5rem .5rem 0;
-    }
-
-
-    /* ============================================================
-       Score indicators
-       ============================================================ */
-
-    .robot-season-results__score-indicators {
-      position: absolute;
-
-      top: 2px;
-      left: 6px;
-
-      display: flex;
-      gap: 2px;
-    }
-
-    .robot-season-results__score-indicator {
-      width: 5px;
-      height: 5px;
-
-      border: 1px solid currentColor;
-      border-radius: 9999px;
-
-      opacity: .45;
-    }
-
-    .robot-season-results__score-indicator.is-active {
-      background: currentColor;
-      opacity: 1;
-    }
-
-
-    /* ============================================================
-       Desktop corner rounding
-       ============================================================ */
-
-    .robot-season-results__red-teams
-      .robot-season-results__team:first-child {
-      border-radius: .625rem 0 0 .625rem;
-    }
-
-    .robot-season-results__blue-teams
-      .robot-season-results__team:last-child {
-      border-radius: 0 .625rem .625rem 0;
-    }
-
-
-    /* ============================================================
-       Responsive / mobile
-       ============================================================ */
 
     @media (max-width: 991.98px) {
 
@@ -513,84 +242,6 @@
       }
 
 
-      /* ----------------------------------------------------------
-         Video
-         ---------------------------------------------------------- */
-
-      .robot-season-results__match-video {
-        grid-column: 1;
-        grid-row: 1 / span 2;
-
-        border-radius: .625rem 0 0 .625rem;
-      }
-
-
-      /* ----------------------------------------------------------
-         Match name
-         ---------------------------------------------------------- */
-
-      .robot-season-results__match-name {
-        grid-column: 2;
-        grid-row: 1 / span 2;
-
-        padding: .375rem;
-      }
-
-
-      /* ----------------------------------------------------------
-         Red alliance
-         ---------------------------------------------------------- */
-
-      .robot-season-results__red-teams {
-        grid-column: 3 / span 3;
-        grid-row: 1;
-
-        padding-top: 2px;
-      }
-
-      .robot-season-results__red-score {
-        grid-column: 6;
-        grid-row: 1;
-        border-radius: 0 .5rem 0 0;
-      }
-
-      .robot-season-results__red-teams
-        .robot-season-results__team:first-child {
-        border-radius: .625rem 0 0 0;
-      }
-
-      .robot-season-results__red-teams
-        .robot-season-results__team:last-child {
-        border-radius: 0 .625rem 0 0;
-      }
-
-
-      /* ----------------------------------------------------------
-         Blue alliance
-         ---------------------------------------------------------- */
-
-      .robot-season-results__blue-teams {
-        grid-column: 3 / span 3;
-        grid-row: 2;
-
-        padding-bottom: 2px;
-      }
-
-      .robot-season-results__blue-score {
-        grid-column: 6;
-        grid-row: 2;
-        border-radius: 0 0 .5rem 0;
-      }
-
-      .robot-season-results__blue-teams
-        .robot-season-results__team:first-child {
-        border-radius: 0 0 0 .625rem;
-      }
-
-      .robot-season-results__blue-teams
-        .robot-season-results__team:last-child {
-        border-radius: 0 0 .625rem 0;
-      }
     }
 
 
@@ -610,14 +261,6 @@
         grid-row: auto;
       }
 
-      .robot-season-results__match {
-        grid-template-columns:
-          2.5em
-          7em
-          repeat(4, minmax(0, 1fr));
-
-        font-size: .8rem;
-      }
     }
   </style>
 
@@ -647,7 +290,8 @@
       events: `${base}${year}_events.json`,
       statuses: `${base}${year}_event_statuses.json`,
       matches: `${base}${year}_matches.json`,
-      awards: `${base}${year}_awards.json`
+      awards: `${base}${year}_awards.json`,
+      statistics: eventKey => `${base}${eventKey}_statistics.json`
     };
 
 
@@ -737,6 +381,150 @@
     }
 
 
+    function playoffAllianceFromStatistics(statistics) {
+      const alliances = statistics?.alliances;
+
+      if (!Array.isArray(alliances)) {
+        return null;
+      }
+
+      const alliance = alliances.find(item =>
+        Array.isArray(item?.picks) &&
+        item.picks.includes(team)
+      );
+
+      return alliance?.name || null;
+    }
+
+
+    function statisticValue(statistics, category) {
+      const values = statistics?.oprs?.[category];
+
+      if (!values || typeof values !== "object") {
+        return null;
+      }
+
+      const value = values[team];
+
+      return value == null ? null : Number(value);
+    }
+
+
+    function formatStatistic(value) {
+      return Number.isFinite(value) ? value.toFixed(2) : "—";
+    }
+
+
+    function coprEntries(statistics) {
+      const coprs = statistics?.coprs;
+
+      if (!coprs || typeof coprs !== "object") {
+        return [];
+      }
+
+      return Object.entries(coprs)
+        .map(([name, values]) => ({
+          name,
+          value:
+            values && typeof values === "object"
+              ? Number(values[team])
+              : NaN
+        }))
+        .filter(item => Number.isFinite(item.value));
+    }
+
+
+    function playoffAllianceCard(statistics) {
+      const alliances = statistics?.alliances;
+
+      if (!Array.isArray(alliances)) {
+        return `
+          <div class="robot-season-results__event-card">
+            <span class="robot-season-results__label">
+              Playoff Alliance
+            </span>
+            <div>Playoff alliance data unavailable.</div>
+          </div>
+        `;
+      }
+
+      const alliance = alliances.find(item =>
+        Array.isArray(item?.picks) &&
+        item.picks.includes(team)
+      );
+
+      if (!alliance) {
+        return `
+          <div class="robot-season-results__event-card">
+            <span class="robot-season-results__label">
+              Playoff Alliance
+            </span>
+            <div>Did not qualify for playoffs</div>
+          </div>
+        `;
+      }
+
+      const teams = alliance.picks || [];
+
+      return `
+        <div class="robot-season-results__event-card">
+          <span class="robot-season-results__label">
+            ${esc(alliance.name || "Playoff Alliance")}
+          </span>
+
+          <div class="robot-season-results__alliance-teams">
+            ${teams.map(teamKey => {
+              const number = String(teamKey).replace(/^frc/, "");
+              const isTeam = number === teamNumber;
+
+              return `
+                <a
+                  href="/team/${esc(number)}/${esc(year)}"
+                  class="${isTeam ? "robot-season-results__alliance-team is-team" : "robot-season-results__alliance-team"}"
+                  ${isTeam ? 'aria-current="page"' : ""}
+                >
+                  ${isTeam ? `<strong>${esc(number)}</strong>` : esc(number)}
+                </a>
+              `;
+            }).join("")}
+          </div>
+        </div>
+      `;
+    }
+
+    function coprCard(statistics) {
+      const entries = coprEntries(statistics);
+
+      if (!entries.length) {
+        return `
+          <div class="robot-season-results__event-card">
+            <span class="robot-season-results__label">
+              Component OPR
+            </span>
+            <div>No component statistics available.</div>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="robot-season-results__event-card">
+          <span class="robot-season-results__label">
+            Component OPR
+          </span>
+
+          <div class="robot-season-results__copr-list">
+            ${entries.map(item => `
+              <div class="robot-season-results__copr-row">
+                <span>${esc(item.name)}</span>
+                <strong>${esc(formatStatistic(item.value))}</strong>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      `;
+    }
+
+
     /*
      * TBA supplies this as preformatted HTML.
      *
@@ -788,10 +576,10 @@
       return `
         <div class="robot-season-results__high-score">
           <span class="robot-season-results__label">Highest Scoring Match</span>
-          <h5 class="mb-1">${esc(matchLabel(highest.match))}</h5>
+          <h5 class="mb-1">${esc(robotMatchTable.matchLabel(highest.match))}</h5>
           ${robotMatchBreakdown.render(highest.match, team, {
             eventName: event?.name || event?.key,
-            matchName: matchLabel(highest.match),
+            matchName: robotMatchTable.matchLabel(highest.match),
             height: "short",
             info: false
           })}
@@ -833,316 +621,11 @@
     }
 
 
-    function matchLabel(match) {
-      if (match.comp_level === "qm") {
-        return `Quals ${match.match_number}`;
-      }
-
-      if (match.comp_level === "ef") {
-        return `Eighthfinal ${match.set_number}-${match.match_number}`;
-      }
-
-      if (match.comp_level === "qf") {
-        return `Quarterfinal ${match.set_number}-${match.match_number}`;
-      }
-
-      if (match.comp_level === "sf") {
-        return `Semifinals ${match.set_number}-${match.match_number}`;
-      }
-
-      if (match.comp_level === "f") {
-        return `Final ${match.match_number}`;
-      }
-
-      return `${match.comp_level || "?"}-${match.match_number ?? "?"}`;
-    }
-
-
-    function teamSide(match) {
-      const red =
-        match.alliances?.red?.team_keys || [];
-
-      const blue =
-        match.alliances?.blue?.team_keys || [];
-
-      if (red.includes(team)) {
-        return {
-          alliance: "Red",
-          own: match.alliances.red,
-          opp: match.alliances.blue
-        };
-      }
-
-      if (blue.includes(team)) {
-        return {
-          alliance: "Blue",
-          own: match.alliances.blue,
-          opp: match.alliances.red
-        };
-      }
-
-      return null;
-    }
-
-
-    function winningAlliance(match) {
-      const redScore =
-        Number(match.alliances?.red?.score);
-
-      const blueScore =
-        Number(match.alliances?.blue?.score);
-
-      if (
-        !Number.isFinite(redScore) ||
-        !Number.isFinite(blueScore)
-      ) {
-        return null;
-      }
-
-      if (redScore > blueScore) {
-        return "Red";
-      }
-
-      if (blueScore > redScore) {
-        return "Blue";
-      }
-
-      return null;
-    }
-
-
-    function teamLink(number) {
-      const cleanNumber =
-        String(number).replace(/^frc/, "");
-
-      const active =
-        cleanNumber === teamNumber;
-
-      return `
-        <a
-          href="/team/${esc(cleanNumber)}/${esc(year)}"
-          ${active ? 'aria-current="page"' : ""}
-        >
-          ${
-            active
-              ? `<strong>${esc(cleanNumber)}</strong>`
-              : esc(cleanNumber)
-          }
-        </a>
-      `;
-    }
-
-
-    function teamCells(teamKeys, alliance, winner) {
-      const allianceName =
-        alliance.toLowerCase();
-
-      const backgroundClass =
-        winner === alliance
-          ? `robot-season-results__${allianceName}-winner`
-          : `robot-season-results__${allianceName}-loser`;
-
-      return `
-        <div
-          class="
-            robot-season-results__${allianceName}-teams
-          "
-        >
-          ${
-            teamKeys.map(key => {
-
-              const number =
-                String(key).replace(/^frc/, "");
-
-              const teamClass =
-                number === teamNumber
-                  ? " robot-season-results__team--3461"
-                  : "";
-
-              return `
-                <div
-                  class="
-                    robot-season-results__team
-                    ${teamClass}
-                    ${backgroundClass}
-                  "
-                >
-                  ${teamLink(number)}
-                </div>
-              `;
-            }).join("")
-          }
-        </div>
-      `;
-    }
-
-
-    /*
-     * Scores deliberately use the same winner/loser classes
-     * as the alliance team cells.
-     */
-    function scoreCell(score, alliance, winner) {
-      const isWinner =
-        winner === alliance;
-
-      const allianceName =
-        alliance.toLowerCase();
-
-      const backgroundClass =
-        isWinner
-          ? `robot-season-results__${allianceName}-winner`
-          : `robot-season-results__${allianceName}-loser`;
-
-      const scoreClass =
-        alliance === "Red"
-          ? "robot-season-results__score--red"
-          : "robot-season-results__score--blue";
-
-      return `
-        <div
-          class="
-            robot-season-results__score
-            robot-season-results__${allianceName}-score
-            ${backgroundClass}
-            ${scoreClass}
-            ${isWinner ? "is-winner" : ""}
-          "
-        >
-          ${esc(score)}
-        </div>
-      `;
-    }
-
-
-    function matchVideo(match) {
-      const videos =
-        match.videos || [];
-
-      const video =
-        videos.find(
-          video =>
-            video?.type === "youtube" &&
-            video?.key
-        );
-
-      if (!video) {
-        return "";
-      }
-
-      return `
-        <a
-          rel="noopener noreferrer"
-          href="https://www.youtube.com/watch?v=${esc(video.key)}"
-          target="_blank"
-          aria-label="Watch ${esc(matchLabel(match))}"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            width="1.2em"
-            height="1.2em"
-          >
-            <path
-              fill="currentColor"
-              d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m-2 14.5l6-4.5l-6-4.5z"
-            ></path>
-          </svg>
-        </a>
-      `;
-    }
-
-
-    /*
-     * DOM order intentionally matches the TBA row:
-     *
-     * Video
-     * Match
-     * Red teams
-     * Red score
-     * Blue score
-     * Blue teams
-     */
-    function matchRow(match) {
-      const side =
-        teamSide(match);
-
-      if (!side) {
-        return "";
-      }
-
-      const winner =
-        winningAlliance(match);
-
-      const redTeams =
-        match.alliances?.red?.team_keys || [];
-
-      const blueTeams =
-        match.alliances?.blue?.team_keys || [];
-
-      const redScore =
-        match.alliances?.red?.score ?? "—";
-
-      const blueScore =
-        match.alliances?.blue?.score ?? "—";
-
-      const matchKey =
-        match.key ||
-        `${match.event_key}_${match.comp_level}_${match.match_number}`;
-
-      return `
-        <div class="robot-season-results__match">
-
-          <div class="robot-season-results__match-video">
-            ${matchVideo(match)}
-          </div>
-
-          <div class="robot-season-results__match-name">
-            <a
-              href="/match/${esc(matchKey)}"
-            >
-              ${esc(matchLabel(match))}
-            </a>
-          </div>
-
-          ${teamCells(
-            redTeams,
-            "Red",
-            winner
-          )}
-
-          ${teamCells(
-            blueTeams,
-            "Blue",
-            winner
-          )}
-
-          ${scoreCell(
-            redScore,
-            "Red",
-            winner
-          )}
-
-          ${scoreCell(
-            blueScore,
-            "Blue",
-            winner
-          )}
-        </div>
-      `;
-    }
-
-
-    function matchRows(matches) {
-      return matches
-        .map(matchRow)
-        .join("");
-    }
-
-
     /* ============================================================
        Event card
        ============================================================ */
 
-    function card(event, status, matches, awards) {
+    function card(event, status, matches, awards, statistics) {
       const rank =
         rankText(status);
 
@@ -1151,6 +634,18 @@
 
       const result =
         eventResult(status);
+
+      const playoffAlliance =
+        allianceText(status);
+
+      const opr =
+        statisticValue(statistics, "oprs");
+
+      const dpr =
+        statisticValue(statistics, "dprs");
+
+      const ccwm =
+        statisticValue(statistics, "ccwms");
 
       const startDate =
         event?.start_date
@@ -1234,7 +729,7 @@
               </span>
 
               <strong>
-                ${allianceText(status)}
+                ${playoffAlliance}
               </strong>
             </div>
 
@@ -1256,13 +751,18 @@
           <div class="robot-season-results__body">
 
             <div class="row mb-3">
-              <div class="col-md-6 mb-3 mb-md-0">
+              <div class="col-5">
                 <div class="robot-season-results__event-card">
                   <span class="robot-season-results__label">Event Result</span>
                   <div>${result}</div>
                 </div>
               </div>
-              <div class="col-md-4">
+
+              <div class="col-2">
+                ${playoffAllianceCard(statistics)}
+              </div>
+
+              <div class="col-2">
                 <div class="robot-season-results__event-card">
                   <span class="robot-season-results__label">Awards Won</span>
                   ${awardsWon.length
@@ -1270,11 +770,40 @@
                     : "<div>No awards won</div>"}
                 </div>
               </div>
+
+              <div class="col-1">
+                <div class="robot-season-results__event-card">
+                  <span class="robot-season-results__label">OPR</span>
+                  <strong>${esc(formatStatistic(opr))}</strong>
+                </div>
+              </div>
+
+              <div class="col-1">
+                <div class="robot-season-results__event-card">
+                  <span class="robot-season-results__label">DPR</span>
+                  <strong>${esc(formatStatistic(dpr))}</strong>
+                </div>
+              </div>
+
+              <div class="col-1">
+                <div class="robot-season-results__event-card">
+                  <span class="robot-season-results__label">CCWM</span>
+                  <strong>${esc(formatStatistic(ccwm))}</strong>
+                </div>
+              </div>
             </div>
+
+            <!-- <div class="row mb-3">
+              <div class="col-md-6">
+                ${coprCard(statistics)}
+              </div>
+            </div> -->
 
             <div class="row">
               <div class="col-md-6 mb-3 mb-md-0">
-                <div class="robot-season-results__matches">
+                <div class="robot-season-results__event-card">
+                  <span class="robot-season-results__label">Match Schedule</span>
+                  <br>
                   ${robotMatchTable.rows(matches, team, year) || `
                     <div class="robot-season-results__empty">
                       No match data available.
@@ -1305,7 +834,7 @@
       fetch(urls.awards).then(r => r.json())
     ])
 
-    .then(([events, statuses, matches, awards]) => {
+    .then(async ([events, statuses, matches, awards]) => {
 
       const statusMap =
         statuses || {};
@@ -1341,6 +870,34 @@
       }
 
 
+      const statisticsResults =
+        await Promise.allSettled(
+          teamEvents.map(event =>
+            fetch(urls.statistics(event.key))
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error(
+                    `HTTP ${response.status}`
+                  );
+                }
+
+                return response.json();
+              })
+          )
+        );
+
+      const statisticsMap = {};
+
+      teamEvents.forEach((event, index) => {
+        const result = statisticsResults[index];
+
+        statisticsMap[event.key] =
+          result.status === "fulfilled"
+            ? result.value
+            : null;
+      });
+
+
       output.innerHTML =
         teamEvents
           .map(event => {
@@ -1365,7 +922,8 @@
               event,
               statusMap[event.key] || {},
               eventMatches,
-              awards || []
+              awards || [],
+              statisticsMap[event.key]
             );
           })
           .join("");
