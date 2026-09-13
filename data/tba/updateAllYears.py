@@ -1,6 +1,7 @@
 import json
 import os
 from pathlib import Path
+from types import NoneType
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -82,7 +83,7 @@ def collect_event_statistics(event_key):
         "coprs": fetch_json(f"event/{event_key}/coprs", dict, allow_not_found=True),
         "alliances": fetch_json(f"event/{event_key}/alliances", list, allow_not_found=True),
     }
-    if any(not isinstance(value, (dict, list)) for key, value in statistics.items() if key != "event_key"):
+    if any(not isinstance(value, (dict, list, type(None))) for key, value in statistics.items() if key != "event_key"):
         raise RuntimeError(f"Invalid statistics payload for {event_key}")
     return statistics
 
