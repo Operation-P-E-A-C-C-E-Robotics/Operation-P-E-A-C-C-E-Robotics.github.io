@@ -78,9 +78,9 @@ def validate_keyed_records(records, name, year):
 def collect_event_statistics(event_key):
     statistics = {
         "event_key": event_key,
-        "oprs": fetch_json(f"event/{event_key}/oprs", dict),
-        "coprs": fetch_json(f"event/{event_key}/coprs", dict),
-        "alliances": fetch_json(f"event/{event_key}/alliances", list),
+        "oprs": fetch_json(f"event/{event_key}/oprs", dict, allow_not_found=True),
+        "coprs": fetch_json(f"event/{event_key}/coprs", dict, allow_not_found=True),
+        "alliances": fetch_json(f"event/{event_key}/alliances", list, allow_not_found=True),
     }
     if any(not isinstance(value, (dict, list)) for key, value in statistics.items() if key != "event_key"):
         raise RuntimeError(f"Invalid statistics payload for {event_key}")
