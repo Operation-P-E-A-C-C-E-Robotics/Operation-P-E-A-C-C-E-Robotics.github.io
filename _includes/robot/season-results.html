@@ -21,7 +21,7 @@
       display: grid;
       grid-template-columns:
         minmax(220px, 2fr)
-        repeat(4, minmax(110px, 1fr));
+        repeat(5, minmax(110px, 1fr));
       gap: .75rem;
       align-items: center;
       padding: 1rem 2.5rem 1rem 1rem;
@@ -291,6 +291,7 @@
       statuses: `${base}${year}_event_statuses.json`,
       matches: `${base}${year}_matches.json`,
       awards: `${base}${year}_awards.json`,
+      districtRankings: `${base}${year}_district_rankings.json`,
       statistics: eventKey => `${base}${eventKey}_statistics.json`
     };
 
@@ -334,6 +335,18 @@
       return `${w}-${l}-${t}`;
     }
 
+    function totalDistrictPoints(districtRankings) {
+      const team = districtRankings.find(item => item.team_key === "frc3461");
+      if(!team) return "—";
+      else return team;
+    }
+
+    function eventDistrictPoints(districtRankings, event_key) {
+      const team = districtRankings.find(item => item.team_key === "frc3461");
+      const event_points = team?.event_points?.find(item => item.event_key === event_key);
+      if (!team || !event_points) return "—";
+      else return event_points;
+    }
 
     function qualStatusRecord(status) {
       return recordText(
@@ -627,7 +640,7 @@
        Event card
        ============================================================ */
 
-    function card(event, status, matches, awards, statistics) {
+    function card(event, status, matches, awards, statistics, districtRankings) {
       const rank =
         rankText(status);
 
@@ -745,6 +758,16 @@
               </strong>
             </div>
 
+            <div>
+              <span class="robot-season-results__label">
+                District Points
+              </span>
+
+              <strong>
+                ${eventDistrictPoints(districtRankings, event?.key)?.total ?? "—"}
+              </strong>
+            </div>
+
             <i class="robot-season-results__chevron fa fa-chevron-down" aria-hidden="true"></i>
 
           </div>
@@ -833,10 +856,11 @@
       fetch(urls.events).then(r => r.json()),
       fetch(urls.statuses).then(r => r.json()),
       fetch(urls.matches).then(r => r.json()),
-      fetch(urls.awards).then(r => r.json())
+      fetch(urls.awards).then(r => r.json()),
+      fetch(urls.districtRankings).then(r => r.json())
     ])
 
-    .then(async ([events, statuses, matches, awards]) => {
+    .then(async ([events, statuses, matches, awards, districtRankings]) => {
 
       const statusMap =
         statuses || {};
@@ -925,7 +949,8 @@
               statusMap[event.key] || {},
               eventMatches,
               awards || [],
-              statisticsMap[event.key]
+              statisticsMap[event.key], 
+              districtRankings
             );
           })
           .join("");
