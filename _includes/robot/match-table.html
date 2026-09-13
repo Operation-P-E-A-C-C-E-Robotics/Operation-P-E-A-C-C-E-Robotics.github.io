@@ -231,7 +231,7 @@
       const red = match.alliances?.red?.team_keys || [];
       const blue = match.alliances?.blue?.team_keys || [];
       const key = match.key || `${match.event_key}_${match.comp_level}_${match.match_number}`;
-      return `<div class="robot-season-results__match"><div class="robot-season-results__match-video">${matchVideo(match, year)}</div><div class="robot-season-results__match-name"><a href="/match/${esc(key)}">${esc(matchLabel(match))}</a></div>${teamCells(red, "Red", winner, team, year)}${teamCells(blue, "Blue", winner, team, year)}${scoreCell(match.alliances?.red?.score ?? "—", "Red", winner)}${scoreCell(match.alliances?.blue?.score ?? "—", "Blue", winner)}</div>`;
+      return `<div class="robot-season-results__match"><div class="robot-season-results__match-video">${matchVideo(match, year)}</div><div class="robot-season-results__match-name"><a href="https://www.thebluealliance.com/match/${esc(key)}" target="_blank" rel="noopener noreferrer">${esc(matchLabel(match))}</a></div>${teamCells(red, "Red", winner, team, year)}${teamCells(blue, "Blue", winner, team, year)}${scoreCell(match.alliances?.red?.score ?? "—", "Red", winner)}${scoreCell(match.alliances?.blue?.score ?? "—", "Blue", winner)}</div>`;
     }).join("");
 
     return { esc, matchLabel, teamSide, winningAlliance, rows };
