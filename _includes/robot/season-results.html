@@ -479,8 +479,10 @@
 
               return `
                 <a
-                  href="/team/${esc(number)}/${esc(year)}"
+                  href="https://www.thebluealliance.com/team/${esc(number)}/${esc(year)}#${statistics?.event_key || ""}"
                   class="${isTeam ? "robot-season-results__alliance-team is-team" : "robot-season-results__alliance-team"}"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   ${isTeam ? 'aria-current="page"' : ""}
                 >
                   ${isTeam ? `<strong>${esc(number)}</strong>` : esc(number)}
