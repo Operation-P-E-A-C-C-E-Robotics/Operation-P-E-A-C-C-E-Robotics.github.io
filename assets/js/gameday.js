@@ -178,7 +178,7 @@ function setLiveStream(streamUrl, streamButtonId, streamType) {
     } else {
         streamFrame.src = streamUrl;
         hideChat(); //if its not one of the two media types we support, hide the chat and disable showing it. (realistically what platforms aside from twitch and youtube have chats anyway)
-        chatFrame.src = "/assets/images/notFound.png" //something nicer than the default browser "failed to connect" screen; Disabling the button should make it impossible for this to appear.
+        chatFrame.src = new URL("../images/notFound.png", import.meta.url).href;
         document.getElementById("streamChatToggle").classList.add("disabled");
     }
     document.getElementById('streamContainer').style.display = 'block';

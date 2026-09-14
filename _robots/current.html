@@ -22,7 +22,7 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
       <h3 id="districtPoints">Current District Points: --</h3>
       <div class="small d-inline-flex media">All data provided by The Blue Alliance <div class="ml-1 container media-body bg-primary rounded-circle align-content-center justify-content-center" style="height: 30px; width:30px;"><img src="/assets/images/tba_lamp.svg" class="" style="height: 20px; margin-left:-06px;"></div></div>
       <p class="small">Last Updated on <span id="dataLastUpdated"></span></p>
-      <button type="button" class="btn btn-primary align-middle" onclick=viewOnTBA();>View On The Blue Alliance <span class="pl-1"><img style="height: 25px;" src="/assets/images/tba_lamp.svg"></span></button>
+      <a class="btn btn-primary align-middle" href="https://www.thebluealliance.com/team/3461">View On The Blue Alliance <span class="pl-1"><img style="height: 25px;" src="{{ '/assets/images/tba_lamp.svg' | relative_url }}" alt=""></span></a>
       <div class="mx-auto">
         <h1 class="countdown text-center pt-5" id="kickoffCountdown" style="display: none;">
           Kickoff is in
@@ -33,10 +33,6 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
           <span class="countdown-number countdown-seconds">-</span><span class="countdown-label">S</span>
           </b>
           <!-- <small>until Kickoff</small> -->
-        </h1>
-        <h1 id="kickoffCountdown" class="text-center pt-5" style="display: none;">Kickoff is in <b id="kickoffCountdownDays">
-
-          </b>
         </h1>
         <h1 id="competitionCountdown" class="text-center pt-5" style="display:none;">Competition is in 
           <b id="competitionCountdownDays" class="text-nowrap">
@@ -128,4 +124,3 @@ metadesc: Operation P.E.A.C.C.E Robotics current season status, performance and 
   }
 
 </style>
-

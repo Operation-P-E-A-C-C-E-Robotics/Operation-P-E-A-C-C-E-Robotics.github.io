@@ -37,6 +37,8 @@ function getFirstSaturdayInJanuary(year) {
   return "No suitable date found in January.";
 }
 
+let audioCtx;
+
 function playOnFieldNotification() {
   if (!audioCtx) {
       audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -104,7 +106,7 @@ function playOnFieldSoonNotification() {
 
 
 function toggleDarkMode() {
-  var isDarkMode = document.body.classList.contains('bg-dark');
+  const isDarkMode = document.body.classList.contains('bg-dark');
 
   // Toggle Bootstrap 4 classes for background and text color
   if (isDarkMode) {
@@ -124,27 +126,18 @@ function toggleDarkMode() {
 document.addEventListener('DOMContentLoaded', function() {
   const myButton = document.getElementById('darkModeToggle');
   // Retrieve the dark mode preference from localStorage on page load
-  var isDarkModePreference = localStorage.getItem('bg-dark');
+  const isDarkModePreference = localStorage.getItem('bg-dark');
 
   if (isDarkModePreference === 'true') {
     toggleDarkMode(); // If the preference is 'true', set dark mode
   }
-  // Define the function you want to run when the button is pressed
-  function handleClick() {
-      alert('Button Clicked!'); // You can replace this with your custom code.
-  }
-
-  // Add a click event listener to the button
-  try {
+  if (myButton) {
     myButton.addEventListener('click', toggleDarkMode);
-  } catch (error) {
-    console.error('Error occurred while adding event listener:', error);
+  } else {
     document.body.classList.remove("bg-dark"); //Default to light mode
     document.body.classList.remove("text-light")
     document.body.classList.add("bg-light")
   }
 });
 
-export { playOnFieldNotification, playOnFieldSoonNotification as playOnFieldSoondNotification, playOnFieldSoonNotification}
-window.playOnFieldNotif = playOnFieldNotification
-window.playOnFieldSoonNotif = playOnFieldSoonNotification
+export { playOnFieldNotification, playOnFieldSoonNotification }

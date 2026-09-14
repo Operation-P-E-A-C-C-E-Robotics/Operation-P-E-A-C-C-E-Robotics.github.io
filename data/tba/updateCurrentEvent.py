@@ -10,7 +10,6 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 TEAM = os.getenv("TEAM", "frc3461")
-YEAR = int(os.getenv("YEAR") or date.today().year)
 OUTPUT_PATH = Path(os.getenv("CURRENT_EVENT_JSON_PATH", "current_event.json"))
 TBA_API_KEY = os.getenv("TBA_API_KEY")
 
@@ -136,12 +135,16 @@ def pick_event(events):
 
 
 def build_snapshot():
-    team_events = fetch_json(f"team/{TEAM}/events/{YEAR}", list)
+    status = fetch_json("status", dict)
+    year = status.get("current_season")
+    if not isinstance(year, int):
+        raise RuntimeError("TBA status did not include current_season")
+    team_events = fetch_json(f"team/{TEAM}/events/{year}", list)
     event = pick_event(team_events)
 
     snapshot = {
         "team_key": TEAM,
-        "year": YEAR,
+        "year": year,
         "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "source": "TBA v3",
         "event": None,
@@ -173,6 +176,7 @@ def build_snapshot():
         "timezone": event.get("timezone"),
         "week": event.get("week"),
         "district": event.get("district"),
+        "webcasts": event.get("webcasts") or [],
     }
     snapshot["event_key"] = event_key
     snapshot["state"] = event_status(event)

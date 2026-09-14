@@ -1,4 +1,4 @@
-import { getKickoffDate, getCurrentEvent, getCurrentSeasonYear, getNextEvent, getMedia, getTeamDistrictStats, getDistrictRankings, getAwards, getEvents, getEventStatuses, getMatches, formatTeamKey, getEventNameFromKey, getMatchNameFromKey } from "./tba.js";
+import { getKickoffDate, getCurrentEvent, getCurrentSeasonYear, getNextEvent, getMedia, getTeamDistrictStats, getDistrictRankings, getAwards, getEvents, getEventStatuses, getMatches, formatTeamNumber, getEventNameFromKey, getMatchNameFromKey } from "./tba.js";
 import {eventCountdown} from "./countdown.js";
 import { Chart, LineController, LineElement, PointElement, LinearScale, CategoryScale, Title, Tooltip, Legend } from "https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm";
 Chart.register(
@@ -12,13 +12,13 @@ Chart.register(
   Legend
 );
 
-  const year = getCurrentSeasonYear();
+  const year = await getCurrentSeasonYear();
   document.getElementById("header").innerHTML = year + " Competition Season"
 
   async function setEventCountdown() {
     try {
-      var nextEvent = await getNextEvent();
-      var currentEvent = await getCurrentEvent();
+      const nextEvent = await getNextEvent();
+      const currentEvent = await getCurrentEvent();
       if (currentEvent) {
         console.log("Hiding Competition Countdown because we are currently Competing at:", currentEvent.name);
         
@@ -97,7 +97,7 @@ setDistrictStats();
     const stats = {};
     const eventKeyEventInfoPair = {};
     for (var i = 0; i < event.length; i++){
-      stats[event[i].key] = eventStats[i] || null;
+      stats[event[i].key] = eventStats[event[i].key] || null;
       eventKeyEventInfoPair[event[i].key] = event[i];
     }
     let tab =
@@ -108,7 +108,7 @@ setDistrictStats();
     </tr>`;
 
     console.log(eventStats)
-    if (length == 0) {
+    if (event.length === 0) {
       tab = `<h1 class=text-center>No Events Found</h1>`
       document.getElementById("employees").innerHTML = tab;
     }
@@ -210,7 +210,7 @@ show();
 
 
 //for the graphs 
-  if (Date.now() > getKickoffDate()) {
+  if (Date.now() > await getKickoffDate()) {
     getMatchRecord();
   } else {
     document.getElementById('bestMatch').hidden = true
@@ -223,6 +223,7 @@ show();
       console.log("No matches found for the current season. Hiding best match banner and graph.");
       document.getElementById('bestMatch').hidden = true
       document.getElementById('myChart').hidden = true
+      return;
     }
     generateDataSet(matches);
     var highestScoringMatch = getHighestRankingOnSeasonMatch(matches);
@@ -243,8 +244,6 @@ show();
     }
       // document.getElementById('bestMatchYTEmbed').src = "https://www.youtube-nocookie.com/embed/" + highScore.videos[0].key 
 
-     //document.getElementById('bestMatchRedOne').innerHTML += formatTeamKey(highScore.alliances.red.team_keys[0])
-      //document.getElementById('bestMatchBlueOne').innerHTML += formatTeamKey(highScore.alliances.blue.team_keys[0])
 
     try {
       document.getElementById('bestMatchYTEmbed').src = "https://www.youtube-nocookie.com/embed/" + highScore.videos[0].key 
@@ -254,22 +253,22 @@ show();
     }
     
     try {
-      document.getElementById('bestMatchRedOne').innerHTML += formatTeamKey(highScore.alliances.red.team_keys[0]) //TODO verify
-      document.getElementById('bestMatchBlueOne').innerHTML += formatTeamKey(highScore.alliances.blue.team_keys[0])
+      document.getElementById('bestMatchRedOne').innerHTML += formatTeamNumber(highScore.alliances.red.team_keys[0])
+      document.getElementById('bestMatchBlueOne').innerHTML += formatTeamNumber(highScore.alliances.blue.team_keys[0])
     } catch {
       console.log("failed to get Red/Blue team one")
     }
 
     try {
-      document.getElementById('bestMatchRedTwo').innerHTML += formatTeamKey(highScore.alliances.red.team_keys[1])
-      document.getElementById('bestMatchBlueTwo').innerHTML += formatTeamKey(highScore.alliances.blue.team_keys[1])
+      document.getElementById('bestMatchRedTwo').innerHTML += formatTeamNumber(highScore.alliances.red.team_keys[1])
+      document.getElementById('bestMatchBlueTwo').innerHTML += formatTeamNumber(highScore.alliances.blue.team_keys[1])
     } catch {
       console.log("failed to get Red/Blue team two")
     }
 
     try {
-      document.getElementById('bestMatchRedThree').innerHTML += formatTeamKey(highScore.alliances.red.team_keys[2])
-      document.getElementById('bestMatchBlueThree').innerHTML += formatTeamKey(highScore.alliances.blue.team_keys[2])
+      document.getElementById('bestMatchRedThree').innerHTML += formatTeamNumber(highScore.alliances.red.team_keys[2])
+      document.getElementById('bestMatchBlueThree').innerHTML += formatTeamNumber(highScore.alliances.blue.team_keys[2])
     } catch {
       console.log("failed to get Red/Blue team three")
     }

@@ -1,47 +1,38 @@
-import os
-import requests
 import json
+import os
+import sys
+from pathlib import Path
+
+import requests
 from dotenv import load_dotenv
 
-load_dotenv(".env")
-
-TBA_API_KEY = os.getenv("TBA_API_KEY")
-
-EMAIL = "actions@github.com"
-NAME = "GitHub Actions [Bot]"
-COMMIT_MESSAGE = "Update TBA Status Endpoint"
+ROOT = Path(__file__).resolve().parent
+load_dotenv(ROOT / ".env")
+API_KEY = os.getenv("TBA_API_KEY")
+OUTPUT = ROOT / "status.json"
 
 
-def fetch_json(endpoint, expected_type, allow_not_found=False):
-    if not TBA_API_KEY:
+def main():
+    if not API_KEY:
         raise RuntimeError("TBA_API_KEY is required")
+    response = requests.get(
+        "https://www.thebluealliance.com/api/v3/status",
+        headers={"X-TBA-Auth-Key": API_KEY},
+        timeout=30,
+    )
+    response.raise_for_status()
+    payload = response.json()
+    if not isinstance(payload, dict) or not isinstance(payload.get("current_season"), int):
+        raise RuntimeError("TBA returned an invalid status payload")
+    temporary = OUTPUT.with_suffix(".json.tmp")
+    temporary.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    temporary.replace(OUTPUT)
+    print(f"Wrote {OUTPUT}")
 
-    url = f"https://www.thebluealliance.com/api/v3/{endpoint}?X-TBA-Auth-Key={TBA_API_KEY}"
 
-    resp = requests.get(url, timeout=30)
-
-    if resp.status_code == 404 and allow_not_found:
-        return None
-
-    resp.raise_for_status()
-
+if __name__ == "__main__":
     try:
-        payload = resp.json()
-    except ValueError as exc:
-        raise RuntimeError(
-            f"TBA returned invalid JSON for {endpoint}"
-        ) from exc
-
-    if not isinstance(payload, expected_type):
-        raise RuntimeError(
-            f"TBA returned {type(payload).__name__} for {endpoint}; "
-            f"expected {expected_type.__name__}"
-        )
-
-    return payload
-
-
-tbaStatus = fetch_json("status", dict)
-
-with open("data/tba/tba_status.json", "w") as f:
-    json.dump(tbaStatus, f, indent=2)
+        main()
+    except Exception as error:
+        print(f"Status update failed: {error}", file=sys.stderr)
+        sys.exit(1)

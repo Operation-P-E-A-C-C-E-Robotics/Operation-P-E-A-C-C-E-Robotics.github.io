@@ -58,9 +58,8 @@ body.bg-dark .text-dark {
 
 @font-face {
     font-family: 'bankgothicbold';
-    src: url('/assets/fonts/BankGothicWebFontConvert/bankgothic_bold_2-webfont.woff2') format('woff2'),
-         url('/assets/fonts/BankGothicWebFontConvert/bankgothic_bold_2-webfont.woff') format('woff'),
-		 url('/assets/fonts/BankGothic_Bold_2.ttf') format('ttf');
+    src: url('../fonts/BankGothicWebFontConvert/bankgothic_bold_2-webfont.woff2') format('woff2'),
+         url('../fonts/BankGothicWebFontConvert/bankgothic_bold_2-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -343,4 +342,3 @@ body.bg-dark .sponsorlogo {
 .mu-why-us-single p {
 	font-size: 15px;
 }
-

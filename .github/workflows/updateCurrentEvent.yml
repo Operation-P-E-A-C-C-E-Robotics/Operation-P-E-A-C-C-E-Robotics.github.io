@@ -2,7 +2,7 @@ name: Update current event snapshot every five minutes
 
 on:
   schedule:
-    - cron: '*/5 * * * *' # Runs every five minutes.
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 concurrency:
@@ -37,7 +37,6 @@ jobs:
           TBA_API_KEY: ${{ secrets.tba_api_key }}
           TEAM: frc3461
         run: |
-          export YEAR=$(date +%Y)
           python updateCurrentEvent.py
         working-directory: data/tba
 

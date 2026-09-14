@@ -1,105 +1,55 @@
-<div id="duringEventBanner" style="display:none;" class="jumbotron bg-light">
-    <h1 id="currentCompetingEvent" class="text-center pb-2">
-      Currently Competing At () Event!
-    </h1>
-    <h4 id="currentStatusStr" class="text-center pb-3">Team 3461's current status is unknown</h4>
+<section class="current-event" data-current-event hidden aria-live="polite">
+  <div class="current-event__heading">
+    <p class="current-event__eyebrow">On the field</p>
+    <h2 data-event-name>Currently competing</h2>
+    <p data-event-status></p>
+  </div>
+  <div class="current-event__meta">
+    <p><strong>Rank</strong> <span data-event-rank>—</span></p>
+    <p><strong>Next match</strong> <span data-countdown>—</span></p>
+    <p><strong>Event time</strong> <time data-event-time>—</time></p>
+  </div>
+  <div class="current-event__matches">
+    <article data-next-match hidden></article>
+    <article data-last-match hidden></article>
+  </div>
+  <div class="current-event__actions">
+    <a class="current-event__button" href="{{ '/gameday/' | relative_url }}">Open Gameday</a>
+    <button class="current-event__refresh" type="button" data-refresh>Refresh event data</button>
+  </div>
+  <div class="current-event__stream" data-stream hidden><iframe data-stream-frame title="Live event stream" allow="autoplay; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
+</section>
 
-    <div class="row">
-      <div class="col">
-          <h3 id="currentRank" class="text-nowrap">
-            Event Rank: 0/0
-          </h3>
-      </div>
-      <div class="col text-center">
-          <h3  class="pl-2 text-center d-inline-flex justify-content-center align-content-center">Next Match: ~<span id='counter'>--h --m --s</span></h3>
-      </div>
-      <div class="col text-center">
-        <h3 class="text-right d-inline-flex justify-content-end float-right">Event Local Time: <span id="time" class="ml-2 text-right"></span></h3>
-      </div>
-
-    </div>
-
-    <div class="row flex-column flex-sm-row">
-      <div class="col col-lg-6 order-lg-0 order-sm-1">
-        <div class="table-responsive pt-2 rounded-lg">
-          <table class="table table-bordered table-light text-light">
-            <tbody>
-              <tr class="bg-secondary"><th colspan="2" id="currentNextMatch">Next Match: Not Found</th></tr>
-              <tr>
-                <th class="bg-danger">Red Alliance</th>
-                <th class="bg-primary">Blue Alliance</th>
-              </tr>
-              <tr>
-                <td class="bg-danger" id="curMatchRedOne"></td>
-                <td class="bg-primary" id="curMatchBlueOne"></td>
-              </tr>
-              <tr>
-                <td class="bg-danger" id="curMatchRedTwo"></td>
-                <td class="bg-primary" id="curMatchBlueTwo"></td>
-              </tr>
-              <tr>
-                <td class="bg-danger" id="curMatchRedThree"></td>
-                <td class="bg-primary" id="curMatchBlueThree"></td>
-              </tr>
-              <!-- <tr>
-                <td class="bg-danger" id="curMatchRedScore"></td>
-                <td class="bg-primary" id="curMatchBlueScore"></td>
-              </tr> -->
-            </tbody>
-          </table>
-        </div>
-        <div class="table-responsive pt-2 rounded-lg d-none d-sm-none d-md-block">
-          <table class="table table-bordered table-light text-light">
-            <tbody>
-              <tr class="bg-secondary"><th colspan="2" id="currentLastMatch">Last Match: Not Found</th></tr>
-              <tr>
-                <th class="bg-danger">Red Alliance</th>
-                <th class="bg-primary">Blue Alliance</th>
-              </tr>
-              <tr>
-                <td class="bg-danger" id="lasMatchRedOne"></td>
-                <td class="bg-primary" id="lasMatchBlueOne"></td>
-              </tr>
-              <tr>
-                <td class="bg-danger" id="lasMatchRedTwo"></td>
-                <td class="bg-primary" id="lasMatchBlueTwo"></td>
-              </tr>
-              <tr>
-                <td class="bg-danger" id="lasMatchRedThree"></td>
-                <td class="bg-primary" id="lasMatchBlueThree"></td>
-              </tr>
-              <tr>
-                <td class="bg-danger" id="lasMatchRedScore"></td>
-                <td class="bg-primary" id="lasMatchBlueScore"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div btn-group>
-          <a class="btn btn-primary" href="{{site.baseurl}}/gameday/"> Watch on Gameday</a>
-          <button class="btn btn-secondary" onclick="setBanner()">Refresh Data</button>
-        </div>
-      </div>
-      <div class="col-lg-6" id="liveStream">
-        <div class="embed-responsive embed-responsive-16by9 mx-auto">
-          <iframe id="liveStreamFrame" class="embed-responsive-item" src="{{"/assets/images/notFound.png" | absolute_url}}"> </iframe>
-        </div>
-          
-      </div>
-    </div>
-    <!-- <div id="liveStream" class="embed-responsive embed-responsive-16by9">
-      <iframe id="liveStreamFrame" class="embed-responsive-item" src="{{"/assets/images/notFound.png" | absolute_url}}"> </iframe>
-    </div> -->
-  
-</div>
-<script type="module" src="{{ site.baseurl }}/assets/js/currentlyCompetingBanner.js"></script>
 <style>
-    #redTeams {
-      color: red;
-    }
-  
-    #blueTeams {
-      color:blue;
-    }
-  
-  </style>
+  .current-event { --event-ink:#f8fafc; --event-panel:#172033; --event-muted:#b9c5d9; --event-accent:#f9d84a; margin:2rem 0; padding:clamp(1.25rem,3vw,2.5rem); border-radius:1.5rem; color:var(--event-ink); background:radial-gradient(circle at top right,rgba(222,74,172,.45),transparent 30%),radial-gradient(circle at bottom left,rgba(53,205,232,.4),transparent 32%),var(--event-panel); box-shadow:0 1rem 2.5rem rgba(8,15,30,.22); }
+  .current-event__eyebrow { margin:0 0 .35rem; color:var(--event-accent); font-size:.75rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }.current-event h2 { margin:0; font-size:clamp(1.7rem,4vw,3rem); }.current-event__heading > p:last-child { color:var(--event-muted); margin:.5rem 0 0; }
+  .current-event__meta, .current-event__matches { display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(11rem,1fr)); margin-top:1.5rem; }.current-event__meta p, .current-event__matches article { margin:0; padding:1rem; border:1px solid rgba(255,255,255,.16); border-radius:.85rem; background:rgba(7,15,30,.28); }.current-event__meta strong { display:block; color:var(--event-muted); font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; }
+  .current-event__match-title { display:block; margin-bottom:.5rem; font-weight:800; }.current-event__alliances { display:grid; gap:.35rem; }.current-event__alliance { display:flex; justify-content:space-between; gap:.75rem; font-weight:700; }.current-event__alliance--red { color:#ff9b9b; }.current-event__alliance--blue { color:#a8caff; }.current-event__team--ours { color:var(--event-accent); text-decoration:underline; text-underline-offset:3px; }
+  .current-event__actions { display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1.5rem; }.current-event__button, .current-event__refresh { border:0; border-radius:999px; padding:.65rem 1rem; color:#101827; background:var(--event-accent); font-weight:800; text-decoration:none; cursor:pointer; }.current-event__refresh { color:var(--event-ink); background:transparent; border:1px solid rgba(255,255,255,.4); }.current-event__stream { margin-top:1.5rem; aspect-ratio:16/9; }.current-event__stream iframe { width:100%; height:100%; border:0; border-radius:.85rem; }
+</style>
+
+<script type="module">
+  import { getCurrentEventSnapshot, getMatchCodeFromKey } from "{{ '/assets/js/tba.js' | relative_url }}";
+  document.querySelectorAll("[data-current-event]").forEach((root) => {
+    const $ = (selector) => root.querySelector(selector); let timer;
+    const teams = (list) => (list ?? []).map((team) => { const number = String(team).replace(/^frc/, ""); return number === "3461" ? `<span class="current-event__team--ours">${number}</span>` : number; }).join(" · ") || "Teams unavailable";
+    const card = (match, label, scores) => { const red = match.alliances?.red ?? {}; const blue = match.alliances?.blue ?? {}; const score = (value) => scores && Number.isFinite(value) ? ` <span>${value}</span>` : ""; return `<span class="current-event__match-title">${label}: ${getMatchCodeFromKey(match.key)}</span><div class="current-event__alliances"><div class="current-event__alliance current-event__alliance--red"><span>${teams(red.team_keys)}</span>${score(red.score)}</div><div class="current-event__alliance current-event__alliance--blue"><span>${teams(blue.team_keys)}</span>${score(blue.score)}</div></div>`; };
+    const startCountdown = (timestamp) => { clearInterval(timer); const target = new Date(timestamp * 1000); const update = () => { const seconds = Math.max(0, Math.floor((target - Date.now()) / 1000)); $("[data-countdown]").textContent = seconds ? `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}` : "On field soon"; }; update(); timer = setInterval(update, 1000); };
+    const render = async () => {
+      root.hidden = true; clearInterval(timer);
+      try {
+        const snapshot = await getCurrentEventSnapshot(); if (snapshot.state !== "active" || !snapshot.event) return;
+        const event = snapshot.event; const status = snapshot.team_status ?? {}; const byKey = new Map((snapshot.matches ?? []).map((match) => [match.key, match])); const next = byKey.get(status.next_match_key); const last = byKey.get(status.last_match_key);
+        $("[data-event-name]").textContent = event.name ?? "Current event"; $("[data-event-status]").textContent = status.overall_status_str ?? "Competition status is being updated.";
+        const ranking = status.qual?.ranking; $("[data-event-rank]").textContent = ranking ? `${ranking.rank}/${status.qual?.num_teams ?? "?"}` : "Not ranked yet";
+        $("[data-event-time]").textContent = new Intl.DateTimeFormat(undefined, { timeZone:event.timezone, hour:"numeric", minute:"2-digit", second:"2-digit", timeZoneName:"short" }).format(new Date());
+        const nextCard = $("[data-next-match]"); const lastCard = $("[data-last-match]"); nextCard.hidden = !next; lastCard.hidden = !last;
+        if (next) { nextCard.innerHTML = card(next, "Next", false); const time = next.predicted_time ?? next.time; if (time) startCountdown(time); } else $("[data-countdown]").textContent = "Schedule unavailable";
+        if (last) lastCard.innerHTML = card(last, "Last", true);
+        const webcast = (event.webcasts ?? []).find((item) => item.type === "youtube" && item.channel); if (webcast) { $("[data-stream-frame]").src = `https://www.youtube-nocookie.com/embed/${webcast.channel}`; $("[data-stream]").hidden = false; }
+        root.hidden = false;
+      } catch (error) { console.error("Current-event widget could not render:", error); }
+    };
+    $("[data-refresh]").addEventListener("click", render); render();
+  });
+</script>

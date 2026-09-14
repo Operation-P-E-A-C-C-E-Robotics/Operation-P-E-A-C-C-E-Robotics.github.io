@@ -60,7 +60,7 @@ function matchCountdown(countDownDate, counterEl, callBackFunction = null, audio
             counterEl.classList.remove('yellowwarning', 'redalliance');
         }
         if (days === 0 && hours === 0 && minutes === 5 && seconds >= 50 && audioNotification === true) {
-            playOnFieldSoondNotification();
+            playOnFieldSoonNotification();
         }
         if (days === 0 && hours === 0 && minutes === 0 && seconds <= 10 && audioNotification === true) {
             playOnFieldNotification(); //if the User toggled the audio notification to true on the gameday page
@@ -70,46 +70,10 @@ function matchCountdown(countDownDate, counterEl, callBackFunction = null, audio
             if (typeof callBackFunction === "function") {
                 callBackFunction();
             }
-            //setBanner(); // Refresh banner to show match results
             clearInterval(interval);
             return;
         }
 
-    }, 1000);
-
-    return interval;
-}
-
-/**
- * Update kickoff countdown timer
- * @param {HTMLElement} counterEl - Element to display countdown
- * @returns {number} Interval ID
- */
-function kickoffCountdown(counterEl) {
-    const year = getCurrentSeasonYear();
-    const kickoffDate = getKickoffDate(year);
-    
-    const interval = setInterval(() => {
-        const now = new Date().getTime();
-        const distance = kickoffDate.getTime() - now;
-        
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        if (!counterEl) {
-            clearInterval(interval);
-            return;
-        }
-
-        if (distance < 0) {
-            counterEl.style.display = 'none';
-            clearInterval(interval);
-            return;
-        }
-
-        counterEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }, 1000);
 
     return interval;
@@ -159,4 +123,4 @@ function eventCountdown(event, counterEl, callBackFunction = null) {
     return interval;
 }
 
-export { matchCountdown, kickoffCountdown, eventCountdown, eventLocalTime };
+export { matchCountdown, eventCountdown, eventLocalTime };

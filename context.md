@@ -99,7 +99,7 @@ The separate:
 
 `assets/js/currentlyCompetingBanner.js`
 
-should eventually be deleted once no longer needed.
+has been removed. The current-event widget is now self-contained in its include and consumes the generated `current_event.json` snapshot.
 
 The widget should:
 - be completely hidden when there is no current event

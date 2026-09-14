@@ -32,7 +32,6 @@ Documentation is kept in the [Documentation Folder](https://github.com/Operation
 
 ### Google Calendar
 
-[![Pull Google Calendar Events](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/actions/workflows/calendarPYRunner.yml/badge.svg)](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/actions/workflows/calendarPYRunner.yml)
 
 ## Automations to make life easier
 [![Autocreate robot profile if none exists](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/actions/workflows/auto-create-robot-profile.yml/badge.svg)](https://github.com/Operation-P-E-A-C-C-E-Robotics/Operation-P-E-A-C-C-E-Robotics.github.io/actions/workflows/auto-create-robot-profile.yml)
