@@ -1,0 +1,44 @@
+[
+    {
+        "key": "2027cthar",
+        "name": "NE District UHART Event",
+        "short_name": "UHART",
+        "event_code": "cthar",
+        "event_type": 1,
+        "event_type_string": "District",
+        "parent_event_key": null,
+        "playoff_type": 10,
+        "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
+        "district": {
+            "key": "2027ne",
+            "year": 2027,
+            "abbreviation": "ne",
+            "display_name": "New England",
+            "official_advancement_counts": {
+                "dcmp": 0,
+                "cmp": 0
+            }
+        },
+        "division_keys": [],
+        "first_event_id": null,
+        "first_event_code": "cthar",
+        "year": 2027,
+        "timezone": "America/New_York",
+        "week": 2,
+        "website": "https://www.nefirst.org/district-events",
+        "remap_teams": null,
+        "city": "Hartford",
+        "state_prov": "CT",
+        "country": "USA",
+        "postal_code": null,
+        "lat": null,
+        "lng": null,
+        "location_name": "UHart Sports Center",
+        "address": "200 Bloomfield Ave",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "start_date": "2027-03-19",
+        "end_date": "2027-03-21",
+        "webcasts": []
+    }
+]
