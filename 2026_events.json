@@ -17,7 +17,9 @@
         "timezone": "America/New_York",
         "week": null,
         "website": "https://wp.wpi.edu/battlecry/",
-        "remap_teams": null,
+        "remap_teams": {
+            "frc9990": "frc190B"
+        },
         "city": "Worcester",
         "state_prov": "MA",
         "country": "USA",
