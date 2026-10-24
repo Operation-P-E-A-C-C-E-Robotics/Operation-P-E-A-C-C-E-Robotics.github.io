@@ -40,5 +40,47 @@
         "start_date": "2027-03-19",
         "end_date": "2027-03-21",
         "webcasts": []
+    },
+    {
+        "key": "2027ctwat",
+        "name": "NE District Waterbury Event",
+        "short_name": "Waterbury",
+        "event_code": "ctwat",
+        "event_type": 1,
+        "event_type_string": "District",
+        "parent_event_key": null,
+        "playoff_type": 10,
+        "playoff_type_string": "Double Elimination Bracket (8 Alliances)",
+        "district": {
+            "key": "2027ne",
+            "year": 2027,
+            "abbreviation": "ne",
+            "display_name": "New England",
+            "official_advancement_counts": {
+                "dcmp": 0,
+                "cmp": 0
+            }
+        },
+        "division_keys": [],
+        "first_event_id": null,
+        "first_event_code": "ctwat",
+        "year": 2027,
+        "timezone": "America/New_York",
+        "week": 4,
+        "website": "https://www.nefirst.org/district-events",
+        "remap_teams": null,
+        "city": "Waterbury",
+        "state_prov": "CT",
+        "country": "USA",
+        "postal_code": null,
+        "lat": null,
+        "lng": null,
+        "location_name": "Wilby High School",
+        "address": "568 Bucks Hill Road",
+        "gmaps_place_id": null,
+        "gmaps_url": null,
+        "start_date": "2027-04-02",
+        "end_date": "2027-04-04",
+        "webcasts": []
     }
 ]
