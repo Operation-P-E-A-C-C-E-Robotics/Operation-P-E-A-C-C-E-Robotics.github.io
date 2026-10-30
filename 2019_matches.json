@@ -1,5 +1,363 @@
 [
     {
+        "key": "2019wiwi_ef1m1",
+        "event_key": "2019wiwi",
+        "comp_level": "ef",
+        "set_number": 1,
+        "match_number": 1,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc177",
+                    "frc195",
+                    "frc666"
+                ],
+                "score": 75,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc3461",
+                    "frc4055",
+                    "frc7153"
+                ],
+                "score": 42,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "red",
+        "score_breakdown": null,
+        "videos": [],
+        "time": null,
+        "actual_time": null,
+        "predicted_time": null,
+        "post_result_time": null
+    },
+    {
+        "key": "2019wiwi_ef5m1",
+        "event_key": "2019wiwi",
+        "comp_level": "ef",
+        "set_number": 5,
+        "match_number": 1,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc3461",
+                    "frc4055",
+                    "frc7153"
+                ],
+                "score": 35,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc228",
+                    "frc58 /",
+                    "frc7127"
+                ],
+                "score": 65,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "blue",
+        "score_breakdown": null,
+        "videos": [],
+        "time": null,
+        "actual_time": null,
+        "predicted_time": null,
+        "post_result_time": null
+    },
+    {
+        "key": "2019mawne_f1m1",
+        "event_key": "2019mawne",
+        "comp_level": "f",
+        "set_number": 1,
+        "match_number": 1,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc195",
+                    "frc176",
+                    "frc6328"
+                ],
+                "score": 88,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc3461",
+                    "frc178",
+                    "frc7869"
+                ],
+                "score": 66,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "red",
+        "score_breakdown": {
+            "blue": {
+                "teleopPoints": 48,
+                "midRightRocketFar": "None",
+                "autoPoints": 15,
+                "midRightRocketNear": "None",
+                "lowLeftRocketNear": "Panel",
+                "completeRocketRankingPoint": false,
+                "topLeftRocketFar": "None",
+                "foulCount": 0,
+                "foulPoints": 3,
+                "lowLeftRocketFar": "None",
+                "preMatchLevelRobot1": "HabLevel2",
+                "preMatchBay2": "Panel",
+                "preMatchBay3": "Panel",
+                "midLeftRocketNear": "None",
+                "preMatchBay1": "Panel",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "adjustPoints": 0,
+                "preMatchBay8": "Panel",
+                "topRightRocketFar": "None",
+                "lowRightRocketNear": "None",
+                "habDockingRankingPoint": false,
+                "cargoPoints": 21,
+                "bay5": "None",
+                "lowRightRocketFar": "Panel",
+                "techFoulCount": 0,
+                "habClimbPoints": 21,
+                "endgameRobot1": "HabLevel2",
+                "endgameRobot2": "HabLevel3",
+                "endgameRobot3": "HabLevel1",
+                "midLeftRocketFar": "None",
+                "topLeftRocketNear": "None",
+                "sandStormBonusPoints": 15,
+                "preMatchLevelRobot3": "HabLevel2",
+                "preMatchLevelRobot2": "HabLevel1",
+                "completedRocketNear": false,
+                "rp": 0,
+                "habLineRobot2": "CrossedHabLineInSandstorm",
+                "habLineRobot3": "CrossedHabLineInSandstorm",
+                "habLineRobot1": "CrossedHabLineInSandstorm",
+                "hatchPanelPoints": 6,
+                "completedRocketFar": false,
+                "bay1": "PanelAndCargo",
+                "bay2": "PanelAndCargo",
+                "bay3": "PanelAndCargo",
+                "bay4": "PanelAndCargo",
+                "totalPoints": 66,
+                "bay6": "PanelAndCargo",
+                "bay7": "PanelAndCargo",
+                "bay8": "PanelAndCargo",
+                "topRightRocketNear": "None"
+            },
+            "red": {
+                "teleopPoints": 73,
+                "midRightRocketFar": "None",
+                "autoPoints": 15,
+                "midRightRocketNear": "PanelAndCargo",
+                "lowLeftRocketNear": "PanelAndCargo",
+                "completeRocketRankingPoint": false,
+                "topLeftRocketFar": "None",
+                "foulCount": 1,
+                "foulPoints": 0,
+                "lowLeftRocketFar": "PanelAndCargo",
+                "preMatchLevelRobot1": "HabLevel2",
+                "preMatchBay2": "Panel",
+                "preMatchBay3": "Cargo",
+                "midLeftRocketNear": "None",
+                "preMatchBay1": "Panel",
+                "preMatchBay6": "Cargo",
+                "preMatchBay7": "Panel",
+                "adjustPoints": 0,
+                "preMatchBay8": "Panel",
+                "topRightRocketFar": "None",
+                "lowRightRocketNear": "PanelAndCargo",
+                "habDockingRankingPoint": false,
+                "cargoPoints": 36,
+                "bay5": "PanelAndCargo",
+                "lowRightRocketFar": "PanelAndCargo",
+                "techFoulCount": 0,
+                "habClimbPoints": 21,
+                "endgameRobot1": "HabLevel3",
+                "endgameRobot2": "HabLevel2",
+                "endgameRobot3": "HabLevel1",
+                "midLeftRocketFar": "None",
+                "topLeftRocketNear": "None",
+                "sandStormBonusPoints": 15,
+                "preMatchLevelRobot3": "HabLevel2",
+                "preMatchLevelRobot2": "HabLevel1",
+                "completedRocketNear": false,
+                "rp": 0,
+                "habLineRobot2": "CrossedHabLineInSandstorm",
+                "habLineRobot3": "CrossedHabLineInSandstorm",
+                "habLineRobot1": "CrossedHabLineInSandstorm",
+                "hatchPanelPoints": 16,
+                "completedRocketFar": false,
+                "bay1": "PanelAndCargo",
+                "bay2": "PanelAndCargo",
+                "bay3": "PanelAndCargo",
+                "bay4": "None",
+                "totalPoints": 88,
+                "bay6": "PanelAndCargo",
+                "bay7": "PanelAndCargo",
+                "bay8": "PanelAndCargo",
+                "topRightRocketNear": "None"
+            }
+        },
+        "videos": [],
+        "time": 1553453460,
+        "actual_time": 1553456704,
+        "predicted_time": 1553456704,
+        "post_result_time": 1553456928
+    },
+    {
+        "key": "2019mawne_f1m2",
+        "event_key": "2019mawne",
+        "comp_level": "f",
+        "set_number": 1,
+        "match_number": 2,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc195",
+                    "frc176",
+                    "frc6328"
+                ],
+                "score": 89,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc3461",
+                    "frc178",
+                    "frc7869"
+                ],
+                "score": 54,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "red",
+        "score_breakdown": {
+            "blue": {
+                "teleopPoints": 42,
+                "midRightRocketFar": "None",
+                "autoPoints": 12,
+                "midRightRocketNear": "None",
+                "lowLeftRocketNear": "None",
+                "completeRocketRankingPoint": false,
+                "topLeftRocketFar": "None",
+                "foulCount": 0,
+                "foulPoints": 0,
+                "lowLeftRocketFar": "Panel",
+                "preMatchLevelRobot1": "HabLevel1",
+                "preMatchBay2": "Panel",
+                "preMatchBay3": "Panel",
+                "midLeftRocketNear": "None",
+                "preMatchBay1": "Panel",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "adjustPoints": 0,
+                "preMatchBay8": "Panel",
+                "topRightRocketFar": "None",
+                "lowRightRocketNear": "None",
+                "habDockingRankingPoint": false,
+                "cargoPoints": 18,
+                "bay5": "None",
+                "lowRightRocketFar": "PanelAndCargo",
+                "techFoulCount": 0,
+                "habClimbPoints": 18,
+                "endgameRobot1": "HabLevel2",
+                "endgameRobot2": "HabLevel3",
+                "endgameRobot3": "None",
+                "midLeftRocketFar": "None",
+                "topLeftRocketNear": "None",
+                "sandStormBonusPoints": 12,
+                "preMatchLevelRobot3": "HabLevel2",
+                "preMatchLevelRobot2": "HabLevel1",
+                "completedRocketNear": false,
+                "rp": 0,
+                "habLineRobot2": "CrossedHabLineInSandstorm",
+                "habLineRobot3": "CrossedHabLineInSandstorm",
+                "habLineRobot1": "CrossedHabLineInSandstorm",
+                "hatchPanelPoints": 6,
+                "completedRocketFar": false,
+                "bay1": "PanelAndCargo",
+                "bay2": "PanelAndCargo",
+                "bay3": "PanelAndCargo",
+                "bay4": "Panel",
+                "totalPoints": 54,
+                "bay6": "PanelAndCargo",
+                "bay7": "Panel",
+                "bay8": "PanelAndCargo",
+                "topRightRocketNear": "None"
+            },
+            "red": {
+                "teleopPoints": 74,
+                "midRightRocketFar": "Panel",
+                "autoPoints": 15,
+                "midRightRocketNear": "None",
+                "lowLeftRocketNear": "PanelAndCargo",
+                "completeRocketRankingPoint": false,
+                "topLeftRocketFar": "None",
+                "foulCount": 0,
+                "foulPoints": 0,
+                "lowLeftRocketFar": "PanelAndCargo",
+                "preMatchLevelRobot1": "HabLevel2",
+                "preMatchBay2": "Panel",
+                "preMatchBay3": "Cargo",
+                "midLeftRocketNear": "None",
+                "preMatchBay1": "Panel",
+                "preMatchBay6": "Cargo",
+                "preMatchBay7": "Panel",
+                "adjustPoints": 0,
+                "preMatchBay8": "Panel",
+                "topRightRocketFar": "None",
+                "lowRightRocketNear": "PanelAndCargo",
+                "habDockingRankingPoint": false,
+                "cargoPoints": 36,
+                "bay5": "PanelAndCargo",
+                "lowRightRocketFar": "PanelAndCargo",
+                "techFoulCount": 0,
+                "habClimbPoints": 18,
+                "endgameRobot1": "HabLevel3",
+                "endgameRobot2": "HabLevel1",
+                "endgameRobot3": "HabLevel1",
+                "midLeftRocketFar": "Panel",
+                "topLeftRocketNear": "None",
+                "sandStormBonusPoints": 15,
+                "preMatchLevelRobot3": "HabLevel2",
+                "preMatchLevelRobot2": "HabLevel1",
+                "completedRocketNear": false,
+                "rp": 0,
+                "habLineRobot2": "CrossedHabLineInSandstorm",
+                "habLineRobot3": "CrossedHabLineInSandstorm",
+                "habLineRobot1": "CrossedHabLineInSandstorm",
+                "hatchPanelPoints": 20,
+                "completedRocketFar": false,
+                "bay1": "PanelAndCargo",
+                "bay2": "PanelAndCargo",
+                "bay3": "PanelAndCargo",
+                "bay4": "PanelAndCargo",
+                "totalPoints": 89,
+                "bay6": "PanelAndCargo",
+                "bay7": "PanelAndCargo",
+                "bay8": "PanelAndCargo",
+                "topRightRocketNear": "None"
+            }
+        },
+        "videos": [],
+        "time": 1553453880,
+        "actual_time": 1553457460,
+        "predicted_time": 1553457487,
+        "post_result_time": 1553457644
+    },
+    {
         "key": "2019bc_qf1m10",
         "event_key": "2019bc",
         "comp_level": "qf",
@@ -80,6 +438,1130 @@
         "actual_time": null,
         "predicted_time": null,
         "post_result_time": null
+    },
+    {
+        "key": "2019bc_qf4m1",
+        "event_key": "2019bc",
+        "comp_level": "qf",
+        "set_number": 4,
+        "match_number": 1,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc694",
+                    "frc2168",
+                    "frc6401"
+                ],
+                "score": 1,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc3461",
+                    "frc5943",
+                    "frc3323"
+                ],
+                "score": 0,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "red",
+        "score_breakdown": {
+            "red": {
+                "preMatchLevelRobot1": "HabLevel1",
+                "habLineRobot1": "Unknown",
+                "endgameRobot1": "Unknown",
+                "preMatchLevelRobot2": "HabLevel1",
+                "habLineRobot2": "Unknown",
+                "endgameRobot2": "Unknown",
+                "preMatchLevelRobot3": "HabLevel1",
+                "habLineRobot3": "CrossedHabLineInTeleop",
+                "endgameRobot3": "Unknown",
+                "topLeftRocketNear": "None",
+                "topRightRocketNear": "None",
+                "midLeftRocketNear": "None",
+                "midRightRocketNear": "None",
+                "lowLeftRocketNear": "None",
+                "lowRightRocketNear": "None",
+                "completedRocketNear": false,
+                "topLeftRocketFar": "None",
+                "topRightRocketFar": "None",
+                "midLeftRocketFar": "None",
+                "midRightRocketFar": "None",
+                "lowLeftRocketFar": "None",
+                "lowRightRocketFar": "None",
+                "completedRocketFar": false,
+                "preMatchBay1": "Panel",
+                "preMatchBay2": "Panel",
+                "preMatchBay3": "Panel",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "preMatchBay8": "Panel",
+                "bay1": "Panel",
+                "bay2": "Panel",
+                "bay3": "Panel",
+                "bay4": "None",
+                "bay5": "None",
+                "bay6": "Panel",
+                "bay7": "Panel",
+                "bay8": "Panel",
+                "sandStormBonusPoints": 0,
+                "autoPoints": 0,
+                "hatchPanelPoints": 0,
+                "cargoPoints": 0,
+                "habClimbPoints": 0,
+                "teleopPoints": 0,
+                "completeRocketRankingPoint": false,
+                "habDockingRankingPoint": false,
+                "foulCount": 0,
+                "techFoulCount": 0,
+                "adjustPoints": 1,
+                "foulPoints": 0,
+                "rp": 0,
+                "totalPoints": 1
+            },
+            "blue": {
+                "preMatchLevelRobot1": "HabLevel1",
+                "habLineRobot1": "None",
+                "endgameRobot1": "None",
+                "preMatchLevelRobot2": "HabLevel1",
+                "habLineRobot2": "None",
+                "endgameRobot2": "None",
+                "preMatchLevelRobot3": "HabLevel1",
+                "habLineRobot3": "None",
+                "endgameRobot3": "None",
+                "topLeftRocketNear": "None",
+                "topRightRocketNear": "None",
+                "midLeftRocketNear": "None",
+                "midRightRocketNear": "None",
+                "lowLeftRocketNear": "None",
+                "lowRightRocketNear": "None",
+                "completedRocketNear": false,
+                "topLeftRocketFar": "None",
+                "topRightRocketFar": "None",
+                "midLeftRocketFar": "None",
+                "midRightRocketFar": "None",
+                "lowLeftRocketFar": "None",
+                "lowRightRocketFar": "None",
+                "completedRocketFar": false,
+                "preMatchBay1": "Panel",
+                "preMatchBay2": "Panel",
+                "preMatchBay3": "Panel",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "preMatchBay8": "Panel",
+                "bay1": "Panel",
+                "bay2": "Panel",
+                "bay3": "Panel",
+                "bay4": "None",
+                "bay5": "None",
+                "bay6": "Panel",
+                "bay7": "Panel",
+                "bay8": "Panel",
+                "sandStormBonusPoints": 0,
+                "autoPoints": 0,
+                "hatchPanelPoints": 0,
+                "cargoPoints": 0,
+                "habClimbPoints": 0,
+                "teleopPoints": 0,
+                "completeRocketRankingPoint": false,
+                "habDockingRankingPoint": false,
+                "foulCount": 0,
+                "techFoulCount": 0,
+                "adjustPoints": 0,
+                "foulPoints": 0,
+                "rp": 0,
+                "totalPoints": 0
+            }
+        },
+        "videos": [],
+        "time": 1560113564,
+        "actual_time": 1560112708,
+        "predicted_time": null,
+        "post_result_time": 1560112731
+    },
+    {
+        "key": "2019bc_qf4m2",
+        "event_key": "2019bc",
+        "comp_level": "qf",
+        "set_number": 4,
+        "match_number": 2,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc694",
+                    "frc2168",
+                    "frc6401"
+                ],
+                "score": 1,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc3461",
+                    "frc5943",
+                    "frc3323"
+                ],
+                "score": 0,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "red",
+        "score_breakdown": {
+            "red": {
+                "preMatchLevelRobot1": "HabLevel1",
+                "habLineRobot1": "Unknown",
+                "endgameRobot1": "Unknown",
+                "preMatchLevelRobot2": "HabLevel1",
+                "habLineRobot2": "Unknown",
+                "endgameRobot2": "Unknown",
+                "preMatchLevelRobot3": "HabLevel1",
+                "habLineRobot3": "Unknown",
+                "endgameRobot3": "Unknown",
+                "topLeftRocketNear": "None",
+                "topRightRocketNear": "None",
+                "midLeftRocketNear": "None",
+                "midRightRocketNear": "None",
+                "lowLeftRocketNear": "None",
+                "lowRightRocketNear": "None",
+                "completedRocketNear": false,
+                "topLeftRocketFar": "None",
+                "topRightRocketFar": "None",
+                "midLeftRocketFar": "None",
+                "midRightRocketFar": "None",
+                "lowLeftRocketFar": "None",
+                "lowRightRocketFar": "None",
+                "completedRocketFar": false,
+                "preMatchBay1": "Panel",
+                "preMatchBay2": "Panel",
+                "preMatchBay3": "Panel",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "preMatchBay8": "Panel",
+                "bay1": "Panel",
+                "bay2": "Panel",
+                "bay3": "Panel",
+                "bay4": "None",
+                "bay5": "None",
+                "bay6": "Panel",
+                "bay7": "Panel",
+                "bay8": "Panel",
+                "sandStormBonusPoints": 0,
+                "autoPoints": 0,
+                "hatchPanelPoints": 0,
+                "cargoPoints": 0,
+                "habClimbPoints": 0,
+                "teleopPoints": 0,
+                "completeRocketRankingPoint": false,
+                "habDockingRankingPoint": false,
+                "foulCount": 0,
+                "techFoulCount": 0,
+                "adjustPoints": 1,
+                "foulPoints": 0,
+                "rp": 0,
+                "totalPoints": 1
+            },
+            "blue": {
+                "preMatchLevelRobot1": "HabLevel1",
+                "habLineRobot1": "None",
+                "endgameRobot1": "None",
+                "preMatchLevelRobot2": "HabLevel1",
+                "habLineRobot2": "None",
+                "endgameRobot2": "None",
+                "preMatchLevelRobot3": "HabLevel1",
+                "habLineRobot3": "None",
+                "endgameRobot3": "None",
+                "topLeftRocketNear": "None",
+                "topRightRocketNear": "None",
+                "midLeftRocketNear": "None",
+                "midRightRocketNear": "None",
+                "lowLeftRocketNear": "None",
+                "lowRightRocketNear": "None",
+                "completedRocketNear": false,
+                "topLeftRocketFar": "None",
+                "topRightRocketFar": "None",
+                "midLeftRocketFar": "None",
+                "midRightRocketFar": "None",
+                "lowLeftRocketFar": "None",
+                "lowRightRocketFar": "None",
+                "completedRocketFar": false,
+                "preMatchBay1": "Panel",
+                "preMatchBay2": "Panel",
+                "preMatchBay3": "Panel",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "preMatchBay8": "Panel",
+                "bay1": "Panel",
+                "bay2": "Panel",
+                "bay3": "Panel",
+                "bay4": "None",
+                "bay5": "None",
+                "bay6": "Panel",
+                "bay7": "Panel",
+                "bay8": "Panel",
+                "sandStormBonusPoints": 0,
+                "autoPoints": 0,
+                "hatchPanelPoints": 0,
+                "cargoPoints": 0,
+                "habClimbPoints": 0,
+                "teleopPoints": 0,
+                "completeRocketRankingPoint": false,
+                "habDockingRankingPoint": false,
+                "foulCount": 0,
+                "techFoulCount": 0,
+                "adjustPoints": 0,
+                "foulPoints": 0,
+                "rp": 0,
+                "totalPoints": 0
+            }
+        },
+        "videos": [],
+        "time": 1560115244,
+        "actual_time": 1560113023,
+        "predicted_time": null,
+        "post_result_time": 1560113053
+    },
+    {
+        "key": "2019ctsc_qf2m1",
+        "event_key": "2019ctsc",
+        "comp_level": "qf",
+        "set_number": 2,
+        "match_number": 1,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc3146",
+                    "frc3461",
+                    "frc3555"
+                ],
+                "score": 47,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc1071",
+                    "frc4557",
+                    "frc228"
+                ],
+                "score": 74,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "blue",
+        "score_breakdown": null,
+        "videos": [
+            {
+                "type": "youtube",
+                "key": "Ji_h5ACKddY"
+            }
+        ],
+        "time": null,
+        "actual_time": null,
+        "predicted_time": null,
+        "post_result_time": null
+    },
+    {
+        "key": "2019ctsc_qf2m2",
+        "event_key": "2019ctsc",
+        "comp_level": "qf",
+        "set_number": 2,
+        "match_number": 2,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc3146",
+                    "frc3461",
+                    "frc3555"
+                ],
+                "score": 66,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc1071",
+                    "frc4557",
+                    "frc228"
+                ],
+                "score": 64,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "red",
+        "score_breakdown": null,
+        "videos": [
+            {
+                "type": "youtube",
+                "key": "rGGaySUudZA"
+            }
+        ],
+        "time": null,
+        "actual_time": null,
+        "predicted_time": null,
+        "post_result_time": null
+    },
+    {
+        "key": "2019ctsc_qf2m3",
+        "event_key": "2019ctsc",
+        "comp_level": "qf",
+        "set_number": 2,
+        "match_number": 3,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc3146",
+                    "frc3461",
+                    "frc3555"
+                ],
+                "score": 73,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc1071",
+                    "frc4557",
+                    "frc228"
+                ],
+                "score": 70,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "red",
+        "score_breakdown": null,
+        "videos": [
+            {
+                "type": "youtube",
+                "key": "jV4NQkpNG5w"
+            }
+        ],
+        "time": null,
+        "actual_time": null,
+        "predicted_time": null,
+        "post_result_time": null
+    },
+    {
+        "key": "2019mawne_qf4m1",
+        "event_key": "2019mawne",
+        "comp_level": "qf",
+        "set_number": 4,
+        "match_number": 1,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc3461",
+                    "frc178",
+                    "frc7869"
+                ],
+                "score": 63,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc2064",
+                    "frc4557",
+                    "frc3464"
+                ],
+                "score": 55,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "red",
+        "score_breakdown": {
+            "blue": {
+                "teleopPoints": 40,
+                "midRightRocketFar": "None",
+                "autoPoints": 15,
+                "midRightRocketNear": "None",
+                "lowLeftRocketNear": "None",
+                "completeRocketRankingPoint": false,
+                "topLeftRocketFar": "None",
+                "foulCount": 0,
+                "foulPoints": 0,
+                "lowLeftRocketFar": "Panel",
+                "preMatchLevelRobot1": "HabLevel1",
+                "preMatchBay2": "Cargo",
+                "preMatchBay3": "Cargo",
+                "midLeftRocketNear": "None",
+                "preMatchBay1": "Cargo",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "adjustPoints": 0,
+                "preMatchBay8": "Panel",
+                "topRightRocketFar": "None",
+                "lowRightRocketNear": "None",
+                "habDockingRankingPoint": false,
+                "cargoPoints": 9,
+                "bay5": "Panel",
+                "lowRightRocketFar": "None",
+                "techFoulCount": 0,
+                "habClimbPoints": 21,
+                "endgameRobot1": "HabLevel1",
+                "endgameRobot2": "HabLevel3",
+                "endgameRobot3": "HabLevel2",
+                "midLeftRocketFar": "None",
+                "topLeftRocketNear": "None",
+                "sandStormBonusPoints": 15,
+                "preMatchLevelRobot3": "HabLevel2",
+                "preMatchLevelRobot2": "HabLevel2",
+                "completedRocketNear": false,
+                "rp": 0,
+                "habLineRobot2": "CrossedHabLineInSandstorm",
+                "habLineRobot3": "CrossedHabLineInSandstorm",
+                "habLineRobot1": "CrossedHabLineInSandstorm",
+                "hatchPanelPoints": 10,
+                "completedRocketFar": false,
+                "bay1": "None",
+                "bay2": "Panel",
+                "bay3": "Panel",
+                "bay4": "Panel",
+                "totalPoints": 55,
+                "bay6": "PanelAndCargo",
+                "bay7": "PanelAndCargo",
+                "bay8": "PanelAndCargo",
+                "topRightRocketNear": "None"
+            },
+            "red": {
+                "teleopPoints": 48,
+                "midRightRocketFar": "None",
+                "autoPoints": 15,
+                "midRightRocketNear": "None",
+                "lowLeftRocketNear": "PanelAndCargo",
+                "completeRocketRankingPoint": false,
+                "topLeftRocketFar": "None",
+                "foulCount": 0,
+                "foulPoints": 0,
+                "lowLeftRocketFar": "None",
+                "preMatchLevelRobot1": "HabLevel2",
+                "preMatchBay2": "Cargo",
+                "preMatchBay3": "Panel",
+                "midLeftRocketNear": "Panel",
+                "preMatchBay1": "Panel",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "adjustPoints": 0,
+                "preMatchBay8": "Panel",
+                "topRightRocketFar": "None",
+                "lowRightRocketNear": "PanelAndCargo",
+                "habDockingRankingPoint": false,
+                "cargoPoints": 27,
+                "bay5": "None",
+                "lowRightRocketFar": "None",
+                "techFoulCount": 0,
+                "habClimbPoints": 9,
+                "endgameRobot1": "HabLevel2",
+                "endgameRobot2": "None",
+                "endgameRobot3": "HabLevel1",
+                "midLeftRocketFar": "None",
+                "topLeftRocketNear": "Panel",
+                "sandStormBonusPoints": 15,
+                "preMatchLevelRobot3": "HabLevel2",
+                "preMatchLevelRobot2": "HabLevel1",
+                "completedRocketNear": false,
+                "rp": 0,
+                "habLineRobot2": "CrossedHabLineInSandstorm",
+                "habLineRobot3": "CrossedHabLineInSandstorm",
+                "habLineRobot1": "CrossedHabLineInSandstorm",
+                "hatchPanelPoints": 12,
+                "completedRocketFar": false,
+                "bay1": "PanelAndCargo",
+                "bay2": "PanelAndCargo",
+                "bay3": "PanelAndCargo",
+                "bay4": "PanelAndCargo",
+                "totalPoints": 63,
+                "bay6": "PanelAndCargo",
+                "bay7": "PanelAndCargo",
+                "bay8": "PanelAndCargo",
+                "topRightRocketNear": "None"
+            }
+        },
+        "videos": [],
+        "time": 1553447160,
+        "actual_time": 1553449405,
+        "predicted_time": 1553449570,
+        "post_result_time": 1553449712
+    },
+    {
+        "key": "2019mawne_qf4m2",
+        "event_key": "2019mawne",
+        "comp_level": "qf",
+        "set_number": 4,
+        "match_number": 2,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc3461",
+                    "frc178",
+                    "frc7869"
+                ],
+                "score": 64,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc2064",
+                    "frc4557",
+                    "frc3464"
+                ],
+                "score": 63,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "red",
+        "score_breakdown": {
+            "blue": {
+                "teleopPoints": 48,
+                "midRightRocketFar": "None",
+                "autoPoints": 15,
+                "midRightRocketNear": "None",
+                "lowLeftRocketNear": "None",
+                "completeRocketRankingPoint": false,
+                "topLeftRocketFar": "None",
+                "foulCount": 2,
+                "foulPoints": 0,
+                "lowLeftRocketFar": "None",
+                "preMatchLevelRobot1": "HabLevel1",
+                "preMatchBay2": "Cargo",
+                "preMatchBay3": "Cargo",
+                "midLeftRocketNear": "None",
+                "preMatchBay1": "Cargo",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "adjustPoints": 0,
+                "preMatchBay8": "Panel",
+                "topRightRocketFar": "None",
+                "lowRightRocketNear": "None",
+                "habDockingRankingPoint": false,
+                "cargoPoints": 18,
+                "bay5": "PanelAndCargo",
+                "lowRightRocketFar": "None",
+                "techFoulCount": 0,
+                "habClimbPoints": 24,
+                "endgameRobot1": "HabLevel2",
+                "endgameRobot2": "HabLevel3",
+                "endgameRobot3": "HabLevel2",
+                "midLeftRocketFar": "None",
+                "topLeftRocketNear": "None",
+                "sandStormBonusPoints": 15,
+                "preMatchLevelRobot3": "HabLevel2",
+                "preMatchLevelRobot2": "HabLevel2",
+                "completedRocketNear": false,
+                "rp": 0,
+                "habLineRobot2": "CrossedHabLineInSandstorm",
+                "habLineRobot3": "CrossedHabLineInSandstorm",
+                "habLineRobot1": "CrossedHabLineInSandstorm",
+                "hatchPanelPoints": 6,
+                "completedRocketFar": false,
+                "bay1": "None",
+                "bay2": "None",
+                "bay3": "PanelAndCargo",
+                "bay4": "PanelAndCargo",
+                "totalPoints": 63,
+                "bay6": "PanelAndCargo",
+                "bay7": "PanelAndCargo",
+                "bay8": "PanelAndCargo",
+                "topRightRocketNear": "None"
+            },
+            "red": {
+                "teleopPoints": 43,
+                "midRightRocketFar": "None",
+                "autoPoints": 15,
+                "midRightRocketNear": "None",
+                "lowLeftRocketNear": "None",
+                "completeRocketRankingPoint": false,
+                "topLeftRocketFar": "None",
+                "foulCount": 0,
+                "foulPoints": 6,
+                "lowLeftRocketFar": "None",
+                "preMatchLevelRobot1": "HabLevel2",
+                "preMatchBay2": "Cargo",
+                "preMatchBay3": "Panel",
+                "midLeftRocketNear": "None",
+                "preMatchBay1": "Panel",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "adjustPoints": 0,
+                "preMatchBay8": "Panel",
+                "topRightRocketFar": "None",
+                "lowRightRocketNear": "None",
+                "habDockingRankingPoint": false,
+                "cargoPoints": 18,
+                "bay5": "Panel",
+                "lowRightRocketFar": "None",
+                "techFoulCount": 0,
+                "habClimbPoints": 21,
+                "endgameRobot1": "HabLevel2",
+                "endgameRobot2": "HabLevel3",
+                "endgameRobot3": "HabLevel1",
+                "midLeftRocketFar": "None",
+                "topLeftRocketNear": "None",
+                "sandStormBonusPoints": 15,
+                "preMatchLevelRobot3": "HabLevel2",
+                "preMatchLevelRobot2": "HabLevel1",
+                "completedRocketNear": false,
+                "rp": 0,
+                "habLineRobot2": "CrossedHabLineInSandstorm",
+                "habLineRobot3": "CrossedHabLineInSandstorm",
+                "habLineRobot1": "CrossedHabLineInSandstorm",
+                "hatchPanelPoints": 4,
+                "completedRocketFar": false,
+                "bay1": "PanelAndCargo",
+                "bay2": "PanelAndCargo",
+                "bay3": "PanelAndCargo",
+                "bay4": "None",
+                "totalPoints": 64,
+                "bay6": "PanelAndCargo",
+                "bay7": "PanelAndCargo",
+                "bay8": "PanelAndCargo",
+                "topRightRocketNear": "None"
+            }
+        },
+        "videos": [],
+        "time": 1553448840,
+        "actual_time": 1553451608,
+        "predicted_time": 1553451723,
+        "post_result_time": 1553451848
+    },
+    {
+        "key": "2019mesh_qf2m1",
+        "event_key": "2019mesh",
+        "comp_level": "qf",
+        "set_number": 2,
+        "match_number": 1,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc4041",
+                    "frc131",
+                    "frc3461"
+                ],
+                "score": 79,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc6328",
+                    "frc6153",
+                    "frc9999"
+                ],
+                "score": 63,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "red",
+        "score_breakdown": {
+            "blue": {
+                "teleopPoints": 54,
+                "midRightRocketFar": "Panel",
+                "autoPoints": 9,
+                "midRightRocketNear": "None",
+                "lowLeftRocketNear": "None",
+                "completeRocketRankingPoint": false,
+                "topLeftRocketFar": "None",
+                "foulCount": 0,
+                "foulPoints": 0,
+                "lowLeftRocketFar": "PanelAndCargo",
+                "preMatchLevelRobot1": "HabLevel1",
+                "preMatchBay2": "Panel",
+                "preMatchBay3": "Panel",
+                "midLeftRocketNear": "None",
+                "preMatchBay1": "Panel",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "adjustPoints": 0,
+                "preMatchBay8": "Panel",
+                "topRightRocketFar": "None",
+                "lowRightRocketNear": "None",
+                "habDockingRankingPoint": false,
+                "cargoPoints": 27,
+                "bay5": "PanelAndCargo",
+                "lowRightRocketFar": "PanelAndCargo",
+                "techFoulCount": 0,
+                "habClimbPoints": 15,
+                "endgameRobot1": "HabLevel3",
+                "endgameRobot2": "None",
+                "endgameRobot3": "HabLevel1",
+                "midLeftRocketFar": "Panel",
+                "topLeftRocketNear": "None",
+                "sandStormBonusPoints": 9,
+                "preMatchLevelRobot3": "HabLevel1",
+                "preMatchLevelRobot2": "HabLevel1",
+                "completedRocketNear": false,
+                "rp": 0,
+                "habLineRobot2": "CrossedHabLineInSandstorm",
+                "habLineRobot3": "CrossedHabLineInSandstorm",
+                "habLineRobot1": "CrossedHabLineInSandstorm",
+                "hatchPanelPoints": 12,
+                "completedRocketFar": false,
+                "bay1": "PanelAndCargo",
+                "bay2": "Panel",
+                "bay3": "PanelAndCargo",
+                "bay4": "PanelAndCargo",
+                "totalPoints": 63,
+                "bay6": "PanelAndCargo",
+                "bay7": "PanelAndCargo",
+                "bay8": "PanelAndCargo",
+                "topRightRocketNear": "None"
+            },
+            "red": {
+                "teleopPoints": 70,
+                "midRightRocketFar": "None",
+                "autoPoints": 9,
+                "midRightRocketNear": "PanelAndCargo",
+                "lowLeftRocketNear": "PanelAndCargo",
+                "completeRocketRankingPoint": false,
+                "topLeftRocketFar": "None",
+                "foulCount": 0,
+                "foulPoints": 0,
+                "lowLeftRocketFar": "None",
+                "preMatchLevelRobot1": "HabLevel1",
+                "preMatchBay2": "Panel",
+                "preMatchBay3": "Panel",
+                "midLeftRocketNear": "PanelAndCargo",
+                "preMatchBay1": "Panel",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "adjustPoints": 0,
+                "preMatchBay8": "Panel",
+                "topRightRocketFar": "None",
+                "lowRightRocketNear": "PanelAndCargo",
+                "habDockingRankingPoint": false,
+                "cargoPoints": 30,
+                "bay5": "None",
+                "lowRightRocketFar": "None",
+                "techFoulCount": 0,
+                "habClimbPoints": 30,
+                "endgameRobot1": "HabLevel3",
+                "endgameRobot2": "HabLevel3",
+                "endgameRobot3": "HabLevel2",
+                "midLeftRocketFar": "None",
+                "topLeftRocketNear": "None",
+                "sandStormBonusPoints": 9,
+                "preMatchLevelRobot3": "HabLevel2",
+                "preMatchLevelRobot2": "HabLevel2",
+                "completedRocketNear": false,
+                "rp": 0,
+                "habLineRobot2": "CrossedHabLineInSandstorm",
+                "habLineRobot3": "CrossedHabLineInTeleop",
+                "habLineRobot1": "CrossedHabLineInSandstorm",
+                "hatchPanelPoints": 10,
+                "completedRocketFar": false,
+                "bay1": "Panel",
+                "bay2": "PanelAndCargo",
+                "bay3": "PanelAndCargo",
+                "bay4": "PanelAndCargo",
+                "totalPoints": 79,
+                "bay6": "PanelAndCargo",
+                "bay7": "PanelAndCargo",
+                "bay8": "PanelAndCargo",
+                "topRightRocketNear": "None"
+            }
+        },
+        "videos": [],
+        "time": 1561830420,
+        "actual_time": 1561831253,
+        "predicted_time": null,
+        "post_result_time": 1561831444
+    },
+    {
+        "key": "2019mesh_qf2m2",
+        "event_key": "2019mesh",
+        "comp_level": "qf",
+        "set_number": 2,
+        "match_number": 2,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc4041",
+                    "frc131",
+                    "frc3461"
+                ],
+                "score": 80,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc6328",
+                    "frc6153",
+                    "frc9999"
+                ],
+                "score": 81,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "blue",
+        "score_breakdown": {
+            "blue": {
+                "teleopPoints": 72,
+                "midRightRocketFar": "PanelAndCargo",
+                "autoPoints": 9,
+                "midRightRocketNear": "None",
+                "lowLeftRocketNear": "None",
+                "completeRocketRankingPoint": false,
+                "topLeftRocketFar": "None",
+                "foulCount": 0,
+                "foulPoints": 0,
+                "lowLeftRocketFar": "Panel",
+                "preMatchLevelRobot1": "HabLevel1",
+                "preMatchBay2": "Panel",
+                "preMatchBay3": "Panel",
+                "midLeftRocketNear": "None",
+                "preMatchBay1": "Panel",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "adjustPoints": 0,
+                "preMatchBay8": "Panel",
+                "topRightRocketFar": "None",
+                "lowRightRocketNear": "None",
+                "habDockingRankingPoint": false,
+                "cargoPoints": 33,
+                "bay5": "PanelAndCargo",
+                "lowRightRocketFar": "PanelAndCargo",
+                "techFoulCount": 0,
+                "habClimbPoints": 27,
+                "endgameRobot1": "HabLevel3",
+                "endgameRobot2": "HabLevel3",
+                "endgameRobot3": "HabLevel1",
+                "midLeftRocketFar": "PanelAndCargo",
+                "topLeftRocketNear": "None",
+                "sandStormBonusPoints": 9,
+                "preMatchLevelRobot3": "HabLevel1",
+                "preMatchLevelRobot2": "HabLevel1",
+                "completedRocketNear": false,
+                "rp": 0,
+                "habLineRobot2": "CrossedHabLineInSandstorm",
+                "habLineRobot3": "CrossedHabLineInSandstorm",
+                "habLineRobot1": "CrossedHabLineInSandstorm",
+                "hatchPanelPoints": 12,
+                "completedRocketFar": false,
+                "bay1": "PanelAndCargo",
+                "bay2": "PanelAndCargo",
+                "bay3": "PanelAndCargo",
+                "bay4": "PanelAndCargo",
+                "totalPoints": 81,
+                "bay6": "PanelAndCargo",
+                "bay7": "PanelAndCargo",
+                "bay8": "PanelAndCargo",
+                "topRightRocketNear": "None"
+            },
+            "red": {
+                "teleopPoints": 65,
+                "midRightRocketFar": "None",
+                "autoPoints": 15,
+                "midRightRocketNear": "PanelAndCargo",
+                "lowLeftRocketNear": "Panel",
+                "completeRocketRankingPoint": false,
+                "topLeftRocketFar": "None",
+                "foulCount": 0,
+                "foulPoints": 0,
+                "lowLeftRocketFar": "Panel",
+                "preMatchLevelRobot1": "HabLevel1",
+                "preMatchBay2": "Panel",
+                "preMatchBay3": "Panel",
+                "midLeftRocketNear": "PanelAndCargo",
+                "preMatchBay1": "Panel",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "adjustPoints": 0,
+                "preMatchBay8": "Panel",
+                "topRightRocketFar": "None",
+                "lowRightRocketNear": "Panel",
+                "habDockingRankingPoint": false,
+                "cargoPoints": 27,
+                "bay5": "PanelAndCargo",
+                "lowRightRocketFar": "None",
+                "techFoulCount": 0,
+                "habClimbPoints": 24,
+                "endgameRobot1": "HabLevel3",
+                "endgameRobot2": "None",
+                "endgameRobot3": "HabLevel3",
+                "midLeftRocketFar": "None",
+                "topLeftRocketNear": "None",
+                "sandStormBonusPoints": 15,
+                "preMatchLevelRobot3": "HabLevel2",
+                "preMatchLevelRobot2": "HabLevel2",
+                "completedRocketNear": false,
+                "rp": 0,
+                "habLineRobot2": "CrossedHabLineInSandstorm",
+                "habLineRobot3": "CrossedHabLineInSandstorm",
+                "habLineRobot1": "CrossedHabLineInSandstorm",
+                "hatchPanelPoints": 14,
+                "completedRocketFar": false,
+                "bay1": "Panel",
+                "bay2": "PanelAndCargo",
+                "bay3": "PanelAndCargo",
+                "bay4": "PanelAndCargo",
+                "totalPoints": 80,
+                "bay6": "PanelAndCargo",
+                "bay7": "PanelAndCargo",
+                "bay8": "PanelAndCargo",
+                "topRightRocketNear": "None"
+            }
+        },
+        "videos": [],
+        "time": 1561832100,
+        "actual_time": 1561833358,
+        "predicted_time": null,
+        "post_result_time": 1561833565
+    },
+    {
+        "key": "2019mesh_qf2m3",
+        "event_key": "2019mesh",
+        "comp_level": "qf",
+        "set_number": 2,
+        "match_number": 3,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc4041",
+                    "frc131",
+                    "frc3461"
+                ],
+                "score": 81,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc6328",
+                    "frc6153",
+                    "frc9999"
+                ],
+                "score": 70,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "red",
+        "score_breakdown": {
+            "blue": {
+                "teleopPoints": 58,
+                "midRightRocketFar": "None",
+                "autoPoints": 9,
+                "midRightRocketNear": "None",
+                "lowLeftRocketNear": "None",
+                "completeRocketRankingPoint": false,
+                "topLeftRocketFar": "None",
+                "foulCount": 1,
+                "foulPoints": 3,
+                "lowLeftRocketFar": "PanelAndCargo",
+                "preMatchLevelRobot1": "HabLevel1",
+                "preMatchBay2": "Panel",
+                "preMatchBay3": "Panel",
+                "midLeftRocketNear": "None",
+                "preMatchBay1": "Panel",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "adjustPoints": 0,
+                "preMatchBay8": "Panel",
+                "topRightRocketFar": "None",
+                "lowRightRocketNear": "Panel",
+                "habDockingRankingPoint": false,
+                "cargoPoints": 30,
+                "bay5": "PanelAndCargo",
+                "lowRightRocketFar": "PanelAndCargo",
+                "techFoulCount": 0,
+                "habClimbPoints": 18,
+                "endgameRobot1": "HabLevel1",
+                "endgameRobot2": "HabLevel1",
+                "endgameRobot3": "HabLevel3",
+                "midLeftRocketFar": "None",
+                "topLeftRocketNear": "None",
+                "sandStormBonusPoints": 9,
+                "preMatchLevelRobot3": "HabLevel1",
+                "preMatchLevelRobot2": "HabLevel1",
+                "completedRocketNear": false,
+                "rp": 0,
+                "habLineRobot2": "CrossedHabLineInSandstorm",
+                "habLineRobot3": "CrossedHabLineInSandstorm",
+                "habLineRobot1": "CrossedHabLineInSandstorm",
+                "hatchPanelPoints": 10,
+                "completedRocketFar": false,
+                "bay1": "PanelAndCargo",
+                "bay2": "PanelAndCargo",
+                "bay3": "PanelAndCargo",
+                "bay4": "PanelAndCargo",
+                "totalPoints": 70,
+                "bay6": "PanelAndCargo",
+                "bay7": "PanelAndCargo",
+                "bay8": "PanelAndCargo",
+                "topRightRocketNear": "None"
+            },
+            "red": {
+                "teleopPoints": 63,
+                "midRightRocketFar": "None",
+                "autoPoints": 15,
+                "midRightRocketNear": "PanelAndCargo",
+                "lowLeftRocketNear": "PanelAndCargo",
+                "completeRocketRankingPoint": false,
+                "topLeftRocketFar": "None",
+                "foulCount": 1,
+                "foulPoints": 3,
+                "lowLeftRocketFar": "None",
+                "preMatchLevelRobot1": "HabLevel1",
+                "preMatchBay2": "Panel",
+                "preMatchBay3": "Panel",
+                "midLeftRocketNear": "PanelAndCargo",
+                "preMatchBay1": "Panel",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "adjustPoints": 0,
+                "preMatchBay8": "Panel",
+                "topRightRocketFar": "None",
+                "lowRightRocketNear": "PanelAndCargo",
+                "habDockingRankingPoint": false,
+                "cargoPoints": 24,
+                "bay5": "None",
+                "lowRightRocketFar": "Panel",
+                "techFoulCount": 0,
+                "habClimbPoints": 27,
+                "endgameRobot1": "HabLevel3",
+                "endgameRobot2": "HabLevel1",
+                "endgameRobot3": "HabLevel3",
+                "midLeftRocketFar": "None",
+                "topLeftRocketNear": "None",
+                "sandStormBonusPoints": 15,
+                "preMatchLevelRobot3": "HabLevel2",
+                "preMatchLevelRobot2": "HabLevel2",
+                "completedRocketNear": false,
+                "rp": 0,
+                "habLineRobot2": "CrossedHabLineInSandstorm",
+                "habLineRobot3": "CrossedHabLineInSandstorm",
+                "habLineRobot1": "CrossedHabLineInSandstorm",
+                "hatchPanelPoints": 12,
+                "completedRocketFar": false,
+                "bay1": "Panel",
+                "bay2": "Panel",
+                "bay3": "Panel",
+                "bay4": "PanelAndCargo",
+                "totalPoints": 81,
+                "bay6": "PanelAndCargo",
+                "bay7": "PanelAndCargo",
+                "bay8": "PanelAndCargo",
+                "topRightRocketNear": "None"
+            }
+        },
+        "videos": [],
+        "time": 1561833780,
+        "actual_time": 1561834812,
+        "predicted_time": null,
+        "post_result_time": 1561835001
     },
     {
         "key": "2019bc_qm16",
@@ -1261,334 +2743,6 @@
         "post_result_time": 1560090935
     },
     {
-        "key": "2019bc_sf1m12",
-        "event_key": "2019bc",
-        "comp_level": "sf",
-        "set_number": 1,
-        "match_number": 12,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc3461",
-                    "frc5943",
-                    "frc3323"
-                ],
-                "score": 60,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc4048",
-                    "frc157",
-                    "frc1729"
-                ],
-                "score": 84,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "blue",
-        "score_breakdown": null,
-        "videos": [
-            {
-                "type": "youtube",
-                "key": "NiOdMbv-KiA"
-            }
-        ],
-        "time": null,
-        "actual_time": null,
-        "predicted_time": null,
-        "post_result_time": null
-    },
-    {
-        "key": "2019bc_sf1m15",
-        "event_key": "2019bc",
-        "comp_level": "sf",
-        "set_number": 1,
-        "match_number": 15,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc3461",
-                    "frc5943",
-                    "frc3323"
-                ],
-                "score": 67,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc6328",
-                    "frc3623",
-                    "frc2791"
-                ],
-                "score": 100,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "blue",
-        "score_breakdown": null,
-        "videos": [
-            {
-                "type": "youtube",
-                "key": "GRLVZViKgOU"
-            }
-        ],
-        "time": null,
-        "actual_time": null,
-        "predicted_time": null,
-        "post_result_time": null
-    },
-    {
-        "key": "2019bc_sf1m3",
-        "event_key": "2019bc",
-        "comp_level": "sf",
-        "set_number": 1,
-        "match_number": 3,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc4041",
-                    "frc3467",
-                    "frc7462"
-                ],
-                "score": 64,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc3461",
-                    "frc5943",
-                    "frc5030"
-                ],
-                "score": 68,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "blue",
-        "score_breakdown": null,
-        "videos": [
-            {
-                "type": "youtube",
-                "key": "KQCxHTnbmm0"
-            }
-        ],
-        "time": null,
-        "actual_time": null,
-        "predicted_time": null,
-        "post_result_time": null
-    },
-    {
-        "key": "2019bc_sf1m5",
-        "event_key": "2019bc",
-        "comp_level": "sf",
-        "set_number": 1,
-        "match_number": 5,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc694",
-                    "frc6401",
-                    "frc2168"
-                ],
-                "score": 95,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc3461",
-                    "frc5943",
-                    "frc3323"
-                ],
-                "score": 47,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "red",
-        "score_breakdown": null,
-        "videos": [
-            {
-                "type": "youtube",
-                "key": "4k_tkdkzHV8"
-            }
-        ],
-        "time": null,
-        "actual_time": null,
-        "predicted_time": null,
-        "post_result_time": null
-    },
-    {
-        "key": "2019bc_sf1m7",
-        "event_key": "2019bc",
-        "comp_level": "sf",
-        "set_number": 1,
-        "match_number": 7,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc501",
-                    "frc1073",
-                    "frc195"
-                ],
-                "score": 84,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc3461",
-                    "frc5943",
-                    "frc3323"
-                ],
-                "score": 59,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "red",
-        "score_breakdown": null,
-        "videos": [
-            {
-                "type": "youtube",
-                "key": "cg3lnmN7Jwk"
-            }
-        ],
-        "time": null,
-        "actual_time": null,
-        "predicted_time": null,
-        "post_result_time": null
-    },
-    {
-        "key": "2019ctsc_qf2m1",
-        "event_key": "2019ctsc",
-        "comp_level": "qf",
-        "set_number": 2,
-        "match_number": 1,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc3146",
-                    "frc3461",
-                    "frc3555"
-                ],
-                "score": 47,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc1071",
-                    "frc4557",
-                    "frc228"
-                ],
-                "score": 74,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "blue",
-        "score_breakdown": null,
-        "videos": [
-            {
-                "type": "youtube",
-                "key": "Ji_h5ACKddY"
-            }
-        ],
-        "time": null,
-        "actual_time": null,
-        "predicted_time": null,
-        "post_result_time": null
-    },
-    {
-        "key": "2019ctsc_qf2m2",
-        "event_key": "2019ctsc",
-        "comp_level": "qf",
-        "set_number": 2,
-        "match_number": 2,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc3146",
-                    "frc3461",
-                    "frc3555"
-                ],
-                "score": 66,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc1071",
-                    "frc4557",
-                    "frc228"
-                ],
-                "score": 64,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "red",
-        "score_breakdown": null,
-        "videos": [
-            {
-                "type": "youtube",
-                "key": "rGGaySUudZA"
-            }
-        ],
-        "time": null,
-        "actual_time": null,
-        "predicted_time": null,
-        "post_result_time": null
-    },
-    {
-        "key": "2019ctsc_qf2m3",
-        "event_key": "2019ctsc",
-        "comp_level": "qf",
-        "set_number": 2,
-        "match_number": 3,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc3146",
-                    "frc3461",
-                    "frc3555"
-                ],
-                "score": 73,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc1071",
-                    "frc4557",
-                    "frc228"
-                ],
-                "score": 70,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "red",
-        "score_breakdown": null,
-        "videos": [
-            {
-                "type": "youtube",
-                "key": "jV4NQkpNG5w"
-            }
-        ],
-        "time": null,
-        "actual_time": null,
-        "predicted_time": null,
-        "post_result_time": null
-    },
-    {
         "key": "2019ctsc_qm11",
         "event_key": "2019ctsc",
         "comp_level": "qm",
@@ -1745,129 +2899,6 @@
             {
                 "type": "youtube",
                 "key": "TwxjtFSCE28"
-            }
-        ],
-        "time": null,
-        "actual_time": null,
-        "predicted_time": null,
-        "post_result_time": null
-    },
-    {
-        "key": "2019ctsc_sf1m1",
-        "event_key": "2019ctsc",
-        "comp_level": "sf",
-        "set_number": 1,
-        "match_number": 1,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc195",
-                    "frc2168",
-                    "frc4055"
-                ],
-                "score": 98,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc3146",
-                    "frc3461",
-                    "frc3555"
-                ],
-                "score": 55,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "red",
-        "score_breakdown": null,
-        "videos": [
-            {
-                "type": "youtube",
-                "key": "D734e6w0t_w"
-            }
-        ],
-        "time": null,
-        "actual_time": null,
-        "predicted_time": null,
-        "post_result_time": null
-    },
-    {
-        "key": "2019ctsc_sf1m2",
-        "event_key": "2019ctsc",
-        "comp_level": "sf",
-        "set_number": 1,
-        "match_number": 2,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc195",
-                    "frc2168",
-                    "frc4055"
-                ],
-                "score": 61,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc3146",
-                    "frc3461",
-                    "frc3555"
-                ],
-                "score": 64,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "blue",
-        "score_breakdown": null,
-        "videos": [
-            {
-                "type": "youtube",
-                "key": "hnyVD_GSJI0"
-            }
-        ],
-        "time": null,
-        "actual_time": null,
-        "predicted_time": null,
-        "post_result_time": null
-    },
-    {
-        "key": "2019ctsc_sf1m3",
-        "event_key": "2019ctsc",
-        "comp_level": "sf",
-        "set_number": 1,
-        "match_number": 3,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc195",
-                    "frc2168",
-                    "frc4055"
-                ],
-                "score": 85,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc3146",
-                    "frc3461",
-                    "frc3555"
-                ],
-                "score": 60,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "red",
-        "score_breakdown": null,
-        "videos": [
-            {
-                "type": "youtube",
-                "key": "T8Mf-zh8YA4"
             }
         ],
         "time": null,
@@ -3700,578 +4731,6 @@
         "post_result_time": 1552237655
     },
     {
-        "key": "2019mawne_f1m1",
-        "event_key": "2019mawne",
-        "comp_level": "f",
-        "set_number": 1,
-        "match_number": 1,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc195",
-                    "frc176",
-                    "frc6328"
-                ],
-                "score": 88,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc3461",
-                    "frc178",
-                    "frc7869"
-                ],
-                "score": 66,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "red",
-        "score_breakdown": {
-            "blue": {
-                "teleopPoints": 48,
-                "midRightRocketFar": "None",
-                "autoPoints": 15,
-                "midRightRocketNear": "None",
-                "lowLeftRocketNear": "Panel",
-                "completeRocketRankingPoint": false,
-                "topLeftRocketFar": "None",
-                "foulCount": 0,
-                "foulPoints": 3,
-                "lowLeftRocketFar": "None",
-                "preMatchLevelRobot1": "HabLevel2",
-                "preMatchBay2": "Panel",
-                "preMatchBay3": "Panel",
-                "midLeftRocketNear": "None",
-                "preMatchBay1": "Panel",
-                "preMatchBay6": "Panel",
-                "preMatchBay7": "Panel",
-                "adjustPoints": 0,
-                "preMatchBay8": "Panel",
-                "topRightRocketFar": "None",
-                "lowRightRocketNear": "None",
-                "habDockingRankingPoint": false,
-                "cargoPoints": 21,
-                "bay5": "None",
-                "lowRightRocketFar": "Panel",
-                "techFoulCount": 0,
-                "habClimbPoints": 21,
-                "endgameRobot1": "HabLevel2",
-                "endgameRobot2": "HabLevel3",
-                "endgameRobot3": "HabLevel1",
-                "midLeftRocketFar": "None",
-                "topLeftRocketNear": "None",
-                "sandStormBonusPoints": 15,
-                "preMatchLevelRobot3": "HabLevel2",
-                "preMatchLevelRobot2": "HabLevel1",
-                "completedRocketNear": false,
-                "rp": 0,
-                "habLineRobot2": "CrossedHabLineInSandstorm",
-                "habLineRobot3": "CrossedHabLineInSandstorm",
-                "habLineRobot1": "CrossedHabLineInSandstorm",
-                "hatchPanelPoints": 6,
-                "completedRocketFar": false,
-                "bay1": "PanelAndCargo",
-                "bay2": "PanelAndCargo",
-                "bay3": "PanelAndCargo",
-                "bay4": "PanelAndCargo",
-                "totalPoints": 66,
-                "bay6": "PanelAndCargo",
-                "bay7": "PanelAndCargo",
-                "bay8": "PanelAndCargo",
-                "topRightRocketNear": "None"
-            },
-            "red": {
-                "teleopPoints": 73,
-                "midRightRocketFar": "None",
-                "autoPoints": 15,
-                "midRightRocketNear": "PanelAndCargo",
-                "lowLeftRocketNear": "PanelAndCargo",
-                "completeRocketRankingPoint": false,
-                "topLeftRocketFar": "None",
-                "foulCount": 1,
-                "foulPoints": 0,
-                "lowLeftRocketFar": "PanelAndCargo",
-                "preMatchLevelRobot1": "HabLevel2",
-                "preMatchBay2": "Panel",
-                "preMatchBay3": "Cargo",
-                "midLeftRocketNear": "None",
-                "preMatchBay1": "Panel",
-                "preMatchBay6": "Cargo",
-                "preMatchBay7": "Panel",
-                "adjustPoints": 0,
-                "preMatchBay8": "Panel",
-                "topRightRocketFar": "None",
-                "lowRightRocketNear": "PanelAndCargo",
-                "habDockingRankingPoint": false,
-                "cargoPoints": 36,
-                "bay5": "PanelAndCargo",
-                "lowRightRocketFar": "PanelAndCargo",
-                "techFoulCount": 0,
-                "habClimbPoints": 21,
-                "endgameRobot1": "HabLevel3",
-                "endgameRobot2": "HabLevel2",
-                "endgameRobot3": "HabLevel1",
-                "midLeftRocketFar": "None",
-                "topLeftRocketNear": "None",
-                "sandStormBonusPoints": 15,
-                "preMatchLevelRobot3": "HabLevel2",
-                "preMatchLevelRobot2": "HabLevel1",
-                "completedRocketNear": false,
-                "rp": 0,
-                "habLineRobot2": "CrossedHabLineInSandstorm",
-                "habLineRobot3": "CrossedHabLineInSandstorm",
-                "habLineRobot1": "CrossedHabLineInSandstorm",
-                "hatchPanelPoints": 16,
-                "completedRocketFar": false,
-                "bay1": "PanelAndCargo",
-                "bay2": "PanelAndCargo",
-                "bay3": "PanelAndCargo",
-                "bay4": "None",
-                "totalPoints": 88,
-                "bay6": "PanelAndCargo",
-                "bay7": "PanelAndCargo",
-                "bay8": "PanelAndCargo",
-                "topRightRocketNear": "None"
-            }
-        },
-        "videos": [],
-        "time": 1553453460,
-        "actual_time": 1553456704,
-        "predicted_time": 1553456704,
-        "post_result_time": 1553456928
-    },
-    {
-        "key": "2019mawne_f1m2",
-        "event_key": "2019mawne",
-        "comp_level": "f",
-        "set_number": 1,
-        "match_number": 2,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc195",
-                    "frc176",
-                    "frc6328"
-                ],
-                "score": 89,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc3461",
-                    "frc178",
-                    "frc7869"
-                ],
-                "score": 54,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "red",
-        "score_breakdown": {
-            "blue": {
-                "teleopPoints": 42,
-                "midRightRocketFar": "None",
-                "autoPoints": 12,
-                "midRightRocketNear": "None",
-                "lowLeftRocketNear": "None",
-                "completeRocketRankingPoint": false,
-                "topLeftRocketFar": "None",
-                "foulCount": 0,
-                "foulPoints": 0,
-                "lowLeftRocketFar": "Panel",
-                "preMatchLevelRobot1": "HabLevel1",
-                "preMatchBay2": "Panel",
-                "preMatchBay3": "Panel",
-                "midLeftRocketNear": "None",
-                "preMatchBay1": "Panel",
-                "preMatchBay6": "Panel",
-                "preMatchBay7": "Panel",
-                "adjustPoints": 0,
-                "preMatchBay8": "Panel",
-                "topRightRocketFar": "None",
-                "lowRightRocketNear": "None",
-                "habDockingRankingPoint": false,
-                "cargoPoints": 18,
-                "bay5": "None",
-                "lowRightRocketFar": "PanelAndCargo",
-                "techFoulCount": 0,
-                "habClimbPoints": 18,
-                "endgameRobot1": "HabLevel2",
-                "endgameRobot2": "HabLevel3",
-                "endgameRobot3": "None",
-                "midLeftRocketFar": "None",
-                "topLeftRocketNear": "None",
-                "sandStormBonusPoints": 12,
-                "preMatchLevelRobot3": "HabLevel2",
-                "preMatchLevelRobot2": "HabLevel1",
-                "completedRocketNear": false,
-                "rp": 0,
-                "habLineRobot2": "CrossedHabLineInSandstorm",
-                "habLineRobot3": "CrossedHabLineInSandstorm",
-                "habLineRobot1": "CrossedHabLineInSandstorm",
-                "hatchPanelPoints": 6,
-                "completedRocketFar": false,
-                "bay1": "PanelAndCargo",
-                "bay2": "PanelAndCargo",
-                "bay3": "PanelAndCargo",
-                "bay4": "Panel",
-                "totalPoints": 54,
-                "bay6": "PanelAndCargo",
-                "bay7": "Panel",
-                "bay8": "PanelAndCargo",
-                "topRightRocketNear": "None"
-            },
-            "red": {
-                "teleopPoints": 74,
-                "midRightRocketFar": "Panel",
-                "autoPoints": 15,
-                "midRightRocketNear": "None",
-                "lowLeftRocketNear": "PanelAndCargo",
-                "completeRocketRankingPoint": false,
-                "topLeftRocketFar": "None",
-                "foulCount": 0,
-                "foulPoints": 0,
-                "lowLeftRocketFar": "PanelAndCargo",
-                "preMatchLevelRobot1": "HabLevel2",
-                "preMatchBay2": "Panel",
-                "preMatchBay3": "Cargo",
-                "midLeftRocketNear": "None",
-                "preMatchBay1": "Panel",
-                "preMatchBay6": "Cargo",
-                "preMatchBay7": "Panel",
-                "adjustPoints": 0,
-                "preMatchBay8": "Panel",
-                "topRightRocketFar": "None",
-                "lowRightRocketNear": "PanelAndCargo",
-                "habDockingRankingPoint": false,
-                "cargoPoints": 36,
-                "bay5": "PanelAndCargo",
-                "lowRightRocketFar": "PanelAndCargo",
-                "techFoulCount": 0,
-                "habClimbPoints": 18,
-                "endgameRobot1": "HabLevel3",
-                "endgameRobot2": "HabLevel1",
-                "endgameRobot3": "HabLevel1",
-                "midLeftRocketFar": "Panel",
-                "topLeftRocketNear": "None",
-                "sandStormBonusPoints": 15,
-                "preMatchLevelRobot3": "HabLevel2",
-                "preMatchLevelRobot2": "HabLevel1",
-                "completedRocketNear": false,
-                "rp": 0,
-                "habLineRobot2": "CrossedHabLineInSandstorm",
-                "habLineRobot3": "CrossedHabLineInSandstorm",
-                "habLineRobot1": "CrossedHabLineInSandstorm",
-                "hatchPanelPoints": 20,
-                "completedRocketFar": false,
-                "bay1": "PanelAndCargo",
-                "bay2": "PanelAndCargo",
-                "bay3": "PanelAndCargo",
-                "bay4": "PanelAndCargo",
-                "totalPoints": 89,
-                "bay6": "PanelAndCargo",
-                "bay7": "PanelAndCargo",
-                "bay8": "PanelAndCargo",
-                "topRightRocketNear": "None"
-            }
-        },
-        "videos": [],
-        "time": 1553453880,
-        "actual_time": 1553457460,
-        "predicted_time": 1553457487,
-        "post_result_time": 1553457644
-    },
-    {
-        "key": "2019mawne_qf4m1",
-        "event_key": "2019mawne",
-        "comp_level": "qf",
-        "set_number": 4,
-        "match_number": 1,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc3461",
-                    "frc178",
-                    "frc7869"
-                ],
-                "score": 63,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc2064",
-                    "frc4557",
-                    "frc3464"
-                ],
-                "score": 55,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "red",
-        "score_breakdown": {
-            "blue": {
-                "teleopPoints": 40,
-                "midRightRocketFar": "None",
-                "autoPoints": 15,
-                "midRightRocketNear": "None",
-                "lowLeftRocketNear": "None",
-                "completeRocketRankingPoint": false,
-                "topLeftRocketFar": "None",
-                "foulCount": 0,
-                "foulPoints": 0,
-                "lowLeftRocketFar": "Panel",
-                "preMatchLevelRobot1": "HabLevel1",
-                "preMatchBay2": "Cargo",
-                "preMatchBay3": "Cargo",
-                "midLeftRocketNear": "None",
-                "preMatchBay1": "Cargo",
-                "preMatchBay6": "Panel",
-                "preMatchBay7": "Panel",
-                "adjustPoints": 0,
-                "preMatchBay8": "Panel",
-                "topRightRocketFar": "None",
-                "lowRightRocketNear": "None",
-                "habDockingRankingPoint": false,
-                "cargoPoints": 9,
-                "bay5": "Panel",
-                "lowRightRocketFar": "None",
-                "techFoulCount": 0,
-                "habClimbPoints": 21,
-                "endgameRobot1": "HabLevel1",
-                "endgameRobot2": "HabLevel3",
-                "endgameRobot3": "HabLevel2",
-                "midLeftRocketFar": "None",
-                "topLeftRocketNear": "None",
-                "sandStormBonusPoints": 15,
-                "preMatchLevelRobot3": "HabLevel2",
-                "preMatchLevelRobot2": "HabLevel2",
-                "completedRocketNear": false,
-                "rp": 0,
-                "habLineRobot2": "CrossedHabLineInSandstorm",
-                "habLineRobot3": "CrossedHabLineInSandstorm",
-                "habLineRobot1": "CrossedHabLineInSandstorm",
-                "hatchPanelPoints": 10,
-                "completedRocketFar": false,
-                "bay1": "None",
-                "bay2": "Panel",
-                "bay3": "Panel",
-                "bay4": "Panel",
-                "totalPoints": 55,
-                "bay6": "PanelAndCargo",
-                "bay7": "PanelAndCargo",
-                "bay8": "PanelAndCargo",
-                "topRightRocketNear": "None"
-            },
-            "red": {
-                "teleopPoints": 48,
-                "midRightRocketFar": "None",
-                "autoPoints": 15,
-                "midRightRocketNear": "None",
-                "lowLeftRocketNear": "PanelAndCargo",
-                "completeRocketRankingPoint": false,
-                "topLeftRocketFar": "None",
-                "foulCount": 0,
-                "foulPoints": 0,
-                "lowLeftRocketFar": "None",
-                "preMatchLevelRobot1": "HabLevel2",
-                "preMatchBay2": "Cargo",
-                "preMatchBay3": "Panel",
-                "midLeftRocketNear": "Panel",
-                "preMatchBay1": "Panel",
-                "preMatchBay6": "Panel",
-                "preMatchBay7": "Panel",
-                "adjustPoints": 0,
-                "preMatchBay8": "Panel",
-                "topRightRocketFar": "None",
-                "lowRightRocketNear": "PanelAndCargo",
-                "habDockingRankingPoint": false,
-                "cargoPoints": 27,
-                "bay5": "None",
-                "lowRightRocketFar": "None",
-                "techFoulCount": 0,
-                "habClimbPoints": 9,
-                "endgameRobot1": "HabLevel2",
-                "endgameRobot2": "None",
-                "endgameRobot3": "HabLevel1",
-                "midLeftRocketFar": "None",
-                "topLeftRocketNear": "Panel",
-                "sandStormBonusPoints": 15,
-                "preMatchLevelRobot3": "HabLevel2",
-                "preMatchLevelRobot2": "HabLevel1",
-                "completedRocketNear": false,
-                "rp": 0,
-                "habLineRobot2": "CrossedHabLineInSandstorm",
-                "habLineRobot3": "CrossedHabLineInSandstorm",
-                "habLineRobot1": "CrossedHabLineInSandstorm",
-                "hatchPanelPoints": 12,
-                "completedRocketFar": false,
-                "bay1": "PanelAndCargo",
-                "bay2": "PanelAndCargo",
-                "bay3": "PanelAndCargo",
-                "bay4": "PanelAndCargo",
-                "totalPoints": 63,
-                "bay6": "PanelAndCargo",
-                "bay7": "PanelAndCargo",
-                "bay8": "PanelAndCargo",
-                "topRightRocketNear": "None"
-            }
-        },
-        "videos": [],
-        "time": 1553447160,
-        "actual_time": 1553449405,
-        "predicted_time": 1553449570,
-        "post_result_time": 1553449712
-    },
-    {
-        "key": "2019mawne_qf4m2",
-        "event_key": "2019mawne",
-        "comp_level": "qf",
-        "set_number": 4,
-        "match_number": 2,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc3461",
-                    "frc178",
-                    "frc7869"
-                ],
-                "score": 64,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc2064",
-                    "frc4557",
-                    "frc3464"
-                ],
-                "score": 63,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "red",
-        "score_breakdown": {
-            "blue": {
-                "teleopPoints": 48,
-                "midRightRocketFar": "None",
-                "autoPoints": 15,
-                "midRightRocketNear": "None",
-                "lowLeftRocketNear": "None",
-                "completeRocketRankingPoint": false,
-                "topLeftRocketFar": "None",
-                "foulCount": 2,
-                "foulPoints": 0,
-                "lowLeftRocketFar": "None",
-                "preMatchLevelRobot1": "HabLevel1",
-                "preMatchBay2": "Cargo",
-                "preMatchBay3": "Cargo",
-                "midLeftRocketNear": "None",
-                "preMatchBay1": "Cargo",
-                "preMatchBay6": "Panel",
-                "preMatchBay7": "Panel",
-                "adjustPoints": 0,
-                "preMatchBay8": "Panel",
-                "topRightRocketFar": "None",
-                "lowRightRocketNear": "None",
-                "habDockingRankingPoint": false,
-                "cargoPoints": 18,
-                "bay5": "PanelAndCargo",
-                "lowRightRocketFar": "None",
-                "techFoulCount": 0,
-                "habClimbPoints": 24,
-                "endgameRobot1": "HabLevel2",
-                "endgameRobot2": "HabLevel3",
-                "endgameRobot3": "HabLevel2",
-                "midLeftRocketFar": "None",
-                "topLeftRocketNear": "None",
-                "sandStormBonusPoints": 15,
-                "preMatchLevelRobot3": "HabLevel2",
-                "preMatchLevelRobot2": "HabLevel2",
-                "completedRocketNear": false,
-                "rp": 0,
-                "habLineRobot2": "CrossedHabLineInSandstorm",
-                "habLineRobot3": "CrossedHabLineInSandstorm",
-                "habLineRobot1": "CrossedHabLineInSandstorm",
-                "hatchPanelPoints": 6,
-                "completedRocketFar": false,
-                "bay1": "None",
-                "bay2": "None",
-                "bay3": "PanelAndCargo",
-                "bay4": "PanelAndCargo",
-                "totalPoints": 63,
-                "bay6": "PanelAndCargo",
-                "bay7": "PanelAndCargo",
-                "bay8": "PanelAndCargo",
-                "topRightRocketNear": "None"
-            },
-            "red": {
-                "teleopPoints": 43,
-                "midRightRocketFar": "None",
-                "autoPoints": 15,
-                "midRightRocketNear": "None",
-                "lowLeftRocketNear": "None",
-                "completeRocketRankingPoint": false,
-                "topLeftRocketFar": "None",
-                "foulCount": 0,
-                "foulPoints": 6,
-                "lowLeftRocketFar": "None",
-                "preMatchLevelRobot1": "HabLevel2",
-                "preMatchBay2": "Cargo",
-                "preMatchBay3": "Panel",
-                "midLeftRocketNear": "None",
-                "preMatchBay1": "Panel",
-                "preMatchBay6": "Panel",
-                "preMatchBay7": "Panel",
-                "adjustPoints": 0,
-                "preMatchBay8": "Panel",
-                "topRightRocketFar": "None",
-                "lowRightRocketNear": "None",
-                "habDockingRankingPoint": false,
-                "cargoPoints": 18,
-                "bay5": "Panel",
-                "lowRightRocketFar": "None",
-                "techFoulCount": 0,
-                "habClimbPoints": 21,
-                "endgameRobot1": "HabLevel2",
-                "endgameRobot2": "HabLevel3",
-                "endgameRobot3": "HabLevel1",
-                "midLeftRocketFar": "None",
-                "topLeftRocketNear": "None",
-                "sandStormBonusPoints": 15,
-                "preMatchLevelRobot3": "HabLevel2",
-                "preMatchLevelRobot2": "HabLevel1",
-                "completedRocketNear": false,
-                "rp": 0,
-                "habLineRobot2": "CrossedHabLineInSandstorm",
-                "habLineRobot3": "CrossedHabLineInSandstorm",
-                "habLineRobot1": "CrossedHabLineInSandstorm",
-                "hatchPanelPoints": 4,
-                "completedRocketFar": false,
-                "bay1": "PanelAndCargo",
-                "bay2": "PanelAndCargo",
-                "bay3": "PanelAndCargo",
-                "bay4": "None",
-                "totalPoints": 64,
-                "bay6": "PanelAndCargo",
-                "bay7": "PanelAndCargo",
-                "bay8": "PanelAndCargo",
-                "topRightRocketNear": "None"
-            }
-        },
-        "videos": [],
-        "time": 1553448840,
-        "actual_time": 1553451608,
-        "predicted_time": 1553451723,
-        "post_result_time": 1553451848
-    },
-    {
         "key": "2019mawne_qm14",
         "event_key": "2019mawne",
         "comp_level": "qm",
@@ -6051,864 +6510,6 @@
         "post_result_time": 1553357807
     },
     {
-        "key": "2019mawne_sf2m1",
-        "event_key": "2019mawne",
-        "comp_level": "sf",
-        "set_number": 2,
-        "match_number": 1,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc2370",
-                    "frc230",
-                    "frc7153"
-                ],
-                "score": 83,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc3461",
-                    "frc178",
-                    "frc7869"
-                ],
-                "score": 68,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "red",
-        "score_breakdown": {
-            "blue": {
-                "teleopPoints": 47,
-                "midRightRocketFar": "None",
-                "autoPoints": 15,
-                "midRightRocketNear": "None",
-                "lowLeftRocketNear": "None",
-                "completeRocketRankingPoint": false,
-                "topLeftRocketFar": "None",
-                "foulCount": 3,
-                "foulPoints": 6,
-                "lowLeftRocketFar": "None",
-                "preMatchLevelRobot1": "HabLevel2",
-                "preMatchBay2": "Panel",
-                "preMatchBay3": "Panel",
-                "midLeftRocketNear": "None",
-                "preMatchBay1": "Panel",
-                "preMatchBay6": "Panel",
-                "preMatchBay7": "Cargo",
-                "adjustPoints": 0,
-                "preMatchBay8": "Panel",
-                "topRightRocketFar": "None",
-                "lowRightRocketNear": "None",
-                "habDockingRankingPoint": false,
-                "cargoPoints": 18,
-                "bay5": "PanelAndCargo",
-                "lowRightRocketFar": "PanelAndCargo",
-                "techFoulCount": 0,
-                "habClimbPoints": 21,
-                "endgameRobot1": "HabLevel2",
-                "endgameRobot2": "HabLevel3",
-                "endgameRobot3": "HabLevel1",
-                "midLeftRocketFar": "None",
-                "topLeftRocketNear": "None",
-                "sandStormBonusPoints": 15,
-                "preMatchLevelRobot3": "HabLevel2",
-                "preMatchLevelRobot2": "HabLevel1",
-                "completedRocketNear": false,
-                "rp": 0,
-                "habLineRobot2": "CrossedHabLineInSandstorm",
-                "habLineRobot3": "CrossedHabLineInSandstorm",
-                "habLineRobot1": "CrossedHabLineInSandstorm",
-                "hatchPanelPoints": 8,
-                "completedRocketFar": false,
-                "bay1": "PanelAndCargo",
-                "bay2": "PanelAndCargo",
-                "bay3": "PanelAndCargo",
-                "bay4": "Panel",
-                "totalPoints": 68,
-                "bay6": "Panel",
-                "bay7": "PanelAndCargo",
-                "bay8": "Panel",
-                "topRightRocketNear": "None"
-            },
-            "red": {
-                "teleopPoints": 62,
-                "midRightRocketFar": "None",
-                "autoPoints": 12,
-                "midRightRocketNear": "None",
-                "lowLeftRocketNear": "Panel",
-                "completeRocketRankingPoint": false,
-                "topLeftRocketFar": "None",
-                "foulCount": 2,
-                "foulPoints": 9,
-                "lowLeftRocketFar": "PanelAndCargo",
-                "preMatchLevelRobot1": "HabLevel1",
-                "preMatchBay2": "Panel",
-                "preMatchBay3": "Cargo",
-                "midLeftRocketNear": "None",
-                "preMatchBay1": "Panel",
-                "preMatchBay6": "Panel",
-                "preMatchBay7": "Panel",
-                "adjustPoints": 0,
-                "preMatchBay8": "Panel",
-                "topRightRocketFar": "None",
-                "lowRightRocketNear": "PanelAndCargo",
-                "habDockingRankingPoint": false,
-                "cargoPoints": 27,
-                "bay5": "PanelAndCargo",
-                "lowRightRocketFar": "PanelAndCargo",
-                "techFoulCount": 0,
-                "habClimbPoints": 21,
-                "endgameRobot1": "HabLevel2",
-                "endgameRobot2": "HabLevel3",
-                "endgameRobot3": "HabLevel1",
-                "midLeftRocketFar": "None",
-                "topLeftRocketNear": "None",
-                "sandStormBonusPoints": 12,
-                "preMatchLevelRobot3": "HabLevel1",
-                "preMatchLevelRobot2": "HabLevel2",
-                "completedRocketNear": false,
-                "rp": 0,
-                "habLineRobot2": "CrossedHabLineInSandstorm",
-                "habLineRobot3": "CrossedHabLineInSandstorm",
-                "habLineRobot1": "CrossedHabLineInSandstorm",
-                "hatchPanelPoints": 14,
-                "completedRocketFar": false,
-                "bay1": "PanelAndCargo",
-                "bay2": "PanelAndCargo",
-                "bay3": "PanelAndCargo",
-                "bay4": "PanelAndCargo",
-                "totalPoints": 83,
-                "bay6": "PanelAndCargo",
-                "bay7": "Panel",
-                "bay8": "Panel",
-                "topRightRocketNear": "None"
-            }
-        },
-        "videos": [],
-        "time": 1553451360,
-        "actual_time": 1553453708,
-        "predicted_time": 1553453704,
-        "post_result_time": 1553453931
-    },
-    {
-        "key": "2019mawne_sf2m2",
-        "event_key": "2019mawne",
-        "comp_level": "sf",
-        "set_number": 2,
-        "match_number": 2,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc2370",
-                    "frc230",
-                    "frc7153"
-                ],
-                "score": 72,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc3461",
-                    "frc178",
-                    "frc7869"
-                ],
-                "score": 73,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "blue",
-        "score_breakdown": {
-            "blue": {
-                "teleopPoints": 58,
-                "midRightRocketFar": "None",
-                "autoPoints": 15,
-                "midRightRocketNear": "None",
-                "lowLeftRocketNear": "None",
-                "completeRocketRankingPoint": false,
-                "topLeftRocketFar": "Panel",
-                "foulCount": 0,
-                "foulPoints": 0,
-                "lowLeftRocketFar": "PanelAndCargo",
-                "preMatchLevelRobot1": "HabLevel2",
-                "preMatchBay2": "Panel",
-                "preMatchBay3": "Panel",
-                "midLeftRocketNear": "None",
-                "preMatchBay1": "Panel",
-                "preMatchBay6": "Panel",
-                "preMatchBay7": "Panel",
-                "adjustPoints": 0,
-                "preMatchBay8": "Panel",
-                "topRightRocketFar": "None",
-                "lowRightRocketNear": "None",
-                "habDockingRankingPoint": false,
-                "cargoPoints": 27,
-                "bay5": "None",
-                "lowRightRocketFar": "PanelAndCargo",
-                "techFoulCount": 0,
-                "habClimbPoints": 21,
-                "endgameRobot1": "HabLevel2",
-                "endgameRobot2": "HabLevel3",
-                "endgameRobot3": "HabLevel1",
-                "midLeftRocketFar": "Panel",
-                "topLeftRocketNear": "None",
-                "sandStormBonusPoints": 15,
-                "preMatchLevelRobot3": "HabLevel2",
-                "preMatchLevelRobot2": "HabLevel1",
-                "completedRocketNear": false,
-                "rp": 0,
-                "habLineRobot2": "CrossedHabLineInSandstorm",
-                "habLineRobot3": "CrossedHabLineInSandstorm",
-                "habLineRobot1": "CrossedHabLineInSandstorm",
-                "hatchPanelPoints": 10,
-                "completedRocketFar": false,
-                "bay1": "PanelAndCargo",
-                "bay2": "PanelAndCargo",
-                "bay3": "PanelAndCargo",
-                "bay4": "PanelAndCargo",
-                "totalPoints": 73,
-                "bay6": "PanelAndCargo",
-                "bay7": "PanelAndCargo",
-                "bay8": "PanelAndCargo",
-                "topRightRocketNear": "None"
-            },
-            "red": {
-                "teleopPoints": 60,
-                "midRightRocketFar": "None",
-                "autoPoints": 12,
-                "midRightRocketNear": "None",
-                "lowLeftRocketNear": "None",
-                "completeRocketRankingPoint": false,
-                "topLeftRocketFar": "None",
-                "foulCount": 0,
-                "foulPoints": 0,
-                "lowLeftRocketFar": "PanelAndCargo",
-                "preMatchLevelRobot1": "HabLevel1",
-                "preMatchBay2": "Panel",
-                "preMatchBay3": "Cargo",
-                "midLeftRocketNear": "None",
-                "preMatchBay1": "Panel",
-                "preMatchBay6": "Panel",
-                "preMatchBay7": "Panel",
-                "adjustPoints": 0,
-                "preMatchBay8": "Panel",
-                "topRightRocketFar": "None",
-                "lowRightRocketNear": "PanelAndCargo",
-                "habDockingRankingPoint": false,
-                "cargoPoints": 27,
-                "bay5": "PanelAndCargo",
-                "lowRightRocketFar": "PanelAndCargo",
-                "techFoulCount": 0,
-                "habClimbPoints": 21,
-                "endgameRobot1": "HabLevel2",
-                "endgameRobot2": "HabLevel3",
-                "endgameRobot3": "HabLevel1",
-                "midLeftRocketFar": "None",
-                "topLeftRocketNear": "None",
-                "sandStormBonusPoints": 12,
-                "preMatchLevelRobot3": "HabLevel1",
-                "preMatchLevelRobot2": "HabLevel2",
-                "completedRocketNear": false,
-                "rp": 0,
-                "habLineRobot2": "CrossedHabLineInSandstorm",
-                "habLineRobot3": "CrossedHabLineInSandstorm",
-                "habLineRobot1": "CrossedHabLineInSandstorm",
-                "hatchPanelPoints": 12,
-                "completedRocketFar": false,
-                "bay1": "Panel",
-                "bay2": "Panel",
-                "bay3": "PanelAndCargo",
-                "bay4": "PanelAndCargo",
-                "totalPoints": 72,
-                "bay6": "PanelAndCargo",
-                "bay7": "PanelAndCargo",
-                "bay8": "PanelAndCargo",
-                "topRightRocketNear": "None"
-            }
-        },
-        "videos": [],
-        "time": 1553452200,
-        "actual_time": 1553454952,
-        "predicted_time": 1553454987,
-        "post_result_time": 1553455128
-    },
-    {
-        "key": "2019mawne_sf2m3",
-        "event_key": "2019mawne",
-        "comp_level": "sf",
-        "set_number": 2,
-        "match_number": 3,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc2370",
-                    "frc230",
-                    "frc7153"
-                ],
-                "score": 69,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc3461",
-                    "frc178",
-                    "frc7869"
-                ],
-                "score": 73,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "blue",
-        "score_breakdown": {
-            "blue": {
-                "teleopPoints": 48,
-                "midRightRocketFar": "None",
-                "autoPoints": 15,
-                "midRightRocketNear": "None",
-                "lowLeftRocketNear": "None",
-                "completeRocketRankingPoint": false,
-                "topLeftRocketFar": "None",
-                "foulCount": 1,
-                "foulPoints": 10,
-                "lowLeftRocketFar": "PanelAndCargo",
-                "preMatchLevelRobot1": "HabLevel2",
-                "preMatchBay2": "Panel",
-                "preMatchBay3": "Panel",
-                "midLeftRocketNear": "None",
-                "preMatchBay1": "Panel",
-                "preMatchBay6": "Panel",
-                "preMatchBay7": "Panel",
-                "adjustPoints": 0,
-                "preMatchBay8": "Panel",
-                "topRightRocketFar": "None",
-                "lowRightRocketNear": "None",
-                "habDockingRankingPoint": false,
-                "cargoPoints": 27,
-                "bay5": "PanelAndCargo",
-                "lowRightRocketFar": "None",
-                "techFoulCount": 0,
-                "habClimbPoints": 15,
-                "endgameRobot1": "HabLevel1",
-                "endgameRobot2": "HabLevel3",
-                "endgameRobot3": "None",
-                "midLeftRocketFar": "None",
-                "topLeftRocketNear": "None",
-                "sandStormBonusPoints": 15,
-                "preMatchLevelRobot3": "HabLevel2",
-                "preMatchLevelRobot2": "HabLevel1",
-                "completedRocketNear": false,
-                "rp": 0,
-                "habLineRobot2": "CrossedHabLineInSandstorm",
-                "habLineRobot3": "CrossedHabLineInSandstorm",
-                "habLineRobot1": "CrossedHabLineInSandstorm",
-                "hatchPanelPoints": 6,
-                "completedRocketFar": false,
-                "bay1": "PanelAndCargo",
-                "bay2": "PanelAndCargo",
-                "bay3": "PanelAndCargo",
-                "bay4": "PanelAndCargo",
-                "totalPoints": 73,
-                "bay6": "PanelAndCargo",
-                "bay7": "PanelAndCargo",
-                "bay8": "PanelAndCargo",
-                "topRightRocketNear": "None"
-            },
-            "red": {
-                "teleopPoints": 54,
-                "midRightRocketFar": "None",
-                "autoPoints": 12,
-                "midRightRocketNear": "None",
-                "lowLeftRocketNear": "PanelAndCargo",
-                "completeRocketRankingPoint": false,
-                "topLeftRocketFar": "None",
-                "foulCount": 0,
-                "foulPoints": 3,
-                "lowLeftRocketFar": "Panel",
-                "preMatchLevelRobot1": "HabLevel1",
-                "preMatchBay2": "Panel",
-                "preMatchBay3": "Cargo",
-                "midLeftRocketNear": "None",
-                "preMatchBay1": "Panel",
-                "preMatchBay6": "Panel",
-                "preMatchBay7": "Panel",
-                "adjustPoints": 0,
-                "preMatchBay8": "Panel",
-                "topRightRocketFar": "None",
-                "lowRightRocketNear": "PanelAndCargo",
-                "habDockingRankingPoint": false,
-                "cargoPoints": 24,
-                "bay5": "Panel",
-                "lowRightRocketFar": "None",
-                "techFoulCount": 1,
-                "habClimbPoints": 18,
-                "endgameRobot1": "HabLevel1",
-                "endgameRobot2": "HabLevel3",
-                "endgameRobot3": "HabLevel1",
-                "midLeftRocketFar": "None",
-                "topLeftRocketNear": "None",
-                "sandStormBonusPoints": 12,
-                "preMatchLevelRobot3": "HabLevel1",
-                "preMatchLevelRobot2": "HabLevel2",
-                "completedRocketNear": false,
-                "rp": 0,
-                "habLineRobot2": "CrossedHabLineInSandstorm",
-                "habLineRobot3": "CrossedHabLineInSandstorm",
-                "habLineRobot1": "CrossedHabLineInSandstorm",
-                "hatchPanelPoints": 12,
-                "completedRocketFar": false,
-                "bay1": "Panel",
-                "bay2": "PanelAndCargo",
-                "bay3": "PanelAndCargo",
-                "bay4": "PanelAndCargo",
-                "totalPoints": 69,
-                "bay6": "PanelAndCargo",
-                "bay7": "PanelAndCargo",
-                "bay8": "PanelAndCargo",
-                "topRightRocketNear": "None"
-            }
-        },
-        "videos": [],
-        "time": 1553453040,
-        "actual_time": 1553455651,
-        "predicted_time": 1553455685,
-        "post_result_time": 1553455881
-    },
-    {
-        "key": "2019mesh_qf2m1",
-        "event_key": "2019mesh",
-        "comp_level": "qf",
-        "set_number": 2,
-        "match_number": 1,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc4041",
-                    "frc131",
-                    "frc3461"
-                ],
-                "score": 79,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc6328",
-                    "frc6153",
-                    "frc9999"
-                ],
-                "score": 63,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "red",
-        "score_breakdown": {
-            "blue": {
-                "teleopPoints": 54,
-                "midRightRocketFar": "Panel",
-                "autoPoints": 9,
-                "midRightRocketNear": "None",
-                "lowLeftRocketNear": "None",
-                "completeRocketRankingPoint": false,
-                "topLeftRocketFar": "None",
-                "foulCount": 0,
-                "foulPoints": 0,
-                "lowLeftRocketFar": "PanelAndCargo",
-                "preMatchLevelRobot1": "HabLevel1",
-                "preMatchBay2": "Panel",
-                "preMatchBay3": "Panel",
-                "midLeftRocketNear": "None",
-                "preMatchBay1": "Panel",
-                "preMatchBay6": "Panel",
-                "preMatchBay7": "Panel",
-                "adjustPoints": 0,
-                "preMatchBay8": "Panel",
-                "topRightRocketFar": "None",
-                "lowRightRocketNear": "None",
-                "habDockingRankingPoint": false,
-                "cargoPoints": 27,
-                "bay5": "PanelAndCargo",
-                "lowRightRocketFar": "PanelAndCargo",
-                "techFoulCount": 0,
-                "habClimbPoints": 15,
-                "endgameRobot1": "HabLevel3",
-                "endgameRobot2": "None",
-                "endgameRobot3": "HabLevel1",
-                "midLeftRocketFar": "Panel",
-                "topLeftRocketNear": "None",
-                "sandStormBonusPoints": 9,
-                "preMatchLevelRobot3": "HabLevel1",
-                "preMatchLevelRobot2": "HabLevel1",
-                "completedRocketNear": false,
-                "rp": 0,
-                "habLineRobot2": "CrossedHabLineInSandstorm",
-                "habLineRobot3": "CrossedHabLineInSandstorm",
-                "habLineRobot1": "CrossedHabLineInSandstorm",
-                "hatchPanelPoints": 12,
-                "completedRocketFar": false,
-                "bay1": "PanelAndCargo",
-                "bay2": "Panel",
-                "bay3": "PanelAndCargo",
-                "bay4": "PanelAndCargo",
-                "totalPoints": 63,
-                "bay6": "PanelAndCargo",
-                "bay7": "PanelAndCargo",
-                "bay8": "PanelAndCargo",
-                "topRightRocketNear": "None"
-            },
-            "red": {
-                "teleopPoints": 70,
-                "midRightRocketFar": "None",
-                "autoPoints": 9,
-                "midRightRocketNear": "PanelAndCargo",
-                "lowLeftRocketNear": "PanelAndCargo",
-                "completeRocketRankingPoint": false,
-                "topLeftRocketFar": "None",
-                "foulCount": 0,
-                "foulPoints": 0,
-                "lowLeftRocketFar": "None",
-                "preMatchLevelRobot1": "HabLevel1",
-                "preMatchBay2": "Panel",
-                "preMatchBay3": "Panel",
-                "midLeftRocketNear": "PanelAndCargo",
-                "preMatchBay1": "Panel",
-                "preMatchBay6": "Panel",
-                "preMatchBay7": "Panel",
-                "adjustPoints": 0,
-                "preMatchBay8": "Panel",
-                "topRightRocketFar": "None",
-                "lowRightRocketNear": "PanelAndCargo",
-                "habDockingRankingPoint": false,
-                "cargoPoints": 30,
-                "bay5": "None",
-                "lowRightRocketFar": "None",
-                "techFoulCount": 0,
-                "habClimbPoints": 30,
-                "endgameRobot1": "HabLevel3",
-                "endgameRobot2": "HabLevel3",
-                "endgameRobot3": "HabLevel2",
-                "midLeftRocketFar": "None",
-                "topLeftRocketNear": "None",
-                "sandStormBonusPoints": 9,
-                "preMatchLevelRobot3": "HabLevel2",
-                "preMatchLevelRobot2": "HabLevel2",
-                "completedRocketNear": false,
-                "rp": 0,
-                "habLineRobot2": "CrossedHabLineInSandstorm",
-                "habLineRobot3": "CrossedHabLineInTeleop",
-                "habLineRobot1": "CrossedHabLineInSandstorm",
-                "hatchPanelPoints": 10,
-                "completedRocketFar": false,
-                "bay1": "Panel",
-                "bay2": "PanelAndCargo",
-                "bay3": "PanelAndCargo",
-                "bay4": "PanelAndCargo",
-                "totalPoints": 79,
-                "bay6": "PanelAndCargo",
-                "bay7": "PanelAndCargo",
-                "bay8": "PanelAndCargo",
-                "topRightRocketNear": "None"
-            }
-        },
-        "videos": [],
-        "time": 1561830420,
-        "actual_time": 1561831253,
-        "predicted_time": null,
-        "post_result_time": 1561831444
-    },
-    {
-        "key": "2019mesh_qf2m2",
-        "event_key": "2019mesh",
-        "comp_level": "qf",
-        "set_number": 2,
-        "match_number": 2,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc4041",
-                    "frc131",
-                    "frc3461"
-                ],
-                "score": 80,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc6328",
-                    "frc6153",
-                    "frc9999"
-                ],
-                "score": 81,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "blue",
-        "score_breakdown": {
-            "blue": {
-                "teleopPoints": 72,
-                "midRightRocketFar": "PanelAndCargo",
-                "autoPoints": 9,
-                "midRightRocketNear": "None",
-                "lowLeftRocketNear": "None",
-                "completeRocketRankingPoint": false,
-                "topLeftRocketFar": "None",
-                "foulCount": 0,
-                "foulPoints": 0,
-                "lowLeftRocketFar": "Panel",
-                "preMatchLevelRobot1": "HabLevel1",
-                "preMatchBay2": "Panel",
-                "preMatchBay3": "Panel",
-                "midLeftRocketNear": "None",
-                "preMatchBay1": "Panel",
-                "preMatchBay6": "Panel",
-                "preMatchBay7": "Panel",
-                "adjustPoints": 0,
-                "preMatchBay8": "Panel",
-                "topRightRocketFar": "None",
-                "lowRightRocketNear": "None",
-                "habDockingRankingPoint": false,
-                "cargoPoints": 33,
-                "bay5": "PanelAndCargo",
-                "lowRightRocketFar": "PanelAndCargo",
-                "techFoulCount": 0,
-                "habClimbPoints": 27,
-                "endgameRobot1": "HabLevel3",
-                "endgameRobot2": "HabLevel3",
-                "endgameRobot3": "HabLevel1",
-                "midLeftRocketFar": "PanelAndCargo",
-                "topLeftRocketNear": "None",
-                "sandStormBonusPoints": 9,
-                "preMatchLevelRobot3": "HabLevel1",
-                "preMatchLevelRobot2": "HabLevel1",
-                "completedRocketNear": false,
-                "rp": 0,
-                "habLineRobot2": "CrossedHabLineInSandstorm",
-                "habLineRobot3": "CrossedHabLineInSandstorm",
-                "habLineRobot1": "CrossedHabLineInSandstorm",
-                "hatchPanelPoints": 12,
-                "completedRocketFar": false,
-                "bay1": "PanelAndCargo",
-                "bay2": "PanelAndCargo",
-                "bay3": "PanelAndCargo",
-                "bay4": "PanelAndCargo",
-                "totalPoints": 81,
-                "bay6": "PanelAndCargo",
-                "bay7": "PanelAndCargo",
-                "bay8": "PanelAndCargo",
-                "topRightRocketNear": "None"
-            },
-            "red": {
-                "teleopPoints": 65,
-                "midRightRocketFar": "None",
-                "autoPoints": 15,
-                "midRightRocketNear": "PanelAndCargo",
-                "lowLeftRocketNear": "Panel",
-                "completeRocketRankingPoint": false,
-                "topLeftRocketFar": "None",
-                "foulCount": 0,
-                "foulPoints": 0,
-                "lowLeftRocketFar": "Panel",
-                "preMatchLevelRobot1": "HabLevel1",
-                "preMatchBay2": "Panel",
-                "preMatchBay3": "Panel",
-                "midLeftRocketNear": "PanelAndCargo",
-                "preMatchBay1": "Panel",
-                "preMatchBay6": "Panel",
-                "preMatchBay7": "Panel",
-                "adjustPoints": 0,
-                "preMatchBay8": "Panel",
-                "topRightRocketFar": "None",
-                "lowRightRocketNear": "Panel",
-                "habDockingRankingPoint": false,
-                "cargoPoints": 27,
-                "bay5": "PanelAndCargo",
-                "lowRightRocketFar": "None",
-                "techFoulCount": 0,
-                "habClimbPoints": 24,
-                "endgameRobot1": "HabLevel3",
-                "endgameRobot2": "None",
-                "endgameRobot3": "HabLevel3",
-                "midLeftRocketFar": "None",
-                "topLeftRocketNear": "None",
-                "sandStormBonusPoints": 15,
-                "preMatchLevelRobot3": "HabLevel2",
-                "preMatchLevelRobot2": "HabLevel2",
-                "completedRocketNear": false,
-                "rp": 0,
-                "habLineRobot2": "CrossedHabLineInSandstorm",
-                "habLineRobot3": "CrossedHabLineInSandstorm",
-                "habLineRobot1": "CrossedHabLineInSandstorm",
-                "hatchPanelPoints": 14,
-                "completedRocketFar": false,
-                "bay1": "Panel",
-                "bay2": "PanelAndCargo",
-                "bay3": "PanelAndCargo",
-                "bay4": "PanelAndCargo",
-                "totalPoints": 80,
-                "bay6": "PanelAndCargo",
-                "bay7": "PanelAndCargo",
-                "bay8": "PanelAndCargo",
-                "topRightRocketNear": "None"
-            }
-        },
-        "videos": [],
-        "time": 1561832100,
-        "actual_time": 1561833358,
-        "predicted_time": null,
-        "post_result_time": 1561833565
-    },
-    {
-        "key": "2019mesh_qf2m3",
-        "event_key": "2019mesh",
-        "comp_level": "qf",
-        "set_number": 2,
-        "match_number": 3,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc4041",
-                    "frc131",
-                    "frc3461"
-                ],
-                "score": 81,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc6328",
-                    "frc6153",
-                    "frc9999"
-                ],
-                "score": 70,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "red",
-        "score_breakdown": {
-            "blue": {
-                "teleopPoints": 58,
-                "midRightRocketFar": "None",
-                "autoPoints": 9,
-                "midRightRocketNear": "None",
-                "lowLeftRocketNear": "None",
-                "completeRocketRankingPoint": false,
-                "topLeftRocketFar": "None",
-                "foulCount": 1,
-                "foulPoints": 3,
-                "lowLeftRocketFar": "PanelAndCargo",
-                "preMatchLevelRobot1": "HabLevel1",
-                "preMatchBay2": "Panel",
-                "preMatchBay3": "Panel",
-                "midLeftRocketNear": "None",
-                "preMatchBay1": "Panel",
-                "preMatchBay6": "Panel",
-                "preMatchBay7": "Panel",
-                "adjustPoints": 0,
-                "preMatchBay8": "Panel",
-                "topRightRocketFar": "None",
-                "lowRightRocketNear": "Panel",
-                "habDockingRankingPoint": false,
-                "cargoPoints": 30,
-                "bay5": "PanelAndCargo",
-                "lowRightRocketFar": "PanelAndCargo",
-                "techFoulCount": 0,
-                "habClimbPoints": 18,
-                "endgameRobot1": "HabLevel1",
-                "endgameRobot2": "HabLevel1",
-                "endgameRobot3": "HabLevel3",
-                "midLeftRocketFar": "None",
-                "topLeftRocketNear": "None",
-                "sandStormBonusPoints": 9,
-                "preMatchLevelRobot3": "HabLevel1",
-                "preMatchLevelRobot2": "HabLevel1",
-                "completedRocketNear": false,
-                "rp": 0,
-                "habLineRobot2": "CrossedHabLineInSandstorm",
-                "habLineRobot3": "CrossedHabLineInSandstorm",
-                "habLineRobot1": "CrossedHabLineInSandstorm",
-                "hatchPanelPoints": 10,
-                "completedRocketFar": false,
-                "bay1": "PanelAndCargo",
-                "bay2": "PanelAndCargo",
-                "bay3": "PanelAndCargo",
-                "bay4": "PanelAndCargo",
-                "totalPoints": 70,
-                "bay6": "PanelAndCargo",
-                "bay7": "PanelAndCargo",
-                "bay8": "PanelAndCargo",
-                "topRightRocketNear": "None"
-            },
-            "red": {
-                "teleopPoints": 63,
-                "midRightRocketFar": "None",
-                "autoPoints": 15,
-                "midRightRocketNear": "PanelAndCargo",
-                "lowLeftRocketNear": "PanelAndCargo",
-                "completeRocketRankingPoint": false,
-                "topLeftRocketFar": "None",
-                "foulCount": 1,
-                "foulPoints": 3,
-                "lowLeftRocketFar": "None",
-                "preMatchLevelRobot1": "HabLevel1",
-                "preMatchBay2": "Panel",
-                "preMatchBay3": "Panel",
-                "midLeftRocketNear": "PanelAndCargo",
-                "preMatchBay1": "Panel",
-                "preMatchBay6": "Panel",
-                "preMatchBay7": "Panel",
-                "adjustPoints": 0,
-                "preMatchBay8": "Panel",
-                "topRightRocketFar": "None",
-                "lowRightRocketNear": "PanelAndCargo",
-                "habDockingRankingPoint": false,
-                "cargoPoints": 24,
-                "bay5": "None",
-                "lowRightRocketFar": "Panel",
-                "techFoulCount": 0,
-                "habClimbPoints": 27,
-                "endgameRobot1": "HabLevel3",
-                "endgameRobot2": "HabLevel1",
-                "endgameRobot3": "HabLevel3",
-                "midLeftRocketFar": "None",
-                "topLeftRocketNear": "None",
-                "sandStormBonusPoints": 15,
-                "preMatchLevelRobot3": "HabLevel2",
-                "preMatchLevelRobot2": "HabLevel2",
-                "completedRocketNear": false,
-                "rp": 0,
-                "habLineRobot2": "CrossedHabLineInSandstorm",
-                "habLineRobot3": "CrossedHabLineInSandstorm",
-                "habLineRobot1": "CrossedHabLineInSandstorm",
-                "hatchPanelPoints": 12,
-                "completedRocketFar": false,
-                "bay1": "Panel",
-                "bay2": "Panel",
-                "bay3": "Panel",
-                "bay4": "PanelAndCargo",
-                "totalPoints": 81,
-                "bay6": "PanelAndCargo",
-                "bay7": "PanelAndCargo",
-                "bay8": "PanelAndCargo",
-                "topRightRocketNear": "None"
-            }
-        },
-        "videos": [],
-        "time": 1561833780,
-        "actual_time": 1561834812,
-        "predicted_time": null,
-        "post_result_time": 1561835001
-    },
-    {
         "key": "2019mesh_qm1",
         "event_key": "2019mesh",
         "comp_level": "qm",
@@ -7767,6 +7368,979 @@
         "post_result_time": 1561817086
     },
     {
+        "key": "2019wiwi_qm12",
+        "event_key": "2019wiwi",
+        "comp_level": "qm",
+        "set_number": 1,
+        "match_number": 12,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc7127",
+                    "frc177",
+                    "frc716"
+                ],
+                "score": 61,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc3461",
+                    "frc155",
+                    "frc7462"
+                ],
+                "score": 36,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "red",
+        "score_breakdown": null,
+        "videos": [],
+        "time": null,
+        "actual_time": null,
+        "predicted_time": null,
+        "post_result_time": null
+    },
+    {
+        "key": "2019wiwi_qm16",
+        "event_key": "2019wiwi",
+        "comp_level": "qm",
+        "set_number": 1,
+        "match_number": 16,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc5943",
+                    "frc4055",
+                    "frc666"
+                ],
+                "score": 35,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc3461",
+                    "frc7127",
+                    "frc58"
+                ],
+                "score": 38,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "blue",
+        "score_breakdown": null,
+        "videos": [],
+        "time": null,
+        "actual_time": null,
+        "predicted_time": null,
+        "post_result_time": null
+    },
+    {
+        "key": "2019wiwi_qm18",
+        "event_key": "2019wiwi",
+        "comp_level": "qm",
+        "set_number": 1,
+        "match_number": 18,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc4055",
+                    "frc999",
+                    "frc3461"
+                ],
+                "score": 38,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc558",
+                    "frc178",
+                    "frc2067"
+                ],
+                "score": 46,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "blue",
+        "score_breakdown": null,
+        "videos": [],
+        "time": null,
+        "actual_time": null,
+        "predicted_time": null,
+        "post_result_time": null
+    },
+    {
+        "key": "2019wiwi_qm24",
+        "event_key": "2019wiwi",
+        "comp_level": "qm",
+        "set_number": 1,
+        "match_number": 24,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc228",
+                    "frc2067",
+                    "frc3461"
+                ],
+                "score": 48,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc1071",
+                    "frc7462",
+                    "frc173"
+                ],
+                "score": 41,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "red",
+        "score_breakdown": null,
+        "videos": [],
+        "time": null,
+        "actual_time": null,
+        "predicted_time": null,
+        "post_result_time": null
+    },
+    {
+        "key": "2019wiwi_qm3",
+        "event_key": "2019wiwi",
+        "comp_level": "qm",
+        "set_number": 1,
+        "match_number": 3,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc230",
+                    "frc3461",
+                    "frc178"
+                ],
+                "score": 49,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc7153",
+                    "frc237",
+                    "frc3555"
+                ],
+                "score": 53,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "blue",
+        "score_breakdown": null,
+        "videos": [],
+        "time": null,
+        "actual_time": null,
+        "predicted_time": null,
+        "post_result_time": null
+    },
+    {
+        "key": "2019wiwi_qm5",
+        "event_key": "2019wiwi",
+        "comp_level": "qm",
+        "set_number": 1,
+        "match_number": 5,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc155",
+                    "frc228",
+                    "frc4557"
+                ],
+                "score": 52,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc3525",
+                    "frc3461",
+                    "frc3555"
+                ],
+                "score": 56,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "blue",
+        "score_breakdown": null,
+        "videos": [],
+        "time": null,
+        "actual_time": null,
+        "predicted_time": null,
+        "post_result_time": null
+    },
+    {
+        "key": "2019bc_sf1m12",
+        "event_key": "2019bc",
+        "comp_level": "sf",
+        "set_number": 1,
+        "match_number": 12,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc3461",
+                    "frc5943",
+                    "frc3323"
+                ],
+                "score": 60,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc4048",
+                    "frc157",
+                    "frc1729"
+                ],
+                "score": 84,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "blue",
+        "score_breakdown": null,
+        "videos": [
+            {
+                "type": "youtube",
+                "key": "NiOdMbv-KiA"
+            }
+        ],
+        "time": null,
+        "actual_time": null,
+        "predicted_time": null,
+        "post_result_time": null
+    },
+    {
+        "key": "2019bc_sf1m15",
+        "event_key": "2019bc",
+        "comp_level": "sf",
+        "set_number": 1,
+        "match_number": 15,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc3461",
+                    "frc5943",
+                    "frc3323"
+                ],
+                "score": 67,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc6328",
+                    "frc3623",
+                    "frc2791"
+                ],
+                "score": 100,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "blue",
+        "score_breakdown": null,
+        "videos": [
+            {
+                "type": "youtube",
+                "key": "GRLVZViKgOU"
+            }
+        ],
+        "time": null,
+        "actual_time": null,
+        "predicted_time": null,
+        "post_result_time": null
+    },
+    {
+        "key": "2019bc_sf1m3",
+        "event_key": "2019bc",
+        "comp_level": "sf",
+        "set_number": 1,
+        "match_number": 3,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc4041",
+                    "frc3467",
+                    "frc7462"
+                ],
+                "score": 64,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc3461",
+                    "frc5943",
+                    "frc5030"
+                ],
+                "score": 68,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "blue",
+        "score_breakdown": null,
+        "videos": [
+            {
+                "type": "youtube",
+                "key": "KQCxHTnbmm0"
+            }
+        ],
+        "time": null,
+        "actual_time": null,
+        "predicted_time": null,
+        "post_result_time": null
+    },
+    {
+        "key": "2019bc_sf1m5",
+        "event_key": "2019bc",
+        "comp_level": "sf",
+        "set_number": 1,
+        "match_number": 5,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc694",
+                    "frc6401",
+                    "frc2168"
+                ],
+                "score": 95,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc3461",
+                    "frc5943",
+                    "frc3323"
+                ],
+                "score": 47,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "red",
+        "score_breakdown": null,
+        "videos": [
+            {
+                "type": "youtube",
+                "key": "4k_tkdkzHV8"
+            }
+        ],
+        "time": null,
+        "actual_time": null,
+        "predicted_time": null,
+        "post_result_time": null
+    },
+    {
+        "key": "2019bc_sf1m7",
+        "event_key": "2019bc",
+        "comp_level": "sf",
+        "set_number": 1,
+        "match_number": 7,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc501",
+                    "frc1073",
+                    "frc195"
+                ],
+                "score": 84,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc3461",
+                    "frc5943",
+                    "frc3323"
+                ],
+                "score": 59,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "red",
+        "score_breakdown": null,
+        "videos": [
+            {
+                "type": "youtube",
+                "key": "cg3lnmN7Jwk"
+            }
+        ],
+        "time": null,
+        "actual_time": null,
+        "predicted_time": null,
+        "post_result_time": null
+    },
+    {
+        "key": "2019ctsc_sf1m1",
+        "event_key": "2019ctsc",
+        "comp_level": "sf",
+        "set_number": 1,
+        "match_number": 1,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc195",
+                    "frc2168",
+                    "frc4055"
+                ],
+                "score": 98,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc3146",
+                    "frc3461",
+                    "frc3555"
+                ],
+                "score": 55,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "red",
+        "score_breakdown": null,
+        "videos": [
+            {
+                "type": "youtube",
+                "key": "D734e6w0t_w"
+            }
+        ],
+        "time": null,
+        "actual_time": null,
+        "predicted_time": null,
+        "post_result_time": null
+    },
+    {
+        "key": "2019ctsc_sf1m2",
+        "event_key": "2019ctsc",
+        "comp_level": "sf",
+        "set_number": 1,
+        "match_number": 2,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc195",
+                    "frc2168",
+                    "frc4055"
+                ],
+                "score": 61,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc3146",
+                    "frc3461",
+                    "frc3555"
+                ],
+                "score": 64,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "blue",
+        "score_breakdown": null,
+        "videos": [
+            {
+                "type": "youtube",
+                "key": "hnyVD_GSJI0"
+            }
+        ],
+        "time": null,
+        "actual_time": null,
+        "predicted_time": null,
+        "post_result_time": null
+    },
+    {
+        "key": "2019ctsc_sf1m3",
+        "event_key": "2019ctsc",
+        "comp_level": "sf",
+        "set_number": 1,
+        "match_number": 3,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc195",
+                    "frc2168",
+                    "frc4055"
+                ],
+                "score": 85,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc3146",
+                    "frc3461",
+                    "frc3555"
+                ],
+                "score": 60,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "red",
+        "score_breakdown": null,
+        "videos": [
+            {
+                "type": "youtube",
+                "key": "T8Mf-zh8YA4"
+            }
+        ],
+        "time": null,
+        "actual_time": null,
+        "predicted_time": null,
+        "post_result_time": null
+    },
+    {
+        "key": "2019mawne_sf2m1",
+        "event_key": "2019mawne",
+        "comp_level": "sf",
+        "set_number": 2,
+        "match_number": 1,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc2370",
+                    "frc230",
+                    "frc7153"
+                ],
+                "score": 83,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc3461",
+                    "frc178",
+                    "frc7869"
+                ],
+                "score": 68,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "red",
+        "score_breakdown": {
+            "blue": {
+                "teleopPoints": 47,
+                "midRightRocketFar": "None",
+                "autoPoints": 15,
+                "midRightRocketNear": "None",
+                "lowLeftRocketNear": "None",
+                "completeRocketRankingPoint": false,
+                "topLeftRocketFar": "None",
+                "foulCount": 3,
+                "foulPoints": 6,
+                "lowLeftRocketFar": "None",
+                "preMatchLevelRobot1": "HabLevel2",
+                "preMatchBay2": "Panel",
+                "preMatchBay3": "Panel",
+                "midLeftRocketNear": "None",
+                "preMatchBay1": "Panel",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Cargo",
+                "adjustPoints": 0,
+                "preMatchBay8": "Panel",
+                "topRightRocketFar": "None",
+                "lowRightRocketNear": "None",
+                "habDockingRankingPoint": false,
+                "cargoPoints": 18,
+                "bay5": "PanelAndCargo",
+                "lowRightRocketFar": "PanelAndCargo",
+                "techFoulCount": 0,
+                "habClimbPoints": 21,
+                "endgameRobot1": "HabLevel2",
+                "endgameRobot2": "HabLevel3",
+                "endgameRobot3": "HabLevel1",
+                "midLeftRocketFar": "None",
+                "topLeftRocketNear": "None",
+                "sandStormBonusPoints": 15,
+                "preMatchLevelRobot3": "HabLevel2",
+                "preMatchLevelRobot2": "HabLevel1",
+                "completedRocketNear": false,
+                "rp": 0,
+                "habLineRobot2": "CrossedHabLineInSandstorm",
+                "habLineRobot3": "CrossedHabLineInSandstorm",
+                "habLineRobot1": "CrossedHabLineInSandstorm",
+                "hatchPanelPoints": 8,
+                "completedRocketFar": false,
+                "bay1": "PanelAndCargo",
+                "bay2": "PanelAndCargo",
+                "bay3": "PanelAndCargo",
+                "bay4": "Panel",
+                "totalPoints": 68,
+                "bay6": "Panel",
+                "bay7": "PanelAndCargo",
+                "bay8": "Panel",
+                "topRightRocketNear": "None"
+            },
+            "red": {
+                "teleopPoints": 62,
+                "midRightRocketFar": "None",
+                "autoPoints": 12,
+                "midRightRocketNear": "None",
+                "lowLeftRocketNear": "Panel",
+                "completeRocketRankingPoint": false,
+                "topLeftRocketFar": "None",
+                "foulCount": 2,
+                "foulPoints": 9,
+                "lowLeftRocketFar": "PanelAndCargo",
+                "preMatchLevelRobot1": "HabLevel1",
+                "preMatchBay2": "Panel",
+                "preMatchBay3": "Cargo",
+                "midLeftRocketNear": "None",
+                "preMatchBay1": "Panel",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "adjustPoints": 0,
+                "preMatchBay8": "Panel",
+                "topRightRocketFar": "None",
+                "lowRightRocketNear": "PanelAndCargo",
+                "habDockingRankingPoint": false,
+                "cargoPoints": 27,
+                "bay5": "PanelAndCargo",
+                "lowRightRocketFar": "PanelAndCargo",
+                "techFoulCount": 0,
+                "habClimbPoints": 21,
+                "endgameRobot1": "HabLevel2",
+                "endgameRobot2": "HabLevel3",
+                "endgameRobot3": "HabLevel1",
+                "midLeftRocketFar": "None",
+                "topLeftRocketNear": "None",
+                "sandStormBonusPoints": 12,
+                "preMatchLevelRobot3": "HabLevel1",
+                "preMatchLevelRobot2": "HabLevel2",
+                "completedRocketNear": false,
+                "rp": 0,
+                "habLineRobot2": "CrossedHabLineInSandstorm",
+                "habLineRobot3": "CrossedHabLineInSandstorm",
+                "habLineRobot1": "CrossedHabLineInSandstorm",
+                "hatchPanelPoints": 14,
+                "completedRocketFar": false,
+                "bay1": "PanelAndCargo",
+                "bay2": "PanelAndCargo",
+                "bay3": "PanelAndCargo",
+                "bay4": "PanelAndCargo",
+                "totalPoints": 83,
+                "bay6": "PanelAndCargo",
+                "bay7": "Panel",
+                "bay8": "Panel",
+                "topRightRocketNear": "None"
+            }
+        },
+        "videos": [],
+        "time": 1553451360,
+        "actual_time": 1553453708,
+        "predicted_time": 1553453704,
+        "post_result_time": 1553453931
+    },
+    {
+        "key": "2019mawne_sf2m2",
+        "event_key": "2019mawne",
+        "comp_level": "sf",
+        "set_number": 2,
+        "match_number": 2,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc2370",
+                    "frc230",
+                    "frc7153"
+                ],
+                "score": 72,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc3461",
+                    "frc178",
+                    "frc7869"
+                ],
+                "score": 73,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "blue",
+        "score_breakdown": {
+            "blue": {
+                "teleopPoints": 58,
+                "midRightRocketFar": "None",
+                "autoPoints": 15,
+                "midRightRocketNear": "None",
+                "lowLeftRocketNear": "None",
+                "completeRocketRankingPoint": false,
+                "topLeftRocketFar": "Panel",
+                "foulCount": 0,
+                "foulPoints": 0,
+                "lowLeftRocketFar": "PanelAndCargo",
+                "preMatchLevelRobot1": "HabLevel2",
+                "preMatchBay2": "Panel",
+                "preMatchBay3": "Panel",
+                "midLeftRocketNear": "None",
+                "preMatchBay1": "Panel",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "adjustPoints": 0,
+                "preMatchBay8": "Panel",
+                "topRightRocketFar": "None",
+                "lowRightRocketNear": "None",
+                "habDockingRankingPoint": false,
+                "cargoPoints": 27,
+                "bay5": "None",
+                "lowRightRocketFar": "PanelAndCargo",
+                "techFoulCount": 0,
+                "habClimbPoints": 21,
+                "endgameRobot1": "HabLevel2",
+                "endgameRobot2": "HabLevel3",
+                "endgameRobot3": "HabLevel1",
+                "midLeftRocketFar": "Panel",
+                "topLeftRocketNear": "None",
+                "sandStormBonusPoints": 15,
+                "preMatchLevelRobot3": "HabLevel2",
+                "preMatchLevelRobot2": "HabLevel1",
+                "completedRocketNear": false,
+                "rp": 0,
+                "habLineRobot2": "CrossedHabLineInSandstorm",
+                "habLineRobot3": "CrossedHabLineInSandstorm",
+                "habLineRobot1": "CrossedHabLineInSandstorm",
+                "hatchPanelPoints": 10,
+                "completedRocketFar": false,
+                "bay1": "PanelAndCargo",
+                "bay2": "PanelAndCargo",
+                "bay3": "PanelAndCargo",
+                "bay4": "PanelAndCargo",
+                "totalPoints": 73,
+                "bay6": "PanelAndCargo",
+                "bay7": "PanelAndCargo",
+                "bay8": "PanelAndCargo",
+                "topRightRocketNear": "None"
+            },
+            "red": {
+                "teleopPoints": 60,
+                "midRightRocketFar": "None",
+                "autoPoints": 12,
+                "midRightRocketNear": "None",
+                "lowLeftRocketNear": "None",
+                "completeRocketRankingPoint": false,
+                "topLeftRocketFar": "None",
+                "foulCount": 0,
+                "foulPoints": 0,
+                "lowLeftRocketFar": "PanelAndCargo",
+                "preMatchLevelRobot1": "HabLevel1",
+                "preMatchBay2": "Panel",
+                "preMatchBay3": "Cargo",
+                "midLeftRocketNear": "None",
+                "preMatchBay1": "Panel",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "adjustPoints": 0,
+                "preMatchBay8": "Panel",
+                "topRightRocketFar": "None",
+                "lowRightRocketNear": "PanelAndCargo",
+                "habDockingRankingPoint": false,
+                "cargoPoints": 27,
+                "bay5": "PanelAndCargo",
+                "lowRightRocketFar": "PanelAndCargo",
+                "techFoulCount": 0,
+                "habClimbPoints": 21,
+                "endgameRobot1": "HabLevel2",
+                "endgameRobot2": "HabLevel3",
+                "endgameRobot3": "HabLevel1",
+                "midLeftRocketFar": "None",
+                "topLeftRocketNear": "None",
+                "sandStormBonusPoints": 12,
+                "preMatchLevelRobot3": "HabLevel1",
+                "preMatchLevelRobot2": "HabLevel2",
+                "completedRocketNear": false,
+                "rp": 0,
+                "habLineRobot2": "CrossedHabLineInSandstorm",
+                "habLineRobot3": "CrossedHabLineInSandstorm",
+                "habLineRobot1": "CrossedHabLineInSandstorm",
+                "hatchPanelPoints": 12,
+                "completedRocketFar": false,
+                "bay1": "Panel",
+                "bay2": "Panel",
+                "bay3": "PanelAndCargo",
+                "bay4": "PanelAndCargo",
+                "totalPoints": 72,
+                "bay6": "PanelAndCargo",
+                "bay7": "PanelAndCargo",
+                "bay8": "PanelAndCargo",
+                "topRightRocketNear": "None"
+            }
+        },
+        "videos": [],
+        "time": 1553452200,
+        "actual_time": 1553454952,
+        "predicted_time": 1553454987,
+        "post_result_time": 1553455128
+    },
+    {
+        "key": "2019mawne_sf2m3",
+        "event_key": "2019mawne",
+        "comp_level": "sf",
+        "set_number": 2,
+        "match_number": 3,
+        "alliances": {
+            "red": {
+                "team_keys": [
+                    "frc2370",
+                    "frc230",
+                    "frc7153"
+                ],
+                "score": 69,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            },
+            "blue": {
+                "team_keys": [
+                    "frc3461",
+                    "frc178",
+                    "frc7869"
+                ],
+                "score": 73,
+                "surrogate_team_keys": [],
+                "dq_team_keys": []
+            }
+        },
+        "winning_alliance": "blue",
+        "score_breakdown": {
+            "blue": {
+                "teleopPoints": 48,
+                "midRightRocketFar": "None",
+                "autoPoints": 15,
+                "midRightRocketNear": "None",
+                "lowLeftRocketNear": "None",
+                "completeRocketRankingPoint": false,
+                "topLeftRocketFar": "None",
+                "foulCount": 1,
+                "foulPoints": 10,
+                "lowLeftRocketFar": "PanelAndCargo",
+                "preMatchLevelRobot1": "HabLevel2",
+                "preMatchBay2": "Panel",
+                "preMatchBay3": "Panel",
+                "midLeftRocketNear": "None",
+                "preMatchBay1": "Panel",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "adjustPoints": 0,
+                "preMatchBay8": "Panel",
+                "topRightRocketFar": "None",
+                "lowRightRocketNear": "None",
+                "habDockingRankingPoint": false,
+                "cargoPoints": 27,
+                "bay5": "PanelAndCargo",
+                "lowRightRocketFar": "None",
+                "techFoulCount": 0,
+                "habClimbPoints": 15,
+                "endgameRobot1": "HabLevel1",
+                "endgameRobot2": "HabLevel3",
+                "endgameRobot3": "None",
+                "midLeftRocketFar": "None",
+                "topLeftRocketNear": "None",
+                "sandStormBonusPoints": 15,
+                "preMatchLevelRobot3": "HabLevel2",
+                "preMatchLevelRobot2": "HabLevel1",
+                "completedRocketNear": false,
+                "rp": 0,
+                "habLineRobot2": "CrossedHabLineInSandstorm",
+                "habLineRobot3": "CrossedHabLineInSandstorm",
+                "habLineRobot1": "CrossedHabLineInSandstorm",
+                "hatchPanelPoints": 6,
+                "completedRocketFar": false,
+                "bay1": "PanelAndCargo",
+                "bay2": "PanelAndCargo",
+                "bay3": "PanelAndCargo",
+                "bay4": "PanelAndCargo",
+                "totalPoints": 73,
+                "bay6": "PanelAndCargo",
+                "bay7": "PanelAndCargo",
+                "bay8": "PanelAndCargo",
+                "topRightRocketNear": "None"
+            },
+            "red": {
+                "teleopPoints": 54,
+                "midRightRocketFar": "None",
+                "autoPoints": 12,
+                "midRightRocketNear": "None",
+                "lowLeftRocketNear": "PanelAndCargo",
+                "completeRocketRankingPoint": false,
+                "topLeftRocketFar": "None",
+                "foulCount": 0,
+                "foulPoints": 3,
+                "lowLeftRocketFar": "Panel",
+                "preMatchLevelRobot1": "HabLevel1",
+                "preMatchBay2": "Panel",
+                "preMatchBay3": "Cargo",
+                "midLeftRocketNear": "None",
+                "preMatchBay1": "Panel",
+                "preMatchBay6": "Panel",
+                "preMatchBay7": "Panel",
+                "adjustPoints": 0,
+                "preMatchBay8": "Panel",
+                "topRightRocketFar": "None",
+                "lowRightRocketNear": "PanelAndCargo",
+                "habDockingRankingPoint": false,
+                "cargoPoints": 24,
+                "bay5": "Panel",
+                "lowRightRocketFar": "None",
+                "techFoulCount": 1,
+                "habClimbPoints": 18,
+                "endgameRobot1": "HabLevel1",
+                "endgameRobot2": "HabLevel3",
+                "endgameRobot3": "HabLevel1",
+                "midLeftRocketFar": "None",
+                "topLeftRocketNear": "None",
+                "sandStormBonusPoints": 12,
+                "preMatchLevelRobot3": "HabLevel1",
+                "preMatchLevelRobot2": "HabLevel2",
+                "completedRocketNear": false,
+                "rp": 0,
+                "habLineRobot2": "CrossedHabLineInSandstorm",
+                "habLineRobot3": "CrossedHabLineInSandstorm",
+                "habLineRobot1": "CrossedHabLineInSandstorm",
+                "hatchPanelPoints": 12,
+                "completedRocketFar": false,
+                "bay1": "Panel",
+                "bay2": "PanelAndCargo",
+                "bay3": "PanelAndCargo",
+                "bay4": "PanelAndCargo",
+                "totalPoints": 69,
+                "bay6": "PanelAndCargo",
+                "bay7": "PanelAndCargo",
+                "bay8": "PanelAndCargo",
+                "topRightRocketNear": "None"
+            }
+        },
+        "videos": [],
+        "time": 1553453040,
+        "actual_time": 1553455651,
+        "predicted_time": 1553455685,
+        "post_result_time": 1553455881
+    },
+    {
         "key": "2019mesh_sf1m1",
         "event_key": "2019mesh",
         "comp_level": "sf",
@@ -8051,293 +8625,5 @@
         "actual_time": 1561837099,
         "predicted_time": null,
         "post_result_time": 1561837335
-    },
-    {
-        "key": "2019wiwi_ef1m1",
-        "event_key": "2019wiwi",
-        "comp_level": "ef",
-        "set_number": 1,
-        "match_number": 1,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc177",
-                    "frc195",
-                    "frc666"
-                ],
-                "score": 75,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc3461",
-                    "frc4055",
-                    "frc7153"
-                ],
-                "score": 42,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "red",
-        "score_breakdown": null,
-        "videos": [],
-        "time": null,
-        "actual_time": null,
-        "predicted_time": null,
-        "post_result_time": null
-    },
-    {
-        "key": "2019wiwi_ef5m1",
-        "event_key": "2019wiwi",
-        "comp_level": "ef",
-        "set_number": 5,
-        "match_number": 1,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc3461",
-                    "frc4055",
-                    "frc7153"
-                ],
-                "score": 35,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc228",
-                    "frc58 /",
-                    "frc7127"
-                ],
-                "score": 65,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "blue",
-        "score_breakdown": null,
-        "videos": [],
-        "time": null,
-        "actual_time": null,
-        "predicted_time": null,
-        "post_result_time": null
-    },
-    {
-        "key": "2019wiwi_qm12",
-        "event_key": "2019wiwi",
-        "comp_level": "qm",
-        "set_number": 1,
-        "match_number": 12,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc7127",
-                    "frc177",
-                    "frc716"
-                ],
-                "score": 61,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc3461",
-                    "frc155",
-                    "frc7462"
-                ],
-                "score": 36,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "red",
-        "score_breakdown": null,
-        "videos": [],
-        "time": null,
-        "actual_time": null,
-        "predicted_time": null,
-        "post_result_time": null
-    },
-    {
-        "key": "2019wiwi_qm16",
-        "event_key": "2019wiwi",
-        "comp_level": "qm",
-        "set_number": 1,
-        "match_number": 16,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc5943",
-                    "frc4055",
-                    "frc666"
-                ],
-                "score": 35,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc3461",
-                    "frc7127",
-                    "frc58"
-                ],
-                "score": 38,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "blue",
-        "score_breakdown": null,
-        "videos": [],
-        "time": null,
-        "actual_time": null,
-        "predicted_time": null,
-        "post_result_time": null
-    },
-    {
-        "key": "2019wiwi_qm18",
-        "event_key": "2019wiwi",
-        "comp_level": "qm",
-        "set_number": 1,
-        "match_number": 18,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc4055",
-                    "frc999",
-                    "frc3461"
-                ],
-                "score": 38,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc558",
-                    "frc178",
-                    "frc2067"
-                ],
-                "score": 46,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "blue",
-        "score_breakdown": null,
-        "videos": [],
-        "time": null,
-        "actual_time": null,
-        "predicted_time": null,
-        "post_result_time": null
-    },
-    {
-        "key": "2019wiwi_qm24",
-        "event_key": "2019wiwi",
-        "comp_level": "qm",
-        "set_number": 1,
-        "match_number": 24,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc228",
-                    "frc2067",
-                    "frc3461"
-                ],
-                "score": 48,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc1071",
-                    "frc7462",
-                    "frc173"
-                ],
-                "score": 41,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "red",
-        "score_breakdown": null,
-        "videos": [],
-        "time": null,
-        "actual_time": null,
-        "predicted_time": null,
-        "post_result_time": null
-    },
-    {
-        "key": "2019wiwi_qm3",
-        "event_key": "2019wiwi",
-        "comp_level": "qm",
-        "set_number": 1,
-        "match_number": 3,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc230",
-                    "frc3461",
-                    "frc178"
-                ],
-                "score": 49,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc7153",
-                    "frc237",
-                    "frc3555"
-                ],
-                "score": 53,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "blue",
-        "score_breakdown": null,
-        "videos": [],
-        "time": null,
-        "actual_time": null,
-        "predicted_time": null,
-        "post_result_time": null
-    },
-    {
-        "key": "2019wiwi_qm5",
-        "event_key": "2019wiwi",
-        "comp_level": "qm",
-        "set_number": 1,
-        "match_number": 5,
-        "alliances": {
-            "red": {
-                "team_keys": [
-                    "frc155",
-                    "frc228",
-                    "frc4557"
-                ],
-                "score": 52,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            },
-            "blue": {
-                "team_keys": [
-                    "frc3525",
-                    "frc3461",
-                    "frc3555"
-                ],
-                "score": 56,
-                "surrogate_team_keys": [],
-                "dq_team_keys": []
-            }
-        },
-        "winning_alliance": "blue",
-        "score_breakdown": null,
-        "videos": [],
-        "time": null,
-        "actual_time": null,
-        "predicted_time": null,
-        "post_result_time": null
     }
 ]
